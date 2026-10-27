@@ -133,9 +133,9 @@ p { text-wrap: pretty; }
 .ah-agenda { padding: 12px 16px 10px 20px; }
 .sec-h { display: flex; align-items: center; gap: 8px; margin: 0 0 8px; min-height: 32px; font-weight: 600; font-size: 13px; color: var(--ah-ink-2); }
 .sec-h b { font-family: var(--ah-display); font-weight: 700; font-size: 18px; letter-spacing: -.015em; color: var(--ah-ink); }
-.agenda-row { display: grid; grid-template-columns: 58px minmax(0, 1fr) auto; gap: 14px; align-items: center; padding: 10px 0;
+.agenda-row { display: grid; grid-template-columns: 58px minmax(0, 1fr) auto; gap: 14px; align-items: start; padding: 12px 0;
   border-top: 1px solid var(--ah-row-rule); }
-.agenda-time { font-family: var(--ah-display); font-weight: 700; font-size: 17px; letter-spacing: -.015em; color: var(--ah-ink); }
+.agenda-time { font-family: var(--ah-display); font-weight: 700; font-size: 17px; line-height: 1.4; letter-spacing: -.015em; color: var(--ah-ink); }
 .agenda-row.is-next .agenda-time { color: var(--ah-hero); }
 .agenda-row.is-past .agenda-who b { color: var(--ah-ink-2); font-weight: 600; }
 .agenda-who b { display: block; font-weight: 600; font-size: 15px; overflow-wrap: anywhere; }
@@ -195,6 +195,7 @@ span.chip:hover { transform: none; }
 .stage-h { display: flex; align-items: baseline; gap: 8px; margin: 0; padding: 16px 0 4px; font-weight: 600; font-size: 12px; color: var(--ah-ink-2); }
 .stage-h:first-child { padding-top: 0; }
 .stage-h b { font-family: var(--ah-display); font-weight: 700; font-size: 17px; letter-spacing: -.015em; color: var(--ah-ink); }
+.stage-h .fold-btn.is-folded .fold-chev svg { transform: rotate(-90deg); }
 .dwell { display: grid; justify-items: end; gap: 6px; padding-top: 2px; }
 .track { position: relative; height: 4px; border-radius: 999px; background: var(--ah-track); overflow: hidden; width: 72px; }
 .track b { position: absolute; left: 0; top: 0; bottom: 0; border-radius: 999px; background: var(--ah-hero-fill); }
@@ -205,7 +206,7 @@ span.chip:hover { transform: none; }
 .deal-row .row-actions { grid-column: 2 / 4; }
 .inline-form { display: flex; flex-wrap: wrap; gap: 8px; width: 100%; min-width: 0; }
 .inline-form .field { width: 120px; }
-.field { height: 38px; border-radius: 999px; border: 0; padding: 0 16px; background: var(--ah-surface); box-shadow: inset 0 0 0 1px var(--ah-field);
+.field { height: 40px; border-radius: 9px; border: 0; padding: 0 12px; background: var(--ah-surface); box-shadow: inset 0 0 0 1px var(--ah-field);
   min-width: 0; flex: 1 1 200px; }
 .field[type="date"] { flex: 0 1 168px; }
 .field:focus { outline: none; box-shadow: inset 0 0 0 1.5px var(--ah-hero), 0 0 0 4px var(--ah-halo); }
@@ -261,7 +262,7 @@ td .owed { display: block; font-size: 12px; }
 .filters { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
 .chip-filter { background: var(--ah-control-2); color: var(--ah-ink-2); }
 .chip-filter[aria-pressed="true"] { background: var(--ah-hero); color: var(--ah-on-hero); }
-.field-sm { height: 32px; flex: 1 1 160px; max-width: 280px; }
+.field-sm { height: 32px; flex: 1 1 160px; max-width: 280px; border-radius: 999px; padding: 0 16px; }
 .demo-view { display: inline-flex; align-items: center; gap: 8px; margin-left: auto; }
 .demo-view span { font-weight: 600; color: var(--ah-hero); white-space: nowrap; }
 .demo-pick { color: var(--ah-ink); }
@@ -305,7 +306,7 @@ section.card.is-folded .sec-h { margin-bottom: 0; }
 .stat:hover { transform: translateY(-1px); }
 .stat span { font-weight: 600; font-size: 13px; color: var(--ah-ink-2); }
 .stat b { font-family: var(--ah-display); font-weight: 700; font-size: 22px; line-height: 1.1; letter-spacing: -.015em; color: var(--ah-ink); }
-.stat small { font-size: 13px; color: var(--ah-ink-2); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.stat small { font-size: 13px; line-height: 1.35; color: var(--ah-ink-2); overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
 .stat small.breach { color: var(--ah-breach-ink); font-weight: 700; }
 .stat.is-zero b { color: var(--ah-ink-3); }
 .day-tools { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
@@ -322,7 +323,7 @@ section.card.is-folded .sec-h { margin-bottom: 0; }
 .select select { appearance: none; -webkit-appearance: none; height: 32px; border-radius: 9px; padding: 0 40px 0 12px; width: auto; max-width: 280px;
   flex: none; cursor: pointer; background: var(--ah-surface); color: var(--ah-ink); }
 .inline-form .select { flex: 1 1 160px; }
-.inline-form .select select { height: 38px; width: 100%; max-width: 100%; }
+.inline-form .select select { height: 40px; width: 100%; max-width: 100%; }
 .select svg { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); width: 16px; height: 16px; color: var(--ah-ink-2); pointer-events: none; }
 /* Activity */
 .log-row { display: grid; grid-template-columns: 52px minmax(0, 1fr) auto; gap: 12px; align-items: start; padding: 12px 0; border-top: 1px solid var(--ah-row-rule); }
@@ -345,6 +346,12 @@ section.card.is-folded .sec-h { margin-bottom: 0; }
 :root[data-ah-density="compact"] .stat { min-height: 56px; padding: 8px 12px; }
 
 @media (max-width: 430px) { .ah-live-pre { display: none; } }
+.agenda-who .agenda-more { display: none; font-size: 13px; font-weight: 700; color: var(--ah-hero); }
+@media (max-width: 559px) { .agenda-notes .agenda-note:nth-child(n+3) { display: none; } .agenda-who .agenda-more { display: block; } }
+@media (min-width: 440px) { .day-tools .lead.is-date { visibility: hidden; } }
+.stage-h .fold-btn { min-height: 32px; }
+.stage-h .fold-btn span { font-weight: 600; font-size: 12px; color: var(--ah-ink-2); }
+.icon-only { width: 32px; padding: 0; justify-content: center; }
 @media (max-width: 400px) { .ah-hdr { gap: 8px; } }
 @media (max-width: 439px) { .ah-date { display: none; } }
 @media (max-width: 400px) { .ah-hdr.is-old .ah-date { display: none; } }
@@ -402,7 +409,7 @@ section.card.is-folded .sec-h { margin-bottom: 0; }
         <button class="ah-help" id="help-btn" type="button" aria-label="How ant. works"><span>?</span></button>
       </header>
       <div id="banner-slot" style="display:grid;gap:8px"></div>
-      <section id="view" class="ah-view"></section>
+      <section id="view" class="ah-view" role="tabpanel" aria-label="Content"></section>
     </div>
   </main>
   <nav class="ah-tabs" id="bottom-tabs" role="tablist" aria-label="Sections"></nav>
@@ -449,6 +456,7 @@ section.card.is-folded .sec-h { margin-bottom: 0; }
     };
     var g = shapes[kind] || shapes.low;
     var s = document.createElementNS(NS, "svg"); s.setAttribute("viewBox", "0 0 18 18"); s.setAttribute("class", "glyph"); s.setAttribute("aria-hidden", "true");
+    if (kind !== "breach" && kind !== "high" && kind !== "done") return s;  // the status word carries Medium and Low
     var p = document.createElementNS(NS, "path"); p.setAttribute("d", g[0]); p.setAttribute("fill", g[1]); p.setAttribute("stroke", g[2]);
     p.setAttribute("stroke-width", "1.5"); p.setAttribute("stroke-linejoin", "round"); p.setAttribute("stroke-linecap", "round"); s.appendChild(p);
     return s;
@@ -1007,10 +1015,11 @@ section.card.is-folded .sec-h { margin-bottom: 0; }
     var held = holderNote(dr ? dr.id : null, it.deal_id || null);
     var meta = h("div", { class: "row-meta" }, [statusFor(it), chipText ? h("span", { class: "status hero" }, chipText) :
       sentNow ? h("span", { class: "done-note" }, "Marked sent " + fmtDate(sentNow, false)) :
-      coming && !dr && !/coming/i.test(statusText(it) + " " + (it.detail || "")) ? h("span", { class: "done-note" }, "Draft coming at the next check") : null, sourceChip(it.source),
-      it.note_url ? sourceChip({ label: "Your note", url: it.note_url }) : null,
-      it.reply_url ? sourceChip({ label: "The reply", url: it.reply_url }) : null,
+      coming && !dr && !/coming/i.test(statusText(it) + " " + (it.detail || "")) ? h("span", { class: "done-note" }, "Draft coming at the next check") : null,
       held ? h("span", { class: "done-note" }, holderLine(held)) : null]);
+    // Where it came from shows once the row is open: one chip per source, never a column of identical chips.
+    var srcLine = [sourceChip(it.source), it.note_url ? sourceChip({ label: "Your note", url: it.note_url }) : null,
+      it.reply_url ? sourceChip({ label: "The reply", url: it.reply_url }) : null].filter(Boolean);
     // Three short lines when a row opens: what to do, when to see it again, and how useful it was.
     var doLine = h("div", { class: "row-actions" }), A = it.actions || [];
     if (A.indexOf("prep") >= 0 && it.prep_id) doLine.appendChild(h("button", { class: "btn btn-secondary btn-sm", type: "button", onclick: function () { openPrep(it.prep_id); } }, "Prep me"));
@@ -1024,8 +1033,8 @@ section.card.is-folded .sec-h { margin-bottom: 0; }
       if (drHref) doLine.appendChild(h("a", { class: "btn btn-secondary btn-sm", href: safeUrl(drHref), target: "_blank", rel: "noopener noreferrer" },
         [icon(ICON.ext, 16), "Open in Gmail"]));
       // Sent it sits beside the draft wherever it shows, so the note's sent mark is one tap from where it was opened.
-      doLine.appendChild(sentButton(dr, it));
-      doLine.appendChild(h("button", { class: "btn btn-ghost btn-sm", type: "button", onclick: function () { copyText(draftText(dr), "Draft copied"); } }, [icon(ICON.copy, 16), "Copy draft"]));
+      doLine.appendChild(sentButton(dr, it, drHref ? "btn-ghost btn-sm" : "btn-secondary btn-sm"));
+      doLine.appendChild(copyIcon(dr));
     }
     // Asks that went out in one note: each is answered or closed on its own row, on the Portfolio tab.
     if (A.indexOf("asks") >= 0 && it.group_asks) doLine.appendChild(h("button", { class: "btn btn-ghost btn-sm", type: "button",
@@ -1057,9 +1066,34 @@ section.card.is-folded .sec-h { margin-bottom: 0; }
       h("button", { class: "btn btn-ghost btn-sm", type: "button", onclick: function () { snooze(it, nextMonday(), "Monday 08:00"); } }, "Next week")]);
     var rateLine = h("div", { class: "row-more", hidden: !rateOpen }, rateChips(it));
     var actions = h("div", { class: "row-open" }, [dr && (dr.context || closedInDraft(dr)) ? h("p", { class: "draft-note" }, [h("b", null, "Before you send: "), closedInDraft(dr) + (dr.context || "")]) : null,
-      doLine, later, rateLine]);
+      doLine, later, rateLine, srcLine.length ? h("div", { class: "row-meta" }, srcLine) : null]);
     if (!open) actions.hidden = true;
     return h("div", { class: "row" + (it.breach ? " is-breach" : "") }, [glyphFor(it), h("div", { class: "row-main" }, [hit, meta, actions])]);
+  }
+  function copyIcon(d) {
+    return h("button", { class: "btn btn-ghost btn-sm icon-only", type: "button", "aria-label": "Copy draft", title: "Copy draft",
+      onclick: function () { copyText(draftText(d), "Draft copied"); } }, icon(ICON.copy, 16));
+  }
+  // A row that is not a brief line (a CRM change, a met log, a draft) reads the same way: closed, it shows what it is
+  // and its status; a tap opens what to do.
+  function foldRow(row, key) {
+    var main = row.querySelector(".row-main"), hit = main && main.querySelector(".row-hit.static");
+    if (!hit) return row;
+    var open = S.open === key || QA_OPEN;
+    var btn = h("button", { class: "row-hit", type: "button", "aria-expanded": open ? "true" : "false", "data-id": key,
+      onclick: function () { S.open = open ? null : key; render(); focusId(key); } });
+    while (hit.firstChild) btn.appendChild(hit.firstChild);
+    main.replaceChild(btn, hit);
+    var tt = btn.querySelector(".row-title");
+    btn._item = { id: key, kind: "ready", group: "ready", title: tt ? tt.textContent : "" };  // so 1, 2 and 3 rate it too
+    var box = h("div", { class: "row-open" });
+    Array.prototype.slice.call(main.children).forEach(function (c) { if (c.matches("form, .row-actions, .draft-note")) box.appendChild(c); });
+    var srcs = main.querySelectorAll(".row-meta .chip-source");
+    if (srcs.length) { var line = h("div", { class: "row-meta" }); Array.prototype.forEach.call(srcs, function (x) { line.appendChild(x); }); box.appendChild(line); }
+    if (!box.childNodes.length) return row;
+    box.hidden = !open;
+    main.appendChild(box);
+    return row;
   }
   function toggleBtn(label, open, fn) {
     return h("button", { class: "btn btn-ghost btn-sm", type: "button", "aria-expanded": open ? "true" : "false", onclick: fn }, [label, icon(ICON.chev, 16)]);
@@ -1072,6 +1106,12 @@ section.card.is-folded .sec-h { margin-bottom: 0; }
     return h("div", { class: "card", "aria-hidden": "true", style: "display:grid;gap:12px" },
       [h("div", { class: "skel", style: "width:36%" }), h("div", { class: "skel", style: "width:88%" }), h("div", { class: "skel", style: "width:64%" })]);
   }
+  function openLabel(label) {
+    var l = String(label || "").trim();
+    if (!l) return "Open";
+    if (/^(CRM|Calendar|Gmail|Drive|Notion|Slack|Affinity|Attio|HubSpot)$/i.test(l)) return "Open in " + l;
+    return "Open " + l.charAt(0).toLowerCase() + l.slice(1);
+  }
   function heroCard(hero) {
     if (!hero || !hero.statement) return null;
     // Hero grammar: one primary action, at most two more, then the source.
@@ -1083,11 +1123,11 @@ section.card.is-folded .sec-h { margin-bottom: 0; }
     else if (hd) add(hdHref ? h("a", { class: "btn btn-primary", href: safeUrl(hdHref), target: "_blank", rel: "noopener noreferrer" }, [icon(ICON.ext, 16), "Open draft"])
         : h("button", { class: "btn btn-primary", type: "button", onclick: function () { copyText(draftText(hd), "Draft copied"); } }, [icon(ICON.copy, 16), "Copy draft"]));
     else if (hero.button === "Prep me" && hero.prep_id) add(h("button", { class: "btn btn-primary", type: "button", onclick: function () { openPrep(hero.prep_id); } }, "Prep me"));
-    else if (hero.source && safeUrl(hero.source.url)) add(h("a", { class: "btn btn-primary", href: safeUrl(hero.source.url), target: "_blank", rel: "noopener noreferrer" }, [icon(ICON.ext, 16), "Open"]));
+    else if (hero.source && safeUrl(hero.source.url)) add(h("a", { class: "btn btn-primary", href: safeUrl(hero.source.url), target: "_blank", rel: "noopener noreferrer" }, [icon(ICON.ext, 16), openLabel(hero.source.label)]));
     // A draft on the hero gets Sent it beside it. A promise keeps Done too: it may have been settled in the room.
     if (hd) add(sentButton(hd, hero.sentFor || null, "btn-secondary"));
     if (hero.doneable) add(h("button", { class: "btn btn-ghost", type: "button", onclick: function () { markRowDone(hero.doneable, hd); } }, "Done"));
-    if (hero.snoozable) add(h("button", { class: "btn btn-ghost", type: "button", onclick: function () { snooze(hero.snoozable, morning(1), "tomorrow 08:00"); } }, "Snooze"));
+    if (hero.snoozable) add(h("button", { class: "btn btn-ghost", type: "button", title: "See it again tomorrow at 08:00", onclick: function () { snooze(hero.snoozable, morning(1), "tomorrow 08:00"); } }, "Tomorrow"));
     if (hd && hdHref) add(h("button", { class: "btn btn-ghost", type: "button", onclick: function () { copyText(draftText(hd), "Draft copied"); } }, [icon(ICON.copy, 16), "Copy"]));
     if (hero.source && hero.source.label && (hero.button !== "Prep me" || hero.draftDoc) && (hero.action || hero.draftDoc || !safeUrl(hero.source.url) || hero.chip)) btns.appendChild(sourceChip(hero.source));
     return h("article", { class: "card ruled ah-hero-card" + (hero.breach ? " is-breach" : "") }, [
@@ -1121,11 +1161,11 @@ section.card.is-folded .sec-h { margin-bottom: 0; }
       question_id: it.question_id, draft: it.draft, entity: it.entity, group_asks: it.group_asks, breach: it.breach, source: it.source,
       status_word: it.status_word };
   }
-  var BUCKETS = [["decide", "Decide"], ["send", "Send"], ["waiting", "Waiting on others"], ["watch", "Watch"], ["pitches", "Pitches"], ["team", "Your team's deals"]];
+  var BUCKETS = [["decide", "Decide"], ["send", "Send"], ["waiting", "Waiting on others"], ["watch", "Watch"]];
   function bucketOf(it) {
     var w = it.status_word;
-    if (w === "team" || it.fyi) return "team";
-    if (it.kind === "inbound" || it.kind === "pass_returned") return "pitches";
+    if (w === "team" || it.fyi) return "watch";
+    if (it.kind === "inbound" || it.kind === "pass_returned") return "decide";
     if (it.kind === "waiting" || w === "waiting" || w === "asked" || w === "requested") return "waiting";
     if (["decision", "signal", "stale", "deal_move", "review"].indexOf(it.kind) >= 0) return "decide";
     if (["commitment", "question", "ask", "lp", "relationship"].indexOf(it.kind) >= 0 || it.late_fold) return "send";
@@ -1148,7 +1188,7 @@ section.card.is-folded .sec-h { margin-bottom: 0; }
       cell("decide", "Decide", counts.decide || 0, urgentIn("decide") ? urgentIn("decide") + " urgent" : firstOf("decide") || (counts.decide ? "CRM changes and meeting logs" : "Nothing to decide"), urgentIn("decide") > 0),
       cell("send", "Send", counts.send || 0, urgentIn("send") ? urgentIn("send") + " overdue" : counts.send ? "Drafts and replies" : "All sent", urgentIn("send") > 0),
       cell("waiting", "Waiting on others", counts.waiting || 0, firstOf("waiting") || "No one owes you")]);
-    var tools = h("div", { class: "day-tools" }, [h("span", { class: "lead" }, (function () { var d = wall(); return DAYS[d.wd] + " " + pad(d.d) + " " + MONTHS[d.m - 1]; })() +
+    var tools = h("div", { class: "day-tools" }, [h("span", { class: "lead" + (S.focus ? "" : " is-date") }, (function () { var d = wall(); return DAYS[d.wd] + " " + pad(d.d) + " " + MONTHS[d.m - 1]; })() +
         (S.focus ? ". Focus: only the top line and your schedule are open" : "")),
       h("button", { class: "chip chip-filter", type: "button", "aria-pressed": S.focus ? "true" : "false", onclick: function () { S.focus = !S.focus; S.focusOpen = {}; remember("ant.focus", S.focus ? "1" : "0"); render(); } }, "Focus")]);
     return h("div", { class: "day" }, [tools, strip, timeline(meetings)]);
@@ -1168,7 +1208,7 @@ section.card.is-folded .sec-h { margin-bottom: 0; }
     return h("div", { style: "display:grid;gap:4px" }, [bar, h("div", { class: "tl-hours", "aria-hidden": "true" }, ["08:00", "11:00", "14:00", "17:00", "20:00"].map(function (t) { return h("span", null, t); }))]);
   }
   function openSection(key) {
-    var label = key === "schedule" ? "Meetings today" : (BUCKETS.filter(function (x) { return x[0] === key; })[0] || [])[1];
+    var label = key === "schedule" ? "Schedule" : (BUCKETS.filter(function (x) { return x[0] === key; })[0] || [])[1];
     if (!label) return;
     S.folds[foldKey(label)] = false; if (S.focus) S.focusOpen[label] = true; remember("ant.folds", JSON.stringify(S.folds)); render();
     var el = document.getElementById("sec-" + key);
@@ -1214,7 +1254,7 @@ section.card.is-folded .sec-h { margin-bottom: 0; }
         hero.draftDoc = draftFor({ id: hero.item_id, draft: hero.draft, kind: hero.kind, entity: hero.entity, group_asks: hero.group_asks });
       }
     }
-    var agenda = h("section", { class: "card ruled ah-agenda", "aria-label": "Meetings today", id: "sec-schedule" },
+    var agenda = h("section", { class: "card ruled ah-agenda", "aria-label": "Schedule", id: "sec-schedule" },
       [h("h2", { class: "sec-h" }, [h("b", null, "Schedule"), h("span", { class: "count" }, plural((b.meetings || []).length, "meeting"))])]);
     var meetings = b.meetings || [], now = Date.now(), nextIdx = -1;
     meetings.forEach(function (m, i) { if (nextIdx < 0 && (!m.start || Date.parse(m.start) >= now - 15 * 60e3)) nextIdx = i; });
@@ -1234,7 +1274,8 @@ section.card.is-folded .sec-h { margin-bottom: 0; }
       });
       var kids = [h("span", { class: "agenda-time" }, m.time || ""),
         h("div", { class: "agenda-who" }, [h("b", null, parts[0] || ""), parts.length > 1 ? h("span", null, parts.slice(1).join(", ")) : m.internal ? h("span", null, "Internal") : null,
-          notes.length ? h("span", { class: "agenda-notes" }, notes) : null]),
+          notes.length ? h("span", { class: "agenda-notes" }, notes) : null,
+          notes.length > 2 ? h("span", { class: "agenda-more" }, "+" + (notes.length - 2) + " more in Prep") : null]),
         m.prep_id ? h("span", { class: "agenda-go", "aria-hidden": "true" }, "Prep") : h("span")];
       // The whole row opens the prep card; the hero keeps the one Prep me button.
       agenda.appendChild(m.prep_id ? h("button", { class: cls, type: "button",
@@ -1330,7 +1371,7 @@ section.card.is-folded .sec-h { margin-bottom: 0; }
       h("h2", { class: "sec-h", style: "margin:0" }, [h("b", null, d.title || DIGEST_KIND[d.kind] || "Digest"), h("span", { class: "count" }, fmtDate(d.as_of, false) + " " + String(d.as_of || "").slice(11, 16))]),
       mdBlock(d.markdown, open ? 0 : 6),
       h("div", null, h("button", { class: "btn btn-ghost btn-sm", type: "button", "aria-expanded": open ? "true" : "false",
-        onclick: function () { S.mdOpen[d.kind] = !open; render(); } }, open ? "Show less" : "Read all"))]);
+        onclick: function () { S.mdOpen[d.kind] = !open; render(); } }, open ? "Show less" : "Show all"))]);
   }
   function meetingDraft(id) {
     var d = (((S.snap.drafts || {}).items) || {})[id];
@@ -1401,37 +1442,37 @@ section.card.is-folded .sec-h { margin-bottom: 0; }
       if (p.status === "check" || p.status === "failed" || p.status === "refused" || (p.status === "applied" && p.reason && recent)) {
         if (itemState(id).done_at) return;
         var word = p.status === "failed" ? "Failed" : p.status === "check" ? "Check" : p.status === "refused" ? "Not done" : "Applied in part";
-        rows.push(h("div", { class: "row" }, [glyph(p.status === "failed" ? "breach" : "high"), h("div", { class: "row-main" }, [
+        rows.push(foldRow(h("div", { class: "row" }, [glyph(p.status === "failed" ? "breach" : "high"), h("div", { class: "row-main" }, [
           h("div", { class: "row-hit static" }, [h("span", { class: "row-title" }, ((p.record && p.record.name) ? p.record.name + ": " : "") + (p.title || "CRM update")),
             h("span", { class: "row-detail" }, p.reason || "A run stopped while applying this. Check the record.")]),
           h("div", { class: "row-meta" }, [h("span", { class: "status" + (p.status === "failed" ? " breach" : " hero") }, word),
             sourceChip({ label: p.source_label || "Meeting notes", url: p.source_url })]),
-          h("div", { class: "row-actions" }, h("button", { class: "btn btn-ghost btn-sm", type: "button", onclick: function () { markDone({ id: id, title: p.title }); } }, "Dismiss"))])]));
+          h("div", { class: "row-actions" }, h("button", { class: "btn btn-secondary btn-sm", type: "button", onclick: function () { markDone({ id: id, title: p.title }); } }, "Dismiss"))])]), "rdy:" + id));
         return;
       }
       if (p.status !== "proposed") return;
       // A Google Sheet as the CRM: ant. cannot write to it, so the change is copied and pasted in by hand.
       if (p.by_hand || (sheetCrm() && p.type !== "calendar_hold")) {
         if (itemState(id).done_at) return;
-        rows.push(h("div", { class: "row" }, [glyph("medium"), h("div", { class: "row-main" }, [
+        rows.push(foldRow(h("div", { class: "row" }, [glyph("medium"), h("div", { class: "row-main" }, [
           h("div", { class: "row-hit static" }, [h("span", { class: "row-title" }, ((p.record && p.record.name) ? p.record.name + ": " : "") + (p.title || "CRM update")),
             h("span", { style: "display:grid;gap:2px" }, changeLines(p))]),
           h("div", { class: "row-meta" }, [h("span", { class: "status" }, "Paste into your sheet"), sourceChip({ label: p.source_label || "Meeting notes", url: p.source_url })]),
           h("div", { class: "row-actions" }, [
             h("button", { class: "btn btn-secondary btn-sm", type: "button", onclick: function () { copyText(changeText(p), "Copied. Paste it into your sheet."); } }, [icon(ICON.copy, 16), "Copy change"]),
-            h("button", { class: "btn btn-ghost btn-sm", type: "button", onclick: function () { markDone({ id: id, title: p.title }); } }, "Done")])])]));
+            h("button", { class: "btn btn-ghost btn-sm", type: "button", onclick: function () { markDone({ id: id, title: p.title }); } }, "Done")])])]), "rdy:" + id));
         return;
       }
       var act = S.actions[id], decided = act && (act.status === "approved");
       var fields = changeLines(p);
-      rows.push(h("div", { class: "row" }, [glyph("high"), h("div", { class: "row-main" }, [
+      rows.push(foldRow(h("div", { class: "row" }, [glyph("high"), h("div", { class: "row-main" }, [
         h("div", { class: "row-hit static" }, [h("span", { class: "row-title" }, ((p.record && p.record.name) ? p.record.name + ": " : "") + (p.title || "CRM update")),
           h("span", { style: "display:grid;gap:2px" }, fields)]),
-        h("div", { class: "row-meta" }, [decided ? h("span", { class: "done-note" }, act.type === "skip" ? "Skipped" : "Approved. Applies at the next check.") : h("span", { class: "status" }, "Needs your OK"),
+        h("div", { class: "row-meta" }, [decided ? h("span", { class: "done-note" }, act.type === "skip" ? "Skipped" : "Approved. ant. saves it to your CRM at the next check.") : h("span", { class: "status" }, "Needs your OK"),
           sourceChip({ label: p.source_label || "Meeting notes", url: p.source_url })]),
         decided ? null : h("div", { class: "row-actions" }, [
           h("button", { class: "btn btn-secondary btn-sm", type: "button", onclick: function () { approve(id, p.type || "crm_update", { fields: p.fields, record: p.record }); } }, "Approve"),
-          h("button", { class: "btn btn-ghost btn-sm", type: "button", onclick: function () { approve(id, "skip", {}, "Skipped"); } }, "Skip")])])]));
+          h("button", { class: "btn btn-ghost btn-sm", type: "button", onclick: function () { approve(id, "skip", {}, "Skipped"); } }, "Skip")])])]), "rdy:" + id));
     });
     // After a founder meeting on your own deal: one tap logs it in the CRM, with the next step and, when it moved, the stage.
     var metOpen = ((S.snap.pipeline || {}).met_prompts || []).filter(function (m) {
@@ -1460,7 +1501,7 @@ section.card.is-folded .sec-h { margin-bottom: 0; }
         // The meeting is logged and no step stands: the deal says what happens next once you type it.
         var sText = h("input", { class: "field", name: "next", value: "", placeholder: "Next step, e.g. diligence plan", "aria-label": "Next step for " + m.company, maxlength: "140" });
         var sDue = h("input", { class: "field", type: "date", name: "due", "aria-label": "Due date", value: "" });
-        rows.push(h("div", { class: "row" }, [glyph("high"), h("div", { class: "row-main" }, [
+        rows.push(foldRow(h("div", { class: "row" }, [glyph("high"), h("div", { class: "row-main" }, [
           h("div", { class: "row-hit static" }, [h("span", { class: "row-title" }, m.company + ": met " + fmtDate(m.met_on, false) + ", add the next step"),
             h("span", { class: "row-detail" }, "The meeting is in your CRM. The deal has no next step yet")]),
           h("form", { class: "inline-form met-form", onsubmit: function (e) {
@@ -1470,7 +1511,7 @@ section.card.is-folded .sec-h { margin-bottom: 0; }
             approve(aid, "next_step", { deal_id: m.deal_id, company: m.company, text: t, due: sDue.value || null, current: m.next_step || null,
               current_due: m.next_step_due || null, met: null, stage: null }, "Saved. Goes to your CRM at the next check.");
           } }, [sText, sDue, saveBtn()]),
-          h("div", { class: "row-meta" }, [h("span", { class: "status hero" }, "Next step"), sourceChip({ label: "CRM", url: m.source_url })])])]));
+          h("div", { class: "row-meta" }, [h("span", { class: "status hero" }, "Next step"), sourceChip({ label: "CRM", url: m.source_url })])])]), "rdy:" + aid));
         return;
       }
       // Filled in from the meeting, not from the CRM's old step: the stage the invite names, and the CRM's step only
@@ -1484,11 +1525,11 @@ section.card.is-folded .sec-h { margin-bottom: 0; }
         [h("option", { value: "" }, "Still " + (m.stage || "this stage"))].concat(moves.map(function (x) {
           var o = h("option", { value: x.name }, "Move to " + x.name); if (m.implied_stage && x.key === m.implied_stage.key) o.selected = true; return o;
         }))) : null;
-      rows.push(h("div", { class: "row" }, [glyph("high"), h("div", { class: "row-main" }, [
+      rows.push(foldRow(h("div", { class: "row" }, [glyph("high"), h("div", { class: "row-main" }, [
         h("div", { class: "row-hit static" }, [h("span", { class: "row-title" }, m.company + ": met " + fmtDate(m.met_on, false)),
-          h("span", { class: "row-detail" }, (m.meeting ? "\u201c" + m.meeting + "\u201d. " : "") + "Log it in your CRM" +
-            (m.next_step ? ". It still says next: " + m.next_step + byDate(m.next_step_due) +
-              (hasPre && !m.prefill ? ", which was this meeting" : "") : ". No next step yet"))]),
+          h("span", { class: "row-detail" }, "Log the meeting in your CRM. " +
+            (m.next_step ? "Its next step is still: " + m.next_step + byDate(m.next_step_due) +
+              (hasPre && !m.prefill ? ", which was this meeting" : "") : "No next step yet"))]),
         h("form", { class: "inline-form met-form", onsubmit: function (e) {
           e.preventDefault(); var t = text.value.trim();
           var st = stage && stage.value ? stage.value : null;
@@ -1503,7 +1544,7 @@ section.card.is-folded .sec-h { margin-bottom: 0; }
             current_due: m.next_step_due || null, met: m.met_on, stage: st, clear_step: clear || undefined }, t ? "Saved. Goes to your CRM at the next check." :
             "Saved: the meeting" + (st ? " and the stage" : "") + " go to your CRM at the next check. Add the next step when you have it.");
         } }, [text, due, stage ? h("span", { class: "select" }, [stage, icon(ICON.chev, 16)]) : null, saveBtn()]),
-        h("div", { class: "row-meta" }, [h("span", { class: "status hero" }, "Met"), sourceChip({ label: "CRM", url: m.source_url })])])]));
+        h("div", { class: "row-meta" }, [h("span", { class: "status hero" }, "Met"), sourceChip({ label: "CRM", url: m.source_url })])])]), "rdy:" + aid));
     });
     // Replies to pitches fold into one line when there are many: an analyst's morning is not twenty rows of drafts.
     var pitches = ((S.snap.inbound || {}).items) || {}, replies = Object.keys(drafts).filter(function (id) {
@@ -1530,15 +1571,17 @@ section.card.is-folded .sec-h { margin-bottom: 0; }
     return { decide: rows, send: sendRows };
   }
   function draftRow(id, d) {
-      return h("div", { class: "row" }, [glyph("medium"), h("div", { class: "row-main" }, [
+      var href = gmailHref(d), note = closedInDraft(d) + (d.context || "");
+      return foldRow(h("div", { class: "row" }, [glyph("medium"), h("div", { class: "row-main" }, [
         h("div", { class: "row-hit static" }, [h("span", { class: "row-title" }, String(d.subject || "Follow-up").replace(/^(Re|Fwd?):\s*/i, "")),
-          h("span", { class: "row-detail" }, "To " + (d.to_name || d.to || "") + lateBy(d) + (closedInDraft(d) ? ". " + closedInDraft(d).trim().replace(/\.$/, "") : "") + (d.context ? ". " + d.context : ""))]),
+          h("span", { class: "row-detail" }, "To " + (d.to_name || d.to || "") + lateBy(d))]),
         h("div", { class: "row-meta" }, [h("span", { class: "status" + (draftGaps(d) ? " hero" : "") }, draftGaps(d) ? "Fill in " + plural(draftGaps(d), "line") :
           d.in_gmail ? "In your Gmail drafts" : "Ready to send"), sourceChip({ label: d.source_label || "Source", url: d.source_url })]),
+        note ? h("p", { class: "draft-note" }, [h("b", null, "Before you send: "), note]) : null,
         h("div", { class: "row-actions" }, [
-          h("button", { class: "btn btn-secondary btn-sm", type: "button", onclick: function () { copyText(draftText(d), "Draft copied"); } }, [icon(ICON.copy, 16), "Copy"]),
-          gmailHref(d) ? h("a", { class: "btn btn-ghost btn-sm", href: safeUrl(gmailHref(d)), target: "_blank", rel: "noopener noreferrer" }, [icon(ICON.ext, 16), "Open in Gmail"]) : null,
-          sentButton(Object.assign({ id: id }, d), null, "btn-ghost btn-sm")])])]);
+          href ? h("a", { class: "btn btn-secondary btn-sm", href: safeUrl(href), target: "_blank", rel: "noopener noreferrer" }, [icon(ICON.ext, 16), "Open in Gmail"]) : null,
+          sentButton(Object.assign({ id: id }, d), null, href ? "btn-ghost btn-sm" : "btn-secondary btn-sm"),
+          copyIcon(d)])])]), "rdy:" + id);
   }
   function scoreCard() {
     var id = "weekly-score-" + isoWeek(), done = S.rated[id];
@@ -1577,7 +1620,7 @@ section.card.is-folded .sec-h { margin-bottom: 0; }
     if (S.filter === "mine" && !mineCount) S.filter = "all";
     var pickFilter = function (f) { return function () { S.filter = f; S.filterChosen = true; render(); }; };
     var q = S.search.trim().toLowerCase();
-    var card = h("section", { class: "card", "aria-label": "Deals by stage" }), any = false;
+    var card = h("section", { class: "card", "aria-label": "Deals by stage" }, h("h2", { class: "sec-h" }, [h("b", null, "Deals by stage"), h("span", { class: "count" }, String(all.length))])), any = false;
     if (all.length > 8 || (mineCount && mineCount < all.length)) {
       var search = all.length > 8 ? h("input", { class: "field field-sm", type: "search", placeholder: "Find a company", "aria-label": "Find a company", value: S.search }) : null;
       if (search) search.addEventListener("input", function () { S.search = search.value; render(); var el = document.querySelector("input[type=search]"); if (el) { el.focus(); el.setSelectionRange(el.value.length, el.value.length); } });
@@ -1604,9 +1647,10 @@ section.card.is-folded .sec-h { margin-bottom: 0; }
       var folds = early && !own && lvl !== "analyst" && lvl !== "solo_gp" && !q && S.filter === "all";
       var key = st.key || st.name, open = S.stageOpen[key] !== undefined && folds ? S.stageOpen[key] : !folds;
       var flagged = ids.filter(function (id) { return needs(deals[id]); }).length;
-      card.appendChild(h("h2", { class: "stage-h" }, [h("b", null, st.name), h("span", null, ids.length + (flagged && !open ? " · " + flagged + " need a look" : "")),
-        folds ? h("button", { class: "btn btn-ghost btn-sm", type: "button", style: "margin-left:auto", "aria-expanded": open ? "true" : "false",
-          onclick: function () { S.stageOpen[key] = !open; render(); } }, open ? "Hide" : "Show") : null]));
+      if (!folds && S.stageOpen[key] === false) open = false;
+      card.appendChild(h("h3", { class: "stage-h" }, h("button", { class: "fold-btn" + (open ? "" : " is-folded"), type: "button", "aria-expanded": open ? "true" : "false",
+          onclick: function () { S.stageOpen[key] = !open; render(); } }, [h("span", { class: "fold-chev" }, icon(ICON.chev, 16)), h("b", null, st.name),
+          h("span", null, plural(ids.length, "deal") + (flagged ? " · " + flagged + " need a look" : ""))])));
       if (open) card.appendChild(h("div", { class: "list" }, ids.map(function (id) { return dealRow(id, deals[id]); })));
     });
     if (!any) card.appendChild(h("p", { class: "prov" }, q || S.filter !== "all" ? "No deals match." : own ? "No active deals you own. Deals you lead or work on in the CRM show here." : "No active deals."));
@@ -1707,7 +1751,7 @@ section.card.is-folded .sec-h { margin-bottom: 0; }
     if (!open) actions.hidden = true;
     return h("div", { class: "row deal-row" }, [glyph(d.competing ? "breach" : d.stale ? "high" : "low"), h("div", { class: "row-main" }, [hit, meta]),
       h("div", { class: "dwell" }, [h("span", { class: "days" + (over ? " over" : "") }, isNil(d.days_in_stage) ? DASH : Number(d.days_in_stage) <= 0 ? "Moved today" :
-        over ? plural(d.days_in_stage, "day") + ", usually " + d.dwell : "Day " + d.days_in_stage + (d.dwell ? " of " + d.dwell : "")),
+        over ? plural(d.days_in_stage - d.dwell, "day") + " over (day " + d.days_in_stage + " of " + d.dwell + ")" : "Day " + d.days_in_stage + (d.dwell ? " of " + d.dwell : "")),
         d.dwell ? h("span", { class: "track" + (over ? " over" : ""), "aria-hidden": "true" }, h("b", { style: "width:" + pct + "%" })) : null]), actions]);
   }
 
@@ -2014,7 +2058,8 @@ section.card.is-folded .sec-h { margin-bottom: 0; }
 
   // ---------------------------------------------------------------- sheets
   var lastFocus = null;
-  function closeOverlay() { document.getElementById("overlay-slot").textContent = ""; if (lastFocus && lastFocus.focus) lastFocus.focus(); }
+  function closeOverlay() { document.getElementById("overlay-slot").textContent = ""; var sh = document.querySelector(".ah-shell"); if (sh) sh.removeAttribute("inert");
+    if (lastFocus && lastFocus.focus) lastFocus.focus(); }
   function overlay(title, body) {
     lastFocus = document.activeElement;
     var slot = document.getElementById("overlay-slot"); slot.textContent = "";
@@ -2022,6 +2067,7 @@ section.card.is-folded .sec-h { margin-bottom: 0; }
       h("div", { class: "sheet-h" }, [h("h2", null, title), h("button", { class: "btn btn-ghost btn-sm", type: "button", "aria-label": "Close", onclick: closeOverlay }, icon(ICON.x, 16))])].concat(body));
     var scrim = h("div", { class: "scrim", onclick: function (e) { if (e.target === scrim) closeOverlay(); } }, sheet);
     slot.appendChild(scrim);
+    var shell = document.querySelector(".ah-shell"); if (shell) shell.setAttribute("inert", "");
     var first = sheet.querySelector("button"); if (first) first.focus();
   }
   function kv(title, items, ordered) { return items && items.length ? h("div", { class: "kv" }, [h("h3", null, title), h(ordered ? "ol" : "ul", null, items)]) : null; }
@@ -2272,10 +2318,10 @@ section.card.is-folded .sec-h { margin-bottom: 0; }
   }
 
   // ---------------------------------------------------------------- folds: every section header opens and closes its section
-  var FOLD_DEFAULT = { "today|Waiting on others": true, "today|Watch": true, "today|Done today": true, "today|Your team's deals": true };
+  var FOLD_DEFAULT = { "today|Waiting on others": true, "today|Watch": true, "today|Done today": true };
   function foldKey(label) { return S.tab + "|" + label; }
   function isFolded(label, sec) {
-    if (S.focus && S.tab === "today" && label !== "Meetings today") return !S.focusOpen[label];
+    if (S.focus && S.tab === "today" && label !== "Schedule") return !S.focusOpen[label];
     var k = foldKey(label);
     if (QA_OPEN && !Object.prototype.hasOwnProperty.call(S.folds, k)) return false;
     if (Object.prototype.hasOwnProperty.call(S.folds, k)) return !!S.folds[k];
@@ -2307,7 +2353,7 @@ section.card.is-folded .sec-h { margin-bottom: 0; }
       var urgent = body.querySelectorAll(".row .status.breach").length;
       if (folded && urgent) btn.insertBefore(h("span", { class: "chip chip-breach" }, [h("i"), urgent + " urgent"]), btn.querySelector(".count"));
       btn.addEventListener("click", function () {
-        if (S.focus && S.tab === "today" && label !== "Meetings today") S.focusOpen[label] = folded;
+        if (S.focus && S.tab === "today" && label !== "Schedule") S.focusOpen[label] = folded;
         else { S.folds[foldKey(label)] = !folded; remember("ant.folds", JSON.stringify(S.folds)); }
         render();
         var again = document.querySelector('.fold-btn[data-label="' + label.replace(/"/g, "") + '"]'); if (again) again.focus();
@@ -2344,6 +2390,13 @@ section.card.is-folded .sec-h { margin-bottom: 0; }
     tabs.forEach(function (t) {
       [rail, bottom].forEach(function (host) {
         host.appendChild(h("button", { class: "ah-tab", type: "button", role: "tab", "aria-selected": S.tab === t.key ? "true" : "false", "aria-label": t.label, title: t.label,
+          "aria-controls": "view", tabindex: S.tab === t.key || (S.tab === "activity" && t.key === "today") ? "0" : "-1",
+          onkeydown: function (e) {
+            if (["ArrowRight", "ArrowLeft", "ArrowUp", "ArrowDown"].indexOf(e.key) < 0) return;
+            e.preventDefault(); e.stopPropagation();
+            var i = tabs.indexOf(t), n = tabs[(i + (e.key === "ArrowRight" || e.key === "ArrowDown" ? 1 : tabs.length - 1)) % tabs.length];
+            go(n.key); var nb = host.querySelector('[aria-label="' + n.label + '"]'); if (nb) nb.focus();
+          },
           onclick: function () { go(t.key); } }, [h("span", { class: "ah-tab-ico" }, icon(t.icon, 18)), h("span", { class: "lbl" }, t.label)]));
       });
     });
@@ -2435,7 +2488,9 @@ section.card.is-folded .sec-h { margin-bottom: 0; }
   }
 
   // ---------------------------------------------------------------- keyboard
-  try { S.keys = localStorage.getItem("ant.keys") !== "off"; } catch (e) { S.keys = true; }
+  // Single-key shortcuts are on by default only with a mouse: on a touch screen a stray key would act.
+  var coarse = false; try { coarse = !!(window.matchMedia && matchMedia("(pointer: coarse)").matches); } catch (e) {}
+  try { var kv_ = localStorage.getItem("ant.keys"); S.keys = kv_ ? kv_ !== "off" : !coarse; } catch (e) { S.keys = !coarse; }
   document.addEventListener("keydown", function (e) {
     var sheet = document.querySelector(".sheet");
     if (e.key === "Tab" && sheet) {

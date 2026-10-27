@@ -170,9 +170,9 @@ def bucket_label(it: dict) -> str:
     """The Today section Home puts a brief line in (home/index.html, bucketOf)."""
     w, k = it.get("status_word"), it.get("kind")
     if w == "team" or it.get("fyi"):
-        return "Your team's deals"
+        return "Watch"
     if k in ("inbound", "pass_returned"):
-        return "Pitches"
+        return "Decide"
     if k == "waiting" or w in ("waiting", "asked", "requested"):
         return "Waiting on others"
     if k in ("decision", "signal", "stale", "deal_move", "review"):
@@ -434,8 +434,8 @@ class QA:
         w = page.evaluate("window.__writes")
         ok = any(v.get("type") == "crm_update" for x in w if x.get("path") == "state/actions" for v in ((x.get("data") or {}).get("items") or {}).values())
         self.check(sc, "CRM change approved", ok)
-        self.check(sc, "approved state shown", page.get_by_text("Approved. Applies at the next check.").count() >= 1)
-        page.locator(SEND + " button", has_text="Copy").first.click()
+        self.check(sc, "approved state shown", page.get_by_text("Approved. ant. saves it to your CRM at the next check.").count() >= 1)
+        page.locator(SEND + " button[aria-label='Copy draft']").first.click()
         page.wait_for_timeout(120)
         self.check(sc, "copy gives feedback", page.locator(".toast").count() == 1, page.locator(".toast").inner_text() if page.locator(".toast").count() else "")
         markup = page.locator(SEND + " .row", has_text="term sheet markup")
@@ -782,7 +782,7 @@ class QA:
         ctx, page = self.open(browser, "analyst-team", PHONE, member="rohan")
         page.locator("#bottom-tabs button[aria-label='Today']").click()
         page.wait_for_timeout(100)
-        team = page.locator("section[aria-label=\"Your team's deals\"] .row")
+        team = page.locator("section[aria-label='Watch'] .row")
         self.check("analyst-team", "colleagues' races are one grey line at the end", team.count() == 1 and
                    team.locator(".status", has_text="Your team").count() == 1, str(team.count()))
         self.check("analyst-team", "no urgent row names a colleague's lead", page.locator("#view .row", has_text=" leads)").count() == 0)
@@ -1657,7 +1657,7 @@ class QA:
         self.check(sc, "every Today section has a fold header", heads.count() >= 3 and page.locator("#view section.card[aria-label] > .sec-h:not(:has(.fold-btn))").count() == 0)
         folded = page.locator("#view section.card.is-folded")
         names = [x.get_attribute("aria-label") for x in folded.all()]
-        self.check(sc, "Waiting and Watch start folded, Decide and Send open", all(n in ("Waiting on others", "Watch", "Your team's deals", "Done today") for n in names)
+        self.check(sc, "Waiting and Watch start folded, Decide and Send open", all(n in ("Waiting on others", "Watch", "Done today") for n in names)
                    and page.locator(DECIDE + ":not(.is-folded)").count() == 1, str(names))
         if folded.count():
             first = folded.first
@@ -1672,25 +1672,41 @@ class QA:
         page.locator(".day-tools button", has_text="Focus").click()
         page.wait_for_timeout(60)
         open_ = [x.get_attribute("aria-label") for x in page.locator("#view section.card[aria-label]:not(.is-folded)").all()]
-        self.check(sc, "Focus folds everything but the schedule", open_ == ["Meetings today"], str(open_))
+        self.check(sc, "Focus folds everything but the schedule", open_ == ["Schedule"], str(open_))
         page.locator(".daystrip .stat", has_text="Decide").click()
         page.wait_for_timeout(120)
         self.check(sc, "a day-strip cell opens its section", page.locator(DECIDE + ":not(.is-folded)").count() == 1)
         page.locator(".day-tools button", has_text="Focus").click()
+        page.wait_for_timeout(60)
+        rdy = page.locator(DECIDE + " .row", has=page.locator("button.row-hit[data-id^='rdy:']")).first
+        closed = rdy.locator("button", has_text="Approve").is_visible() is False if rdy.locator("button", has_text="Approve").count() else True
+        rdy.locator(".row-hit").click()
+        page.wait_for_timeout(60)
+        rdy = page.locator(DECIDE + " .row", has=page.locator("button.row-hit[data-id^='rdy:']")).first
+        self.check(sc, "a CRM change reads like any row: closed until tapped, then Approve", closed and rdy.locator("button", has_text="Approve").is_visible())
+        drow = page.locator(SEND + " .row").first
+        drow.locator(".row-hit").click()
+        page.wait_for_timeout(60)
+        drow = page.locator(SEND + " .row").first
+        self.check(sc, "a draft opens with Open in Gmail first, Sent it quiet and Copy as an icon",
+                   drow.locator("a.btn-secondary", has_text="Open in Gmail").count() == 1 and drow.locator("button.btn-ghost", has_text="Sent it").count() == 1
+                   and drow.locator("button[aria-label='Copy draft']").count() == 1)
+        ctl = page.evaluate("Array.from(document.querySelectorAll('#view button, #view a, #view input, #view select')).filter(e => e.offsetParent).length")
+        self.check(sc, "Today shows few controls at once", ctl <= 32, f"{ctl} visible")
         self.shot(page, "folds-380")
         self.common(page, sc)
         ctx.close()
 
         sc = "row-actions"
         ctx, page = self.open(browser, sc, PHONE)
-        page.locator("#view .row", has=page.locator("button.row-hit")).first.locator(".row-hit").click()
-        row = page.locator("#view .row", has=page.locator("button.row-hit")).first
+        page.locator("#view .row", has=page.locator("button.row-hit:not([data-id^='rdy:'])")).first.locator(".row-hit").click()
+        row = page.locator("#view .row", has=page.locator("button.row-hit:not([data-id^='rdy:'])")).first
         self.check(sc, "an open row shows one line of actions, with Later and Rate folded",
                    row.locator("button", has_text="Later").count() == 1 and row.locator("button", has_text="Tomorrow").is_visible() is False
                    and row.locator(".chip-rate").first.is_visible() is False)
         row.locator("button", has_text="Later").click()
         page.wait_for_timeout(60)
-        row = page.locator("#view .row", has=page.locator("button.row-hit")).first
+        row = page.locator("#view .row", has=page.locator("button.row-hit:not([data-id^='rdy:'])")).first
         self.check(sc, "Later opens the snooze times", row.locator("button", has_text="Tomorrow").is_visible())
         self.shot(page, "row-later-380")
         ctx.close()
