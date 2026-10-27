@@ -1,0 +1,463 @@
+{
+ "checks": 75,
+ "failed": 0,
+ "complete": false,
+ "scenarios": [
+  "approvals",
+  "pipeline_actions",
+  "states"
+ ],
+ "page_sha256": "614f7da1ae96",
+ "rows": [
+  {
+   "scenario": "pipeline-actions",
+   "check": "next step saved as an approved action",
+   "ok": true,
+   "detail": "{\"op\": \"set\", \"path\": \"state/actions\", \"data\": {\"items\": {\"ns_d_sterling\": {\"type\": \"next_step\", \"status\": \"approved\", \"payload\": {\"deal_id\": \"d_sterling\", \"company\": \"Sterling AA\", \"text\": \"Reference"
+  },
+  {
+   "scenario": "pipeline-actions",
+   "check": "row shows the pending next step",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "pipeline-actions",
+   "check": "quiet saved",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "pipeline-actions",
+   "check": "quiet chip shows",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "pipeline-actions",
+   "check": "a competing deal copies a line for partners",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "pipeline-actions",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "pipeline-actions",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "pipeline-actions",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "pipeline-actions",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "pipeline-actions",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "approvals",
+   "check": "CRM change approved",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "approvals",
+   "check": "approved state shown",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "approvals",
+   "check": "copy gives feedback",
+   "ok": true,
+   "detail": "Draft copied"
+  },
+  {
+   "scenario": "approvals",
+   "check": "a draft kept in Home opens Gmail filled in, in the user's own account",
+   "ok": true,
+   "detail": "https://mail.google.com/mail/?authuser=aditi%40quillwater.vc&view=cm&fs=1&to=kunal%40banya"
+  },
+  {
+   "scenario": "approvals",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "approvals",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "approvals",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "approvals",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "approvals",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "failed-apply",
+   "check": "a failed change says so",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "failed-apply",
+   "check": "dismiss hides it",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "meera-default",
+   "check": "an overdue hero opens Today",
+   "ok": true,
+   "detail": "Today"
+  },
+  {
+   "scenario": "meera-default-calm",
+   "check": "a calm day opens on Pipeline",
+   "ok": true,
+   "detail": "Pipeline"
+  },
+  {
+   "scenario": "meera-default-calm",
+   "check": "associate sees only her deals",
+   "ok": true,
+   "detail": "13 of 13"
+  },
+  {
+   "scenario": "meera-default-calm",
+   "check": "associate has no LPs tab",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "meera-default-calm",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "meera-default-calm",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "meera-default-calm",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "meera-default-calm",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "meera-default-calm",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "vikram-default",
+   "check": "an overdue hero opens Today",
+   "ok": true,
+   "detail": "Today"
+  },
+  {
+   "scenario": "vikram-default-calm",
+   "check": "a calm day opens on LPs",
+   "ok": true,
+   "detail": "LPs"
+  },
+  {
+   "scenario": "vikram-default-calm",
+   "check": "CFO has no Pipeline tab",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "vikram-default-calm",
+   "check": "LP money shows on a phone",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "vikram-default-calm",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "vikram-default-calm",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "vikram-default-calm",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "vikram-default-calm",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "vikram-default-calm",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "tara-default",
+   "check": "an overdue hero opens Today",
+   "ok": true,
+   "detail": "Today"
+  },
+  {
+   "scenario": "tara-default-calm",
+   "check": "a calm day opens on Portfolio",
+   "ok": true,
+   "detail": "Portfolio"
+  },
+  {
+   "scenario": "tara-default-calm",
+   "check": "founder asks come first",
+   "ok": true,
+   "detail": "Founders need"
+  },
+  {
+   "scenario": "tara-default-calm",
+   "check": "Portfolio leads with what founders need",
+   "ok": true,
+   "detail": "Nimbus Collect: intro to two banks as customers"
+  },
+  {
+   "scenario": "tara-default-calm",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "tara-default-calm",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "tara-default-calm",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "tara-default-calm",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "tara-default-calm",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "outage",
+   "check": "connector banner",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "outage",
+   "check": "stall banner after two quiet hours",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "outage",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "outage",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "outage",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "outage",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "outage",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "weekend-quiet",
+   "check": "no stall banner while the schedule is quiet",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "monday-before-first-run",
+   "check": "no stall banner while the schedule is quiet",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "check-late",
+   "check": "stall banner only when the scheduled check is late",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "check-late",
+   "check": "one last-check time on the page",
+   "ok": true,
+   "detail": "Last check 07:30 | Instinct has not checked since Thu 07:30.\nIn Claude, open Sc"
+  },
+  {
+   "scenario": "db-error",
+   "check": "database error says so",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "db-error",
+   "check": "no false first-brief message",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "slow",
+   "check": "slow load keeps the skeleton",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "empty",
+   "check": "first-run state",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "empty",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "empty",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "0 primary"
+  },
+  {
+   "scenario": "empty",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "empty",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "empty",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "no-runtime",
+   "check": "outside Claude message",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "read-only",
+   "check": "read-only banner",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "read-only",
+   "check": "tap explains read-only",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "abroad",
+   "check": "the user's own date and time, wherever the viewer is",
+   "ok": true,
+   "detail": "Thu 22 Oct | As of 07:00"
+  },
+  {
+   "scenario": "stale-run",
+   "check": "old run is labelled",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "friday",
+   "check": "Friday score card",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "friday",
+   "check": "score saved",
+   "ok": true,
+   "detail": ""
+  }
+ ]
+}

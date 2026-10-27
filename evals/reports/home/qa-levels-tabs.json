@@ -1,0 +1,732 @@
+{
+ "checks": 120,
+ "failed": 0,
+ "complete": false,
+ "scenarios": [
+  "levels",
+  "tabs"
+ ],
+ "page_sha256": "85a9ea8a9254",
+ "rows": [
+  {
+   "scenario": "pipeline-380",
+   "check": "hero card renders",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "pipeline-380",
+   "check": "competing deals say Competing",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "pipeline-380",
+   "check": "pre-read shown",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "pipeline-380",
+   "check": "inbound listed with reasons",
+   "ok": true,
+   "detail": "2 of 2"
+  },
+  {
+   "scenario": "pipeline-380",
+   "check": "filters at this size",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "pipeline-380",
+   "check": "early stages fold for a partner",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "pipeline-380",
+   "check": "every active deal is listed",
+   "ok": true,
+   "detail": "37 of 37"
+  },
+  {
+   "scenario": "pipeline-380",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "pipeline-380",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "pipeline-380",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "pipeline-380",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "pipeline-380",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "people-380",
+   "check": "hero card renders",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "people-380",
+   "check": "relationship table filled",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "people-380",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "people-380",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "people-380",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "people-380",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "people-380",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "portfolio-380",
+   "check": "hero card renders",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "portfolio-380",
+   "check": "negative growth in breach ink",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "portfolio-380",
+   "check": "true minus used",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "portfolio-380",
+   "check": "founder asks shown",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "portfolio-380",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "portfolio-380",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "portfolio-380",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "portfolio-380",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "portfolio-380",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "lps-380",
+   "check": "hero card renders",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "lps-380",
+   "check": "every LP is listed",
+   "ok": true,
+   "detail": "15 of 15"
+  },
+  {
+   "scenario": "lps-380",
+   "check": "re-up window visible",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "lps-380",
+   "check": "fund summary: committed, called, unfunded",
+   "ok": true,
+   "detail": "Fund II 15 LPs Committed $80M Called $36M 45% of commitments Unfunded $44M Still to call Next re-up window 05 Jan"
+  },
+  {
+   "scenario": "lps-380",
+   "check": "a colleague's LPs listed with their owner",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "lps-380",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "lps-380",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "0 primary"
+  },
+  {
+   "scenario": "lps-380",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "lps-380",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "lps-380",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "pipeline-1440",
+   "check": "hero card renders",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "pipeline-1440",
+   "check": "competing deals say Competing",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "pipeline-1440",
+   "check": "pre-read shown",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "pipeline-1440",
+   "check": "inbound listed with reasons",
+   "ok": true,
+   "detail": "2 of 2"
+  },
+  {
+   "scenario": "pipeline-1440",
+   "check": "filters at this size",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "pipeline-1440",
+   "check": "early stages fold for a partner",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "pipeline-1440",
+   "check": "every active deal is listed",
+   "ok": true,
+   "detail": "37 of 37"
+  },
+  {
+   "scenario": "pipeline-1440",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "pipeline-1440",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "pipeline-1440",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "pipeline-1440",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "pipeline-1440",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "people-1440",
+   "check": "hero card renders",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "people-1440",
+   "check": "relationship table filled",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "people-1440",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "people-1440",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "people-1440",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "people-1440",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "people-1440",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "portfolio-1440",
+   "check": "hero card renders",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "portfolio-1440",
+   "check": "negative growth in breach ink",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "portfolio-1440",
+   "check": "true minus used",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "portfolio-1440",
+   "check": "founder asks shown",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "portfolio-1440",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "portfolio-1440",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "portfolio-1440",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "portfolio-1440",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "portfolio-1440",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "lps-1440",
+   "check": "hero card renders",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "lps-1440",
+   "check": "every LP is listed",
+   "ok": true,
+   "detail": "15 of 15"
+  },
+  {
+   "scenario": "lps-1440",
+   "check": "re-up window visible",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "lps-1440",
+   "check": "fund summary: committed, called, unfunded",
+   "ok": true,
+   "detail": "Fund II 15 LPs Committed $80M Called $36M 45% of commitments Unfunded $44M Still to call Next re-up window 05 Jan"
+  },
+  {
+   "scenario": "lps-1440",
+   "check": "a colleague's LPs listed with their owner",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "lps-1440",
+   "check": "called, unfunded and owner columns",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "lps-1440",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "lps-1440",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "0 primary"
+  },
+  {
+   "scenario": "lps-1440",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "lps-1440",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "lps-1440",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "level-aditi",
+   "check": "hero states a fact",
+   "ok": true,
+   "detail": "Review the board deck"
+  },
+  {
+   "scenario": "level-aditi",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "level-aditi",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "level-aditi",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "level-aditi",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "level-aditi",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "level-kabir",
+   "check": "hero states a fact",
+   "ok": true,
+   "detail": "Share the diligence checklist"
+  },
+  {
+   "scenario": "level-kabir",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "level-kabir",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "level-kabir",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "level-kabir",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "level-kabir",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "level-meera",
+   "check": "hero states a fact",
+   "ok": true,
+   "detail": "Sable Fraud AI: term sheet from Monsoon Arc Ventures"
+  },
+  {
+   "scenario": "level-meera",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "level-meera",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "level-meera",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "level-meera",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "level-meera",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "level-rohan",
+   "check": "hero states a fact",
+   "ok": true,
+   "detail": "Market map of AA players"
+  },
+  {
+   "scenario": "level-rohan",
+   "check": "analyst pipeline opens on Mine, top of the funnel first",
+   "ok": true,
+   "detail": "Inbound"
+  },
+  {
+   "scenario": "level-rohan",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "level-rohan",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "level-rohan",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "level-rohan",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "level-rohan",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "level-tara",
+   "check": "hero states a fact",
+   "ok": true,
+   "detail": "Intro two CFO candidates"
+  },
+  {
+   "scenario": "level-tara",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "level-tara",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "level-tara",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "level-tara",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "level-tara",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "level-vikram",
+   "check": "hero states a fact",
+   "ok": true,
+   "detail": "Answer the fee offset question"
+  },
+  {
+   "scenario": "level-vikram",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "level-vikram",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "level-vikram",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "level-vikram",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "level-vikram",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "level-solo",
+   "check": "hero states a fact",
+   "ok": true,
+   "detail": "Review the board deck"
+  },
+  {
+   "scenario": "level-solo",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "level-solo",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "level-solo",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "level-solo",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "level-solo",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  }
+ ]
+}

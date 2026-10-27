@@ -1,0 +1,16 @@
+{
+  "description": "ant. guard: scheduled ant. runs may only read the user's tools, update ant. Home, apply what the user approved, create drafts and run the engine. Everything else is blocked. Other sessions are untouched.",
+  "hooks": {
+    "PreToolUse": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"${CLAUDE_PLUGIN_ROOT}/hooks/guard.py\"",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  }
+}

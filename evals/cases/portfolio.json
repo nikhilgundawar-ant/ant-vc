@@ -1,0 +1,187 @@
+{
+ "flags": [
+  {
+   "company": "Orbit Treasury",
+   "kind": "runway"
+  },
+  {
+   "company": "Kestrel Pay",
+   "kind": "burn"
+  },
+  {
+   "company": "Ferro Credit Cloud",
+   "kind": "revenue"
+  },
+  {
+   "company": "Tallyfin",
+   "kind": "key_departure"
+  },
+  {
+   "company": "Saffire KYC",
+   "kind": "churn"
+  }
+ ],
+ "updates": {
+  "orbit": {
+   "thread_id": "upd_orbit",
+   "september": {
+    "month": "2026-09",
+    "revenue_usd": 198000,
+    "plan_revenue_usd": 195000,
+    "burn_usd": 200000,
+    "cash_usd": 1600000,
+    "churn_pct": 1.3,
+    "departures": [],
+    "source_url": "https://mail.google.com/mail/u/0/#all/upd_orbit"
+   }
+  },
+  "kestrel": {
+   "thread_id": "upd_kestrel",
+   "september": {
+    "month": "2026-09",
+    "revenue_usd": 158000,
+    "plan_revenue_usd": 160000,
+    "burn_usd": 215000,
+    "cash_usd": 3040000,
+    "churn_pct": 2.1,
+    "departures": [],
+    "source_url": "https://mail.google.com/mail/u/0/#all/upd_kestrel"
+   }
+  },
+  "ferro": {
+   "thread_id": "upd_ferro",
+   "september": {
+    "month": "2026-09",
+    "revenue_usd": 410000,
+    "plan_revenue_usd": 530000,
+    "burn_usd": 310000,
+    "cash_usd": 5400000,
+    "churn_pct": 1.1,
+    "departures": [],
+    "source_url": "https://mail.google.com/mail/u/0/#all/upd_ferro"
+   }
+  },
+  "tallyfin": {
+   "thread_id": "upd_tallyfin",
+   "september": {
+    "month": "2026-09",
+    "revenue_usd": 108000,
+    "plan_revenue_usd": 105000,
+    "burn_usd": 125000,
+    "cash_usd": 2160000,
+    "churn_pct": 2.4,
+    "departures": [
+     {
+      "name": "Vineet Rao",
+      "role": "CTO"
+     }
+    ],
+    "source_url": "https://mail.google.com/mail/u/0/#all/upd_tallyfin"
+   }
+  },
+  "saffire": {
+   "thread_id": "upd_saffire",
+   "september": {
+    "month": "2026-09",
+    "revenue_usd": 126000,
+    "plan_revenue_usd": 126000,
+    "burn_usd": 113000,
+    "cash_usd": 2280000,
+    "churn_pct": 5.8,
+    "departures": [],
+    "source_url": "https://mail.google.com/mail/u/0/#all/upd_saffire"
+   }
+  },
+  "nimbus": {
+   "thread_id": "upd_nimbus",
+   "september": {
+    "month": "2026-09",
+    "revenue_usd": 48000,
+    "plan_revenue_usd": 46000,
+    "burn_usd": 62000,
+    "cash_usd": 980000,
+    "churn_pct": 1.1,
+    "departures": [],
+    "source_url": "https://mail.google.com/mail/u/0/#all/upd_nimbus"
+   }
+  },
+  "quanta": {
+   "thread_id": "upd_quanta",
+   "september": {
+    "month": "2026-09",
+    "revenue_usd": 290000,
+    "plan_revenue_usd": 280000,
+    "burn_usd": 215000,
+    "cash_usd": 5080000,
+    "churn_pct": 0.9,
+    "departures": [],
+    "source_url": "https://mail.google.com/mail/u/0/#all/upd_quanta"
+   }
+  },
+  "brightvault": {
+   "thread_id": "upd_brightvault",
+   "september": {
+    "month": "2026-09",
+    "revenue_usd": 97000,
+    "plan_revenue_usd": 95000,
+    "burn_usd": 103000,
+    "cash_usd": 1900000,
+    "churn_pct": 1.6,
+    "departures": [],
+    "source_url": "https://mail.google.com/mail/u/0/#all/upd_brightvault"
+   }
+  },
+  "ledgerline": {
+   "thread_id": "upd_ledgerline",
+   "september": {
+    "month": "2026-09",
+    "revenue_usd": 72000,
+    "plan_revenue_usd": 70000,
+    "burn_usd": 94000,
+    "cash_usd": 2120000,
+    "churn_pct": 0.5,
+    "departures": [],
+    "source_url": "https://mail.google.com/mail/u/0/#all/upd_ledgerline"
+   }
+  },
+  "cardinal": {
+   "thread_id": "upd_cardinal",
+   "september": {
+    "month": "2026-09",
+    "revenue_usd": 126000,
+    "plan_revenue_usd": 120000,
+    "burn_usd": 134000,
+    "cash_usd": 2640000,
+    "churn_pct": 1.1,
+    "departures": [],
+    "source_url": "https://mail.google.com/mail/u/0/#all/upd_cardinal"
+   }
+  },
+  "harbor": {
+   "thread_id": "upd_harbor",
+   "september": {
+    "month": "2026-09",
+    "revenue_usd": 28000,
+    "plan_revenue_usd": 27000,
+    "burn_usd": 47000,
+    "cash_usd": 810000,
+    "churn_pct": 2.1,
+    "departures": [],
+    "source_url": "https://mail.google.com/mail/u/0/#all/upd_harbor"
+   }
+  },
+  "mintrail": {
+   "thread_id": "upd_mintrail",
+   "september": {
+    "month": "2026-09",
+    "revenue_usd": 79000,
+    "plan_revenue_usd": 77000,
+    "burn_usd": 82000,
+    "cash_usd": 1440000,
+    "churn_pct": 1.2,
+    "departures": [],
+    "source_url": "https://mail.google.com/mail/u/0/#all/upd_mintrail"
+   }
+  }
+ }
+}

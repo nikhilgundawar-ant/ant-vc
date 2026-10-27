@@ -1,0 +1,741 @@
+{
+ "commitments": [
+  {
+   "transcript_id": "tr01",
+   "line": 5,
+   "owed_by": "Maya Chen",
+   "owed_to": "Kabir Shah",
+   "what": "Send the updated deck with Q3 numbers",
+   "due": "2026-10-09",
+   "kw": [
+    "deck"
+   ]
+  },
+  {
+   "transcript_id": "tr01",
+   "line": 6,
+   "owed_by": "Dev Pillai",
+   "owed_to": "Kabir Shah",
+   "what": "Share the architecture doc",
+   "due": "2026-10-12",
+   "kw": [
+    "architecture"
+   ]
+  },
+  {
+   "transcript_id": "tr01",
+   "line": 8,
+   "owed_by": "Kabir Shah",
+   "owed_to": "Maya Chen",
+   "what": "Send the cohort analysis questions",
+   "due": "2026-10-21",
+   "kw": [
+    "cohort"
+   ]
+  },
+  {
+   "transcript_id": "tr02",
+   "line": 4,
+   "owed_by": "Aditi Rao",
+   "owed_to": "Arjun Khurana",
+   "what": "Intro Arjun to Raj Malhotra at Fable Bank",
+   "due": "2026-10-20",
+   "kw": [
+    "raj",
+    "fable"
+   ]
+  },
+  {
+   "transcript_id": "tr02",
+   "line": 5,
+   "owed_by": "Arjun Khurana",
+   "owed_to": "Aditi Rao",
+   "what": "Send the updated unit economics",
+   "due": "2026-10-16",
+   "kw": [
+    "unit economics"
+   ]
+  },
+  {
+   "transcript_id": "tr02",
+   "line": 7,
+   "owed_by": "Arjun Khurana",
+   "owed_to": "Aditi Rao",
+   "what": "Line up three gig platform references",
+   "due": null,
+   "kw": [
+    "reference"
+   ]
+  },
+  {
+   "transcript_id": "tr03",
+   "line": 3,
+   "owed_by": "Aditi Rao",
+   "owed_to": "Ishaan Verma",
+   "what": "Send the term sheet markup",
+   "due": "2026-10-23",
+   "kw": [
+    "term sheet",
+    "markup"
+   ]
+  },
+  {
+   "transcript_id": "tr03",
+   "line": 4,
+   "owed_by": "Ishaan Verma",
+   "owed_to": "Aditi Rao",
+   "what": "Send the cap table with the ESOP pool",
+   "due": "2026-10-22",
+   "kw": [
+    "cap table"
+   ]
+  },
+  {
+   "transcript_id": "tr03",
+   "line": 5,
+   "owed_by": "Ishaan Verma",
+   "owed_to": "Aditi Rao",
+   "what": "Send legal counsel's contact",
+   "due": "2026-10-20",
+   "kw": [
+    "counsel"
+   ]
+  },
+  {
+   "transcript_id": "tr04",
+   "line": 2,
+   "owed_by": "Siddharth Menon",
+   "owed_to": "Kabir Shah",
+   "what": "Send the customer reference list",
+   "due": "2026-10-23",
+   "kw": [
+    "reference"
+   ]
+  },
+  {
+   "transcript_id": "tr04",
+   "line": 3,
+   "owed_by": "Arun Pillai",
+   "owed_to": "Kabir Shah",
+   "what": "Send the security audit report",
+   "due": "2026-10-21",
+   "kw": [
+    "security audit"
+   ]
+  },
+  {
+   "transcript_id": "tr04",
+   "line": 4,
+   "owed_by": "Kabir Shah",
+   "owed_to": "Siddharth Menon",
+   "what": "Share the diligence checklist",
+   "due": "2026-10-20",
+   "kw": [
+    "checklist"
+   ]
+  },
+  {
+   "transcript_id": "tr05",
+   "line": 2,
+   "owed_by": "Meera Iyer",
+   "owed_to": "Abhishek Joshi",
+   "what": "Send the reference questions",
+   "due": "2026-10-22",
+   "kw": [
+    "reference questions"
+   ]
+  },
+  {
+   "transcript_id": "tr05",
+   "line": 3,
+   "owed_by": "Abhishek Joshi",
+   "owed_to": "Meera Iyer",
+   "what": "Share the fraud loss benchmarks",
+   "due": "2026-10-21",
+   "kw": [
+    "benchmark"
+   ]
+  },
+  {
+   "transcript_id": "tr05",
+   "line": 5,
+   "owed_by": "Abhishek Joshi",
+   "owed_to": "Meera Iyer",
+   "what": "Intro to the bank design partner",
+   "due": null,
+   "kw": [
+    "design partner"
+   ]
+  },
+  {
+   "transcript_id": "tr06",
+   "line": 2,
+   "owed_by": "Neha Kulkarni",
+   "owed_to": "Meera Iyer",
+   "what": "Send the API documentation",
+   "due": "2026-10-20",
+   "kw": [
+    "api documentation",
+    "api docs"
+   ]
+  },
+  {
+   "transcript_id": "tr06",
+   "line": 3,
+   "owed_by": "Meera Iyer",
+   "owed_to": "Neha Kulkarni",
+   "what": "Share our view on pricing",
+   "due": "2026-10-23",
+   "kw": [
+    "pricing"
+   ]
+  },
+  {
+   "transcript_id": "tr06",
+   "line": 5,
+   "owed_by": "Neha Kulkarni",
+   "owed_to": "Meera Iyer",
+   "what": "Two bank CTO references",
+   "due": "2026-10-31",
+   "kw": [
+    "cto",
+    "reference"
+   ]
+  },
+  {
+   "transcript_id": "tr07",
+   "line": 1,
+   "owed_by": "Rohan Das",
+   "owed_to": "Kabir Shah",
+   "what": "Market map of AA players",
+   "due": "2026-10-22",
+   "kw": [
+    "market map"
+   ]
+  },
+  {
+   "transcript_id": "tr07",
+   "line": 2,
+   "owed_by": "Kabir Shah",
+   "owed_to": "Rohan Das",
+   "what": "Forward the Cobalt AA notes",
+   "due": "2026-10-19",
+   "kw": [
+    "cobalt",
+    "notes"
+   ]
+  },
+  {
+   "transcript_id": "tr08",
+   "line": 2,
+   "owed_by": "Tara Menon",
+   "owed_to": "Rahul Sharma",
+   "what": "Intro two CFO candidates",
+   "due": "2026-10-21",
+   "kw": [
+    "cfo"
+   ]
+  },
+  {
+   "transcript_id": "tr08",
+   "line": 3,
+   "owed_by": "Rahul Sharma",
+   "owed_to": "Tara Menon",
+   "what": "Share the CTO job description",
+   "due": "2026-10-19",
+   "kw": [
+    "job description",
+    "cto"
+   ]
+  },
+  {
+   "transcript_id": "tr08",
+   "line": 4,
+   "owed_by": "Tara Menon",
+   "owed_to": "Rahul Sharma",
+   "what": "Invite Rahul to the founders dinner",
+   "due": null,
+   "kw": [
+    "dinner"
+   ]
+  },
+  {
+   "transcript_id": "tr09",
+   "line": 2,
+   "owed_by": "Vikram Nair",
+   "owed_to": "Helen Park",
+   "what": "Answer the fee offset question",
+   "due": "2026-09-09",
+   "kw": [
+    "fee offset"
+   ]
+  },
+  {
+   "transcript_id": "tr09",
+   "line": 3,
+   "owed_by": "Helen Park",
+   "owed_to": "Vikram Nair",
+   "what": "Send the updated reporting template",
+   "due": null,
+   "kw": [
+    "template"
+   ]
+  },
+  {
+   "transcript_id": "tr09",
+   "line": 4,
+   "owed_by": "Vikram Nair",
+   "owed_to": "Helen Park",
+   "what": "Add Helen to the AGM invite list",
+   "due": null,
+   "kw": [
+    "agm"
+   ]
+  },
+  {
+   "transcript_id": "tr10",
+   "line": 1,
+   "owed_by": "Vikram Nair",
+   "owed_to": "Aditi Rao",
+   "what": "Q3 LP letter draft",
+   "due": "2026-10-24",
+   "kw": [
+    "letter"
+   ]
+  },
+  {
+   "transcript_id": "tr10",
+   "line": 2,
+   "owed_by": "Aditi Rao",
+   "owed_to": "Vikram Nair",
+   "what": "Write the portfolio highlights paragraph",
+   "due": "2026-10-26",
+   "kw": [
+    "highlights"
+   ]
+  },
+  {
+   "transcript_id": "tr11",
+   "line": 2,
+   "owed_by": "Rohit Saluja",
+   "owed_to": "Kabir Shah",
+   "what": "Send the penetration test summary",
+   "due": "2026-10-16",
+   "kw": [
+    "penetration"
+   ]
+  },
+  {
+   "transcript_id": "tr11",
+   "line": 3,
+   "owed_by": "Kabir Shah",
+   "owed_to": "Rohit Saluja",
+   "what": "Schedule tech diligence with the CTO advisor",
+   "due": "2026-10-23",
+   "kw": [
+    "tech diligence",
+    "cto advisor"
+   ]
+  },
+  {
+   "transcript_id": "tr12",
+   "line": 1,
+   "owed_by": "Kabir Shah",
+   "owed_to": "Anita Dalal",
+   "what": "Send the diligence questions",
+   "due": "2026-10-23",
+   "kw": [
+    "diligence questions"
+   ]
+  },
+  {
+   "transcript_id": "tr12",
+   "line": 2,
+   "owed_by": "Anita Dalal",
+   "owed_to": "Kabir Shah",
+   "what": "Send a copy of the AA licence",
+   "due": "2026-10-16",
+   "kw": [
+    "licence",
+    "license"
+   ]
+  },
+  {
+   "transcript_id": "tr13",
+   "line": 1,
+   "owed_by": "Lata Krishnan",
+   "owed_to": "Aditi Rao",
+   "what": "Send the September MIS",
+   "due": "2026-10-20",
+   "kw": [
+    "mis"
+   ]
+  },
+  {
+   "transcript_id": "tr13",
+   "line": 2,
+   "owed_by": "Vikram Rao",
+   "owed_to": "Aditi Rao",
+   "what": "Add the hiring plan to the board deck",
+   "due": "2026-10-14",
+   "kw": [
+    "hiring plan"
+   ]
+  },
+  {
+   "transcript_id": "tr13",
+   "line": 3,
+   "owed_by": "Aditi Rao",
+   "owed_to": "Vikram Rao",
+   "what": "Review the board deck",
+   "due": "2026-10-22",
+   "kw": [
+    "board deck"
+   ]
+  },
+  {
+   "transcript_id": "tr14",
+   "line": 2,
+   "owed_by": "Katherine Fernandes",
+   "owed_to": "Aditi Rao",
+   "what": "Send the bank pipeline list",
+   "due": "2026-10-16",
+   "kw": [
+    "pipeline"
+   ]
+  },
+  {
+   "transcript_id": "tr14",
+   "line": 3,
+   "owed_by": "Aditi Rao",
+   "owed_to": "Katherine Fernandes",
+   "what": "Intro Katherine to Omar at Coastline Bank",
+   "due": null,
+   "kw": [
+    "omar",
+    "coastline"
+   ]
+  },
+  {
+   "transcript_id": "tr15",
+   "line": 1,
+   "owed_by": "Omkar Patil",
+   "owed_to": "Meera Iyer",
+   "what": "Give data room access",
+   "due": "2026-10-19",
+   "kw": [
+    "data room"
+   ]
+  },
+  {
+   "transcript_id": "tr15",
+   "line": 2,
+   "owed_by": "Meera Iyer",
+   "owed_to": "Omkar Patil",
+   "what": "Share feedback after the partner meeting",
+   "due": "2026-10-19",
+   "kw": [
+    "feedback"
+   ]
+  },
+  {
+   "transcript_id": "tr16",
+   "line": 1,
+   "owed_by": "Rhea Khosla",
+   "owed_to": "Rohan Das",
+   "what": "Send the marketplace payout volumes",
+   "due": "2026-10-23",
+   "kw": [
+    "payout volume"
+   ]
+  },
+  {
+   "transcript_id": "tr16",
+   "line": 2,
+   "owed_by": "Rohan Das",
+   "owed_to": "Rhea Khosla",
+   "what": "Set up a call with Kabir",
+   "due": "2026-10-23",
+   "kw": [
+    "kabir"
+   ]
+  },
+  {
+   "transcript_id": "tr17",
+   "line": 1,
+   "owed_by": "Mohan Kulkarni",
+   "owed_to": "Aditi Rao",
+   "what": "Intro to the GM at Kaveri Cooperative Bank",
+   "due": null,
+   "kw": [
+    "kaveri"
+   ]
+  },
+  {
+   "transcript_id": "tr17",
+   "line": 2,
+   "owed_by": "Aditi Rao",
+   "owed_to": "Mohan Kulkarni",
+   "what": "Share the co-op bank partnership deck",
+   "due": "2026-10-23",
+   "kw": [
+    "partnership deck"
+   ]
+  },
+  {
+   "transcript_id": "tr18",
+   "line": 1,
+   "owed_by": "Neel Bhatt",
+   "owed_to": "Aditi Rao",
+   "what": "Send the revised hiring plan",
+   "due": "2026-10-15",
+   "kw": [
+    "hiring plan"
+   ]
+  },
+  {
+   "transcript_id": "tr18",
+   "line": 2,
+   "owed_by": "Vikram Nair",
+   "owed_to": "Neel Bhatt",
+   "what": "Model the runway scenarios",
+   "due": "2026-10-16",
+   "kw": [
+    "runway"
+   ]
+  },
+  {
+   "transcript_id": "tr19",
+   "line": 1,
+   "owed_by": "Shreya Venkat",
+   "owed_to": "Meera Iyer",
+   "what": "Two insurer references",
+   "due": "2026-10-26",
+   "kw": [
+    "reference"
+   ]
+  },
+  {
+   "transcript_id": "tr19",
+   "line": 2,
+   "owed_by": "Meera Iyer",
+   "owed_to": "Shreya Venkat",
+   "what": "Confirm the second meeting slot",
+   "due": "2026-10-23",
+   "kw": [
+    "second meeting"
+   ]
+  },
+  {
+   "transcript_id": "tr20",
+   "line": 2,
+   "owed_by": "Leena Dsouza",
+   "owed_to": "Meera Iyer",
+   "what": "Send the BNPL partner contracts summary",
+   "due": "2026-10-27",
+   "kw": [
+    "contract"
+   ]
+  },
+  {
+   "transcript_id": "tr20",
+   "line": 3,
+   "owed_by": "Meera Iyer",
+   "owed_to": "Leena Dsouza",
+   "what": "Share our NBFC partner list",
+   "due": "2026-10-26",
+   "kw": [
+    "nbfc"
+   ]
+  },
+  {
+   "transcript_id": "tr21",
+   "line": 1,
+   "owed_by": "Fatima Sheikh",
+   "owed_to": "Tara Menon",
+   "what": "Send a shortlist of venues",
+   "due": "2026-10-20",
+   "kw": [
+    "venue"
+   ]
+  },
+  {
+   "transcript_id": "tr21",
+   "line": 2,
+   "owed_by": "Tara Menon",
+   "owed_to": "Fatima Sheikh",
+   "what": "Send the founder guest list",
+   "due": "2026-10-23",
+   "kw": [
+    "guest list"
+   ]
+  },
+  {
+   "transcript_id": "tr22",
+   "line": 1,
+   "owed_by": "Sana Mirza",
+   "owed_to": "Vikram Nair",
+   "what": "Q3 NAV pack",
+   "due": "2026-10-25",
+   "kw": [
+    "nav"
+   ]
+  },
+  {
+   "transcript_id": "tr22",
+   "line": 2,
+   "owed_by": "Tom Becker",
+   "owed_to": "Vikram Nair",
+   "what": "Send the audit timeline",
+   "due": "2026-10-21",
+   "kw": [
+    "audit"
+   ]
+  },
+  {
+   "transcript_id": "tr22",
+   "line": 3,
+   "owed_by": "Vikram Nair",
+   "owed_to": "Tom Becker",
+   "what": "Sign off on the capital account statements",
+   "due": "2026-10-23",
+   "kw": [
+    "capital account"
+   ]
+  },
+  {
+   "transcript_id": "tr23",
+   "line": 2,
+   "owed_by": "Akhil Menon",
+   "owed_to": "Aditi Rao",
+   "what": "Send the signed board resolution",
+   "due": "2026-10-19",
+   "kw": [
+    "board resolution"
+   ]
+  },
+  {
+   "transcript_id": "tr23",
+   "line": 3,
+   "owed_by": "Akhil Menon",
+   "owed_to": "Aditi Rao",
+   "what": "Send the stamp duty receipt",
+   "due": "2026-10-14",
+   "kw": [
+    "stamp duty"
+   ]
+  },
+  {
+   "transcript_id": "tr24",
+   "line": 1,
+   "owed_by": "Sanjay Iyer",
+   "owed_to": "Kabir Shah",
+   "what": "Share the co-lending partner data",
+   "due": "2026-10-14",
+   "kw": [
+    "co-lending"
+   ]
+  },
+  {
+   "transcript_id": "tr24",
+   "line": 2,
+   "owed_by": "Kabir Shah",
+   "owed_to": "Sanjay Iyer",
+   "what": "Share our underwriting framework",
+   "due": null,
+   "kw": [
+    "underwriting"
+   ]
+  },
+  {
+   "transcript_id": "tr25",
+   "line": 1,
+   "owed_by": "Varun Khanna",
+   "owed_to": "Aditi Rao",
+   "what": "Send the final cap table",
+   "due": "2026-10-22",
+   "kw": [
+    "cap table"
+   ]
+  },
+  {
+   "transcript_id": "tr25",
+   "line": 2,
+   "owed_by": "Aditi Rao",
+   "owed_to": "Varun Khanna",
+   "what": "Share the partner vote outcome",
+   "due": "2026-10-26",
+   "kw": [
+    "vote"
+   ]
+  }
+ ],
+ "traps": [
+  {
+   "transcript_id": "tr01",
+   "line": 4,
+   "why": "TRAP:past action"
+  },
+  {
+   "transcript_id": "tr01",
+   "line": 7,
+   "why": "TRAP:hypothetical"
+  },
+  {
+   "transcript_id": "tr02",
+   "line": 3,
+   "why": "TRAP:past action"
+  },
+  {
+   "transcript_id": "tr02",
+   "line": 6,
+   "why": "TRAP:hypothetical"
+  },
+  {
+   "transcript_id": "tr03",
+   "line": 2,
+   "why": "TRAP:condition, not a promise"
+  },
+  {
+   "transcript_id": "tr04",
+   "line": 1,
+   "why": "TRAP:past action"
+  },
+  {
+   "transcript_id": "tr05",
+   "line": 4,
+   "why": "TRAP:hypothetical"
+  },
+  {
+   "transcript_id": "tr06",
+   "line": 4,
+   "why": "TRAP:vague"
+  },
+  {
+   "transcript_id": "tr08",
+   "line": 1,
+   "why": "TRAP:past action"
+  },
+  {
+   "transcript_id": "tr11",
+   "line": 1,
+   "why": "TRAP:hypothetical"
+  },
+  {
+   "transcript_id": "tr14",
+   "line": 1,
+   "why": "TRAP:past action"
+  },
+  {
+   "transcript_id": "tr20",
+   "line": 1,
+   "why": "TRAP:hypothetical"
+  },
+  {
+   "transcript_id": "tr23",
+   "line": 1,
+   "why": "TRAP:third party, not a participant"
+  }
+ ],
+ "total": 60
+}

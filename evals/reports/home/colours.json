@@ -1,0 +1,389 @@
+{
+ "states": [
+  {
+   "theme": "light",
+   "state": "aditi-today",
+   "checked": 106,
+   "marks": 58,
+   "min": 3.24,
+   "fails": 0
+  },
+  {
+   "theme": "light",
+   "state": "aditi-today-desk",
+   "checked": 102,
+   "marks": 58,
+   "min": 3.24,
+   "fails": 0
+  },
+  {
+   "theme": "light",
+   "state": "aditi-row-open",
+   "checked": 113,
+   "marks": 58,
+   "min": 3.24,
+   "fails": 0
+  },
+  {
+   "theme": "light",
+   "state": "aditi-prep",
+   "checked": 38,
+   "marks": 10,
+   "min": 5.05,
+   "fails": 0
+  },
+  {
+   "theme": "light",
+   "state": "aditi-partner-pack",
+   "checked": 71,
+   "marks": 2,
+   "min": 5.05,
+   "fails": 0
+  },
+  {
+   "theme": "light",
+   "state": "aditi-help",
+   "checked": 20,
+   "marks": 3,
+   "min": 5.05,
+   "fails": 0
+  },
+  {
+   "theme": "light",
+   "state": "aditi-toast",
+   "checked": 103,
+   "marks": 57,
+   "min": 3.24,
+   "fails": 0
+  },
+  {
+   "theme": "light",
+   "state": "aditi-pipeline",
+   "checked": 258,
+   "marks": 71,
+   "min": 3.24,
+   "fails": 0
+  },
+  {
+   "theme": "light",
+   "state": "aditi-deal-open",
+   "checked": 268,
+   "marks": 75,
+   "min": 3.24,
+   "fails": 0
+  },
+  {
+   "theme": "light",
+   "state": "aditi-people",
+   "checked": 113,
+   "marks": 31,
+   "min": 5.05,
+   "fails": 0
+  },
+  {
+   "theme": "light",
+   "state": "aditi-portfolio",
+   "checked": 127,
+   "marks": 38,
+   "min": 5.05,
+   "fails": 0
+  },
+  {
+   "theme": "light",
+   "state": "aditi-lps",
+   "checked": 108,
+   "marks": 34,
+   "min": 6.52,
+   "fails": 0
+  },
+  {
+   "theme": "light",
+   "state": "kabir-today",
+   "checked": 107,
+   "marks": 39,
+   "min": 4.65,
+   "fails": 0
+  },
+  {
+   "theme": "light",
+   "state": "meera-pipeline",
+   "checked": 105,
+   "marks": 42,
+   "min": 3.24,
+   "fails": 0
+  },
+  {
+   "theme": "light",
+   "state": "rohan-today",
+   "checked": 93,
+   "marks": 41,
+   "min": 4.65,
+   "fails": 0
+  },
+  {
+   "theme": "light",
+   "state": "rohan-pipeline",
+   "checked": 106,
+   "marks": 40,
+   "min": 3.24,
+   "fails": 0
+  },
+  {
+   "theme": "light",
+   "state": "tara-portfolio",
+   "checked": 111,
+   "marks": 31,
+   "min": 5.05,
+   "fails": 0
+  },
+  {
+   "theme": "light",
+   "state": "vikram-lps",
+   "checked": 110,
+   "marks": 32,
+   "min": 6.52,
+   "fails": 0
+  },
+  {
+   "theme": "light",
+   "state": "vikram-today",
+   "checked": 79,
+   "marks": 42,
+   "min": 4.65,
+   "fails": 0
+  },
+  {
+   "theme": "light",
+   "state": "banners",
+   "checked": 109,
+   "marks": 58,
+   "min": 3.24,
+   "fails": 0
+  },
+  {
+   "theme": "light",
+   "state": "friday",
+   "checked": 120,
+   "marks": 59,
+   "min": 3.24,
+   "fails": 0
+  },
+  {
+   "theme": "light",
+   "state": "empty",
+   "checked": 11,
+   "marks": 27,
+   "min": 6.8,
+   "fails": 0
+  },
+  {
+   "theme": "light",
+   "state": "hover",
+   "checked": 612,
+   "marks": 58,
+   "min": 3.24,
+   "fails": 0
+  },
+  {
+   "theme": "light",
+   "state": "focus",
+   "checked": 102,
+   "marks": 59,
+   "min": 3.24,
+   "fails": 0
+  },
+  {
+   "theme": "dark",
+   "state": "aditi-today",
+   "checked": 106,
+   "marks": 66,
+   "min": 3.8,
+   "fails": 0
+  },
+  {
+   "theme": "dark",
+   "state": "aditi-today-desk",
+   "checked": 102,
+   "marks": 66,
+   "min": 3.8,
+   "fails": 0
+  },
+  {
+   "theme": "dark",
+   "state": "aditi-row-open",
+   "checked": 113,
+   "marks": 66,
+   "min": 3.8,
+   "fails": 0
+  },
+  {
+   "theme": "dark",
+   "state": "aditi-prep",
+   "checked": 38,
+   "marks": 10,
+   "min": 4.98,
+   "fails": 0
+  },
+  {
+   "theme": "dark",
+   "state": "aditi-partner-pack",
+   "checked": 71,
+   "marks": 2,
+   "min": 4.98,
+   "fails": 0
+  },
+  {
+   "theme": "dark",
+   "state": "aditi-help",
+   "checked": 20,
+   "marks": 3,
+   "min": 4.98,
+   "fails": 0
+  },
+  {
+   "theme": "dark",
+   "state": "aditi-toast",
+   "checked": 103,
+   "marks": 65,
+   "min": 3.8,
+   "fails": 0
+  },
+  {
+   "theme": "dark",
+   "state": "aditi-pipeline",
+   "checked": 258,
+   "marks": 79,
+   "min": 3.8,
+   "fails": 0
+  },
+  {
+   "theme": "dark",
+   "state": "aditi-deal-open",
+   "checked": 268,
+   "marks": 83,
+   "min": 3.8,
+   "fails": 0
+  },
+  {
+   "theme": "dark",
+   "state": "aditi-people",
+   "checked": 113,
+   "marks": 39,
+   "min": 6.04,
+   "fails": 0
+  },
+  {
+   "theme": "dark",
+   "state": "aditi-portfolio",
+   "checked": 127,
+   "marks": 46,
+   "min": 6.04,
+   "fails": 0
+  },
+  {
+   "theme": "dark",
+   "state": "aditi-lps",
+   "checked": 108,
+   "marks": 42,
+   "min": 7.84,
+   "fails": 0
+  },
+  {
+   "theme": "dark",
+   "state": "kabir-today",
+   "checked": 107,
+   "marks": 47,
+   "min": 6.29,
+   "fails": 0
+  },
+  {
+   "theme": "dark",
+   "state": "meera-pipeline",
+   "checked": 105,
+   "marks": 50,
+   "min": 3.8,
+   "fails": 0
+  },
+  {
+   "theme": "dark",
+   "state": "rohan-today",
+   "checked": 93,
+   "marks": 49,
+   "min": 6.04,
+   "fails": 0
+  },
+  {
+   "theme": "dark",
+   "state": "rohan-pipeline",
+   "checked": 106,
+   "marks": 48,
+   "min": 3.8,
+   "fails": 0
+  },
+  {
+   "theme": "dark",
+   "state": "tara-portfolio",
+   "checked": 111,
+   "marks": 39,
+   "min": 6.04,
+   "fails": 0
+  },
+  {
+   "theme": "dark",
+   "state": "vikram-lps",
+   "checked": 110,
+   "marks": 40,
+   "min": 7.84,
+   "fails": 0
+  },
+  {
+   "theme": "dark",
+   "state": "vikram-today",
+   "checked": 79,
+   "marks": 50,
+   "min": 6.78,
+   "fails": 0
+  },
+  {
+   "theme": "dark",
+   "state": "banners",
+   "checked": 109,
+   "marks": 66,
+   "min": 3.8,
+   "fails": 0
+  },
+  {
+   "theme": "dark",
+   "state": "friday",
+   "checked": 120,
+   "marks": 67,
+   "min": 3.8,
+   "fails": 0
+  },
+  {
+   "theme": "dark",
+   "state": "empty",
+   "checked": 11,
+   "marks": 35,
+   "min": 7.84,
+   "fails": 0
+  },
+  {
+   "theme": "dark",
+   "state": "hover",
+   "checked": 612,
+   "marks": 66,
+   "min": 3.8,
+   "fails": 0
+  },
+  {
+   "theme": "dark",
+   "state": "focus",
+   "checked": 102,
+   "marks": 67,
+   "min": 3.8,
+   "fails": 0
+  }
+ ],
+ "fails": []
+}

@@ -1,0 +1,3399 @@
+{
+ "checks": 565,
+ "failed": 0,
+ "complete": true,
+ "scenarios": "all",
+ "page_sha256": "365ffaf630fe",
+ "rows": [
+  {
+   "scenario": "today-380",
+   "check": "hero states the fact, not a count",
+   "ok": true,
+   "detail": "Review the board deck"
+  },
+  {
+   "scenario": "today-380",
+   "check": "hero kicker says one thing",
+   "ok": true,
+   "detail": "You promised"
+  },
+  {
+   "scenario": "today-380",
+   "check": "hero has at most three buttons",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "today-380",
+   "check": "a drafted promise says so under its meeting",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "today-380",
+   "check": "header buttons are 40px targets",
+   "ok": true,
+   "detail": "[40, 40]"
+  },
+  {
+   "scenario": "today-380",
+   "check": "the meeting carries its watch line",
+   "ok": true,
+   "detail": "10:30 | Ishaan Verma | Atlas Settlement | Watch: term sheet from Bluepeak Partners, decide by 05 Nov | You owe: send the term sheet markup \u00b7 draft ready | Prep"
+  },
+  {
+   "scenario": "today-380",
+   "check": "partner sync has a decision pack",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "today-380",
+   "check": "agenda lists every meeting, internal too",
+   "ok": true,
+   "detail": "3 of 3"
+  },
+  {
+   "scenario": "today-380",
+   "check": "next meeting marked",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "today-380",
+   "check": "one Prep me button",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "today-380",
+   "check": "every row carries a status word",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "today-380",
+   "check": "copy brief offered",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "today-380",
+   "check": "ready for you shows drafts and a CRM change",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "today-380",
+   "check": "evidence line present",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "today-380",
+   "check": "live pill shows the run time",
+   "ok": true,
+   "detail": "07:00"
+  },
+  {
+   "scenario": "today-380",
+   "check": "light by default, with a dark switch",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "today-380",
+   "check": "demo banner shown",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "today-380",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "today-380",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "today-380",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "today-380",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "today-380",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "today-1440",
+   "check": "hero states the fact, not a count",
+   "ok": true,
+   "detail": "Review the board deck"
+  },
+  {
+   "scenario": "today-1440",
+   "check": "hero kicker says one thing",
+   "ok": true,
+   "detail": "You promised"
+  },
+  {
+   "scenario": "today-1440",
+   "check": "hero has at most three buttons",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "today-1440",
+   "check": "a drafted promise says so under its meeting",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "today-1440",
+   "check": "header buttons are 40px targets",
+   "ok": true,
+   "detail": "[40, 40]"
+  },
+  {
+   "scenario": "today-1440",
+   "check": "the meeting carries its watch line",
+   "ok": true,
+   "detail": "10:30 | Ishaan Verma | Atlas Settlement | Watch: term sheet from Bluepeak Partners, decide by 05 Nov | You owe: send the term sheet markup \u00b7 draft ready | Prep"
+  },
+  {
+   "scenario": "today-1440",
+   "check": "partner sync has a decision pack",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "today-1440",
+   "check": "agenda lists every meeting, internal too",
+   "ok": true,
+   "detail": "3 of 3"
+  },
+  {
+   "scenario": "today-1440",
+   "check": "next meeting marked",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "today-1440",
+   "check": "one Prep me button",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "today-1440",
+   "check": "every row carries a status word",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "today-1440",
+   "check": "copy brief offered",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "today-1440",
+   "check": "ready for you shows drafts and a CRM change",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "today-1440",
+   "check": "evidence line present",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "today-1440",
+   "check": "live pill shows the run time",
+   "ok": true,
+   "detail": "As of 07:00"
+  },
+  {
+   "scenario": "today-1440",
+   "check": "light by default, with a dark switch",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "today-1440",
+   "check": "demo banner shown",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "today-1440",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "today-1440",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "today-1440",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "today-1440",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "today-1440",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "done-undo",
+   "check": "first tap creates state/items",
+   "ok": true,
+   "detail": "{\"op\": \"set\", \"path\": \"state/items\", \"data\": {\"items\": {\"t_cabd370eab\": {\"snoozed_until\": null, \"done_at\": \"2026-10-22T01:35:00.000Z\", \"sent\": null, \"closed_by\""
+  },
+  {
+   "scenario": "done-undo",
+   "check": "row disappears",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "done-undo",
+   "check": "toast offers undo",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "done-undo",
+   "check": "undo clears done_at",
+   "ok": true,
+   "detail": "{\"op\": \"update\", \"path\": \"state/items\", \"data\": {\"items\": {\"t_cabd370eab\": {\"snoozed_until\": null, \"done_at\": null, \"sent\": null, \"closed_by\": null}, \"k_4d53f12"
+  },
+  {
+   "scenario": "done-undo",
+   "check": "row returns after undo",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "done-undo",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "done-undo",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "done-undo",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "done-undo",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "done-undo",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "prep-380",
+   "check": "prep sheet opens",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "prep-380",
+   "check": "three questions shown",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "prep-380",
+   "check": "open promises shown",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "prep-380",
+   "check": "watch line names the other fund",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "prep-380",
+   "check": "the meeting's draft is ready to send from the sheet",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "prep-380",
+   "check": "focus moves into the sheet",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "prep-380",
+   "check": "Escape closes",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "prep-1440",
+   "check": "prep sheet opens",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "prep-1440",
+   "check": "three questions shown",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "prep-1440",
+   "check": "open promises shown",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "prep-1440",
+   "check": "watch line names the other fund",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "prep-1440",
+   "check": "the meeting's draft is ready to send from the sheet",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "prep-1440",
+   "check": "focus moves into the sheet",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "prep-1440",
+   "check": "Escape closes",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "pipeline-380",
+   "check": "hero card renders",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "pipeline-380",
+   "check": "competing deals say Competing",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "pipeline-380",
+   "check": "pre-read shown",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "pipeline-380",
+   "check": "inbound listed with reasons",
+   "ok": true,
+   "detail": "2 of 2"
+  },
+  {
+   "scenario": "pipeline-380",
+   "check": "filters at this size",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "pipeline-380",
+   "check": "early stages fold for a partner",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "pipeline-380",
+   "check": "every active deal is listed",
+   "ok": true,
+   "detail": "37 of 37"
+  },
+  {
+   "scenario": "pipeline-380",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "pipeline-380",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "pipeline-380",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "pipeline-380",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "pipeline-380",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "people-380",
+   "check": "hero card renders",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "people-380",
+   "check": "relationship table filled",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "people-380",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "people-380",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "people-380",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "people-380",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "people-380",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "portfolio-380",
+   "check": "hero card renders",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "portfolio-380",
+   "check": "negative growth in breach ink",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "portfolio-380",
+   "check": "true minus used",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "portfolio-380",
+   "check": "founder asks shown",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "portfolio-380",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "portfolio-380",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "portfolio-380",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "portfolio-380",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "portfolio-380",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "lps-380",
+   "check": "hero card renders",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "lps-380",
+   "check": "every LP is listed",
+   "ok": true,
+   "detail": "15 of 15"
+  },
+  {
+   "scenario": "lps-380",
+   "check": "re-up window visible",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "lps-380",
+   "check": "fund summary: committed, called, unfunded",
+   "ok": true,
+   "detail": "Fund II 15 LPs Committed $80M Called $36M 45% of commitments Unfunded $44M Still to call Next re-up window 05 Jan"
+  },
+  {
+   "scenario": "lps-380",
+   "check": "a colleague's LPs listed with their owner",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "lps-380",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "lps-380",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "lps-380",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "lps-380",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "lps-380",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "pipeline-1440",
+   "check": "hero card renders",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "pipeline-1440",
+   "check": "competing deals say Competing",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "pipeline-1440",
+   "check": "pre-read shown",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "pipeline-1440",
+   "check": "inbound listed with reasons",
+   "ok": true,
+   "detail": "2 of 2"
+  },
+  {
+   "scenario": "pipeline-1440",
+   "check": "filters at this size",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "pipeline-1440",
+   "check": "early stages fold for a partner",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "pipeline-1440",
+   "check": "every active deal is listed",
+   "ok": true,
+   "detail": "37 of 37"
+  },
+  {
+   "scenario": "pipeline-1440",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "pipeline-1440",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "pipeline-1440",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "pipeline-1440",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "pipeline-1440",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "people-1440",
+   "check": "hero card renders",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "people-1440",
+   "check": "relationship table filled",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "people-1440",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "people-1440",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "people-1440",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "people-1440",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "people-1440",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "portfolio-1440",
+   "check": "hero card renders",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "portfolio-1440",
+   "check": "negative growth in breach ink",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "portfolio-1440",
+   "check": "true minus used",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "portfolio-1440",
+   "check": "founder asks shown",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "portfolio-1440",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "portfolio-1440",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "portfolio-1440",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "portfolio-1440",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "portfolio-1440",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "lps-1440",
+   "check": "hero card renders",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "lps-1440",
+   "check": "every LP is listed",
+   "ok": true,
+   "detail": "15 of 15"
+  },
+  {
+   "scenario": "lps-1440",
+   "check": "re-up window visible",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "lps-1440",
+   "check": "fund summary: committed, called, unfunded",
+   "ok": true,
+   "detail": "Fund II 15 LPs Committed $80M Called $36M 45% of commitments Unfunded $44M Still to call Next re-up window 05 Jan"
+  },
+  {
+   "scenario": "lps-1440",
+   "check": "a colleague's LPs listed with their owner",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "lps-1440",
+   "check": "called, unfunded and owner columns",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "lps-1440",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "lps-1440",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "lps-1440",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "lps-1440",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "lps-1440",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "pipeline-actions",
+   "check": "next step saved as an approved action",
+   "ok": true,
+   "detail": "{\"op\": \"set\", \"path\": \"state/actions\", \"data\": {\"items\": {\"ns_d_sterling\": {\"type\": \"next_step\", \"status\": \"approved\", \"payload\": {\"deal_id\": \"d_sterling\", \"company\": \"Sterling AA\", \"text\": \"Reference"
+  },
+  {
+   "scenario": "pipeline-actions",
+   "check": "row shows the pending next step",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "pipeline-actions",
+   "check": "quiet saved",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "pipeline-actions",
+   "check": "quiet chip shows",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "pipeline-actions",
+   "check": "a competing deal copies a line for partners",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "pipeline-actions",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "pipeline-actions",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "pipeline-actions",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "pipeline-actions",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "pipeline-actions",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "approvals",
+   "check": "CRM change approved",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "approvals",
+   "check": "approved state shown",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "approvals",
+   "check": "copy gives feedback",
+   "ok": true,
+   "detail": "Draft copied"
+  },
+  {
+   "scenario": "approvals",
+   "check": "a draft kept in Home opens Gmail filled in, in the user's own account",
+   "ok": true,
+   "detail": "https://mail.google.com/mail/?authuser=aditi%40quillwater.vc&view=cm&fs=1&to=ishaan%40atla"
+  },
+  {
+   "scenario": "approvals",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "approvals",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "approvals",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "approvals",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "approvals",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "intro-cc",
+   "check": "an intro draft opens Gmail with the second person in cc",
+   "ok": true,
+   "detail": "3 links"
+  },
+  {
+   "scenario": "failed-apply",
+   "check": "a failed change says so",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "failed-apply",
+   "check": "dismiss hides it",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "keyboard",
+   "check": "j focuses the first line",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "keyboard",
+   "check": "1 rates the line useful",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "keyboard",
+   "check": "? opens help",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "keyboard",
+   "check": "Escape closes help",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "theme",
+   "check": "light on a device set to dark",
+   "ok": true,
+   "detail": "rgb(244, 246, 242)"
+  },
+  {
+   "scenario": "theme",
+   "check": "the switch turns on dark (Inkwell)",
+   "ok": true,
+   "detail": "rgb(14, 19, 16)"
+  },
+  {
+   "scenario": "theme",
+   "check": "the switch says what it does next",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "theme",
+   "check": "the choice survives a reload",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "theme",
+   "check": "Help offers Light and Dark",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "theme",
+   "check": "Help switches back to light",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "theme",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "theme",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "theme",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "theme",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "theme",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "dark-380",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "dark-380",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "dark-380",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "dark-380",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "dark-380",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "dark-1440",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "dark-1440",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "dark-1440",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "dark-1440",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "dark-1440",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "narrow-320",
+   "check": "header fits with the switch",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "narrow-320",
+   "check": "switch and help stay on screen",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "narrow-360",
+   "check": "header fits with the switch",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "narrow-360",
+   "check": "switch and help stay on screen",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "colour-light-aditi-today",
+   "check": "every text and mark meets WCAG contrast",
+   "ok": true,
+   "detail": "106 texts, 58 marks, min 3.24:1"
+  },
+  {
+   "scenario": "colour-light-aditi-today-desk",
+   "check": "every text and mark meets WCAG contrast",
+   "ok": true,
+   "detail": "102 texts, 58 marks, min 3.24:1"
+  },
+  {
+   "scenario": "colour-light-aditi-row-open",
+   "check": "every text and mark meets WCAG contrast",
+   "ok": true,
+   "detail": "113 texts, 58 marks, min 3.24:1"
+  },
+  {
+   "scenario": "colour-light-aditi-prep",
+   "check": "every text and mark meets WCAG contrast",
+   "ok": true,
+   "detail": "38 texts, 10 marks, min 5.05:1"
+  },
+  {
+   "scenario": "colour-light-aditi-partner-pack",
+   "check": "every text and mark meets WCAG contrast",
+   "ok": true,
+   "detail": "71 texts, 2 marks, min 5.05:1"
+  },
+  {
+   "scenario": "colour-light-aditi-help",
+   "check": "every text and mark meets WCAG contrast",
+   "ok": true,
+   "detail": "20 texts, 3 marks, min 5.05:1"
+  },
+  {
+   "scenario": "colour-light-aditi-toast",
+   "check": "every text and mark meets WCAG contrast",
+   "ok": true,
+   "detail": "103 texts, 57 marks, min 3.24:1"
+  },
+  {
+   "scenario": "colour-light-aditi-pipeline",
+   "check": "every text and mark meets WCAG contrast",
+   "ok": true,
+   "detail": "258 texts, 71 marks, min 3.24:1"
+  },
+  {
+   "scenario": "colour-light-aditi-deal-open",
+   "check": "every text and mark meets WCAG contrast",
+   "ok": true,
+   "detail": "268 texts, 75 marks, min 3.24:1"
+  },
+  {
+   "scenario": "colour-light-aditi-people",
+   "check": "every text and mark meets WCAG contrast",
+   "ok": true,
+   "detail": "113 texts, 31 marks, min 5.05:1"
+  },
+  {
+   "scenario": "colour-light-aditi-portfolio",
+   "check": "every text and mark meets WCAG contrast",
+   "ok": true,
+   "detail": "127 texts, 38 marks, min 5.05:1"
+  },
+  {
+   "scenario": "colour-light-aditi-lps",
+   "check": "every text and mark meets WCAG contrast",
+   "ok": true,
+   "detail": "108 texts, 34 marks, min 6.52:1"
+  },
+  {
+   "scenario": "colour-light-kabir-today",
+   "check": "every text and mark meets WCAG contrast",
+   "ok": true,
+   "detail": "107 texts, 39 marks, min 4.65:1"
+  },
+  {
+   "scenario": "colour-light-meera-pipeline",
+   "check": "every text and mark meets WCAG contrast",
+   "ok": true,
+   "detail": "105 texts, 42 marks, min 3.24:1"
+  },
+  {
+   "scenario": "colour-light-rohan-today",
+   "check": "every text and mark meets WCAG contrast",
+   "ok": true,
+   "detail": "93 texts, 41 marks, min 4.65:1"
+  },
+  {
+   "scenario": "colour-light-rohan-pipeline",
+   "check": "every text and mark meets WCAG contrast",
+   "ok": true,
+   "detail": "106 texts, 40 marks, min 3.24:1"
+  },
+  {
+   "scenario": "colour-light-tara-portfolio",
+   "check": "every text and mark meets WCAG contrast",
+   "ok": true,
+   "detail": "111 texts, 31 marks, min 5.05:1"
+  },
+  {
+   "scenario": "colour-light-vikram-lps",
+   "check": "every text and mark meets WCAG contrast",
+   "ok": true,
+   "detail": "110 texts, 32 marks, min 6.52:1"
+  },
+  {
+   "scenario": "colour-light-vikram-today",
+   "check": "every text and mark meets WCAG contrast",
+   "ok": true,
+   "detail": "79 texts, 42 marks, min 4.65:1"
+  },
+  {
+   "scenario": "colour-light-banners",
+   "check": "every text and mark meets WCAG contrast",
+   "ok": true,
+   "detail": "109 texts, 58 marks, min 3.24:1"
+  },
+  {
+   "scenario": "colour-light-friday",
+   "check": "every text and mark meets WCAG contrast",
+   "ok": true,
+   "detail": "120 texts, 59 marks, min 3.24:1"
+  },
+  {
+   "scenario": "colour-light-empty",
+   "check": "every text and mark meets WCAG contrast",
+   "ok": true,
+   "detail": "11 texts, 27 marks, min 6.8:1"
+  },
+  {
+   "scenario": "colour-light-hover",
+   "check": "every text and mark meets WCAG contrast",
+   "ok": true,
+   "detail": "612 texts, 58 marks, min 3.24:1"
+  },
+  {
+   "scenario": "colour-light-focus",
+   "check": "every text and mark meets WCAG contrast",
+   "ok": true,
+   "detail": "102 texts, 59 marks, min 3.24:1"
+  },
+  {
+   "scenario": "colour-dark-aditi-today",
+   "check": "every text and mark meets WCAG contrast",
+   "ok": true,
+   "detail": "106 texts, 66 marks, min 3.8:1"
+  },
+  {
+   "scenario": "colour-dark-aditi-today-desk",
+   "check": "every text and mark meets WCAG contrast",
+   "ok": true,
+   "detail": "102 texts, 66 marks, min 3.8:1"
+  },
+  {
+   "scenario": "colour-dark-aditi-row-open",
+   "check": "every text and mark meets WCAG contrast",
+   "ok": true,
+   "detail": "113 texts, 66 marks, min 3.8:1"
+  },
+  {
+   "scenario": "colour-dark-aditi-prep",
+   "check": "every text and mark meets WCAG contrast",
+   "ok": true,
+   "detail": "38 texts, 10 marks, min 4.98:1"
+  },
+  {
+   "scenario": "colour-dark-aditi-partner-pack",
+   "check": "every text and mark meets WCAG contrast",
+   "ok": true,
+   "detail": "71 texts, 2 marks, min 4.98:1"
+  },
+  {
+   "scenario": "colour-dark-aditi-help",
+   "check": "every text and mark meets WCAG contrast",
+   "ok": true,
+   "detail": "20 texts, 3 marks, min 4.98:1"
+  },
+  {
+   "scenario": "colour-dark-aditi-toast",
+   "check": "every text and mark meets WCAG contrast",
+   "ok": true,
+   "detail": "103 texts, 65 marks, min 3.8:1"
+  },
+  {
+   "scenario": "colour-dark-aditi-pipeline",
+   "check": "every text and mark meets WCAG contrast",
+   "ok": true,
+   "detail": "258 texts, 79 marks, min 3.8:1"
+  },
+  {
+   "scenario": "colour-dark-aditi-deal-open",
+   "check": "every text and mark meets WCAG contrast",
+   "ok": true,
+   "detail": "268 texts, 83 marks, min 3.8:1"
+  },
+  {
+   "scenario": "colour-dark-aditi-people",
+   "check": "every text and mark meets WCAG contrast",
+   "ok": true,
+   "detail": "113 texts, 39 marks, min 6.04:1"
+  },
+  {
+   "scenario": "colour-dark-aditi-portfolio",
+   "check": "every text and mark meets WCAG contrast",
+   "ok": true,
+   "detail": "127 texts, 46 marks, min 6.04:1"
+  },
+  {
+   "scenario": "colour-dark-aditi-lps",
+   "check": "every text and mark meets WCAG contrast",
+   "ok": true,
+   "detail": "108 texts, 42 marks, min 7.84:1"
+  },
+  {
+   "scenario": "colour-dark-kabir-today",
+   "check": "every text and mark meets WCAG contrast",
+   "ok": true,
+   "detail": "107 texts, 47 marks, min 6.29:1"
+  },
+  {
+   "scenario": "colour-dark-meera-pipeline",
+   "check": "every text and mark meets WCAG contrast",
+   "ok": true,
+   "detail": "105 texts, 50 marks, min 3.8:1"
+  },
+  {
+   "scenario": "colour-dark-rohan-today",
+   "check": "every text and mark meets WCAG contrast",
+   "ok": true,
+   "detail": "93 texts, 49 marks, min 6.04:1"
+  },
+  {
+   "scenario": "colour-dark-rohan-pipeline",
+   "check": "every text and mark meets WCAG contrast",
+   "ok": true,
+   "detail": "106 texts, 48 marks, min 3.8:1"
+  },
+  {
+   "scenario": "colour-dark-tara-portfolio",
+   "check": "every text and mark meets WCAG contrast",
+   "ok": true,
+   "detail": "111 texts, 39 marks, min 6.04:1"
+  },
+  {
+   "scenario": "colour-dark-vikram-lps",
+   "check": "every text and mark meets WCAG contrast",
+   "ok": true,
+   "detail": "110 texts, 40 marks, min 7.84:1"
+  },
+  {
+   "scenario": "colour-dark-vikram-today",
+   "check": "every text and mark meets WCAG contrast",
+   "ok": true,
+   "detail": "79 texts, 50 marks, min 6.78:1"
+  },
+  {
+   "scenario": "colour-dark-banners",
+   "check": "every text and mark meets WCAG contrast",
+   "ok": true,
+   "detail": "109 texts, 66 marks, min 3.8:1"
+  },
+  {
+   "scenario": "colour-dark-friday",
+   "check": "every text and mark meets WCAG contrast",
+   "ok": true,
+   "detail": "120 texts, 67 marks, min 3.8:1"
+  },
+  {
+   "scenario": "colour-dark-empty",
+   "check": "every text and mark meets WCAG contrast",
+   "ok": true,
+   "detail": "11 texts, 35 marks, min 7.84:1"
+  },
+  {
+   "scenario": "colour-dark-hover",
+   "check": "every text and mark meets WCAG contrast",
+   "ok": true,
+   "detail": "612 texts, 66 marks, min 3.8:1"
+  },
+  {
+   "scenario": "colour-dark-focus",
+   "check": "every text and mark meets WCAG contrast",
+   "ok": true,
+   "detail": "102 texts, 67 marks, min 3.8:1"
+  },
+  {
+   "scenario": "meera-default",
+   "check": "an overdue hero opens Today",
+   "ok": true,
+   "detail": "Today"
+  },
+  {
+   "scenario": "meera-default-calm",
+   "check": "a calm day opens on Pipeline",
+   "ok": true,
+   "detail": "Pipeline"
+  },
+  {
+   "scenario": "meera-default-calm",
+   "check": "associate sees only her deals",
+   "ok": true,
+   "detail": "13 of 13"
+  },
+  {
+   "scenario": "meera-default-calm",
+   "check": "associate has no LPs tab",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "meera-default-calm",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "meera-default-calm",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "meera-default-calm",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "meera-default-calm",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "meera-default-calm",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "vikram-default",
+   "check": "an overdue hero opens Today",
+   "ok": true,
+   "detail": "Today"
+  },
+  {
+   "scenario": "vikram-default-calm",
+   "check": "a calm day opens on LPs",
+   "ok": true,
+   "detail": "LPs"
+  },
+  {
+   "scenario": "vikram-default-calm",
+   "check": "CFO has no Pipeline tab",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "vikram-default-calm",
+   "check": "LP money shows on a phone",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "vikram-default-calm",
+   "check": "an unpaid capital call leads the LPs",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "vikram-default-calm",
+   "check": "a tapped LP note shows Draft ready on its row",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "vikram-default-calm",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "vikram-default-calm",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "vikram-default-calm",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "vikram-default-calm",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "vikram-default-calm",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "tara-default",
+   "check": "an overdue hero opens Today",
+   "ok": true,
+   "detail": "Today"
+  },
+  {
+   "scenario": "tara-default-calm",
+   "check": "a calm day opens on Portfolio",
+   "ok": true,
+   "detail": "Portfolio"
+  },
+  {
+   "scenario": "tara-default-calm",
+   "check": "founder asks come first",
+   "ok": true,
+   "detail": "Founders need"
+  },
+  {
+   "scenario": "tara-default-calm",
+   "check": "Portfolio leads with the ask that needs her, its note one tap away",
+   "ok": true,
+   "detail": "Kestrel Pay: introductions to senior engineers, two hires this quarter; draft buttons 1"
+  },
+  {
+   "scenario": "tara-default-calm",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "tara-default-calm",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "tara-default-calm",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "tara-default-calm",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "tara-default-calm",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "outage",
+   "check": "connector banner",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "outage",
+   "check": "stall banner after two quiet hours",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "outage",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "outage",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "outage",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "outage",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "outage",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "weekend-quiet",
+   "check": "no stall banner while the schedule is quiet",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "monday-before-first-run",
+   "check": "no stall banner while the schedule is quiet",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "check-late",
+   "check": "stall banner only when the scheduled check is late",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "check-late",
+   "check": "one last-check time on the page",
+   "ok": true,
+   "detail": "Last check 07:30 | ant. has not checked since Thu 07:30.\nIn Claude, open Schedu"
+  },
+  {
+   "scenario": "db-error",
+   "check": "database error says so",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "db-error",
+   "check": "no false first-brief message",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "slow",
+   "check": "slow load keeps the skeleton",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "empty",
+   "check": "first-run state",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "empty",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "empty",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "0 primary"
+  },
+  {
+   "scenario": "empty",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "empty",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "empty",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "no-runtime",
+   "check": "outside Claude message",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "read-only",
+   "check": "read-only banner",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "read-only",
+   "check": "tap explains read-only",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "abroad",
+   "check": "the user's own date and time, wherever the viewer is",
+   "ok": true,
+   "detail": "Thu 22 Oct | As of 07:00"
+  },
+  {
+   "scenario": "stale-run",
+   "check": "old run is labelled",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "friday",
+   "check": "Friday score card",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "friday",
+   "check": "score saved",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "level-aditi",
+   "check": "hero states a fact",
+   "ok": true,
+   "detail": "Review the board deck"
+  },
+  {
+   "scenario": "level-aditi",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "level-aditi",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "level-aditi",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "level-aditi",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "level-aditi",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "level-kabir",
+   "check": "hero states a fact",
+   "ok": true,
+   "detail": "Share the diligence checklist"
+  },
+  {
+   "scenario": "level-kabir",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "level-kabir",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "level-kabir",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "level-kabir",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "level-kabir",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "level-meera",
+   "check": "hero states a fact",
+   "ok": true,
+   "detail": "Sable Fraud AI: term sheet from Monsoon Arc Ventures"
+  },
+  {
+   "scenario": "level-meera",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "level-meera",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "level-meera",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "level-meera",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "level-meera",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "level-rohan",
+   "check": "hero states a fact",
+   "ok": true,
+   "detail": "Market map of AA players"
+  },
+  {
+   "scenario": "level-rohan",
+   "check": "analyst pipeline opens on Mine, top of the funnel first",
+   "ok": true,
+   "detail": "Inbound"
+  },
+  {
+   "scenario": "level-rohan",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "level-rohan",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "level-rohan",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "level-rohan",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "level-rohan",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "level-tara",
+   "check": "hero states a fact",
+   "ok": true,
+   "detail": "Intro two CFO candidates"
+  },
+  {
+   "scenario": "level-tara",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "level-tara",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "level-tara",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "level-tara",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "level-tara",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "level-vikram",
+   "check": "hero states a fact",
+   "ok": true,
+   "detail": "Answer the fee offset question"
+  },
+  {
+   "scenario": "level-vikram",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "level-vikram",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "level-vikram",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "level-vikram",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "level-vikram",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "level-solo",
+   "check": "hero states a fact",
+   "ok": true,
+   "detail": "Review the board deck"
+  },
+  {
+   "scenario": "level-solo",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "level-solo",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "level-solo",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "level-solo",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "level-solo",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "sheet-crm",
+   "check": "a Sheet CRM shows Copy change, never Approve",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "sheet-crm",
+   "check": "it says to paste it into the sheet",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "sheet-crm",
+   "check": "copying a change confirms it",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "sheet-crm",
+   "check": "copying writes no approval",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "sheet-crm",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "sheet-crm",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "sheet-crm",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "sheet-crm",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "sheet-crm",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "guard-off",
+   "check": "a check that found its guard off says so",
+   "ok": true,
+   "detail": "ant. stopped at Thu 09:22: its safety guard did not load, so it read nothing.\nRe"
+  },
+  {
+   "scenario": "guard-off",
+   "check": "no stall banner on top of it",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "guard-off",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "guard-off",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "guard-off",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "guard-off",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "guard-off",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "analyst-team",
+   "check": "colleagues' races are one grey line at the end",
+   "ok": true,
+   "detail": "1"
+  },
+  {
+   "scenario": "analyst-team",
+   "check": "no urgent row names a colleague's lead",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "analyst-team",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "analyst-team",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "analyst-team",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "analyst-team",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "analyst-team",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "asks",
+   "check": "every founder ask names a warm path or says none was found",
+   "ok": true,
+   "detail": "3 of 3"
+  },
+  {
+   "scenario": "asks",
+   "check": "an ask with no path has a note to the team, ready or one tap away",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "asks",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "asks",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "asks",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "asks",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "asks",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "sync-pack",
+   "check": "pack rows name lead, partner, round and amount",
+   "ok": true,
+   "detail": "Lead: Meera \u00b7 Partner: Aditi \u00b7 Seed, $2.5M "
+  },
+  {
+   "scenario": "sync-pack",
+   "check": "stalled deals sit in their own list after To decide",
+   "ok": true,
+   "detail": "To decide / Stalled / Worth raising / Promises in the team"
+  },
+  {
+   "scenario": "sync-pack",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "sync-pack",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "sync-pack",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "sync-pack",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "sync-pack",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "waiting-founder",
+   "check": "the row says Waiting on you, with the reply drafted and the line she must fill",
+   "ok": true,
+   "detail": "Copperleaf Collect: Debashish asked on 13 Oct, no reply yet\n\"If we get to a term sheet with you, what would the timeline"
+  },
+  {
+   "scenario": "waiting-founder",
+   "check": "it quotes the founder's own question",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "waiting-founder",
+   "check": "the pipeline row says who waits and since when",
+   "ok": true,
+   "detail": "Copperleaf Collect\nDebashish asked on 13 Oct, no reply yet. Next: Second meeting by 25 Oct\nWaiting on you\nME \u00b7 Partner: "
+  },
+  {
+   "scenario": "waiting-founder",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "waiting-founder",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "waiting-founder",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "waiting-founder",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "waiting-founder",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "met-log",
+   "check": "a founder meeting on your deal offers a one-tap log",
+   "ok": true,
+   "detail": "Halo Reconcile: met 20 Oct\n\u201cHalo Reconcile <> Quillwater\u201d. Log it in your CRM. It still says next: S"
+  },
+  {
+   "scenario": "met-log",
+   "check": "saving logs the step, the meeting date and the stage",
+   "ok": true,
+   "detail": "{\"deal_id\": \"d_halo\", \"company\": \"Halo Reconcile\", \"text\": \"Diligence plan with the CFO\", \"due\": \"2026-10-24\", \"current\": \"Second meeting\", \"current_due\": \"2026"
+  },
+  {
+   "scenario": "met-log",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "met-log",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "met-log",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "met-log",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "met-log",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "asks-ready",
+   "check": "every open ask has a note ready without a tap",
+   "ok": true,
+   "detail": "3 of 3"
+  },
+  {
+   "scenario": "ask-requested",
+   "check": "a sent note moves the ask on and says who was asked",
+   "ok": true,
+   "detail": "Nimbus Collect: An introduction to two banks as customers\nAsked Aditi for the intro on 22 Oct. Divya"
+  },
+  {
+   "scenario": "ask-requested",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "ask-requested",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "ask-requested",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "ask-requested",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "ask-requested",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "draft-times",
+   "check": "no draft in any demo Home offers a time already past",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "met-prefill",
+   "check": "the met log fills in from the meeting: the stage the invite names, no stale step",
+   "ok": true,
+   "detail": "Move to Second meeting; empty step True"
+  },
+  {
+   "scenario": "met-prefill",
+   "check": "one tap saves the meeting and the stage, and clears the step that was this meeting",
+   "ok": true,
+   "detail": "{\"deal_id\": \"d_halo\", \"company\": \"Halo Reconcile\", \"text\": null, \"due\": null, \"current\": \"Second meeting\", \"current_due\": \"2026-10-24\", \"met\": \"2026-10-22\", \"st ['ns_d_halo_2026-10-22']"
+  },
+  {
+   "scenario": "met-prefill",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "met-prefill",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "met-prefill",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "met-prefill",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "met-prefill",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "team-note",
+   "check": "a team note opens Gmail addressed to every colleague on it",
+   "ok": true,
+   "detail": "https://mail.google.com/mail/?authuser=tara%40quillwater.vc&view=cm&fs=1&to=aditi%40quillwater.vc%2Ckabir%40quillwater.v"
+  },
+  {
+   "scenario": "team-note",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "team-note",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "team-note",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "team-note",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "team-note",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "ask-nudge",
+   "check": "five working days after the note with no reply, the ask asks for a nudge",
+   "ok": true,
+   "detail": "Nimbus Collect: An introduction to two banks as customers\nAsked Aditi for the intro on 22 Oct, no reply in 6 working day"
+  },
+  {
+   "scenario": "ask-nudge",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "ask-nudge",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "ask-nudge",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "ask-nudge",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "ask-nudge",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "solo-asks",
+   "check": "a solo GP is offered no note to a team, and Today has no team words",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "solo-asks",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "solo-asks",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "solo-asks",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "solo-asks",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "solo-asks",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "met-step",
+   "check": "a log saved with no step asks for the step alone, never saves it blank, and saves it under its own tap",
+   "ok": true,
+   "detail": "shown True; blank saved False; {\"deal_id\": \"d_halo\", \"company\": \"Halo Reconcile\", \"text\": \"Diligence plan with the CFO\", \"due\": null, \"current\": null, "
+  },
+  {
+   "scenario": "met-step",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "met-step",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "met-step",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "met-step",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "met-step",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "ask-team",
+   "check": "after the board note, 'Aditi said yes: ask the team' is a new tap with its own id, never the first note again",
+   "ok": true,
+   "detail": "offered True; first note again False; tap ['t_3461c2ec2f_team']"
+  },
+  {
+   "scenario": "ask-team",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "ask-team",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "ask-team",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "ask-team",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "ask-team",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "ask-team-ready",
+   "check": "the team note shows as ready on the ask's row, said once",
+   "ok": true,
+   "detail": "Orbit Treasury: Introductions to senior engineers, two hires this quarter\nTeam note ready: no reply from Aditi since 22 "
+  },
+  {
+   "scenario": "ask-team-ready",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "ask-team-ready",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "ask-team-ready",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "ask-team-ready",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "ask-team-ready",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "solo-pipeline",
+   "check": "a solo GP's Pipeline shows no owner initials and no partner",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "solo-pipeline",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "solo-pipeline",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "solo-pipeline",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "solo-pipeline",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "solo-pipeline",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "nudge-group",
+   "check": "one row on Today for one note's nudge, with its draft, its note and a way to each ask",
+   "ok": true,
+   "detail": "group 1; singles 0; 2 founder asks wait on Aditi\nYour 22 Oct note to Aditi: no answer yet on Kestrel Pay and Orbit Treasury, 5 working days. Nudge ready\nNudge ready\nFounder updates"
+  },
+  {
+   "scenario": "nudge-group",
+   "check": "Portfolio keeps each ask's row, each with the nudge ready; the partner's yes is an explicit tap",
+   "ok": true,
+   "detail": "ready True; said-yes 1; plain 0"
+  },
+  {
+   "scenario": "nudge-group",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "nudge-group",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "nudge-group",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "nudge-group",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "nudge-group",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "nudge-sent",
+   "check": "once the nudge is sent, each ask says who was nudged and when",
+   "ok": true,
+   "detail": "Founders need\n3\nNimbus Collect: An introduction to two banks as customers\nIntro made on 26 Oct. Divya Raman asked on 13 Oct. Warm path: Aditi knows Raj Malhotra"
+  },
+  {
+   "scenario": "nudge-sent",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "nudge-sent",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "nudge-sent",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "nudge-sent",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "nudge-sent",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "no-draft-coming",
+   "check": "after the follow-up team note is sent, no row on any tab says 'Draft coming'",
+   "ok": true,
+   "detail": "Nimbus Collect: An introduction to two banks as customers\nAsked the team on 29 Oct. Divya Raman asked on 13 Oct. Warm pa"
+  },
+  {
+   "scenario": "no-draft-coming",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "no-draft-coming",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "no-draft-coming",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "no-draft-coming",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "no-draft-coming",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "draft-gaps",
+   "check": "a draft with blanks says how many lines to fill, and its note names who holds the firm's view",
+   "ok": true,
+   "detail": "chip 1; note Before you send: Written before your 22 Oct meeting, which has no notes: check it still stands, or tap Done if it was settled in the room. F"
+  },
+  {
+   "scenario": "draft-gaps",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "draft-gaps",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "draft-gaps",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "draft-gaps",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "draft-gaps",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "hero-sent",
+   "check": "a promise hero with a draft offers Open draft, Sent it and Done; Sent it marks the draft and the promise",
+   "ok": true,
+   "detail": "buttons ['Open draft', 'Sent it', 'Done']; wrote ['dr_k_c1aa612254', 'k_c1aa612254', 't_8f20210e05']"
+  },
+  {
+   "scenario": "hero-sent",
+   "check": "once sent, the next line steps up as the hero",
+   "ok": true,
+   "detail": "Peregrine Trust owes $150K on a capital call"
+  },
+  {
+   "scenario": "hero-sent",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "hero-sent",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "hero-sent",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "hero-sent",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "hero-sent",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "row-sent",
+   "check": "Sent it on a row marks its draft, and only its draft, sent",
+   "ok": true,
+   "detail": "wrote ['dr_l_cbd6326c5a']"
+  },
+  {
+   "scenario": "hero-done",
+   "check": "Done on the hero steps the next line up, and it leaves the list",
+   "ok": true,
+   "detail": "Orbit Treasury: Runway under 9 months; listed 0"
+  },
+  {
+   "scenario": "hero-done",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "hero-done",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "hero-done",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "hero-done",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "hero-done",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "close-ask",
+   "check": "the hero a push named today opens Home on Today",
+   "ok": true,
+   "detail": "1"
+  },
+  {
+   "scenario": "close-ask",
+   "check": "an ask closes with 'Close ask', which writes only the ask, and the Portfolio hero moves on",
+   "ok": true,
+   "detail": "buttons ['Close ask', 'Sent it', 'Copy draft', '1 hour', 'Tomorrow', 'Next week']; wrote ['t_1d7b287123']; hero Kestrel Pay: introductions to senior eng -> Orbit Treasury: introductions to senior "
+  },
+  {
+   "scenario": "close-ask",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "close-ask",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "close-ask",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "close-ask",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "close-ask",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "ready-closed",
+   "check": "a promise marked done takes its draft out of Ready for you",
+   "ok": true,
+   "detail": "Ready for you\n4\nGravity Payouts: next step from the partner prep on 15 Oct\nNext step: Partner meeting Monday \u2192 Reference"
+  },
+  {
+   "scenario": "prep-caveat",
+   "check": "a draft in the prep sheet shows 'Before you send' and Sent it",
+   "ok": true,
+   "detail": "Ready to send\nAtlas Settlement: our term sheet markup to Ishaan Verma\n\nBefore you send: You promised this on 20 Oct, due 23 Oct. Attach the markup before you se"
+  },
+  {
+   "scenario": "replied",
+   "check": "an ask whose note got a reply says who replied and when, and offers no nudge; the note's ask the reply left out says so, never 'no reply'",
+   "ok": true,
+   "detail": "Orbit Treasury: Introductions to senior engineers, two hires this quarter\nAditi replied on 26 Oct: r | Nimbus Collect: An introduction to two banks as customers\nNudge to Aditi ready: Aditi answered on Kestrel Pay and Orbit Treasury on 26 Oct, not this one. Divya "
+  },
+  {
+   "scenario": "replied",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "replied",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "replied",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "replied",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "replied",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "coming-answered",
+   "check": "a tap a run answered never reads 'Draft coming', after its draft left Home",
+   "ok": true,
+   "detail": "LP: Tidewater Foundation\nNo touch in 120 days\nDue\nCRM"
+  },
+  {
+   "scenario": "step-resaved",
+   "check": "a step saved again after the last was applied shows as saving",
+   "ok": true,
+   "detail": "Zeno Treasury\nPartner meeting on 3 Nov (saving to your CRM at the next check)\nME \u00b7 Partner: Aditi \u00b7 Seed $2M\nCRM\nDay 4 of 7"
+  },
+  {
+   "scenario": "met-fold",
+   "check": "two or more meetings unlogged for over two working days fold into one line, forms a tap away",
+   "ok": true,
+   "detail": "old 4; fold 1; forms 0 -> 4"
+  },
+  {
+   "scenario": "met-fold",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "met-fold",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "met-fold",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "met-fold",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "met-fold",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "nudge-sent",
+   "check": "Sent it on a grouped nudge says 'Nudged Aditi' at once, on Today and the Portfolio hero",
+   "ok": true,
+   "detail": "row: 3 founder asks wait on Aditi\nNudged Aditi on 29 Oct: no answer yet on Kestrel Pay, Nimbus Collect and Orbit Treasury.\nNu; hero: A founder asks\nNimbus Collect: an introduction to two banks as customers\n\nNudged Aditi on 29 Oct. Divya Raman asked on 1"
+  },
+  {
+   "scenario": "nudge-sent",
+   "check": "after Close ask the Portfolio hero's 'more open' counts the asks still showing",
+   "ok": true,
+   "detail": "nway under 9 months. Vikram Rao asked on 11 Oct. 1 more open; rows 3 -> 2"
+  },
+  {
+   "scenario": "nudge-sent",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "nudge-sent",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "nudge-sent",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "nudge-sent",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "nudge-sent",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "utc-step",
+   "check": "a tap stamped in UTC after a run's +05:30 apply reads as newer: the step shows as saving",
+   "ok": true,
+   "detail": "Zeno Treasury\nReference calls with Shreya (saving to your CRM at the next check)\nME \u00b7 Partner: Aditi \u00b7 Seed $2M\nCRM\nDay 4 of 7"
+  },
+  {
+   "scenario": "was-due",
+   "check": "no Pipeline row says 'by' a date that has passed",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "got-it",
+   "check": "what someone owes you clears with Got it, which marks the promise",
+   "ok": true,
+   "detail": "Fatima Sheikh owes you: send a shortlist of venues: wrote ['k_079b94f3db', 't_79319786ad']"
+  },
+  {
+   "scenario": "pitch-replied",
+   "check": "after Sent it on a pitch's reply, the Pitches list says you replied, not 'Book a call'",
+   "ok": true,
+   "detail": "Harborline Treasury \u00b7 93\nYou replied 22 Oct: waiting on them. Seed, $3M, treasury management, Delaware and Bangalore\nYou"
+  },
+  {
+   "scenario": "monday-prep",
+   "check": "on a Friday Today names Monday's meetings, and each opens its prep",
+   "ok": true,
+   "detail": "Today\n0 meetings\n\nNo meetings today.\n\nMonday: 10:00 Monday partner meeting; sheet 10:00 \u00b7 Monday partner meeting\n\nDecide on Gravity Payouts by"
+  },
+  {
+   "scenario": "holder-note",
+   "check": "the note to the partner whose view drafts wait on shows under Ready for you with Sent it, each draft it names points at it, and it leaves once every one is sent",
+   "ok": true,
+   "detail": "Draft: Your view on 2 founder emails and Sable Fraud AI\nTo Aditi Rao. 2 drafts wait on Aditi's view, and 1 decision is due: one short note a; rows pointing at it 2; after both sent 0"
+  },
+  {
+   "scenario": "holder-note",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "holder-note",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "holder-note",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "holder-note",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "holder-note",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "pushed-row",
+   "check": "a push that named a row opens Home on Today with that row open",
+   "ok": true,
+   "detail": "today 1; expanded true"
+  },
+  {
+   "scenario": "late-drafts",
+   "check": "a late promise's draft says how late it is, and the late ones are named on Today",
+   "ok": true,
+   "detail": "fold rows 1; Ready for you\n3\nDraft: Atlas Settlement: our term sheet markup\nTo Ishaan Verma, 17 days late. Written before your 22 Oct meeting, which has "
+  },
+  {
+   "scenario": "late-drafts",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "late-drafts",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "late-drafts",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "late-drafts",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "late-drafts",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "chase-sent",
+   "check": "after Sent it on a chase the hero says it was marked sent, with no 'Second note ready'",
+   "ok": true,
+   "detail": "Capital call\nPeregrine Trust owes $150K on a capital call\n\nCalled on 05 Oct, 24 days ago; chased Peter on 22 Oct, no reply in 5 working days. Marked sent 29 Oct"
+  },
+  {
+   "scenario": "chase-sent",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "chase-sent",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "chase-sent",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "chase-sent",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "chase-sent",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "shared-done",
+   "check": "Done on one of two promises in one email closes that promise, not the email: no 'Marked sent', the other promise keeps the email, which says to take the closed promise's lines out",
+   "ok": true,
+   "detail": "toast 'Marked done\\nUndo'; wrote ['k_e9eab86816', 't_a1afa2bb60']; Sent it on the other row 1; note 'Before you send: Intro two CFO candidates is marked done: take its lines out. Written before your 22 Oct meeting, which '"
+  },
+  {
+   "scenario": "shared-done",
+   "check": "Done on the second closes the email too, as done, never as sent",
+   "ok": true,
+   "detail": "wrote ['dr_k_e9eab86816', 'k_76e229ee1b', 't_0ddf7373ca']; ready rows 0"
+  },
+  {
+   "scenario": "shared-done",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "shared-done",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "shared-done",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "shared-done",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "shared-done",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "holder-sent",
+   "check": "after Sent it on the note to Aditi, each row it names says 'Asked Aditi at 07:00 for the firm's view'",
+   "ok": true,
+   "detail": "rows saying it 2 of 2"
+  },
+  {
+   "scenario": "holder-sent",
+   "check": "once Aditi replied, those rows say 'Aditi replied at 11:05: read it, then send'",
+   "ok": true,
+   "detail": "rows saying it 2"
+  },
+  {
+   "scenario": "holder-sent",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "holder-sent",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "holder-sent",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "holder-sent",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "holder-sent",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "step-sent",
+   "check": "a CRM step you marked sent reads 'Sent 23 Oct: send term sheet markup' on Pipeline, never 'Next:'",
+   "ok": true,
+   "detail": "Atlas Settlement\nSent 23 Oct: send term sheet markup. Add the next step. Ishaan wrote: \u201cWe also have a term sheet from Bluepeak Partners and need to decide by 5"
+  },
+  {
+   "scenario": "step-sent",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "step-sent",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "step-sent",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "step-sent",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "step-sent",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  }
+ ]
+}

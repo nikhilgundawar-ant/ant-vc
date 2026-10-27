@@ -1,0 +1,134 @@
+{
+ "aditi": [
+  {
+   "kind": "commitment",
+   "key": "Intro Arjun to Raj Malhotra at Fable Bank"
+  },
+  {
+   "kind": "signal",
+   "key": "Atlas Settlement"
+  },
+  {
+   "kind": "signal",
+   "key": "Gravity Payouts"
+  },
+  {
+   "kind": "portfolio",
+   "key": "Orbit Treasury"
+  },
+  {
+   "kind": "decision",
+   "key": "Solace Treasury"
+  }
+ ],
+ "kabir": [
+  {
+   "kind": "commitment",
+   "key": "Send the cohort analysis questions"
+  },
+  {
+   "kind": "commitment",
+   "key": "Share the diligence checklist"
+  },
+  {
+   "kind": "signal",
+   "key": "Lumen Ledger"
+  },
+  {
+   "kind": "signal",
+   "key": "Kite Pay"
+  },
+  {
+   "kind": "stale",
+   "key": "Vertex Card Issuing"
+  }
+ ],
+ "meera": [
+  {
+   "kind": "commitment",
+   "key": "Share feedback after the partner meeting"
+  },
+  {
+   "kind": "commitment",
+   "key": "Send the reference questions"
+  },
+  {
+   "kind": "signal",
+   "key": "Sable Fraud AI"
+  },
+  {
+   "kind": "signal",
+   "key": "Rivulet Payments"
+  },
+  {
+   "kind": "signal",
+   "key": "Trellis Banking API"
+  }
+ ],
+ "rohan": [
+  {
+   "kind": "pass_returned",
+   "key": "Paysa Labs"
+  },
+  {
+   "kind": "signal",
+   "key": "Vaultline"
+  },
+  {
+   "kind": "commitment",
+   "key": "Market map of AA players"
+  },
+  {
+   "kind": "pass_returned",
+   "key": "Ruplink"
+  },
+  {
+   "kind": "inbound",
+   "key": "Rupee Rails"
+  }
+ ],
+ "tara": [
+  {
+   "kind": "commitment",
+   "key": "Intro two CFO candidates"
+  },
+  {
+   "kind": "portfolio",
+   "key": "Orbit Treasury"
+  },
+  {
+   "kind": "portfolio",
+   "key": "Tallyfin"
+  },
+  {
+   "kind": "portfolio",
+   "key": "Kestrel Pay"
+  },
+  {
+   "kind": "portfolio",
+   "key": "Ferro Credit Cloud"
+  }
+ ],
+ "vikram": [
+  {
+   "kind": "commitment",
+   "key": "Answer the fee offset question"
+  },
+  {
+   "kind": "lp",
+   "key": "Northgate Endowment"
+  },
+  {
+   "kind": "lp",
+   "key": "Banyan Family Office"
+  },
+  {
+   "kind": "commitment",
+   "key": "Model the runway scenarios"
+  },
+  {
+   "kind": "portfolio",
+   "key": "Orbit Treasury"
+  }
+ ]
+}

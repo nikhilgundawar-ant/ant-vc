@@ -1,0 +1,281 @@
+{
+ "checks": 45,
+ "failed": 0,
+ "complete": false,
+ "scenarios": [
+  "round6"
+ ],
+ "page_sha256": "92e321cdc55d",
+ "rows": [
+  {
+   "scenario": "sheet-crm",
+   "check": "a Sheet CRM shows Copy change, never Approve",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "sheet-crm",
+   "check": "it says to paste it into the sheet",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "sheet-crm",
+   "check": "copying a change confirms it",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "sheet-crm",
+   "check": "copying writes no approval",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "sheet-crm",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "sheet-crm",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "sheet-crm",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "sheet-crm",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "sheet-crm",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "guard-off",
+   "check": "a check that found its guard off says so",
+   "ok": true,
+   "detail": "Instinct stopped at Thu 09:22: its safety guard did not load, so it read nothing"
+  },
+  {
+   "scenario": "guard-off",
+   "check": "no stall banner on top of it",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "guard-off",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "guard-off",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "guard-off",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "guard-off",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "guard-off",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "analyst-team",
+   "check": "colleagues' races are one grey line at the end",
+   "ok": true,
+   "detail": "1"
+  },
+  {
+   "scenario": "analyst-team",
+   "check": "no urgent row names a colleague's lead",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "analyst-team",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "analyst-team",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "analyst-team",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "analyst-team",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "analyst-team",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "asks",
+   "check": "every founder ask names a warm path or says none was found",
+   "ok": true,
+   "detail": "3 of 3"
+  },
+  {
+   "scenario": "asks",
+   "check": "an ask with no path has a note to the team, ready or one tap away",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "asks",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "asks",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "asks",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "asks",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "asks",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "sync-pack",
+   "check": "pack rows name lead, partner, round and amount",
+   "ok": true,
+   "detail": "Lead: Meera \u00b7 Partner: Aditi \u00b7 Seed, $2.5M "
+  },
+  {
+   "scenario": "sync-pack",
+   "check": "stalled deals sit in their own list after To decide",
+   "ok": true,
+   "detail": "To decide / Stalled / Worth raising / Promises in the team"
+  },
+  {
+   "scenario": "sync-pack",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "sync-pack",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "sync-pack",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "sync-pack",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "sync-pack",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "waiting-founder",
+   "check": "the row says Waiting on you, with the reply ready",
+   "ok": true,
+   "detail": "Copperleaf Collect: Debashish asked on 13 Oct, no reply yet\n\"If we get to a term sheet with you, what would the timeline"
+  },
+  {
+   "scenario": "waiting-founder",
+   "check": "it quotes the founder's own question",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "waiting-founder",
+   "check": "the pipeline row says who waits and since when",
+   "ok": true,
+   "detail": "Copperleaf Collect\nDebashish asked on 13 Oct, no reply yet. Next: Second meeting by 25 Oct\nWaiting on you\nME \u00b7 Partner: "
+  },
+  {
+   "scenario": "waiting-founder",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "waiting-founder",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "waiting-founder",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "waiting-founder",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "waiting-founder",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  }
+ ]
+}

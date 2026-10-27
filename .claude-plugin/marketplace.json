@@ -1,0 +1,13 @@
+{
+  "name": "anthill",
+  "owner": {
+    "name": "Anthill AI"
+  },
+  "plugins": [
+    {
+      "name": "ant-vc",
+      "source": "./",
+      "description": "ant. for VCs: a proactive chief of staff for venture capital teams. Nothing is sent or changed without your tap."
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+ "by_owner": {
+  "kabir": [
+   "Vertex Card Issuing",
+   "Banyan Risk Cloud",
+   "Cobalt AA"
+  ],
+  "meera": [
+   "Halo Reconcile",
+   "Copperleaf Collect",
+   "Mosaic Wealth Infra"
+  ],
+  "rohan": [
+   "Clearpath Recon",
+   "Ruplink"
+  ],
+  "aditi": [
+   "Sterling AA"
+  ]
+ },
+ "never_stale_for_owner": {
+  "kabir": [
+   "Prism Lending OS",
+   "Lumen Ledger",
+   "Kite Pay"
+  ]
+ }
+}

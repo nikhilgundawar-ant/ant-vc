@@ -1,0 +1,90 @@
+{
+  "version": 1,
+  "note": "The VC ontology. Every record carries id, source_url and updated_at. Ids are stable hashes of the record's natural key, so the same person or deal keeps one id across runs.",
+  "entities": {
+    "Person": {
+      "fields": {
+        "id": "str", "name": "str", "emails": "list[str]", "role": "founder|co_investor|lp|operator|colleague|advisor|other",
+        "company_id": "str|null", "title": "str|null", "owner": "str|null",
+        "strength": "int 0-100", "last_contact": "date|null", "next_touch_due": "date|null",
+        "crm_id": "str|null", "sources": "list[str]", "source_url": "str", "updated_at": "datetime"
+      }
+    },
+    "Company": {
+      "fields": {
+        "id": "str", "name": "str", "domain": "str|null", "stage": "str|null", "sectors": "list[str]",
+        "hq": "str|null", "status": "prospect|pipeline|portfolio|passed|lp|fund|other",
+        "description": "str|null", "crm_id": "str|null", "source_url": "str", "updated_at": "datetime"
+      }
+    },
+    "Deal": {
+      "fields": {
+        "id": "str", "company_id": "str", "stage": "stage key", "stage_entered": "date", "owner": "email",
+        "round": "str|null", "raise_usd": "num|null", "check_usd": "num|null", "lead_or_follow": "lead|follow|tbd",
+        "next_step": "str|null", "next_step_due": "date|null", "last_contact": "date|null",
+        "competing_funds": "list[str]", "quiet": "bool", "crm_id": "str|null", "source_url": "str", "updated_at": "datetime"
+      }
+    },
+    "FundLP": {
+      "fields": {
+        "id": "str", "name": "str", "fund": "str", "commitment_usd": "num", "called_usd": "num|null", "paid_in_usd": "num|null",
+        "last_call_date": "date|null", "owner": "email|null", "reup_window_start": "date|null",
+        "reup_window_end": "date|null", "last_touch": "date|null", "contact_ids": "list[str]",
+        "reporting": "quarterly|monthly|annual", "source_url": "str", "updated_at": "datetime"
+      }
+    },
+    "Meeting": {
+      "fields": {
+        "id": "str", "title": "str", "start": "datetime", "end": "datetime", "attendee_ids": "list[str]",
+        "external": "bool", "deal_id": "str|null", "transcript_url": "str|null", "summary": "str|null",
+        "source_url": "str", "updated_at": "datetime"
+      }
+    },
+    "Commitment": {
+      "fields": {
+        "id": "str", "owed_by": "person_id", "owed_to": "person_id", "what": "str", "due": "date|null",
+        "status": "open|done|dropped", "deal_id": "str|null", "quote": "str", "meeting_id": "str|null",
+        "source_url": "str", "updated_at": "datetime"
+      }
+    },
+    "Interaction": {
+      "fields": {
+        "id": "str", "type": "email|meeting|message|note|call", "date": "datetime", "person_ids": "list[str]",
+        "deal_id": "str|null", "direction": "in|out|both", "source_url": "str"
+      }
+    },
+    "Signal": {
+      "fields": {
+        "id": "str", "kind": "round_moving|kpi_drift|hiring_change|tone_shift|competitor_funded|lp_decay|stale_deal|relationship_decay|pass_returned",
+        "about": "entity id", "confidence": "0-1", "summary": "str", "evidence": "str", "deadline": "date|null",
+        "breach": "bool", "source_url": "str", "updated_at": "datetime"
+      }
+    },
+    "Thesis": {
+      "fields": {
+        "sectors": "list[str]", "stages": "list[str]", "check_min_usd": "num", "check_max_usd": "num",
+        "geographies": "list[str]", "anti_patterns": "list[str]", "owner": "str", "confirmed": "bool"
+      }
+    },
+    "Pass": {
+      "fields": {
+        "id": "str", "company": "str", "domain": "str|null", "date": "date", "reason": "str",
+        "revisit_trigger": "str|null", "by": "str", "source_url": "str"
+      }
+    }
+  },
+  "relationships": [
+    ["Person", "works_at", "Company"],
+    ["Person", "introduced", "Person"],
+    ["Person", "owns_deal", "Deal"],
+    ["Company", "has_deal", "Deal"],
+    ["Deal", "competes_with", "Company"],
+    ["Meeting", "involves", "Person"],
+    ["Meeting", "involves", "Deal"],
+    ["Meeting", "produced", "Commitment"],
+    ["Signal", "is_about", "Company|Person|Deal"],
+    ["Thesis", "matches", "Company"],
+    ["FundLP", "is_in", "Company"],
+    ["Interaction", "touched_by", "Person"]
+  ]
+}

@@ -1,0 +1,101 @@
+{
+ "checks": 15,
+ "failed": 0,
+ "complete": false,
+ "scenarios": [
+  "round7"
+ ],
+ "page_sha256": "92e321cdc55d",
+ "rows": [
+  {
+   "scenario": "met-log",
+   "check": "a founder meeting on your deal offers a one-tap log",
+   "ok": true,
+   "detail": "Halo Reconcile: met 20 Oct\nLog it in your CRM. It still says next: Second meeting by 24 Oct\nStill Fi"
+  },
+  {
+   "scenario": "met-log",
+   "check": "saving logs the step, the meeting date and the stage",
+   "ok": true,
+   "detail": "{\"deal_id\": \"d_halo\", \"company\": \"Halo Reconcile\", \"text\": \"Diligence plan with the CFO\", \"due\": \"2026-10-24\", \"current\": \"Second meeting\", \"current_due\": \"2026"
+  },
+  {
+   "scenario": "met-log",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "met-log",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "met-log",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "met-log",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "met-log",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "asks-ready",
+   "check": "every open ask has a note ready without a tap",
+   "ok": true,
+   "detail": "3 of 3"
+  },
+  {
+   "scenario": "ask-requested",
+   "check": "a sent note moves the ask to Intro requested",
+   "ok": true,
+   "detail": "Nimbus Collect: Intro to two banks as customers\nIntro requested on 22 Oct. Divya Raman asked on 13 O"
+  },
+  {
+   "scenario": "ask-requested",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "ask-requested",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "ask-requested",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "ask-requested",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "ask-requested",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "draft-times",
+   "check": "no draft in any demo Home offers a time already past",
+   "ok": true,
+   "detail": ""
+  }
+ ]
+}

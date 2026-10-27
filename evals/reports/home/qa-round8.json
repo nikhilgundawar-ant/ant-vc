@@ -1,0 +1,161 @@
+{
+ "checks": 25,
+ "failed": 0,
+ "complete": false,
+ "scenarios": [
+  "round8"
+ ],
+ "page_sha256": "1457cbc5b5fe",
+ "rows": [
+  {
+   "scenario": "met-prefill",
+   "check": "the met log fills in from the meeting: the stage the invite names, no stale step",
+   "ok": true,
+   "detail": "Move to Second meeting; empty step True"
+  },
+  {
+   "scenario": "met-prefill",
+   "check": "one tap saves the meeting and the stage, and no stale step",
+   "ok": true,
+   "detail": "{\"deal_id\": \"d_halo\", \"company\": \"Halo Reconcile\", \"text\": null, \"due\": null, \"current\": \"Second meeting\", \"current_due\": \"2026-10-24\", \"met\": \"2026-10-22\", \"st"
+  },
+  {
+   "scenario": "met-prefill",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "met-prefill",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "met-prefill",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "met-prefill",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "met-prefill",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "team-note",
+   "check": "a team note opens Gmail addressed to every colleague on it",
+   "ok": true,
+   "detail": "https://mail.google.com/mail/?authuser=tara%40quillwater.vc&view=cm&fs=1&to=aditi%40quillwater.vc%2Ckabir%40quillwater.v"
+  },
+  {
+   "scenario": "team-note",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "team-note",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "team-note",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "team-note",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "team-note",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "ask-nudge",
+   "check": "five working days after the note with no reply, the ask asks for a nudge",
+   "ok": true,
+   "detail": "Nimbus Collect: An introduction to two banks as customers\nAsked Aditi for the intro on 22 Oct, no reply in 6 working day"
+  },
+  {
+   "scenario": "ask-nudge",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "ask-nudge",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "ask-nudge",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "ask-nudge",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "ask-nudge",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "solo-asks",
+   "check": "a solo GP is offered no note to a team, and Today has no team words",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "solo-asks",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "solo-asks",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "solo-asks",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "solo-asks",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "solo-asks",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  }
+ ]
+}

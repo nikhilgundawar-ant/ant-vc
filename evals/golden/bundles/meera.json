@@ -1,0 +1,7365 @@
+{
+ "fictional": "Every person, company, fund and LP in this file is fictional.",
+ "now": "2026-10-22T07:00:00+05:30",
+ "tz": "Asia/Kolkata",
+ "user": {
+  "name": "Meera Iyer",
+  "email": "meera@quillwater.vc"
+ },
+ "firm": {
+  "name": "Quillwater Ventures",
+  "domain": "quillwater.vc",
+  "fund": "Fund II",
+  "fund_size_usd": 80000000,
+  "members": [
+   {
+    "name": "Aditi Rao",
+    "email": "aditi@quillwater.vc",
+    "title": "Partner"
+   },
+   {
+    "name": "Kabir Shah",
+    "email": "kabir@quillwater.vc",
+    "title": "Principal"
+   },
+   {
+    "name": "Meera Iyer",
+    "email": "meera@quillwater.vc",
+    "title": "Associate"
+   },
+   {
+    "name": "Rohan Das",
+    "email": "rohan@quillwater.vc",
+    "title": "Analyst"
+   },
+   {
+    "name": "Tara Menon",
+    "email": "tara@quillwater.vc",
+    "title": "Head of Platform"
+   },
+   {
+    "name": "Vikram Nair",
+    "email": "vikram@quillwater.vc",
+    "title": "CFO"
+   }
+  ]
+ },
+ "thesis": {
+  "sectors": [
+   "fintech infrastructure",
+   "b2b software for financial services"
+  ],
+  "sector_keywords": [
+   "payments infrastructure",
+   "payment orchestration",
+   "banking infrastructure",
+   "core banking",
+   "lending infrastructure",
+   "embedded finance",
+   "regtech",
+   "compliance automation",
+   "kyc",
+   "aml",
+   "fraud",
+   "treasury",
+   "reconciliation",
+   "credit infrastructure",
+   "account aggregator",
+   "upi",
+   "collections software",
+   "underwriting",
+   "insurtech infrastructure",
+   "wealthtech infrastructure",
+   "api banking",
+   "card issuing",
+   "settlement",
+   "payouts",
+   "lending os",
+   "b2b fintech"
+  ],
+  "stages": [
+   "pre-seed",
+   "seed",
+   "series a"
+  ],
+  "check_min_usd": 500000,
+  "check_max_usd": 3000000,
+  "geographies": [
+   "india",
+   "us-india"
+  ],
+  "anti_patterns": [
+   "consumer lending",
+   "crypto trading",
+   "d2c"
+  ],
+  "statement": "Quillwater backs India-first fintech infrastructure and B2B software for financial services, pre-seed to Series A, with first checks of $500K to $3M, in India and US-India cross-border. We avoid consumer lending without an in-house risk team, crypto trading platforms and D2C brands.",
+  "confirmed": true
+ },
+ "crm": {
+  "system": "affinity",
+  "companies": [
+   {
+    "id": "c_orbit",
+    "name": "Orbit Treasury",
+    "domain": "orbittreasury.in",
+    "status": "portfolio",
+    "sectors": [
+     "treasury management for mid-market companies"
+    ],
+    "hq": "Mumbai, India",
+    "entry_stage": "Seed",
+    "check_usd": 1500000,
+    "url": "https://quillwater.affinity.co/companies/c_orbit",
+    "description": "treasury management for mid-market companies"
+   },
+   {
+    "id": "c_kestrel",
+    "name": "Kestrel Pay",
+    "domain": "kestrelpay.in",
+    "status": "portfolio",
+    "sectors": [
+     "payment orchestration"
+    ],
+    "hq": "Bangalore, India",
+    "entry_stage": "Seed",
+    "check_usd": 2000000,
+    "url": "https://quillwater.affinity.co/companies/c_kestrel",
+    "description": "payment orchestration"
+   },
+   {
+    "id": "c_ferro",
+    "name": "Ferro Credit Cloud",
+    "domain": "ferrocredit.com",
+    "status": "portfolio",
+    "sectors": [
+     "lending infrastructure for NBFCs"
+    ],
+    "hq": "Pune, India",
+    "entry_stage": "Series A",
+    "check_usd": 3000000,
+    "url": "https://quillwater.affinity.co/companies/c_ferro",
+    "description": "lending infrastructure for NBFCs"
+   },
+   {
+    "id": "c_tallyfin",
+    "name": "Tallyfin",
+    "domain": "tallyfin.com",
+    "status": "portfolio",
+    "sectors": [
+     "accounting and reconciliation APIs"
+    ],
+    "hq": "Delhi, India",
+    "entry_stage": "Seed",
+    "check_usd": 1200000,
+    "url": "https://quillwater.affinity.co/companies/c_tallyfin",
+    "description": "accounting and reconciliation APIs"
+   },
+   {
+    "id": "c_saffire",
+    "name": "Saffire KYC",
+    "domain": "saffirekyc.com",
+    "status": "portfolio",
+    "sectors": [
+     "KYC and AML automation"
+    ],
+    "hq": "Hyderabad, India",
+    "entry_stage": "Seed",
+    "check_usd": 1000000,
+    "url": "https://quillwater.affinity.co/companies/c_saffire",
+    "description": "KYC and AML automation"
+   },
+   {
+    "id": "c_nimbus",
+    "name": "Nimbus Collect",
+    "domain": "nimbuscollect.in",
+    "status": "portfolio",
+    "sectors": [
+     "collections software for lenders"
+    ],
+    "hq": "Bangalore, India",
+    "entry_stage": "Pre-seed",
+    "check_usd": 600000,
+    "url": "https://quillwater.affinity.co/companies/c_nimbus",
+    "description": "collections software for lenders"
+   },
+   {
+    "id": "c_quanta",
+    "name": "Quanta Rails",
+    "domain": "quantarails.com",
+    "status": "portfolio",
+    "sectors": [
+     "UPI infrastructure for banks"
+    ],
+    "hq": "Mumbai, India",
+    "entry_stage": "Seed",
+    "check_usd": 2500000,
+    "url": "https://quillwater.affinity.co/companies/c_quanta",
+    "description": "UPI infrastructure for banks"
+   },
+   {
+    "id": "c_brightvault",
+    "name": "Brightvault",
+    "domain": "brightvault.io",
+    "status": "portfolio",
+    "sectors": [
+     "wealthtech infrastructure APIs"
+    ],
+    "hq": "Bangalore, India",
+    "entry_stage": "Seed",
+    "check_usd": 1500000,
+    "url": "https://quillwater.affinity.co/companies/c_brightvault",
+    "description": "wealthtech infrastructure APIs"
+   },
+   {
+    "id": "c_ledgerline",
+    "name": "Ledgerline",
+    "domain": "ledgerline.io",
+    "status": "portfolio",
+    "sectors": [
+     "core banking for cooperative banks"
+    ],
+    "hq": "Pune, India",
+    "entry_stage": "Seed",
+    "check_usd": 2000000,
+    "url": "https://quillwater.affinity.co/companies/c_ledgerline",
+    "description": "core banking for cooperative banks"
+   },
+   {
+    "id": "c_cardinal",
+    "name": "Cardinal Risk",
+    "domain": "cardinalrisk.ai",
+    "status": "portfolio",
+    "sectors": [
+     "fraud detection for issuers"
+    ],
+    "hq": "Bangalore, India",
+    "entry_stage": "Seed",
+    "check_usd": 1800000,
+    "url": "https://quillwater.affinity.co/companies/c_cardinal",
+    "description": "fraud detection for issuers"
+   },
+   {
+    "id": "c_harbor",
+    "name": "Harbor Insure Stack",
+    "domain": "harborstack.in",
+    "status": "portfolio",
+    "sectors": [
+     "insurtech infrastructure"
+    ],
+    "hq": "Chennai, India",
+    "entry_stage": "Pre-seed",
+    "check_usd": 750000,
+    "url": "https://quillwater.affinity.co/companies/c_harbor",
+    "description": "insurtech infrastructure"
+   },
+   {
+    "id": "c_mintrail",
+    "name": "Mintrail",
+    "domain": "mintrail.in",
+    "status": "portfolio",
+    "sectors": [
+     "payroll finance APIs"
+    ],
+    "hq": "Gurugram, India",
+    "entry_stage": "Seed",
+    "check_usd": 1000000,
+    "url": "https://quillwater.affinity.co/companies/c_mintrail",
+    "description": "payroll finance APIs"
+   },
+   {
+    "id": "c_paysa",
+    "name": "Paysa Labs",
+    "domain": "paysa.in",
+    "status": "pipeline",
+    "sectors": [
+     "payouts infrastructure for marketplaces"
+    ],
+    "hq": "Bangalore, India",
+    "url": "https://quillwater.affinity.co/companies/c_paysa",
+    "description": "payouts infrastructure for marketplaces"
+   },
+   {
+    "id": "c_coinvault",
+    "name": "Coinvault Exchange",
+    "domain": "coinvault.io",
+    "status": "pipeline",
+    "sectors": [
+     "crypto trading app for retail investors"
+    ],
+    "hq": "Bangalore, India",
+    "url": "https://quillwater.affinity.co/companies/c_coinvault",
+    "description": "crypto trading app for retail investors"
+   },
+   {
+    "id": "c_glowkart",
+    "name": "Glowkart",
+    "domain": "glowkart.in",
+    "status": "pipeline",
+    "sectors": [
+     "D2C skincare brand"
+    ],
+    "hq": "Mumbai, India",
+    "url": "https://quillwater.affinity.co/companies/c_glowkart",
+    "description": "D2C skincare brand"
+   },
+   {
+    "id": "c_ruplink",
+    "name": "Ruplink",
+    "domain": "ruplink.in",
+    "status": "pipeline",
+    "sectors": [
+     "account aggregator infrastructure"
+    ],
+    "hq": "Bangalore, India",
+    "url": "https://quillwater.affinity.co/companies/c_ruplink",
+    "description": "account aggregator infrastructure"
+   },
+   {
+    "id": "c_sutra",
+    "name": "Sutra Compliance",
+    "domain": "sutracompliance.com",
+    "status": "pipeline",
+    "sectors": [
+     "compliance automation for NBFCs"
+    ],
+    "hq": "Mumbai, India",
+    "url": "https://quillwater.affinity.co/companies/c_sutra",
+    "description": "compliance automation for NBFCs"
+   },
+   {
+    "id": "c_vaultline",
+    "name": "Vaultline",
+    "domain": "vaultline.in",
+    "status": "pipeline",
+    "sectors": [
+     "treasury APIs for startups"
+    ],
+    "hq": "Bangalore, India",
+    "url": "https://quillwater.affinity.co/companies/c_vaultline",
+    "description": "treasury APIs for startups"
+   },
+   {
+    "id": "c_nexa",
+    "name": "Nexa Lend OS",
+    "domain": "nexalend.com",
+    "status": "pipeline",
+    "sectors": [
+     "lending OS for small banks"
+    ],
+    "hq": "Pune, India",
+    "url": "https://quillwater.affinity.co/companies/c_nexa",
+    "description": "lending OS for small banks"
+   },
+   {
+    "id": "c_clearpath",
+    "name": "Clearpath Recon",
+    "domain": "clearpathrecon.com",
+    "status": "pipeline",
+    "sectors": [
+     "reconciliation for payment aggregators"
+    ],
+    "hq": "Delhi, India",
+    "url": "https://quillwater.affinity.co/companies/c_clearpath",
+    "description": "reconciliation for payment aggregators"
+   },
+   {
+    "id": "c_ankur",
+    "name": "Ankur Credit Stack",
+    "domain": "ankurstack.in",
+    "status": "pipeline",
+    "sectors": [
+     "credit infrastructure for rural lenders"
+    ],
+    "hq": "Jaipur, India",
+    "url": "https://quillwater.affinity.co/companies/c_ankur",
+    "description": "credit infrastructure for rural lenders"
+   },
+   {
+    "id": "c_fintegrate",
+    "name": "Fintegrate",
+    "domain": "fintegrate.dev",
+    "status": "pipeline",
+    "sectors": [
+     "embedded finance APIs for SaaS"
+    ],
+    "hq": "San Francisco, US and Bangalore, India",
+    "url": "https://quillwater.affinity.co/companies/c_fintegrate",
+    "description": "embedded finance APIs for SaaS"
+   },
+   {
+    "id": "c_bharatrisk",
+    "name": "Bharat Risk Labs",
+    "domain": "bharatrisk.in",
+    "status": "pipeline",
+    "sectors": [
+     "fraud models for UPI apps"
+    ],
+    "hq": "Hyderabad, India",
+    "url": "https://quillwater.affinity.co/companies/c_bharatrisk",
+    "description": "fraud models for UPI apps"
+   },
+   {
+    "id": "c_zeno",
+    "name": "Zeno Treasury",
+    "domain": "zenotreasury.com",
+    "status": "pipeline",
+    "sectors": [
+     "treasury management for exporters"
+    ],
+    "hq": "Mumbai, India",
+    "url": "https://quillwater.affinity.co/companies/c_zeno",
+    "description": "treasury management for exporters"
+   },
+   {
+    "id": "c_pillar",
+    "name": "Pillar KYC",
+    "domain": "pillarkyc.in",
+    "status": "pipeline",
+    "sectors": [
+     "KYC orchestration"
+    ],
+    "hq": "Bangalore, India",
+    "url": "https://quillwater.affinity.co/companies/c_pillar",
+    "description": "KYC orchestration"
+   },
+   {
+    "id": "c_rivulet",
+    "name": "Rivulet Payments",
+    "domain": "rivuletpay.com",
+    "status": "pipeline",
+    "sectors": [
+     "cross-border payment rails for SMBs"
+    ],
+    "hq": "Bangalore, India and Delaware, US",
+    "url": "https://quillwater.affinity.co/companies/c_rivulet",
+    "description": "cross-border payment rails for SMBs"
+   },
+   {
+    "id": "c_deccan",
+    "name": "Deccan Lend Cloud",
+    "domain": "deccanlend.cloud",
+    "status": "pipeline",
+    "sectors": [
+     "lending infrastructure for gold loan NBFCs"
+    ],
+    "hq": "Hyderabad, India",
+    "url": "https://quillwater.affinity.co/companies/c_deccan",
+    "description": "lending infrastructure for gold loan NBFCs"
+   },
+   {
+    "id": "c_aster",
+    "name": "Aster Underwrite",
+    "domain": "asteruw.ai",
+    "status": "pipeline",
+    "sectors": [
+     "AI underwriting for MSME lenders"
+    ],
+    "hq": "Bangalore, India",
+    "url": "https://quillwater.affinity.co/companies/c_aster",
+    "description": "AI underwriting for MSME lenders"
+   },
+   {
+    "id": "c_copperleaf",
+    "name": "Copperleaf Collect",
+    "domain": "copperleaf.in",
+    "status": "pipeline",
+    "sectors": [
+     "collections software for microfinance"
+    ],
+    "hq": "Kolkata, India",
+    "url": "https://quillwater.affinity.co/companies/c_copperleaf",
+    "description": "collections software for microfinance"
+   },
+   {
+    "id": "c_halo",
+    "name": "Halo Reconcile",
+    "domain": "haloreconcile.com",
+    "status": "pipeline",
+    "sectors": [
+     "reconciliation for insurers"
+    ],
+    "hq": "Chennai, India",
+    "url": "https://quillwater.affinity.co/companies/c_halo",
+    "description": "reconciliation for insurers"
+   },
+   {
+    "id": "c_trellis",
+    "name": "Trellis Banking API",
+    "domain": "trellisapi.in",
+    "status": "pipeline",
+    "sectors": [
+     "API banking platform"
+    ],
+    "hq": "Mumbai, India",
+    "url": "https://quillwater.affinity.co/companies/c_trellis",
+    "description": "API banking platform"
+   },
+   {
+    "id": "c_ember",
+    "name": "Ember Credit",
+    "domain": "embercredit.in",
+    "status": "pipeline",
+    "sectors": [
+     "credit infrastructure for BNPL providers"
+    ],
+    "hq": "Bangalore, India",
+    "url": "https://quillwater.affinity.co/companies/c_ember",
+    "description": "credit infrastructure for BNPL providers"
+   },
+   {
+    "id": "c_northwind",
+    "name": "Northwind Insure Stack",
+    "domain": "northwindstack.com",
+    "status": "pipeline",
+    "sectors": [
+     "insurtech infrastructure for brokers"
+    ],
+    "hq": "Pune, India",
+    "url": "https://quillwater.affinity.co/companies/c_northwind",
+    "description": "insurtech infrastructure for brokers"
+   },
+   {
+    "id": "c_sable",
+    "name": "Sable Fraud AI",
+    "domain": "sablefraud.ai",
+    "status": "pipeline",
+    "sectors": [
+     "fraud detection for card issuers"
+    ],
+    "hq": "Bangalore, India",
+    "url": "https://quillwater.affinity.co/companies/c_sable",
+    "description": "fraud detection for card issuers"
+   },
+   {
+    "id": "c_juniper",
+    "name": "Juniper Payroll Rails",
+    "domain": "juniperrails.in",
+    "status": "pipeline",
+    "sectors": [
+     "payroll payouts infrastructure"
+    ],
+    "hq": "Gurugram, India",
+    "url": "https://quillwater.affinity.co/companies/c_juniper",
+    "description": "payroll payouts infrastructure"
+   },
+   {
+    "id": "c_mosaic",
+    "name": "Mosaic Wealth Infra",
+    "domain": "mosaicwealth.io",
+    "status": "pipeline",
+    "sectors": [
+     "wealthtech infrastructure for RIAs"
+    ],
+    "hq": "Mumbai, India",
+    "url": "https://quillwater.affinity.co/companies/c_mosaic",
+    "description": "wealthtech infrastructure for RIAs"
+   },
+   {
+    "id": "c_lumen",
+    "name": "Lumen Ledger",
+    "domain": "lumenledger.com",
+    "status": "pipeline",
+    "sectors": [
+     "reconciliation SaaS for NBFCs"
+    ],
+    "hq": "Bangalore, India",
+    "url": "https://quillwater.affinity.co/companies/c_lumen",
+    "description": "reconciliation SaaS for NBFCs"
+   },
+   {
+    "id": "c_kite",
+    "name": "Kite Pay",
+    "domain": "kitepay.in",
+    "status": "pipeline",
+    "sectors": [
+     "payment orchestration for D2C-agnostic merchants"
+    ],
+    "hq": "Bangalore, India",
+    "url": "https://quillwater.affinity.co/companies/c_kite",
+    "description": "payment orchestration for D2C-agnostic merchants"
+   },
+   {
+    "id": "c_vertex",
+    "name": "Vertex Card Issuing",
+    "domain": "vertexcards.in",
+    "status": "pipeline",
+    "sectors": [
+     "card issuing platform for fintechs"
+    ],
+    "hq": "Mumbai, India",
+    "url": "https://quillwater.affinity.co/companies/c_vertex",
+    "description": "card issuing platform for fintechs"
+   },
+   {
+    "id": "c_banyanrisk",
+    "name": "Banyan Risk Cloud",
+    "domain": "banyanrisk.com",
+    "status": "pipeline",
+    "sectors": [
+     "risk infrastructure and fraud for lenders"
+    ],
+    "hq": "Bangalore, India",
+    "url": "https://quillwater.affinity.co/companies/c_banyanrisk",
+    "description": "risk infrastructure and fraud for lenders"
+   },
+   {
+    "id": "c_cobalt",
+    "name": "Cobalt AA",
+    "domain": "cobaltaa.in",
+    "status": "pipeline",
+    "sectors": [
+     "account aggregator infrastructure"
+    ],
+    "hq": "Pune, India",
+    "url": "https://quillwater.affinity.co/companies/c_cobalt",
+    "description": "account aggregator infrastructure"
+   },
+   {
+    "id": "c_prism",
+    "name": "Prism Lending OS",
+    "domain": "prismlend.com",
+    "status": "pipeline",
+    "sectors": [
+     "lending OS for co-lending partnerships"
+    ],
+    "hq": "Mumbai, India",
+    "url": "https://quillwater.affinity.co/companies/c_prism",
+    "description": "lending OS for co-lending partnerships"
+   },
+   {
+    "id": "c_ironwood",
+    "name": "Ironwood Compliance",
+    "domain": "ironwoodcomply.com",
+    "status": "pipeline",
+    "sectors": [
+     "compliance automation for banks"
+    ],
+    "hq": "Mumbai, India",
+    "url": "https://quillwater.affinity.co/companies/c_ironwood",
+    "description": "compliance automation for banks"
+   },
+   {
+    "id": "c_solace",
+    "name": "Solace Treasury",
+    "domain": "solacetreasury.in",
+    "status": "pipeline",
+    "sectors": [
+     "treasury for D2C-agnostic SMB exporters"
+    ],
+    "hq": "Bangalore, India",
+    "url": "https://quillwater.affinity.co/companies/c_solace",
+    "description": "treasury for D2C-agnostic SMB exporters"
+   },
+   {
+    "id": "c_gravity",
+    "name": "Gravity Payouts",
+    "domain": "gravitypayouts.com",
+    "status": "pipeline",
+    "sectors": [
+     "payouts infrastructure for gig platforms"
+    ],
+    "hq": "Bangalore, India",
+    "url": "https://quillwater.affinity.co/companies/c_gravity",
+    "description": "payouts infrastructure for gig platforms"
+   },
+   {
+    "id": "c_atlas",
+    "name": "Atlas Settlement",
+    "domain": "atlassettle.com",
+    "status": "pipeline",
+    "sectors": [
+     "settlement infrastructure for brokers"
+    ],
+    "hq": "Mumbai, India",
+    "url": "https://quillwater.affinity.co/companies/c_atlas",
+    "description": "settlement infrastructure for brokers"
+   },
+   {
+    "id": "c_beacon",
+    "name": "Beacon Credit Rails",
+    "domain": "beaconrails.in",
+    "status": "pipeline",
+    "sectors": [
+     "credit infrastructure APIs"
+    ],
+    "hq": "Bangalore, India",
+    "url": "https://quillwater.affinity.co/companies/c_beacon",
+    "description": "credit infrastructure APIs"
+   },
+   {
+    "id": "c_orchid",
+    "name": "Orchid Cards",
+    "domain": "orchidcards.in",
+    "status": "pipeline",
+    "sectors": [
+     "card issuing for corporates"
+    ],
+    "hq": "Bangalore, India",
+    "url": "https://quillwater.affinity.co/companies/c_orchid",
+    "description": "card issuing for corporates"
+   },
+   {
+    "id": "c_sterling",
+    "name": "Sterling AA",
+    "domain": "sterlingaa.com",
+    "status": "pipeline",
+    "sectors": [
+     "account aggregator for wealth platforms"
+    ],
+    "hq": "Mumbai, India",
+    "url": "https://quillwater.affinity.co/companies/c_sterling",
+    "description": "account aggregator for wealth platforms"
+   },
+   {
+    "id": "c_fizzbuy",
+    "name": "Fizzbuy",
+    "domain": "fizzbuy.in",
+    "status": "passed",
+    "sectors": [
+     "D2C beverages"
+    ],
+    "hq": "Delhi, India",
+    "url": "https://quillwater.affinity.co/companies/c_fizzbuy",
+    "description": "D2C beverages"
+   },
+   {
+    "id": "c_moonlend",
+    "name": "Moonlend",
+    "domain": "moonlend.in",
+    "status": "passed",
+    "sectors": [
+     "consumer lending app"
+    ],
+    "hq": "Bangalore, India",
+    "url": "https://quillwater.affinity.co/companies/c_moonlend",
+    "description": "consumer lending app"
+   },
+   {
+    "id": "c_tokenswap",
+    "name": "TokenSwap",
+    "domain": "tokenswap.xyz",
+    "status": "passed",
+    "sectors": [
+     "crypto trading platform"
+    ],
+    "hq": "Singapore",
+    "url": "https://quillwater.affinity.co/companies/c_tokenswap",
+    "description": "crypto trading platform"
+   },
+   {
+    "id": "c_parcelpro",
+    "name": "Parcelpro",
+    "domain": "parcelpro.in",
+    "status": "passed",
+    "sectors": [
+     "logistics marketplace"
+    ],
+    "hq": "Mumbai, India",
+    "url": "https://quillwater.affinity.co/companies/c_parcelpro",
+    "description": "logistics marketplace"
+   },
+   {
+    "id": "c_dhanam",
+    "name": "Dhanam Neo",
+    "domain": "dhanamneo.in",
+    "status": "passed",
+    "sectors": [
+     "consumer neobank"
+    ],
+    "hq": "Chennai, India",
+    "url": "https://quillwater.affinity.co/companies/c_dhanam",
+    "description": "consumer neobank"
+   },
+   {
+    "id": "c_quickcash",
+    "name": "Quickcash",
+    "domain": "quickcash.in",
+    "status": "passed",
+    "sectors": [
+     "consumer lending for students"
+    ],
+    "hq": "Pune, India",
+    "url": "https://quillwater.affinity.co/companies/c_quickcash",
+    "description": "consumer lending for students"
+   },
+   {
+    "id": "c_org_saffron_peak_capital",
+    "name": "Saffron Peak Capital",
+    "domain": "saffronpeak.vc",
+    "status": "fund",
+    "sectors": [],
+    "hq": null,
+    "url": "https://quillwater.affinity.co/companies/c_org_saffron_peak_capital",
+    "description": "co_investor"
+   },
+   {
+    "id": "c_org_monsoon_arc_ventures",
+    "name": "Monsoon Arc Ventures",
+    "domain": "monsoonarc.vc",
+    "status": "fund",
+    "sectors": [],
+    "hq": null,
+    "url": "https://quillwater.affinity.co/companies/c_org_monsoon_arc_ventures",
+    "description": "co_investor"
+   },
+   {
+    "id": "c_org_bluepeak_partners",
+    "name": "Bluepeak Partners",
+    "domain": "bluepeak.partners",
+    "status": "fund",
+    "sectors": [],
+    "hq": null,
+    "url": "https://quillwater.affinity.co/companies/c_org_bluepeak_partners",
+    "description": "co_investor"
+   },
+   {
+    "id": "c_org_tamarind_capital",
+    "name": "Tamarind Capital",
+    "domain": "tamarind.capital",
+    "status": "fund",
+    "sectors": [],
+    "hq": null,
+    "url": "https://quillwater.affinity.co/companies/c_org_tamarind_capital",
+    "description": "co_investor"
+   },
+   {
+    "id": "c_org_ridgeline_vc",
+    "name": "Ridgeline VC",
+    "domain": "ridgeline.vc",
+    "status": "fund",
+    "sectors": [],
+    "hq": null,
+    "url": "https://quillwater.affinity.co/companies/c_org_ridgeline_vc",
+    "description": "co_investor"
+   },
+   {
+    "id": "c_org_harbourlight_fund",
+    "name": "Harbourlight Fund",
+    "domain": "harbourlight.fund",
+    "status": "fund",
+    "sectors": [],
+    "hq": null,
+    "url": "https://quillwater.affinity.co/companies/c_org_harbourlight_fund",
+    "description": "co_investor"
+   },
+   {
+    "id": "c_org_kalpa_ventures",
+    "name": "Kalpa Ventures",
+    "domain": "kalpa.vc",
+    "status": "fund",
+    "sectors": [],
+    "hq": null,
+    "url": "https://quillwater.affinity.co/companies/c_org_kalpa_ventures",
+    "description": "co_investor"
+   },
+   {
+    "id": "c_org_fjord_fund_of_funds",
+    "name": "Fjord Fund of Funds",
+    "domain": "fjordfof.example",
+    "status": "fund",
+    "sectors": [],
+    "hq": null,
+    "url": "https://quillwater.affinity.co/companies/c_org_fjord_fund_of_funds",
+    "description": "co_investor"
+   },
+   {
+    "id": "c_org_fable_bank",
+    "name": "Fable Bank",
+    "domain": "fablebank.in",
+    "status": "other",
+    "sectors": [],
+    "hq": null,
+    "url": "https://quillwater.affinity.co/companies/c_org_fable_bank",
+    "description": "operator"
+   },
+   {
+    "id": "c_org_coastline_bank",
+    "name": "Coastline Bank",
+    "domain": "coastline.bank",
+    "status": "other",
+    "sectors": [],
+    "hq": null,
+    "url": "https://quillwater.affinity.co/companies/c_org_coastline_bank",
+    "description": "operator"
+   },
+   {
+    "id": "c_org_pinnacle_small_finance_bank",
+    "name": "Pinnacle Small Finance Bank",
+    "domain": "pinnaclesfb.in",
+    "status": "other",
+    "sectors": [],
+    "hq": null,
+    "url": "https://quillwater.affinity.co/companies/c_org_pinnacle_small_finance_bank",
+    "description": "operator"
+   },
+   {
+    "id": "c_org_arbor_insurance",
+    "name": "Arbor Insurance",
+    "domain": "arborinsure.in",
+    "status": "other",
+    "sectors": [],
+    "hq": null,
+    "url": "https://quillwater.affinity.co/companies/c_org_arbor_insurance",
+    "description": "operator"
+   },
+   {
+    "id": "c_org_kaveri_cooperative_bank",
+    "name": "Kaveri Cooperative Bank",
+    "domain": "kavericoop.bank",
+    "status": "other",
+    "sectors": [],
+    "hq": null,
+    "url": "https://quillwater.affinity.co/companies/c_org_kaveri_cooperative_bank",
+    "description": "operator"
+   },
+   {
+    "id": "c_org_ledger_lane_fund_services",
+    "name": "Ledger & Lane Fund Services",
+    "domain": "ledgerlane.fund",
+    "status": "other",
+    "sectors": [],
+    "hq": null,
+    "url": "https://quillwater.affinity.co/companies/c_org_ledger_lane_fund_services",
+    "description": "operator"
+   },
+   {
+    "id": "c_org_kumar_associates",
+    "name": "Kumar & Associates",
+    "domain": "kumarlegal.in",
+    "status": "other",
+    "sectors": [],
+    "hq": null,
+    "url": "https://quillwater.affinity.co/companies/c_org_kumar_associates",
+    "description": "advisor"
+   },
+   {
+    "id": "c_org_talentbridge",
+    "name": "Talentbridge",
+    "domain": "talentbridge.in",
+    "status": "other",
+    "sectors": [],
+    "hq": null,
+    "url": "https://quillwater.affinity.co/companies/c_org_talentbridge",
+    "description": "operator"
+   },
+   {
+    "id": "c_org_upi_builders_forum",
+    "name": "UPI Builders Forum",
+    "domain": "upiforum.org",
+    "status": "other",
+    "sectors": [],
+    "hq": null,
+    "url": "https://quillwater.affinity.co/companies/c_org_upi_builders_forum",
+    "description": "operator"
+   },
+   {
+    "id": "c_org_greenpay_africa",
+    "name": "Greenpay Africa",
+    "domain": "greenpay.example",
+    "status": "other",
+    "sectors": [],
+    "hq": null,
+    "url": "https://quillwater.affinity.co/companies/c_org_greenpay_africa",
+    "description": "operator"
+   },
+   {
+    "id": "c_org_mesh_bank",
+    "name": "Mesh Bank",
+    "domain": "meshbank.in",
+    "status": "other",
+    "sectors": [],
+    "hq": null,
+    "url": "https://quillwater.affinity.co/companies/c_org_mesh_bank",
+    "description": "operator"
+   },
+   {
+    "id": "c_org_zylo_systems",
+    "name": "Zylo Systems",
+    "domain": "zylo.example",
+    "status": "other",
+    "sectors": [],
+    "hq": null,
+    "url": "https://quillwater.affinity.co/companies/c_org_zylo_systems",
+    "description": "operator"
+   },
+   {
+    "id": "c_org_northgate_endowment",
+    "name": "Northgate Endowment",
+    "domain": "northgate.edu.example",
+    "status": "lp",
+    "sectors": [],
+    "hq": null,
+    "url": "https://quillwater.affinity.co/companies/c_org_northgate_endowment",
+    "description": "lp"
+   },
+   {
+    "id": "c_org_banyan_family_office",
+    "name": "Banyan Family Office",
+    "domain": "banyanfo.in",
+    "status": "lp",
+    "sectors": [],
+    "hq": null,
+    "url": "https://quillwater.affinity.co/companies/c_org_banyan_family_office",
+    "description": "lp"
+   },
+   {
+    "id": "c_org_coralstone_pension",
+    "name": "Coralstone Pension",
+    "domain": "coralstone.example",
+    "status": "lp",
+    "sectors": [],
+    "hq": null,
+    "url": "https://quillwater.affinity.co/companies/c_org_coralstone_pension",
+    "description": "lp"
+   },
+   {
+    "id": "c_org_tidewater_foundation",
+    "name": "Tidewater Foundation",
+    "domain": "tidewater.example",
+    "status": "lp",
+    "sectors": [],
+    "hq": null,
+    "url": "https://quillwater.affinity.co/companies/c_org_tidewater_foundation",
+    "description": "lp"
+   },
+   {
+    "id": "c_org_saraswati_family_office",
+    "name": "Saraswati Family Office",
+    "domain": "saraswatifo.in",
+    "status": "lp",
+    "sectors": [],
+    "hq": null,
+    "url": "https://quillwater.affinity.co/companies/c_org_saraswati_family_office",
+    "description": "lp"
+   },
+   {
+    "id": "c_org_lotus_ridge_fof",
+    "name": "Lotus Ridge FoF",
+    "domain": "lotusridge.example",
+    "status": "lp",
+    "sectors": [],
+    "hq": null,
+    "url": "https://quillwater.affinity.co/companies/c_org_lotus_ridge_fof",
+    "description": "lp"
+   },
+   {
+    "id": "c_org_evergrove_capital_partners",
+    "name": "Evergrove Capital Partners",
+    "domain": "evergrove.example",
+    "status": "lp",
+    "sectors": [],
+    "hq": null,
+    "url": "https://quillwater.affinity.co/companies/c_org_evergrove_capital_partners",
+    "description": "lp"
+   },
+   {
+    "id": "c_org_himalaya_holdings",
+    "name": "Himalaya Holdings",
+    "domain": "himalayaholdings.in",
+    "status": "lp",
+    "sectors": [],
+    "hq": null,
+    "url": "https://quillwater.affinity.co/companies/c_org_himalaya_holdings",
+    "description": "lp"
+   },
+   {
+    "id": "c_org_peregrine_trust",
+    "name": "Peregrine Trust",
+    "domain": "peregrinetrust.example",
+    "status": "lp",
+    "sectors": [],
+    "hq": null,
+    "url": "https://quillwater.affinity.co/companies/c_org_peregrine_trust",
+    "description": "lp"
+   },
+   {
+    "id": "c_org_silverline_insurance",
+    "name": "Silverline Insurance",
+    "domain": "silverline.example",
+    "status": "lp",
+    "sectors": [],
+    "hq": null,
+    "url": "https://quillwater.affinity.co/companies/c_org_silverline_insurance",
+    "description": "lp"
+   },
+   {
+    "id": "c_org_granite_peak_endowment",
+    "name": "Granite Peak Endowment",
+    "domain": "granitepeak.example",
+    "status": "lp",
+    "sectors": [],
+    "hq": null,
+    "url": "https://quillwater.affinity.co/companies/c_org_granite_peak_endowment",
+    "description": "lp"
+   },
+   {
+    "id": "c_org_ashoka_angels_collective",
+    "name": "Ashoka Angels Collective",
+    "domain": "ashokaangels.in",
+    "status": "lp",
+    "sectors": [],
+    "hq": null,
+    "url": "https://quillwater.affinity.co/companies/c_org_ashoka_angels_collective",
+    "description": "lp"
+   },
+   {
+    "id": "c_org_marigold_family_office",
+    "name": "Marigold Family Office",
+    "domain": "marigoldfo.in",
+    "status": "lp",
+    "sectors": [],
+    "hq": null,
+    "url": "https://quillwater.affinity.co/companies/c_org_marigold_family_office",
+    "description": "lp"
+   },
+   {
+    "id": "c_org_riverbend_pension",
+    "name": "Riverbend Pension",
+    "domain": "riverbend.example",
+    "status": "lp",
+    "sectors": [],
+    "hq": null,
+    "url": "https://quillwater.affinity.co/companies/c_org_riverbend_pension",
+    "description": "lp"
+   },
+   {
+    "id": "c_org_cedar_pine_family_office",
+    "name": "Cedar & Pine Family Office",
+    "domain": "cedarpine.in",
+    "status": "lp",
+    "sectors": [],
+    "hq": null,
+    "url": "https://quillwater.affinity.co/companies/c_org_cedar_pine_family_office",
+    "description": "lp"
+   }
+  ],
+  "people": [
+   {
+    "id": "P-101",
+    "name": "Vikram Rao",
+    "email": "vikram@orbittreasury.in",
+    "company_id": "c_orbit",
+    "title": "CEO",
+    "url": "https://quillwater.affinity.co/persons/P-101",
+    "strength_by_member": {
+     "aditi@quillwater.vc": 69
+    }
+   },
+   {
+    "id": "P-102",
+    "name": "Lata Krishnan",
+    "email": "lata@orbittreasury.in",
+    "company_id": "c_orbit",
+    "title": "CFO",
+    "url": "https://quillwater.affinity.co/persons/P-102",
+    "strength_by_member": {
+     "aditi@quillwater.vc": 19
+    }
+   },
+   {
+    "id": "P-103",
+    "name": "Neel Bhatt",
+    "email": "neel@kestrelpay.in",
+    "company_id": "c_kestrel",
+    "title": "CEO",
+    "url": "https://quillwater.affinity.co/persons/P-103",
+    "strength_by_member": {
+     "aditi@quillwater.vc": 49
+    }
+   },
+   {
+    "id": "P-104",
+    "name": "Anjali Sen",
+    "email": "anjali@ferrocredit.com",
+    "company_id": "c_ferro",
+    "title": "CEO",
+    "url": "https://quillwater.affinity.co/persons/P-104",
+    "strength_by_member": {
+     "aditi@quillwater.vc": 27,
+     "kabir@quillwater.vc": 33
+    }
+   },
+   {
+    "id": "P-105",
+    "name": "Rahul Sharma",
+    "email": "rahul@tallyfin.com",
+    "company_id": "c_tallyfin",
+    "title": "CEO",
+    "url": "https://quillwater.affinity.co/persons/P-105",
+    "strength_by_member": {
+     "tara@quillwater.vc": 37
+    }
+   },
+   {
+    "id": "P-106",
+    "name": "Imran Qureshi",
+    "email": "imran@saffirekyc.com",
+    "company_id": "c_saffire",
+    "title": "CEO",
+    "url": "https://quillwater.affinity.co/persons/P-106",
+    "strength_by_member": {
+     "tara@quillwater.vc": 20
+    }
+   },
+   {
+    "id": "P-107",
+    "name": "Divya Raman",
+    "email": "divya@nimbuscollect.in",
+    "company_id": "c_nimbus",
+    "title": "CEO",
+    "url": "https://quillwater.affinity.co/persons/P-107",
+    "strength_by_member": {
+     "tara@quillwater.vc": 20
+    }
+   },
+   {
+    "id": "P-108",
+    "name": "Harsh Vora",
+    "email": "harsh@quantarails.com",
+    "company_id": "c_quanta",
+    "title": "CEO",
+    "url": "https://quillwater.affinity.co/persons/P-108",
+    "strength_by_member": {
+     "aditi@quillwater.vc": 30
+    }
+   },
+   {
+    "id": "P-109",
+    "name": "Nisha Grover",
+    "email": "nisha@brightvault.io",
+    "company_id": "c_brightvault",
+    "title": "CEO",
+    "url": "https://quillwater.affinity.co/persons/P-109",
+    "strength_by_member": {
+     "aditi@quillwater.vc": 59
+    }
+   },
+   {
+    "id": "P-110",
+    "name": "Mohan Kulkarni",
+    "email": "mohan@ledgerline.io",
+    "company_id": "c_ledgerline",
+    "title": "CEO",
+    "url": "https://quillwater.affinity.co/persons/P-110",
+    "strength_by_member": {
+     "aditi@quillwater.vc": 52
+    }
+   },
+   {
+    "id": "P-111",
+    "name": "Zara Ahmed",
+    "email": "zara@cardinalrisk.ai",
+    "company_id": "c_cardinal",
+    "title": "CEO",
+    "url": "https://quillwater.affinity.co/persons/P-111",
+    "strength_by_member": {
+     "aditi@quillwater.vc": 14,
+     "kabir@quillwater.vc": 47
+    }
+   },
+   {
+    "id": "P-112",
+    "name": "Karthik Subramanian",
+    "email": "karthik@harborstack.in",
+    "company_id": "c_harbor",
+    "title": "CEO",
+    "url": "https://quillwater.affinity.co/persons/P-112",
+    "strength_by_member": {
+     "tara@quillwater.vc": 16
+    }
+   },
+   {
+    "id": "P-113",
+    "name": "Pooja Malhotra",
+    "email": "pooja@mintrail.in",
+    "company_id": "c_mintrail",
+    "title": "CEO",
+    "url": "https://quillwater.affinity.co/persons/P-113",
+    "strength_by_member": {
+     "tara@quillwater.vc": 16
+    }
+   },
+   {
+    "id": "P-114",
+    "name": "Rhea Khosla",
+    "email": "rhea@paysa.in",
+    "company_id": "c_paysa",
+    "title": "CEO",
+    "url": "https://quillwater.affinity.co/persons/P-114",
+    "strength_by_member": {
+     "rohan@quillwater.vc": 21
+    }
+   },
+   {
+    "id": "P-115",
+    "name": "Aakash Jain",
+    "email": "aakash@coinvault.io",
+    "company_id": "c_coinvault",
+    "title": "CEO",
+    "url": "https://quillwater.affinity.co/persons/P-115",
+    "strength_by_member": {}
+   },
+   {
+    "id": "P-116",
+    "name": "Simran Gill",
+    "email": "simran@glowkart.in",
+    "company_id": "c_glowkart",
+    "title": "CEO",
+    "url": "https://quillwater.affinity.co/persons/P-116",
+    "strength_by_member": {}
+   },
+   {
+    "id": "P-117",
+    "name": "Priya Nair",
+    "email": "priya@ruplink.in",
+    "company_id": "c_ruplink",
+    "title": "CEO",
+    "url": "https://quillwater.affinity.co/persons/P-117",
+    "strength_by_member": {
+     "rohan@quillwater.vc": 17
+    }
+   },
+   {
+    "id": "P-118",
+    "name": "Manish Agarwal",
+    "email": "manish@sutracompliance.com",
+    "company_id": "c_sutra",
+    "title": "CEO",
+    "url": "https://quillwater.affinity.co/persons/P-118",
+    "strength_by_member": {
+     "rohan@quillwater.vc": 6
+    }
+   },
+   {
+    "id": "P-119",
+    "name": "Tanvi Shah",
+    "email": "tanvi@vaultline.in",
+    "company_id": "c_vaultline",
+    "title": "CEO",
+    "url": "https://quillwater.affinity.co/persons/P-119",
+    "strength_by_member": {
+     "rohan@quillwater.vc": 21
+    }
+   },
+   {
+    "id": "P-120",
+    "name": "Gaurav Mehta",
+    "email": "gaurav@nexalend.com",
+    "company_id": "c_nexa",
+    "title": "CEO",
+    "url": "https://quillwater.affinity.co/persons/P-120",
+    "strength_by_member": {
+     "rohan@quillwater.vc": 18
+    }
+   },
+   {
+    "id": "P-121",
+    "name": "Ritu Chawla",
+    "email": "ritu@clearpathrecon.com",
+    "company_id": "c_clearpath",
+    "title": "CEO",
+    "url": "https://quillwater.affinity.co/persons/P-121",
+    "strength_by_member": {
+     "kabir@quillwater.vc": 13,
+     "rohan@quillwater.vc": 17
+    }
+   },
+   {
+    "id": "P-122",
+    "name": "Suresh Meena",
+    "email": "suresh@ankurstack.in",
+    "company_id": "c_ankur",
+    "title": "CEO",
+    "url": "https://quillwater.affinity.co/persons/P-122",
+    "strength_by_member": {
+     "rohan@quillwater.vc": 6
+    }
+   },
+   {
+    "id": "P-123",
+    "name": "Jordan Lee",
+    "email": "jordan@fintegrate.dev",
+    "company_id": "c_fintegrate",
+    "title": "CEO",
+    "url": "https://quillwater.affinity.co/persons/P-123",
+    "strength_by_member": {
+     "rohan@quillwater.vc": 20
+    }
+   },
+   {
+    "id": "P-124",
+    "name": "Ravi Iyengar",
+    "email": "ravi@fintegrate.dev",
+    "company_id": "c_fintegrate",
+    "title": "CTO",
+    "url": "https://quillwater.affinity.co/persons/P-124",
+    "strength_by_member": {
+     "rohan@quillwater.vc": 15
+    }
+   },
+   {
+    "id": "P-125",
+    "name": "Farah Kazi",
+    "email": "farah@bharatrisk.in",
+    "company_id": "c_bharatrisk",
+    "title": "CEO",
+    "url": "https://quillwater.affinity.co/persons/P-125",
+    "strength_by_member": {
+     "rohan@quillwater.vc": 18
+    }
+   },
+   {
+    "id": "P-126",
+    "name": "Farhan Ali",
+    "email": "farhan@zenotreasury.com",
+    "company_id": "c_zeno",
+    "title": "CEO",
+    "url": "https://quillwater.affinity.co/persons/P-126",
+    "strength_by_member": {
+     "meera@quillwater.vc": 35
+    }
+   },
+   {
+    "id": "P-127",
+    "name": "Kavya Reddy",
+    "email": "kavya@pillarkyc.in",
+    "company_id": "c_pillar",
+    "title": "CEO",
+    "url": "https://quillwater.affinity.co/persons/P-127",
+    "strength_by_member": {
+     "meera@quillwater.vc": 21
+    }
+   },
+   {
+    "id": "P-128",
+    "name": "Omkar Patil",
+    "email": "omkar@rivuletpay.com",
+    "company_id": "c_rivulet",
+    "title": "CEO",
+    "url": "https://quillwater.affinity.co/persons/P-128",
+    "strength_by_member": {
+     "meera@quillwater.vc": 36
+    }
+   },
+   {
+    "id": "P-129",
+    "name": "Lakshmi Prasad",
+    "email": "lakshmi@deccanlend.cloud",
+    "company_id": "c_deccan",
+    "title": "CEO",
+    "url": "https://quillwater.affinity.co/persons/P-129",
+    "strength_by_member": {
+     "meera@quillwater.vc": 18
+    }
+   },
+   {
+    "id": "P-130",
+    "name": "Yash Arora",
+    "email": "yash@asteruw.ai",
+    "company_id": "c_aster",
+    "title": "CEO",
+    "url": "https://quillwater.affinity.co/persons/P-130",
+    "strength_by_member": {
+     "meera@quillwater.vc": 20
+    }
+   },
+   {
+    "id": "P-131",
+    "name": "Debashish Roy",
+    "email": "debashish@copperleaf.in",
+    "company_id": "c_copperleaf",
+    "title": "CEO",
+    "url": "https://quillwater.affinity.co/persons/P-131",
+    "strength_by_member": {
+     "meera@quillwater.vc": 20
+    }
+   },
+   {
+    "id": "P-132",
+    "name": "Shreya Venkat",
+    "email": "shreya@haloreconcile.com",
+    "company_id": "c_halo",
+    "title": "CEO",
+    "url": "https://quillwater.affinity.co/persons/P-132",
+    "strength_by_member": {
+     "meera@quillwater.vc": 21
+    }
+   },
+   {
+    "id": "P-133",
+    "name": "Neha Kulkarni",
+    "email": "neha@trellisapi.in",
+    "company_id": "c_trellis",
+    "title": "CEO",
+    "url": "https://quillwater.affinity.co/persons/P-133",
+    "strength_by_member": {
+     "meera@quillwater.vc": 53
+    }
+   },
+   {
+    "id": "P-134",
+    "name": "Leena Dsouza",
+    "email": "leena@embercredit.in",
+    "company_id": "c_ember",
+    "title": "CEO",
+    "url": "https://quillwater.affinity.co/persons/P-134",
+    "strength_by_member": {
+     "meera@quillwater.vc": 36
+    }
+   },
+   {
+    "id": "P-135",
+    "name": "Aman Gupta",
+    "email": "aman@northwindstack.com",
+    "company_id": "c_northwind",
+    "title": "CEO",
+    "url": "https://quillwater.affinity.co/persons/P-135",
+    "strength_by_member": {
+     "meera@quillwater.vc": 32
+    }
+   },
+   {
+    "id": "P-136",
+    "name": "Abhishek Joshi",
+    "email": "abhishek.joshi@sablefraud.ai",
+    "company_id": "c_sable",
+    "title": "CEO",
+    "url": "https://quillwater.affinity.co/persons/P-136",
+    "strength_by_member": {
+     "meera@quillwater.vc": 54
+    }
+   },
+   {
+    "id": "P-137",
+    "name": "Tushar Bansal",
+    "email": "tushar@juniperrails.in",
+    "company_id": "c_juniper",
+    "title": "CEO",
+    "url": "https://quillwater.affinity.co/persons/P-137",
+    "strength_by_member": {
+     "meera@quillwater.vc": 32
+    }
+   },
+   {
+    "id": "P-138",
+    "name": "Ira Saxena",
+    "email": "ira@mosaicwealth.io",
+    "company_id": "c_mosaic",
+    "title": "CEO",
+    "url": "https://quillwater.affinity.co/persons/P-138",
+    "strength_by_member": {
+     "meera@quillwater.vc": 35
+    }
+   },
+   {
+    "id": "P-139",
+    "name": "Maya Chen",
+    "email": "maya@lumenledger.com",
+    "company_id": "c_lumen",
+    "title": "CEO",
+    "url": "https://quillwater.affinity.co/persons/P-139",
+    "strength_by_member": {
+     "kabir@quillwater.vc": 74
+    }
+   },
+   {
+    "id": "P-140",
+    "name": "Dev Pillai",
+    "email": "dev@lumenledger.com",
+    "company_id": "c_lumen",
+    "title": "CTO",
+    "url": "https://quillwater.affinity.co/persons/P-140",
+    "strength_by_member": {
+     "kabir@quillwater.vc": 31
+    }
+   },
+   {
+    "id": "P-141",
+    "name": "Siddharth Menon",
+    "email": "siddharth@kitepay.in",
+    "company_id": "c_kite",
+    "title": "CEO",
+    "url": "https://quillwater.affinity.co/persons/P-141",
+    "strength_by_member": {
+     "kabir@quillwater.vc": 57
+    }
+   },
+   {
+    "id": "P-142",
+    "name": "Arun Pillai",
+    "email": "arun@kitepay.in",
+    "company_id": "c_kite",
+    "title": "CTO",
+    "url": "https://quillwater.affinity.co/persons/P-142",
+    "strength_by_member": {
+     "kabir@quillwater.vc": 32
+    }
+   },
+   {
+    "id": "P-143",
+    "name": "Rohit Saluja",
+    "email": "rohit@vertexcards.in",
+    "company_id": "c_vertex",
+    "title": "CEO",
+    "url": "https://quillwater.affinity.co/persons/P-143",
+    "strength_by_member": {
+     "kabir@quillwater.vc": 46
+    }
+   },
+   {
+    "id": "P-144",
+    "name": "Meghna Rao",
+    "email": "meghna@banyanrisk.com",
+    "company_id": "c_banyanrisk",
+    "title": "CEO",
+    "url": "https://quillwater.affinity.co/persons/P-144",
+    "strength_by_member": {
+     "kabir@quillwater.vc": 35
+    }
+   },
+   {
+    "id": "P-145",
+    "name": "Anita Dalal",
+    "email": "anita@cobaltaa.in",
+    "company_id": "c_cobalt",
+    "title": "CEO",
+    "url": "https://quillwater.affinity.co/persons/P-145",
+    "strength_by_member": {
+     "kabir@quillwater.vc": 35
+    }
+   },
+   {
+    "id": "P-146",
+    "name": "Sanjay Iyer",
+    "email": "sanjay@prismlend.com",
+    "company_id": "c_prism",
+    "title": "CEO",
+    "url": "https://quillwater.affinity.co/persons/P-146",
+    "strength_by_member": {
+     "kabir@quillwater.vc": 53
+    }
+   },
+   {
+    "id": "P-147",
+    "name": "Katherine Fernandes",
+    "email": "katherine@ironwoodcomply.com",
+    "company_id": "c_ironwood",
+    "title": "CEO",
+    "url": "https://quillwater.affinity.co/persons/P-147",
+    "strength_by_member": {
+     "aditi@quillwater.vc": 51
+    }
+   },
+   {
+    "id": "P-148",
+    "name": "Varun Khanna",
+    "email": "varun@solacetreasury.in",
+    "company_id": "c_solace",
+    "title": "CEO",
+    "url": "https://quillwater.affinity.co/persons/P-148",
+    "strength_by_member": {
+     "aditi@quillwater.vc": 36
+    }
+   },
+   {
+    "id": "P-149",
+    "name": "Arjun Khurana",
+    "email": "arjun@gravitypayouts.com",
+    "company_id": "c_gravity",
+    "title": "CEO",
+    "url": "https://quillwater.affinity.co/persons/P-149",
+    "strength_by_member": {
+     "aditi@quillwater.vc": 54
+    }
+   },
+   {
+    "id": "P-150",
+    "name": "Ishaan Verma",
+    "email": "ishaan@atlassettle.com",
+    "company_id": "c_atlas",
+    "title": "CEO",
+    "url": "https://quillwater.affinity.co/persons/P-150",
+    "strength_by_member": {
+     "aditi@quillwater.vc": 77
+    }
+   },
+   {
+    "id": "P-151",
+    "name": "Rahul Basu",
+    "email": "rahul@beaconrails.in",
+    "company_id": "c_beacon",
+    "title": "CEO",
+    "url": "https://quillwater.affinity.co/persons/P-151",
+    "strength_by_member": {
+     "aditi@quillwater.vc": 38
+    }
+   },
+   {
+    "id": "P-152",
+    "name": "Natasha Pinto",
+    "email": "natasha@orchidcards.in",
+    "company_id": "c_orchid",
+    "title": "CEO",
+    "url": "https://quillwater.affinity.co/persons/P-152",
+    "strength_by_member": {
+     "aditi@quillwater.vc": 35
+    }
+   },
+   {
+    "id": "P-153",
+    "name": "Akhil Menon",
+    "email": "akhil@sterlingaa.com",
+    "company_id": "c_sterling",
+    "title": "CEO",
+    "url": "https://quillwater.affinity.co/persons/P-153",
+    "strength_by_member": {
+     "aditi@quillwater.vc": 30
+    }
+   },
+   {
+    "id": "P-154",
+    "name": "Rohan Mittal",
+    "email": "rohan@fizzbuy.in",
+    "company_id": "c_fizzbuy",
+    "title": "CEO",
+    "url": "https://quillwater.affinity.co/persons/P-154",
+    "strength_by_member": {}
+   },
+   {
+    "id": "P-155",
+    "name": "Kunal Bajaj",
+    "email": "kunal@moonlend.in",
+    "company_id": "c_moonlend",
+    "title": "CEO",
+    "url": "https://quillwater.affinity.co/persons/P-155",
+    "strength_by_member": {}
+   },
+   {
+    "id": "P-156",
+    "name": "Leo Tan",
+    "email": "leo@tokenswap.xyz",
+    "company_id": "c_tokenswap",
+    "title": "CEO",
+    "url": "https://quillwater.affinity.co/persons/P-156",
+    "strength_by_member": {}
+   },
+   {
+    "id": "P-157",
+    "name": "Sameer Kohli",
+    "email": "sameer@parcelpro.in",
+    "company_id": "c_parcelpro",
+    "title": "CEO",
+    "url": "https://quillwater.affinity.co/persons/P-157",
+    "strength_by_member": {}
+   },
+   {
+    "id": "P-158",
+    "name": "Geetha Raman",
+    "email": "geetha@dhanamneo.in",
+    "company_id": "c_dhanam",
+    "title": "CEO",
+    "url": "https://quillwater.affinity.co/persons/P-158",
+    "strength_by_member": {}
+   },
+   {
+    "id": "P-159",
+    "name": "Varsha Lal",
+    "email": "varsha@quickcash.in",
+    "company_id": "c_quickcash",
+    "title": "CEO",
+    "url": "https://quillwater.affinity.co/persons/P-159",
+    "strength_by_member": {}
+   },
+   {
+    "id": "P-160",
+    "name": "Dev Malhotra",
+    "email": "dev@saffronpeak.vc",
+    "company_id": "c_org_saffron_peak_capital",
+    "title": "Partner",
+    "url": "https://quillwater.affinity.co/persons/P-160",
+    "strength_by_member": {
+     "aditi@quillwater.vc": 46
+    }
+   },
+   {
+    "id": "P-161",
+    "name": "Ana Rodrigues",
+    "email": "ana@saffronpeak.vc",
+    "company_id": "c_org_saffron_peak_capital",
+    "title": "Principal",
+    "url": "https://quillwater.affinity.co/persons/P-161",
+    "strength_by_member": {}
+   },
+   {
+    "id": "P-162",
+    "name": "Hemant Joshi",
+    "email": "hemant@monsoonarc.vc",
+    "company_id": "c_org_monsoon_arc_ventures",
+    "title": "Partner",
+    "url": "https://quillwater.affinity.co/persons/P-162",
+    "strength_by_member": {
+     "kabir@quillwater.vc": 35
+    }
+   },
+   {
+    "id": "P-163",
+    "name": "Claire Dubois",
+    "email": "claire@bluepeak.partners",
+    "company_id": "c_org_bluepeak_partners",
+    "title": "Partner",
+    "url": "https://quillwater.affinity.co/persons/P-163",
+    "strength_by_member": {
+     "meera@quillwater.vc": 18
+    }
+   },
+   {
+    "id": "P-164",
+    "name": "Sunil Batra",
+    "email": "sunil@tamarind.capital",
+    "company_id": "c_org_tamarind_capital",
+    "title": "Managing Partner",
+    "url": "https://quillwater.affinity.co/persons/P-164",
+    "strength_by_member": {
+     "aditi@quillwater.vc": 31
+    }
+   },
+   {
+    "id": "P-165",
+    "name": "Ruchi Anand",
+    "email": "ruchi@tamarind.capital",
+    "company_id": "c_org_tamarind_capital",
+    "title": "VP",
+    "url": "https://quillwater.affinity.co/persons/P-165",
+    "strength_by_member": {
+     "kabir@quillwater.vc": 17
+    }
+   },
+   {
+    "id": "P-166",
+    "name": "Michael Okafor",
+    "email": "michael@ridgeline.vc",
+    "company_id": "c_org_ridgeline_vc",
+    "title": "Partner",
+    "url": "https://quillwater.affinity.co/persons/P-166",
+    "strength_by_member": {
+     "vikram@quillwater.vc": 16
+    }
+   },
+   {
+    "id": "P-167",
+    "name": "Joy Mathew",
+    "email": "joy@harbourlight.fund",
+    "company_id": "c_org_harbourlight_fund",
+    "title": "Partner",
+    "url": "https://quillwater.affinity.co/persons/P-167",
+    "strength_by_member": {
+     "kabir@quillwater.vc": 17
+    }
+   },
+   {
+    "id": "P-168",
+    "name": "Prakash Iyer",
+    "email": "prakash@kalpa.vc",
+    "company_id": "c_org_kalpa_ventures",
+    "title": "Partner",
+    "url": "https://quillwater.affinity.co/persons/P-168",
+    "strength_by_member": {
+     "meera@quillwater.vc": 17
+    }
+   },
+   {
+    "id": "P-169",
+    "name": "Emma Lindqvist",
+    "email": "emma@fjordfof.example",
+    "company_id": "c_org_fjord_fund_of_funds",
+    "title": "Investment Director",
+    "url": "https://quillwater.affinity.co/persons/P-169",
+    "strength_by_member": {}
+   },
+   {
+    "id": "P-170",
+    "name": "Raj Malhotra",
+    "email": "raj.malhotra@fablebank.in",
+    "company_id": "c_org_fable_bank",
+    "title": "Head of Digital Partnerships",
+    "url": "https://quillwater.affinity.co/persons/P-170",
+    "strength_by_member": {
+     "aditi@quillwater.vc": 49
+    }
+   },
+   {
+    "id": "P-171",
+    "name": "Rahul Sharma",
+    "email": "rahul.sharma@fablebank.in",
+    "company_id": "c_org_fable_bank",
+    "title": "VP Payments",
+    "url": "https://quillwater.affinity.co/persons/P-171",
+    "strength_by_member": {}
+   },
+   {
+    "id": "P-172",
+    "name": "Omar Siddiqui",
+    "email": "omar@coastline.bank",
+    "company_id": "c_org_coastline_bank",
+    "title": "Chief Digital Officer",
+    "url": "https://quillwater.affinity.co/persons/P-172",
+    "strength_by_member": {
+     "aditi@quillwater.vc": 22
+    }
+   },
+   {
+    "id": "P-173",
+    "name": "Pinki Das",
+    "email": "pinki@pinnaclesfb.in",
+    "company_id": "c_org_pinnacle_small_finance_bank",
+    "title": "Head of Lending",
+    "url": "https://quillwater.affinity.co/persons/P-173",
+    "strength_by_member": {
+     "kabir@quillwater.vc": 28
+    }
+   },
+   {
+    "id": "P-174",
+    "name": "Vivek Chandra",
+    "email": "vivek@arborinsure.in",
+    "company_id": "c_org_arbor_insurance",
+    "title": "CTO",
+    "url": "https://quillwater.affinity.co/persons/P-174",
+    "strength_by_member": {
+     "tara@quillwater.vc": 17
+    }
+   },
+   {
+    "id": "P-175",
+    "name": "Deepa Rangan",
+    "email": "deepa@kavericoop.bank",
+    "company_id": "c_org_kaveri_cooperative_bank",
+    "title": "General Manager",
+    "url": "https://quillwater.affinity.co/persons/P-175",
+    "strength_by_member": {
+     "tara@quillwater.vc": 14
+    }
+   },
+   {
+    "id": "P-176",
+    "name": "Tom Becker",
+    "email": "tom@ledgerlane.fund",
+    "company_id": "c_org_ledger_lane_fund_services",
+    "title": "Director",
+    "url": "https://quillwater.affinity.co/persons/P-176",
+    "strength_by_member": {
+     "vikram@quillwater.vc": 59
+    }
+   },
+   {
+    "id": "P-177",
+    "name": "Sana Mirza",
+    "email": "sana@ledgerlane.fund",
+    "company_id": "c_org_ledger_lane_fund_services",
+    "title": "Fund Accountant",
+    "url": "https://quillwater.affinity.co/persons/P-177",
+    "strength_by_member": {
+     "vikram@quillwater.vc": 26
+    }
+   },
+   {
+    "id": "P-178",
+    "name": "Arvind Kumar",
+    "email": "arvind@kumarlegal.in",
+    "company_id": "c_org_kumar_associates",
+    "title": "Partner",
+    "url": "https://quillwater.affinity.co/persons/P-178",
+    "strength_by_member": {
+     "aditi@quillwater.vc": 23
+    }
+   },
+   {
+    "id": "P-179",
+    "name": "Fatima Sheikh",
+    "email": "fatima@talentbridge.in",
+    "company_id": "c_org_talentbridge",
+    "title": "Founder",
+    "url": "https://quillwater.affinity.co/persons/P-179",
+    "strength_by_member": {
+     "tara@quillwater.vc": 37
+    }
+   },
+   {
+    "id": "P-180",
+    "name": "George Thomas",
+    "email": "george.thomas@gmail.com",
+    "company_id": null,
+    "title": "CFO candidate",
+    "url": "https://quillwater.affinity.co/persons/P-180",
+    "strength_by_member": {
+     "tara@quillwater.vc": 17
+    }
+   },
+   {
+    "id": "P-181",
+    "name": "Swati Kulkarni",
+    "email": "swati.kulkarni@gmail.com",
+    "company_id": null,
+    "title": "CFO candidate",
+    "url": "https://quillwater.affinity.co/persons/P-181",
+    "strength_by_member": {
+     "tara@quillwater.vc": 16
+    }
+   },
+   {
+    "id": "P-182",
+    "name": "Nikita Bhosle",
+    "email": "nikita@upiforum.org",
+    "company_id": "c_org_upi_builders_forum",
+    "title": "Program Lead",
+    "url": "https://quillwater.affinity.co/persons/P-182",
+    "strength_by_member": {
+     "rohan@quillwater.vc": 18
+    }
+   },
+   {
+    "id": "P-183",
+    "name": "Helen Gomes",
+    "email": "helen@greenpay.example",
+    "company_id": "c_org_greenpay_africa",
+    "title": "COO",
+    "url": "https://quillwater.affinity.co/persons/P-183",
+    "strength_by_member": {}
+   },
+   {
+    "id": "P-184",
+    "name": "Aditya Bhat",
+    "email": "aditya@meshbank.in",
+    "company_id": "c_org_mesh_bank",
+    "title": "Head of Partnerships",
+    "url": "https://quillwater.affinity.co/persons/P-184",
+    "strength_by_member": {}
+   },
+   {
+    "id": "P-185",
+    "name": "Ravi Thakur",
+    "email": "ravi@zylo.example",
+    "company_id": "c_org_zylo_systems",
+    "title": "CEO",
+    "url": "https://quillwater.affinity.co/persons/P-185",
+    "strength_by_member": {}
+   },
+   {
+    "id": "P-186",
+    "name": "Helen Park",
+    "email": "helen.park@northgate.edu.example",
+    "company_id": "c_org_northgate_endowment",
+    "title": "Director, Private Investments",
+    "url": "https://quillwater.affinity.co/persons/P-186",
+    "strength_by_member": {
+     "vikram@quillwater.vc": 17
+    }
+   },
+   {
+    "id": "P-187",
+    "name": "Kunal Shetty",
+    "email": "kunal@banyanfo.in",
+    "company_id": "c_org_banyan_family_office",
+    "title": "Principal",
+    "url": "https://quillwater.affinity.co/persons/P-187",
+    "strength_by_member": {
+     "aditi@quillwater.vc": 25,
+     "vikram@quillwater.vc": 11
+    }
+   },
+   {
+    "id": "P-188",
+    "name": "Marcus Hale",
+    "email": "marcus@coralstone.example",
+    "company_id": "c_org_coralstone_pension",
+    "title": "Head of PE",
+    "url": "https://quillwater.affinity.co/persons/P-188",
+    "strength_by_member": {
+     "aditi@quillwater.vc": 18,
+     "vikram@quillwater.vc": 15
+    }
+   },
+   {
+    "id": "P-189",
+    "name": "Ingrid Sorensen",
+    "email": "ingrid@tidewater.example",
+    "company_id": "c_org_tidewater_foundation",
+    "title": "Program Officer",
+    "url": "https://quillwater.affinity.co/persons/P-189",
+    "strength_by_member": {
+     "vikram@quillwater.vc": 10
+    }
+   },
+   {
+    "id": "P-190",
+    "name": "Anand Saraswat",
+    "email": "anand@saraswatifo.in",
+    "company_id": "c_org_saraswati_family_office",
+    "title": "CIO",
+    "url": "https://quillwater.affinity.co/persons/P-190",
+    "strength_by_member": {
+     "vikram@quillwater.vc": 16
+    }
+   },
+   {
+    "id": "P-191",
+    "name": "Lin Wei",
+    "email": "lin@lotusridge.example",
+    "company_id": "c_org_lotus_ridge_fof",
+    "title": "Partner",
+    "url": "https://quillwater.affinity.co/persons/P-191",
+    "strength_by_member": {
+     "vikram@quillwater.vc": 15
+    }
+   },
+   {
+    "id": "P-192",
+    "name": "Olivia Grant",
+    "email": "olivia@evergrove.example",
+    "company_id": "c_org_evergrove_capital_partners",
+    "title": "Director",
+    "url": "https://quillwater.affinity.co/persons/P-192",
+    "strength_by_member": {
+     "vikram@quillwater.vc": 14
+    }
+   },
+   {
+    "id": "P-193",
+    "name": "Rakesh Bhandari",
+    "email": "rakesh@himalayaholdings.in",
+    "company_id": "c_org_himalaya_holdings",
+    "title": "Managing Director",
+    "url": "https://quillwater.affinity.co/persons/P-193",
+    "strength_by_member": {
+     "vikram@quillwater.vc": 17
+    }
+   },
+   {
+    "id": "P-194",
+    "name": "Peter Quinn",
+    "email": "peter@peregrinetrust.example",
+    "company_id": "c_org_peregrine_trust",
+    "title": "Trustee",
+    "url": "https://quillwater.affinity.co/persons/P-194",
+    "strength_by_member": {
+     "vikram@quillwater.vc": 11
+    }
+   },
+   {
+    "id": "P-195",
+    "name": "Sofia Martins",
+    "email": "sofia@silverline.example",
+    "company_id": "c_org_silverline_insurance",
+    "title": "Head of Alternatives",
+    "url": "https://quillwater.affinity.co/persons/P-195",
+    "strength_by_member": {
+     "vikram@quillwater.vc": 14
+    }
+   },
+   {
+    "id": "P-196",
+    "name": "Grant Hollis",
+    "email": "grant@granitepeak.example",
+    "company_id": "c_org_granite_peak_endowment",
+    "title": "Director",
+    "url": "https://quillwater.affinity.co/persons/P-196",
+    "strength_by_member": {
+     "vikram@quillwater.vc": 14
+    }
+   },
+   {
+    "id": "P-197",
+    "name": "Ashok Menon",
+    "email": "ashok@ashokaangels.in",
+    "company_id": "c_org_ashoka_angels_collective",
+    "title": "Lead",
+    "url": "https://quillwater.affinity.co/persons/P-197",
+    "strength_by_member": {
+     "vikram@quillwater.vc": 16
+    }
+   },
+   {
+    "id": "P-198",
+    "name": "Meenal Kapadia",
+    "email": "meenal@marigoldfo.in",
+    "company_id": "c_org_marigold_family_office",
+    "title": "Principal",
+    "url": "https://quillwater.affinity.co/persons/P-198",
+    "strength_by_member": {
+     "vikram@quillwater.vc": 15
+    }
+   },
+   {
+    "id": "P-199",
+    "name": "David Brennan",
+    "email": "david@riverbend.example",
+    "company_id": "c_org_riverbend_pension",
+    "title": "PE Lead",
+    "url": "https://quillwater.affinity.co/persons/P-199",
+    "strength_by_member": {
+     "vikram@quillwater.vc": 14
+    }
+   },
+   {
+    "id": "P-200",
+    "name": "Chitra Raghavan",
+    "email": "chitra@cedarpine.in",
+    "company_id": "c_org_cedar_pine_family_office",
+    "title": "Partner",
+    "url": "https://quillwater.affinity.co/persons/P-200",
+    "strength_by_member": {
+     "vikram@quillwater.vc": 16
+    }
+   }
+  ],
+  "deals": [
+   {
+    "id": "d_paysa",
+    "company_id": "c_paysa",
+    "company_name": "Paysa Labs",
+    "stage": "Inbound",
+    "stage_entered": "2026-10-21",
+    "owner": "rohan@quillwater.vc",
+    "round": "Seed",
+    "raise_usd": 1800000,
+    "next_step": null,
+    "next_step_due": null,
+    "last_contact": "2026-10-21",
+    "quiet": false,
+    "url": "https://quillwater.affinity.co/opportunities/d_paysa"
+   },
+   {
+    "id": "d_coinvault",
+    "company_id": "c_coinvault",
+    "company_name": "Coinvault Exchange",
+    "stage": "Inbound",
+    "stage_entered": "2026-10-20",
+    "owner": "rohan@quillwater.vc",
+    "round": "Seed",
+    "raise_usd": 3000000,
+    "next_step": null,
+    "next_step_due": null,
+    "last_contact": "2026-10-20",
+    "quiet": false,
+    "url": "https://quillwater.affinity.co/opportunities/d_coinvault"
+   },
+   {
+    "id": "d_glowkart",
+    "company_id": "c_glowkart",
+    "company_name": "Glowkart",
+    "stage": "Inbound",
+    "stage_entered": "2026-10-21",
+    "owner": "rohan@quillwater.vc",
+    "round": "Seed",
+    "raise_usd": 2000000,
+    "next_step": null,
+    "next_step_due": null,
+    "last_contact": "2026-10-21",
+    "quiet": false,
+    "url": "https://quillwater.affinity.co/opportunities/d_glowkart"
+   },
+   {
+    "id": "d_ruplink",
+    "company_id": "c_ruplink",
+    "company_name": "Ruplink",
+    "stage": "Inbound",
+    "stage_entered": "2026-10-17",
+    "owner": "rohan@quillwater.vc",
+    "round": "Pre-seed",
+    "raise_usd": 800000,
+    "next_step": null,
+    "next_step_due": null,
+    "last_contact": "2026-10-17",
+    "quiet": false,
+    "url": "https://quillwater.affinity.co/opportunities/d_ruplink"
+   },
+   {
+    "id": "d_sutra",
+    "company_id": "c_sutra",
+    "company_name": "Sutra Compliance",
+    "stage": "Inbound",
+    "stage_entered": "2026-10-20",
+    "owner": "rohan@quillwater.vc",
+    "round": "Seed",
+    "raise_usd": 1500000,
+    "next_step": null,
+    "next_step_due": null,
+    "last_contact": "2026-10-20",
+    "quiet": false,
+    "url": "https://quillwater.affinity.co/opportunities/d_sutra"
+   },
+   {
+    "id": "d_vaultline",
+    "company_id": "c_vaultline",
+    "company_name": "Vaultline",
+    "stage": "Screening",
+    "stage_entered": "2026-10-18",
+    "owner": "rohan@quillwater.vc",
+    "round": "Seed",
+    "raise_usd": 2000000,
+    "next_step": "Screening call with founder",
+    "next_step_due": "2026-10-24",
+    "last_contact": "2026-10-19",
+    "quiet": false,
+    "url": "https://quillwater.affinity.co/opportunities/d_vaultline"
+   },
+   {
+    "id": "d_nexa",
+    "company_id": "c_nexa",
+    "company_name": "Nexa Lend OS",
+    "stage": "Screening",
+    "stage_entered": "2026-10-19",
+    "owner": "rohan@quillwater.vc",
+    "round": "Seed",
+    "raise_usd": 2500000,
+    "next_step": "Read data room",
+    "next_step_due": "2026-10-25",
+    "last_contact": "2026-10-20",
+    "quiet": false,
+    "url": "https://quillwater.affinity.co/opportunities/d_nexa"
+   },
+   {
+    "id": "d_clearpath",
+    "company_id": "c_clearpath",
+    "company_name": "Clearpath Recon",
+    "stage": "Screening",
+    "stage_entered": "2026-10-11",
+    "owner": "rohan@quillwater.vc",
+    "round": "Seed",
+    "raise_usd": 1500000,
+    "next_step": "Decide on first meeting",
+    "next_step_due": "2026-10-24",
+    "last_contact": "2026-10-18",
+    "quiet": false,
+    "url": "https://quillwater.affinity.co/opportunities/d_clearpath"
+   },
+   {
+    "id": "d_ankur",
+    "company_id": "c_ankur",
+    "company_name": "Ankur Credit Stack",
+    "stage": "Screening",
+    "stage_entered": "2026-10-20",
+    "owner": "rohan@quillwater.vc",
+    "round": "Pre-seed",
+    "raise_usd": 700000,
+    "next_step": "Book intro call",
+    "next_step_due": "2026-10-26",
+    "last_contact": "2026-10-20",
+    "quiet": false,
+    "url": "https://quillwater.affinity.co/opportunities/d_ankur"
+   },
+   {
+    "id": "d_fintegrate",
+    "company_id": "c_fintegrate",
+    "company_name": "Fintegrate",
+    "stage": "Screening",
+    "stage_entered": "2026-10-17",
+    "owner": "rohan@quillwater.vc",
+    "round": "Seed",
+    "raise_usd": 3000000,
+    "next_step": "Customer reference check",
+    "next_step_due": "2026-10-25",
+    "last_contact": "2026-10-19",
+    "quiet": false,
+    "url": "https://quillwater.affinity.co/opportunities/d_fintegrate"
+   },
+   {
+    "id": "d_bharatrisk",
+    "company_id": "c_bharatrisk",
+    "company_name": "Bharat Risk Labs",
+    "stage": "Screening",
+    "stage_entered": "2026-10-16",
+    "owner": "rohan@quillwater.vc",
+    "round": "Seed",
+    "raise_usd": 1200000,
+    "next_step": "Screening memo",
+    "next_step_due": "2026-10-23",
+    "last_contact": "2026-10-20",
+    "quiet": false,
+    "url": "https://quillwater.affinity.co/opportunities/d_bharatrisk"
+   },
+   {
+    "id": "d_zeno",
+    "company_id": "c_zeno",
+    "company_name": "Zeno Treasury",
+    "stage": "First Meeting",
+    "stage_entered": "2026-10-18",
+    "owner": "meera@quillwater.vc",
+    "round": "Seed",
+    "raise_usd": 2000000,
+    "next_step": "Second meeting with CTO",
+    "next_step_due": "2026-10-25",
+    "last_contact": "2026-10-19",
+    "quiet": false,
+    "url": "https://quillwater.affinity.co/opportunities/d_zeno"
+   },
+   {
+    "id": "d_pillar",
+    "company_id": "c_pillar",
+    "company_name": "Pillar KYC",
+    "stage": "First Meeting",
+    "stage_entered": "2026-10-19",
+    "owner": "meera@quillwater.vc",
+    "round": "Seed",
+    "raise_usd": 1500000,
+    "next_step": "Product demo",
+    "next_step_due": "2026-10-26",
+    "last_contact": "2026-10-20",
+    "quiet": false,
+    "url": "https://quillwater.affinity.co/opportunities/d_pillar"
+   },
+   {
+    "id": "d_rivulet",
+    "company_id": "c_rivulet",
+    "company_name": "Rivulet Payments",
+    "stage": "First Meeting",
+    "stage_entered": "2026-10-17",
+    "owner": "meera@quillwater.vc",
+    "round": "Seed",
+    "raise_usd": 3000000,
+    "next_step": "Second meeting",
+    "next_step_due": "2026-10-24",
+    "last_contact": "2026-10-19",
+    "quiet": false,
+    "url": "https://quillwater.affinity.co/opportunities/d_rivulet"
+   },
+   {
+    "id": "d_deccan",
+    "company_id": "c_deccan",
+    "company_name": "Deccan Lend Cloud",
+    "stage": "First Meeting",
+    "stage_entered": "2026-10-20",
+    "owner": "meera@quillwater.vc",
+    "round": "Pre-seed",
+    "raise_usd": 900000,
+    "next_step": "Founder reference calls",
+    "next_step_due": "2026-10-27",
+    "last_contact": "2026-10-20",
+    "quiet": false,
+    "url": "https://quillwater.affinity.co/opportunities/d_deccan"
+   },
+   {
+    "id": "d_aster",
+    "company_id": "c_aster",
+    "company_name": "Aster Underwrite",
+    "stage": "First Meeting",
+    "stage_entered": "2026-10-16",
+    "owner": "meera@quillwater.vc",
+    "round": "Seed",
+    "raise_usd": 2200000,
+    "next_step": "Model walkthrough",
+    "next_step_due": "2026-10-24",
+    "last_contact": "2026-10-18",
+    "quiet": false,
+    "url": "https://quillwater.affinity.co/opportunities/d_aster"
+   },
+   {
+    "id": "d_copperleaf",
+    "company_id": "c_copperleaf",
+    "company_name": "Copperleaf Collect",
+    "stage": "First Meeting",
+    "stage_entered": "2026-10-17",
+    "owner": "meera@quillwater.vc",
+    "round": "Seed",
+    "raise_usd": 1400000,
+    "next_step": "Second meeting",
+    "next_step_due": "2026-10-25",
+    "last_contact": "2026-10-13",
+    "quiet": false,
+    "url": "https://quillwater.affinity.co/opportunities/d_copperleaf"
+   },
+   {
+    "id": "d_halo",
+    "company_id": "c_halo",
+    "company_name": "Halo Reconcile",
+    "stage": "First Meeting",
+    "stage_entered": "2026-10-10",
+    "owner": "meera@quillwater.vc",
+    "round": "Seed",
+    "raise_usd": 1600000,
+    "next_step": "Second meeting",
+    "next_step_due": "2026-10-24",
+    "last_contact": "2026-10-19",
+    "quiet": false,
+    "url": "https://quillwater.affinity.co/opportunities/d_halo"
+   },
+   {
+    "id": "d_trellis",
+    "company_id": "c_trellis",
+    "company_name": "Trellis Banking API",
+    "stage": "Second Meeting",
+    "stage_entered": "2026-10-17",
+    "owner": "meera@quillwater.vc",
+    "round": "Series A",
+    "raise_usd": 6000000,
+    "next_step": "Diligence plan",
+    "next_step_due": "2026-10-25",
+    "last_contact": "2026-10-20",
+    "quiet": false,
+    "url": "https://quillwater.affinity.co/opportunities/d_trellis"
+   },
+   {
+    "id": "d_ember",
+    "company_id": "c_ember",
+    "company_name": "Ember Credit",
+    "stage": "Second Meeting",
+    "stage_entered": "2026-10-18",
+    "owner": "meera@quillwater.vc",
+    "round": "Seed",
+    "raise_usd": 2000000,
+    "next_step": "Customer calls",
+    "next_step_due": "2026-10-26",
+    "last_contact": "2026-10-19",
+    "quiet": false,
+    "url": "https://quillwater.affinity.co/opportunities/d_ember"
+   },
+   {
+    "id": "d_northwind",
+    "company_id": "c_northwind",
+    "company_name": "Northwind Insure Stack",
+    "stage": "Second Meeting",
+    "stage_entered": "2026-10-16",
+    "owner": "meera@quillwater.vc",
+    "round": "Seed",
+    "raise_usd": 1800000,
+    "next_step": "Partner intro",
+    "next_step_due": "2026-10-25",
+    "last_contact": "2026-10-19",
+    "quiet": false,
+    "url": "https://quillwater.affinity.co/opportunities/d_northwind"
+   },
+   {
+    "id": "d_sable",
+    "company_id": "c_sable",
+    "company_name": "Sable Fraud AI",
+    "stage": "Second Meeting",
+    "stage_entered": "2026-10-19",
+    "owner": "meera@quillwater.vc",
+    "round": "Seed",
+    "raise_usd": 2500000,
+    "next_step": "Diligence kickoff",
+    "next_step_due": "2026-10-24",
+    "last_contact": "2026-10-21",
+    "quiet": false,
+    "url": "https://quillwater.affinity.co/opportunities/d_sable"
+   },
+   {
+    "id": "d_juniper",
+    "company_id": "c_juniper",
+    "company_name": "Juniper Payroll Rails",
+    "stage": "Second Meeting",
+    "stage_entered": "2026-10-15",
+    "owner": "meera@quillwater.vc",
+    "round": "Seed",
+    "raise_usd": 1700000,
+    "next_step": "Reference checks",
+    "next_step_due": "2026-10-25",
+    "last_contact": "2026-10-20",
+    "quiet": false,
+    "url": "https://quillwater.affinity.co/opportunities/d_juniper"
+   },
+   {
+    "id": "d_mosaic",
+    "company_id": "c_mosaic",
+    "company_name": "Mosaic Wealth Infra",
+    "stage": "Second Meeting",
+    "stage_entered": "2026-10-07",
+    "owner": "meera@quillwater.vc",
+    "round": "Seed",
+    "raise_usd": 2000000,
+    "next_step": "Diligence decision",
+    "next_step_due": "2026-10-25",
+    "last_contact": "2026-10-19",
+    "quiet": false,
+    "url": "https://quillwater.affinity.co/opportunities/d_mosaic"
+   },
+   {
+    "id": "d_lumen",
+    "company_id": "c_lumen",
+    "company_name": "Lumen Ledger",
+    "stage": "Due Diligence",
+    "stage_entered": "2026-10-13",
+    "owner": "kabir@quillwater.vc",
+    "round": "Series A",
+    "raise_usd": 8000000,
+    "next_step": "Cohort analysis review",
+    "next_step_due": "2026-10-26",
+    "last_contact": "2026-10-20",
+    "quiet": false,
+    "url": "https://quillwater.affinity.co/opportunities/d_lumen"
+   },
+   {
+    "id": "d_kite",
+    "company_id": "c_kite",
+    "company_name": "Kite Pay",
+    "stage": "Due Diligence",
+    "stage_entered": "2026-10-19",
+    "owner": "kabir@quillwater.vc",
+    "round": "Seed",
+    "raise_usd": 3000000,
+    "next_step": "Customer references",
+    "next_step_due": "2026-10-27",
+    "last_contact": "2026-10-21",
+    "quiet": false,
+    "url": "https://quillwater.affinity.co/opportunities/d_kite"
+   },
+   {
+    "id": "d_vertex",
+    "company_id": "c_vertex",
+    "company_name": "Vertex Card Issuing",
+    "stage": "Due Diligence",
+    "stage_entered": "2026-09-22",
+    "owner": "kabir@quillwater.vc",
+    "round": "Series A",
+    "raise_usd": 7000000,
+    "next_step": "Tech diligence call",
+    "next_step_due": "2026-10-27",
+    "last_contact": "2026-10-10",
+    "quiet": false,
+    "url": "https://quillwater.affinity.co/opportunities/d_vertex"
+   },
+   {
+    "id": "d_banyanrisk",
+    "company_id": "c_banyanrisk",
+    "company_name": "Banyan Risk Cloud",
+    "stage": "Due Diligence",
+    "stage_entered": "2026-10-12",
+    "owner": "kabir@quillwater.vc",
+    "round": "Seed",
+    "raise_usd": 2000000,
+    "next_step": null,
+    "next_step_due": null,
+    "last_contact": "2026-10-19",
+    "quiet": false,
+    "url": "https://quillwater.affinity.co/opportunities/d_banyanrisk"
+   },
+   {
+    "id": "d_cobalt",
+    "company_id": "c_cobalt",
+    "company_name": "Cobalt AA",
+    "stage": "Due Diligence",
+    "stage_entered": "2026-10-10",
+    "owner": "kabir@quillwater.vc",
+    "round": "Seed",
+    "raise_usd": 1500000,
+    "next_step": "Send diligence questions",
+    "next_step_due": "2026-10-15",
+    "last_contact": "2026-10-18",
+    "quiet": false,
+    "url": "https://quillwater.affinity.co/opportunities/d_cobalt"
+   },
+   {
+    "id": "d_prism",
+    "company_id": "c_prism",
+    "company_name": "Prism Lending OS",
+    "stage": "Due Diligence",
+    "stage_entered": "2026-10-14",
+    "owner": "kabir@quillwater.vc",
+    "round": "Series A",
+    "raise_usd": 5000000,
+    "next_step": "Model review",
+    "next_step_due": "2026-10-25",
+    "last_contact": "2026-10-02",
+    "quiet": false,
+    "url": "https://quillwater.affinity.co/opportunities/d_prism"
+   },
+   {
+    "id": "d_ironwood",
+    "company_id": "c_ironwood",
+    "company_name": "Ironwood Compliance",
+    "stage": "IC",
+    "stage_entered": "2026-10-19",
+    "owner": "aditi@quillwater.vc",
+    "round": "Series A",
+    "raise_usd": 6000000,
+    "next_step": "IC on Monday",
+    "next_step_due": "2026-10-26",
+    "last_contact": "2026-10-21",
+    "quiet": false,
+    "url": "https://quillwater.affinity.co/opportunities/d_ironwood"
+   },
+   {
+    "id": "d_solace",
+    "company_id": "c_solace",
+    "company_name": "Solace Treasury",
+    "stage": "IC",
+    "stage_entered": "2026-10-13",
+    "owner": "aditi@quillwater.vc",
+    "round": "Seed",
+    "raise_usd": 2000000,
+    "next_step": "Partner vote",
+    "next_step_due": "2026-10-23",
+    "last_contact": "2026-10-19",
+    "quiet": false,
+    "url": "https://quillwater.affinity.co/opportunities/d_solace"
+   },
+   {
+    "id": "d_gravity",
+    "company_id": "c_gravity",
+    "company_name": "Gravity Payouts",
+    "stage": "IC",
+    "stage_entered": "2026-10-18",
+    "owner": "aditi@quillwater.vc",
+    "round": "Seed",
+    "raise_usd": 3000000,
+    "next_step": "Partner meeting Monday",
+    "next_step_due": "2026-10-26",
+    "last_contact": "2026-10-20",
+    "quiet": false,
+    "url": "https://quillwater.affinity.co/opportunities/d_gravity"
+   },
+   {
+    "id": "d_atlas",
+    "company_id": "c_atlas",
+    "company_name": "Atlas Settlement",
+    "stage": "Term Sheet",
+    "stage_entered": "2026-10-17",
+    "owner": "aditi@quillwater.vc",
+    "round": "Series A",
+    "raise_usd": 9000000,
+    "next_step": "Send term sheet markup",
+    "next_step_due": "2026-10-23",
+    "last_contact": "2026-10-21",
+    "quiet": false,
+    "url": "https://quillwater.affinity.co/opportunities/d_atlas"
+   },
+   {
+    "id": "d_beacon",
+    "company_id": "c_beacon",
+    "company_name": "Beacon Credit Rails",
+    "stage": "Term Sheet",
+    "stage_entered": "2026-10-18",
+    "owner": "aditi@quillwater.vc",
+    "round": "Seed",
+    "raise_usd": 2800000,
+    "next_step": "Founder call on terms",
+    "next_step_due": "2026-10-24",
+    "last_contact": "2026-10-20",
+    "quiet": false,
+    "url": "https://quillwater.affinity.co/opportunities/d_beacon"
+   },
+   {
+    "id": "d_orchid",
+    "company_id": "c_orchid",
+    "company_name": "Orchid Cards",
+    "stage": "Closing",
+    "stage_entered": "2026-10-10",
+    "owner": "aditi@quillwater.vc",
+    "round": "Seed",
+    "raise_usd": 2000000,
+    "next_step": "Wire after CP sign-off",
+    "next_step_due": "2026-10-28",
+    "last_contact": "2026-10-20",
+    "quiet": false,
+    "url": "https://quillwater.affinity.co/opportunities/d_orchid"
+   },
+   {
+    "id": "d_sterling",
+    "company_id": "c_sterling",
+    "company_name": "Sterling AA",
+    "stage": "Closing",
+    "stage_entered": "2026-10-13",
+    "owner": "aditi@quillwater.vc",
+    "round": "Seed",
+    "raise_usd": 1500000,
+    "next_step": "Legal docs review",
+    "next_step_due": "2026-10-27",
+    "last_contact": "2026-10-12",
+    "quiet": false,
+    "url": "https://quillwater.affinity.co/opportunities/d_sterling"
+   },
+   {
+    "id": "d_ledgerline_d",
+    "company_id": "c_ledgerline",
+    "company_name": "Ledgerline",
+    "stage": "Portfolio",
+    "stage_entered": "2026-09-12",
+    "owner": "aditi@quillwater.vc",
+    "round": "Seed",
+    "raise_usd": 2000000,
+    "next_step": null,
+    "next_step_due": null,
+    "last_contact": "2026-10-17",
+    "quiet": false,
+    "url": "https://quillwater.affinity.co/opportunities/d_ledgerline_d"
+   },
+   {
+    "id": "d_cardinal_d",
+    "company_id": "c_cardinal",
+    "company_name": "Cardinal Risk",
+    "stage": "Portfolio",
+    "stage_entered": "2026-08-23",
+    "owner": "kabir@quillwater.vc",
+    "round": "Seed",
+    "raise_usd": 1800000,
+    "next_step": null,
+    "next_step_due": null,
+    "last_contact": "2026-10-16",
+    "quiet": false,
+    "url": "https://quillwater.affinity.co/opportunities/d_cardinal_d"
+   },
+   {
+    "id": "d_fizzbuy",
+    "company_id": "c_fizzbuy",
+    "company_name": "Fizzbuy",
+    "stage": "Passed",
+    "stage_entered": "2026-09-12",
+    "owner": "rohan@quillwater.vc",
+    "round": "Seed",
+    "raise_usd": 2000000,
+    "next_step": null,
+    "next_step_due": null,
+    "last_contact": "2026-09-12",
+    "quiet": false,
+    "url": "https://quillwater.affinity.co/opportunities/d_fizzbuy"
+   },
+   {
+    "id": "d_moonlend",
+    "company_id": "c_moonlend",
+    "company_name": "Moonlend",
+    "stage": "Passed",
+    "stage_entered": "2026-09-17",
+    "owner": "meera@quillwater.vc",
+    "round": "Seed",
+    "raise_usd": 3000000,
+    "next_step": null,
+    "next_step_due": null,
+    "last_contact": "2026-09-17",
+    "quiet": false,
+    "url": "https://quillwater.affinity.co/opportunities/d_moonlend"
+   },
+   {
+    "id": "d_tokenswap",
+    "company_id": "c_tokenswap",
+    "company_name": "TokenSwap",
+    "stage": "Passed",
+    "stage_entered": "2026-08-23",
+    "owner": "rohan@quillwater.vc",
+    "round": "Seed",
+    "raise_usd": 4000000,
+    "next_step": null,
+    "next_step_due": null,
+    "last_contact": "2026-08-23",
+    "quiet": false,
+    "url": "https://quillwater.affinity.co/opportunities/d_tokenswap"
+   },
+   {
+    "id": "d_parcelpro",
+    "company_id": "c_parcelpro",
+    "company_name": "Parcelpro",
+    "stage": "Passed",
+    "stage_entered": "2026-09-02",
+    "owner": "meera@quillwater.vc",
+    "round": "Series A",
+    "raise_usd": 10000000,
+    "next_step": null,
+    "next_step_due": null,
+    "last_contact": "2026-09-02",
+    "quiet": false,
+    "url": "https://quillwater.affinity.co/opportunities/d_parcelpro"
+   },
+   {
+    "id": "d_dhanam",
+    "company_id": "c_dhanam",
+    "company_name": "Dhanam Neo",
+    "stage": "Passed",
+    "stage_entered": "2026-09-07",
+    "owner": "kabir@quillwater.vc",
+    "round": "Seed",
+    "raise_usd": 3000000,
+    "next_step": null,
+    "next_step_due": null,
+    "last_contact": "2026-09-07",
+    "quiet": false,
+    "url": "https://quillwater.affinity.co/opportunities/d_dhanam"
+   },
+   {
+    "id": "d_quickcash",
+    "company_id": "c_quickcash",
+    "company_name": "Quickcash",
+    "stage": "Passed",
+    "stage_entered": "2026-09-22",
+    "owner": "rohan@quillwater.vc",
+    "round": "Pre-seed",
+    "raise_usd": 1000000,
+    "next_step": null,
+    "next_step_due": null,
+    "last_contact": "2026-09-22",
+    "quiet": false,
+    "url": "https://quillwater.affinity.co/opportunities/d_quickcash"
+   }
+  ],
+  "notes": [
+   {
+    "id": "note_lumen",
+    "deal_id": "d_lumen",
+    "text": "Kabir: strong founder-market fit, Maya ran reconciliation ops at a large NBFC. Risk: concentration, top 3 customers are 52% of ARR.",
+    "url": "https://quillwater.affinity.co/notes/note_lumen"
+   },
+   {
+    "id": "note_kite",
+    "deal_id": "d_kite",
+    "text": "Kabir: Sid is a repeat founder. Risk: payment orchestration is crowded; differentiation is the routing engine.",
+    "url": "https://quillwater.affinity.co/notes/note_kite"
+   },
+   {
+    "id": "note_gravity",
+    "deal_id": "d_gravity",
+    "text": "Aditi: Arjun knows gig platforms deeply. Risk: single sponsor bank dependency.",
+    "url": "https://quillwater.affinity.co/notes/note_gravity"
+   },
+   {
+    "id": "note_atlas",
+    "deal_id": "d_atlas",
+    "text": "Aditi: category leader in broker settlement. Risk: regulatory changes to settlement cycles.",
+    "url": "https://quillwater.affinity.co/notes/note_atlas"
+   },
+   {
+    "id": "note_ironwood",
+    "deal_id": "d_ironwood",
+    "text": "Aditi: Katherine sold compliance software to banks for a decade. Risk: long bank sales cycles, 9 months on average.",
+    "url": "https://quillwater.affinity.co/notes/note_ironwood"
+   }
+  ]
+ },
+ "passes": [
+  {
+   "id": "pass_00",
+   "company": "Fizzbuy",
+   "domain": "fizzbuy.in",
+   "date": "2026-09-12",
+   "reason": "D2C brand, outside thesis",
+   "revisit_trigger": null,
+   "by": "rohan@quillwater.vc",
+   "source_url": "https://quillwater.affinity.co/notes/pass_00"
+  },
+  {
+   "id": "pass_01",
+   "company": "Moonlend",
+   "domain": "moonlend.in",
+   "date": "2026-09-17",
+   "reason": "Consumer lending with no in-house risk team",
+   "revisit_trigger": "Risk team in place and two NBFC partners live",
+   "by": "meera@quillwater.vc",
+   "source_url": "https://quillwater.affinity.co/notes/pass_01"
+  },
+  {
+   "id": "pass_02",
+   "company": "TokenSwap",
+   "domain": "tokenswap.xyz",
+   "date": "2026-08-23",
+   "reason": "Crypto trading platform",
+   "revisit_trigger": null,
+   "by": "rohan@quillwater.vc",
+   "source_url": "https://quillwater.affinity.co/notes/pass_02"
+  },
+  {
+   "id": "pass_03",
+   "company": "Parcelpro",
+   "domain": "parcelpro.in",
+   "date": "2026-09-02",
+   "reason": "Logistics marketplace, outside thesis",
+   "revisit_trigger": null,
+   "by": "meera@quillwater.vc",
+   "source_url": "https://quillwater.affinity.co/notes/pass_03"
+  },
+  {
+   "id": "pass_04",
+   "company": "Dhanam Neo",
+   "domain": "dhanamneo.in",
+   "date": "2026-09-07",
+   "reason": "Consumer neobank, outside thesis",
+   "revisit_trigger": null,
+   "by": "kabir@quillwater.vc",
+   "source_url": "https://quillwater.affinity.co/notes/pass_04"
+  },
+  {
+   "id": "pass_05",
+   "company": "Quickcash",
+   "domain": "quickcash.in",
+   "date": "2026-09-22",
+   "reason": "Consumer lending",
+   "revisit_trigger": null,
+   "by": "rohan@quillwater.vc",
+   "source_url": "https://quillwater.affinity.co/notes/pass_05"
+  },
+  {
+   "id": "pass_06",
+   "company": "Paysa Labs",
+   "domain": "paysa.in",
+   "date": "2026-03-12",
+   "reason": "Too early: pre-product, no design partners",
+   "revisit_trigger": "Two marketplaces live on payouts",
+   "by": "rohan@quillwater.vc",
+   "source_url": "https://quillwater.affinity.co/notes/pass_06"
+  },
+  {
+   "id": "pass_07",
+   "company": "Vaultline",
+   "domain": "vaultline.in",
+   "date": "2026-05-20",
+   "reason": "Founder-market fit unclear",
+   "revisit_trigger": "A CFO-background co-founder joins",
+   "by": "kabir@quillwater.vc",
+   "source_url": "https://quillwater.affinity.co/notes/pass_07"
+  },
+  {
+   "id": "pass_08",
+   "company": "Ruplink",
+   "domain": "ruplink.in",
+   "date": "2026-06-04",
+   "reason": "AA licence pending",
+   "revisit_trigger": "AA licence granted",
+   "by": "rohan@quillwater.vc",
+   "source_url": "https://quillwater.affinity.co/notes/pass_08"
+  },
+  {
+   "id": "pass_09",
+   "company": "Wagerly",
+   "domain": "wagerly.gg",
+   "date": "2026-02-10",
+   "reason": "Real-money gaming, outside thesis",
+   "revisit_trigger": null,
+   "by": "rohan@quillwater.vc",
+   "source_url": "https://quillwater.affinity.co/notes/pass_09"
+  },
+  {
+   "id": "pass_10",
+   "company": "Cartwheel Retail",
+   "domain": "cartwheel.shop",
+   "date": "2026-01-28",
+   "reason": "D2C brand",
+   "revisit_trigger": null,
+   "by": "meera@quillwater.vc",
+   "source_url": "https://quillwater.affinity.co/notes/pass_10"
+  },
+  {
+   "id": "pass_11",
+   "company": "Lendquick",
+   "domain": "lendquick.in",
+   "date": "2025-12-15",
+   "reason": "Consumer lending",
+   "revisit_trigger": null,
+   "by": "kabir@quillwater.vc",
+   "source_url": "https://quillwater.affinity.co/notes/pass_11"
+  },
+  {
+   "id": "pass_12",
+   "company": "Chainmint",
+   "domain": "chainmint.io",
+   "date": "2026-04-02",
+   "reason": "Crypto trading",
+   "revisit_trigger": null,
+   "by": "rohan@quillwater.vc",
+   "source_url": "https://quillwater.affinity.co/notes/pass_12"
+  },
+  {
+   "id": "pass_13",
+   "company": "Stackfarm",
+   "domain": "stackfarm.in",
+   "date": "2026-03-30",
+   "reason": "Agritech marketplace, outside thesis",
+   "revisit_trigger": null,
+   "by": "meera@quillwater.vc",
+   "source_url": "https://quillwater.affinity.co/notes/pass_13"
+  },
+  {
+   "id": "pass_14",
+   "company": "Petpal",
+   "domain": "petpal.in",
+   "date": "2026-02-21",
+   "reason": "Consumer pet care, outside thesis",
+   "revisit_trigger": null,
+   "by": "rohan@quillwater.vc",
+   "source_url": "https://quillwater.affinity.co/notes/pass_14"
+  },
+  {
+   "id": "pass_15",
+   "company": "Tutorly",
+   "domain": "tutorly.app",
+   "date": "2026-01-09",
+   "reason": "Edtech, outside thesis",
+   "revisit_trigger": null,
+   "by": "meera@quillwater.vc",
+   "source_url": "https://quillwater.affinity.co/notes/pass_15"
+  },
+  {
+   "id": "pass_16",
+   "company": "Bytebrew",
+   "domain": "bytebrew.dev",
+   "date": "2026-04-18",
+   "reason": "Devtools without a finance angle",
+   "revisit_trigger": "Moves into payments developer tooling",
+   "by": "kabir@quillwater.vc",
+   "source_url": "https://quillwater.affinity.co/notes/pass_16"
+  },
+  {
+   "id": "pass_17",
+   "company": "Fitflow",
+   "domain": "fitflow.in",
+   "date": "2026-02-02",
+   "reason": "Consumer fitness, outside thesis",
+   "revisit_trigger": null,
+   "by": "rohan@quillwater.vc",
+   "source_url": "https://quillwater.affinity.co/notes/pass_17"
+  },
+  {
+   "id": "pass_18",
+   "company": "Gharbazaar",
+   "domain": "gharbazaar.in",
+   "date": "2026-05-05",
+   "reason": "Consumer proptech, outside thesis",
+   "revisit_trigger": null,
+   "by": "meera@quillwater.vc",
+   "source_url": "https://quillwater.affinity.co/notes/pass_18"
+  },
+  {
+   "id": "pass_19",
+   "company": "Swiftship",
+   "domain": "swiftship.in",
+   "date": "2026-06-11",
+   "reason": "Logistics, outside thesis",
+   "revisit_trigger": null,
+   "by": "rohan@quillwater.vc",
+   "source_url": "https://quillwater.affinity.co/notes/pass_19"
+  }
+ ],
+ "lps": [
+  {
+   "id": "lp_northgate",
+   "name": "Northgate Endowment",
+   "fund": "Fund II",
+   "commitment_usd": 8000000,
+   "reup_window_start": "2027-01-10",
+   "reup_window_end": "2027-03-31",
+   "contacts": [
+    "helen.park@northgate.edu.example"
+   ],
+   "last_touch": "2026-09-02",
+   "reporting": "quarterly",
+   "called_usd": 3600000,
+   "paid_in_usd": 3600000,
+   "last_call_date": "2026-10-05",
+   "owner": "vikram@quillwater.vc",
+   "source_url": "https://quillwater.affinity.co/companies/c_org_northgate_endowment"
+  },
+  {
+   "id": "lp_banyan",
+   "name": "Banyan Family Office",
+   "fund": "Fund II",
+   "commitment_usd": 5000000,
+   "reup_window_start": "2027-01-05",
+   "reup_window_end": "2027-03-15",
+   "contacts": [
+    "kunal@banyanfo.in"
+   ],
+   "last_touch": "2026-08-03",
+   "reporting": "quarterly",
+   "called_usd": 2250000,
+   "paid_in_usd": 2250000,
+   "last_call_date": "2026-10-05",
+   "owner": "vikram@quillwater.vc",
+   "source_url": "https://quillwater.affinity.co/companies/c_org_banyan_family_office"
+  },
+  {
+   "id": "lp_coralstone",
+   "name": "Coralstone Pension",
+   "fund": "Fund II",
+   "commitment_usd": 10000000,
+   "reup_window_start": "2027-01-15",
+   "reup_window_end": "2027-04-15",
+   "contacts": [
+    "marcus@coralstone.example"
+   ],
+   "last_touch": "2026-10-02",
+   "reporting": "quarterly",
+   "called_usd": 4500000,
+   "paid_in_usd": 4500000,
+   "last_call_date": "2026-10-05",
+   "owner": "aditi@quillwater.vc",
+   "source_url": "https://quillwater.affinity.co/companies/c_org_coralstone_pension"
+  },
+  {
+   "id": "lp_tidewater",
+   "name": "Tidewater Foundation",
+   "fund": "Fund II",
+   "commitment_usd": 4000000,
+   "reup_window_start": "2027-04-01",
+   "reup_window_end": "2027-06-30",
+   "contacts": [
+    "ingrid@tidewater.example"
+   ],
+   "last_touch": "2026-06-24",
+   "reporting": "quarterly",
+   "called_usd": 1800000,
+   "paid_in_usd": 1800000,
+   "last_call_date": "2026-10-05",
+   "owner": "vikram@quillwater.vc",
+   "source_url": "https://quillwater.affinity.co/companies/c_org_tidewater_foundation"
+  },
+  {
+   "id": "lp_saraswati",
+   "name": "Saraswati Family Office",
+   "fund": "Fund II",
+   "commitment_usd": 3000000,
+   "reup_window_start": "2027-01-05",
+   "reup_window_end": "2027-03-31",
+   "contacts": [
+    "anand@saraswatifo.in"
+   ],
+   "last_touch": "2026-10-10",
+   "reporting": "quarterly",
+   "called_usd": 1350000,
+   "paid_in_usd": 1350000,
+   "last_call_date": "2026-10-05",
+   "owner": "vikram@quillwater.vc",
+   "source_url": "https://quillwater.affinity.co/companies/c_org_saraswati_family_office"
+  },
+  {
+   "id": "lp_lotus",
+   "name": "Lotus Ridge FoF",
+   "fund": "Fund II",
+   "commitment_usd": 7000000,
+   "reup_window_start": "2027-02-01",
+   "reup_window_end": "2027-04-30",
+   "contacts": [
+    "lin@lotusridge.example"
+   ],
+   "last_touch": "2026-09-27",
+   "reporting": "quarterly",
+   "called_usd": 3150000,
+   "paid_in_usd": 3150000,
+   "last_call_date": "2026-10-05",
+   "owner": "vikram@quillwater.vc",
+   "source_url": "https://quillwater.affinity.co/companies/c_org_lotus_ridge_fof"
+  },
+  {
+   "id": "lp_evergrove",
+   "name": "Evergrove Capital Partners",
+   "fund": "Fund II",
+   "commitment_usd": 6000000,
+   "reup_window_start": "2027-03-01",
+   "reup_window_end": "2027-05-31",
+   "contacts": [
+    "olivia@evergrove.example"
+   ],
+   "last_touch": "2026-09-22",
+   "reporting": "quarterly",
+   "called_usd": 2700000,
+   "paid_in_usd": 2700000,
+   "last_call_date": "2026-10-05",
+   "owner": "vikram@quillwater.vc",
+   "source_url": "https://quillwater.affinity.co/companies/c_org_evergrove_capital_partners"
+  },
+  {
+   "id": "lp_himalaya",
+   "name": "Himalaya Holdings",
+   "fund": "Fund II",
+   "commitment_usd": 4000000,
+   "reup_window_start": "2027-01-20",
+   "reup_window_end": "2027-03-31",
+   "contacts": [
+    "rakesh@himalayaholdings.in"
+   ],
+   "last_touch": "2026-10-13",
+   "reporting": "quarterly",
+   "called_usd": 1800000,
+   "paid_in_usd": 1800000,
+   "last_call_date": "2026-10-05",
+   "owner": "vikram@quillwater.vc",
+   "source_url": "https://quillwater.affinity.co/companies/c_org_himalaya_holdings"
+  },
+  {
+   "id": "lp_peregrine",
+   "name": "Peregrine Trust",
+   "fund": "Fund II",
+   "commitment_usd": 3000000,
+   "reup_window_start": "2027-04-15",
+   "reup_window_end": "2027-06-30",
+   "contacts": [
+    "peter@peregrinetrust.example"
+   ],
+   "last_touch": "2026-07-19",
+   "reporting": "quarterly",
+   "called_usd": 1350000,
+   "paid_in_usd": 1200000,
+   "last_call_date": "2026-10-05",
+   "owner": "vikram@quillwater.vc",
+   "source_url": "https://quillwater.affinity.co/companies/c_org_peregrine_trust"
+  },
+  {
+   "id": "lp_silverline",
+   "name": "Silverline Insurance",
+   "fund": "Fund II",
+   "commitment_usd": 6000000,
+   "reup_window_start": "2027-02-15",
+   "reup_window_end": "2027-05-15",
+   "contacts": [
+    "sofia@silverline.example"
+   ],
+   "last_touch": "2026-09-19",
+   "reporting": "quarterly",
+   "called_usd": 2700000,
+   "paid_in_usd": 2700000,
+   "last_call_date": "2026-10-05",
+   "owner": "vikram@quillwater.vc",
+   "source_url": "https://quillwater.affinity.co/companies/c_org_silverline_insurance"
+  },
+  {
+   "id": "lp_granite",
+   "name": "Granite Peak Endowment",
+   "fund": "Fund II",
+   "commitment_usd": 5000000,
+   "reup_window_start": "2027-03-15",
+   "reup_window_end": "2027-06-15",
+   "contacts": [
+    "grant@granitepeak.example"
+   ],
+   "last_touch": "2026-09-12",
+   "reporting": "quarterly",
+   "called_usd": 2250000,
+   "paid_in_usd": 2250000,
+   "last_call_date": "2026-10-05",
+   "owner": "vikram@quillwater.vc",
+   "source_url": "https://quillwater.affinity.co/companies/c_org_granite_peak_endowment"
+  },
+  {
+   "id": "lp_ashoka",
+   "name": "Ashoka Angels Collective",
+   "fund": "Fund II",
+   "commitment_usd": 2000000,
+   "reup_window_start": "2027-01-10",
+   "reup_window_end": "2027-02-28",
+   "contacts": [
+    "ashok@ashokaangels.in"
+   ],
+   "last_touch": "2026-10-07",
+   "reporting": "quarterly",
+   "called_usd": 900000,
+   "paid_in_usd": 900000,
+   "last_call_date": "2026-10-05",
+   "owner": "vikram@quillwater.vc",
+   "source_url": "https://quillwater.affinity.co/companies/c_org_ashoka_angels_collective"
+  },
+  {
+   "id": "lp_marigold",
+   "name": "Marigold Family Office",
+   "fund": "Fund II",
+   "commitment_usd": 3000000,
+   "reup_window_start": "2027-02-01",
+   "reup_window_end": "2027-03-31",
+   "contacts": [
+    "meenal@marigoldfo.in"
+   ],
+   "last_touch": "2026-09-24",
+   "reporting": "quarterly",
+   "called_usd": 1350000,
+   "paid_in_usd": 1350000,
+   "last_call_date": "2026-10-05",
+   "owner": "vikram@quillwater.vc",
+   "source_url": "https://quillwater.affinity.co/companies/c_org_marigold_family_office"
+  },
+  {
+   "id": "lp_riverbend",
+   "name": "Riverbend Pension",
+   "fund": "Fund II",
+   "commitment_usd": 9000000,
+   "reup_window_start": "2027-03-01",
+   "reup_window_end": "2027-06-30",
+   "contacts": [
+    "david@riverbend.example"
+   ],
+   "last_touch": "2026-09-17",
+   "reporting": "quarterly",
+   "called_usd": 4050000,
+   "paid_in_usd": 4050000,
+   "last_call_date": "2026-10-05",
+   "owner": "aditi@quillwater.vc",
+   "source_url": "https://quillwater.affinity.co/companies/c_org_riverbend_pension"
+  },
+  {
+   "id": "lp_cedar",
+   "name": "Cedar & Pine Family Office",
+   "fund": "Fund II",
+   "commitment_usd": 5000000,
+   "reup_window_start": "2027-01-25",
+   "reup_window_end": "2027-04-30",
+   "contacts": [
+    "chitra@cedarpine.in"
+   ],
+   "last_touch": "2026-10-04",
+   "reporting": "quarterly",
+   "called_usd": 2250000,
+   "paid_in_usd": 2250000,
+   "last_call_date": "2026-10-05",
+   "owner": "vikram@quillwater.vc",
+   "source_url": "https://quillwater.affinity.co/companies/c_org_cedar_pine_family_office"
+  }
+ ],
+ "portfolio_kpis": {
+  "c_orbit": [
+   {
+    "month": "2026-07",
+    "revenue_usd": 180000,
+    "plan_revenue_usd": 175000,
+    "burn_usd": 190000,
+    "cash_usd": 2000000,
+    "churn_pct": 1.2,
+    "departures": [],
+    "source_url": "https://quillwater.affinity.co/files/kpi_orbit_2026-07"
+   },
+   {
+    "month": "2026-08",
+    "revenue_usd": 190000,
+    "plan_revenue_usd": 185000,
+    "burn_usd": 195000,
+    "cash_usd": 1800000,
+    "churn_pct": 1.3,
+    "departures": [],
+    "source_url": "https://quillwater.affinity.co/files/kpi_orbit_2026-08"
+   },
+   {
+    "month": "2026-09",
+    "revenue_usd": 198000,
+    "plan_revenue_usd": 195000,
+    "burn_usd": 200000,
+    "cash_usd": 1600000,
+    "churn_pct": 1.3,
+    "departures": [],
+    "source_url": "https://mail.google.com/mail/u/0/#all/upd_orbit"
+   }
+  ],
+  "c_kestrel": [
+   {
+    "month": "2026-07",
+    "revenue_usd": 140000,
+    "plan_revenue_usd": 140000,
+    "burn_usd": 145000,
+    "cash_usd": 3400000,
+    "churn_pct": 2.0,
+    "departures": [],
+    "source_url": "https://quillwater.affinity.co/files/kpi_kestrel_2026-07"
+   },
+   {
+    "month": "2026-08",
+    "revenue_usd": 150000,
+    "plan_revenue_usd": 150000,
+    "burn_usd": 150000,
+    "cash_usd": 3250000,
+    "churn_pct": 2.0,
+    "departures": [],
+    "source_url": "https://quillwater.affinity.co/files/kpi_kestrel_2026-08"
+   },
+   {
+    "month": "2026-09",
+    "revenue_usd": 158000,
+    "plan_revenue_usd": 160000,
+    "burn_usd": 215000,
+    "cash_usd": 3040000,
+    "churn_pct": 2.1,
+    "departures": [],
+    "source_url": "https://mail.google.com/mail/u/0/#all/upd_kestrel"
+   }
+  ],
+  "c_ferro": [
+   {
+    "month": "2026-07",
+    "revenue_usd": 430000,
+    "plan_revenue_usd": 470000,
+    "burn_usd": 300000,
+    "cash_usd": 6000000,
+    "churn_pct": 1.0,
+    "departures": [],
+    "source_url": "https://quillwater.affinity.co/files/kpi_ferro_2026-07"
+   },
+   {
+    "month": "2026-08",
+    "revenue_usd": 420000,
+    "plan_revenue_usd": 500000,
+    "burn_usd": 305000,
+    "cash_usd": 5700000,
+    "churn_pct": 1.1,
+    "departures": [],
+    "source_url": "https://quillwater.affinity.co/files/kpi_ferro_2026-08"
+   },
+   {
+    "month": "2026-09",
+    "revenue_usd": 410000,
+    "plan_revenue_usd": 530000,
+    "burn_usd": 310000,
+    "cash_usd": 5400000,
+    "churn_pct": 1.1,
+    "departures": [],
+    "source_url": "https://mail.google.com/mail/u/0/#all/upd_ferro"
+   }
+  ],
+  "c_tallyfin": [
+   {
+    "month": "2026-07",
+    "revenue_usd": 95000,
+    "plan_revenue_usd": 95000,
+    "burn_usd": 120000,
+    "cash_usd": 2400000,
+    "churn_pct": 2.5,
+    "departures": [],
+    "source_url": "https://quillwater.affinity.co/files/kpi_tallyfin_2026-07"
+   },
+   {
+    "month": "2026-08",
+    "revenue_usd": 101000,
+    "plan_revenue_usd": 100000,
+    "burn_usd": 122000,
+    "cash_usd": 2280000,
+    "churn_pct": 2.4,
+    "departures": [],
+    "source_url": "https://quillwater.affinity.co/files/kpi_tallyfin_2026-08"
+   },
+   {
+    "month": "2026-09",
+    "revenue_usd": 108000,
+    "plan_revenue_usd": 105000,
+    "burn_usd": 125000,
+    "cash_usd": 2160000,
+    "churn_pct": 2.4,
+    "departures": [
+     {
+      "name": "Vineet Rao",
+      "role": "CTO"
+     }
+    ],
+    "source_url": "https://mail.google.com/mail/u/0/#all/upd_tallyfin"
+   }
+  ],
+  "c_saffire": [
+   {
+    "month": "2026-07",
+    "revenue_usd": 120000,
+    "plan_revenue_usd": 118000,
+    "burn_usd": 110000,
+    "cash_usd": 2500000,
+    "churn_pct": 2.0,
+    "departures": [],
+    "source_url": "https://quillwater.affinity.co/files/kpi_saffire_2026-07"
+   },
+   {
+    "month": "2026-08",
+    "revenue_usd": 124000,
+    "plan_revenue_usd": 122000,
+    "burn_usd": 112000,
+    "cash_usd": 2390000,
+    "churn_pct": 2.1,
+    "departures": [],
+    "source_url": "https://quillwater.affinity.co/files/kpi_saffire_2026-08"
+   },
+   {
+    "month": "2026-09",
+    "revenue_usd": 126000,
+    "plan_revenue_usd": 126000,
+    "burn_usd": 113000,
+    "cash_usd": 2280000,
+    "churn_pct": 5.8,
+    "departures": [],
+    "source_url": "https://mail.google.com/mail/u/0/#all/upd_saffire"
+   }
+  ],
+  "c_nimbus": [
+   {
+    "month": "2026-07",
+    "revenue_usd": 40000,
+    "plan_revenue_usd": 40000,
+    "burn_usd": 60000,
+    "cash_usd": 1100000,
+    "churn_pct": 1.0,
+    "departures": [],
+    "source_url": "https://quillwater.affinity.co/files/kpi_nimbus_2026-07"
+   },
+   {
+    "month": "2026-08",
+    "revenue_usd": 44000,
+    "plan_revenue_usd": 43000,
+    "burn_usd": 61000,
+    "cash_usd": 1040000,
+    "churn_pct": 1.0,
+    "departures": [],
+    "source_url": "https://quillwater.affinity.co/files/kpi_nimbus_2026-08"
+   },
+   {
+    "month": "2026-09",
+    "revenue_usd": 48000,
+    "plan_revenue_usd": 46000,
+    "burn_usd": 62000,
+    "cash_usd": 980000,
+    "churn_pct": 1.1,
+    "departures": [],
+    "source_url": "https://mail.google.com/mail/u/0/#all/upd_nimbus"
+   }
+  ],
+  "c_quanta": [
+   {
+    "month": "2026-07",
+    "revenue_usd": 260000,
+    "plan_revenue_usd": 255000,
+    "burn_usd": 210000,
+    "cash_usd": 5500000,
+    "churn_pct": 0.8,
+    "departures": [],
+    "source_url": "https://quillwater.affinity.co/files/kpi_quanta_2026-07"
+   },
+   {
+    "month": "2026-08",
+    "revenue_usd": 275000,
+    "plan_revenue_usd": 265000,
+    "burn_usd": 212000,
+    "cash_usd": 5290000,
+    "churn_pct": 0.8,
+    "departures": [],
+    "source_url": "https://quillwater.affinity.co/files/kpi_quanta_2026-08"
+   },
+   {
+    "month": "2026-09",
+    "revenue_usd": 290000,
+    "plan_revenue_usd": 280000,
+    "burn_usd": 215000,
+    "cash_usd": 5080000,
+    "churn_pct": 0.9,
+    "departures": [],
+    "source_url": "https://mail.google.com/mail/u/0/#all/upd_quanta"
+   }
+  ],
+  "c_brightvault": [
+   {
+    "month": "2026-07",
+    "revenue_usd": 88000,
+    "plan_revenue_usd": 85000,
+    "burn_usd": 100000,
+    "cash_usd": 2100000,
+    "churn_pct": 1.5,
+    "departures": [],
+    "source_url": "https://quillwater.affinity.co/files/kpi_brightvault_2026-07"
+   },
+   {
+    "month": "2026-08",
+    "revenue_usd": 92000,
+    "plan_revenue_usd": 90000,
+    "burn_usd": 101000,
+    "cash_usd": 2000000,
+    "churn_pct": 1.5,
+    "departures": [],
+    "source_url": "https://quillwater.affinity.co/files/kpi_brightvault_2026-08"
+   },
+   {
+    "month": "2026-09",
+    "revenue_usd": 97000,
+    "plan_revenue_usd": 95000,
+    "burn_usd": 103000,
+    "cash_usd": 1900000,
+    "churn_pct": 1.6,
+    "departures": [],
+    "source_url": "https://mail.google.com/mail/u/0/#all/upd_brightvault"
+   }
+  ],
+  "c_ledgerline": [
+   {
+    "month": "2026-07",
+    "revenue_usd": 60000,
+    "plan_revenue_usd": 60000,
+    "burn_usd": 90000,
+    "cash_usd": 2300000,
+    "churn_pct": 0.5,
+    "departures": [],
+    "source_url": "https://quillwater.affinity.co/files/kpi_ledgerline_2026-07"
+   },
+   {
+    "month": "2026-08",
+    "revenue_usd": 66000,
+    "plan_revenue_usd": 64000,
+    "burn_usd": 92000,
+    "cash_usd": 2210000,
+    "churn_pct": 0.5,
+    "departures": [],
+    "source_url": "https://quillwater.affinity.co/files/kpi_ledgerline_2026-08"
+   },
+   {
+    "month": "2026-09",
+    "revenue_usd": 72000,
+    "plan_revenue_usd": 70000,
+    "burn_usd": 94000,
+    "cash_usd": 2120000,
+    "churn_pct": 0.5,
+    "departures": [],
+    "source_url": "https://mail.google.com/mail/u/0/#all/upd_ledgerline"
+   }
+  ],
+  "c_cardinal": [
+   {
+    "month": "2026-07",
+    "revenue_usd": 110000,
+    "plan_revenue_usd": 105000,
+    "burn_usd": 130000,
+    "cash_usd": 2900000,
+    "churn_pct": 1.0,
+    "departures": [],
+    "source_url": "https://quillwater.affinity.co/files/kpi_cardinal_2026-07"
+   },
+   {
+    "month": "2026-08",
+    "revenue_usd": 118000,
+    "plan_revenue_usd": 112000,
+    "burn_usd": 132000,
+    "cash_usd": 2770000,
+    "churn_pct": 1.0,
+    "departures": [],
+    "source_url": "https://quillwater.affinity.co/files/kpi_cardinal_2026-08"
+   },
+   {
+    "month": "2026-09",
+    "revenue_usd": 126000,
+    "plan_revenue_usd": 120000,
+    "burn_usd": 134000,
+    "cash_usd": 2640000,
+    "churn_pct": 1.1,
+    "departures": [],
+    "source_url": "https://mail.google.com/mail/u/0/#all/upd_cardinal"
+   }
+  ],
+  "c_harbor": [
+   {
+    "month": "2026-07",
+    "revenue_usd": 22000,
+    "plan_revenue_usd": 22000,
+    "burn_usd": 45000,
+    "cash_usd": 900000,
+    "churn_pct": 2.0,
+    "departures": [],
+    "source_url": "https://quillwater.affinity.co/files/kpi_harbor_2026-07"
+   },
+   {
+    "month": "2026-08",
+    "revenue_usd": 25000,
+    "plan_revenue_usd": 24000,
+    "burn_usd": 46000,
+    "cash_usd": 855000,
+    "churn_pct": 2.0,
+    "departures": [],
+    "source_url": "https://quillwater.affinity.co/files/kpi_harbor_2026-08"
+   },
+   {
+    "month": "2026-09",
+    "revenue_usd": 28000,
+    "plan_revenue_usd": 27000,
+    "burn_usd": 47000,
+    "cash_usd": 810000,
+    "churn_pct": 2.1,
+    "departures": [],
+    "source_url": "https://mail.google.com/mail/u/0/#all/upd_harbor"
+   }
+  ],
+  "c_mintrail": [
+   {
+    "month": "2026-07",
+    "revenue_usd": 70000,
+    "plan_revenue_usd": 70000,
+    "burn_usd": 80000,
+    "cash_usd": 1600000,
+    "churn_pct": 1.2,
+    "departures": [],
+    "source_url": "https://quillwater.affinity.co/files/kpi_mintrail_2026-07"
+   },
+   {
+    "month": "2026-08",
+    "revenue_usd": 74000,
+    "plan_revenue_usd": 73000,
+    "burn_usd": 81000,
+    "cash_usd": 1520000,
+    "churn_pct": 1.2,
+    "departures": [],
+    "source_url": "https://quillwater.affinity.co/files/kpi_mintrail_2026-08"
+   },
+   {
+    "month": "2026-09",
+    "revenue_usd": 79000,
+    "plan_revenue_usd": 77000,
+    "burn_usd": 82000,
+    "cash_usd": 1440000,
+    "churn_pct": 1.2,
+    "departures": [],
+    "source_url": "https://mail.google.com/mail/u/0/#all/upd_mintrail"
+   }
+  ]
+ },
+ "empathy_maps": {
+  "Ishaan Verma": "https://drive.google.com/file/d/em_ishaan_verma/view",
+  "Maya Chen": "https://drive.google.com/file/d/em_maya_chen/view"
+ },
+ "threads": [
+  {
+   "id": "th0179",
+   "subject": "Raising our seed round",
+   "date": "2026-10-21T15:00:00+05:30",
+   "url": "https://mail.google.com/mail/u/0/#all/th0179",
+   "participants": [
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    },
+    {
+     "name": "Abhishek Joshi",
+     "email": "abhishek.joshi@sablefraud.ai"
+    }
+   ],
+   "messages": [
+    {
+     "from": {
+      "name": "Abhishek Joshi",
+      "email": "abhishek.joshi@sablefraud.ai"
+     },
+     "date": "2026-10-20T19:00:00+05:30",
+     "text": "Following up on our conversation."
+    },
+    {
+     "from": {
+      "name": "Meera Iyer",
+      "email": "meera@quillwater.vc"
+     },
+     "date": "2026-10-21T15:00:00+05:30",
+     "text": "Let me know what you need from us."
+    }
+   ],
+   "labels": [],
+   "snippet": "Let me know what you need from us."
+  },
+  {
+   "id": "th0180",
+   "subject": "Raising our seed round",
+   "date": "2026-10-07T09:00:00+05:30",
+   "url": "https://mail.google.com/mail/u/0/#all/th0180",
+   "participants": [
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    },
+    {
+     "name": "Abhishek Joshi",
+     "email": "abhishek.joshi@sablefraud.ai"
+    }
+   ],
+   "messages": [
+    {
+     "from": {
+      "name": "Abhishek Joshi",
+      "email": "abhishek.joshi@sablefraud.ai"
+     },
+     "date": "2026-10-07T06:00:00+05:30",
+     "text": "Attaching the notes from our discussion."
+    },
+    {
+     "from": {
+      "name": "Meera Iyer",
+      "email": "meera@quillwater.vc"
+     },
+     "date": "2026-10-07T09:00:00+05:30",
+     "text": "Let me know what you need from us."
+    }
+   ],
+   "labels": [],
+   "snippet": "Let me know what you need from us."
+  },
+  {
+   "id": "th0181",
+   "subject": "Raising our seed round",
+   "date": "2026-09-22T16:00:00+05:30",
+   "url": "https://mail.google.com/mail/u/0/#all/th0181",
+   "participants": [
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    },
+    {
+     "name": "Abhishek Joshi",
+     "email": "abhishek.joshi@sablefraud.ai"
+    }
+   ],
+   "messages": [
+    {
+     "from": {
+      "name": "Meera Iyer",
+      "email": "meera@quillwater.vc"
+     },
+     "date": "2026-09-21T20:00:00+05:30",
+     "text": "Let me know what you need from us."
+    },
+    {
+     "from": {
+      "name": "Abhishek Joshi",
+      "email": "abhishek.joshi@sablefraud.ai"
+     },
+     "date": "2026-09-22T16:00:00+05:30",
+     "text": "Attaching the notes from our discussion."
+    }
+   ],
+   "labels": [],
+   "snippet": "Attaching the notes from our discussion."
+  },
+  {
+   "id": "th0182",
+   "subject": "Raising our seed round",
+   "date": "2026-09-08T11:00:00+05:30",
+   "url": "https://mail.google.com/mail/u/0/#all/th0182",
+   "participants": [
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    },
+    {
+     "name": "Abhishek Joshi",
+     "email": "abhishek.joshi@sablefraud.ai"
+    }
+   ],
+   "messages": [
+    {
+     "from": {
+      "name": "Abhishek Joshi",
+      "email": "abhishek.joshi@sablefraud.ai"
+     },
+     "date": "2026-09-08T08:00:00+05:30",
+     "text": "Sharing a quick update on where things stand."
+    },
+    {
+     "from": {
+      "name": "Meera Iyer",
+      "email": "meera@quillwater.vc"
+     },
+     "date": "2026-09-08T11:00:00+05:30",
+     "text": "Following up on our conversation."
+    }
+   ],
+   "labels": [],
+   "snippet": "Following up on our conversation."
+  },
+  {
+   "id": "th0183",
+   "subject": "Follow-up",
+   "date": "2026-08-25T14:00:00+05:30",
+   "url": "https://mail.google.com/mail/u/0/#all/th0183",
+   "participants": [
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    },
+    {
+     "name": "Abhishek Joshi",
+     "email": "abhishek.joshi@sablefraud.ai"
+    }
+   ],
+   "messages": [
+    {
+     "from": {
+      "name": "Abhishek Joshi",
+      "email": "abhishek.joshi@sablefraud.ai"
+     },
+     "date": "2026-08-25T11:00:00+05:30",
+     "text": "Thanks for the time today, really useful."
+    },
+    {
+     "from": {
+      "name": "Meera Iyer",
+      "email": "meera@quillwater.vc"
+     },
+     "date": "2026-08-25T14:00:00+05:30",
+     "text": "Following up on our conversation."
+    }
+   ],
+   "labels": [],
+   "snippet": "Following up on our conversation."
+  },
+  {
+   "id": "th0184",
+   "subject": "Follow-up",
+   "date": "2026-08-11T18:00:00+05:30",
+   "url": "https://mail.google.com/mail/u/0/#all/th0184",
+   "participants": [
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    },
+    {
+     "name": "Abhishek Joshi",
+     "email": "abhishek.joshi@sablefraud.ai"
+    }
+   ],
+   "messages": [
+    {
+     "from": {
+      "name": "Meera Iyer",
+      "email": "meera@quillwater.vc"
+     },
+     "date": "2026-08-10T16:00:00+05:30",
+     "text": "Sharing a quick update on where things stand."
+    },
+    {
+     "from": {
+      "name": "Abhishek Joshi",
+      "email": "abhishek.joshi@sablefraud.ai"
+     },
+     "date": "2026-08-11T18:00:00+05:30",
+     "text": "Let me know what you need from us."
+    }
+   ],
+   "labels": [],
+   "snippet": "Let me know what you need from us."
+  },
+  {
+   "id": "th0185",
+   "subject": "Raising our seed round",
+   "date": "2026-10-20T10:00:00+05:30",
+   "url": "https://mail.google.com/mail/u/0/#all/th0185",
+   "participants": [
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    },
+    {
+     "name": "Neha Kulkarni",
+     "email": "neha@trellisapi.in"
+    }
+   ],
+   "messages": [
+    {
+     "from": {
+      "name": "Neha Kulkarni",
+      "email": "neha@trellisapi.in"
+     },
+     "date": "2026-10-20T07:00:00+05:30",
+     "text": "Attaching the notes from our discussion."
+    },
+    {
+     "from": {
+      "name": "Meera Iyer",
+      "email": "meera@quillwater.vc"
+     },
+     "date": "2026-10-20T10:00:00+05:30",
+     "text": "Let me know what you need from us."
+    }
+   ],
+   "labels": [],
+   "snippet": "Let me know what you need from us."
+  },
+  {
+   "id": "th0186",
+   "subject": "Trellis Banking API deck",
+   "date": "2026-10-06T18:00:00+05:30",
+   "url": "https://mail.google.com/mail/u/0/#all/th0186",
+   "participants": [
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    },
+    {
+     "name": "Neha Kulkarni",
+     "email": "neha@trellisapi.in"
+    }
+   ],
+   "messages": [
+    {
+     "from": {
+      "name": "Neha Kulkarni",
+      "email": "neha@trellisapi.in"
+     },
+     "date": "2026-10-05T16:00:00+05:30",
+     "text": "Attaching the notes from our discussion."
+    },
+    {
+     "from": {
+      "name": "Meera Iyer",
+      "email": "meera@quillwater.vc"
+     },
+     "date": "2026-10-06T18:00:00+05:30",
+     "text": "Sharing a quick update on where things stand."
+    }
+   ],
+   "labels": [],
+   "snippet": "Sharing a quick update on where things stand."
+  },
+  {
+   "id": "th0187",
+   "subject": "Pitch deck and next steps",
+   "date": "2026-09-07T11:00:00+05:30",
+   "url": "https://mail.google.com/mail/u/0/#all/th0187",
+   "participants": [
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    },
+    {
+     "name": "Neha Kulkarni",
+     "email": "neha@trellisapi.in"
+    }
+   ],
+   "messages": [
+    {
+     "from": {
+      "name": "Meera Iyer",
+      "email": "meera@quillwater.vc"
+     },
+     "date": "2026-09-06T09:00:00+05:30",
+     "text": "Sharing a quick update on where things stand."
+    },
+    {
+     "from": {
+      "name": "Neha Kulkarni",
+      "email": "neha@trellisapi.in"
+     },
+     "date": "2026-09-07T11:00:00+05:30",
+     "text": "Let me know what you need from us."
+    }
+   ],
+   "labels": [],
+   "snippet": "Let me know what you need from us."
+  },
+  {
+   "id": "th0188",
+   "subject": "Pitch deck and next steps",
+   "date": "2026-08-10T15:00:00+05:30",
+   "url": "https://mail.google.com/mail/u/0/#all/th0188",
+   "participants": [
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    },
+    {
+     "name": "Neha Kulkarni",
+     "email": "neha@trellisapi.in"
+    }
+   ],
+   "messages": [
+    {
+     "from": {
+      "name": "Meera Iyer",
+      "email": "meera@quillwater.vc"
+     },
+     "date": "2026-08-09T19:00:00+05:30",
+     "text": "Let me know what you need from us."
+    },
+    {
+     "from": {
+      "name": "Neha Kulkarni",
+      "email": "neha@trellisapi.in"
+     },
+     "date": "2026-08-10T15:00:00+05:30",
+     "text": "Happy to set up a call next week."
+    }
+   ],
+   "labels": [],
+   "snippet": "Happy to set up a call next week."
+  },
+  {
+   "id": "th0189",
+   "subject": "Pitch deck and next steps",
+   "date": "2026-07-27T12:00:00+05:30",
+   "url": "https://mail.google.com/mail/u/0/#all/th0189",
+   "participants": [
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    },
+    {
+     "name": "Neha Kulkarni",
+     "email": "neha@trellisapi.in"
+    }
+   ],
+   "messages": [
+    {
+     "from": {
+      "name": "Meera Iyer",
+      "email": "meera@quillwater.vc"
+     },
+     "date": "2026-07-26T16:00:00+05:30",
+     "text": "Happy to set up a call next week."
+    },
+    {
+     "from": {
+      "name": "Neha Kulkarni",
+      "email": "neha@trellisapi.in"
+     },
+     "date": "2026-07-27T12:00:00+05:30",
+     "text": "Sharing a quick update on where things stand."
+    }
+   ],
+   "labels": [],
+   "snippet": "Sharing a quick update on where things stand."
+  },
+  {
+   "id": "th0190",
+   "subject": "Follow-up",
+   "date": "2026-07-13T15:00:00+05:30",
+   "url": "https://mail.google.com/mail/u/0/#all/th0190",
+   "participants": [
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    },
+    {
+     "name": "Neha Kulkarni",
+     "email": "neha@trellisapi.in"
+    }
+   ],
+   "messages": [
+    {
+     "from": {
+      "name": "Meera Iyer",
+      "email": "meera@quillwater.vc"
+     },
+     "date": "2026-07-12T19:00:00+05:30",
+     "text": "Happy to set up a call next week."
+    },
+    {
+     "from": {
+      "name": "Neha Kulkarni",
+      "email": "neha@trellisapi.in"
+     },
+     "date": "2026-07-13T15:00:00+05:30",
+     "text": "Attaching the notes from our discussion."
+    }
+   ],
+   "labels": [],
+   "snippet": "Attaching the notes from our discussion."
+  },
+  {
+   "id": "th0191",
+   "subject": "Raising our seed round",
+   "date": "2026-10-21T17:00:00+05:30",
+   "url": "https://mail.google.com/mail/u/0/#all/th0191",
+   "participants": [
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    },
+    {
+     "name": "Omkar Patil",
+     "email": "omkar@rivuletpay.com"
+    }
+   ],
+   "messages": [
+    {
+     "from": {
+      "name": "Meera Iyer",
+      "email": "meera@quillwater.vc"
+     },
+     "date": "2026-10-20T15:00:00+05:30",
+     "text": "Let me know what you need from us."
+    },
+    {
+     "from": {
+      "name": "Omkar Patil",
+      "email": "omkar@rivuletpay.com"
+     },
+     "date": "2026-10-21T17:00:00+05:30",
+     "text": "Attaching the notes from our discussion."
+    }
+   ],
+   "labels": [],
+   "snippet": "Attaching the notes from our discussion."
+  },
+  {
+   "id": "th0192",
+   "subject": "Raising our seed round",
+   "date": "2026-09-05T11:00:00+05:30",
+   "url": "https://mail.google.com/mail/u/0/#all/th0192",
+   "participants": [
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    },
+    {
+     "name": "Omkar Patil",
+     "email": "omkar@rivuletpay.com"
+    }
+   ],
+   "messages": [
+    {
+     "from": {
+      "name": "Meera Iyer",
+      "email": "meera@quillwater.vc"
+     },
+     "date": "2026-09-04T15:00:00+05:30",
+     "text": "Sharing a quick update on where things stand."
+    },
+    {
+     "from": {
+      "name": "Omkar Patil",
+      "email": "omkar@rivuletpay.com"
+     },
+     "date": "2026-09-05T11:00:00+05:30",
+     "text": "Happy to set up a call next week."
+    }
+   ],
+   "labels": [],
+   "snippet": "Happy to set up a call next week."
+  },
+  {
+   "id": "th0193",
+   "subject": "Pitch deck and next steps",
+   "date": "2026-08-13T10:00:00+05:30",
+   "url": "https://mail.google.com/mail/u/0/#all/th0193",
+   "participants": [
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    },
+    {
+     "name": "Omkar Patil",
+     "email": "omkar@rivuletpay.com"
+    }
+   ],
+   "messages": [
+    {
+     "from": {
+      "name": "Meera Iyer",
+      "email": "meera@quillwater.vc"
+     },
+     "date": "2026-08-12T14:00:00+05:30",
+     "text": "Thanks for the time today, really useful."
+    },
+    {
+     "from": {
+      "name": "Omkar Patil",
+      "email": "omkar@rivuletpay.com"
+     },
+     "date": "2026-08-13T10:00:00+05:30",
+     "text": "Happy to set up a call next week."
+    }
+   ],
+   "labels": [],
+   "snippet": "Happy to set up a call next week."
+  },
+  {
+   "id": "th0194",
+   "subject": "Follow-up",
+   "date": "2026-07-22T09:00:00+05:30",
+   "url": "https://mail.google.com/mail/u/0/#all/th0194",
+   "participants": [
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    },
+    {
+     "name": "Omkar Patil",
+     "email": "omkar@rivuletpay.com"
+    }
+   ],
+   "messages": [
+    {
+     "from": {
+      "name": "Omkar Patil",
+      "email": "omkar@rivuletpay.com"
+     },
+     "date": "2026-07-21T07:00:00+05:30",
+     "text": "Happy to set up a call next week."
+    },
+    {
+     "from": {
+      "name": "Meera Iyer",
+      "email": "meera@quillwater.vc"
+     },
+     "date": "2026-07-22T09:00:00+05:30",
+     "text": "Thanks for the time today, really useful."
+    }
+   ],
+   "labels": [],
+   "snippet": "Thanks for the time today, really useful."
+  },
+  {
+   "id": "th0195",
+   "subject": "Follow-up",
+   "date": "2026-09-26T11:00:00+05:30",
+   "url": "https://mail.google.com/mail/u/0/#all/th0195",
+   "participants": [
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    },
+    {
+     "name": "Farhan Ali",
+     "email": "farhan@zenotreasury.com"
+    }
+   ],
+   "messages": [
+    {
+     "from": {
+      "name": "Meera Iyer",
+      "email": "meera@quillwater.vc"
+     },
+     "date": "2026-09-25T15:00:00+05:30",
+     "text": "Thanks for the time today, really useful."
+    },
+    {
+     "from": {
+      "name": "Farhan Ali",
+      "email": "farhan@zenotreasury.com"
+     },
+     "date": "2026-09-26T11:00:00+05:30",
+     "text": "Thanks for the time today, really useful."
+    }
+   ],
+   "labels": [],
+   "snippet": "Thanks for the time today, really useful."
+  },
+  {
+   "id": "th0196",
+   "subject": "Pitch deck and next steps",
+   "date": "2026-09-04T14:00:00+05:30",
+   "url": "https://mail.google.com/mail/u/0/#all/th0196",
+   "participants": [
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    },
+    {
+     "name": "Farhan Ali",
+     "email": "farhan@zenotreasury.com"
+    }
+   ],
+   "messages": [
+    {
+     "from": {
+      "name": "Farhan Ali",
+      "email": "farhan@zenotreasury.com"
+     },
+     "date": "2026-09-04T11:00:00+05:30",
+     "text": "Let me know what you need from us."
+    },
+    {
+     "from": {
+      "name": "Meera Iyer",
+      "email": "meera@quillwater.vc"
+     },
+     "date": "2026-09-04T14:00:00+05:30",
+     "text": "Attaching the notes from our discussion."
+    }
+   ],
+   "labels": [],
+   "snippet": "Attaching the notes from our discussion."
+  },
+  {
+   "id": "th0197",
+   "subject": "Follow-up",
+   "date": "2026-08-13T18:00:00+05:30",
+   "url": "https://mail.google.com/mail/u/0/#all/th0197",
+   "participants": [
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    },
+    {
+     "name": "Farhan Ali",
+     "email": "farhan@zenotreasury.com"
+    }
+   ],
+   "messages": [
+    {
+     "from": {
+      "name": "Meera Iyer",
+      "email": "meera@quillwater.vc"
+     },
+     "date": "2026-08-13T15:00:00+05:30",
+     "text": "Sharing a quick update on where things stand."
+    },
+    {
+     "from": {
+      "name": "Farhan Ali",
+      "email": "farhan@zenotreasury.com"
+     },
+     "date": "2026-08-13T18:00:00+05:30",
+     "text": "Following up on our conversation."
+    }
+   ],
+   "labels": [],
+   "snippet": "Following up on our conversation."
+  },
+  {
+   "id": "th0198",
+   "subject": "Follow-up",
+   "date": "2026-06-29T16:00:00+05:30",
+   "url": "https://mail.google.com/mail/u/0/#all/th0198",
+   "participants": [
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    },
+    {
+     "name": "Farhan Ali",
+     "email": "farhan@zenotreasury.com"
+    }
+   ],
+   "messages": [
+    {
+     "from": {
+      "name": "Farhan Ali",
+      "email": "farhan@zenotreasury.com"
+     },
+     "date": "2026-06-29T13:00:00+05:30",
+     "text": "Happy to set up a call next week."
+    },
+    {
+     "from": {
+      "name": "Meera Iyer",
+      "email": "meera@quillwater.vc"
+     },
+     "date": "2026-06-29T16:00:00+05:30",
+     "text": "Attaching the notes from our discussion."
+    }
+   ],
+   "labels": [],
+   "snippet": "Attaching the notes from our discussion."
+  },
+  {
+   "id": "th0199",
+   "subject": "Raising our seed round",
+   "date": "2026-10-20T11:00:00+05:30",
+   "url": "https://mail.google.com/mail/u/0/#all/th0199",
+   "participants": [
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    },
+    {
+     "name": "Kavya Reddy",
+     "email": "kavya@pillarkyc.in"
+    }
+   ],
+   "messages": [
+    {
+     "from": {
+      "name": "Kavya Reddy",
+      "email": "kavya@pillarkyc.in"
+     },
+     "date": "2026-10-19T15:00:00+05:30",
+     "text": "Following up on our conversation."
+    },
+    {
+     "from": {
+      "name": "Meera Iyer",
+      "email": "meera@quillwater.vc"
+     },
+     "date": "2026-10-20T11:00:00+05:30",
+     "text": "Sharing a quick update on where things stand."
+    }
+   ],
+   "labels": [],
+   "snippet": "Sharing a quick update on where things stand."
+  },
+  {
+   "id": "th0200",
+   "subject": "Pitch deck and next steps",
+   "date": "2026-09-12T16:00:00+05:30",
+   "url": "https://mail.google.com/mail/u/0/#all/th0200",
+   "participants": [
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    },
+    {
+     "name": "Kavya Reddy",
+     "email": "kavya@pillarkyc.in"
+    }
+   ],
+   "messages": [
+    {
+     "from": {
+      "name": "Meera Iyer",
+      "email": "meera@quillwater.vc"
+     },
+     "date": "2026-09-11T14:00:00+05:30",
+     "text": "Attaching the notes from our discussion."
+    },
+    {
+     "from": {
+      "name": "Kavya Reddy",
+      "email": "kavya@pillarkyc.in"
+     },
+     "date": "2026-09-12T16:00:00+05:30",
+     "text": "Following up on our conversation."
+    }
+   ],
+   "labels": [],
+   "snippet": "Following up on our conversation."
+  },
+  {
+   "id": "th0201",
+   "subject": "Pillar KYC deck",
+   "date": "2026-08-05T10:00:00+05:30",
+   "url": "https://mail.google.com/mail/u/0/#all/th0201",
+   "participants": [
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    },
+    {
+     "name": "Kavya Reddy",
+     "email": "kavya@pillarkyc.in"
+    }
+   ],
+   "messages": [
+    {
+     "from": {
+      "name": "Meera Iyer",
+      "email": "meera@quillwater.vc"
+     },
+     "date": "2026-08-04T14:00:00+05:30",
+     "text": "Thanks for the time today, really useful."
+    },
+    {
+     "from": {
+      "name": "Kavya Reddy",
+      "email": "kavya@pillarkyc.in"
+     },
+     "date": "2026-08-05T10:00:00+05:30",
+     "text": "Let me know what you need from us."
+    }
+   ],
+   "labels": [],
+   "snippet": "Let me know what you need from us."
+  },
+  {
+   "id": "th0202",
+   "subject": "Deccan Lend Cloud deck",
+   "date": "2026-10-20T15:00:00+05:30",
+   "url": "https://mail.google.com/mail/u/0/#all/th0202",
+   "participants": [
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    },
+    {
+     "name": "Lakshmi Prasad",
+     "email": "lakshmi@deccanlend.cloud"
+    }
+   ],
+   "messages": [
+    {
+     "from": {
+      "name": "Lakshmi Prasad",
+      "email": "lakshmi@deccanlend.cloud"
+     },
+     "date": "2026-10-19T19:00:00+05:30",
+     "text": "Let me know what you need from us."
+    },
+    {
+     "from": {
+      "name": "Meera Iyer",
+      "email": "meera@quillwater.vc"
+     },
+     "date": "2026-10-20T15:00:00+05:30",
+     "text": "Let me know what you need from us."
+    }
+   ],
+   "labels": [],
+   "snippet": "Let me know what you need from us."
+  },
+  {
+   "id": "th0203",
+   "subject": "Raising our seed round",
+   "date": "2026-06-29T09:00:00+05:30",
+   "url": "https://mail.google.com/mail/u/0/#all/th0203",
+   "participants": [
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    },
+    {
+     "name": "Lakshmi Prasad",
+     "email": "lakshmi@deccanlend.cloud"
+    }
+   ],
+   "messages": [
+    {
+     "from": {
+      "name": "Lakshmi Prasad",
+      "email": "lakshmi@deccanlend.cloud"
+     },
+     "date": "2026-06-28T07:00:00+05:30",
+     "text": "Let me know what you need from us."
+    },
+    {
+     "from": {
+      "name": "Meera Iyer",
+      "email": "meera@quillwater.vc"
+     },
+     "date": "2026-06-29T09:00:00+05:30",
+     "text": "Sharing a quick update on where things stand."
+    }
+   ],
+   "labels": [],
+   "snippet": "Sharing a quick update on where things stand."
+  },
+  {
+   "id": "th0204",
+   "subject": "Follow-up",
+   "date": "2026-09-11T10:00:00+05:30",
+   "url": "https://mail.google.com/mail/u/0/#all/th0204",
+   "participants": [
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    },
+    {
+     "name": "Yash Arora",
+     "email": "yash@asteruw.ai"
+    }
+   ],
+   "messages": [
+    {
+     "from": {
+      "name": "Yash Arora",
+      "email": "yash@asteruw.ai"
+     },
+     "date": "2026-09-11T07:00:00+05:30",
+     "text": "Thanks for the time today, really useful."
+    },
+    {
+     "from": {
+      "name": "Meera Iyer",
+      "email": "meera@quillwater.vc"
+     },
+     "date": "2026-09-11T10:00:00+05:30",
+     "text": "Sharing a quick update on where things stand."
+    }
+   ],
+   "labels": [],
+   "snippet": "Sharing a quick update on where things stand."
+  },
+  {
+   "id": "th0205",
+   "subject": "Raising our seed round",
+   "date": "2026-08-05T09:00:00+05:30",
+   "url": "https://mail.google.com/mail/u/0/#all/th0205",
+   "participants": [
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    },
+    {
+     "name": "Yash Arora",
+     "email": "yash@asteruw.ai"
+    }
+   ],
+   "messages": [
+    {
+     "from": {
+      "name": "Yash Arora",
+      "email": "yash@asteruw.ai"
+     },
+     "date": "2026-08-04T13:00:00+05:30",
+     "text": "Attaching the notes from our discussion."
+    },
+    {
+     "from": {
+      "name": "Meera Iyer",
+      "email": "meera@quillwater.vc"
+     },
+     "date": "2026-08-05T09:00:00+05:30",
+     "text": "Happy to set up a call next week."
+    }
+   ],
+   "labels": [],
+   "snippet": "Happy to set up a call next week."
+  },
+  {
+   "id": "th0206",
+   "subject": "Aster Underwrite deck",
+   "date": "2026-06-29T14:00:00+05:30",
+   "url": "https://mail.google.com/mail/u/0/#all/th0206",
+   "participants": [
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    },
+    {
+     "name": "Yash Arora",
+     "email": "yash@asteruw.ai"
+    }
+   ],
+   "messages": [
+    {
+     "from": {
+      "name": "Yash Arora",
+      "email": "yash@asteruw.ai"
+     },
+     "date": "2026-06-28T12:00:00+05:30",
+     "text": "Following up on our conversation."
+    },
+    {
+     "from": {
+      "name": "Meera Iyer",
+      "email": "meera@quillwater.vc"
+     },
+     "date": "2026-06-29T14:00:00+05:30",
+     "text": "Thanks for the time today, really useful."
+    }
+   ],
+   "labels": [],
+   "snippet": "Thanks for the time today, really useful."
+  },
+  {
+   "id": "th0207",
+   "subject": "Follow-up",
+   "date": "2026-10-13T15:00:00+05:30",
+   "url": "https://mail.google.com/mail/u/0/#all/th0207",
+   "participants": [
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    },
+    {
+     "name": "Debashish Roy",
+     "email": "debashish@copperleaf.in"
+    }
+   ],
+   "messages": [
+    {
+     "from": {
+      "name": "Meera Iyer",
+      "email": "meera@quillwater.vc"
+     },
+     "date": "2026-10-12T19:00:00+05:30",
+     "text": "Happy to set up a call next week."
+    },
+    {
+     "from": {
+      "name": "Debashish Roy",
+      "email": "debashish@copperleaf.in"
+     },
+     "date": "2026-10-13T15:00:00+05:30",
+     "text": "Following up on our conversation."
+    }
+   ],
+   "labels": [],
+   "snippet": "Following up on our conversation."
+  },
+  {
+   "id": "th0208",
+   "subject": "Raising our seed round",
+   "date": "2026-08-03T15:00:00+05:30",
+   "url": "https://mail.google.com/mail/u/0/#all/th0208",
+   "participants": [
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    },
+    {
+     "name": "Debashish Roy",
+     "email": "debashish@copperleaf.in"
+    }
+   ],
+   "messages": [
+    {
+     "from": {
+      "name": "Meera Iyer",
+      "email": "meera@quillwater.vc"
+     },
+     "date": "2026-08-03T12:00:00+05:30",
+     "text": "Thanks for the time today, really useful."
+    },
+    {
+     "from": {
+      "name": "Debashish Roy",
+      "email": "debashish@copperleaf.in"
+     },
+     "date": "2026-08-03T15:00:00+05:30",
+     "text": "Happy to set up a call next week."
+    }
+   ],
+   "labels": [],
+   "snippet": "Happy to set up a call next week."
+  },
+  {
+   "id": "th0209",
+   "subject": "Raising our seed round",
+   "date": "2026-06-29T11:00:00+05:30",
+   "url": "https://mail.google.com/mail/u/0/#all/th0209",
+   "participants": [
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    },
+    {
+     "name": "Debashish Roy",
+     "email": "debashish@copperleaf.in"
+    }
+   ],
+   "messages": [
+    {
+     "from": {
+      "name": "Debashish Roy",
+      "email": "debashish@copperleaf.in"
+     },
+     "date": "2026-06-28T15:00:00+05:30",
+     "text": "Following up on our conversation."
+    },
+    {
+     "from": {
+      "name": "Meera Iyer",
+      "email": "meera@quillwater.vc"
+     },
+     "date": "2026-06-29T11:00:00+05:30",
+     "text": "Let me know what you need from us."
+    }
+   ],
+   "labels": [],
+   "snippet": "Let me know what you need from us."
+  },
+  {
+   "id": "th0210",
+   "subject": "Raising our seed round",
+   "date": "2026-09-12T17:00:00+05:30",
+   "url": "https://mail.google.com/mail/u/0/#all/th0210",
+   "participants": [
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    },
+    {
+     "name": "Shreya Venkat",
+     "email": "shreya@haloreconcile.com"
+    }
+   ],
+   "messages": [
+    {
+     "from": {
+      "name": "Shreya Venkat",
+      "email": "shreya@haloreconcile.com"
+     },
+     "date": "2026-09-11T21:00:00+05:30",
+     "text": "Following up on our conversation."
+    },
+    {
+     "from": {
+      "name": "Meera Iyer",
+      "email": "meera@quillwater.vc"
+     },
+     "date": "2026-09-12T17:00:00+05:30",
+     "text": "Attaching the notes from our discussion."
+    }
+   ],
+   "labels": [],
+   "snippet": "Attaching the notes from our discussion."
+  },
+  {
+   "id": "th0211",
+   "subject": "Raising our seed round",
+   "date": "2026-08-05T16:00:00+05:30",
+   "url": "https://mail.google.com/mail/u/0/#all/th0211",
+   "participants": [
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    },
+    {
+     "name": "Shreya Venkat",
+     "email": "shreya@haloreconcile.com"
+    }
+   ],
+   "messages": [
+    {
+     "from": {
+      "name": "Meera Iyer",
+      "email": "meera@quillwater.vc"
+     },
+     "date": "2026-08-04T14:00:00+05:30",
+     "text": "Thanks for the time today, really useful."
+    },
+    {
+     "from": {
+      "name": "Shreya Venkat",
+      "email": "shreya@haloreconcile.com"
+     },
+     "date": "2026-08-05T16:00:00+05:30",
+     "text": "Thanks for the time today, really useful."
+    }
+   ],
+   "labels": [],
+   "snippet": "Thanks for the time today, really useful."
+  },
+  {
+   "id": "th0212",
+   "subject": "Raising our seed round",
+   "date": "2026-06-29T16:00:00+05:30",
+   "url": "https://mail.google.com/mail/u/0/#all/th0212",
+   "participants": [
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    },
+    {
+     "name": "Shreya Venkat",
+     "email": "shreya@haloreconcile.com"
+    }
+   ],
+   "messages": [
+    {
+     "from": {
+      "name": "Meera Iyer",
+      "email": "meera@quillwater.vc"
+     },
+     "date": "2026-06-28T14:00:00+05:30",
+     "text": "Let me know what you need from us."
+    },
+    {
+     "from": {
+      "name": "Shreya Venkat",
+      "email": "shreya@haloreconcile.com"
+     },
+     "date": "2026-06-29T16:00:00+05:30",
+     "text": "Sharing a quick update on where things stand."
+    }
+   ],
+   "labels": [],
+   "snippet": "Sharing a quick update on where things stand."
+  },
+  {
+   "id": "th0213",
+   "subject": "Pitch deck and next steps",
+   "date": "2026-10-21T10:00:00+05:30",
+   "url": "https://mail.google.com/mail/u/0/#all/th0213",
+   "participants": [
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    },
+    {
+     "name": "Leena Dsouza",
+     "email": "leena@embercredit.in"
+    }
+   ],
+   "messages": [
+    {
+     "from": {
+      "name": "Leena Dsouza",
+      "email": "leena@embercredit.in"
+     },
+     "date": "2026-10-20T08:00:00+05:30",
+     "text": "Happy to set up a call next week."
+    },
+    {
+     "from": {
+      "name": "Meera Iyer",
+      "email": "meera@quillwater.vc"
+     },
+     "date": "2026-10-21T10:00:00+05:30",
+     "text": "Attaching the notes from our discussion."
+    }
+   ],
+   "labels": [],
+   "snippet": "Attaching the notes from our discussion."
+  },
+  {
+   "id": "th0214",
+   "subject": "Pitch deck and next steps",
+   "date": "2026-09-28T09:00:00+05:30",
+   "url": "https://mail.google.com/mail/u/0/#all/th0214",
+   "participants": [
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    },
+    {
+     "name": "Leena Dsouza",
+     "email": "leena@embercredit.in"
+    }
+   ],
+   "messages": [
+    {
+     "from": {
+      "name": "Leena Dsouza",
+      "email": "leena@embercredit.in"
+     },
+     "date": "2026-09-27T07:00:00+05:30",
+     "text": "Following up on our conversation."
+    },
+    {
+     "from": {
+      "name": "Meera Iyer",
+      "email": "meera@quillwater.vc"
+     },
+     "date": "2026-09-28T09:00:00+05:30",
+     "text": "Following up on our conversation."
+    }
+   ],
+   "labels": [],
+   "snippet": "Following up on our conversation."
+  },
+  {
+   "id": "th0215",
+   "subject": "Ember Credit deck",
+   "date": "2026-09-05T17:00:00+05:30",
+   "url": "https://mail.google.com/mail/u/0/#all/th0215",
+   "participants": [
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    },
+    {
+     "name": "Leena Dsouza",
+     "email": "leena@embercredit.in"
+    }
+   ],
+   "messages": [
+    {
+     "from": {
+      "name": "Leena Dsouza",
+      "email": "leena@embercredit.in"
+     },
+     "date": "2026-09-04T15:00:00+05:30",
+     "text": "Following up on our conversation."
+    },
+    {
+     "from": {
+      "name": "Meera Iyer",
+      "email": "meera@quillwater.vc"
+     },
+     "date": "2026-09-05T17:00:00+05:30",
+     "text": "Happy to set up a call next week."
+    }
+   ],
+   "labels": [],
+   "snippet": "Happy to set up a call next week."
+  },
+  {
+   "id": "th0216",
+   "subject": "Raising our seed round",
+   "date": "2026-08-13T15:00:00+05:30",
+   "url": "https://mail.google.com/mail/u/0/#all/th0216",
+   "participants": [
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    },
+    {
+     "name": "Leena Dsouza",
+     "email": "leena@embercredit.in"
+    }
+   ],
+   "messages": [
+    {
+     "from": {
+      "name": "Meera Iyer",
+      "email": "meera@quillwater.vc"
+     },
+     "date": "2026-08-13T12:00:00+05:30",
+     "text": "Thanks for the time today, really useful."
+    },
+    {
+     "from": {
+      "name": "Leena Dsouza",
+      "email": "leena@embercredit.in"
+     },
+     "date": "2026-08-13T15:00:00+05:30",
+     "text": "Let me know what you need from us."
+    }
+   ],
+   "labels": [],
+   "snippet": "Let me know what you need from us."
+  },
+  {
+   "id": "th0217",
+   "subject": "Pitch deck and next steps",
+   "date": "2026-10-19T17:00:00+05:30",
+   "url": "https://mail.google.com/mail/u/0/#all/th0217",
+   "participants": [
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    },
+    {
+     "name": "Aman Gupta",
+     "email": "aman@northwindstack.com"
+    }
+   ],
+   "messages": [
+    {
+     "from": {
+      "name": "Aman Gupta",
+      "email": "aman@northwindstack.com"
+     },
+     "date": "2026-10-19T14:00:00+05:30",
+     "text": "Thanks for the time today, really useful."
+    },
+    {
+     "from": {
+      "name": "Meera Iyer",
+      "email": "meera@quillwater.vc"
+     },
+     "date": "2026-10-19T17:00:00+05:30",
+     "text": "Happy to set up a call next week."
+    }
+   ],
+   "labels": [],
+   "snippet": "Happy to set up a call next week."
+  },
+  {
+   "id": "th0218",
+   "subject": "Raising our seed round",
+   "date": "2026-07-27T10:00:00+05:30",
+   "url": "https://mail.google.com/mail/u/0/#all/th0218",
+   "participants": [
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    },
+    {
+     "name": "Aman Gupta",
+     "email": "aman@northwindstack.com"
+    }
+   ],
+   "messages": [
+    {
+     "from": {
+      "name": "Meera Iyer",
+      "email": "meera@quillwater.vc"
+     },
+     "date": "2026-07-26T14:00:00+05:30",
+     "text": "Let me know what you need from us."
+    },
+    {
+     "from": {
+      "name": "Aman Gupta",
+      "email": "aman@northwindstack.com"
+     },
+     "date": "2026-07-27T10:00:00+05:30",
+     "text": "Let me know what you need from us."
+    }
+   ],
+   "labels": [],
+   "snippet": "Let me know what you need from us."
+  },
+  {
+   "id": "th0219",
+   "subject": "Raising our seed round",
+   "date": "2026-06-29T11:00:00+05:30",
+   "url": "https://mail.google.com/mail/u/0/#all/th0219",
+   "participants": [
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    },
+    {
+     "name": "Aman Gupta",
+     "email": "aman@northwindstack.com"
+    }
+   ],
+   "messages": [
+    {
+     "from": {
+      "name": "Aman Gupta",
+      "email": "aman@northwindstack.com"
+     },
+     "date": "2026-06-28T09:00:00+05:30",
+     "text": "Sharing a quick update on where things stand."
+    },
+    {
+     "from": {
+      "name": "Meera Iyer",
+      "email": "meera@quillwater.vc"
+     },
+     "date": "2026-06-29T11:00:00+05:30",
+     "text": "Sharing a quick update on where things stand."
+    }
+   ],
+   "labels": [],
+   "snippet": "Sharing a quick update on where things stand."
+  },
+  {
+   "id": "th0220",
+   "subject": "Raising our seed round",
+   "date": "2026-10-20T18:00:00+05:30",
+   "url": "https://mail.google.com/mail/u/0/#all/th0220",
+   "participants": [
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    },
+    {
+     "name": "Tushar Bansal",
+     "email": "tushar@juniperrails.in"
+    }
+   ],
+   "messages": [
+    {
+     "from": {
+      "name": "Meera Iyer",
+      "email": "meera@quillwater.vc"
+     },
+     "date": "2026-10-19T22:00:00+05:30",
+     "text": "Attaching the notes from our discussion."
+    },
+    {
+     "from": {
+      "name": "Tushar Bansal",
+      "email": "tushar@juniperrails.in"
+     },
+     "date": "2026-10-20T18:00:00+05:30",
+     "text": "Sharing a quick update on where things stand."
+    }
+   ],
+   "labels": [],
+   "snippet": "Sharing a quick update on where things stand."
+  },
+  {
+   "id": "th0221",
+   "subject": "Juniper Payroll Rails deck",
+   "date": "2026-09-22T10:00:00+05:30",
+   "url": "https://mail.google.com/mail/u/0/#all/th0221",
+   "participants": [
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    },
+    {
+     "name": "Tushar Bansal",
+     "email": "tushar@juniperrails.in"
+    }
+   ],
+   "messages": [
+    {
+     "from": {
+      "name": "Tushar Bansal",
+      "email": "tushar@juniperrails.in"
+     },
+     "date": "2026-09-21T14:00:00+05:30",
+     "text": "Let me know what you need from us."
+    },
+    {
+     "from": {
+      "name": "Meera Iyer",
+      "email": "meera@quillwater.vc"
+     },
+     "date": "2026-09-22T10:00:00+05:30",
+     "text": "Let me know what you need from us."
+    }
+   ],
+   "labels": [],
+   "snippet": "Let me know what you need from us."
+  },
+  {
+   "id": "th0222",
+   "subject": "Juniper Payroll Rails deck",
+   "date": "2026-07-27T16:00:00+05:30",
+   "url": "https://mail.google.com/mail/u/0/#all/th0222",
+   "participants": [
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    },
+    {
+     "name": "Tushar Bansal",
+     "email": "tushar@juniperrails.in"
+    }
+   ],
+   "messages": [
+    {
+     "from": {
+      "name": "Meera Iyer",
+      "email": "meera@quillwater.vc"
+     },
+     "date": "2026-07-27T13:00:00+05:30",
+     "text": "Let me know what you need from us."
+    },
+    {
+     "from": {
+      "name": "Tushar Bansal",
+      "email": "tushar@juniperrails.in"
+     },
+     "date": "2026-07-27T16:00:00+05:30",
+     "text": "Thanks for the time today, really useful."
+    }
+   ],
+   "labels": [],
+   "snippet": "Thanks for the time today, really useful."
+  },
+  {
+   "id": "th0223",
+   "subject": "Mosaic Wealth Infra deck",
+   "date": "2026-10-19T18:00:00+05:30",
+   "url": "https://mail.google.com/mail/u/0/#all/th0223",
+   "participants": [
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    },
+    {
+     "name": "Ira Saxena",
+     "email": "ira@mosaicwealth.io"
+    }
+   ],
+   "messages": [
+    {
+     "from": {
+      "name": "Ira Saxena",
+      "email": "ira@mosaicwealth.io"
+     },
+     "date": "2026-10-19T15:00:00+05:30",
+     "text": "Following up on our conversation."
+    },
+    {
+     "from": {
+      "name": "Meera Iyer",
+      "email": "meera@quillwater.vc"
+     },
+     "date": "2026-10-19T18:00:00+05:30",
+     "text": "Sharing a quick update on where things stand."
+    }
+   ],
+   "labels": [],
+   "snippet": "Sharing a quick update on where things stand."
+  },
+  {
+   "id": "th0224",
+   "subject": "Raising our seed round",
+   "date": "2026-09-26T11:00:00+05:30",
+   "url": "https://mail.google.com/mail/u/0/#all/th0224",
+   "participants": [
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    },
+    {
+     "name": "Ira Saxena",
+     "email": "ira@mosaicwealth.io"
+    }
+   ],
+   "messages": [
+    {
+     "from": {
+      "name": "Ira Saxena",
+      "email": "ira@mosaicwealth.io"
+     },
+     "date": "2026-09-25T09:00:00+05:30",
+     "text": "Attaching the notes from our discussion."
+    },
+    {
+     "from": {
+      "name": "Meera Iyer",
+      "email": "meera@quillwater.vc"
+     },
+     "date": "2026-09-26T11:00:00+05:30",
+     "text": "Following up on our conversation."
+    }
+   ],
+   "labels": [],
+   "snippet": "Following up on our conversation."
+  },
+  {
+   "id": "th0225",
+   "subject": "Raising our seed round",
+   "date": "2026-08-13T18:00:00+05:30",
+   "url": "https://mail.google.com/mail/u/0/#all/th0225",
+   "participants": [
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    },
+    {
+     "name": "Ira Saxena",
+     "email": "ira@mosaicwealth.io"
+    }
+   ],
+   "messages": [
+    {
+     "from": {
+      "name": "Meera Iyer",
+      "email": "meera@quillwater.vc"
+     },
+     "date": "2026-08-13T15:00:00+05:30",
+     "text": "Attaching the notes from our discussion."
+    },
+    {
+     "from": {
+      "name": "Ira Saxena",
+      "email": "ira@mosaicwealth.io"
+     },
+     "date": "2026-08-13T18:00:00+05:30",
+     "text": "Attaching the notes from our discussion."
+    }
+   ],
+   "labels": [],
+   "snippet": "Attaching the notes from our discussion."
+  },
+  {
+   "id": "th0226",
+   "subject": "Pitch deck and next steps",
+   "date": "2026-07-21T10:00:00+05:30",
+   "url": "https://mail.google.com/mail/u/0/#all/th0226",
+   "participants": [
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    },
+    {
+     "name": "Ira Saxena",
+     "email": "ira@mosaicwealth.io"
+    }
+   ],
+   "messages": [
+    {
+     "from": {
+      "name": "Meera Iyer",
+      "email": "meera@quillwater.vc"
+     },
+     "date": "2026-07-20T08:00:00+05:30",
+     "text": "Sharing a quick update on where things stand."
+    },
+    {
+     "from": {
+      "name": "Ira Saxena",
+      "email": "ira@mosaicwealth.io"
+     },
+     "date": "2026-07-21T10:00:00+05:30",
+     "text": "Sharing a quick update on where things stand."
+    }
+   ],
+   "labels": [],
+   "snippet": "Sharing a quick update on where things stand."
+  },
+  {
+   "id": "th0227",
+   "subject": "Pitch deck and next steps",
+   "date": "2026-10-04T14:00:00+05:30",
+   "url": "https://mail.google.com/mail/u/0/#all/th0227",
+   "participants": [
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    },
+    {
+     "name": "Claire Dubois",
+     "email": "claire@bluepeak.partners"
+    }
+   ],
+   "messages": [
+    {
+     "from": {
+      "name": "Claire Dubois",
+      "email": "claire@bluepeak.partners"
+     },
+     "date": "2026-10-03T12:00:00+05:30",
+     "text": "Let me know what you need from us."
+    },
+    {
+     "from": {
+      "name": "Meera Iyer",
+      "email": "meera@quillwater.vc"
+     },
+     "date": "2026-10-04T14:00:00+05:30",
+     "text": "Thanks for the time today, really useful."
+    }
+   ],
+   "labels": [],
+   "snippet": "Thanks for the time today, really useful."
+  },
+  {
+   "id": "th0228",
+   "subject": "Raising our seed round",
+   "date": "2026-09-01T17:00:00+05:30",
+   "url": "https://mail.google.com/mail/u/0/#all/th0228",
+   "participants": [
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    },
+    {
+     "name": "Claire Dubois",
+     "email": "claire@bluepeak.partners"
+    }
+   ],
+   "messages": [
+    {
+     "from": {
+      "name": "Meera Iyer",
+      "email": "meera@quillwater.vc"
+     },
+     "date": "2026-08-31T15:00:00+05:30",
+     "text": "Happy to set up a call next week."
+    },
+    {
+     "from": {
+      "name": "Claire Dubois",
+      "email": "claire@bluepeak.partners"
+     },
+     "date": "2026-09-01T17:00:00+05:30",
+     "text": "Sharing a quick update on where things stand."
+    }
+   ],
+   "labels": [],
+   "snippet": "Sharing a quick update on where things stand."
+  },
+  {
+   "id": "th0229",
+   "subject": "Raising our seed round",
+   "date": "2026-07-31T16:00:00+05:30",
+   "url": "https://mail.google.com/mail/u/0/#all/th0229",
+   "participants": [
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    },
+    {
+     "name": "Claire Dubois",
+     "email": "claire@bluepeak.partners"
+    }
+   ],
+   "messages": [
+    {
+     "from": {
+      "name": "Claire Dubois",
+      "email": "claire@bluepeak.partners"
+     },
+     "date": "2026-07-30T20:00:00+05:30",
+     "text": "Thanks for the time today, really useful."
+    },
+    {
+     "from": {
+      "name": "Meera Iyer",
+      "email": "meera@quillwater.vc"
+     },
+     "date": "2026-07-31T16:00:00+05:30",
+     "text": "Sharing a quick update on where things stand."
+    }
+   ],
+   "labels": [],
+   "snippet": "Sharing a quick update on where things stand."
+  },
+  {
+   "id": "th0230",
+   "subject": "Raising our seed round",
+   "date": "2026-09-27T11:00:00+05:30",
+   "url": "https://mail.google.com/mail/u/0/#all/th0230",
+   "participants": [
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    },
+    {
+     "name": "Prakash Iyer",
+     "email": "prakash@kalpa.vc"
+    }
+   ],
+   "messages": [
+    {
+     "from": {
+      "name": "Prakash Iyer",
+      "email": "prakash@kalpa.vc"
+     },
+     "date": "2026-09-26T09:00:00+05:30",
+     "text": "Following up on our conversation."
+    },
+    {
+     "from": {
+      "name": "Meera Iyer",
+      "email": "meera@quillwater.vc"
+     },
+     "date": "2026-09-27T11:00:00+05:30",
+     "text": "Happy to set up a call next week."
+    }
+   ],
+   "labels": [],
+   "snippet": "Happy to set up a call next week."
+  },
+  {
+   "id": "th0231",
+   "subject": "Raising our seed round",
+   "date": "2026-08-28T11:00:00+05:30",
+   "url": "https://mail.google.com/mail/u/0/#all/th0231",
+   "participants": [
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    },
+    {
+     "name": "Prakash Iyer",
+     "email": "prakash@kalpa.vc"
+    }
+   ],
+   "messages": [
+    {
+     "from": {
+      "name": "Prakash Iyer",
+      "email": "prakash@kalpa.vc"
+     },
+     "date": "2026-08-27T09:00:00+05:30",
+     "text": "Following up on our conversation."
+    },
+    {
+     "from": {
+      "name": "Meera Iyer",
+      "email": "meera@quillwater.vc"
+     },
+     "date": "2026-08-28T11:00:00+05:30",
+     "text": "Sharing a quick update on where things stand."
+    }
+   ],
+   "labels": [],
+   "snippet": "Sharing a quick update on where things stand."
+  },
+  {
+   "id": "th0232",
+   "subject": "Pitch deck and next steps",
+   "date": "2026-06-29T17:00:00+05:30",
+   "url": "https://mail.google.com/mail/u/0/#all/th0232",
+   "participants": [
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    },
+    {
+     "name": "Prakash Iyer",
+     "email": "prakash@kalpa.vc"
+    }
+   ],
+   "messages": [
+    {
+     "from": {
+      "name": "Prakash Iyer",
+      "email": "prakash@kalpa.vc"
+     },
+     "date": "2026-06-29T14:00:00+05:30",
+     "text": "Following up on our conversation."
+    },
+    {
+     "from": {
+      "name": "Meera Iyer",
+      "email": "meera@quillwater.vc"
+     },
+     "date": "2026-06-29T17:00:00+05:30",
+     "text": "Happy to set up a call next week."
+    }
+   ],
+   "labels": [],
+   "snippet": "Happy to set up a call next week."
+  },
+  {
+   "id": "th0233",
+   "subject": "Pitch deck and next steps",
+   "date": "2026-10-19T16:00:00+05:30",
+   "url": "https://mail.google.com/mail/u/0/#all/th0233",
+   "participants": [
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    },
+    {
+     "name": "Sonia Pereira",
+     "email": "sonia@latticekyc.in"
+    }
+   ],
+   "messages": [
+    {
+     "from": {
+      "name": "Meera Iyer",
+      "email": "meera@quillwater.vc"
+     },
+     "date": "2026-10-19T13:00:00+05:30",
+     "text": "Attaching the notes from our discussion."
+    },
+    {
+     "from": {
+      "name": "Sonia Pereira",
+      "email": "sonia@latticekyc.in"
+     },
+     "date": "2026-10-19T16:00:00+05:30",
+     "text": "Let me know what you need from us."
+    }
+   ],
+   "labels": [],
+   "snippet": "Let me know what you need from us."
+  },
+  {
+   "id": "th0346",
+   "subject": "Re: Zeno Treasury",
+   "date": "2026-10-12T15:00:00+05:30",
+   "url": "https://mail.google.com/mail/u/0/#all/th0346",
+   "participants": [
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    },
+    {
+     "name": "Farhan Ali",
+     "email": "farhan.ali@zenotreasury.com"
+    }
+   ],
+   "messages": [
+    {
+     "from": {
+      "name": "Farhan Ali",
+      "email": "farhan.ali@zenotreasury.com"
+     },
+     "date": "2026-10-12T15:00:00+05:30",
+     "text": "Sharing the latest numbers as discussed."
+    }
+   ],
+   "labels": [],
+   "snippet": "Sharing the latest numbers as discussed."
+  },
+  {
+   "id": "th0347",
+   "subject": "Re: Trellis Banking API",
+   "date": "2026-10-14T14:00:00+05:30",
+   "url": "https://mail.google.com/mail/u/0/#all/th0347",
+   "participants": [
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    },
+    {
+     "name": "Neha Kulkarni",
+     "email": "neha.k@trellisapi.in"
+    }
+   ],
+   "messages": [
+    {
+     "from": {
+      "name": "Neha Kulkarni",
+      "email": "neha.k@trellisapi.in"
+     },
+     "date": "2026-10-14T14:00:00+05:30",
+     "text": "Sharing the latest numbers as discussed."
+    }
+   ],
+   "labels": [],
+   "snippet": "Sharing the latest numbers as discussed."
+  },
+  {
+   "id": "th0350",
+   "subject": "Re: Sable Fraud AI",
+   "date": "2026-10-13T11:00:00+05:30",
+   "url": "https://mail.google.com/mail/u/0/#all/th0350",
+   "participants": [
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    },
+    {
+     "name": "Abhi Joshi",
+     "email": "abhi@sablefraud.ai"
+    }
+   ],
+   "messages": [
+    {
+     "from": {
+      "name": "Abhi Joshi",
+      "email": "abhi@sablefraud.ai"
+     },
+     "date": "2026-10-13T11:00:00+05:30",
+     "text": "Sharing the latest numbers as discussed."
+    }
+   ],
+   "labels": [],
+   "snippet": "Sharing the latest numbers as discussed."
+  },
+  {
+   "id": "th0353",
+   "subject": "Ember Credit: documents",
+   "date": "2026-10-16T15:00:00+05:30",
+   "url": "https://mail.google.com/mail/u/0/#all/th0353",
+   "participants": [
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    },
+    {
+     "name": "Leena Dsouza",
+     "email": "leena@embercredit.in"
+    },
+    {
+     "name": "Leena Dsouza",
+     "email": "leena.dsouza@gmail.com"
+    }
+   ],
+   "messages": [
+    {
+     "from": {
+      "name": "Leena Dsouza",
+      "email": "leena@embercredit.in"
+     },
+     "date": "2026-10-16T15:00:00+05:30",
+     "text": "Copying my personal address as well."
+    }
+   ],
+   "labels": [],
+   "snippet": "Copying my personal address as well."
+  },
+  {
+   "id": "in_lattice",
+   "subject": "Lattice KYC: Pre-seed pitch deck",
+   "date": "2026-10-21T12:00:00+05:30",
+   "url": "https://mail.google.com/mail/u/0/#all/in_lattice",
+   "participants": [
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    },
+    {
+     "name": "Sonia Pereira",
+     "email": "sonia@latticekyc.in"
+    }
+   ],
+   "messages": [
+    {
+     "from": {
+      "name": "Sonia Pereira",
+      "email": "sonia@latticekyc.in"
+     },
+     "date": "2026-10-21T12:00:00+05:30",
+     "text": "Hi Meera, I'm Sonia Pereira, founder of Lattice KYC. We're building KYC for cooperative banks. Six co-op banks in pilot. Founders ran KYC ops at a large bank. We're raising a $1M Pre-seed round. We're based in Pune, India. Would love 30 minutes to walk you through the deck."
+    }
+   ],
+   "labels": [
+    "inbound"
+   ],
+   "snippet": "Hi Meera, I'm Sonia Pereira, founder of Lattice KYC. We're building KYC for cooperative banks. Six co-op banks in pilot. Founders ran KYC op"
+  },
+  {
+   "id": "in_harborline",
+   "subject": "Harborline Treasury: Seed pitch deck",
+   "date": "2026-10-21T18:00:00+05:30",
+   "url": "https://mail.google.com/mail/u/0/#all/in_harborline",
+   "participants": [
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    },
+    {
+     "name": "Elena Fischer",
+     "email": "elena@harborline.co"
+    }
+   ],
+   "messages": [
+    {
+     "from": {
+      "name": "Elena Fischer",
+      "email": "elena@harborline.co"
+     },
+     "date": "2026-10-21T18:00:00+05:30",
+     "text": "Hi Meera, I'm Elena Fischer, founder of Harborline Treasury. We're building treasury management for Indian exporters selling to the US. 120 exporters onboarded. Ex-Stripe treasury lead. We're raising a $3M Seed round. We're based in Delaware, US and Bangalore, India. Would love 30 minutes to walk you through the deck."
+    }
+   ],
+   "labels": [
+    "inbound"
+   ],
+   "snippet": "Hi Meera, I'm Elena Fischer, founder of Harborline Treasury. We're building treasury management for Indian exporters selling to the US. 120 "
+  },
+  {
+   "id": "in_dhruv",
+   "subject": "Dhruv Data: Pre-seed pitch deck",
+   "date": "2026-10-19T16:00:00+05:30",
+   "url": "https://mail.google.com/mail/u/0/#all/in_dhruv",
+   "participants": [
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    },
+    {
+     "name": "Kiran Bhat",
+     "email": "kiran@dhruvdata.ai"
+    }
+   ],
+   "messages": [
+    {
+     "from": {
+      "name": "Kiran Bhat",
+      "email": "kiran@dhruvdata.ai"
+     },
+     "date": "2026-10-19T16:00:00+05:30",
+     "text": "Hi Meera, I'm Kiran Bhat, founder of Dhruv Data. We're building data infrastructure for credit bureaus' analytics teams. One bureau in pilot. We're raising a $0.9M Pre-seed round. We're based in Hyderabad, India. Would love 30 minutes to walk you through the deck."
+    }
+   ],
+   "labels": [
+    "inbound"
+   ],
+   "snippet": "Hi Meera, I'm Kiran Bhat, founder of Dhruv Data. We're building data infrastructure for credit bureaus' analytics teams. One bureau in pilot"
+  },
+  {
+   "id": "cmp_trellis",
+   "subject": "Trellis round",
+   "date": "2026-10-20T09:40:00+05:30",
+   "url": "https://mail.google.com/mail/u/0/#all/cmp_trellis",
+   "participants": [
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    },
+    {
+     "name": "Neha Kulkarni",
+     "email": "neha@trellisapi.in"
+    }
+   ],
+   "messages": [
+    {
+     "from": {
+      "name": "Meera Iyer",
+      "email": "meera@quillwater.vc"
+     },
+     "date": "2026-10-19T07:40:00+05:30",
+     "text": "Thanks, good to catch up."
+    },
+    {
+     "from": {
+      "name": "Neha Kulkarni",
+      "email": "neha@trellisapi.in"
+     },
+     "date": "2026-10-20T09:40:00+05:30",
+     "text": "Meera, Saffron Peak Capital wants to lead our Series A. Would love to know where Quillwater stands."
+    }
+   ],
+   "labels": [],
+   "snippet": "Meera, Saffron Peak Capital wants to lead our Series A. Would love to know where Quillwater stands."
+  },
+  {
+   "id": "cmp_rivulet",
+   "subject": "Rivulet seed",
+   "date": "2026-10-21T11:20:00+05:30",
+   "url": "https://mail.google.com/mail/u/0/#all/cmp_rivulet",
+   "participants": [
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    },
+    {
+     "name": "Omkar Patil",
+     "email": "omkar@rivuletpay.com"
+    }
+   ],
+   "messages": [
+    {
+     "from": {
+      "name": "Meera Iyer",
+      "email": "meera@quillwater.vc"
+     },
+     "date": "2026-10-20T09:20:00+05:30",
+     "text": "Thanks, good to catch up."
+    },
+    {
+     "from": {
+      "name": "Omkar Patil",
+      "email": "omkar@rivuletpay.com"
+     },
+     "date": "2026-10-21T11:20:00+05:30",
+     "text": "Hi Meera, the round is almost full now, so we'd need to hear back soon."
+    }
+   ],
+   "labels": [],
+   "snippet": "Hi Meera, the round is almost full now, so we'd need to hear back soon."
+  },
+  {
+   "id": "cmp_sable",
+   "subject": "Re: Sable",
+   "date": "2026-10-21T18:05:00+05:30",
+   "url": "https://mail.google.com/mail/u/0/#all/cmp_sable",
+   "participants": [
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    },
+    {
+     "name": "Abhishek Joshi",
+     "email": "abhishek.joshi@sablefraud.ai"
+    }
+   ],
+   "messages": [
+    {
+     "from": {
+      "name": "Meera Iyer",
+      "email": "meera@quillwater.vc"
+     },
+     "date": "2026-10-20T16:05:00+05:30",
+     "text": "Thanks, good to catch up."
+    },
+    {
+     "from": {
+      "name": "Abhishek Joshi",
+      "email": "abhishek.joshi@sablefraud.ai"
+     },
+     "date": "2026-10-21T18:05:00+05:30",
+     "text": "Meera, we have a term sheet from Monsoon Arc Ventures and need an answer by Friday."
+    }
+   ],
+   "labels": [],
+   "snippet": "Meera, we have a term sheet from Monsoon Arc Ventures and need an answer by Friday."
+  },
+  {
+   "id": "neg_ember",
+   "subject": "Re: Ember",
+   "date": "2026-10-21T20:00:00+05:30",
+   "url": "https://mail.google.com/mail/u/0/#all/neg_ember",
+   "participants": [
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    },
+    {
+     "name": "Leena Dsouza",
+     "email": "leena@embercredit.in"
+    }
+   ],
+   "messages": [
+    {
+     "from": {
+      "name": "Leena Dsouza",
+      "email": "leena@embercredit.in"
+     },
+     "date": "2026-10-21T20:00:00+05:30",
+     "text": "We don't have a term sheet yet, still early conversations with a few funds."
+    }
+   ],
+   "labels": [],
+   "snippet": "We don't have a term sheet yet, still early conversations with a few funds."
+  },
+  {
+   "id": "neg_copperleaf",
+   "subject": "Re: timeline",
+   "date": "2026-10-13T16:00:00+05:30",
+   "url": "https://mail.google.com/mail/u/0/#all/neg_copperleaf",
+   "participants": [
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    },
+    {
+     "name": "Debashish Roy",
+     "email": "debashish@copperleaf.in"
+    }
+   ],
+   "messages": [
+    {
+     "from": {
+      "name": "Debashish Roy",
+      "email": "debashish@copperleaf.in"
+     },
+     "date": "2026-10-13T16:00:00+05:30",
+     "text": "If we get to a term sheet with you, what would the timeline look like?"
+    }
+   ],
+   "labels": [],
+   "snippet": "If we get to a term sheet with you, what would the timeline look like?"
+  },
+  {
+   "id": "th0425",
+   "subject": "Your ticket for Fintech Summit",
+   "date": "2026-10-21T11:00:00+05:30",
+   "url": "https://mail.google.com/mail/u/0/#all/th0425",
+   "participants": [
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    },
+    {
+     "name": "Eventsbox",
+     "email": "hello@eventsbox.example"
+    }
+   ],
+   "messages": [
+    {
+     "from": {
+      "name": "Eventsbox",
+      "email": "hello@eventsbox.example"
+     },
+     "date": "2026-10-21T11:00:00+05:30",
+     "text": "Your ticket for Fintech Summit. Read the full issue online."
+    }
+   ],
+   "labels": [
+    "newsletter"
+   ],
+   "snippet": "Your ticket for Fintech Summit. Read the full issue online."
+  }
+ ],
+ "events": [
+  {
+   "id": "ev0088",
+   "title": "Sable Fraud AI <> Quillwater",
+   "start": "2026-07-27T18:00:00+05:30",
+   "end": "2026-07-27T18:30:00+05:30",
+   "url": "https://calendar.google.com/calendar/event?eid=ev0088",
+   "attendees": [
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    },
+    {
+     "name": "Abhishek Joshi",
+     "email": "abhishek.joshi@sablefraud.ai"
+    }
+   ],
+   "description": null
+  },
+  {
+   "id": "ev0089",
+   "title": "Sable Fraud AI <> Quillwater",
+   "start": "2026-07-13T16:00:00+05:30",
+   "end": "2026-07-13T16:45:00+05:30",
+   "url": "https://calendar.google.com/calendar/event?eid=ev0089",
+   "attendees": [
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    },
+    {
+     "name": "Abhishek Joshi",
+     "email": "abhishek.joshi@sablefraud.ai"
+    }
+   ],
+   "description": null
+  },
+  {
+   "id": "ev0090",
+   "title": "Intro call: Sable Fraud AI",
+   "start": "2026-06-29T15:00:00+05:30",
+   "end": "2026-06-29T15:45:00+05:30",
+   "url": "https://calendar.google.com/calendar/event?eid=ev0090",
+   "attendees": [
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    },
+    {
+     "name": "Abhishek Joshi",
+     "email": "abhishek.joshi@sablefraud.ai"
+    }
+   ],
+   "description": null
+  },
+  {
+   "id": "ev0091",
+   "title": "Trellis Banking API <> Quillwater",
+   "start": "2026-09-22T16:00:00+05:30",
+   "end": "2026-09-22T16:30:00+05:30",
+   "url": "https://calendar.google.com/calendar/event?eid=ev0091",
+   "attendees": [
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    },
+    {
+     "name": "Neha Kulkarni",
+     "email": "neha@trellisapi.in"
+    }
+   ],
+   "description": null
+  },
+  {
+   "id": "ev0092",
+   "title": "First call: Trellis Banking API",
+   "start": "2026-08-24T09:00:00+05:30",
+   "end": "2026-08-24T09:45:00+05:30",
+   "url": "https://calendar.google.com/calendar/event?eid=ev0092",
+   "attendees": [
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    },
+    {
+     "name": "Neha Kulkarni",
+     "email": "neha@trellisapi.in"
+    }
+   ],
+   "description": null
+  },
+  {
+   "id": "ev0093",
+   "title": "Trellis Banking API <> Quillwater",
+   "start": "2026-06-29T16:00:00+05:30",
+   "end": "2026-06-29T16:30:00+05:30",
+   "url": "https://calendar.google.com/calendar/event?eid=ev0093",
+   "attendees": [
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    },
+    {
+     "name": "Neha Kulkarni",
+     "email": "neha@trellisapi.in"
+    }
+   ],
+   "description": null
+  },
+  {
+   "id": "ev0094",
+   "title": "Intro call: Rivulet Payments",
+   "start": "2026-09-28T14:00:00+05:30",
+   "end": "2026-09-28T14:30:00+05:30",
+   "url": "https://calendar.google.com/calendar/event?eid=ev0094",
+   "attendees": [
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    },
+    {
+     "name": "Omkar Patil",
+     "email": "omkar@rivuletpay.com"
+    }
+   ],
+   "description": null
+  },
+  {
+   "id": "ev0095",
+   "title": "First call: Rivulet Payments",
+   "start": "2026-06-29T12:00:00+05:30",
+   "end": "2026-06-29T12:30:00+05:30",
+   "url": "https://calendar.google.com/calendar/event?eid=ev0095",
+   "attendees": [
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    },
+    {
+     "name": "Omkar Patil",
+     "email": "omkar@rivuletpay.com"
+    }
+   ],
+   "description": null
+  },
+  {
+   "id": "ev0096",
+   "title": "Intro call: Zeno Treasury",
+   "start": "2026-10-19T14:00:00+05:30",
+   "end": "2026-10-19T14:45:00+05:30",
+   "url": "https://calendar.google.com/calendar/event?eid=ev0096",
+   "attendees": [
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    },
+    {
+     "name": "Farhan Ali",
+     "email": "farhan@zenotreasury.com"
+    }
+   ],
+   "description": null
+  },
+  {
+   "id": "ev0097",
+   "title": "Intro call: Zeno Treasury",
+   "start": "2026-07-21T09:00:00+05:30",
+   "end": "2026-07-21T09:30:00+05:30",
+   "url": "https://calendar.google.com/calendar/event?eid=ev0097",
+   "attendees": [
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    },
+    {
+     "name": "Farhan Ali",
+     "email": "farhan@zenotreasury.com"
+    }
+   ],
+   "description": null
+  },
+  {
+   "id": "ev0098",
+   "title": "First call: Pillar KYC",
+   "start": "2026-06-29T15:00:00+05:30",
+   "end": "2026-06-29T15:45:00+05:30",
+   "url": "https://calendar.google.com/calendar/event?eid=ev0098",
+   "attendees": [
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    },
+    {
+     "name": "Kavya Reddy",
+     "email": "kavya@pillarkyc.in"
+    }
+   ],
+   "description": null
+  },
+  {
+   "id": "ev0099",
+   "title": "Intro call: Deccan Lend Cloud",
+   "start": "2026-08-24T15:00:00+05:30",
+   "end": "2026-08-24T15:30:00+05:30",
+   "url": "https://calendar.google.com/calendar/event?eid=ev0099",
+   "attendees": [
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    },
+    {
+     "name": "Lakshmi Prasad",
+     "email": "lakshmi@deccanlend.cloud"
+    }
+   ],
+   "description": null
+  },
+  {
+   "id": "ev0100",
+   "title": "Aster Underwrite <> Quillwater",
+   "start": "2026-10-18T11:00:00+05:30",
+   "end": "2026-10-18T11:30:00+05:30",
+   "url": "https://calendar.google.com/calendar/event?eid=ev0100",
+   "attendees": [
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    },
+    {
+     "name": "Yash Arora",
+     "email": "yash@asteruw.ai"
+    }
+   ],
+   "description": null
+  },
+  {
+   "id": "ev0101",
+   "title": "Intro call: Copperleaf Collect",
+   "start": "2026-09-07T17:00:00+05:30",
+   "end": "2026-09-07T17:45:00+05:30",
+   "url": "https://calendar.google.com/calendar/event?eid=ev0101",
+   "attendees": [
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    },
+    {
+     "name": "Debashish Roy",
+     "email": "debashish@copperleaf.in"
+    }
+   ],
+   "description": null
+  },
+  {
+   "id": "ev0102",
+   "title": "Halo Reconcile <> Quillwater",
+   "start": "2026-10-20T16:00:00+05:30",
+   "end": "2026-10-20T16:30:00+05:30",
+   "url": "https://calendar.google.com/calendar/event?eid=ev0102",
+   "attendees": [
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    },
+    {
+     "name": "Shreya Venkat",
+     "email": "shreya@haloreconcile.com"
+    }
+   ],
+   "description": null
+  },
+  {
+   "id": "ev0103",
+   "title": "Intro call: Ember Credit",
+   "start": "2026-07-22T17:00:00+05:30",
+   "end": "2026-07-22T17:45:00+05:30",
+   "url": "https://calendar.google.com/calendar/event?eid=ev0103",
+   "attendees": [
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    },
+    {
+     "name": "Leena Dsouza",
+     "email": "leena@embercredit.in"
+    }
+   ],
+   "description": null
+  },
+  {
+   "id": "ev0104",
+   "title": "Ember Credit <> Quillwater",
+   "start": "2026-06-29T10:00:00+05:30",
+   "end": "2026-06-29T10:45:00+05:30",
+   "url": "https://calendar.google.com/calendar/event?eid=ev0104",
+   "attendees": [
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    },
+    {
+     "name": "Leena Dsouza",
+     "email": "leena@embercredit.in"
+    }
+   ],
+   "description": null
+  },
+  {
+   "id": "ev0105",
+   "title": "Intro call: Northwind Insure Stack",
+   "start": "2026-09-21T17:00:00+05:30",
+   "end": "2026-09-21T17:30:00+05:30",
+   "url": "https://calendar.google.com/calendar/event?eid=ev0105",
+   "attendees": [
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    },
+    {
+     "name": "Aman Gupta",
+     "email": "aman@northwindstack.com"
+    }
+   ],
+   "description": null
+  },
+  {
+   "id": "ev0106",
+   "title": "Northwind Insure Stack <> Quillwater",
+   "start": "2026-08-24T15:00:00+05:30",
+   "end": "2026-08-24T15:45:00+05:30",
+   "url": "https://calendar.google.com/calendar/event?eid=ev0106",
+   "attendees": [
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    },
+    {
+     "name": "Aman Gupta",
+     "email": "aman@northwindstack.com"
+    }
+   ],
+   "description": null
+  },
+  {
+   "id": "ev0107",
+   "title": "First call: Juniper Payroll Rails",
+   "start": "2026-08-24T18:00:00+05:30",
+   "end": "2026-08-24T18:45:00+05:30",
+   "url": "https://calendar.google.com/calendar/event?eid=ev0107",
+   "attendees": [
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    },
+    {
+     "name": "Tushar Bansal",
+     "email": "tushar@juniperrails.in"
+    }
+   ],
+   "description": null
+  },
+  {
+   "id": "ev0108",
+   "title": "First call: Juniper Payroll Rails",
+   "start": "2026-06-29T17:00:00+05:30",
+   "end": "2026-06-29T17:45:00+05:30",
+   "url": "https://calendar.google.com/calendar/event?eid=ev0108",
+   "attendees": [
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    },
+    {
+     "name": "Tushar Bansal",
+     "email": "tushar@juniperrails.in"
+    }
+   ],
+   "description": null
+  },
+  {
+   "id": "ev0109",
+   "title": "Intro call: Mosaic Wealth Infra",
+   "start": "2026-09-04T14:00:00+05:30",
+   "end": "2026-09-04T14:30:00+05:30",
+   "url": "https://calendar.google.com/calendar/event?eid=ev0109",
+   "attendees": [
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    },
+    {
+     "name": "Ira Saxena",
+     "email": "ira@mosaicwealth.io"
+    }
+   ],
+   "description": null
+  },
+  {
+   "id": "ev0110",
+   "title": "Mosaic Wealth Infra <> Quillwater",
+   "start": "2026-06-29T15:00:00+05:30",
+   "end": "2026-06-29T15:30:00+05:30",
+   "url": "https://calendar.google.com/calendar/event?eid=ev0110",
+   "attendees": [
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    },
+    {
+     "name": "Ira Saxena",
+     "email": "ira@mosaicwealth.io"
+    }
+   ],
+   "description": null
+  },
+  {
+   "id": "ev0111",
+   "title": "First call: Bluepeak Partners",
+   "start": "2026-06-29T16:00:00+05:30",
+   "end": "2026-06-29T16:45:00+05:30",
+   "url": "https://calendar.google.com/calendar/event?eid=ev0111",
+   "attendees": [
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    },
+    {
+     "name": "Claire Dubois",
+     "email": "claire@bluepeak.partners"
+    }
+   ],
+   "description": null
+  },
+  {
+   "id": "ev0112",
+   "title": "First call: Kalpa Ventures",
+   "start": "2026-07-29T10:00:00+05:30",
+   "end": "2026-07-29T10:45:00+05:30",
+   "url": "https://calendar.google.com/calendar/event?eid=ev0112",
+   "attendees": [
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    },
+    {
+     "name": "Prakash Iyer",
+     "email": "prakash@kalpa.vc"
+    }
+   ],
+   "description": null
+  },
+  {
+   "id": "ev0154",
+   "title": "Monday partner meeting",
+   "start": "2026-10-19T10:00:00+05:30",
+   "end": "2026-10-19T11:00:00+05:30",
+   "url": "https://calendar.google.com/calendar/event?eid=ev0154",
+   "attendees": [
+    {
+     "name": "Aditi Rao",
+     "email": "aditi@quillwater.vc"
+    },
+    {
+     "name": "Kabir Shah",
+     "email": "kabir@quillwater.vc"
+    },
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    },
+    {
+     "name": "Rohan Das",
+     "email": "rohan@quillwater.vc"
+    }
+   ],
+   "description": null
+  },
+  {
+   "id": "ev0155",
+   "title": "Monday partner meeting",
+   "start": "2026-10-12T10:00:00+05:30",
+   "end": "2026-10-12T11:00:00+05:30",
+   "url": "https://calendar.google.com/calendar/event?eid=ev0155",
+   "attendees": [
+    {
+     "name": "Aditi Rao",
+     "email": "aditi@quillwater.vc"
+    },
+    {
+     "name": "Kabir Shah",
+     "email": "kabir@quillwater.vc"
+    },
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    },
+    {
+     "name": "Rohan Das",
+     "email": "rohan@quillwater.vc"
+    }
+   ],
+   "description": null
+  },
+  {
+   "id": "ev0156",
+   "title": "Monday partner meeting",
+   "start": "2026-10-05T10:00:00+05:30",
+   "end": "2026-10-05T11:00:00+05:30",
+   "url": "https://calendar.google.com/calendar/event?eid=ev0156",
+   "attendees": [
+    {
+     "name": "Aditi Rao",
+     "email": "aditi@quillwater.vc"
+    },
+    {
+     "name": "Kabir Shah",
+     "email": "kabir@quillwater.vc"
+    },
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    },
+    {
+     "name": "Rohan Das",
+     "email": "rohan@quillwater.vc"
+    }
+   ],
+   "description": null
+  },
+  {
+   "id": "ev0157",
+   "title": "Monday partner meeting",
+   "start": "2026-09-28T10:00:00+05:30",
+   "end": "2026-09-28T11:00:00+05:30",
+   "url": "https://calendar.google.com/calendar/event?eid=ev0157",
+   "attendees": [
+    {
+     "name": "Aditi Rao",
+     "email": "aditi@quillwater.vc"
+    },
+    {
+     "name": "Kabir Shah",
+     "email": "kabir@quillwater.vc"
+    },
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    },
+    {
+     "name": "Rohan Das",
+     "email": "rohan@quillwater.vc"
+    }
+   ],
+   "description": null
+  },
+  {
+   "id": "ev0158",
+   "title": "Monday partner meeting",
+   "start": "2026-09-21T10:00:00+05:30",
+   "end": "2026-09-21T11:00:00+05:30",
+   "url": "https://calendar.google.com/calendar/event?eid=ev0158",
+   "attendees": [
+    {
+     "name": "Aditi Rao",
+     "email": "aditi@quillwater.vc"
+    },
+    {
+     "name": "Kabir Shah",
+     "email": "kabir@quillwater.vc"
+    },
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    },
+    {
+     "name": "Rohan Das",
+     "email": "rohan@quillwater.vc"
+    }
+   ],
+   "description": null
+  },
+  {
+   "id": "ev0159",
+   "title": "Monday partner meeting",
+   "start": "2026-09-14T10:00:00+05:30",
+   "end": "2026-09-14T11:00:00+05:30",
+   "url": "https://calendar.google.com/calendar/event?eid=ev0159",
+   "attendees": [
+    {
+     "name": "Aditi Rao",
+     "email": "aditi@quillwater.vc"
+    },
+    {
+     "name": "Kabir Shah",
+     "email": "kabir@quillwater.vc"
+    },
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    },
+    {
+     "name": "Rohan Das",
+     "email": "rohan@quillwater.vc"
+    }
+   ],
+   "description": null
+  },
+  {
+   "id": "ev0160",
+   "title": "Monday partner meeting",
+   "start": "2026-09-07T10:00:00+05:30",
+   "end": "2026-09-07T11:00:00+05:30",
+   "url": "https://calendar.google.com/calendar/event?eid=ev0160",
+   "attendees": [
+    {
+     "name": "Aditi Rao",
+     "email": "aditi@quillwater.vc"
+    },
+    {
+     "name": "Kabir Shah",
+     "email": "kabir@quillwater.vc"
+    },
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    },
+    {
+     "name": "Rohan Das",
+     "email": "rohan@quillwater.vc"
+    }
+   ],
+   "description": null
+  },
+  {
+   "id": "ev0161",
+   "title": "Monday partner meeting",
+   "start": "2026-08-31T10:00:00+05:30",
+   "end": "2026-08-31T11:00:00+05:30",
+   "url": "https://calendar.google.com/calendar/event?eid=ev0161",
+   "attendees": [
+    {
+     "name": "Aditi Rao",
+     "email": "aditi@quillwater.vc"
+    },
+    {
+     "name": "Kabir Shah",
+     "email": "kabir@quillwater.vc"
+    },
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    },
+    {
+     "name": "Rohan Das",
+     "email": "rohan@quillwater.vc"
+    }
+   ],
+   "description": null
+  },
+  {
+   "id": "ev0162",
+   "title": "Monday partner meeting",
+   "start": "2026-08-24T10:00:00+05:30",
+   "end": "2026-08-24T11:00:00+05:30",
+   "url": "https://calendar.google.com/calendar/event?eid=ev0162",
+   "attendees": [
+    {
+     "name": "Aditi Rao",
+     "email": "aditi@quillwater.vc"
+    },
+    {
+     "name": "Kabir Shah",
+     "email": "kabir@quillwater.vc"
+    },
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    },
+    {
+     "name": "Rohan Das",
+     "email": "rohan@quillwater.vc"
+    }
+   ],
+   "description": null
+  },
+  {
+   "id": "ev0163",
+   "title": "Monday partner meeting",
+   "start": "2026-08-17T10:00:00+05:30",
+   "end": "2026-08-17T11:00:00+05:30",
+   "url": "https://calendar.google.com/calendar/event?eid=ev0163",
+   "attendees": [
+    {
+     "name": "Aditi Rao",
+     "email": "aditi@quillwater.vc"
+    },
+    {
+     "name": "Kabir Shah",
+     "email": "kabir@quillwater.vc"
+    },
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    },
+    {
+     "name": "Rohan Das",
+     "email": "rohan@quillwater.vc"
+    }
+   ],
+   "description": null
+  },
+  {
+   "id": "ev0164",
+   "title": "Monday partner meeting",
+   "start": "2026-08-10T10:00:00+05:30",
+   "end": "2026-08-10T11:00:00+05:30",
+   "url": "https://calendar.google.com/calendar/event?eid=ev0164",
+   "attendees": [
+    {
+     "name": "Aditi Rao",
+     "email": "aditi@quillwater.vc"
+    },
+    {
+     "name": "Kabir Shah",
+     "email": "kabir@quillwater.vc"
+    },
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    },
+    {
+     "name": "Rohan Das",
+     "email": "rohan@quillwater.vc"
+    }
+   ],
+   "description": null
+  },
+  {
+   "id": "ev0165",
+   "title": "Monday partner meeting",
+   "start": "2026-08-03T10:00:00+05:30",
+   "end": "2026-08-03T11:00:00+05:30",
+   "url": "https://calendar.google.com/calendar/event?eid=ev0165",
+   "attendees": [
+    {
+     "name": "Aditi Rao",
+     "email": "aditi@quillwater.vc"
+    },
+    {
+     "name": "Kabir Shah",
+     "email": "kabir@quillwater.vc"
+    },
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    },
+    {
+     "name": "Rohan Das",
+     "email": "rohan@quillwater.vc"
+    }
+   ],
+   "description": null
+  },
+  {
+   "id": "ev_pm_next",
+   "title": "Monday partner meeting",
+   "start": "2026-10-26T10:00:00+05:30",
+   "end": "2026-10-26T11:00:00+05:30",
+   "url": "https://calendar.google.com/calendar/event?eid=ev_pm_next",
+   "attendees": [
+    {
+     "name": "Aditi Rao",
+     "email": "aditi@quillwater.vc"
+    },
+    {
+     "name": "Kabir Shah",
+     "email": "kabir@quillwater.vc"
+    },
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    },
+    {
+     "name": "Rohan Das",
+     "email": "rohan@quillwater.vc"
+    }
+   ],
+   "description": null
+  },
+  {
+   "id": "ev_tr05",
+   "title": "Sable Fraud AI: second meeting",
+   "start": "2026-10-20T15:00:00+05:30",
+   "end": "2026-10-20T15:45:00+05:30",
+   "url": "https://calendar.google.com/calendar/event?eid=ev_tr05",
+   "attendees": [
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    },
+    {
+     "name": "Abhishek Joshi",
+     "email": "abhishek.joshi@sablefraud.ai"
+    }
+   ],
+   "description": null
+  },
+  {
+   "id": "ev_tr06",
+   "title": "Trellis Banking API: product deep dive",
+   "start": "2026-10-15T14:00:00+05:30",
+   "end": "2026-10-15T14:45:00+05:30",
+   "url": "https://calendar.google.com/calendar/event?eid=ev_tr06",
+   "attendees": [
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    },
+    {
+     "name": "Neha Kulkarni",
+     "email": "neha@trellisapi.in"
+    }
+   ],
+   "description": null
+  },
+  {
+   "id": "ev_tr15",
+   "title": "Rivulet Payments: first meeting",
+   "start": "2026-10-17T10:00:00+05:30",
+   "end": "2026-10-17T10:45:00+05:30",
+   "url": "https://calendar.google.com/calendar/event?eid=ev_tr15",
+   "attendees": [
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    },
+    {
+     "name": "Omkar Patil",
+     "email": "omkar@rivuletpay.com"
+    }
+   ],
+   "description": null
+  },
+  {
+   "id": "ev_tr19",
+   "title": "Halo Reconcile: first meeting follow-up",
+   "start": "2026-10-20T10:00:00+05:30",
+   "end": "2026-10-20T10:45:00+05:30",
+   "url": "https://calendar.google.com/calendar/event?eid=ev_tr19",
+   "attendees": [
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    },
+    {
+     "name": "Shreya Venkat",
+     "email": "shreya@haloreconcile.com"
+    }
+   ],
+   "description": null
+  },
+  {
+   "id": "ev_tr20",
+   "title": "Ember Credit: second meeting",
+   "start": "2026-10-21T12:00:00+05:30",
+   "end": "2026-10-21T12:45:00+05:30",
+   "url": "https://calendar.google.com/calendar/event?eid=ev_tr20",
+   "attendees": [
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    },
+    {
+     "name": "Leena Dsouza",
+     "email": "leena@embercredit.in"
+    }
+   ],
+   "description": null
+  },
+  {
+   "id": "ev_partner_sync",
+   "title": "Partner sync",
+   "start": "2026-10-22T12:00:00+05:30",
+   "end": "2026-10-22T12:30:00+05:30",
+   "url": "https://calendar.google.com/calendar/event?eid=ev_partner_sync",
+   "attendees": [
+    {
+     "name": "Aditi Rao",
+     "email": "aditi@quillwater.vc"
+    },
+    {
+     "name": "Kabir Shah",
+     "email": "kabir@quillwater.vc"
+    },
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    }
+   ],
+   "description": null
+  },
+  {
+   "id": "ev_sable_today",
+   "title": "Sable Fraud AI: references",
+   "start": "2026-10-22T10:00:00+05:30",
+   "end": "2026-10-22T10:45:00+05:30",
+   "url": "https://calendar.google.com/calendar/event?eid=ev_sable_today",
+   "attendees": [
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    },
+    {
+     "name": "Abhishek Joshi",
+     "email": "abhishek.joshi@sablefraud.ai"
+    }
+   ],
+   "description": null
+  },
+  {
+   "id": "ev_rivulet_today",
+   "title": "Rivulet Payments: follow-up",
+   "start": "2026-10-22T13:00:00+05:30",
+   "end": "2026-10-22T13:30:00+05:30",
+   "url": "https://calendar.google.com/calendar/event?eid=ev_rivulet_today",
+   "attendees": [
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    },
+    {
+     "name": "Omkar Patil",
+     "email": "omkar@rivuletpay.com"
+    }
+   ],
+   "description": null
+  },
+  {
+   "id": "ev_halo_today",
+   "title": "Halo Reconcile: second meeting",
+   "start": "2026-10-22T16:30:00+05:30",
+   "end": "2026-10-22T17:00:00+05:30",
+   "url": "https://calendar.google.com/calendar/event?eid=ev_halo_today",
+   "attendees": [
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    },
+    {
+     "name": "Shreya Venkat",
+     "email": "shreya@haloreconcile.com"
+    }
+   ],
+   "description": null
+  }
+ ],
+ "transcripts": [
+  {
+   "id": "tr05",
+   "event_id": "ev_tr05",
+   "title": "Sable Fraud AI: second meeting",
+   "date": "2026-10-20T15:00:00+05:30",
+   "attendees": [
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    },
+    {
+     "name": "Abhishek Joshi",
+     "email": "abhishek.joshi@sablefraud.ai"
+    }
+   ],
+   "url": "https://notes.granola.ai/d/tr05",
+   "lines": [
+    {
+     "t": "00:00:40",
+     "speaker": "Meera Iyer",
+     "text": "Abhishek, thanks for walking us through the model."
+    },
+    {
+     "t": "00:01:27",
+     "speaker": "Abhishek Joshi",
+     "text": "Happy to. Two issuers are live and false positives are down forty percent."
+    },
+    {
+     "t": "00:02:14",
+     "speaker": "Meera Iyer",
+     "text": "I'll send the reference questions by Thursday so you can brief your customers."
+    },
+    {
+     "t": "00:03:01",
+     "speaker": "Abhishek Joshi",
+     "text": "Great. I'll share the fraud loss benchmarks by Wednesday."
+    },
+    {
+     "t": "00:03:48",
+     "speaker": "Abhishek Joshi",
+     "text": "If you're in, we'd love you to take your full pro rata next round."
+    },
+    {
+     "t": "00:04:35",
+     "speaker": "Abhishek Joshi",
+     "text": "I'll also intro you to our design partner at the bank."
+    },
+    {
+     "t": "00:05:22",
+     "speaker": "Meera Iyer",
+     "text": "Thank you, talk soon."
+    }
+   ]
+  },
+  {
+   "id": "tr06",
+   "event_id": "ev_tr06",
+   "title": "Trellis Banking API: product deep dive",
+   "date": "2026-10-15T14:00:00+05:30",
+   "attendees": [
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    },
+    {
+     "name": "Neha Kulkarni",
+     "email": "neha@trellisapi.in"
+    }
+   ],
+   "url": "https://notes.granola.ai/d/tr06",
+   "lines": [
+    {
+     "t": "00:00:40",
+     "speaker": "Meera Iyer",
+     "text": "Neha, thanks for the deep dive."
+    },
+    {
+     "t": "00:01:27",
+     "speaker": "Neha Kulkarni",
+     "text": "Happy to. We now power API banking for four mid-size banks."
+    },
+    {
+     "t": "00:02:14",
+     "speaker": "Neha Kulkarni",
+     "text": "I'll send the API documentation by Tuesday."
+    },
+    {
+     "t": "00:03:01",
+     "speaker": "Meera Iyer",
+     "text": "And I'll share our view on your pricing by next week."
+    },
+    {
+     "t": "00:03:48",
+     "speaker": "Neha Kulkarni",
+     "text": "We should catch up with your partner sometime."
+    },
+    {
+     "t": "00:04:35",
+     "speaker": "Neha Kulkarni",
+     "text": "I'll get you two bank CTO references by the end of the month."
+    },
+    {
+     "t": "00:05:22",
+     "speaker": "Meera Iyer",
+     "text": "Great, thank you."
+    }
+   ]
+  },
+  {
+   "id": "tr15",
+   "event_id": "ev_tr15",
+   "title": "Rivulet Payments: first meeting",
+   "date": "2026-10-17T10:00:00+05:30",
+   "attendees": [
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    },
+    {
+     "name": "Omkar Patil",
+     "email": "omkar@rivuletpay.com"
+    }
+   ],
+   "url": "https://notes.granola.ai/d/tr15",
+   "lines": [
+    {
+     "t": "00:00:40",
+     "speaker": "Meera Iyer",
+     "text": "Omkar, thanks for the overview of the cross-border rails."
+    },
+    {
+     "t": "00:01:27",
+     "speaker": "Omkar Patil",
+     "text": "I'll give you data room access by Monday."
+    },
+    {
+     "t": "00:02:14",
+     "speaker": "Meera Iyer",
+     "text": "And I'll come back with feedback after our Monday partner meeting."
+    },
+    {
+     "t": "00:03:01",
+     "speaker": "Omkar Patil",
+     "text": "Great."
+    }
+   ]
+  },
+  {
+   "id": "tr19",
+   "event_id": "ev_tr19",
+   "title": "Halo Reconcile: first meeting follow-up",
+   "date": "2026-10-20T10:00:00+05:30",
+   "attendees": [
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    },
+    {
+     "name": "Shreya Venkat",
+     "email": "shreya@haloreconcile.com"
+    }
+   ],
+   "url": "https://notes.granola.ai/d/tr19",
+   "lines": [
+    {
+     "t": "00:00:40",
+     "speaker": "Meera Iyer",
+     "text": "Shreya, thanks for the follow-up."
+    },
+    {
+     "t": "00:01:27",
+     "speaker": "Shreya Venkat",
+     "text": "I'll get you two insurer references by Monday."
+    },
+    {
+     "t": "00:02:14",
+     "speaker": "Meera Iyer",
+     "text": "And I'll confirm the second meeting slot by Friday."
+    },
+    {
+     "t": "00:03:01",
+     "speaker": "Shreya Venkat",
+     "text": "Great."
+    }
+   ]
+  },
+  {
+   "id": "tr20",
+   "event_id": "ev_tr20",
+   "title": "Ember Credit: second meeting",
+   "date": "2026-10-21T12:00:00+05:30",
+   "attendees": [
+    {
+     "name": "Meera Iyer",
+     "email": "meera@quillwater.vc"
+    },
+    {
+     "name": "Leena Dsouza",
+     "email": "leena@embercredit.in"
+    }
+   ],
+   "url": "https://notes.granola.ai/d/tr20",
+   "lines": [
+    {
+     "t": "00:00:40",
+     "speaker": "Meera Iyer",
+     "text": "Leena, thanks for coming in."
+    },
+    {
+     "t": "00:01:27",
+     "speaker": "Leena Dsouza",
+     "text": "If we raise a bridge, it would be small."
+    },
+    {
+     "t": "00:02:14",
+     "speaker": "Leena Dsouza",
+     "text": "I'll send the BNPL partner contracts summary by next Tuesday."
+    },
+    {
+     "t": "00:03:01",
+     "speaker": "Meera Iyer",
+     "text": "I'll share our NBFC partner list by Monday."
+    },
+    {
+     "t": "00:03:48",
+     "speaker": "Leena Dsouza",
+     "text": "Thanks."
+    }
+   ]
+  }
+ ]
+}

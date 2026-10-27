@@ -1,0 +1,161 @@
+{
+ "meetings": [
+  {
+   "event_id": "ev_atlas_today",
+   "member": "aditi",
+   "title": "Atlas Settlement: terms",
+   "start": "2026-10-22T10:30:00+05:30",
+   "open_commitments_with": [
+    "Send the term sheet markup",
+    "Send the cap table with the ESOP pool",
+    "Send legal counsel's contact"
+   ]
+  },
+  {
+   "event_id": "ev_gravity_today",
+   "member": "aditi",
+   "title": "Gravity Payouts: catch-up",
+   "start": "2026-10-22T15:00:00+05:30",
+   "open_commitments_with": [
+    "Intro Arjun to Raj Malhotra at Fable Bank",
+    "Send the updated unit economics",
+    "Line up three gig platform references"
+   ]
+  },
+  {
+   "event_id": "ev_orbit_board",
+   "member": "aditi",
+   "title": "Orbit Treasury board meeting",
+   "start": "2026-10-23T10:00:00+05:30",
+   "open_commitments_with": [
+    "Send the September MIS",
+    "Add the hiring plan to the board deck",
+    "Review the board deck"
+   ]
+  },
+  {
+   "event_id": "ev_lumen_today",
+   "member": "kabir",
+   "title": "Lumen Ledger: diligence update",
+   "start": "2026-10-22T09:30:00+05:30",
+   "open_commitments_with": [
+    "Send the updated deck with Q3 numbers",
+    "Send the cohort analysis questions"
+   ]
+  },
+  {
+   "event_id": "ev_kite_today",
+   "member": "kabir",
+   "title": "Kite Pay: references",
+   "start": "2026-10-22T11:30:00+05:30",
+   "open_commitments_with": [
+    "Send the customer reference list",
+    "Share the diligence checklist"
+   ]
+  },
+  {
+   "event_id": "ev_prism_today",
+   "member": "kabir",
+   "title": "Prism Lending OS: model questions",
+   "start": "2026-10-22T17:00:00+05:30",
+   "open_commitments_with": [
+    "Share the co-lending partner data",
+    "Share our underwriting framework"
+   ]
+  },
+  {
+   "event_id": "ev_sable_today",
+   "member": "meera",
+   "title": "Sable Fraud AI: references",
+   "start": "2026-10-22T10:00:00+05:30",
+   "open_commitments_with": [
+    "Send the reference questions",
+    "Share the fraud loss benchmarks",
+    "Intro to the bank design partner"
+   ]
+  },
+  {
+   "event_id": "ev_rivulet_today",
+   "member": "meera",
+   "title": "Rivulet Payments: follow-up",
+   "start": "2026-10-22T13:00:00+05:30",
+   "open_commitments_with": [
+    "Give data room access",
+    "Share feedback after the partner meeting"
+   ]
+  },
+  {
+   "event_id": "ev_halo_today",
+   "member": "meera",
+   "title": "Halo Reconcile: second meeting",
+   "start": "2026-10-22T16:30:00+05:30",
+   "open_commitments_with": [
+    "Two insurer references",
+    "Confirm the second meeting slot"
+   ]
+  },
+  {
+   "event_id": "ev_paysa_today",
+   "member": "rohan",
+   "title": "Paysa Labs: first call",
+   "start": "2026-10-22T11:00:00+05:30",
+   "open_commitments_with": [
+    "Send the marketplace payout volumes",
+    "Set up a call with Kabir"
+   ]
+  },
+  {
+   "event_id": "ev_ruplink_tmrw",
+   "member": "rohan",
+   "title": "Ruplink: intro call",
+   "start": "2026-10-23T15:00:00+05:30",
+   "open_commitments_with": []
+  },
+  {
+   "event_id": "ev_tallyfin_today",
+   "member": "tara",
+   "title": "Tallyfin: hiring",
+   "start": "2026-10-22T11:00:00+05:30",
+   "open_commitments_with": [
+    "Intro two CFO candidates",
+    "Share the CTO job description",
+    "Invite Rahul to the founders dinner"
+   ]
+  },
+  {
+   "event_id": "ev_community_today",
+   "member": "tara",
+   "title": "Founder community: November dinner",
+   "start": "2026-10-22T14:30:00+05:30",
+   "open_commitments_with": []
+  },
+  {
+   "event_id": "ev_fundadmin_today",
+   "member": "vikram",
+   "title": "Fund admin: weekly",
+   "start": "2026-10-22T09:00:00+05:30",
+   "open_commitments_with": [
+    "Send the audit timeline",
+    "Sign off on the capital account statements"
+   ]
+  },
+  {
+   "event_id": "ev_northgate_today",
+   "member": "vikram",
+   "title": "Northgate Endowment: check-in",
+   "start": "2026-10-22T15:30:00+05:30",
+   "open_commitments_with": [
+    "Answer the fee offset question",
+    "Send the updated reporting template",
+    "Add Helen to the AGM invite list"
+   ]
+  },
+  {
+   "event_id": "ev_beacon_tmrw",
+   "member": "aditi",
+   "title": "Beacon Credit Rails: terms",
+   "start": "2026-10-23T12:00:00+05:30",
+   "open_commitments_with": []
+  }
+ ]
+}

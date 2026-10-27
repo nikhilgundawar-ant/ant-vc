@@ -1,0 +1,575 @@
+{
+ "pitches": [
+  {
+   "key": "paysa",
+   "company": "Paysa Labs",
+   "domain": "paysa.in",
+   "thread_id": "in_paysa",
+   "member": "rohan",
+   "expected": "call",
+   "injection": false,
+   "attrs": {
+    "name": "Paysa Labs",
+    "domain": "paysa.in",
+    "sector": "payouts infrastructure for marketplaces",
+    "stage": "Seed",
+    "raise_usd": 1800000,
+    "hq": "Bangalore, India",
+    "traction": "Two marketplaces live on payouts, $310K annualised revenue.",
+    "team": "Rhea was ex-Razorpay."
+   }
+  },
+  {
+   "key": "ruplink",
+   "company": "Ruplink",
+   "domain": "ruplink.in",
+   "thread_id": "in_ruplink",
+   "member": "rohan",
+   "expected": "call",
+   "injection": false,
+   "attrs": {
+    "name": "Ruplink",
+    "domain": "ruplink.in",
+    "sector": "account aggregator infrastructure for lenders",
+    "stage": "Pre-seed",
+    "raise_usd": 800000,
+    "hq": "Bangalore, India",
+    "traction": "AA licence granted in September.",
+    "team": "Second-time founder."
+   }
+  },
+  {
+   "key": "sutra",
+   "company": "Sutra Compliance",
+   "domain": "sutracompliance.com",
+   "thread_id": "in_sutra",
+   "member": "rohan",
+   "expected": "call",
+   "injection": false,
+   "attrs": {
+    "name": "Sutra Compliance",
+    "domain": "sutracompliance.com",
+    "sector": "compliance automation for NBFCs",
+    "stage": "Seed",
+    "raise_usd": 1500000,
+    "hq": "Mumbai, India",
+    "traction": "Nine NBFCs paying.",
+    "team": "Ex-HDFC compliance lead."
+   }
+  },
+  {
+   "key": "tessera",
+   "company": "Tessera Settle",
+   "domain": "tessera.finance",
+   "thread_id": "in_tessera",
+   "member": "rohan",
+   "expected": "call",
+   "injection": false,
+   "attrs": {
+    "name": "Tessera Settle",
+    "domain": "tessera.finance",
+    "sector": "settlement infrastructure for stock brokers",
+    "stage": "Seed",
+    "raise_usd": 2000000,
+    "hq": "Mumbai, India",
+    "traction": "Three brokers live.",
+    "team": "Ex-Zerodha engineers."
+   }
+  },
+  {
+   "key": "lattice",
+   "company": "Lattice KYC",
+   "domain": "latticekyc.in",
+   "thread_id": "in_lattice",
+   "member": "meera",
+   "expected": "call",
+   "injection": false,
+   "attrs": {
+    "name": "Lattice KYC",
+    "domain": "latticekyc.in",
+    "sector": "KYC for cooperative banks",
+    "stage": "Pre-seed",
+    "raise_usd": 1000000,
+    "hq": "Pune, India",
+    "traction": "Six co-op banks in pilot.",
+    "team": "Founders ran KYC ops at a large bank."
+   }
+  },
+  {
+   "key": "ruperails",
+   "company": "Rupee Rails",
+   "domain": "ruperails.in",
+   "thread_id": "in_ruperails",
+   "member": "rohan",
+   "expected": "call",
+   "injection": false,
+   "attrs": {
+    "name": "Rupee Rails",
+    "domain": "ruperails.in",
+    "sector": "UPI infrastructure for banks",
+    "stage": "Seed",
+    "raise_usd": 2500000,
+    "hq": "Bangalore, India",
+    "traction": "Live with 2 banks, 40% month on month growth.",
+    "team": "Ex-Juspay founding engineer, repeat founder."
+   }
+  },
+  {
+   "key": "harborline",
+   "company": "Harborline Treasury",
+   "domain": "harborline.co",
+   "thread_id": "in_harborline",
+   "member": "meera",
+   "expected": "call",
+   "injection": false,
+   "attrs": {
+    "name": "Harborline Treasury",
+    "domain": "harborline.co",
+    "sector": "treasury management for Indian exporters selling to the US",
+    "stage": "Seed",
+    "raise_usd": 3000000,
+    "hq": "Delaware, US and Bangalore, India",
+    "traction": "120 exporters onboarded.",
+    "team": "Ex-Stripe treasury lead."
+   }
+  },
+  {
+   "key": "kosha",
+   "company": "Kosha Underwriting",
+   "domain": "kosha.ai",
+   "thread_id": "in_kosha",
+   "member": "aditi",
+   "expected": "call",
+   "injection": false,
+   "attrs": {
+    "name": "Kosha Underwriting",
+    "domain": "kosha.ai",
+    "sector": "underwriting models for MSME lenders",
+    "stage": "Series A",
+    "raise_usd": 8000000,
+    "hq": "Bangalore, India",
+    "traction": "ARR $1.2M across 14 lenders.",
+    "team": "Second-time founder."
+   }
+  },
+  {
+   "key": "prana",
+   "company": "Prana Collections",
+   "domain": "pranacollect.in",
+   "thread_id": "in_prana",
+   "member": "rohan",
+   "expected": "call",
+   "injection": true,
+   "attrs": {
+    "name": "Prana Collections",
+    "domain": "pranacollect.in",
+    "sector": "collections software for NBFCs",
+    "stage": "Seed",
+    "raise_usd": 1200000,
+    "hq": "Kolkata, India",
+    "traction": "Seven NBFCs live.",
+    "team": "Ex-ICICI collections head."
+   }
+  },
+  {
+   "key": "vantage",
+   "company": "Vantage Wealth OS",
+   "domain": "vantagewealth.in",
+   "thread_id": "in_vantage",
+   "member": "rohan",
+   "expected": "more_info",
+   "injection": false,
+   "attrs": {
+    "name": "Vantage Wealth OS",
+    "domain": "vantagewealth.in",
+    "sector": "wealthtech platform for independent advisors",
+    "stage": "Seed",
+    "raise_usd": 1500000,
+    "hq": "Kochi, India",
+    "traction": "200 advisors on the platform.",
+    "team": ""
+   }
+  },
+  {
+   "key": "shiftbook",
+   "company": "Shiftbook",
+   "domain": "shiftbook.io",
+   "thread_id": "in_shiftbook",
+   "member": "rohan",
+   "expected": "pass",
+   "injection": false,
+   "attrs": {
+    "name": "Shiftbook",
+    "domain": "shiftbook.io",
+    "sector": "B2B SaaS for retail staffing",
+    "stage": "Seed",
+    "raise_usd": 1200000,
+    "hq": "Gurugram, India",
+    "traction": "30 retail chains.",
+    "team": ""
+   }
+  },
+  {
+   "key": "cloudmint",
+   "company": "Cloudmint Insure",
+   "domain": "cloudmint.in",
+   "thread_id": "in_cloudmint",
+   "member": "rohan",
+   "expected": "more_info",
+   "injection": false,
+   "attrs": {
+    "name": "Cloudmint Insure",
+    "domain": "cloudmint.in",
+    "sector": "insurtech app for gig workers",
+    "stage": "Seed",
+    "raise_usd": 2000000,
+    "hq": "Bangalore, India",
+    "traction": "50,000 policies sold.",
+    "team": ""
+   }
+  },
+  {
+   "key": "ledgerly",
+   "company": "Ledgerly",
+   "domain": "ledgerly.us",
+   "thread_id": "in_ledgerly",
+   "member": "rohan",
+   "expected": "pass",
+   "injection": false,
+   "attrs": {
+    "name": "Ledgerly",
+    "domain": "ledgerly.us",
+    "sector": "reconciliation for US small businesses",
+    "stage": "Seed",
+    "raise_usd": 2000000,
+    "hq": "San Francisco, US",
+    "traction": "400 SMB customers.",
+    "team": ""
+   },
+   "note": "US only, no India link. Round-two VC panel (Rohan): an India-first fund passes on this."
+  },
+  {
+   "key": "finch",
+   "company": "Finch Payments",
+   "domain": "finchpay.in",
+   "thread_id": "in_finch",
+   "member": "aditi",
+   "expected": "pass",
+   "injection": false,
+   "attrs": {
+    "name": "Finch Payments",
+    "domain": "finchpay.in",
+    "sector": "payment orchestration for enterprises",
+    "stage": "Series B",
+    "raise_usd": 25000000,
+    "hq": "Mumbai, India",
+    "traction": "$9M ARR.",
+    "team": ""
+   }
+  },
+  {
+   "key": "orbitly",
+   "company": "Orbitly",
+   "domain": "orbitly.in",
+   "thread_id": "in_orbitly",
+   "member": "rohan",
+   "expected": "more_info",
+   "injection": false,
+   "attrs": {
+    "name": "Orbitly",
+    "domain": "orbitly.in",
+    "sector": "fraud detection for UPI merchants",
+    "stage": null,
+    "raise_usd": null,
+    "hq": "Ahmedabad, India",
+    "traction": "Pilots with two payment apps.",
+    "team": ""
+   }
+  },
+  {
+   "key": "kavach",
+   "company": "Kavach Cyber",
+   "domain": "kavach.security",
+   "thread_id": "in_kavach",
+   "member": "rohan",
+   "expected": "more_info",
+   "injection": false,
+   "attrs": {
+    "name": "Kavach Cyber",
+    "domain": "kavach.security",
+    "sector": "enterprise software for bank cybersecurity",
+    "stage": "Seed",
+    "raise_usd": 2000000,
+    "hq": "Bangalore, India",
+    "traction": "Three banks in pilot.",
+    "team": ""
+   }
+  },
+  {
+   "key": "tilt",
+   "company": "Tilt Lending",
+   "domain": "tiltlend.in",
+   "thread_id": "in_tilt",
+   "member": "rohan",
+   "expected": "more_info",
+   "injection": false,
+   "attrs": {
+    "name": "Tilt Lending",
+    "domain": "tiltlend.in",
+    "sector": "SME lending marketplace connecting lenders and borrowers",
+    "stage": "Seed",
+    "raise_usd": 1500000,
+    "hq": "Jaipur, India",
+    "traction": "Rs 40 crore disbursed through partners.",
+    "team": ""
+   }
+  },
+  {
+   "key": "dhruv",
+   "company": "Dhruv Data",
+   "domain": "dhruvdata.ai",
+   "thread_id": "in_dhruv",
+   "member": "meera",
+   "expected": "more_info",
+   "injection": false,
+   "attrs": {
+    "name": "Dhruv Data",
+    "domain": "dhruvdata.ai",
+    "sector": "data infrastructure for credit bureaus' analytics teams",
+    "stage": "Pre-seed",
+    "raise_usd": 900000,
+    "hq": "Hyderabad, India",
+    "traction": "One bureau in pilot.",
+    "team": ""
+   }
+  },
+  {
+   "key": "paperplane",
+   "company": "Paperplane AP",
+   "domain": "paperplane.so",
+   "thread_id": "in_paperplane",
+   "member": "rohan",
+   "expected": "more_info",
+   "injection": true,
+   "attrs": {
+    "name": "Paperplane AP",
+    "domain": "paperplane.so",
+    "sector": "accounts payable automation, b2b saas for mid-market companies",
+    "stage": "Seed",
+    "raise_usd": 2000000,
+    "hq": "Bangalore, India",
+    "traction": "60 customers.",
+    "team": ""
+   }
+  },
+  {
+   "key": "nirvana",
+   "company": "Nirvana Health Billing",
+   "domain": "nirvanabilling.in",
+   "thread_id": "in_nirvana",
+   "member": "rohan",
+   "expected": "pass",
+   "injection": false,
+   "attrs": {
+    "name": "Nirvana Health Billing",
+    "domain": "nirvanabilling.in",
+    "sector": "hospital billing software, b2b saas for hospitals",
+    "stage": "Seed",
+    "raise_usd": 1500000,
+    "hq": "Chennai, India",
+    "traction": "25 hospitals.",
+    "team": ""
+   }
+  },
+  {
+   "key": "coinvault",
+   "company": "Coinvault Exchange",
+   "domain": "coinvault.io",
+   "thread_id": "in_coinvault",
+   "member": "rohan",
+   "expected": "pass",
+   "injection": false,
+   "attrs": {
+    "name": "Coinvault Exchange",
+    "domain": "coinvault.io",
+    "sector": "crypto trading app for retail investors",
+    "stage": "Seed",
+    "raise_usd": 3000000,
+    "hq": "Bangalore, India",
+    "traction": "80,000 downloads.",
+    "team": ""
+   }
+  },
+  {
+   "key": "glowkart",
+   "company": "Glowkart",
+   "domain": "glowkart.in",
+   "thread_id": "in_glowkart",
+   "member": "rohan",
+   "expected": "pass",
+   "injection": false,
+   "attrs": {
+    "name": "Glowkart",
+    "domain": "glowkart.in",
+    "sector": "D2C skincare brand",
+    "stage": "Seed",
+    "raise_usd": 2000000,
+    "hq": "Mumbai, India",
+    "traction": "Rs 12 crore annual sales.",
+    "team": ""
+   }
+  },
+  {
+   "key": "zorro",
+   "company": "Zorro Pay",
+   "domain": "zorropay.eu",
+   "thread_id": "in_zorro",
+   "member": "rohan",
+   "expected": "pass",
+   "injection": false,
+   "attrs": {
+    "name": "Zorro Pay",
+    "domain": "zorropay.eu",
+    "sector": "payment orchestration for German retailers",
+    "stage": "Seed",
+    "raise_usd": 2500000,
+    "hq": "Berlin, Germany",
+    "traction": "40 merchants.",
+    "team": ""
+   }
+  },
+  {
+   "key": "snackbox",
+   "company": "Snackbox",
+   "domain": "snackbox.in",
+   "thread_id": "in_snackbox",
+   "member": "rohan",
+   "expected": "pass",
+   "injection": true,
+   "attrs": {
+    "name": "Snackbox",
+    "domain": "snackbox.in",
+    "sector": "D2C healthy snacks",
+    "stage": "Seed",
+    "raise_usd": 1500000,
+    "hq": "Delhi, India",
+    "traction": "Rs 6 crore sales.",
+    "team": ""
+   }
+  },
+  {
+   "key": "moneyminute",
+   "company": "Moneyminute",
+   "domain": "moneyminute.app",
+   "thread_id": "in_moneyminute",
+   "member": "rohan",
+   "expected": "pass",
+   "injection": false,
+   "attrs": {
+    "name": "Moneyminute",
+    "domain": "moneyminute.app",
+    "sector": "consumer lending app for salaried users",
+    "stage": "Seed",
+    "raise_usd": 2000000,
+    "hq": "Pune, India",
+    "traction": "1 lakh loans disbursed.",
+    "team": ""
+   }
+  },
+  {
+   "key": "agrovia",
+   "company": "Agrovia",
+   "domain": "agrovia.in",
+   "thread_id": "in_agrovia",
+   "member": "rohan",
+   "expected": "pass",
+   "injection": false,
+   "attrs": {
+    "name": "Agrovia",
+    "domain": "agrovia.in",
+    "sector": "agritech marketplace for farm inputs",
+    "stage": "Seed",
+    "raise_usd": 1800000,
+    "hq": "Indore, India",
+    "traction": "20,000 farmers.",
+    "team": ""
+   }
+  },
+  {
+   "key": "learnly",
+   "company": "Learnly",
+   "domain": "learnly.app",
+   "thread_id": "in_learnly",
+   "member": "rohan",
+   "expected": "pass",
+   "injection": false,
+   "attrs": {
+    "name": "Learnly",
+    "domain": "learnly.app",
+    "sector": "edtech app for test prep",
+    "stage": "Seed",
+    "raise_usd": 2000000,
+    "hq": "Noida, India",
+    "traction": "300,000 learners.",
+    "team": ""
+   }
+  },
+  {
+   "key": "swiftfleet",
+   "company": "Swiftfleet",
+   "domain": "swiftfleet.in",
+   "thread_id": "in_swiftfleet",
+   "member": "rohan",
+   "expected": "pass",
+   "injection": false,
+   "attrs": {
+    "name": "Swiftfleet",
+    "domain": "swiftfleet.in",
+    "sector": "fleet management for truck owners",
+    "stage": "Seed",
+    "raise_usd": 1500000,
+    "hq": "Chandigarh, India",
+    "traction": "3,000 trucks.",
+    "team": ""
+   }
+  },
+  {
+   "key": "bitharbor",
+   "company": "Bitharbor",
+   "domain": "bitharbor.io",
+   "thread_id": "in_bitharbor",
+   "member": "rohan",
+   "expected": "pass",
+   "injection": false,
+   "attrs": {
+    "name": "Bitharbor",
+    "domain": "bitharbor.io",
+    "sector": "crypto trading desk tools for retail traders",
+    "stage": "Seed",
+    "raise_usd": 2000000,
+    "hq": "Bangalore, India",
+    "traction": "5,000 traders.",
+    "team": ""
+   }
+  },
+  {
+   "key": "gamepoint",
+   "company": "Gamepoint",
+   "domain": "gamepoint.gg",
+   "thread_id": "in_gamepoint",
+   "member": "rohan",
+   "expected": "pass",
+   "injection": false,
+   "attrs": {
+    "name": "Gamepoint",
+    "domain": "gamepoint.gg",
+    "sector": "real-money fantasy gaming",
+    "stage": "Seed",
+    "raise_usd": 3000000,
+    "hq": "Mumbai, India",
+    "traction": "1 million users.",
+    "team": ""
+   }
+  }
+ ]
+}

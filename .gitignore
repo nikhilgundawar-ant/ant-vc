@@ -1,0 +1,7 @@
+evals/runs/_homedb_check/
+__pycache__/
+*.pyc
+.DS_Store
+evals/runs/
+evals/reports/home/_home.html
+*.plugin

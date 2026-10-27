@@ -1,0 +1,291 @@
+{
+  "version": 1,
+  "note": "Defaults per level. Setup picks one profile; weekly tuning adjusts weights, item counts and thresholds from ratings. Kind weights multiply each item's base score in the brief.",
+  "levels": [
+    "partner",
+    "principal",
+    "associate",
+    "analyst",
+    "platform",
+    "finance",
+    "solo_gp"
+  ],
+  "profiles": {
+    "partner": {
+      "label": "Partner",
+      "today_items": 5,
+      "brief_words": 200,
+      "opens_on": "today",
+      "pipeline_scope": "needs_call",
+      "modules": {
+        "brief": "short",
+        "meetings": "on",
+        "pipeline": "preread_only",
+        "triage": "summary",
+        "memo": "review",
+        "network": "on",
+        "portfolio": "flags_board",
+        "lp": "decay",
+        "tuning": "on"
+      },
+      "weights": {
+        "meeting": 1.0,
+        "commitment": 1.1,
+        "signal": 1.2,
+        "deal_move": 0.7,
+        "inbound": 0.4,
+        "decision": 1.3,
+        "portfolio": 1.1,
+        "lp": 1.0,
+        "relationship": 0.6,
+        "ask": 0.5
+      },
+      "schedules": [
+        "pulse_weekday",
+        "pulse_weekend",
+        "morning_brief",
+        "week_ahead",
+        "pipeline_review",
+        "monday_digest",
+        "tuning"
+      ]
+    },
+    "principal": {
+      "label": "Principal",
+      "today_items": 8,
+      "brief_words": 350,
+      "opens_on": "today",
+      "pipeline_scope": "own",
+      "modules": {
+        "brief": "medium",
+        "meetings": "on",
+        "pipeline": "own",
+        "triage": "own",
+        "memo": "on",
+        "network": "on",
+        "portfolio": "board_prep",
+        "lp": "off",
+        "tuning": "on"
+      },
+      "weights": {
+        "meeting": 1.0,
+        "commitment": 1.1,
+        "signal": 1.2,
+        "deal_move": 0.9,
+        "inbound": 0.6,
+        "decision": 1.0,
+        "portfolio": 0.8,
+        "lp": 0.3,
+        "relationship": 0.6,
+        "ask": 0.4
+      },
+      "schedules": [
+        "pulse_weekday",
+        "pulse_weekend",
+        "morning_brief",
+        "pipeline_review",
+        "monday_digest",
+        "tuning"
+      ]
+    },
+    "associate": {
+      "label": "Associate",
+      "today_items": 12,
+      "brief_words": 450,
+      "opens_on": "pipeline",
+      "pipeline_scope": "own",
+      "modules": {
+        "brief": "medium",
+        "meetings": "on",
+        "pipeline": "own",
+        "triage": "own",
+        "memo": "on",
+        "network": "on",
+        "portfolio": "kpi",
+        "lp": "off",
+        "tuning": "on"
+      },
+      "weights": {
+        "meeting": 1.0,
+        "commitment": 1.2,
+        "signal": 1.2,
+        "deal_move": 1.0,
+        "inbound": 0.9,
+        "decision": 0.7,
+        "portfolio": 0.5,
+        "lp": 0.1,
+        "relationship": 0.5,
+        "ask": 0.3
+      },
+      "schedules": [
+        "pulse_weekday",
+        "pulse_weekend",
+        "morning_brief",
+        "pipeline_review",
+        "monday_digest",
+        "tuning"
+      ]
+    },
+    "analyst": {
+      "label": "Analyst",
+      "today_items": 12,
+      "brief_words": 500,
+      "opens_on": "pipeline",
+      "pipeline_scope": "full",
+      "modules": {
+        "brief": "long",
+        "meetings": "on",
+        "pipeline": "full",
+        "triage": "all",
+        "memo": "assist",
+        "network": "on",
+        "portfolio": "off",
+        "lp": "off",
+        "tuning": "on"
+      },
+      "weights": {
+        "meeting": 0.9,
+        "commitment": 1.1,
+        "signal": 1.2,
+        "deal_move": 1.0,
+        "inbound": 1.2,
+        "decision": 0.4,
+        "portfolio": 0.3,
+        "lp": 0.0,
+        "relationship": 0.4,
+        "ask": 0.3
+      },
+      "schedules": [
+        "pulse_weekday",
+        "pulse_weekend",
+        "morning_brief",
+        "pipeline_review",
+        "monday_digest",
+        "tuning"
+      ]
+    },
+    "platform": {
+      "label": "Platform",
+      "today_items": 10,
+      "brief_words": 350,
+      "opens_on": "portfolio",
+      "pipeline_scope": "off",
+      "modules": {
+        "brief": "medium",
+        "meetings": "on",
+        "pipeline": "off",
+        "triage": "off",
+        "memo": "off",
+        "network": "on",
+        "portfolio": "asks",
+        "lp": "off",
+        "tuning": "on"
+      },
+      "weights": {
+        "meeting": 1.0,
+        "commitment": 1.2,
+        "signal": 0.6,
+        "deal_move": 0.2,
+        "inbound": 0.2,
+        "decision": 0.4,
+        "portfolio": 1.3,
+        "lp": 0.1,
+        "relationship": 0.9,
+        "ask": 1.5
+      },
+      "schedules": [
+        "pulse_weekday",
+        "pulse_weekend",
+        "morning_brief",
+        "monday_digest",
+        "tuning"
+      ]
+    },
+    "finance": {
+      "label": "Finance and IR",
+      "today_items": 8,
+      "brief_words": 250,
+      "opens_on": "lps",
+      "pipeline_scope": "off",
+      "modules": {
+        "brief": "short",
+        "meetings": "on",
+        "pipeline": "off",
+        "triage": "off",
+        "memo": "off",
+        "network": "on",
+        "portfolio": "kpi",
+        "lp": "full",
+        "tuning": "on"
+      },
+      "weights": {
+        "meeting": 1.0,
+        "commitment": 1.1,
+        "signal": 0.5,
+        "deal_move": 0.3,
+        "inbound": 0.0,
+        "decision": 0.6,
+        "portfolio": 1.1,
+        "lp": 1.4,
+        "relationship": 0.5,
+        "ask": 0.3
+      },
+      "schedules": [
+        "pulse_weekday",
+        "pulse_weekend",
+        "morning_brief",
+        "week_ahead",
+        "monday_digest",
+        "tuning"
+      ]
+    },
+    "solo_gp": {
+      "label": "Solo GP",
+      "today_items": 7,
+      "brief_words": 250,
+      "opens_on": "today",
+      "pipeline_scope": "full",
+      "modules": {
+        "brief": "short",
+        "meetings": "on",
+        "pipeline": "full",
+        "triage": "all",
+        "memo": "on",
+        "network": "on",
+        "portfolio": "flags_board",
+        "lp": "full",
+        "tuning": "on"
+      },
+      "weights": {
+        "meeting": 1.0,
+        "commitment": 1.1,
+        "signal": 1.2,
+        "deal_move": 0.9,
+        "inbound": 1.1,
+        "decision": 1.2,
+        "portfolio": 1.1,
+        "lp": 1.2,
+        "relationship": 0.6,
+        "ask": 0.8
+      },
+      "schedules": [
+        "pulse_weekday",
+        "pulse_weekend",
+        "morning_brief",
+        "week_ahead",
+        "pipeline_review",
+        "monday_digest",
+        "tuning"
+      ],
+      "quota": {
+        "inbound": 2
+      }
+    }
+  },
+  "limits": {
+    "weight_min": 0.3,
+    "weight_max": 2.0,
+    "today_items_min": 3,
+    "today_items_max": 25
+  }
+}

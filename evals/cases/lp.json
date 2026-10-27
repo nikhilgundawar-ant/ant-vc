@@ -1,0 +1,20 @@
+{
+ "alerts": [
+  {
+   "lp_id": "lp_northgate",
+   "breach": true
+  },
+  {
+   "lp_id": "lp_banyan",
+   "breach": false
+  },
+  {
+   "lp_id": "lp_tidewater",
+   "breach": false
+  },
+  {
+   "lp_id": "lp_peregrine",
+   "breach": false
+  }
+ ]
+}

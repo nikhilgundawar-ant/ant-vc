@@ -1,0 +1,39 @@
+{
+ "deals": [
+  {
+   "key": "lumen",
+   "deal_id": "d_lumen",
+   "company": "Lumen Ledger",
+   "drive_doc": "dr_lumen_metrics",
+   "note": "note_lumen"
+  },
+  {
+   "key": "kite",
+   "deal_id": "d_kite",
+   "company": "Kite Pay",
+   "drive_doc": "dr_kite_metrics",
+   "note": "note_kite"
+  },
+  {
+   "key": "gravity",
+   "deal_id": "d_gravity",
+   "company": "Gravity Payouts",
+   "drive_doc": "dr_gravity_metrics",
+   "note": "note_gravity"
+  },
+  {
+   "key": "atlas",
+   "deal_id": "d_atlas",
+   "company": "Atlas Settlement",
+   "drive_doc": "dr_atlas_metrics",
+   "note": "note_atlas"
+  },
+  {
+   "key": "ironwood",
+   "deal_id": "d_ironwood",
+   "company": "Ironwood Compliance",
+   "drive_doc": "dr_ironwood_metrics",
+   "note": "note_ironwood"
+  }
+ ]
+}

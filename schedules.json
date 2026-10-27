@@ -1,0 +1,31 @@
+{
+  "version": 2,
+  "note": "Two scheduled tasks per user: one hourly on weekdays from the brief time, one three times a day at weekends. Each run asks the engine what is due this hour (`due` command): the morning brief, the Monday digest, the Thursday review, the Sunday week ahead and tuning ride on the hourly run, so there are two approvals, no collisions and one run at a time. Times are the user's local time. Fixed on-the-hour times move 1 to 29 minutes earlier.",
+  "tasks": [
+    {
+      "key": "weekday",
+      "name": "ant.",
+      "cron": "{minute} {first_hour}-{last_hour} * * 1-5",
+      "push": true,
+      "prompt": "Run the ant-vc pulse skill for me. [ant-vc-scheduled-run] My ant. Home is {home_url}. ant. decides what is due this hour: the morning brief, a pulse, the weekly review or the digest. If nothing changed, finish with the single line: Nothing new. Otherwise finish with one line under 90 characters naming the most important thing."
+    },
+    {
+      "key": "weekend",
+      "name": "ant. weekend",
+      "cron": "{minute} {weekend_hours} * * 0,6",
+      "push": true,
+      "prompt": "Run the ant-vc pulse skill for me in weekend mode. [ant-vc-scheduled-run] My ant. Home is {home_url}. Weekend mode keeps to post-meeting packs, urgent signals and promises due before Monday; on Sunday evening it also runs weekly tuning and, for the roles that get one, the week ahead. If nothing changed, finish with the single line: Nothing new. Otherwise finish with one line under 90 characters."
+    }
+  ],
+  "jobs": {
+    "morning_brief": {"days": [0, 1, 2, 3, 4], "at": "{brief_time}", "mode": "daily", "label": "Morning brief"},
+    "monday_digest": {"days": [0], "at": "08:00", "mode": "digest", "label": "Monday digest"},
+    "pipeline_review": {"days": [3], "at": "16:00", "mode": "review", "label": "Weekly pipeline review"},
+    "week_ahead": {"days": [6], "at": "18:00", "mode": "week_ahead", "label": "Week ahead and pre-read"},
+    "tuning": {"days": [6], "at": "18:00", "mode": null, "label": "Weekly tuning"}
+  },
+  "last_hour": 20,
+  "weekend_hours": [10, 14, 18],
+  "lock_minutes": 50,
+  "window_cap_hours": 72
+}

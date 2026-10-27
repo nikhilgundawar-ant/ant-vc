@@ -1,0 +1,59 @@
+{
+ "positives": [
+  {
+   "company": "Lumen Ledger",
+   "deal_key": "lumen",
+   "thread_id": "cmp_lumen",
+   "deadline": null
+  },
+  {
+   "company": "Kite Pay",
+   "deal_key": "kite",
+   "thread_id": "cmp_kite",
+   "deadline": null
+  },
+  {
+   "company": "Gravity Payouts",
+   "deal_key": "gravity",
+   "thread_id": "cmp_gravity",
+   "deadline": "2026-10-31"
+  },
+  {
+   "company": "Atlas Settlement",
+   "deal_key": "atlas",
+   "thread_id": "cmp_atlas",
+   "deadline": "2026-11-05"
+  },
+  {
+   "company": "Trellis Banking API",
+   "deal_key": "trellis",
+   "thread_id": "cmp_trellis",
+   "deadline": null
+  },
+  {
+   "company": "Rivulet Payments",
+   "deal_key": "rivulet",
+   "thread_id": "cmp_rivulet",
+   "deadline": null
+  },
+  {
+   "company": "Sable Fraud AI",
+   "deal_key": "sable",
+   "thread_id": "cmp_sable",
+   "deadline": "2026-10-23"
+  },
+  {
+   "company": "Vaultline",
+   "deal_key": "vaultline",
+   "thread_id": "cmp_vaultline",
+   "deadline": null
+  }
+ ],
+ "negative_threads": [
+  "neg_ember",
+  "neg_prism",
+  "neg_2",
+  "neg_copperleaf",
+  "neg_4"
+ ]
+}

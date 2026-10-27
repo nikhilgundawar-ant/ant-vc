@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "note": "Default pipeline. Dwell days are the stale threshold. When the CRM has its own stages, setup maps them onto these keys and keeps the CRM names for display.",
+  "stages": [
+    { "key": "inbound",         "name": "Inbound",         "dwell_days": 3,  "active": true,  "contact_check": false },
+    { "key": "screening",       "name": "Screening",       "dwell_days": 7,  "active": true,  "contact_check": false },
+    { "key": "first_meeting",   "name": "First meeting",   "dwell_days": 7,  "active": true,  "contact_check": true },
+    { "key": "second_meeting",  "name": "Second meeting",  "dwell_days": 10, "active": true,  "contact_check": true },
+    { "key": "diligence",       "name": "Diligence",       "dwell_days": 21, "active": true,  "contact_check": true },
+    { "key": "partner_meeting", "name": "Partner meeting", "dwell_days": 7,  "active": true,  "contact_check": true },
+    { "key": "term_sheet",      "name": "Term sheet",      "dwell_days": 10, "active": true,  "contact_check": true },
+    { "key": "closing",         "name": "Closing",         "dwell_days": 30, "active": true,  "contact_check": true },
+    { "key": "portfolio",       "name": "Portfolio",       "dwell_days": null, "active": false, "contact_check": false },
+    { "key": "passed",          "name": "Passed",          "dwell_days": null, "active": false, "contact_check": false }
+  ],
+  "no_contact_days": 7,
+  "crm_aliases": {
+    "inbound": ["new", "inbound", "lead", "sourced", "intro"],
+    "screening": ["screening", "reviewing", "qualified", "evaluating"],
+    "first_meeting": ["first meeting", "1st meeting", "intro call", "first call", "met once"],
+    "second_meeting": ["second meeting", "2nd meeting", "follow up", "follow-up"],
+    "diligence": ["diligence", "dd", "due diligence", "deep dive"],
+    "partner_meeting": ["partner meeting", "ic", "investment committee", "pitch to partners", "decision", "decision meeting"],
+    "term_sheet": ["term sheet", "ts", "terms", "negotiation"],
+    "closing": ["closing", "legal", "docs", "wiring"],
+    "portfolio": ["portfolio", "invested", "closed won", "won"],
+    "passed": ["passed", "pass", "lost", "declined", "closed lost", "dead"]
+  }
+}

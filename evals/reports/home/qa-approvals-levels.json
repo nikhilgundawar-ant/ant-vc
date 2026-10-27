@@ -1,0 +1,342 @@
+{
+ "checks": 55,
+ "failed": 0,
+ "complete": false,
+ "scenarios": [
+  "approvals",
+  "levels"
+ ],
+ "page_sha256": "3d6b7bd6e470",
+ "rows": [
+  {
+   "scenario": "approvals",
+   "check": "CRM change approved",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "approvals",
+   "check": "approved state shown",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "approvals",
+   "check": "copy gives feedback",
+   "ok": true,
+   "detail": "Draft copied"
+  },
+  {
+   "scenario": "approvals",
+   "check": "a draft kept in Home opens Gmail filled in, in the user's own account",
+   "ok": true,
+   "detail": "https://mail.google.com/mail/?authuser=aditi%40quillwater.vc&view=cm&fs=1&to=ishaan%40atla"
+  },
+  {
+   "scenario": "approvals",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "approvals",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "approvals",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "approvals",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "approvals",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "intro-cc",
+   "check": "an intro draft opens Gmail with the second person in cc",
+   "ok": true,
+   "detail": "3 links"
+  },
+  {
+   "scenario": "failed-apply",
+   "check": "a failed change says so",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "failed-apply",
+   "check": "dismiss hides it",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "level-aditi",
+   "check": "hero states a fact",
+   "ok": true,
+   "detail": "Review the board deck"
+  },
+  {
+   "scenario": "level-aditi",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "level-aditi",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "level-aditi",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "level-aditi",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "level-aditi",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "level-kabir",
+   "check": "hero states a fact",
+   "ok": true,
+   "detail": "Share the diligence checklist"
+  },
+  {
+   "scenario": "level-kabir",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "level-kabir",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "level-kabir",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "level-kabir",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "level-kabir",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "level-meera",
+   "check": "hero states a fact",
+   "ok": true,
+   "detail": "Sable Fraud AI: term sheet from Monsoon Arc Ventures"
+  },
+  {
+   "scenario": "level-meera",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "level-meera",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "level-meera",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "level-meera",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "level-meera",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "level-rohan",
+   "check": "hero states a fact",
+   "ok": true,
+   "detail": "Market map of AA players"
+  },
+  {
+   "scenario": "level-rohan",
+   "check": "analyst pipeline opens on Mine, top of the funnel first",
+   "ok": true,
+   "detail": "Inbound"
+  },
+  {
+   "scenario": "level-rohan",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "level-rohan",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "level-rohan",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "level-rohan",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "level-rohan",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "level-tara",
+   "check": "hero states a fact",
+   "ok": true,
+   "detail": "Intro two CFO candidates"
+  },
+  {
+   "scenario": "level-tara",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "level-tara",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "level-tara",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "level-tara",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "level-tara",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "level-vikram",
+   "check": "hero states a fact",
+   "ok": true,
+   "detail": "Answer the fee offset question"
+  },
+  {
+   "scenario": "level-vikram",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "level-vikram",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "level-vikram",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "level-vikram",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "level-vikram",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "level-solo",
+   "check": "hero states a fact",
+   "ok": true,
+   "detail": "Review the board deck"
+  },
+  {
+   "scenario": "level-solo",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "level-solo",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "level-solo",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "level-solo",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "level-solo",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  }
+ ]
+}

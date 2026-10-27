@@ -1,0 +1,93 @@
+{
+ "targets": [
+  {
+   "company": "Fable Bank",
+   "has_path": true
+  },
+  {
+   "company": "Coastline Bank",
+   "has_path": true
+  },
+  {
+   "company": "Pinnacle Small Finance Bank",
+   "has_path": true
+  },
+  {
+   "company": "Arbor Insurance",
+   "has_path": true
+  },
+  {
+   "company": "Kaveri Cooperative Bank",
+   "has_path": true
+  },
+  {
+   "company": "Saffron Peak Capital",
+   "has_path": true
+  },
+  {
+   "company": "Monsoon Arc Ventures",
+   "has_path": true
+  },
+  {
+   "company": "Bluepeak Partners",
+   "has_path": true
+  },
+  {
+   "company": "Tamarind Capital",
+   "has_path": true
+  },
+  {
+   "company": "Ridgeline VC",
+   "has_path": true
+  },
+  {
+   "company": "Ledger & Lane Fund Services",
+   "has_path": true
+  },
+  {
+   "company": "Talentbridge",
+   "has_path": true
+  },
+  {
+   "company": "UPI Builders Forum",
+   "has_path": true
+  },
+  {
+   "company": "Mesh Bank",
+   "has_path": true
+  },
+  {
+   "company": "Kalpa Ventures",
+   "has_path": true
+  },
+  {
+   "company": "Harbourlight Fund",
+   "has_path": true
+  },
+  {
+   "company": "Granite Bank",
+   "has_path": false
+  },
+  {
+   "company": "Zenith Payments Corp",
+   "has_path": false
+  },
+  {
+   "company": "Sunrise Microfinance",
+   "has_path": false
+  },
+  {
+   "company": "Polaris Global Bank",
+   "has_path": false
+  }
+ ],
+ "user": "aditi",
+ "decay": {
+  "aditi": [
+   "Dev Malhotra",
+   "Nisha Grover",
+   "Kunal Shetty",
+   "Omar Siddiqui"
+  ]
+ }
+}

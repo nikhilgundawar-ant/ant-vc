@@ -1,0 +1,2039 @@
+<title>ant. Home</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Raleway:wght@200;700&display=swap">
+<style>
+/* ant. Home on the Anthill design system, Evergreen v2026.09.08.
+   Layout: one column with a bottom tab bar under 760px; a 64px rail above it; hero and agenda side by side from 1100px. */
+:root { color-scheme: light;
+  --ah-hero: #344C3D; --ah-hero-fill: #344C3D; --ah-hero-hover: #263A2E;
+  --ah-sage: #BFCFBB; --ah-mid-sage: #8EA58C;
+  --ah-tint: #EDF2EC; --ah-tint-hover: #DCE6D9;
+  --ah-breach: #F87171; --ah-breach-ink: #B3261E; --ah-breach-tint: #FEF0EF;
+  --ah-page: #F4F6F2; --ah-surface: #FFFFFF; --ah-modal: #FFFFFF;
+  --ah-surface-2: #EDF2EC; --ah-control-2: #E7EBE3;
+  --ah-ink: #0B0B0C; --ah-ink-2: #55555C; --ah-ink-3: #6E6E76; --ah-on-hero: #FFFFFF;
+  --ah-overlay-ink: #0B0B0C; --ah-overlay-text: #F4F6F2; --ah-overlay-edge: rgba(244, 246, 242, .35);
+  --ah-row-rule: rgba(11, 11, 12, .06); --ah-outline: rgba(52, 76, 61, .32); --ah-rail-edge: rgba(11, 11, 12, .05);
+  --ah-field: rgba(11, 11, 12, .46); --ah-halo: rgba(52, 76, 61, .26); --ah-scrim: rgba(11, 11, 12, .32);
+  --ah-track: #BFCFBB;
+  --ah-elev-1: 0 1px 2px rgba(11, 11, 12, .04), 0 14px 30px -22px rgba(11, 11, 12, .35);
+  --ah-elev-2: 0 1px 2px rgba(11, 11, 12, .04), 0 24px 48px -28px rgba(11, 11, 12, .35);
+  --ah-elev-3: 0 2px 6px rgba(11, 11, 12, .08), 0 40px 80px -30px rgba(11, 11, 12, .5);
+  --ah-elev-hero: 0 1px 2px rgba(11, 11, 12, .04), 0 30px 56px -30px rgba(52, 76, 61, .45);
+  --ah-elev-tile: 0 8px 16px -10px rgba(11, 11, 12, .3);
+  --ah-elev-overlay: 0 24px 48px -20px rgba(11, 11, 12, .6);
+  --ah-display: "Raleway", Georgia, serif;
+  --ah-body: "Nunito", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+  --ah-ease: cubic-bezier(.2, .8, .2, 1);
+}
+/* Light is the default on every device. Dark (Inkwell) is the user's choice, set by the switch in the header and remembered. */
+:root[data-ah-theme="dark"] {
+  --ah-hero: #BFCFBB; --ah-hero-fill: #8EA58C; --ah-hero-hover: #CFDCCB;
+  --ah-tint: rgba(191, 207, 187, .14); --ah-tint-hover: rgba(191, 207, 187, .22);
+  --ah-breach-ink: #FB9797; --ah-breach-tint: rgba(248, 113, 113, .15);
+  --ah-page: #0E1310; --ah-surface: #172019; --ah-modal: #233027;
+  --ah-surface-2: #111713; --ah-control-2: #223028;
+  --ah-ink: #F4F6F2; --ah-ink-2: #ABB4AC; --ah-ink-3: #949E96; --ah-on-hero: #0E1310;
+  --ah-overlay-ink: #F4F6F2; --ah-overlay-text: #0B0B0C; --ah-overlay-edge: rgba(11, 11, 12, .3);
+  --ah-row-rule: rgba(244, 246, 242, .07); --ah-outline: rgba(191, 207, 187, .36); --ah-rail-edge: rgba(244, 246, 242, .06);
+  --ah-field: rgba(244, 246, 242, .42); --ah-halo: rgba(191, 207, 187, .3); --ah-scrim: rgba(0, 0, 0, .55);
+  --ah-track: #2C3A30;
+  --ah-elev-1: 0 1px 2px rgba(0, 0, 0, .3), 0 14px 30px -22px rgba(0, 0, 0, .85);
+  --ah-elev-2: 0 1px 2px rgba(0, 0, 0, .3), 0 24px 48px -28px rgba(0, 0, 0, .85);
+  --ah-elev-3: 0 2px 6px rgba(0, 0, 0, .35), 0 40px 80px -30px rgba(0, 0, 0, .9);
+  --ah-elev-hero: 0 1px 2px rgba(0, 0, 0, .3), 0 30px 56px -30px rgba(0, 0, 0, .85);
+  --ah-elev-tile: 0 8px 16px -10px rgba(0, 0, 0, .7);
+  --ah-elev-overlay: 0 24px 48px -20px rgba(0, 0, 0, .8);
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--ah-page); color: var(--ah-ink); font-family: var(--ah-body); font-size: 13.5px; line-height: 1.5;
+  -webkit-font-smoothing: antialiased; font-feature-settings: "lnum" 1, "tnum" 1; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--ah-page); }
+button, input { font: inherit; color: inherit; }
+a { color: var(--ah-hero); text-decoration: none; }
+a:hover { text-decoration: underline; }
+:focus-visible { outline: 2px solid var(--ah-hero); outline-offset: 2px; }
+h1, h2, h3 { text-wrap: balance; }
+p { text-wrap: pretty; }
+
+/* Shell */
+.ah-shell { display: grid; grid-template-columns: 1fr; min-height: 100vh; }
+.ah-rail { display: none; }
+.ah-main { min-width: 0; padding-block: 16px calc(80px + env(safe-area-inset-bottom, 0px));
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.ah-main-inner { max-width: 1080px; margin: 0 auto; display: grid; gap: 20px; }
+.ah-hdr { display: flex; align-items: center; gap: 12px; min-height: 32px; }
+.ah-brand { display: flex; align-items: center; gap: 12px; min-width: 0; }
+.ah-mark { width: 24px; height: 24px; display: block; flex: none; }
+.ah-name { font-family: var(--ah-body); font-weight: 800; font-size: 22px; line-height: 1; letter-spacing: -.02em; color: var(--ah-ink); }
+.ah-date { margin-left: auto; font-weight: 600; font-size: 15px; color: var(--ah-ink-2); white-space: nowrap; }
+.ah-live { display: inline-flex; align-items: center; gap: 6px; height: 24px; padding: 0 10px; border-radius: 999px; flex: none;
+  background: var(--ah-tint); color: var(--ah-hero); font-weight: 600; font-size: 11.5px; white-space: nowrap; }
+.ah-live i { width: 6px; height: 6px; border-radius: 999px; background: var(--ah-mid-sage); animation: ah-pulse 2.4s var(--ah-ease) infinite; }
+.ah-live.is-old { background: var(--ah-control-2); color: var(--ah-ink-2); }
+.ah-live.is-old i { animation: none; background: var(--ah-ink-2); }
+@keyframes ah-pulse { 0%, 100% { opacity: 1; } 50% { opacity: .35; } }
+.ah-help { width: 40px; height: 40px; margin: -8px -10px -8px -6px; border: 0; padding: 0; background: transparent; cursor: pointer;
+  display: grid; place-items: center; flex: none; border-radius: 9px; }
+.ah-help span { width: 19px; height: 19px; border-radius: 999px; box-shadow: inset 0 0 0 1.5px var(--ah-outline); color: var(--ah-hero);
+  font-weight: 800; font-size: 11.5px; display: grid; place-items: center; transition: transform 80ms var(--ah-ease); }
+.ah-help:hover span { transform: translateY(-1px); }
+.ah-icon-btn { width: 40px; height: 40px; margin: -8px -6px; border: 0; padding: 0; background: transparent; cursor: pointer; flex: none;
+  display: grid; place-items: center; border-radius: 9px; color: var(--ah-hero); }
+.ah-icon-btn svg { width: 18px; height: 18px; transition: transform 80ms var(--ah-ease); }
+.ah-icon-btn:hover svg { transform: translateY(-1px); }
+.seg { display: inline-flex; gap: 4px; padding: 2px; border-radius: 999px; background: var(--ah-control-2); }
+.seg .chip { background: transparent; color: var(--ah-ink-2); }
+.seg .chip[aria-pressed="true"] { background: var(--ah-hero); color: var(--ah-on-hero); }
+
+/* Tabs: bottom bar on phones, rail from 760px */
+.ah-tabs { position: fixed; left: 0; right: 0; bottom: 0; z-index: 20; display: grid; grid-template-columns: repeat(5, 1fr);
+  background: var(--ah-surface); box-shadow: 0 -1px 0 var(--ah-rail-edge); padding-bottom: env(safe-area-inset-bottom, 0px);
+  padding-left: env(safe-area-inset-left, 0px); padding-right: env(safe-area-inset-right, 0px); }
+.ah-tab { display: grid; justify-items: center; gap: 2px; padding: 6px 2px; min-height: 56px; border: 0; background: transparent;
+  color: var(--ah-ink-2); font-weight: 600; font-size: 11.5px; cursor: pointer; border-radius: 9px; }
+.ah-tab svg { width: 18px; height: 18px; }
+.ah-tab-ico { width: 44px; height: 28px; border-radius: 9px; display: grid; place-items: center; transition: background 120ms var(--ah-ease); }
+.ah-tab[aria-selected="true"] { color: var(--ah-hero); }
+.ah-tab[aria-selected="true"] .ah-tab-ico { background: var(--ah-hero); color: var(--ah-on-hero); }
+
+/* Tiles */
+.card { background: var(--ah-surface); border-radius: 12px; box-shadow: var(--ah-elev-1); padding: 16px; min-width: 0;
+  transition: transform 160ms var(--ah-ease), box-shadow 160ms var(--ah-ease); }
+.card:hover { transform: translateY(-1px); box-shadow: var(--ah-elev-2); }
+.ruled { position: relative; overflow: hidden; box-shadow: var(--ah-elev-hero); }
+.ruled::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--ah-hero-fill); }
+.ruled.is-breach::before { background: var(--ah-breach); }
+.ruled:hover { box-shadow: var(--ah-elev-hero); }
+.ah-hero-card { padding: 24px 20px 20px 24px; display: grid; gap: 16px; }
+.ah-hero-card:hover { transform: translateY(-2px); }
+.kicker { display: flex; align-items: center; gap: 8px; font-weight: 600; font-size: 13px; color: var(--ah-ink-2); }
+.kicker i { width: 7px; height: 7px; border-radius: 999px; background: var(--ah-hero-fill); flex: none; }
+.is-breach .kicker i { background: var(--ah-breach); }
+.statement { font-family: var(--ah-display); font-weight: 200; font-size: 30px; line-height: 1.12; letter-spacing: -.02em; margin: 0; color: var(--ah-ink); }
+.finding { margin: 0; font-size: 13.5px; color: var(--ah-ink); max-width: 74ch; }
+.hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+
+.btn { height: 32px; padding: 0 14px; border-radius: 9px; border: 0; font-weight: 700; font-size: 13px; cursor: pointer; display: inline-flex;
+  align-items: center; gap: 6px; white-space: nowrap; text-decoration: none; transition: transform 80ms var(--ah-ease), background 80ms var(--ah-ease); }
+.btn:hover { transform: translateY(-1px); text-decoration: none; }
+.btn-primary { background: var(--ah-hero); color: var(--ah-on-hero); }
+.btn-primary:hover { background: var(--ah-hero-hover); }
+.btn-secondary { background: transparent; color: var(--ah-hero); box-shadow: inset 0 0 0 1px var(--ah-outline); }
+.btn-secondary:hover { background: var(--ah-tint); }
+.btn-ghost { background: transparent; color: var(--ah-ink-2); }
+.btn-ghost:hover { background: var(--ah-control-2); }
+.btn-sm { height: 26px; font-size: 12.5px; padding: 0 10px; }
+.btn svg { width: 16px; height: 16px; flex: none; }
+
+/* Agenda */
+.ah-hero-cols { display: grid; gap: 20px; }
+.ah-agenda { padding: 12px 16px 10px 20px; }
+.sec-h { display: flex; align-items: baseline; gap: 8px; margin: 0 0 4px; font-weight: 600; font-size: 12px; color: var(--ah-ink-2); }
+.sec-h b { font-family: var(--ah-display); font-weight: 700; font-size: 17px; letter-spacing: -.015em; color: var(--ah-ink); }
+.sec-h .count { margin-left: auto; }
+.agenda-row { display: grid; grid-template-columns: 58px minmax(0, 1fr) auto; gap: 14px; align-items: center; padding: 10px 0;
+  border-top: 1px solid var(--ah-row-rule); }
+.agenda-time { font-family: var(--ah-display); font-weight: 700; font-size: 17px; letter-spacing: -.015em; color: var(--ah-ink); }
+.agenda-row.is-next .agenda-time { color: var(--ah-hero); }
+.agenda-row.is-past .agenda-who b { color: var(--ah-ink-2); font-weight: 600; }
+.agenda-who b { display: block; font-weight: 600; font-size: 13.5px; overflow-wrap: anywhere; }
+button.agenda-row { width: 100%; text-align: left; background: transparent; border: 0; border-top: 1px solid var(--ah-row-rule); cursor: pointer;
+  border-radius: 3px; font: inherit; color: inherit; }
+.agenda-row.first { border-top: 0; }
+.agenda-go { font-size: 12px; font-weight: 700; color: var(--ah-hero); white-space: nowrap; }
+.agenda-who span { display: block; font-size: 12px; color: var(--ah-ink-2); overflow-wrap: anywhere; }
+.agenda-who .agenda-notes { display: grid; gap: 2px; margin-top: 4px; }
+.agenda-who .agenda-note { font-size: 12px; color: var(--ah-ink); }
+.agenda-who .agenda-note b { display: inline; font-weight: 700; font-size: 12px; color: var(--ah-ink-2); }
+.agenda-who .agenda-note b.breach { color: var(--ah-breach-ink); }
+.agenda-who .agenda-note .agenda-draft { display: inline; font-size: 12px; font-weight: 700; color: var(--ah-hero); }
+
+/* Item rows */
+.list { display: grid; }
+.row { display: grid; grid-template-columns: 18px minmax(0, 1fr); gap: 12px; align-items: start; padding: 12px 0; border-top: 1px solid var(--ah-row-rule); }
+.list > .row:first-child { border-top: 0; }
+.glyph { width: 18px; height: 18px; margin-top: 2px; display: block; }
+.row-main { min-width: 0; display: grid; gap: 6px; }
+.row-hit { display: grid; gap: 2px; text-align: left; border: 0; background: transparent; padding: 0; margin: 0; cursor: pointer; min-height: 24px;
+  border-radius: 3px; width: 100%; }
+.row-hit.static { cursor: default; }
+.row-title { display: block; font-weight: 600; font-size: 13.5px; overflow-wrap: anywhere; color: var(--ah-ink); }
+.row-detail { display: block; font-size: 12.5px; color: var(--ah-ink-2); overflow-wrap: anywhere; }
+.pack-facts { color: var(--ah-ink-2); font-size: 12.5px; }
+.row-meta { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.row-actions { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; padding-top: 2px; }
+.row-actions[hidden] { display: none; }
+.row-open { display: grid; gap: 8px; padding-top: 4px; }
+.row-open[hidden] { display: none; }
+.row-open .row-actions { padding-top: 0; }
+.status { font-size: 12px; font-weight: 600; color: var(--ah-ink-2); }
+.status.breach { color: var(--ah-breach-ink); font-weight: 700; }
+.status.hero { color: var(--ah-hero); }
+
+/* Chips */
+.chip { display: inline-flex; align-items: center; gap: 6px; height: 24px; padding: 0 10px; border-radius: 999px; font-weight: 600; font-size: 11.5px;
+  white-space: nowrap; border: 0; cursor: pointer; text-decoration: none; transition: transform 80ms var(--ah-ease); }
+.chip:hover { transform: translateY(-1px); text-decoration: none; }
+span.chip { cursor: default; }
+span.chip:hover { transform: none; }
+.chip-source { background: var(--ah-surface-2); color: var(--ah-ink-2); }
+.chip-breach { background: var(--ah-breach-tint); color: var(--ah-breach-ink); font-weight: 700; }
+.chip-breach i { width: 6px; height: 6px; border-radius: 999px; background: var(--ah-breach); }
+.chip-quiet { background: var(--ah-control-2); color: var(--ah-ink-2); }
+.chip-quiet svg { width: 12px; height: 12px; }
+.chip-rate { background: var(--ah-control-2); color: var(--ah-ink-2); }
+.chip-rate[aria-pressed="true"] { background: var(--ah-hero); color: var(--ah-on-hero); }
+.rate-row { display: flex; flex-wrap: wrap; gap: 6px; }
+.score-row { display: flex; flex-wrap: wrap; gap: 6px; }
+.score-row .chip { min-width: 32px; justify-content: center; }
+
+/* Pipeline */
+.stage-h { display: flex; align-items: baseline; gap: 8px; margin: 0; padding: 16px 0 4px; font-weight: 600; font-size: 12px; color: var(--ah-ink-2); }
+.stage-h:first-child { padding-top: 0; }
+.stage-h b { font-family: var(--ah-display); font-weight: 700; font-size: 17px; letter-spacing: -.015em; color: var(--ah-ink); }
+.dwell { display: grid; justify-items: end; gap: 6px; padding-top: 2px; }
+.track { position: relative; height: 4px; border-radius: 999px; background: var(--ah-track); overflow: hidden; width: 72px; }
+.track b { position: absolute; left: 0; top: 0; bottom: 0; border-radius: 999px; background: var(--ah-hero-fill); }
+.track.over b { background: var(--ah-breach-ink); }
+.days { font-size: 12px; font-weight: 600; color: var(--ah-ink-2); white-space: nowrap; }
+.days.over { color: var(--ah-breach-ink); font-weight: 700; }
+.deal-row { grid-template-columns: 18px minmax(0, 1fr) auto; }
+.deal-row .row-actions { grid-column: 2 / 4; }
+.inline-form { display: flex; flex-wrap: wrap; gap: 8px; width: 100%; }
+.field { height: 38px; border-radius: 999px; border: 0; padding: 0 16px; background: var(--ah-surface); box-shadow: inset 0 0 0 1px var(--ah-field);
+  min-width: 0; flex: 1 1 200px; }
+.field[type="date"] { flex: 0 1 168px; }
+.field:focus { outline: none; box-shadow: inset 0 0 0 1.5px var(--ah-hero), 0 0 0 4px var(--ah-halo); }
+.field::placeholder { color: var(--ah-ink-3); opacity: 1; }
+
+/* Tables */
+.table-wrap { overflow-x: auto; margin: 0 -16px; padding: 0 16px; }
+table { border-collapse: collapse; width: 100%; min-width: 520px; font-size: 12.5px; border-radius: 0; }
+th { text-align: left; font-weight: 700; font-size: 12px; color: var(--ah-ink-2); padding: 8px 12px 8px 0; border-bottom: 1px solid var(--ah-row-rule); white-space: nowrap; }
+td { padding: 10px 12px 10px 0; border-bottom: 1px solid var(--ah-row-rule); vertical-align: top; }
+tr:last-child td { border-bottom: 0; }
+td.r, th.r { text-align: right; }
+.sub { display: none; font-size: 12px; color: var(--ah-ink-2); }
+@media (max-width: 559px) { .hide-sm { display: none; } table.fit-sm { min-width: 0; } .sub { display: block; } }
+.neg { color: var(--ah-breach-ink); font-weight: 700; }
+.null { color: var(--ah-ink-3); }
+/* Fund summary on the LPs tab */
+.fund { display: grid; gap: 12px; }
+.fund-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px 16px; }
+.fund-stat { display: grid; gap: 2px; min-width: 0; }
+.fund-stat span { font-weight: 600; font-size: 12px; color: var(--ah-ink-2); }
+.fund-stat b { font-family: var(--ah-display); font-weight: 700; font-size: 20px; letter-spacing: -.015em; color: var(--ah-ink); }
+.fund-stat small { font-size: 12px; color: var(--ah-ink-2); }
+.fund-track { width: 100%; }
+td .owed { display: block; font-size: 12px; }
+.meter { display: inline-flex; align-items: center; gap: 8px; }
+.meter span { position: relative; width: 48px; height: 4px; border-radius: 999px; background: var(--ah-track); overflow: hidden; }
+.meter span b { position: absolute; left: 0; top: 0; bottom: 0; background: var(--ah-hero-fill); border-radius: 999px; }
+
+/* Sheet, toast, banner, empty */
+.scrim { position: fixed; inset: 0; background: var(--ah-scrim); z-index: 40; display: grid; align-items: end; justify-items: center; }
+.sheet { width: 100%; max-width: 640px; max-height: 88vh; overflow-y: auto; background: var(--ah-modal); border-radius: 12px 12px 0 0;
+  box-shadow: var(--ah-elev-3); padding-block: 24px calc(24px + env(safe-area-inset-bottom, 0px));
+  padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); display: grid; gap: 16px; }
+.sheet-h { display: flex; align-items: start; gap: 12px; }
+.sheet-h h2 { margin: 0; font-family: var(--ah-display); font-weight: 700; font-size: 20px; letter-spacing: -.015em; }
+.sheet-h .btn { margin-left: auto; }
+.kv { display: grid; gap: 6px; }
+.kv h3 { margin: 0; font-weight: 600; font-size: 12px; color: var(--ah-ink-2); }
+.kv ul, .kv ol { margin: 0; padding-left: 20px; display: grid; gap: 4px; }
+.kv li { overflow-wrap: anywhere; }
+.kv .seg { justify-self: start; }
+.kv .row-actions { padding-top: 4px; }
+.toast { position: fixed; left: 50%; transform: translateX(-50%); bottom: calc(76px + env(safe-area-inset-bottom, 0px)); z-index: 50;
+  background: var(--ah-overlay-ink); color: var(--ah-overlay-text); border-radius: 16px; box-shadow: var(--ah-elev-overlay); padding: 8px 8px 8px 16px;
+  display: flex; align-items: center; gap: 12px; font-size: 13px; width: max-content; max-width: calc(100vw - 32px); }
+.toast .btn { background: transparent; color: var(--ah-overlay-text); box-shadow: inset 0 0 0 1px var(--ah-overlay-edge); height: 26px; font-size: 12.5px; }
+.banner { display: flex; flex-wrap: wrap; gap: 4px 12px; align-items: center; padding: 10px 16px; border-radius: 12px; background: var(--ah-tint); color: var(--ah-hero);
+  font-weight: 600; font-size: 12.5px; }
+.banner.is-warn { background: var(--ah-breach-tint); color: var(--ah-breach-ink); }
+.banner > * { min-width: 0; overflow-wrap: anywhere; }
+.banner span { font-weight: 400; color: var(--ah-ink); }
+.filters { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.chip-filter { background: var(--ah-control-2); color: var(--ah-ink-2); }
+.chip-filter[aria-pressed="true"] { background: var(--ah-hero); color: var(--ah-on-hero); }
+.field-sm { height: 32px; flex: 1 1 160px; max-width: 280px; }
+.demo-view { display: flex; align-items: center; gap: 8px; flex: 1 1 220px; }
+.demo-view span { font-weight: 600; color: var(--ah-hero); white-space: nowrap; }
+.demo-pick { color: var(--ah-ink); }
+.md { display: grid; gap: 6px; font-size: 13px; }
+.md h3 { margin: 6px 0 0; font-weight: 700; font-size: 13px; color: var(--ah-ink); }
+.md ul { margin: 0; padding-left: 20px; display: grid; gap: 4px; }
+.md p { margin: 0; }
+.watch { margin: 0; font-weight: 700; color: var(--ah-breach-ink); }
+.empty { display: grid; gap: 6px; padding: 24px 20px; color: var(--ah-ink-2); }
+.empty b { font-family: var(--ah-display); font-weight: 200; font-size: 26px; line-height: 1.15; color: var(--ah-ink); letter-spacing: -.02em; }
+.skel { height: 12px; border-radius: 999px; background: var(--ah-surface-2); animation: ah-pulse 1.4s var(--ah-ease) infinite; }
+.evidence { margin: 0; font-size: 11.5px; color: var(--ah-ink-3); }
+.prov { margin: 0; font-size: 11.5px; color: var(--ah-ink-3); }
+.done-note { font-size: 12px; font-weight: 600; color: var(--ah-hero); }
+.link-btn { background: none; border: 0; padding: 0; font: inherit; color: var(--ah-hero); cursor: pointer; text-align: left; }
+.link-btn:hover { text-decoration: underline; }
+.link-btn:focus-visible { outline: 2px solid var(--ah-hero); outline-offset: 2px; border-radius: 3px; }
+.draft-note { margin: 0; font-size: 12.5px; line-height: 1.45; color: var(--ah-ink-2); overflow-wrap: anywhere; }
+.draft-note b { font-weight: 600; color: var(--ah-ink); }
+
+@media (max-width: 430px) { .ah-live-pre { display: none; } }
+@media (max-width: 400px) { .ah-hdr { gap: 8px; } }
+@media (max-width: 359px) { .ah-date { display: none; } }
+@media (max-width: 400px) { .ah-hdr.is-old .ah-date { display: none; } }
+@media (min-width: 760px) {
+  .ah-shell { grid-template-columns: 64px minmax(0, 1fr); }
+  .ah-rail { display: grid; align-content: start; justify-items: center; gap: 14px; padding: 16px 10px; position: sticky; top: 0; height: 100vh;
+    background: var(--ah-page); box-shadow: inset -1px 0 0 var(--ah-rail-edge); }
+  .ah-rail .ah-tab { min-height: 0; padding: 0; width: 44px; height: 38px; color: var(--ah-ink-2); transition: transform 80ms var(--ah-ease); }
+  .ah-rail .ah-tab .lbl { display: none; }
+  .ah-rail .ah-tab-ico { width: 44px; height: 38px; }
+  .ah-rail .ah-tab[aria-selected="true"] { background: var(--ah-hero); box-shadow: var(--ah-elev-tile); color: var(--ah-on-hero); }
+  .ah-rail .ah-tab[aria-selected="true"] .ah-tab-ico { background: transparent; }
+  .ah-rail .ah-tab:hover { transform: translateY(-1px); }
+  .ah-tabs { display: none; }
+  .ah-hdr .ah-mark { display: none; }
+  .ah-main { padding-block: 32px 48px; padding-left: max(40px, env(safe-area-inset-left, 0px)); padding-right: max(40px, env(safe-area-inset-right, 0px)); }
+  .ah-hero-card { padding: 28px 28px 26px 30px; }
+  .statement { font-size: 36px; }
+  .card { padding: 16px 20px; }
+  .table-wrap { margin: 0 -20px; padding: 0 20px; }
+  .scrim { align-items: center; }
+  .sheet { border-radius: 12px; padding-block: 24px; }
+  .toast { bottom: 24px; }
+}
+@media (min-width: 1100px) {
+  .ah-hero-cols { grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); align-items: start; }
+  .statement { font-size: 40px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+</style>
+<script>try { if (localStorage.getItem("instinct.theme") === "dark") document.documentElement.setAttribute("data-ah-theme", "dark"); } catch (e) {}</script>
+
+<div class="ah-shell">
+  <nav class="ah-rail" aria-label="Sections">
+    <svg class="ah-mark" viewBox="0 0 1024 1024" role="img" aria-label="Anthill"><rect width="1024" height="1024" rx="256" fill="#344C3D"/><rect x="8" y="8" width="1008" height="1008" rx="248" fill="none" stroke="#F4F6F2" stroke-opacity=".14" stroke-width="16"/><g transform="translate(143.4,155.6) scale(0.72)"><rect x="352" y="158" width="320" height="160" rx="80" fill="#F4F6F2"/><rect x="224" y="415" width="576" height="160" rx="80" fill="#9DB29A"/><rect x="96" y="672" width="832" height="160" rx="80" fill="#F4F6F2"/></g></svg>
+    <div id="rail-tabs" role="tablist" aria-orientation="vertical" style="display:grid;gap:14px;margin-top:8px"></div>
+  </nav>
+  <main class="ah-main" id="main">
+    <div class="ah-main-inner">
+      <header class="ah-hdr">
+        <div class="ah-brand">
+          <svg class="ah-mark" viewBox="0 0 1024 1024" role="img" aria-label="Anthill"><rect width="1024" height="1024" rx="256" fill="#344C3D"/><rect x="8" y="8" width="1008" height="1008" rx="248" fill="none" stroke="#F4F6F2" stroke-opacity=".14" stroke-width="16"/><g transform="translate(143.4,155.6) scale(0.72)"><rect x="352" y="158" width="320" height="160" rx="80" fill="#F4F6F2"/><rect x="224" y="415" width="576" height="160" rx="80" fill="#9DB29A"/><rect x="96" y="672" width="832" height="160" rx="80" fill="#F4F6F2"/></g></svg>
+          <span class="ah-name">ant.</span>
+        </div>
+        <span class="ah-date" id="hdr-date"></span>
+        <span class="ah-live" id="hdr-live"><i></i><span id="hdr-live-text">Live</span></span>
+        <button class="ah-icon-btn" id="theme-btn" type="button" aria-label="Switch to dark mode" title="Dark mode"></button>
+        <button class="ah-help" id="help-btn" type="button" aria-label="How ant. works"><span>?</span></button>
+      </header>
+      <div id="banner-slot" style="display:grid;gap:8px"></div>
+      <section id="view" style="display:grid;gap:20px"></section>
+    </div>
+  </main>
+  <nav class="ah-tabs" id="bottom-tabs" role="tablist" aria-label="Sections"></nav>
+</div>
+<div id="overlay-slot"></div>
+<div id="toast-slot" aria-live="polite"></div>
+
+<script>
+(function () {
+  "use strict";
+
+  // ---------------------------------------------------------------- DOM helpers: text nodes only, never HTML strings
+  function h(tag, attrs, kids) {
+    var el = document.createElement(tag);
+    if (attrs) Object.keys(attrs).forEach(function (k) {
+      var v = attrs[k];
+      if (v === null || v === undefined || v === false) return;
+      if (k === "class") el.className = v;
+      else if (k.slice(0, 2) === "on") el.addEventListener(k.slice(2), v);
+      else el.setAttribute(k, v === true ? "" : String(v));
+    });
+    (Array.isArray(kids) ? kids : kids === undefined ? [] : [kids]).forEach(function (c) {
+      if (c === null || c === undefined || c === false) return;
+      el.appendChild(typeof c === "string" || typeof c === "number" ? document.createTextNode(String(c)) : c);
+    });
+    return el;
+  }
+  var NS = "http://www.w3.org/2000/svg";
+  function icon(paths, size) {
+    var s = document.createElementNS(NS, "svg");
+    s.setAttribute("viewBox", "0 0 24 24"); s.setAttribute("width", size || 18); s.setAttribute("height", size || 18);
+    s.setAttribute("fill", "none"); s.setAttribute("stroke", "currentColor"); s.setAttribute("stroke-width", "1.5");
+    s.setAttribute("stroke-linecap", "round"); s.setAttribute("stroke-linejoin", "round"); s.setAttribute("aria-hidden", "true");
+    paths.split("|").forEach(function (d) { var p = document.createElementNS(NS, "path"); p.setAttribute("d", d); s.appendChild(p); });
+    return s;
+  }
+  function glyph(kind) {
+    var shapes = {
+      breach: ["M9 1.8l7.2 7.2L9 16.2L1.8 9z", "var(--ah-breach)", "var(--ah-breach-ink)"],
+      high: ["M9 1.8l7.2 7.2L9 16.2L1.8 9z", "var(--ah-hero-fill)", "var(--ah-hero-fill)"],
+      medium: ["M9 4.5a4.5 4.5 0 1 1 0 9a4.5 4.5 0 0 1 0-9", "none", "var(--ah-ink-2)"],
+      low: ["M9 6a3 3 0 1 1 0 6a3 3 0 0 1 0-6", "none", "var(--ah-ink-2)"],
+      done: ["M4.5 9.5l3 3l6-6.5", "none", "var(--ah-hero)"]
+    };
+    var g = shapes[kind] || shapes.low;
+    var s = document.createElementNS(NS, "svg"); s.setAttribute("viewBox", "0 0 18 18"); s.setAttribute("class", "glyph"); s.setAttribute("aria-hidden", "true");
+    var p = document.createElementNS(NS, "path"); p.setAttribute("d", g[0]); p.setAttribute("fill", g[1]); p.setAttribute("stroke", g[2]);
+    p.setAttribute("stroke-width", "1.5"); p.setAttribute("stroke-linejoin", "round"); p.setAttribute("stroke-linecap", "round"); s.appendChild(p);
+    return s;
+  }
+  var ICON = {
+    today: "M12 3v2|M12 19v2|M5.6 5.6l1.4 1.4|M17 17l1.4 1.4|M3 12h2|M19 12h2|M5.6 18.4L7 17|M17 7l1.4-1.4|M12 8a4 4 0 1 0 0 8a4 4 0 1 0 0-8",
+    pipeline: "M4 5h16|M4 12h11|M4 19h6",
+    people: "M16 20v-1.5a3.5 3.5 0 0 0-3.5-3.5h-5A3.5 3.5 0 0 0 4 18.5V20|M10 11a3.5 3.5 0 1 0 0-7a3.5 3.5 0 0 0 0 7|M20 20v-1.5a3.5 3.5 0 0 0-2.5-3.35|M15.5 4.15a3.5 3.5 0 0 1 0 6.7",
+    portfolio: "M4 8h16v11H4z|M9 8V5h6v3|M4 13h16",
+    lps: "M3 21h18|M5 21V10|M19 21V10|M9 21V10|M15 21V10|M12 3l9 5H3z",
+    copy: "M9 9h11v11H9z|M5 15V4h11",
+    ext: "M14 4h6v6|M20 4l-9 9|M18 14v5H5V6h5",
+    lock: "M6 11h12v9H6z|M8.5 11V8a3.5 3.5 0 0 1 7 0v3",
+    x: "M6 6l12 12|M18 6L6 18",
+    moon: "M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z",
+    sun: "M12 2.5v2|M12 19.5v2|M4.6 4.6l1.4 1.4|M18 18l1.4 1.4|M2.5 12h2|M19.5 12h2|M4.6 19.4L6 18|M18 6l1.4-1.4|M12 7.5a4.5 4.5 0 1 0 0 9a4.5 4.5 0 1 0 0-9"
+  };
+
+  // ---------------------------------------------------------------- formats (Anthill: true minus, em dash for null, 02 Jul 2026)
+  var MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+  var DAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  var DASH = "—", MINUS = "−";
+  function pad(n) { return (n < 10 ? "0" : "") + n; }
+  function plural(n, word) { return n + " " + word + (Number(n) === 1 ? "" : "s"); }
+  function isNil(v) { return v === null || v === undefined || v === ""; }
+  function nul() { return h("span", { class: "null" }, DASH); }
+  function fmtDate(s, withYear) {
+    if (isNil(s)) return DASH;
+    var p = dayOf(s).split("-");
+    if (p.length < 3) return String(s);
+    return p[2] + " " + MONTHS[Number(p[1]) - 1] + (withYear === false ? "" : " " + p[0]);
+  }
+  function fmtMonth(s) { if (isNil(s)) return DASH; var p = String(s).split("-"); return p.length > 1 ? MONTHS[Number(p[1]) - 1] + " " + p[0] : String(s); }
+  function fmtMoney(v) {
+    if (isNil(v)) return null;
+    var n = Number(v), sign = n < 0 ? MINUS : ""; n = Math.abs(n);
+    if (n >= 1e6) return sign + "$" + (n / 1e6).toFixed(1).replace(/\.0$/, "") + "M";
+    if (n >= 1e3) return sign + "$" + (n / 1e3).toFixed(1).replace(/\.0$/, "") + "K";
+    return sign + "$" + n.toFixed(0);
+  }
+  function fmtPct(v) { if (isNil(v)) return null; return (v < 0 ? MINUS : "") + Math.abs(Number(v)).toFixed(1) + "%"; }
+  function cell(text, cls) { return h("td", { class: cls || null }, text === null ? nul() : text); }
+  function safeUrl(u) { return typeof u === "string" && /^https?:\/\//i.test(u) ? u : null; }
+  // The user's wall clock: dates and times in their own time zone (Settings), the zone the agenda is written in.
+  var WALL_FMT = {};
+  function wall(t) {
+    var d = new Date(t === undefined ? Date.now() : t), tz = (S.snap.config || {}).tz;
+    if (isNaN(d)) return null;
+    try {
+      var f = WALL_FMT[tz] || (WALL_FMT[tz] = new Intl.DateTimeFormat("en-GB", { timeZone: tz || undefined, year: "numeric", month: "2-digit",
+        day: "2-digit", weekday: "short", hour: "2-digit", minute: "2-digit", hourCycle: "h23" }));
+      var o = {}; f.formatToParts(d).forEach(function (x) { o[x.type] = x.value; });
+      return { y: Number(o.year), m: Number(o.month), d: Number(o.day), wd: DAYS.indexOf(o.weekday), hh: Number(o.hour) % 24, mm: Number(o.minute) };
+    } catch (e) {
+      return { y: d.getFullYear(), m: d.getMonth() + 1, d: d.getDate(), wd: d.getDay(), hh: d.getHours(), mm: d.getMinutes() };
+    }
+  }
+  function wallDay(w) { return w.y + "-" + pad(w.m) + "-" + pad(w.d); }
+  // The user's own day of a stamp: Home writes taps in UTC, so 20:15Z on 22 Oct is 23 Oct in Mumbai. A bare date stays.
+  function dayOf(s) {
+    var t = String(isNil(s) ? "" : s);
+    if (!/T\d/.test(t)) return t.slice(0, 10);
+    var ms = Date.parse(t), w = isNaN(ms) ? null : wall(ms);
+    return w ? wallDay(w) : t.slice(0, 10);
+  }
+  // Two stamps compared as instants, never as text: a tap in UTC and a run's time in +05:30 read the same way.
+  function laterThan(a, b) {
+    var x = Date.parse(a), y = Date.parse(b);
+    return isNaN(x) || isNaN(y) ? String(a || "") > String(b || "") : x > y;
+  }
+  function todayIso() { return wallDay(wall()); }
+  function nowIso() { return new Date().toISOString(); }
+  function dayIso(offset) { var w = wall(); return new Date(Date.UTC(w.y, w.m - 1, w.d + offset)).toISOString().slice(0, 10); }
+  // Weekdays after a day, up to and including today: Thursday to Monday is two.
+  function workingDaysSince(iso) {
+    var d = Date.parse(dayOf(iso) + "T00:00:00Z"), end = Date.parse(dayIso(0) + "T00:00:00Z"), n = 0;
+    if (isNaN(d) || isNaN(end)) return 0;
+    for (var t = d + 864e5; t <= end; t += 864e5) { var wd = new Date(t).getUTCDay(); if (wd !== 0 && wd !== 6) n += 1; }
+    return n;
+  }
+  // "Today" reads better than "0 days".
+  function ago(n) { return isNil(n) ? null : Number(n) <= 0 ? "Today" : plural(n, "day"); }
+  function isoWeek() {
+    var w = wall(), t = new Date(Date.UTC(w.y, w.m - 1, w.d)); var day = t.getUTCDay() || 7;
+    t.setUTCDate(t.getUTCDate() + 4 - day); var y0 = new Date(Date.UTC(t.getUTCFullYear(), 0, 1));
+    return t.getUTCFullYear() + "-W" + pad(Math.ceil(((t - y0) / 864e5 + 1) / 7));
+  }
+
+  // ---------------------------------------------------------------- state
+  var TABS = [
+    { key: "today", label: "Today", icon: ICON.today },
+    { key: "pipeline", label: "Pipeline", icon: ICON.pipeline },
+    { key: "people", label: "People", icon: ICON.people },
+    { key: "portfolio", label: "Portfolio", icon: ICON.portfolio },
+    { key: "lps", label: "LPs", icon: ICON.lps }
+  ];
+  var TAB_KEYS = TABS.map(function (t) { return t.key; });
+  var S = { snap: {}, items: {}, actions: {}, rated: {}, stageOpen: {}, tab: "today", tabChosen: false, open: null, db: null,
+            loaded: false, readOnly: false, error: null, slow: false, runs: [], filter: "all", search: "", allInbound: false, mdOpen: {}, showReplies: false };
+  try { var saved = localStorage.getItem("instinct.tab"); if (TAB_KEYS.indexOf(saved) >= 0) S.savedTab = saved; } catch (e) {}
+  if (TAB_KEYS.indexOf(location.hash.slice(1)) >= 0) { S.tab = location.hash.slice(1); S.tabChosen = true; }
+
+  // ---------------------------------------------------------------- theme: light by default, dark when the user picks it
+  function theme() { return document.documentElement.getAttribute("data-ah-theme") === "dark" ? "dark" : "light"; }
+  function setTheme(t) {
+    if (t === "dark") document.documentElement.setAttribute("data-ah-theme", "dark"); else document.documentElement.removeAttribute("data-ah-theme");
+    try { localStorage.setItem("instinct.theme", t); } catch (e) {}
+    paintThemeButton();
+  }
+  function paintThemeButton() {
+    var b = document.getElementById("theme-btn"); if (!b) return;
+    var dark = theme() === "dark";
+    b.textContent = ""; b.appendChild(icon(dark ? ICON.sun : ICON.moon, 18));
+    b.setAttribute("aria-label", dark ? "Switch to light mode" : "Switch to dark mode");
+    b.setAttribute("title", dark ? "Light mode" : "Dark mode");
+  }
+  // The day's top item decides where Home opens when it is urgent; otherwise the last tab, then the level's own tab.
+  function urgentHero(b) {
+    var hero = (b || {}).hero || {};
+    if (!hero.statement || hero.kind === "calm") return false;
+    // What a push named today opens Home: the person tapped through to see it.
+    if (hero.pushed || hero.breach || hero.status_word === "overdue" || /overdue|days? late/i.test(String(hero.kicker || ""))) return true;
+    return hero.kind === "meeting" && /^In \d+ min/.test(String(hero.kicker || ""));
+  }
+
+  function cfg() { return S.snap.config || {}; }
+  // A tab whose module is off for this person is not shown at all.
+  var TAB_MODULE = { pipeline: "pipeline", portfolio: "portfolio", lps: "lp" };
+  function visibleTabs() {
+    var mods = cfg().modules || {};
+    return TABS.filter(function (t) { var m = TAB_MODULE[t.key]; return !m || !mods[m] || mods[m] !== "off"; });
+  }
+  function tabShown(key) { return visibleTabs().some(function (t) { return t.key === key; }); }
+  function itemState(id) { return (id && S.items[id]) || {}; }
+  function actionOf(id) { var a = S.actions[id]; return a && a.status === "approved" ? a : null; }
+  // The newest step or met log for a deal that a run has not applied yet, whichever form saved it: the Pipeline row
+  // ("ns_<deal>"), a met log ("ns_<deal>_<met date>") or the step added after one ("nss_<deal>_<met date>").
+  function pendingStepTap(dealId) {
+    var re = new RegExp("^(ns|nss)_" + String(dealId).replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + "(_\\d{4}-\\d{2}-\\d{2})?$");
+    var props = ((S.snap.proposals || {}).items) || {}, best = null;
+    Object.keys(S.actions || {}).forEach(function (k) {
+      var a = actionOf(k);
+      if (!a || a.type !== "next_step" || !re.test(k) || !freshTap(a)) return;
+      // A step saved again after its last one was applied is new: it waits for the next check, whatever came before.
+      var pr = props[k] || {};
+      if (["applied", "failed", "refused", "dismissed", "check"].indexOf(pr.status) >= 0 && !(a.at && pr.applied_at && laterThan(a.at, pr.applied_at))) return;
+      if (!best || laterThan(a.at, best.at)) best = Object.assign({ id: k }, a);
+    });
+    return best;
+  }
+  function isHidden(it) {
+    if (!it) return false;
+    var a = itemState(it.id), c = itemState(it.commitment_id);
+    if (a.done_at || c.done_at) return true;
+    var until = a.snoozed_until || c.snoozed_until;
+    if (until && new Date(until) > new Date()) return true;
+    var act = actionOf(it.id);
+    return !!(act && (act.type === "merge" || act.type === "keep_apart"));
+  }
+
+  // ---------------------------------------------------------------- database: snapshots in, taps out
+  // A static demo carries its data in the page: no database, taps stay in memory, and "View as" switches person.
+  function loadDemo(key) {
+    var d = S.demo, m = d.members[key] || d.members[d.order[0]];
+    S.demoKey = d.members[key] ? key : d.order[0];
+    S.snap = JSON.parse(JSON.stringify(m.snaps)); S.items = {}; S.actions = {}; S.rated = {}; S.open = null; S.loaded = true;
+    S.tab = urgentHero(S.snap.brief) ? "today" : (TAB_KEYS.indexOf((S.snap.config || {}).opens_on) >= 0 ? S.snap.config.opens_on : "today");
+    S.tabChosen = true; S.search = ""; S.filter = "all";
+    render(); window.scrollTo(0, 0);
+  }
+  function startDb() {
+    var demoNode = document.getElementById("instinct-demo");
+    if (demoNode) {
+      try { S.demo = JSON.parse(demoNode.textContent); } catch (e) { S.demo = null; }
+      if (S.demo && S.demo.order && S.demo.order.length) { S.static = true; loadDemo(S.demo.order[0]); return; }
+    }
+    if (!window.claude || typeof window.claude.use !== "function") { S.error = "no-runtime"; S.loaded = true; render(); return; }
+    window.claude.use("user").then(function (u) {
+      if (u) u.isOwner().then(function (owner) { if (!owner) { S.readOnly = true; render(); } }).catch(function () {});
+    }).catch(function () {});
+    window.claude.use("db").then(function (db) {
+      if (!db) { S.error = "no-db"; S.loaded = true; render(); return; }
+      S.db = db;
+      db.collection("snap").onSnapshot(function (qs) {
+        var next = {};
+        qs.docs.forEach(function (d) { if (d.exists) next[d.id] = d.data(); });
+        S.snap = next; S.loaded = true;
+        var c = next.config || {};
+        if (!S.tabChosen) {
+          var pushedRow = (next.brief || {}).pushed_item || null;
+          S.tab = urgentHero(next.brief) || pushedRow ? "today" : S.savedTab || (TAB_KEYS.indexOf(c.opens_on) >= 0 ? c.opens_on : "today");
+          if (pushedRow) { S.open = pushedRow; setTimeout(function () { var el = document.querySelector('.row-hit[data-id="' + String(pushedRow).replace(/"/g, "") + '"]'); if (el && el.scrollIntoView) el.scrollIntoView({ block: "center" }); }, 60); }
+          S.tabChosen = true;
+        }
+        render();
+      }, function () { S.error = "db-error"; S.loaded = true; render(); });
+      db.doc("state/items").onSnapshot(function (d) { S.items = (d.exists && d.data().items) || {}; render(); }, function () {});
+      db.doc("state/actions").onSnapshot(function (d) { S.actions = (d.exists && d.data().items) || {}; render(); }, function () {});
+      db.collection("runs").orderBy("started", "desc").limit(3).onSnapshot(function (qs) {
+        S.runs = qs.docs.filter(function (d) { return d.exists; }).map(function (d) { return d.data(); }); render();
+      }, function () {});
+    }).catch(function () { S.error = "no-db"; S.loaded = true; render(); });
+    // A slow load keeps the skeleton and says so; it never pretends there is no brief yet.
+    setTimeout(function () { if (!S.loaded) { S.slow = true; render(); } }, 8000);
+  }
+
+  // One write at a time per document. The page is the only writer of state/*; it prunes old entries itself.
+  var queues = {};
+  function prune(map) {
+    var out = {}, now = Date.now(), keep = 45 * 864e5;
+    Object.keys(map).forEach(function (k) {
+      var v = map[k] || {};
+      var stamp = Date.parse(v.done_at || v.snoozed_until || v.at || "") || now;
+      if (now - stamp < keep) out[k] = v;
+    });
+    return out;
+  }
+  function writeState(doc, patch) {
+    if (S.static) return Promise.resolve(true);  // the demo keeps taps in memory only
+    if (!S.db || S.readOnly) { toast("Read-only here. Only the owner can change ant. Home."); return Promise.resolve(false); }
+    var ref = S.db.doc("state/" + doc);
+    var local = doc === "items" ? S.items : S.actions;
+    var run = function () {
+      if (Object.keys(local).length > 400) return ref.set({ items: prune(Object.assign({}, local, patch)) });
+      return ref.update({ items: patch }).catch(function (e) {
+        if (e && e.code === "invalid_argument") return ref.set({ items: Object.assign({}, local, patch) });
+        throw e;
+      });
+    };
+    var p = (queues[doc] || Promise.resolve()).then(run, run);
+    queues[doc] = p.catch(function () {});
+    return p.then(function () { return true; }, function () { toast("Could not save that. Check your connection and try again."); return false; });
+  }
+  function rate(item, value) {
+    S.rated[item.id] = value; render();
+    if (!S.db || S.readOnly) return;
+    S.db.collection("ratings").add({ item_id: item.id, kind: item.kind || item.group || "other", group: item.group || item.kind || "other",
+      value: String(value), at: nowIso(), title: String(item.title || "").slice(0, 90) }).catch(function () { toast("Could not save the rating."); });
+  }
+
+  // ---------------------------------------------------------------- taps, each with a 10 second undo
+  function keysOf(it) { return it.keys || (it.commitment_id ? [it.id, it.commitment_id] : [it.id]); }
+  function setItems(it, fields, label) {
+    var keys = keysOf(it), patch = {}, undo = {};
+    keys.forEach(function (k) {
+      var before = itemState(k);
+      undo[k] = { snoozed_until: before.snoozed_until || null, done_at: before.done_at || null, sent: before.sent || null, closed_by: before.closed_by || null };
+      patch[k] = Object.assign({}, undo[k], fields);
+      S.items[k] = patch[k];
+    });
+    S.open = null; render();
+    writeState("items", patch).then(function (ok) {
+      if (ok) toast(label, function () { keys.forEach(function (k) { S.items[k] = undo[k]; }); render(); writeState("items", undo); });
+    });
+  }
+  function snooze(it, until, label) { setItems(it, { snoozed_until: until }, "Snoozed until " + label); }
+  function markDone(it) { setItems(it, { done_at: nowIso() }, "Marked done"); }
+  // "Sent it": the draft went out. The mark sits on the draft's id, which is how a run learns a note was sent: an ask's
+  // note becomes "Asked Aditi on 23 Oct", and its one nudge comes after five quiet working days. A promise's draft keeps
+  // the promise, and a reply answers the question or pitch it was for, so those rows close too. An ask stays open until
+  // you close it, once the founder has what they asked for.
+  function closesRow(dr, it) {
+    return !!(it && it.id && it.kind !== "ask" && !it.group_asks && (dr.commitment_id || dr.question_id || dr.inbound_id || it.kind === "relationship"));
+  }
+  function markSent(dr, it) {
+    var keys = [dr.id].concat(dr.commitment_id ? [dr.commitment_id] : [], dr.commitment_ids || [], closesRow(dr, it) ? [it.id] : []);
+    setItems({ id: dr.id, keys: keys.filter(function (k, i, all) { return k && all.indexOf(k) === i; }), title: dr.subject }, { done_at: nowIso(), sent: true },
+      "Marked sent");
+  }
+  // A draft that keeps another promise still open stays: Done settles one promise, never the email the other one rides in.
+  function keepsOther(dr, it) {
+    return [dr.commitment_id].concat(dr.commitment_ids || []).some(function (c) { return c && c !== it.commitment_id && !itemState(c).done_at; });
+  }
+  // What a draft still says about a promise you closed by Done since it was written: one line under "Before you send"
+  // until the next morning rewrites it ("Intro two CFO candidates is marked done: take its lines out").
+  function closedInDraft(dr) {
+    if (!dr) return "";
+    if (dr.kind === "holder") {
+      // A note to a partner naming a draft you have since sent: say which line to take out until it is rebuilt.
+      var all = ((S.snap.drafts || {}).items) || {};
+      var gone = (dr.holds || []).filter(function (k) { return sentAt(k); }).map(function (k) {
+        return "the email “" + String((all[k] || {}).subject || "One draft").replace(/^(Re|Fwd?):\s*/i, "") + "”"; });
+      return gone.length && gone.length < (dr.holds || []).length ? (gone.join("; ").charAt(0).toUpperCase() + gone.join("; ").slice(1)) + " went" + ": take " + (gone.length > 1 ? "their lines" : "its line") + " out. " : "";
+    }
+    var items = ((S.snap.commitments || {}).items) || {};
+    var done = [dr.commitment_id].concat(dr.commitment_ids || []).filter(function (c, i, all) { return c && all.indexOf(c) === i && itemState(c).done_at; });
+    var open = [dr.commitment_id].concat(dr.commitment_ids || []).filter(function (c) { return c && !itemState(c).done_at; });
+    // What the reader owed you and sent since: the line asking for it can go ("Got it" on its row).
+    var got = (dr.asks_for || []).filter(function (c) { return itemState(c).done_at; });
+    var out = "";
+    if (done.length && open.length) out += done.map(function (c) { return String((items[c] || {}).what || "One promise").replace(/\.$/, ""); }).join("; ") +
+      (done.length > 1 ? " are" : " is") + " marked done: take " + (done.length > 1 ? "their" : "its") + " lines out. ";
+    if (got.length) out += got.map(function (c) {
+      var w = String((items[c] || {}).what || "What they owed").replace(/\.$/, "").replace(/^(share|send|give|forward)\s+/i, "");
+      return w.charAt(0).toUpperCase() + w.slice(1);
+    }).join("; ") + " came in: take out the line asking for it. ";
+    return out;
+  }
+  // Closed by Done, not sent: never "Marked sent".
+  function sentAt(id) { var st = itemState(id); return st.done_at && st.closed_by !== "done" ? st.done_at : null; }
+  // Done on a promise, a founder's question or a pitch settles it another way: its draft is not needed, so it never
+  // comes back under Ready for you. Close ask closes only the ask: a note already sent stays on the record.
+  function markRowDone(it, dr) {
+    var keys = keysOf(it).concat(dr && closesRow(dr, it) && !keepsOther(dr, it) ? [dr.id] : []);
+    setItems({ id: it.id, keys: keys.filter(function (k, i, all) { return k && all.indexOf(k) === i; }), title: it.title }, { done_at: nowIso(), closed_by: "done" },
+      it.kind === "ask" ? "Ask closed" : it.kind === "waiting" ? "Marked received" : "Marked done");
+  }
+  function sentButton(dr, it, cls) {
+    return h("button", { class: "btn " + (cls || "btn-secondary btn-sm"), type: "button", onclick: function () { markSent(dr, it); } }, "Sent it");
+  }
+  function approve(id, type, payload, label) {
+    var before = S.actions[id] || null, patch = {};
+    patch[id] = { type: type, status: "approved", payload: payload || {}, at: nowIso() };
+    S.actions[id] = patch[id]; S.open = null; render();
+    writeState("actions", patch).then(function (ok) {
+      if (ok) toast(label || "Approved. Applies at the next check.", function () {
+        var p = {}; p[id] = before || { type: type, status: "withdrawn", payload: payload || {}, at: nowIso() };
+        S.actions[id] = p[id]; render(); writeState("actions", p);
+      });
+    });
+  }
+  function morning(days) { var d = new Date(); d.setDate(d.getDate() + days); d.setHours(8, 0, 0, 0); return d.toISOString(); }
+  function nextMonday() { var d = new Date(); return morning(((8 - d.getDay()) % 7) || 7); }
+
+  var toastTimer = null;
+  function toast(text, undo) {
+    var slot = document.getElementById("toast-slot"); slot.textContent = "";
+    var t = h("div", { class: "toast", role: "status" }, [h("span", null, text)]);
+    if (undo) t.appendChild(h("button", { class: "btn", type: "button", onclick: function () { slot.textContent = ""; undo(); } }, "Undo"));
+    slot.appendChild(t);
+    clearTimeout(toastTimer); toastTimer = setTimeout(function () { slot.textContent = ""; }, 10000);
+  }
+  function copyText(text, done) {
+    var fallback = function () {
+      var ta = h("textarea", { style: "position:fixed;left:-9999px", "aria-hidden": "true" }); ta.value = text; document.body.appendChild(ta); ta.select();
+      var ok = false; try { ok = document.execCommand("copy"); } catch (e) {}
+      document.body.removeChild(ta); toast(ok ? done : "Copy did not work here. Open the draft and copy it by hand.");
+    };
+    try { navigator.clipboard.writeText(text).then(function () { toast(done); }, fallback); } catch (e) { fallback(); }
+  }
+
+  // ---------------------------------------------------------------- shared pieces
+  function sourceChip(src) {
+    if (!src || !src.label) return null;
+    if (!safeUrl(src.url)) return h("span", { class: "chip chip-source" }, src.label);
+    return h("a", { class: "chip chip-source", href: safeUrl(src.url), target: "_blank", rel: "noopener noreferrer", "aria-label": "Source: " + src.label }, src.label);
+  }
+  // Every row carries a word beside its glyph. Breach is kept for a figure past its threshold; work says Urgent, High, Medium or Low.
+  var WORDS = { urgent: ["Urgent", "breach", "breach"], breach: ["Breach", "breach", "breach"], overdue: ["Overdue", "breach", "breach"],
+    competing: ["Competing", "breach", "breach"], flagged: ["Hidden instructions ignored", "breach", "breach"],
+    high: ["High", "hero", "high"], due_today: ["Due today", "hero", "high"], stale: ["Stale", "hero", "high"], check: ["Check", "hero", "high"],
+    asked: ["Asked", "hero", "high"], call: ["Book a call", "hero", "high"], due: ["Due", "hero", "medium"],
+    booked: ["Call booked", "", "low"], met: ["Met", "", "low"], looks_done: ["Looks done", "hero", "low"], meeting: ["Meeting today", "hero", "high"],
+    medium: ["Medium", "", "medium"], waiting: ["Waiting on them", "", "medium"], waiting_you: ["Waiting on you", "hero", "high"],
+    requested: ["Intro requested", "", "medium"], made: ["Intro made", "", "low"], nudge: ["Nudge", "hero", "high"], ready: ["Your note is ready", "hero", "high"],
+    replied: ["Replied", "hero", "medium"], answered: ["You replied", "", "low"],
+    undated: ["No date", "", "medium"], more_info: ["Ask for more", "", "medium"],
+    low: ["Low", "", "low"], moved: ["Moved", "", "low"], cold: ["Going cold", "", "medium"], pass: ["Pass", "", "low"],
+    in_touch: ["In touch", "", "low"], quiet: ["Quiet", "", "low"], owned: ["With a colleague", "", "low"], team: ["Your team", "", "low"] };
+  function wordOf(it) { return it.status_word || it.priority || "low"; }
+  function statusText(it) {
+    var label = (WORDS[wordOf(it)] || WORDS.low)[0];
+    if (wordOf(it) === "due" && it.due) label = "Due " + fmtDate(it.due, false);
+    if (wordOf(it) === "asked" && !isNil(it.asked_days)) label = it.asked_days < 1 ? "Asked today" : it.asked_days < 2 ? "Asked yesterday" : "Asked " + it.asked_days + " days ago";
+    if (wordOf(it) === "owned" && it.owner_name) label = "With " + it.owner_name;
+    if (it.state_label && ["requested", "made", "nudge", "ready", "replied"].indexOf(wordOf(it)) >= 0) label = it.state_label;
+    return label;
+  }
+  function statusFor(it) { var w = WORDS[wordOf(it)] || WORDS.low; return h("span", { class: "status" + (w[1] ? " " + w[1] : "") }, statusText(it)); }
+  function glyphFor(it) { return glyph((WORDS[wordOf(it)] || WORDS.low)[2]); }
+  function rateChips(it) {
+    var wrap = h("div", { class: "rate-row", role: "group", "aria-label": "Rate this line" });
+    [["useful", "Useful", "1"], ["not_useful", "Not useful", "2"], ["wrong", "Wrong", "3"]].forEach(function (r) {
+      wrap.appendChild(h("button", { class: "chip chip-rate", type: "button", "aria-pressed": S.rated[it.id] === r[0] ? "true" : "false",
+        title: r[1] + " (" + r[2] + ")", onclick: function () { rate(it, r[0]); toast("Thanks. ant. tunes itself from this on Sunday."); } }, r[1]));
+    });
+    return wrap;
+  }
+  // An ask's notes: the first one, then "Aditi said yes: draft the intro ask" (_intro) and "Ask the team instead" or
+  // "Aditi said yes: ask the team" (_team), each with its own tap. A note with no reply in five working days gets one
+  // nudge, which the morning run drafts: <the note's tap>_nudge.
+  var ASK_NOTES = ["", "_intro", "_team", "_nudge", "_intro_nudge", "_team_nudge"];
+  // The draft ant. saved for this line: a promise you owe, or a reply to an inbound pitch. Null once you mark it sent.
+  function draftFor(it) {
+    var drafts = ((S.snap.drafts || {}).items) || {}, id = it.draft || null;
+    if (!id && (it.kind === "inbound" || it.kind === "pass_returned") && it.entity) {
+      Object.keys(drafts).forEach(function (k) { if (drafts[k] && drafts[k].inbound_id === it.entity.id) id = k; });
+    }
+    // A draft written for a tap ("Draft a note", "Draft the intro ask") names the tap it answers; an ask's later notes
+    // ("Ask the team instead") name their own taps. The one still waiting to be sent is the one shown. A nudge counts
+    // only for the note it follows: once a later note went out, a nudge still waiting chases nothing.
+    if (!id && it.id) {
+      var taps = [it.id];
+      if (it.group_asks) taps = [].concat.apply([], it.group_asks.map(function (g) { return ["_nudge", "_intro_nudge", "_team_nudge"].map(function (x) { return g.item_id + x; }); }));
+      else if (it.kind === "ask") {
+        // The engine's order: the note you chose after the first (the team, the intro ask) before a nudge, then the first note.
+        // A next note tapped after the latest one went out takes the ask out of the nudge.
+        var last = askSent(it.id);
+        var chose = ["_team", "_intro"].some(function (x) { return actionOf(it.id + x) && !(last && last.tap.indexOf(it.id + x) === 0); });
+        taps = ["_team", "_intro"].map(function (x) { return it.id + x; }).concat(last && !/_nudge$/.test(last.tap) && !chose ? [last.tap + "_nudge"] : [], [it.id]);
+      }
+      var rank = 99;
+      Object.keys(drafts).forEach(function (k) {
+        var d = drafts[k];
+        if (!d || itemState(k).done_at) return;
+        taps.forEach(function (t, i) {  // one note can carry several asks
+          if (i < rank && (d.action_id === t || (d.action_ids || []).indexOf(t) >= 0)) { rank = i; id = k; }
+        });
+      });
+    }
+    var d = id ? drafts[id] : null;
+    return d && !itemState(id).done_at ? Object.assign({ id: id }, d) : null;
+  }
+  // Whether a draft answers this tap yet, sent or still waiting. A run that wrote it says so in its proposals row, which
+  // outlasts the draft: Home drops a sent draft after two weeks, and the tap is still answered.
+  function tapAnswered(tap) {
+    var drafts = ((S.snap.drafts || {}).items) || {}, pr = (((S.snap.proposals || {}).items) || {})[tap] || {};
+    if (pr.status === "applied" && !(actionOf(tap) && pr.applied_at && laterThan(actionOf(tap).at, pr.applied_at))) return true;
+    return Object.keys(drafts).some(function (k) { var d = drafts[k]; return d && (d.action_id === tap || (d.action_ids || []).indexOf(tap) >= 0); });
+  }
+  // The latest note for an ask that you marked sent: when, to whom and what kind (team, board, colleague, contact or
+  // nudge), and for a nudge, the kind of the note it followed (`base`). The ask itself remembers its notes, so a sent
+  // draft that has left Home still counts.
+  function askSent(itemId) {
+    var drafts = ((S.snap.drafts || {}).items) || {}, byTap = {};
+    var ask = null, items = ((S.snap.asks || {}).items) || {};
+    Object.keys(items).forEach(function (k) { if (items[k] && items[k].item_id === itemId) ask = items[k]; });
+    ((ask && ask.notes) || []).forEach(function (n) {
+      if (n && n.at && n.tap) byTap[n.tap] = { at: n.at, d: { to_name: n.to_name, to: (n.to || []).join(", ") }, tap: n.tap, kind: n.note_kind || "contact" };
+    });
+    ASK_NOTES.forEach(function (x) {
+      var tap = itemId + x;
+      Object.keys(drafts).forEach(function (k) {
+        var d = drafts[k], at = itemState(k).done_at;
+        if (!d || !at || !(d.action_id === tap || (d.action_ids || []).indexOf(tap) >= 0) || (byTap[tap] && !laterThan(at, byTap[tap].at))) return;
+        var tos = String(d.to || "").split(",").filter(function (y) { return y.trim(); });
+        byTap[tap] = { at: at, d: d, tap: tap, kind: (d.note_kinds || {})[tap] || (d.note_kind !== "several" && d.note_kind) || (tos.length > 1 ? "team" : "contact") };
+      });
+    });
+    var best = null;
+    Object.keys(byTap).forEach(function (t) { if (!best || laterThan(byTap[t].at, best.at)) best = byTap[t]; });
+    if (best) best.base = /_nudge$/.test(best.tap) ? ((byTap[best.tap.replace(/_nudge$/, "")] || {}).kind || "contact") : best.kind;
+    return best;
+  }
+  // A tap still in play: Home keeps what a run did with a tap for 30 days, and never shows an older one as waiting.
+  function freshTap(a) { return !!a && (!a.at || Date.now() - Date.parse(a.at) < 30 * 864e5); }
+  // What an ask needs after its note went out. After a note to the board partner (or its nudge), the partner's answer
+  // is the user's to give: "Aditi said yes: draft the intro ask", or "...: ask the team" when no one fits. After a note to
+  // a colleague or contact, five quiet working days offer "Ask the team instead". Never after a note to the team.
+  function askNext(it, sent) {
+    if (!sent || cfg().level === "solo_gp" || it.status_word === "made" || it.group_asks) return null;
+    var paths = (it.entity || {}).paths, tapped = function (x) { return !!actionOf(it.id + x); };
+    var later = sent.tap.indexOf(it.id + "_intro") === 0 || sent.tap.indexOf(it.id + "_team") === 0;
+    if (sent.base === "board" && !later) {
+      if (tapped("_intro") || tapped("_team")) return null;
+      var by = String(sent.d.to_name || "").split(" ")[0] || "The partner";
+      return paths ? { id: it.id + "_intro", label: by + " said yes: draft the intro ask", note_kind: paths[0].colleague === "You" ? "contact" : "colleague" }
+        : { id: it.id + "_team", label: by + " said yes: ask the team", note_kind: "team" };
+    }
+    if (sent.base !== "team" && sent.base !== "board" && !tapped("_team") && workingDaysSince(sent.at) >= 5)
+      return { id: it.id + "_team", label: "Ask the team instead", note_kind: "team" };
+    return null;
+  }
+  // A line's "ready" words once its draft is marked sent: "Second note ready: check the amount, then send it" goes.
+  function stripReady(t) {
+    return String(t || "").replace(/\s*(?:Second note|Draft|Note|Nudge|Team note|Intro ask|Reply) ready(?::[^.]*)?\.?/g, "").replace(/[.\s]+$/, "").replace(/^\s*\.\s*/, "");
+  }
+  function draftText(d) { return (d.subject ? "Subject: " + d.subject + "\n\n" : "") + (d.body || ""); }
+  // Lines a draft leaves for you to fill ("[Add the timeline]"), as the engine counts them: never a link's [text](url).
+  function draftGaps(d) { return ((String((d || {}).body || "")).match(/\[(?!\s*(?:sic\b|external\b|cid:|image\b|mailto:|https?:|attachment\b))(?=[^\]\n]*[A-Za-z])[^\[\]\n]{2,200}\](?!\()/gi) || []).length; }
+  function draftChip(d) { var n = draftGaps(d); return n ? "Fill in " + plural(n, "line") : d.inbound_id || d.question_id ? "Reply ready" : "Draft ready"; }
+  // Where "Open in Gmail" goes: the saved draft when Gmail holds it, else a new message already filled in.
+  // A body too long for a link gets Copy only, so nothing is ever sent cut short.
+  var EMAIL_RE = /^[^\s@<>",;]+@[^\s@<>",;]+\.[^\s@<>",;]+$/;
+  // Gmail opens in the user's own Google account (authuser), never whichever account the browser signed in first.
+  function gmailHref(d) {
+    if (!d) return null;
+    var me = EMAIL_RE.test(String(cfg().user_email || "")) ? "authuser=" + encodeURIComponent(cfg().user_email) : "";
+    if (d.in_gmail !== false && safeUrl(d.gmail_url)) {
+      var g = safeUrl(d.gmail_url);
+      if (me && /^https:\/\/mail\.google\.com\/mail\/u\/0\/#drafts$/.test(g)) return "https://mail.google.com/mail/?" + me + "#drafts";
+      return g;
+    }
+    var body = String(d.body || "");
+    if (!body || body.length > 1800) return null;
+    // One address or a comma list ("aditi@firm.com, kabir@firm.com"): every part must be an address, or none is used.
+    function addrs(v) {
+      var parts = String(v || "").split(",").map(function (x) { return x.trim(); }).filter(Boolean);
+      return parts.length && parts.length <= 12 && parts.every(function (x) { return EMAIL_RE.test(x); }) ? parts.join(",") : "";
+    }
+    var to = addrs(d.to);
+    var cc = addrs(d.cc);
+    return "https://mail.google.com/mail/?" + (me ? me + "&" : "") + "view=cm&fs=1" + (to ? "&to=" + encodeURIComponent(to) : "") +
+      (cc ? "&cc=" + encodeURIComponent(cc) : "") + "&su=" + encodeURIComponent(String(d.subject || "")) + "&body=" + encodeURIComponent(body);
+  }
+  function itemRow(it) {
+    var open = S.open === it.id;
+    var hit = h("button", { class: "row-hit", type: "button", "aria-expanded": open ? "true" : "false", "data-id": it.id,
+      onclick: function () { S.open = open ? null : it.id; render(); focusId(it.id); } },
+      [h("span", { class: "row-title" }, it.title), it.detail ? h("span", { class: "row-detail" }, it.detail) : null]);
+    hit._item = it;
+    var act = actionOf(it.id), dr = draftFor(it);
+    // An ask whose note went out offers the next note, under its own tap; the sent note's tap is never reused.
+    var askNote = it.kind === "ask" && !it.group_asks ? askSent(it.id) : null, nxt = askNext(it, askNote);
+    if (nxt && actionOf(nxt.id)) nxt = null;
+    // "Draft coming" only while a draft tap has no draft yet: once its note exists, sent or not, the row says so instead.
+    var waiting = (it.group_asks ? [] : it.kind === "ask" ? ASK_NOTES.map(function (x) { return it.id + x; }) : [it.id]).filter(function (t) {
+      var a = actionOf(t); return a && a.type === "draft" && !tapAnswered(t) && freshTap(a);
+    });
+    var coming = waiting.length > 0;
+    var sentNow = !dr && it.draft ? sentAt(it.draft) : null;
+    if (sentNow) {
+      var hitEl = hit.querySelector(".row-detail");
+      // A note to an LP marked sent is a touch: "no touch in 95 days" no longer holds.
+      if (hitEl) hitEl.textContent = stripReady(hitEl.textContent).replace(it.kind === "lp" ? /[;,]?\s*no touch in \d+ days?/gi : /$^/, "");
+    }
+    // The chip adds what the status does not say: "Fill in 3 lines", never "Draft ready" beside "Nudge ready".
+    var chipText = dr ? draftChip(dr) : null;
+    if (chipText && /ready$/i.test(statusText(it)) && /ready$/i.test(chipText)) chipText = null;
+    // A draft or a decision that waits on a partner's view points at the note that asks for it, then says it went.
+    var held = holderNote(dr ? dr.id : null, it.deal_id || null);
+    var meta = h("div", { class: "row-meta" }, [statusFor(it), chipText ? h("span", { class: "status hero" }, chipText) :
+      sentNow ? h("span", { class: "done-note" }, "Marked sent " + fmtDate(sentNow, false)) :
+      coming && !dr && !/coming/i.test(statusText(it) + " " + (it.detail || "")) ? h("span", { class: "done-note" }, "Draft coming at the next check") : null, sourceChip(it.source),
+      it.note_url ? sourceChip({ label: "Your note", url: it.note_url }) : null,
+      it.reply_url ? sourceChip({ label: "The reply", url: it.reply_url }) : null,
+      held ? h("span", { class: "done-note" }, holderLine(held)) : null]);
+    // Three short lines when a row opens: what to do, when to see it again, and how useful it was.
+    var doLine = h("div", { class: "row-actions" }), A = it.actions || [];
+    if (A.indexOf("prep") >= 0 && it.prep_id) doLine.appendChild(h("button", { class: "btn btn-secondary btn-sm", type: "button", onclick: function () { openPrep(it.prep_id); } }, "Prep me"));
+    // On an ask, the closing tap says what it does: the ask leaves, whatever notes went out for it.
+    if (A.indexOf("done") >= 0) doLine.appendChild(h("button", { class: "btn btn-secondary btn-sm", type: "button", onclick: function () { markRowDone(it, dr); } },
+      it.kind === "ask" ? "Close ask" : it.kind === "waiting" ? "Got it" : "Done"));
+    if (A.indexOf("next_step") >= 0 && it.deal_id) doLine.appendChild(h("button", { class: "btn btn-secondary btn-sm", type: "button",
+      onclick: function () { go("pipeline", "deal:" + it.deal_id); } }, "Set next step"));
+    if (dr) {
+      var drHref = gmailHref(dr);
+      if (drHref) doLine.appendChild(h("a", { class: "btn btn-secondary btn-sm", href: safeUrl(drHref), target: "_blank", rel: "noopener noreferrer" },
+        [icon(ICON.ext, 16), "Open in Gmail"]));
+      // Sent it sits beside the draft wherever it shows, so the note's sent mark is one tap from where it was opened.
+      doLine.appendChild(sentButton(dr, it));
+      doLine.appendChild(h("button", { class: "btn btn-ghost btn-sm", type: "button", onclick: function () { copyText(draftText(dr), "Draft copied"); } }, [icon(ICON.copy, 16), "Copy draft"]));
+    }
+    // Asks that went out in one note: each is answered or closed on its own row, on the Portfolio tab.
+    if (A.indexOf("asks") >= 0 && it.group_asks) doLine.appendChild(h("button", { class: "btn btn-ghost btn-sm", type: "button",
+      onclick: function () { go("portfolio"); } }, "See each ask"));
+    // A solo GP with no warm path has no one to write to yet: no draft button.
+    var noOne = it.kind === "ask" && !(it.entity || {}).paths && cfg().level === "solo_gp";
+    if (A.indexOf("draft") >= 0 && !act && !dr && !noOne && !askNote) doLine.appendChild(h("button", { class: "btn btn-secondary btn-sm", type: "button",
+      onclick: function () { approve(it.id, "draft", { kind: it.kind, entity: it.entity || {}, title: it.title, detail: it.detail }, "ant. drafts it at the next check. Nothing is sent."); } },
+      it.kind === "ask" ? ((it.entity || {}).paths ? "Draft the intro ask" : "Draft a note to your team") : "Draft a note"));
+    // Beside a nudge, the other way forward stays open: the partner may have said yes in person, or the team may know someone.
+    if (nxt && (!dr || dr.note_kind === "nudge")) doLine.appendChild(h("button", { class: "btn btn-secondary btn-sm", type: "button",
+      onclick: function () { approve(nxt.id, "draft", { kind: "ask", entity: it.entity || {}, title: it.title, detail: it.detail, note_kind: nxt.note_kind, next_of: it.id,
+        after: { kind: askNote.base || askNote.kind, to_name: askNote.d.to_name || null, at: askNote.at, nudged: askNote.kind === "nudge" || undefined } },
+        "ant. drafts it at the next check. Nothing is sent."); } }, nxt.label));
+    if (A.indexOf("merge") >= 0 && it.pair) {
+      doLine.appendChild(h("button", { class: "btn btn-secondary btn-sm", type: "button",
+        onclick: function () { approve(it.id, "merge", it.pair, "Merged. People update at the next check."); } }, "Same person"));
+      doLine.appendChild(h("button", { class: "btn btn-secondary btn-sm", type: "button",
+        onclick: function () { approve(it.id, "keep_apart", it.pair, "Kept apart. ant. will not ask again."); } }, "Different people"));
+    }
+    var later = it.kind === "review" ? null : h("div", { class: "row-actions", role: "group", "aria-label": "Snooze" }, [h("span", { class: "status" }, "Snooze"),
+      h("button", { class: "btn btn-ghost btn-sm", type: "button", onclick: function () { snooze(it, new Date(Date.now() + 3600e3).toISOString(), "in an hour"); } }, "1 hour"),
+      h("button", { class: "btn btn-ghost btn-sm", type: "button", onclick: function () { snooze(it, morning(1), "tomorrow 08:00"); } }, "Tomorrow"),
+      h("button", { class: "btn btn-ghost btn-sm", type: "button", onclick: function () { snooze(it, nextMonday(), "Monday 08:00"); } }, "Next week")]);
+    var actions = h("div", { class: "row-open" }, [dr && (dr.context || closedInDraft(dr)) ? h("p", { class: "draft-note" }, [h("b", null, "Before you send: "), closedInDraft(dr) + (dr.context || "")]) : null,
+      doLine.childNodes.length ? doLine : null, later, rateChips(it)]);
+    if (!open) actions.hidden = true;
+    return h("div", { class: "row" + (it.breach ? " is-breach" : "") }, [glyphFor(it), h("div", { class: "row-main" }, [hit, meta, actions])]);
+  }
+  function focusId(id) { setTimeout(function () { var el = document.querySelector('.row-hit[data-id="' + String(id).replace(/"/g, "") + '"]'); if (el) el.focus(); }, 0); }
+  function go(tab, open) { S.tab = tab; S.open = open || null; S.tabChosen = true; try { localStorage.setItem("instinct.tab", tab); } catch (e) {} render(); window.scrollTo(0, 0); }
+
+  function emptyCard(title, line) { return h("div", { class: "card empty" }, [h("b", null, title), h("span", null, line)]); }
+  function skeletonCard() {
+    return h("div", { class: "card", "aria-hidden": "true", style: "display:grid;gap:12px" },
+      [h("div", { class: "skel", style: "width:36%" }), h("div", { class: "skel", style: "width:88%" }), h("div", { class: "skel", style: "width:64%" })]);
+  }
+  function heroCard(hero) {
+    if (!hero || !hero.statement) return null;
+    // Hero grammar: one primary action, at most two more, then the source.
+    var btns = h("div", { class: "hero-actions" }), n = 0;
+    var add = function (el) { if (el && n < 3) { btns.appendChild(el); n += 1; } };
+    var hd = hero.draftDoc || null, hdHref = hd ? gmailHref(hd) : null;
+    if (hero.action && hero.action.done) btns.appendChild(h("span", { class: "done-note" }, hero.action.done));
+    else if (hero.action) add(h("button", { class: "btn btn-primary", type: "button", onclick: hero.action.fn }, hero.action.label));
+    else if (hd) add(hdHref ? h("a", { class: "btn btn-primary", href: safeUrl(hdHref), target: "_blank", rel: "noopener noreferrer" }, [icon(ICON.ext, 16), "Open draft"])
+        : h("button", { class: "btn btn-primary", type: "button", onclick: function () { copyText(draftText(hd), "Draft copied"); } }, [icon(ICON.copy, 16), "Copy draft"]));
+    else if (hero.button === "Prep me" && hero.prep_id) add(h("button", { class: "btn btn-primary", type: "button", onclick: function () { openPrep(hero.prep_id); } }, "Prep me"));
+    else if (hero.source && safeUrl(hero.source.url)) add(h("a", { class: "btn btn-primary", href: safeUrl(hero.source.url), target: "_blank", rel: "noopener noreferrer" }, [icon(ICON.ext, 16), "Open"]));
+    // A draft on the hero gets Sent it beside it. A promise keeps Done too: it may have been settled in the room.
+    if (hd) add(sentButton(hd, hero.sentFor || null, "btn-secondary"));
+    if (hero.doneable) add(h("button", { class: "btn btn-ghost", type: "button", onclick: function () { markRowDone(hero.doneable, hd); } }, "Done"));
+    if (hero.snoozable) add(h("button", { class: "btn btn-ghost", type: "button", onclick: function () { snooze(hero.snoozable, morning(1), "tomorrow 08:00"); } }, "Snooze"));
+    if (hd && hdHref) add(h("button", { class: "btn btn-ghost", type: "button", onclick: function () { copyText(draftText(hd), "Draft copied"); } }, [icon(ICON.copy, 16), "Copy"]));
+    if (hero.source && hero.source.label && (hero.button !== "Prep me" || hero.draftDoc) && (hero.action || hero.draftDoc || !safeUrl(hero.source.url) || hero.chip)) btns.appendChild(sourceChip(hero.source));
+    return h("article", { class: "card ruled ah-hero-card" + (hero.breach ? " is-breach" : "") }, [
+      h("div", { class: "kicker" }, [h("i"), h("span", null, hero.kicker || "")]),
+      h("h1", { class: "statement" }, hero.statement),
+      hero.finding ? h("p", { class: "finding" }, hero.finding) : null,
+      btns.childNodes.length ? btns : null,
+      // What to check before the draft goes: the run's note on its own draft, never only in a list further down.
+      hd && (hd.context || closedInDraft(hd)) ? h("p", { class: "draft-note" }, [h("b", null, "Before you send: "), closedInDraft(hd) + (hd.context || "")]) : null]);
+  }
+
+  // ---------------------------------------------------------------- Today
+  // The first line on Today still open, and the hero it makes when the brief's own hero was done or snoozed.
+  function nextUp(b) {
+    var out = null;
+    (b.sections || []).some(function (sec) {
+      return (sec.items || []).some(function (it) {
+        if (isHidden(it) || it.kind === "meeting" || it.fyi) return false;
+        var live = liveRow(it, b.as_of); if (!live) return false;
+        out = live; return true;
+      });
+    });
+    return out;
+  }
+  var KIND_KICKER = { signal: "Another fund is moving", commitment: "You promised", question: "A founder is waiting", decision: "Decide",
+    portfolio: "Portfolio", ask: "A founder asks", lp: "LP", inbound: "Inbound", pass_returned: "Back from the pass log", stale: "Pipeline",
+    waiting: "Waiting on them", board: "Board prep", relationship: "Relationships", deal_move: "Pipeline" };
+  function heroOf(it) {
+    var kick = it.kind === "signal" && /passed/.test(String(it.short || "")) ? "Their deadline passed" : KIND_KICKER[it.kind];
+    return { kicker: (kick ? kick + " · " : "") + statusText(it), statement: it.title, finding: it.detail || "", item_id: it.id, kind: it.kind, commitment_id: it.commitment_id,
+      question_id: it.question_id, draft: it.draft, entity: it.entity, group_asks: it.group_asks, breach: it.breach, source: it.source,
+      status_word: it.status_word };
+  }
+  function viewToday() {
+    var b = S.snap.brief;
+    if (!b) return [emptyCard("Your first brief is on its way", "ant. is reading your inbox, calendar and notes. It appears here in a few minutes.")];
+    var hero = Object.assign({}, b.hero || {}), promoted = null;
+    if (hero.item_id && hero.kind === "ask") {
+      // An ask hero the page knows more about (a note marked sent, a next note tapped): its line as it stands now.
+      var liveH = liveRow({ id: hero.item_id, kind: "ask", group_asks: hero.group_asks, title: hero.statement, detail: hero.finding,
+        status_word: hero.status_word, section: null }, b.as_of);
+      if (!liveH) hero.gone = true;
+      else if (liveH.live) hero = Object.assign(heroOf(liveH), { pushed: hero.pushed });
+    }
+    if (hero.item_id && hero.kind !== "meeting" && hero.draft && sentAt(hero.draft) && !isHidden({ id: hero.item_id, commitment_id: hero.commitment_id })) {
+      hero.finding = stripReady(hero.finding).replace(hero.kind === "lp" ? /[;,]?\s*no touch in \d+ days?/gi : /$^/, "") + ". Marked sent " + fmtDate(sentAt(hero.draft), false) + ": the next check updates this line";
+    }
+    var heroHeld = hero.item_id && hero.kind !== "meeting" ? holderNote(hero.draft || null, hero.deal_id || null) : null;
+    if (heroHeld && hero.finding && String(hero.finding).indexOf(holderLine(heroHeld)) < 0) hero.finding = String(hero.finding).replace(/\.?\s*$/, ". ") + holderLine(heroHeld);
+    if (hero.item_id && hero.kind !== "meeting") {
+      if (hero.gone || isHidden({ id: hero.item_id, commitment_id: hero.commitment_id })) {
+        // The hero is done or snoozed: the next line on Today steps up until the next check, so the top of the page
+        // never says "nothing urgent" above an urgent row.
+        promoted = nextUp(b);
+        hero = promoted ? heroOf(promoted) : { kicker: "Handled", statement: "Nothing urgent right now", finding: "Next check at " + (b.next_check || "the top of the hour") + "." };
+      }
+      if (hero.item_id) {
+        var heroItem = { id: hero.item_id, commitment_id: hero.commitment_id, kind: hero.kind, group_asks: hero.group_asks, title: hero.statement };
+        hero.snoozable = heroItem; hero.sentFor = heroItem;
+        if (hero.kind === "commitment") hero.doneable = heroItem;
+        hero.draftDoc = draftFor({ id: hero.item_id, draft: hero.draft, kind: hero.kind, entity: hero.entity, group_asks: hero.group_asks });
+      }
+    }
+    var agenda = h("section", { class: "card ruled ah-agenda", "aria-label": "Meetings today" },
+      [h("h2", { class: "sec-h" }, [h("b", null, "Today"), h("span", { class: "count" }, (b.meetings || []).length + " meeting" + ((b.meetings || []).length === 1 ? "" : "s"))])]);
+    var meetings = b.meetings || [], now = Date.now(), nextIdx = -1;
+    meetings.forEach(function (m, i) { if (nextIdx < 0 && (!m.start || Date.parse(m.start) >= now - 15 * 60e3)) nextIdx = i; });
+    if (!meetings.length) agenda.appendChild(h("p", { class: "prov", style: "padding:8px 0" }, "No meetings today."));
+    meetings.forEach(function (m, i) {
+      var parts = String(m.who || "").split(", ");
+      var cls = "agenda-row" + (i === 0 ? " first" : "") + (i === nextIdx ? " is-next" : i < nextIdx || nextIdx < 0 ? " is-past" : "");
+      // One block per meeting: what to watch and the promises both ways sit under the row, not elsewhere on the page.
+      var drafted = 0;
+      var notes = (m.notes || []).slice(0, 3).map(function (n, k2) {
+        var t = String(n), k = t.indexOf(": "), head = k > 0 && k < 26 ? t.slice(0, k + 1) : "", rest = head ? t.slice(k + 2) : t;
+        var hot = /^Watch:|\(overdue\)/.test(t);
+        var did = (m.note_drafts || [])[k2], ready = did && meetingDraft(did);
+        if (ready) drafted += 1;
+        return h("span", { class: "agenda-note" }, [head ? h("b", { class: hot ? "breach" : null }, head + " ") : null, rest,
+          ready ? h("span", { class: "agenda-draft" }, " · draft ready") : null]);
+      });
+      var kids = [h("span", { class: "agenda-time" }, m.time || ""),
+        h("div", { class: "agenda-who" }, [h("b", null, parts[0] || ""), parts.length > 1 ? h("span", null, parts.slice(1).join(", ")) : m.internal ? h("span", null, "Internal") : null,
+          notes.length ? h("span", { class: "agenda-notes" }, notes) : null]),
+        m.prep_id ? h("span", { class: "agenda-go", "aria-hidden": "true" }, "Prep") : h("span")];
+      // The whole row opens the prep card; the hero keeps the one Prep me button.
+      agenda.appendChild(m.prep_id ? h("button", { class: cls, type: "button",
+        "aria-label": "Prep for " + (m.time || "") + " " + (m.who || "") + (drafted ? ", " + plural(drafted, "draft") + " ready" : ""),
+        onclick: function () { openPrep(m.prep_id, m); } }, kids) : h("div", { class: cls }, kids));
+    });
+    if ((b.tomorrow || []).length) {
+      var nextDay = (b.tomorrow[0] || {}).day || "Tomorrow";
+      agenda.appendChild(h("p", { class: "prov", style: "padding-top:8px" }, [nextDay + ": "].concat(b.tomorrow.slice(0, 4).map(function (m, i) {
+        var label = (m.time || "") + " " + String(m.who || "").split(", ").pop();
+        var el = m.prep_id ? h("button", { class: "link-btn", type: "button", "aria-label": "Prep for " + nextDay + " " + label, onclick: function () { openPrep(m.prep_id, m); } }, label) : label;
+        return i ? [" · ", el] : el;
+      }).reduce(function (a, x) { return a.concat(x); }, []))));
+    }
+    var out = [h("div", { class: "ah-hero-cols" }, [heroCard(hero), agenda])];
+    var digest = recentDigest(["week_ahead", "digest"]); if (digest) out.push(digest);
+    var shown = 0;
+    (b.sections || []).forEach(function (sec) {
+      var items = (sec.items || []).filter(function (it) { return !isHidden(it) && !(promoted && it.id === promoted.id) && !(hero.item_id && it.id === hero.item_id && hero.live); })
+        .map(function (it) { return liveRow(it, b.as_of); }).filter(Boolean);
+      if (!items.length) return;
+      shown += items.length;
+      out.push(h("section", { class: "card", "aria-label": sec.label }, [h("h2", { class: "sec-h" }, [h("b", null, sec.label), h("span", { class: "count" }, String(items.length))]),
+        h("div", { class: "list" }, items.map(itemRow))]));
+    });
+    var shownDrafts = {};
+    if (hero.draftDoc) shownDrafts[hero.draftDoc.id] = true;
+    (b.sections || []).forEach(function (sec) { (sec.items || []).forEach(function (it) { var lv = isHidden(it) ? null : liveRow(it, b.as_of), d = lv ? draftFor(lv) : null; if (d) shownDrafts[d.id] = true; }); });
+    var ready = readyForYou(shownDrafts); if (ready) out.push(ready);
+    if (!shown && !ready) out.push(emptyCard("Nothing else needs you", "Next check at " + (b.next_check || "the top of the hour") + "."));
+    var day = wall().wd; if (day === 5 || day === 6) out.push(scoreCard());
+    out.push(h("div", { class: "row-meta" }, [h("p", { class: "evidence", style: "margin-right:auto" }, b.evidence || ""),
+      b.shareable_text ? h("button", { class: "btn btn-ghost btn-sm", type: "button", onclick: function () { copyText(b.shareable_text, "Brief copied. Quiet deals are left out."); } },
+        [icon(ICON.copy, 16), "Copy brief"]) : null]));
+    return out;
+  }
+  // Reviews, pre-reads and digests a run wrote: shown for a day and a half, folded to their first lines.
+  var DIGEST_KIND = { week_ahead: "Your week ahead", digest: "Monday digest", review: "Weekly pipeline review", preread: "Partner meeting pre-read" };
+  function recentDigest(kinds, maxHours) {
+    var items = ((S.snap.digests || {}).items) || {}, best = null;
+    kinds.forEach(function (k) {
+      var d = items[k]; if (!d || !d.markdown) return;
+      if (Date.now() - Date.parse(d.as_of || 0) > (maxHours || 36) * 3600e3) return;
+      if (!best || Date.parse(d.as_of) > Date.parse(best.as_of)) best = Object.assign({ kind: k }, d);
+    });
+    return best ? digestCard(best) : null;
+  }
+  function inline(text) {
+    // Markdown links become safe anchors; everything else stays text.
+    var out = [], re = /\[([^\]]{1,200})\]\((https?:\/\/[^)\s]+)\)/g, last = 0, m;
+    while ((m = re.exec(text))) {
+      if (m.index > last) out.push(text.slice(last, m.index));
+      out.push(safeUrl(m[2]) ? h("a", { href: safeUrl(m[2]), target: "_blank", rel: "noopener noreferrer" }, m[1]) : m[1]);
+      last = re.lastIndex;
+    }
+    if (last < text.length) out.push(text.slice(last));
+    return out.map(function (x) { return typeof x === "string" ? x.replace(/\*\*|__|`/g, "") : x; });
+  }
+  function mdBlock(md, limit) {
+    var wrap = h("div", { class: "md" }), list = null, n = 0;
+    String(md || "").split("\n").some(function (line) {
+      var t = line.trim(); if (!t) { list = null; return false; }
+      if (limit && n >= limit) return true;
+      n += 1;
+      if (/^#{1,4}\s/.test(t)) { list = null; wrap.appendChild(h("h3", null, inline(t.replace(/^#+\s*/, "")))); }
+      else if (/^[-*]\s/.test(t)) { if (!list) { list = h("ul"); wrap.appendChild(list); } list.appendChild(h("li", null, inline(t.slice(2)))); }
+      else { list = null; wrap.appendChild(h("p", null, inline(t))); }
+      return false;
+    });
+    return wrap;
+  }
+  function digestCard(d) {
+    var open = !!S.mdOpen[d.kind];
+    return h("section", { class: "card", "aria-label": DIGEST_KIND[d.kind] || d.title, style: "display:grid;gap:8px" }, [
+      h("h2", { class: "sec-h", style: "margin:0" }, [h("b", null, d.title || DIGEST_KIND[d.kind] || "Digest"), h("span", { class: "count" }, fmtDate(d.as_of, false) + " " + String(d.as_of || "").slice(11, 16))]),
+      mdBlock(d.markdown, open ? 0 : 6),
+      h("div", null, h("button", { class: "btn btn-ghost btn-sm", type: "button", "aria-expanded": open ? "true" : "false",
+        onclick: function () { S.mdOpen[d.kind] = !open; render(); } }, open ? "Show less" : "Read all"))]);
+  }
+  function meetingDraft(id) {
+    var d = (((S.snap.drafts || {}).items) || {})[id];
+    return d && !itemState(id).done_at ? Object.assign({ id: id }, d) : null;
+  }
+  function sheetCrm() { return String(cfg().crm_system || "").toLowerCase() === "sheet"; }
+  function fieldValue(x) { return isNil(x) ? DASH : /^\d{4}-\d{2}-\d{2}/.test(String(x)) ? fmtDate(x, false) : String(x); }
+  function fieldLabel(f) { var l = String(f.field || "").replace(/_/g, " "); return l.charAt(0).toUpperCase() + l.slice(1); }
+  function changeLines(p) {
+    return (p.fields || []).map(function (f) { return h("span", { class: "row-detail" }, fieldLabel(f) + ": " + fieldValue(f.current) + " → " + fieldValue(f.proposed)); });
+  }
+  function changeText(p) {
+    var who = (p.record && p.record.name) || "";
+    return (p.fields || []).map(function (f) { return (who ? who + ", " : "") + fieldLabel(f) + ": " + fieldValue(f.proposed); }).join("\n");
+  }
+  // A draft whose promise was marked done, or whose every row (an ask, a line) was closed, has nothing left to send.
+  // The note to a partner that a draft or a deal waits on: still waiting in Home, or sent (and whether they replied).
+  function holderNote(draftId, dealId) {
+    var all = ((S.snap.drafts || {}).items) || {}, hit = null;
+    Object.keys(all).forEach(function (k) {
+      var x = all[k];
+      if (hit || !x || x.kind !== "holder") return;
+      var names = (draftId && (x.holds || []).indexOf(draftId) >= 0) ||
+        (dealId && (x.decisions || []).some(function (y) { return y && y.deal_id === dealId; }));
+      if (!names) return;
+      if (sentAt(k)) hit = { note: x, sent: sentAt(k) };
+      else if (!itemState(k).done_at && !draftClosed(x)) hit = { note: x, sent: null };
+    });
+    return hit;
+  }
+  function when_(iso) { return dayOf(iso) === todayIso() ? "at " + hhmm(iso).slice(4) : "on " + fmtDate(iso, false); }
+  // "Note to Aditi ready, under Ready for you", then "Asked Aditi at 07:10 for the firm's view", then "Aditi replied at 11:05".
+  function holderLine(hn) {
+    if (!hn) return "";
+    var first = String(hn.note.to_name || "the partner").split(" ")[0];
+    if (hn.sent && hn.note.replied && hn.note.replied.on) return first + " replied " + when_(hn.note.replied.on) + ": read it, then send";
+    if (hn.sent) return "Asked " + first + " " + when_(hn.sent) + " for the firm's view";
+    return "Note to " + first + " ready, under Ready for you";
+  }
+  function draftClosed(d) {
+    if (d.kind === "holder" && (d.holds || []).length) {
+      var all = ((S.snap.drafts || {}).items) || {};
+      return d.holds.every(function (k) { var x = all[k]; return !x || !!itemState(k).done_at || (x.kind !== "holder" && draftClosed(x)); });
+    }
+    var cids = [d.commitment_id].concat(d.commitment_ids || []).filter(Boolean);
+    if (cids.length && cids.every(function (c) { return !!itemState(c).done_at; })) return true;
+    var taps = [d.action_id].concat(d.action_ids || []).filter(Boolean);
+    return taps.length > 0 && taps.every(function (t) { return !!itemState(String(t).replace(/(_intro|_team)?(_nudge)?$/, "")).done_at; });
+  }
+  // How late the promise a draft keeps is, from Home's own record of it: ", 14 days late".
+  function lateBy(d) {
+    var c = d.commitment_id ? ((((S.snap.commitments || {}).items) || {})[d.commitment_id] || {}) : {};
+    if (!c.due || c.status === "done") return "";
+    var days = Math.round((Date.parse(todayIso() + "T00:00:00Z") - Date.parse(dayOf(c.due) + "T00:00:00Z")) / 864e5);
+    return days > 0 ? ", " + plural(days, "day") + " late" : "";
+  }
+  function readyForYou(skip) {
+    var drafts = ((S.snap.drafts || {}).items) || {}, props = ((S.snap.proposals || {}).items) || {}, rows = [];
+    Object.keys(drafts).forEach(function (id) {
+      var d = drafts[id] || {};
+      if (d.kind === "holder" && !itemState(id).done_at && !(skip && skip[id]) && !draftClosed(d)) rows.push(draftRow(id, d));
+    });
+    Object.keys(props).forEach(function (id) {
+      var p = props[id] || {};
+      // What the run could not do, or did only in part, stays here until the user dismisses it.
+      var recent = Date.now() - Date.parse(p.applied_at || 0) < 2 * 864e5;
+      if (p.status === "check" || p.status === "failed" || p.status === "refused" || (p.status === "applied" && p.reason && recent)) {
+        if (itemState(id).done_at) return;
+        var word = p.status === "failed" ? "Failed" : p.status === "check" ? "Check" : p.status === "refused" ? "Not done" : "Applied in part";
+        rows.push(h("div", { class: "row" }, [glyph(p.status === "failed" ? "breach" : "high"), h("div", { class: "row-main" }, [
+          h("div", { class: "row-hit static" }, [h("span", { class: "row-title" }, ((p.record && p.record.name) ? p.record.name + ": " : "") + (p.title || "CRM update")),
+            h("span", { class: "row-detail" }, p.reason || "A run stopped while applying this. Check the record.")]),
+          h("div", { class: "row-meta" }, [h("span", { class: "status" + (p.status === "failed" ? " breach" : " hero") }, word),
+            sourceChip({ label: p.source_label || "Meeting notes", url: p.source_url })]),
+          h("div", { class: "row-actions" }, h("button", { class: "btn btn-ghost btn-sm", type: "button", onclick: function () { markDone({ id: id, title: p.title }); } }, "Dismiss"))])]));
+        return;
+      }
+      if (p.status !== "proposed") return;
+      // A Google Sheet as the CRM: ant. cannot write to it, so the change is copied and pasted in by hand.
+      if (p.by_hand || (sheetCrm() && p.type !== "calendar_hold")) {
+        if (itemState(id).done_at) return;
+        rows.push(h("div", { class: "row" }, [glyph("medium"), h("div", { class: "row-main" }, [
+          h("div", { class: "row-hit static" }, [h("span", { class: "row-title" }, ((p.record && p.record.name) ? p.record.name + ": " : "") + (p.title || "CRM update")),
+            h("span", { style: "display:grid;gap:2px" }, changeLines(p))]),
+          h("div", { class: "row-meta" }, [h("span", { class: "status" }, "Paste into your sheet"), sourceChip({ label: p.source_label || "Meeting notes", url: p.source_url })]),
+          h("div", { class: "row-actions" }, [
+            h("button", { class: "btn btn-secondary btn-sm", type: "button", onclick: function () { copyText(changeText(p), "Copied. Paste it into your sheet."); } }, [icon(ICON.copy, 16), "Copy change"]),
+            h("button", { class: "btn btn-ghost btn-sm", type: "button", onclick: function () { markDone({ id: id, title: p.title }); } }, "Done")])])]));
+        return;
+      }
+      var act = S.actions[id], decided = act && (act.status === "approved");
+      var fields = changeLines(p);
+      rows.push(h("div", { class: "row" }, [glyph("high"), h("div", { class: "row-main" }, [
+        h("div", { class: "row-hit static" }, [h("span", { class: "row-title" }, ((p.record && p.record.name) ? p.record.name + ": " : "") + (p.title || "CRM update")),
+          h("span", { style: "display:grid;gap:2px" }, fields)]),
+        h("div", { class: "row-meta" }, [decided ? h("span", { class: "done-note" }, act.type === "skip" ? "Skipped" : "Approved. Applies at the next check.") : h("span", { class: "status" }, "Needs your OK"),
+          sourceChip({ label: p.source_label || "Meeting notes", url: p.source_url })]),
+        decided ? null : h("div", { class: "row-actions" }, [
+          h("button", { class: "btn btn-secondary btn-sm", type: "button", onclick: function () { approve(id, p.type || "crm_update", { fields: p.fields, record: p.record }); } }, "Approve"),
+          h("button", { class: "btn btn-ghost btn-sm", type: "button", onclick: function () { approve(id, "skip", {}, "Skipped"); } }, "Skip")])])]));
+    });
+    // After a founder meeting on your own deal: one tap logs it in the CRM, with the next step and, when it moved, the stage.
+    var metOpen = ((S.snap.pipeline || {}).met_prompts || []).filter(function (m) {
+      // One log per meeting: the tap's id names the meeting, so the next meeting with the same founder asks again.
+      var aid = m.aid || ("ns_" + m.deal_id);
+      if (actionOf(aid) || itemState("met_" + m.deal_id + "_" + m.met_on).done_at) return false;
+      // A step saved from the Pipeline tab, or this meeting logged there, answers the prompt too.
+      var other = pendingStepTap(m.deal_id);
+      return !(other && ((other.payload || {}).text || (other.payload || {}).met === m.met_on));
+    });
+    // Meetings left unlogged for more than two working days fold into one line, with the forms a tap away.
+    var metOld = metOpen.filter(function (m) { return !m.step_only && workingDaysSince(String(m.met_on).slice(0, 10)) > 2; });
+    if (metOld.length >= 2 && !S.showOldMet) {
+      var days = metOld.map(function (m) { return fmtDate(m.met_on, false); }).filter(function (x, i, all) { return all.indexOf(x) === i; });
+      rows.push(h("div", { class: "row" }, [glyph("medium"), h("div", { class: "row-main" }, [
+        h("div", { class: "row-hit static" }, [h("span", { class: "row-title" }, "Log " + plural(metOld.length, "meeting") + " from " + days.join(", ")),
+          h("span", { class: "row-detail" }, metOld.map(function (m) { return m.company; }).join(", ") + ". Each takes one line")]),
+        h("div", { class: "row-actions" }, h("button", { class: "btn btn-secondary btn-sm", type: "button", "aria-expanded": "false",
+          onclick: function () { S.showOldMet = true; render(); } }, "Show them"))])]));
+      metOpen = metOpen.filter(function (m) { return metOld.indexOf(m) < 0; });
+    }
+    metOpen.forEach(function (m) {
+      var aid = m.aid || ("ns_" + m.deal_id);
+      var saveBtn = function () { return h("button", { class: "btn btn-secondary", type: "submit", style: "height:38px" }, sheetCrm() ? "Copy" : "Save"); };
+      if (m.step_only) {
+        // The meeting is logged and no step stands: the deal says what happens next once you type it.
+        var sText = h("input", { class: "field", name: "next", value: "", placeholder: "Next step, e.g. diligence plan", "aria-label": "Next step for " + m.company, maxlength: "140" });
+        var sDue = h("input", { class: "field", type: "date", name: "due", "aria-label": "Due date", value: "" });
+        rows.push(h("div", { class: "row" }, [glyph("high"), h("div", { class: "row-main" }, [
+          h("div", { class: "row-hit static" }, [h("span", { class: "row-title" }, m.company + ": met " + fmtDate(m.met_on, false) + ", add the next step"),
+            h("span", { class: "row-detail" }, "The meeting is in your CRM. The deal has no next step yet")]),
+          h("form", { class: "inline-form met-form", onsubmit: function (e) {
+            e.preventDefault(); var t = sText.value.trim();
+            if (!t) { sText.focus(); return; }
+            if (sheetCrm()) { copyText(m.company + ", Next step: " + t + (sDue.value ? ", due " + fmtDate(sDue.value, false) : ""), "Copied. Paste it into your sheet."); return; }
+            approve(aid, "next_step", { deal_id: m.deal_id, company: m.company, text: t, due: sDue.value || null, current: m.next_step || null,
+              current_due: m.next_step_due || null, met: null, stage: null }, "Saved. Goes to your CRM at the next check.");
+          } }, [sText, sDue, saveBtn()]),
+          h("div", { class: "row-meta" }, [h("span", { class: "status hero" }, "Next step"), sourceChip({ label: "CRM", url: m.source_url })])])]));
+        return;
+      }
+      // Filled in from the meeting, not from the CRM's old step: the stage the invite names, and the CRM's step only
+      // while it is still ahead of the meeting.
+      var hasPre = m.prefill !== undefined;
+      var dueNow = hasPre ? (m.prefill_due || "") : (m.next_step_due && String(m.next_step_due).slice(0, 10) > m.met_on ? String(m.next_step_due).slice(0, 10) : "");
+      var text = h("input", { class: "field", name: "next", value: hasPre ? (m.prefill || "") : (m.next_step || ""), placeholder: "Next step, e.g. diligence plan", "aria-label": "Next step for " + m.company, maxlength: "140" });
+      var due = h("input", { class: "field", type: "date", name: "due", "aria-label": "Due date", value: dueNow });
+      var moves = [m.next_stage, m.implied_stage].filter(function (x, i, all) { return x && all.findIndex(function (y) { return y && y.key === x.key; }) === i; });
+      var stage = moves.length ? h("select", { class: "field", name: "stage", "aria-label": "Stage for " + m.company },
+        [h("option", { value: "" }, "Still " + (m.stage || "this stage"))].concat(moves.map(function (x) {
+          var o = h("option", { value: x.name }, "Move to " + x.name); if (m.implied_stage && x.key === m.implied_stage.key) o.selected = true; return o;
+        }))) : null;
+      rows.push(h("div", { class: "row" }, [glyph("high"), h("div", { class: "row-main" }, [
+        h("div", { class: "row-hit static" }, [h("span", { class: "row-title" }, m.company + ": met " + fmtDate(m.met_on, false)),
+          h("span", { class: "row-detail" }, (m.meeting ? "\u201c" + m.meeting + "\u201d. " : "") + "Log it in your CRM" +
+            (m.next_step ? ". It still says next: " + m.next_step + byDate(m.next_step_due) +
+              (hasPre && !m.prefill ? ", which was this meeting" : "") : ". No next step yet"))]),
+        h("form", { class: "inline-form met-form", onsubmit: function (e) {
+          e.preventDefault(); var t = text.value.trim();
+          var st = stage && stage.value ? stage.value : null;
+          if (!t && !st && !hasPre) { text.focus(); return; }
+          if (sheetCrm()) {
+            copyText(m.company + (t ? ", Next step: " + t + (due.value ? ", due " + fmtDate(due.value, false) : "") : m.step_was_meeting ? ", Next step: none yet" : "") + (st ? ", Stage: " + st : "") +
+              ", Last contact: " + fmtDate(m.met_on, false), "Copied. Paste it into your sheet."); return;
+          }
+          // Left blank where the CRM's step was this meeting: the old step goes, so no one reads it as still ahead.
+          var clear = !t && !!m.step_was_meeting;
+          approve(aid, "next_step", { deal_id: m.deal_id, company: m.company, text: t || null, due: t ? (due.value || null) : null, current: m.next_step || null,
+            current_due: m.next_step_due || null, met: m.met_on, stage: st, clear_step: clear || undefined }, t ? "Saved. Goes to your CRM at the next check." :
+            "Saved: the meeting" + (st ? " and the stage" : "") + " go to your CRM at the next check. Add the next step when you have it.");
+        } }, [text, due, stage, saveBtn()]),
+        h("div", { class: "row-meta" }, [h("span", { class: "status hero" }, "Met"), sourceChip({ label: "CRM", url: m.source_url })])])]));
+    });
+    // Replies to pitches fold into one line when there are many: an analyst's morning is not twenty rows of drafts.
+    var pitches = ((S.snap.inbound || {}).items) || {}, replies = Object.keys(drafts).filter(function (id) {
+      var d = drafts[id] || {}; return d.inbound_id && !d.commitment_id && !itemState(id).done_at && !(skip && skip[id]) && !draftClosed(d);
+    });
+    var folded = replies.length > 3 && !S.showReplies;
+    if (replies.length > 3) {
+      var n = { call: 0, more_info: 0, pass: 0 };
+      replies.forEach(function (id) { var dec = (pitches[drafts[id].inbound_id] || {}).decision || drafts[id].decision; if (n[dec] !== undefined) n[dec] += 1; });
+      var parts = [n.call ? plural(n.call, "call") : null, n.more_info ? plural(n.more_info, "ask") + " for more" : null,
+        n.pass ? n.pass + (n.pass === 1 ? " kind pass" : " kind passes") : null].filter(Boolean);
+      rows.push(h("div", { class: "row" }, [glyph("medium"), h("div", { class: "row-main" }, [
+        h("div", { class: "row-hit static" }, [h("span", { class: "row-title" }, replies.length + " replies to pitches, ready to send"),
+          h("span", { class: "row-detail" }, (parts.length ? parts.join(", ") + ". " : "") + "Oldest pitch first")]),
+        h("div", { class: "row-actions" }, h("button", { class: "btn btn-secondary btn-sm", type: "button", "aria-expanded": folded ? "false" : "true",
+          onclick: function () { S.showReplies = !S.showReplies; render(); } }, folded ? "Show all " + replies.length : "Show fewer"))])]));
+    }
+    Object.keys(drafts).forEach(function (id) {
+      var d = drafts[id] || {};
+      if (itemState(id).done_at || (skip && skip[id]) || draftClosed(d) || d.kind === "holder") return;
+      if (folded && replies.indexOf(id) >= 0) return;
+      rows.push(draftRow(id, d));
+    });
+    if (!rows.length) return null;
+    return h("section", { class: "card", "aria-label": "Ready for you" }, [h("h2", { class: "sec-h" }, [h("b", null, "Ready for you"), h("span", { class: "count" }, String(rows.length))]), h("div", { class: "list" }, rows)]);
+  }
+  function draftRow(id, d) {
+      return h("div", { class: "row" }, [glyph("medium"), h("div", { class: "row-main" }, [
+        h("div", { class: "row-hit static" }, [h("span", { class: "row-title" }, "Draft: " + (d.subject || "follow-up")),
+          h("span", { class: "row-detail" }, "To " + (d.to_name || d.to || "") + lateBy(d) + (closedInDraft(d) ? ". " + closedInDraft(d).trim().replace(/\.$/, "") : "") + (d.context ? ". " + d.context : ""))]),
+        h("div", { class: "row-meta" }, [h("span", { class: "status" + (draftGaps(d) ? " hero" : "") }, draftGaps(d) ? "Fill in " + plural(draftGaps(d), "line") :
+          d.in_gmail ? "In your Gmail drafts" : "Ready to send"), sourceChip({ label: d.source_label || "Source", url: d.source_url })]),
+        h("div", { class: "row-actions" }, [
+          h("button", { class: "btn btn-secondary btn-sm", type: "button", onclick: function () { copyText(draftText(d), "Draft copied"); } }, [icon(ICON.copy, 16), "Copy"]),
+          gmailHref(d) ? h("a", { class: "btn btn-ghost btn-sm", href: safeUrl(gmailHref(d)), target: "_blank", rel: "noopener noreferrer" }, [icon(ICON.ext, 16), "Open in Gmail"]) : null,
+          sentButton(Object.assign({ id: id }, d), null, "btn-ghost btn-sm")])])]);
+  }
+  function scoreCard() {
+    var id = "weekly-score-" + isoWeek(), done = S.rated[id];
+    var row = h("div", { class: "score-row", role: "group", "aria-label": "Score from 0 to 10" });
+    for (var i = 0; i <= 10; i++) (function (n) {
+      row.appendChild(h("button", { class: "chip chip-rate", type: "button", "aria-pressed": String(done) === String(n) ? "true" : "false",
+        onclick: function () { rate({ id: id, kind: "weekly_score", title: "Weekly score" }, String(n)); toast("Thanks. Scored " + n + " this week."); } }, String(n)));
+    })(i);
+    return h("section", { class: "card", style: "display:grid;gap:12px" }, [h("h2", { class: "sec-h", style: "margin:0" }, [h("b", null, "One question")]),
+      h("p", { class: "finding" }, "How would you score ant. this week, from 0 to 10?"), row]);
+  }
+
+  // ---------------------------------------------------------------- Pipeline
+  function initials(email) {
+    var local = String(email || "").split("@")[0]; if (!local) return null;
+    var parts = local.split(/[._-]+/).filter(Boolean);
+    return (parts.length > 1 ? parts[0][0] + parts[1][0] : local.slice(0, 2)).toUpperCase();
+  }
+  function viewPipeline() {
+    var p = S.snap.pipeline;
+    if (!p) return [emptyCard("Your pipeline appears here", "ant. reads deals from your CRM, or builds the pipeline from your email if you have no CRM.")];
+    var deals = p.deals || {}, me = String(cfg().user_email || "").toLowerCase(), own = p.scope === "own";
+    var hd = p.hero && p.hero.deal_id ? deals[p.hero.deal_id] : null;
+    var dl = p.hero && p.hero.deadline ? String(p.hero.deadline).slice(0, 10) : null;
+    var kick = !dl ? "This week" : dl < dayIso(0) ? "Their deadline passed" : dl === dayIso(0) ? "Due today" : dl === dayIso(1) ? "Due tomorrow" : "Decide by " + fmtDate(dl, false);
+    var out = [heroCard(p.hero ? { kicker: kick, statement: p.hero.statement, finding: p.hero.finding, breach: p.hero.breach,
+      source: hd ? { label: "CRM", url: hd.source_url } : null } : null)];
+    var review = recentDigest(["review", "preread"], 24 * 7); if (review) out.push(review);
+    var mine = function (d) { return !own || String(d.owner || "").toLowerCase() === me || (d.team || []).map(function (t) { return String(t).toLowerCase(); }).indexOf(me) >= 0; };
+    var all = Object.keys(deals).filter(function (id) { return deals[id].active && mine(deals[id]); });
+    var needs = function (d) { return d.competing || d.stale; };
+    var myOwn = function (d) { return String(d.owner || "").toLowerCase() === me || (d.team || []).map(function (t) { return String(t).toLowerCase(); }).indexOf(me) >= 0; };
+    var lvl = cfg().level, mineCount = own ? 0 : all.filter(function (id) { return myOwn(deals[id]); }).length;
+    // An analyst starts on their own deals; one tap shows the whole pipeline.
+    if (!S.filterChosen && lvl === "analyst" && mineCount) S.filter = "mine";
+    if (S.filter === "mine" && !mineCount) S.filter = "all";
+    var pickFilter = function (f) { return function () { S.filter = f; S.filterChosen = true; render(); }; };
+    var q = S.search.trim().toLowerCase();
+    var card = h("section", { class: "card", "aria-label": "Deals by stage" }), any = false;
+    if (all.length > 8 || (mineCount && mineCount < all.length)) {
+      var search = all.length > 8 ? h("input", { class: "field field-sm", type: "search", placeholder: "Find a company", "aria-label": "Find a company", value: S.search }) : null;
+      if (search) search.addEventListener("input", function () { S.search = search.value; render(); var el = document.querySelector("input[type=search]"); if (el) { el.focus(); el.setSelectionRange(el.value.length, el.value.length); } });
+      card.appendChild(h("div", { class: "filters", style: "padding-bottom:8px" }, [
+        h("button", { class: "chip chip-filter", type: "button", "aria-pressed": S.filter === "all" ? "true" : "false", onclick: pickFilter("all") }, "All " + all.length),
+        mineCount && mineCount < all.length ? h("button", { class: "chip chip-filter", type: "button", "aria-pressed": S.filter === "mine" ? "true" : "false", onclick: pickFilter("mine") }, "Mine " + mineCount) : null,
+        h("button", { class: "chip chip-filter", type: "button", "aria-pressed": S.filter === "needs" ? "true" : "false", onclick: pickFilter("needs") },
+          "Needs a look " + all.filter(function (id) { return needs(deals[id]); }).length), search]));
+    }
+    // Partners read from the closing end; an analyst works from the top of the funnel.
+    var order = (p.stages || []).slice(); if (lvl !== "analyst") order.reverse();
+    order.forEach(function (raw) {
+      var st = typeof raw === "string" ? { key: null, name: raw } : raw;
+      var ids = all.filter(function (id) {
+        var d = deals[id];
+        return (st.key ? d.stage_key === st.key : d.stage === st.name) && (S.filter !== "needs" || needs(d)) && (S.filter !== "mine" || myOwn(d)) &&
+          (!q || String(d.company || "").toLowerCase().indexOf(q) >= 0);
+      });
+      if (!ids.length) return;
+      any = true;
+      ids.sort(function (a, b) { return (deals[b].competing ? 2 : 0) + (deals[b].stale ? 1 : 0) - (deals[a].competing ? 2 : 0) - (deals[a].stale ? 1 : 0); });
+      // Early stages fold away for partners and principals; analysts and deal owners see everything. A search or filter opens them.
+      var early = ["first_meeting", "screening", "inbound"].indexOf(st.key) >= 0;
+      var folds = early && !own && lvl !== "analyst" && lvl !== "solo_gp" && !q && S.filter === "all";
+      var key = st.key || st.name, open = S.stageOpen[key] !== undefined && folds ? S.stageOpen[key] : !folds;
+      var flagged = ids.filter(function (id) { return needs(deals[id]); }).length;
+      card.appendChild(h("h2", { class: "stage-h" }, [h("b", null, st.name), h("span", null, ids.length + (flagged && !open ? " · " + flagged + " need a look" : "")),
+        folds ? h("button", { class: "btn btn-ghost btn-sm", type: "button", style: "margin-left:auto", "aria-expanded": open ? "true" : "false",
+          onclick: function () { S.stageOpen[key] = !open; render(); } }, open ? "Hide" : "Show") : null]));
+      if (open) card.appendChild(h("div", { class: "list" }, ids.map(function (id) { return dealRow(id, deals[id]); })));
+    });
+    if (!any) card.appendChild(h("p", { class: "prov" }, q || S.filter !== "all" ? "No deals match." : own ? "No active deals you own. Deals you lead or work on in the CRM show here." : "No active deals."));
+    out.push(card);
+    var inbound = inboundCard(); if (inbound) out.push(inbound);
+    if (own) out.push(h("p", { class: "prov" }, "Showing deals you own or work on. Ask Claude “show the whole pipeline” to see every deal."));
+    return out;
+  }
+  function inboundCard() {
+    var mods = cfg().modules || {};
+    if (mods.triage === "off") return null;
+    var items = ((S.snap.inbound || {}).items) || {}, deals = ((S.snap.pipeline || {}).deals) || {}, onPipe = {};
+    Object.keys(deals).forEach(function (id) {
+      var d = deals[id] || {}; if (!d.active) return;
+      if (d.domain) onPipe["d:" + String(d.domain).toLowerCase()] = true;
+      if (d.company) onPipe["n:" + String(d.company).toLowerCase()] = true;
+    });
+    var rows = Object.keys(items).map(function (k) { return items[k]; }).filter(function (r) {
+      return r && !isHidden({ id: "in_" + r.id }) && !onPipe["d:" + String(r.domain || "").toLowerCase()] && !onPipe["n:" + String(r.company || "").toLowerCase()];
+    }).sort(function (a, b) { return (b.score || 0) - (a.score || 0); });
+    if (!rows.length) return null;
+    var shown = S.allInbound ? rows : rows.slice(0, 6);
+    return h("section", { class: "card", "aria-label": "Pitches" }, [h("h2", { class: "sec-h" }, [h("b", null, "Pitches"), h("span", { class: "count" }, rows.length + " in 14 days")]),
+      h("div", { class: "list" }, shown.map(function (r) {
+        var replyAt = r.answered || null;
+        Object.keys(((S.snap.drafts || {}).items) || {}).forEach(function (k) { var d = S.snap.drafts.items[k]; if (d && d.inbound_id === r.id && sentAt(k)) replyAt = replyAt || sentAt(k); });
+        var word = r.injection_flag ? "flagged" : r.booked_on ? "booked" : r.met_on ? "met" : replyAt ? "answered" : r.in_touch ? "in_touch" : r.decision || "more_info";
+        var reason = (r.reasons || []).filter(function (x) { return !x.ok; })[0];
+        var when = r.booked_on ? "Call booked " + fmtDate(r.booked_on, false) + " " + String(r.booked_on).slice(11, 16) : r.met_on ? "You met them " + fmtDate(r.met_on, false) :
+          replyAt ? "You replied " + fmtDate(replyAt, false) + ": waiting on them" :
+          r.in_touch ? "You already write to them, so no reply was drafted: answer in your thread" : null;
+        return itemRow({ id: "in_" + r.id, kind: "inbound", group: "inbound", title: r.company + (r.score !== undefined ? " · " + r.score : ""),
+          detail: [when, r.pass_log, r.facts, reason ? reason.text : null].filter(Boolean).join(". "), status_word: word,
+          source: { label: "Email", url: r.source_url }, entity: { type: "inbound", id: r.id, name: r.company }, actions: ["snooze"] });
+      })),
+      rows.length > 6 ? h("button", { class: "btn btn-ghost btn-sm", type: "button", onclick: function () { S.allInbound = !S.allInbound; render(); } },
+        S.allInbound ? "Show fewer" : "Show all " + rows.length) : null]);
+  }
+  // One line a partner can read in a chat: the deal, what the other fund did, the date that matters and our next step.
+  // "by 25 Oct" while it is ahead, "was due 25 Oct" once it has passed: a row never promises a day that has gone.
+  function byDate(due) { if (isNil(due)) return ""; return (dayOf(due) < todayIso() ? ", was due " : " by ") + fmtDate(due, false); }
+  function lowerFirst(t) { t = String(t || "").replace(/\.$/, ""); return t.slice(0, 2) === t.slice(0, 2).toUpperCase() ? t : t.charAt(0).toLowerCase() + t.slice(1); }
+  function partnerLine(d) {
+    var where = [d.stage, isNil(d.days_in_stage) ? null : "day " + d.days_in_stage].filter(Boolean).join(", ");
+    return (d.company || "Deal") + (where ? " (" + where + ")" : "") + ": " + String(d.competing_evidence || "another fund is moving").replace(/\.$/, "") +
+      (d.deadline_gap ? ". " + d.deadline_gap : "") + ". Next: " + (d.next_step && !d.step_went ? d.next_step + byDate(d.next_step_due) : "none set") +
+      "." + (safeUrl(d.source_url) ? " " + safeUrl(d.source_url) : "");
+  }
+  function dealRow(id, d) {
+    var quiet = d.quiet || !!actionOf("quiet_" + id), ns = pendingStepTap(id), key = "deal:" + id, open = S.open === key;
+    var over = d.dwell && d.days_in_stage > d.dwell, pct = d.dwell ? Math.min(100, Math.round(100 * (d.days_in_stage || 0) / d.dwell)) : 0;
+    var np = ns ? ns.payload || {} : {};
+    var next = ns ? (np.text ? np.text + (np.due ? " by " + fmtDate(np.due, false) : "")
+        : "Met " + fmtDate(np.met || d.last_met, false) + (np.stage ? ", moving to " + np.stage : "") + (np.clear_step ? ", no next step yet" : "")) +
+        " (saving to your CRM at the next check)"
+      : d.next_step && d.step_went ? "Sent " + fmtDate(d.step_went, false) + ": " + lowerFirst(d.next_step) + ". Add the next step"
+      : d.next_step ? "Next: " + d.next_step + byDate(d.next_step_due)
+      : d.next_meeting ? "Next: meeting " + hhmm(d.next_meeting)
+      : d.last_met ? "Met " + fmtDate(d.last_met, false) + ". Add the next step" : "No next step set";
+    var hit = h("button", { class: "row-hit", type: "button", "aria-expanded": open ? "true" : "false", "data-id": key,
+      onclick: function () { S.open = open ? null : key; render(); focusId(key); } },
+      [h("span", { class: "row-title" }, d.company || "Deal"), h("span", { class: "row-detail" }, (d.deadline_gap ? d.deadline_gap + ". " : "") +
+        (d.asked && d.asked.on ? String(d.asked.person || "They").split(" ")[0] + " asked on " + fmtDate(d.asked.on, false) + ", no reply yet. " : "") + next +
+        (d.competing_evidence ? ". " + (d.competing_said_by && !d.competing_summary ? String(d.competing_said_by).split(" ")[0] + " wrote: \u201c" +
+          String(d.competing_evidence).replace(/[.\s]+$/, "") + "\u201d" : d.competing_said_by ? "From " + String(d.competing_said_by).split(" ")[0] +
+          "'s email, " + (String(d.owner || "").toLowerCase() === String(cfg().user_email || "").toLowerCase() && d.owner ? "in your CRM" : "shared by the deal team") +
+          ": " + String(d.competing_evidence).replace(/[.\s]+$/, "") : d.competing_evidence) : ""))]);
+    hit._item = { id: "deal_" + id, kind: "deal", group: "deal_move", title: d.company };
+    var word = d.competing ? "competing" : d.asked ? "waiting_you" : d.stale ? "stale" : quiet ? "quiet" : null;
+    var ownerName = d.owner ? String(d.owner).split("@")[0] : "", soloGp = cfg().level === "solo_gp";
+    // A one-person fund owns every deal: no owner initials, no sponsoring partner.
+    var facts = [soloGp ? null : initials(d.owner), !soloGp && d.partner && String(d.partner).split(" ")[0].toLowerCase() !== ownerName.toLowerCase() ? "Partner: " + String(d.partner).split(" ")[0] : null,
+      [d.round, fmtMoney(d.raise_usd)].filter(Boolean).join(" ")].filter(Boolean).join(" · ");
+    var meta = h("div", { class: "row-meta" }, [
+      word ? statusFor({ status_word: word }) : null,
+      (function () { var r = (d.stale_reasons || []).filter(function (x) { return !/past the \d+-day mark/.test(String(x)); })[0];
+        return d.stale && r ? h("span", { class: "status" }, r) : null; })(),
+      quiet && word !== "quiet" ? h("span", { class: "chip chip-quiet" }, [icon(ICON.lock, 12), "Quiet"]) : null,
+      facts ? h("span", { class: "status" }, facts) : null,
+      sourceChip({ label: "CRM", url: d.source_url })]);
+    var input = h("input", { class: "field", name: "next", placeholder: "Next step, e.g. reference calls", "aria-label": "Next step for " + d.company, maxlength: "140" });
+    var date = h("input", { class: "field", type: "date", name: "due", "aria-label": "Due date" });
+    var actions = h("div", { class: "row-actions" }, [
+      h("form", { class: "inline-form", onsubmit: function (e) {
+        e.preventDefault(); var t = input.value.trim(); if (!t) { input.focus(); return; }
+        if (sheetCrm()) { copyText((d.company || "Deal") + ", Next step: " + t + (date.value ? ", due " + fmtDate(date.value, false) : ""), "Copied. Paste it into your sheet."); return; }
+        // What Home showed rides with the tap, so the check never overwrites a step someone changed since.
+        var metOn = d.last_met && (!d.crm_last_contact || String(d.crm_last_contact).slice(0, 10) < String(d.last_met).slice(0, 10)) ? String(d.last_met).slice(0, 10) : null;
+        approve("ns_" + id, "next_step", { deal_id: id, company: d.company, text: t, due: date.value || null,
+          current: d.next_step || null, current_due: d.next_step_due || null, met: metOn }, "Saved. Goes to your CRM at the next check.");
+      } }, [input, date, h("button", { class: "btn btn-secondary", type: "submit", style: "height:38px" }, sheetCrm() ? "Copy" : "Save")]),
+      d.competing && !quiet ? h("button", { class: "btn btn-secondary btn-sm", type: "button", onclick: function () { copyText(partnerLine(d), "Copied for your partners"); } },
+        [icon(ICON.copy, 16), "Copy for partners"]) : null,
+      quiet ? null : h("button", { class: "btn btn-ghost btn-sm", type: "button", onclick: function () { approve("quiet_" + id, "quiet", { deal_id: id }, "Marked quiet. Kept out of the copied brief, pushes and pre-reads."); } },
+        [icon(ICON.lock, 16), "Mark quiet"]),
+      rateChips(hit._item)]);
+    if (!open) actions.hidden = true;
+    return h("div", { class: "row deal-row" }, [glyph(d.competing ? "breach" : d.stale ? "high" : "low"), h("div", { class: "row-main" }, [hit, meta]),
+      h("div", { class: "dwell" }, [h("span", { class: "days" + (over ? " over" : "") }, isNil(d.days_in_stage) ? DASH : Number(d.days_in_stage) <= 0 ? "Moved today" :
+        over ? plural(d.days_in_stage, "day") + ", usually " + d.dwell : "Day " + d.days_in_stage + (d.dwell ? " of " + d.dwell : "")),
+        d.dwell ? h("span", { class: "track" + (over ? " over" : ""), "aria-hidden": "true" }, h("b", { style: "width:" + pct + "%" })) : null]), actions]);
+  }
+
+  // ---------------------------------------------------------------- People
+  function viewPeople() {
+    var p = S.snap.people;
+    if (!p) return [emptyCard("Your relationships appear here", "ant. maps who you know from your email and calendar.")];
+    var ph = p.hero || null, pid = ph && ph.person_id ? "rel_" + ph.person_id : null;
+    var out = [heroCard(ph ? { kicker: ph.person_id ? "Going cold" : "All warm", statement: ph.statement, finding: ph.finding,
+      source: ph.source_url ? { label: "Email", url: ph.source_url } : null,
+      action: pid ? (actionOf(pid) ? { done: "Draft coming at the next check" } : { label: "Draft a note", fn: function () {
+        approve(pid, "draft", { kind: "relationship", entity: { type: "person", id: ph.person_id, name: ph.name }, title: ph.statement, detail: ph.finding }, "ant. drafts it at the next check. Nothing is sent.");
+      } }) : null } : null)];
+    var decay = (p.decay || []).filter(function (r) { return !isHidden({ id: "rel_" + r.person_id }); });
+    if (decay.length) out.push(h("section", { class: "card" }, [h("h2", { class: "sec-h" }, [h("b", null, "Going cold"), h("span", { class: "count" }, String(decay.length))]),
+      h("div", { class: "list" }, decay.map(function (r) {
+        return itemRow({ id: "rel_" + r.person_id, kind: "relationship", group: "relationship", title: r.name + (r.company ? ", " + r.company : ""),
+          detail: plural(r.days_since, "day") + " since you spoke. Strength " + r.strength + (isNil(r.strength_was) || r.strength_was === r.strength ? "" : ", down from " + r.strength_was) + ".",
+          status_word: "cold", source: { label: "Email", url: r.source_url }, entity: { type: "person", id: r.person_id, name: r.name }, actions: ["draft", "snooze"] });
+      }))]));
+    var top = (p.top || []).slice(0, 40);
+    var tbl = h("table", { class: "fit-sm" }, [h("thead", null, h("tr", null, [h("th", null, "Person"), h("th", { class: "hide-sm" }, "Company"), h("th", null, "Strength"), h("th", { class: "r" }, "Last touch")])),
+      h("tbody", null, top.map(function (r) {
+        var s = Math.max(0, Math.min(100, Number(r.strength) || 0));
+        return h("tr", null, [cell(r.name || null), cell(r.company || null, "hide-sm"),
+          h("td", null, h("span", { class: "meter" }, [h("span", null, h("b", { style: "width:" + Math.max(4, s) + "%" })), String(s)])),
+          cell(ago(r.days_since), "r")]);
+      }))]);
+    out.push(h("section", { class: "card", style: "display:grid;gap:8px" }, [h("h2", { class: "sec-h" }, [h("b", null, "Strongest relationships")]), h("div", { class: "table-wrap" }, tbl),
+      h("p", { class: "prov" }, "Ask Claude “who can intro me to a company” for warm paths through your team.")]));
+    return out;
+  }
+
+  // ---------------------------------------------------------------- Portfolio
+  function viewPortfolio() {
+    var p = S.snap.portfolio;
+    if (!p) return [emptyCard("Your portfolio appears here", "ant. reads founder updates and flags drift before the board meeting.")];
+    var flags = p.flags || [], ph = p.hero || null;
+    // A hero you closed or snoozed steps aside until the next check: the next open ask, or the next flag, takes its place.
+    // After a tap on any ask since the run (a note marked sent, a next note, an ask closed), the page picks again.
+    var asksNow = ((S.snap.asks || {}).items) || {};
+    var movedAny = Object.keys(asksNow).some(function (k) { return asksNow[k] && askMovedSince(asksNow[k].item_id, p.as_of || (S.snap.brief || {}).as_of); });
+    if (ph && ph.item_id && (isHidden({ id: ph.item_id }) || ((ph.ask_id || ph.group_asks) && movedAny))) ph = nextAskHero();
+    else if (ph && !ph.ask_id && ph.company_id && flags[0] && isHidden({ id: flags[0].id })) {
+      var nf = flags.filter(function (f) { return !isHidden({ id: f.id }); })[0];
+      ph = nf ? { statement: nf.company + ": " + (nf.headline || String(nf.text || "").split(":")[0]), finding: nf.detail || nf.text, company_id: nf.company_id,
+        breach: nf.breach, source_url: nf.source_url, source_label: "Founder update" } : { statement: "No other flags this week", finding: "Updates read and checked." };
+    }
+    // The hero's own source: the ask it names for Platform, the flag it names for everyone else.
+    var out = [heroCard(ph ? { kicker: ph.group_asks ? "Founder asks · one note" : ph.ask_id ? "A founder asks" : ph.breach ? "Past a threshold" : ph.company_id ? "Worth a look" : "All clear",
+      statement: ph.statement, finding: ph.finding, breach: ph.breach,
+      // The ask that needs you, with its note when one is ready (written this morning, or since): Open draft, Sent it, and
+      // what to check before it goes.
+      draftDoc: ph.ask_id ? draftFor({ id: ph.item_id, kind: "ask", draft: ph.draft, group_asks: ph.group_asks }) : null,
+      sentFor: ph.ask_id ? { id: ph.item_id, kind: "ask", group_asks: ph.group_asks } : null,
+      source: ph.source_url ? { label: ph.source_label || "Founder update", url: ph.source_url } : flags[0] && ph.company_id ? { label: "Founder update", url: flags[0].source_url } : null } : null)];
+    var asks = asksCard(), platform = (cfg().modules || {}).portfolio === "asks";
+    if (asks && platform) out.push(asks);
+    var vis = flags.filter(function (f) { return !isHidden({ id: f.id }); });
+    if (vis.length) out.push(h("section", { class: "card" }, [h("h2", { class: "sec-h" }, [h("b", null, "Flags"), h("span", { class: "count" }, String(vis.length))]),
+      h("div", { class: "list" }, vis.map(function (f) {
+        return itemRow({ id: f.id, kind: "portfolio", group: "portfolio", title: f.company + ": " + (f.headline || String(f.text || "").split(":")[0]), detail: f.detail || f.text,
+          breach: f.breach, priority: f.priority, status_word: f.breach ? "breach" : f.priority, source: { label: "Founder update", url: f.source_url }, actions: ["snooze"] });
+      }))]));
+    if (asks && !platform) out.push(asks);
+    var comps = p.companies || {}, ids = Object.keys(comps).sort(function (a, b) { return String(comps[a].name).localeCompare(String(comps[b].name)); });
+    var tbl = h("table", { class: "fit-sm" }, [h("thead", null, h("tr", null, [h("th", null, "Company"), h("th", { class: "hide-sm" }, "Month"), h("th", { class: "r" }, "Revenue"),
+      h("th", { class: "r" }, "Growth"), h("th", { class: "r hide-sm" }, "Burn"), h("th", { class: "r" }, "Runway")])),
+      h("tbody", null, ids.map(function (id) {
+        var c = comps[id], short = !isNil(c.runway_months) && c.runway_months < 9;
+        var name = safeUrl(c.source_url) ? h("a", { href: safeUrl(c.source_url), target: "_blank", rel: "noopener noreferrer" }, c.name) : c.name;
+        return h("tr", null, [h("td", null, name), cell(isNil(c.month) ? null : fmtMonth(c.month), "hide-sm"), cell(fmtMoney(c.revenue_usd), "r"),
+          cell(fmtPct(c.growth_pct), "r" + (c.growth_pct < 0 ? " neg" : "")), cell(fmtMoney(c.burn_usd), "r hide-sm"),
+          cell(isNil(c.runway_months) ? null : Number(c.runway_months).toFixed(1) + " mo", "r" + (short ? " neg" : ""))]);
+      }))]);
+    out.push(h("section", { class: "card", style: "display:grid;gap:8px" }, [h("h2", { class: "sec-h" }, [h("b", null, "KPIs"), h("span", { class: "count" }, "latest month reported")]),
+      h("div", { class: "table-wrap" }, tbl), h("p", { class: "prov" }, "ant. · founder updates · as of " + fmtDate(p.as_of))]));
+    return out;
+  }
+
+  // The Portfolio hero when the run's own pick was closed or snoozed: the newest open ask, until the next check.
+  function nextAskHero() {
+    var items = ((S.snap.asks || {}).items) || {};
+    var open = Object.keys(items).map(function (k) { return items[k]; }).filter(function (a) { return a && a.status !== "done" && !isHidden({ id: a.item_id }); });
+    if (!open.length) return { statement: "No open founder asks", finding: "Asks from updates and mail appear here." };
+    // A note of yours ready first, then an answer or a nudge due, then the oldest ask with no note out; when every ask
+    // waits on someone else, the newest.
+    var RANK = { ready: 0, replied: 1, nudge: 1, asked: 2 };
+    var rows = open.map(function (a) { var r = askRow(a); return { a: a, r: r, rank: RANK[r.status_word] === undefined ? 3 : RANK[r.status_word] }; });
+    rows.sort(function (x, y) {
+      if (x.rank !== y.rank) return x.rank - y.rank;
+      var dx = String(x.a.date || ""), dy = String(y.a.date || "");
+      return x.rank === 2 ? dx.localeCompare(dy) : dy.localeCompare(dx);
+    });
+    var a0 = rows[0].a, r0 = rows[0].r, ask = String(a0.ask || "");
+    return { statement: (a0.company || "A founder") + ": " + (ask.slice(0, 2) === ask.slice(0, 2).toUpperCase() ? ask : ask.charAt(0).toLowerCase() + ask.slice(1)),
+      finding: r0.heroFinding + (open.length > 1 ? ". " + (open.length - 1) + " more open" : ""),
+      ask_id: a0.id, item_id: a0.item_id, company_id: a0.company_id, source_url: a0.source_url, source_label: a0.source_label };
+  }
+  function asksCard() {
+    var items = ((S.snap.asks || {}).items) || {};
+    var rows = Object.keys(items).map(function (k) { return items[k]; }).filter(function (a) { return a && a.status !== "done" && !isHidden({ id: a.item_id }); })
+      .sort(function (a, b) { return String(b.date || "").localeCompare(String(a.date || "")); });
+    if (!rows.length) return null;
+    return h("section", { class: "card", "aria-label": "Founders need" }, [h("h2", { class: "sec-h" }, [h("b", null, "Founders need"), h("span", { class: "count" }, String(rows.length))]),
+      h("div", { class: "list" }, rows.map(function (a) { return itemRow(askRow(a)); }))]);
+  }
+  function askRow(a) {
+        var asked = a.date ? Math.max(0, Math.round((Date.parse(dayIso(0)) - Date.parse(String(a.date).slice(0, 10))) / 864e5)) : null;
+        // Warm paths: who in the firm's network answers the ask, and which colleague knows them best.
+        var paths = (a.paths || []).map(function (p) { return (p.colleague === "You" ? "you know " : p.colleague + " knows ") + p.person + (p.company ? " at " + p.company : ""); });
+        // Where the ask stands: asked, a note ready, then who it went to once you mark that note sent, a nudge after five
+        // working days with no reply, and made once the introduction is in your mail.
+        var sent = askSent(a.item_id);
+        var state = "asked", label = null, lead = "", warning = a.warning || "";
+        // The note after the first: "Yes, ask the team" says the board partner agreed, and that answer replaces the warning.
+        var nextId = ["_team", "_intro"].map(function (x) { return a.item_id + x; }).filter(function (x) { return actionOf(x); })[0] || null;
+        var nextTap = nextId ? actionOf(nextId) : null;
+        var after = ((nextTap || {}).payload || {}).after || {};
+        // The partner's answer leads, then the flag it answered: "Aditi said yes on 22 Oct. Runway under 9 months".
+        var yesM = /^(.*): check with (.+?) before sourcing$/.exec(warning);
+        if (after.kind === "board" && yesM) warning = yesM[2] + " said yes on " + fmtDate(nextTap.at || after.at, false) + ". " + yesM[1];
+        var pending = draftFor({ id: a.item_id, kind: "ask" });
+        var first = sent ? String(sent.d.to_name || "").split(" ")[0] : "", who = sent && sent.base === "team" ? "the team" : (first || "them");
+        var pendingTaps = pending ? [pending.action_id].concat(pending.action_ids || []) : [];
+        // They wrote back after the note: no nudge; the reply says what comes next.
+        var answers = function (r) { return !!(r && r.on && sent && ((r.tap && r.tap === sent.tap) || laterThan(r.on, sent.at))); };
+        var rep = answers(a.replied) ? a.replied : null;
+        // They answered the note's other asks, not this one: the row says what came, never "no reply".
+        var oth = !rep && answers(a.answered_others) ? a.answered_others : null;
+        var othTxt = oth ? String(oth.by || first || "They").split(" ")[0] + " answered on " + andList(oth.named || []) + " on " + fmtDate(oth.on, false) + ", not this one" : "";
+        // Once the team is asked, "no warm path" is old news.
+        var teamWay = (pending && /_team$/.test(String(pending.action_id || ""))) || (sent && (sent.kind === "team" || sent.base === "team")) ||
+          /_team$/.test(String(nextId || ""));
+        // A reply that put off its answer ("let me think and come back to you"): five quiet working days on, it is nudged.
+        var putOff = !!(rep && rep.defers && workingDaysSince(rep.on) >= 5);
+        if (a.made_on) { state = "made"; label = "Intro made"; lead = "Intro made on " + fmtDate(a.made_on, false) + ". "; }
+        else if (sent && (!rep || putOff) && pendingTaps.indexOf(sent.tap + "_nudge") >= 0) {
+          state = "ready"; label = "Nudge ready"; lead = "Nudge to " + who + " ready" + (putOff ? ": " + String(rep.by || first || "They").split(" ")[0] + " wrote on " +
+            fmtDate(rep.on, false) + " that the answer would follow" : oth ? ": " + othTxt : ", no reply since " + fmtDate(sent.at, false)) + ". ";
+        }
+        else if (sent && pending && pending.action_id && pending.action_id !== a.item_id && !/_nudge$/.test(String(pending.action_id))) {
+          var what = /_team$/.test(pending.action_id) ? "Team note" : "Intro ask", by = String(after.to_name || "").split(" ")[0];
+          state = "ready"; label = after.kind === "board" && by ? by + " said yes" : what + " ready";
+          lead = what + " ready" + (after.kind === "board" || rep ? "" : oth ? ": " + othTxt : ": no reply from " + (first || "them") + " since " + fmtDate(sent.at, false)) + ". ";
+        }
+        else if (sent && nextTap && !(sent.tap.indexOf(nextId) === 0) && !tapAnswered(nextId)) {
+          // Tapped, and the note is not written yet: it is on its way, and nothing nudges the person who already answered.
+          var whatC = /_team$/.test(nextId) ? "Team note" : "Intro ask", byC = String(after.to_name || "").split(" ")[0];
+          state = "requested"; label = after.kind === "board" && byC ? byC + " said yes" : whatC + " coming"; lead = whatC + " coming at the next check. ";
+        }
+        else if (rep) {
+          var by_ = String(rep.by || first || "They").split(" ")[0];
+          if (putOff) { state = "nudge"; label = "Nudge"; lead = by_ + " wrote on " + fmtDate(rep.on, false) + " that the answer would follow, and it has not come: nudge " + who + ". "; }
+          else if (rep.defers) { state = "replied"; label = by_ + " replied"; lead = by_ + " replied on " + fmtDate(rep.on, false) + ": the answer is to follow. "; }
+          else { state = "replied"; label = by_ + " replied"; lead = by_ + " replied on " + fmtDate(rep.on, false) + ": read it, then answer here. "; }
+        }
+        else if (sent) {
+          var kind = sent.kind;
+          label = kind === "nudge" ? "Nudged " + who : kind === "team" ? "Asked the team" : kind === "board" ? "Asked " + (first || "the board partner") :
+            kind === "colleague" && first ? "Asked " + first + " for the intro" : "Intro requested";
+          var quiet = workingDaysSince(sent.at);
+          if (quiet >= 5 && kind === "nudge") {
+            var way = sent.base === "board" ? "raise it with " + who + " directly" : sent.base === "team" ? "ask one colleague directly" : "ask the team instead";
+            state = "nudge"; lead = label + " on " + fmtDate(sent.at, false) + (oth ? ": " + othTxt + ". " + way.charAt(0).toUpperCase() + way.slice(1) : ", still no reply: " + way) + ". "; label = "No reply";
+          }
+          else if (quiet >= 5) { state = "nudge"; lead = label + " on " + fmtDate(sent.at, false) + (oth ? ": " + othTxt + ". Nudge " + who : ", no reply in " + quiet + " working days: nudge " + who) + ". "; label = "Nudge"; }
+          else { state = "requested"; lead = label + " on " + fmtDate(sent.at, false) + ". "; }
+        }
+        var solo = cfg().level === "solo_gp";
+        return { id: a.item_id, kind: "ask", group: "ask", title: (a.company || "A founder") + ": " + a.ask,
+          detail: lead + (a.who || "The founder") + " asked on " + fmtDate(a.date, false) + (warning ? ". " + warning : "") +
+            (paths.length ? ". Warm path" + (paths.length > 1 ? "s" : "") + ": " + paths.join("; ") : solo ? ". No one in your network fits yet" :
+              teamWay ? "" : warning ? ". No warm path found yet" : ". No warm path found: ask your team"),
+          status_word: state, state_label: label, asked_days: isNaN(asked) ? null : asked,
+          source: { label: a.source_label || "Founder update", url: a.source_url },
+          entity: { type: "ask", id: a.id, name: a.company, company_id: a.company_id, paths: a.paths || null }, actions: ["draft", "done", "snooze"],
+          reply_url: rep && safeUrl(rep.url) ? rep.url : null,
+          // For a hero: where it stands, the flag, and who asked, in that order.
+          heroFinding: lead + (warning ? warning + ". " : "") + (a.who || "The founder") + " asked on " + fmtDate(a.date, false) };
+  }
+  function askByItem(itemId) {
+    var items = ((S.snap.asks || {}).items) || {}, hit = null;
+    Object.keys(items).forEach(function (k) { if (items[k] && items[k].item_id === itemId) hit = items[k]; });
+    return hit;
+  }
+  // What the page knows about an ask that the run which wrote this view did not: a note marked sent, a next note
+  // tapped, or the ask closed, since then. Until the next check, the page says where the ask stands from those.
+  function askMovedSince(itemId, since) {
+    if (!itemId || !since) return false;
+    var drafts = ((S.snap.drafts || {}).items) || {}, taps = ASK_NOTES.map(function (x) { return itemId + x; });
+    if (itemState(itemId).done_at && laterThan(itemState(itemId).done_at, since)) return true;
+    if (taps.some(function (t) { var a = S.actions[t]; return a && a.status === "approved" && a.at && laterThan(a.at, since); })) return true;
+    return Object.keys(drafts).some(function (k) {
+      var d = drafts[k], at = itemState(k).done_at;
+      return d && at && laterThan(at, since) && taps.some(function (t) { return d.action_id === t || (d.action_ids || []).indexOf(t) >= 0; });
+    });
+  }
+  function andList(names) { return names.length < 2 ? (names[0] || "") : names.slice(0, -1).join(", ") + " and " + names[names.length - 1]; }
+  // A Today row as the page knows it now. An ask that moved since the run reads as its Portfolio row does; asks that
+  // went out in one note keep one row for those still waiting on it, say the nudge went once it is marked sent, and
+  // leave Today when none waits.
+  function liveRow(it, since) {
+    if (!it || it.kind !== "ask") return it;
+    if (!it.group_asks) {
+      if (!askMovedSince(it.id, since)) return it;
+      var a = askByItem(it.id);
+      if (!a || a.status === "done") return it;
+      var r = askRow(a);
+      return Object.assign({}, it, { detail: r.detail, status_word: r.status_word, state_label: r.state_label, draft: null, live: true });
+    }
+    if (!it.group_asks.some(function (g) { return askMovedSince(g.item_id, since); })) return it;
+    var left = it.group_asks.filter(function (g) {
+      var a2 = askByItem(g.item_id);
+      if (!a2 || a2.status === "done" || a2.made_on || isHidden({ id: g.item_id })) return false;
+      return !["_team", "_intro"].some(function (x) { return actionOf(g.item_id + x); });
+    });
+    if (!left.length) return null;
+    if (left.length === 1) {
+      var one = askByItem(left[0].item_id), r1 = askRow(one);
+      return Object.assign({}, r1, { section: it.section, live: true });
+    }
+    var s0 = askSent(left[0].item_id) || {}, who = (/ wait on (.+)$/.exec(String(it.title || "")) || [])[1] || String((s0.d || {}).to_name || "").split(" ")[0] || "them";
+    var names = left.map(function (g) { return g.company || "a founder"; }), title = left.length + " founder asks wait on " + who;
+    if (s0.tap && /_nudge$/.test(s0.tap)) {
+      return Object.assign({}, it, { title: title, group_asks: left, draft: null, status_word: "requested", state_label: "Nudged " + who, live: true,
+        detail: "Nudged " + who + " on " + fmtDate(s0.at, false) + ": no answer yet on " + andList(names) + "." });
+    }
+    var dr = draftFor({ id: it.id, kind: "ask", group_asks: left });
+    return Object.assign({}, it, { title: title, group_asks: left, live: true,
+      detail: "Your " + fmtDate(s0.at, false) + " note to " + who + ": no answer yet on " + andList(names) + ". " + (dr ? "Nudge ready" : "Nudge " + who),
+      status_word: dr ? "ready" : "nudge", state_label: dr ? "Nudge ready" : "Nudge" });
+  }
+
+  // ---------------------------------------------------------------- LPs
+  function viewLps() {
+    var p = S.snap.lps;
+    if (!p) return [emptyCard("Your LPs appear here", "ant. watches each LP's last touch and re-up window.")];
+    var lh = p.hero || null, aid = lh && lh.alert_id ? lh.alert_id : null, lpDraft = aid ? draftFor({ id: aid }) : null;
+    // A note for this LP marked sent since the last check: say so, and offer no new draft until the next check.
+    var lpSent = null;
+    if (aid && !lpDraft) Object.keys(((S.snap.drafts || {}).items) || {}).forEach(function (k) {
+      var d = S.snap.drafts.items[k];
+      if (d && (d.action_id === aid || (d.action_ids || []).indexOf(aid) >= 0) && sentAt(k) && laterThan(sentAt(k), (S.snap.lps || {}).as_of || "")) lpSent = sentAt(k);
+    });
+    var out = [heroCard(lh ? { kicker: lh.kicker || (lh.breach ? "Overdue for a touch" : lh.alert_id ? "Due a touch" : "All in touch"), statement: lh.statement, finding: lpSent ? String(lh.finding || "").replace(/[;,]?\s*no touch in \d+ days?/gi, "") : lh.finding, breach: lh.breach,
+      source: lh.source_url ? { label: "CRM", url: lh.source_url } : null, draftDoc: lpDraft,
+      action: aid && !lpDraft ? (lpSent ? { done: "Marked sent " + fmtDate(lpSent, false) + ": the next check updates this" } : actionOf(aid) ? { done: "Draft coming at the next check" } : { label: "Draft a note", fn: function () {
+        approve(aid, "draft", { kind: "lp", entity: { type: "lp", id: lh.lp_id, name: lh.name }, title: lh.statement, detail: lh.finding }, "ant. drafts it at the next check. Nothing is sent.");
+      } }) : null } : null)];
+    // Each fund at a glance: what is committed, called, paid in and still to call, and when the next re-up opens.
+    (p.funds || []).forEach(function (f) {
+      var stat = function (label, value, sub) { return h("div", { class: "fund-stat" }, [h("span", null, label), h("b", null, isNil(value) ? DASH : value), sub ? h("small", null, sub) : null]); };
+      var pct = isNil(f.called_pct) ? null : Math.max(0, Math.min(100, Number(f.called_pct)));
+      out.push(h("section", { class: "card fund", "aria-label": f.name }, [
+        h("h2", { class: "sec-h" }, [h("b", null, f.name), h("span", { class: "count" }, plural(f.lps, "LP"))]),
+        h("div", { class: "fund-grid" }, [
+          stat("Committed", fmtMoney(f.committed_usd), f.size_usd && f.size_usd !== f.committed_usd ? "of " + fmtMoney(f.size_usd) + " target" : null),
+          stat("Called", fmtMoney(f.called_usd), pct === null ? "Add called capital to your LP list" : pct + "% of commitments"),
+          stat("Unfunded", fmtMoney(f.unfunded_usd), pct === null ? null : "Still to call"),
+          stat("Next re-up window", f.next_window ? fmtDate(f.next_window, false) : null, null)]),
+        pct === null ? null : h("div", { class: "track fund-track", role: "img", "aria-label": pct + "% of commitments called" }, h("b", { style: "width:" + pct + "%" }))]));
+    });
+    var alerts = (p.alerts || []).filter(function (a) { return !isHidden({ id: a.id }); });
+    if (alerts.length) out.push(h("section", { class: "card" }, [h("h2", { class: "sec-h" }, [h("b", null, "Needs you"), h("span", { class: "count" }, String(alerts.length))]),
+      h("div", { class: "list" }, alerts.map(function (a) {
+        return itemRow({ id: a.id, kind: "lp", group: "lp", title: a.name, detail: a.text, breach: a.breach, priority: a.priority, status_word: a.breach ? "overdue" : "due",
+          source: { label: "CRM", url: a.source_url }, entity: { type: "lp", id: a.lp_id, name: a.name }, actions: ["draft", "snooze"] });
+      }))]));
+    // A colleague's LP: listed with its owner, never drafted twice.
+    var team = p.team_alerts || [];
+    if (team.length) out.push(h("section", { class: "card" }, [h("h2", { class: "sec-h" }, [h("b", null, "With your team"), h("span", { class: "count" }, String(team.length))]),
+      h("div", { class: "list" }, team.map(function (a) {
+        return itemRow({ id: a.id + "_team", kind: "lp", group: "lp", title: a.name, detail: a.text + ". " + (a.owner_name || "A colleague") + " owns this LP", breach: false,
+          status_word: "owned", owner_name: a.owner_name, source: { label: "CRM", url: a.source_url }, entity: { type: "lp", id: a.lp_id, name: a.name }, actions: [] });
+      }))]));
+    var lps = p.lps || {}, ids = Object.keys(lps).sort(function (a, b) { return (lps[b].days_since || 0) - (lps[a].days_since || 0); });
+    var hasCalled = ids.some(function (id) { return !isNil(lps[id].called_usd); });
+    var hasOwner = ids.some(function (id) { return !!lps[id].owner_name; });
+    // On a phone the re-up window stays (it drives every alert); the money and owner fold under the name.
+    var head = [h("th", null, "LP"), h("th", { class: "r hide-sm" }, "Commitment")];
+    if (hasCalled) head.push(h("th", { class: "r hide-sm" }, "Called"), h("th", { class: "r hide-sm" }, "Unfunded"));
+    if (hasOwner) head.push(h("th", { class: "hide-sm" }, "Owner"));
+    head.push(h("th", null, "Re-up window"), h("th", { class: "r" }, "Last touch"));
+    var tbl = h("table", { class: "fit-sm" }, [h("thead", null, h("tr", null, head)),
+      h("tbody", null, ids.map(function (id) {
+        var l = lps[id];
+        // On a phone the money columns fold into this line, unfunded included.
+        var sub = [l.commitment_usd ? fmtMoney(l.commitment_usd) + " committed" : null, !isNil(l.called_usd) ? fmtMoney(l.called_usd) + " called" : null,
+          !isNil(l.unfunded_usd) ? fmtMoney(l.unfunded_usd) + " unfunded" : null,
+          l.outstanding_usd ? fmtMoney(l.outstanding_usd) + " still due" : null, l.owner_name ? l.owner_name + "'s LP" : null].filter(Boolean).join(" · ");
+        var row = [h("td", null, [l.name || nul(), sub ? h("span", { class: "sub" }, sub) : null]), cell(fmtMoney(l.commitment_usd), "r hide-sm")];
+        if (hasCalled) row.push(h("td", { class: "r hide-sm" }, [fmtMoney(l.called_usd) || nul(), l.outstanding_usd ? h("span", { class: "neg owed" }, fmtMoney(l.outstanding_usd) + " due") : null]),
+          cell(fmtMoney(l.unfunded_usd), "r hide-sm"));
+        if (hasOwner) row.push(cell(l.owner_name || "You", "hide-sm"));
+        row.push(cell(l.reup_window_start ? fmtDate(l.reup_window_start, false) + " to " + fmtDate(l.reup_window_end, false) : null),
+          cell(ago(l.days_since), "r" + (l.alert && l.alert.breach && !l.alert.kind ? " neg" : "")));
+        return h("tr", null, row);
+      }))]);
+    out.push(h("section", { class: "card", style: "display:grid;gap:8px" }, [h("h2", { class: "sec-h" }, [h("b", null, "All LPs")]), h("div", { class: "table-wrap" }, tbl)]));
+    return out;
+  }
+
+  // ---------------------------------------------------------------- sheets
+  var lastFocus = null;
+  function closeOverlay() { document.getElementById("overlay-slot").textContent = ""; if (lastFocus && lastFocus.focus) lastFocus.focus(); }
+  function overlay(title, body) {
+    lastFocus = document.activeElement;
+    var slot = document.getElementById("overlay-slot"); slot.textContent = "";
+    var sheet = h("div", { class: "sheet", role: "dialog", "aria-modal": "true", "aria-label": title }, [
+      h("div", { class: "sheet-h" }, [h("h2", null, title), h("button", { class: "btn btn-ghost btn-sm", type: "button", "aria-label": "Close", onclick: closeOverlay }, icon(ICON.x, 16))])].concat(body));
+    var scrim = h("div", { class: "scrim", onclick: function (e) { if (e.target === scrim) closeOverlay(); } }, sheet);
+    slot.appendChild(scrim);
+    var first = sheet.querySelector("button"); if (first) first.focus();
+  }
+  function kv(title, items, ordered) { return items && items.length ? h("div", { class: "kv" }, [h("h3", null, title), h(ordered ? "ol" : "ul", null, items)]) : null; }
+  function openPrep(prepId, meeting) {
+    var cards = ((S.snap.prep || {}).cards) || {}, card = null;
+    Object.keys(cards).forEach(function (k) { if (cards[k].id === prepId || k === prepId) card = cards[k]; });
+    if (!card) { toast("This prep card is still being written. Check back in a few minutes."); return; }
+    if (card.kind === "partner") { openPartnerPack(card); return; }
+    var me = String(cfg().user_name || "").toLowerCase();
+    var qs = (card.questions && card.questions.length ? card.questions : card.question_seeds || []).slice(0, 3);
+    var body = [
+      card.watch ? h("p", { class: "watch" }, "Watch: " + card.watch) : null,
+      card.finding && card.finding !== card.watch ? h("p", { class: "finding" }, card.finding) : null,
+      card.context && card.context !== card.finding ? h("p", { class: "finding" }, card.context) : null,
+      kv(card.questions && card.questions.length ? "Questions ant. suggests" : "Worth raising", qs.map(function (q) { return h("li", null, q); }), true),
+      kv("Open promises", (card.open_commitments || []).map(function (c) {
+        var mine = c.side ? c.side === "us" : String(c.owed_by || "").toLowerCase() === me;
+        var who = mine ? "You owe" : String(c.owed_by || "They").split(" ")[0] + " owes";
+        return h("li", null, [c.looks_done ? h("span", { class: "status" }, "Looks done ") : c.overdue ? h("span", { class: "status breach" }, "Overdue ") : null,
+          who + ": " + c.what + (c.looks_done ? " (" + c.looks_done + ")" : c.due ? " (due " + fmtDate(c.due, false) + ")" : "") + " ",
+          sourceChip({ label: "Notes", url: c.source_url })]);
+      })),
+      kv("Ready to send", ((meeting && meeting.note_drafts) || []).map(function (did) {
+        var d = did ? meetingDraft(did) : null; if (!d) return null;
+        var href = gmailHref(d);
+        return h("li", null, [h("b", null, d.subject || "Draft"), " to " + (d.to_name || d.to || "them"),
+          // What to check before it goes, here too: this is the screen opened just before the meeting.
+          d.context || closedInDraft(d) ? h("p", { class: "draft-note" }, [h("b", null, "Before you send: "), closedInDraft(d) + (d.context || "")]) : null, h("div", { class: "row-actions" }, [
+          href ? h("a", { class: "btn btn-secondary btn-sm", href: safeUrl(href), target: "_blank", rel: "noopener noreferrer" }, [icon(ICON.ext, 16), "Open in Gmail"]) : null,
+          h("button", { class: "btn btn-secondary btn-sm", type: "button", onclick: function () { markSent(d, null); closeOverlay(); } }, "Sent it"),
+          h("button", { class: "btn btn-ghost btn-sm", type: "button", onclick: function () { copyText(draftText(d), "Draft copied"); } }, [icon(ICON.copy, 16), "Copy"])])]);
+      }).filter(Boolean)),
+      card.deal ? kv("Deal", [h("li", null, [card.deal.stage + ", day " + (isNil(card.deal.days_in_stage) ? DASH : card.deal.days_in_stage) + (card.deal.dwell ? " of " + card.deal.dwell : "") +
+        (card.deal.next_step && card.deal.step_went ? ". Sent " + fmtDate(card.deal.step_went, false) + ": " + lowerFirst(card.deal.next_step) + ". Set the next step "
+          : ". Next step: " + (card.deal.next_step || "none") + " "), sourceChip({ label: "CRM", url: card.deal.source_url })])]) : null,
+      kv("Who", (card.attendees || []).map(function (a) {
+        return h("li", null, [h("b", null, a.name), [a.title, a.company].filter(Boolean).map(function (x) { return ", " + x; }).join("") +
+          " · strength " + (a.strength || 0) + (a.last_touch ? " · last touch " + a.last_touch : "")]);
+      })),
+      kv("Last three interactions", (card.history || []).map(function (x) { return h("li", null, [x.date + " · " + x.text + " ", sourceChip({ label: x.type === "meeting" ? "Calendar" : "Email", url: x.source_url })]); })),
+      kv("Colleagues who know them", (card.colleagues || []).map(function (c) { return h("li", null, c.colleague + " last spoke with " + c.person + " on " + c.last_touch); })),
+      safeUrl(card.empathy_map_url) ? h("div", null, h("a", { class: "btn btn-secondary", href: safeUrl(card.empathy_map_url), target: "_blank", rel: "noopener noreferrer" }, [icon(ICON.ext, 16), "Open empathy map"])) : null,
+      h("p", { class: "prov" }, ["ant. · calendar, email, notes and CRM · ", sourceChip({ label: "Calendar", url: card.source_url })])
+    ].filter(Boolean);
+    overlay((card.time ? card.time + " · " : "") + (card.who || card.title || "Meeting"), body);
+  }
+  // A partner sync or IC: each deal to decide with why now, then the promises inside the team.
+  function openPartnerPack(card) {
+    // Deals the room decides first; late-stage deals that stalled are a list of their own, not decisions.
+    var rowOf = function (r) {
+      // The same facts for everyone in the room: who leads, the sponsoring partner, the round and its size.
+      var first = function (n) { return n ? String(n).split(" ")[0] : null; };
+      var facts = [r.owner ? "Lead: " + first(r.owner) : null, r.partner && r.partner !== r.owner ? "Partner: " + first(r.partner) : null,
+        [r.round, fmtMoney(r.raise_usd)].filter(Boolean).join(", ") || null].filter(Boolean).join(" · ");
+      return h("li", null, [r.urgent ? h("span", { class: "status breach" }, "Urgent ") : null, h("b", null, r.company), (r.stage ? " · " + r.stage : "") + ": " + String(r.why || "").replace(/\.$/, "") + ". ",
+        facts ? h("span", { class: "pack-facts" }, facts + " ") : null, sourceChip({ label: "CRM", url: r.source_url })]);
+    };
+    var rows = card.decisions || [];
+    var decide = rows.filter(function (r) { return r.kind !== "stalled"; }).map(rowOf);
+    var stalled = rows.filter(function (r) { return r.kind === "stalled"; }).map(rowOf);
+    var qs = (card.questions && card.questions.length ? card.questions : card.question_seeds || []).slice(0, 3);
+    var promises = (card.open_commitments || []).map(function (c) {
+      var who = c.side === "us" ? "You owe" : String(c.owed_by || "They").split(" ")[0] + " owes";
+      return h("li", null, [c.overdue ? h("span", { class: "status breach" }, "Overdue ") : null, who + ": " + c.what + (c.due ? " (due " + fmtDate(c.due, false) + ")" : "") + " ",
+        sourceChip({ label: "Notes", url: c.source_url })]);
+    });
+    overlay((card.time ? card.time + " · " : "") + (card.who || "Partner meeting"), [
+      h("p", { class: "finding" }, card.finding || "No deal needs a decision this week."),
+      kv("To decide", decide, true),
+      stalled.length ? kv("Stalled", stalled) : null,
+      kv(card.questions && card.questions.length ? "Questions ant. suggests" : "Worth raising", qs.map(function (q) { return h("li", null, q); }), true),
+      kv("Promises in the team", promises),
+      card.quiet_left_out ? h("p", { class: "prov" }, plural(card.quiet_left_out, "quiet deal") + " left out of this list.") : null,
+      h("p", { class: "prov" }, ["ant. · CRM, email and notes · ", sourceChip({ label: "Calendar", url: card.source_url })])
+    ].filter(Boolean));
+  }
+  function openHelp() {
+    var sc = S.snap.scorecard || {}, c = cfg();
+    overlay("How ant. works", [
+      h("p", { class: "finding" }, "ant. prepares and drafts. You decide. Nothing is sent, deleted or changed in your tools without your tap."),
+      kv("Taps", [h("li", null, "Tap a line to act on it: done, snooze, set a next step or draft a note."), h("li", null, "Rate any line Useful, Not useful or Wrong. ant. tunes itself every Sunday."),
+        h("li", null, "What you approve applies at the next hourly check. Every tap has Undo for 10 seconds.")]),
+      kv("Keys", [h("li", null, "j and k move between lines. Enter opens one."), h("li", null, "a marks done. s snoozes until tomorrow. 1, 2 and 3 rate."), h("li", null, "? opens this page. Esc closes it.")]),
+      kv("This week", [h("li", null, "Your score: " + (isNil(sc.overall) ? "not rated yet" : sc.overall + " of 10")), h("li", null, sc.change_note || "No changes yet. Tuning runs Sunday evening.")]),
+      kv("You", [h("li", null, (c.level_label || "Level not set") + (c.firm ? " at " + c.firm : "")), h("li", null, "Morning brief at " + (c.brief_time || "07:00") + (c.tz ? " (" + c.tz + ")" : ""))]),
+      h("div", { class: "kv" }, [h("h3", null, "Appearance"), h("div", { class: "seg", role: "group", "aria-label": "Appearance" }, [["light", "Light"], ["dark", "Dark"]].map(function (o) {
+        return h("button", { class: "chip", type: "button", "aria-pressed": theme() === o[0] ? "true" : "false",
+          onclick: function (e) {
+            var me = e.currentTarget; setTheme(o[0]);
+            Array.prototype.forEach.call(me.parentNode.children, function (x) { x.setAttribute("aria-pressed", x === me ? "true" : "false"); });
+          } }, o[1]);
+      }))]),
+      h("p", { class: "prov" }, "This page is private to you. To stop ant. and wipe this data, tell Claude “turn off ant.”.")]);
+  }
+
+  // ---------------------------------------------------------------- render
+  function renderTabs() {
+    var rail = document.getElementById("rail-tabs"), bottom = document.getElementById("bottom-tabs"), tabs = visibleTabs();
+    rail.textContent = ""; bottom.textContent = "";
+    bottom.style.gridTemplateColumns = "repeat(" + tabs.length + ", 1fr)";
+    tabs.forEach(function (t) {
+      [rail, bottom].forEach(function (host) {
+        host.appendChild(h("button", { class: "ah-tab", type: "button", role: "tab", "aria-selected": S.tab === t.key ? "true" : "false", "aria-label": t.label, title: t.label,
+          onclick: function () { go(t.key); } }, [h("span", { class: "ah-tab-ico" }, icon(t.icon, 18)), h("span", { class: "lbl" }, t.label)]));
+      });
+    });
+  }
+  function hhmm(iso) { var w = wall(Date.parse(iso)); return w ? DAYS[w.wd] + " " + pad(w.hh) + ":" + pad(w.mm) : ""; }
+  // One "last check" time for the whole page: the newest finished run, else the brief's own time.
+  function lastCheckAt() {
+    var b = S.snap.brief || {}, best = Date.parse(b.as_of || "") || 0;
+    (S.runs || []).forEach(function (r) { var t = Date.parse(r.finished || ""); if (t > best) best = t; });
+    return best || null;
+  }
+  // A check is late when the next scheduled one has passed by 45 minutes and none has started. Weekends and nights
+  // follow the schedule the last run wrote down; a Home from before that falls back to weekday working hours.
+  function checkLate() {
+    var b = S.snap.brief || {}, last = (S.runs || [])[0] || null, now = Date.now();
+    if (last && !last.finished && now - Date.parse(last.started || "") < 50 * 60e3) return false;  // a check is running
+    var nextAt = Date.parse((last ? last.next_check_at : b.next_check_at) || "");
+    if (nextAt) return now > nextAt + 45 * 60e3;
+    var when = lastCheckAt(), w = wall(), wd = w.wd, hr = w.hh;
+    return !!when && wd > 0 && wd < 6 && hr >= 9 && hr < 20 && now - when > 2 * 3600e3 + 15 * 60e3;
+  }
+  function banners(host) {
+    var c = cfg(), b = S.snap.brief || {};
+    if (c.demo) {
+      var note = h("div", { class: "banner", role: "note" }, "Example data. Quillwater Ventures is a fictional fund. Your own Home fills from your tools.");
+      if (S.static && S.demo) {
+        var pick = h("select", { class: "field field-sm demo-pick", "aria-label": "View as" });
+        S.demo.order.forEach(function (k) { var o = h("option", { value: k }, S.demo.members[k].label); if (k === S.demoKey) o.selected = true; pick.appendChild(o); });
+        pick.addEventListener("change", function () { loadDemo(pick.value); });
+        note.appendChild(h("label", { class: "demo-view" }, [h("span", null, "View as"), pick]));
+      }
+      host.appendChild(note); return;
+    }
+    if (S.readOnly) host.appendChild(h("div", { class: "banner", role: "note" }, "You are viewing someone else's ant. Home. It is read-only."));
+    (b.unavailable || []).forEach(function (u) {
+      var who = u.label || u.source, at = u.since ? hhmm(u.since) : "";
+      var said = u.status === "revoked" ? who + ": access revoked" + (at ? " at " + at : "") : u.status === "rate_limited" ? who + " was busy" + (at ? " at " + at : "") :
+        u.status === "missing" ? who + " is not connected" : who + " could not be read" + (at ? " at " + at : "");
+      host.appendChild(h("div", { class: "banner is-warn", role: "status" }, [said + ".",
+        h("span", null, u.status === "rate_limited" ? "ant. catches up at the next check. Home shows what it last knew." :
+          "Home shows what it last knew. Reconnect it in the Claude app's connector settings.")]));
+    });
+    // The newest check found its safety guard off and stopped before reading anything.
+    var newest = (S.runs || [])[0];
+    if (newest && newest.status === "guard_off") host.appendChild(h("div", { class: "banner is-warn", role: "alert" }, [
+      "ant. stopped at " + hhmm(newest.started) + ": its safety guard did not load, so it read nothing.",
+      h("span", null, "Reinstall the ant. plugin, then say “check in” in Claude. Checks stay stopped until the guard loads.")]));
+    // The scheduled check did not come: the task is off, paused or waiting for an approval.
+    var when = lastCheckAt();
+    if (when && c.home_url && !(newest && newest.status === "guard_off") && checkLate()) host.appendChild(h("div", { class: "banner is-warn", role: "status" }, ["ant. has not checked since " + hhmm(new Date(when).toISOString()) + ".",
+      h("span", null, "In Claude, open Scheduled tasks. Check that “ant.” is on, with Automatically approve turned on.")]));
+  }
+  function render() {
+    if (!tabShown(S.tab)) S.tab = "today";
+    renderTabs();
+    var view = document.getElementById("view"), banner = document.getElementById("banner-slot");
+    view.textContent = ""; banner.textContent = "";
+    var d = wall();
+    document.getElementById("hdr-date").textContent = DAYS[d.wd] + " " + pad(d.d) + " " + MONTHS[d.m - 1];
+    var live = document.getElementById("hdr-live"), liveText = document.getElementById("hdr-live-text"), at = lastCheckAt();
+    if (at) {
+      var age = Date.now() - at, old = age > 3 * 3600e3, t = wall(at);
+      live.className = "ah-live" + (old ? " is-old" : "");
+      live.parentNode.className = "ah-hdr" + (old ? " is-old" : "");
+      liveText.textContent = "";
+      liveText.appendChild(h("span", { class: old ? null : "ah-live-pre" }, old ? "Last check " : "As of "));
+      liveText.appendChild(document.createTextNode((wallDay(t) === wallDay(d) ? "" : DAYS[t.wd] + " ") + pad(t.hh) + ":" + pad(t.mm)));
+    } else { live.className = "ah-live"; liveText.textContent = S.loaded ? "Waiting" : "Loading"; }
+    if (!S.loaded && !S.error) {
+      view.appendChild(skeletonCard()); view.appendChild(skeletonCard());
+      if (S.slow) view.appendChild(h("p", { class: "prov" }, "Still loading. If this stays, reload the page."));
+      return;
+    }
+    if (S.error === "no-runtime" || S.error === "no-db") {
+      view.appendChild(emptyCard("Open ant. Home in the Claude app", "This page shows your private brief when you open it from your Claude account. To create yours, ask Claude to “set up ant.”."));
+      return;
+    }
+    if (S.error === "db-error") {
+      view.appendChild(emptyCard("ant. Home could not load its data", "Reload the page. If it keeps happening, ask Claude to “check ant.”."));
+      return;
+    }
+    banners(banner);
+    var parts = S.tab === "pipeline" ? viewPipeline() : S.tab === "people" ? viewPeople() : S.tab === "portfolio" ? viewPortfolio() : S.tab === "lps" ? viewLps() : viewToday();
+    parts.forEach(function (p) { if (p) view.appendChild(p); });
+  }
+
+  // ---------------------------------------------------------------- keyboard
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") { if (document.querySelector(".scrim")) { closeOverlay(); return; } if (S.open) { var o = S.open; S.open = null; render(); focusId(o); } return; }
+    var tag = e.target && e.target.tagName;
+    if (tag === "INPUT" || tag === "TEXTAREA" || e.metaKey || e.ctrlKey || e.altKey || document.querySelector(".scrim")) return;
+    var hits = Array.prototype.slice.call(document.querySelectorAll("#view .row-hit[data-id]")), i = hits.indexOf(document.activeElement);
+    if (e.key === "j" || e.key === "k") { e.preventDefault(); var n = hits[i < 0 ? 0 : Math.max(0, Math.min(hits.length - 1, i + (e.key === "j" ? 1 : -1)))]; if (n) n.focus(); return; }
+    if (e.key === "?") { openHelp(); return; }
+    var it = i >= 0 ? hits[i]._item : null; if (!it) return;
+    if (e.key === "a" && (it.actions || []).indexOf("done") >= 0) markDone(it);
+    else if (e.key === "s" && it.kind !== "deal" && it.kind !== "review") snooze(it, morning(1), "tomorrow 08:00");
+    else if (e.key === "1" || e.key === "2" || e.key === "3") { rate(it, ["useful", "not_useful", "wrong"][Number(e.key) - 1]); toast("Thanks. ant. tunes itself from this on Sunday."); focusId(hits[i].getAttribute("data-id")); }
+  });
+  document.getElementById("help-btn").addEventListener("click", openHelp);
+  document.getElementById("theme-btn").addEventListener("click", function () { setTheme(theme() === "dark" ? "light" : "dark"); });
+  paintThemeButton();
+
+  render();
+  startDb();
+})();
+</script>
