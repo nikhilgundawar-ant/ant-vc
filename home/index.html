@@ -86,6 +86,9 @@ p { text-wrap: pretty; }
 .ah-icon-btn svg { width: 18px; height: 18px; transition: transform 80ms var(--ah-ease); }
 .ah-icon-btn:hover svg { transform: translateY(-1px); }
 .ah-icon-btn[aria-current="page"] { background: var(--ah-tint); }
+.act-lbl { display: none; font-weight: 700; font-size: 13px; }
+@media (min-width: 760px) { #activity-btn { width: auto; padding: 0 12px; margin: -8px 0; gap: 6px; display: inline-flex; align-items: center; } #activity-btn .act-lbl { display: inline; } }
+@media (pointer: coarse) { .keys-only { display: none; } }
 .seg { display: inline-flex; gap: 4px; padding: 2px; border-radius: 999px; background: var(--ah-control-2); }
 .seg .chip { background: transparent; color: var(--ah-ink-2); }
 .seg .chip[aria-pressed="true"] { background: var(--ah-hero); color: var(--ah-on-hero); }
@@ -230,7 +233,9 @@ td.r, th.r { text-align: right; }
 .fund-stat span { font-weight: 600; font-size: 12px; color: var(--ah-ink-2); }
 .fund-stat b { font-family: var(--ah-display); font-weight: 700; font-size: 20px; letter-spacing: -.015em; color: var(--ah-ink); }
 .fund-stat small { font-size: 12px; color: var(--ah-ink-2); }
-.fund-track { width: 100%; }
+.fund-track { width: 100%; margin-top: 8px; }
+th.own, td.own { padding-left: 24px; }
+.sheet .chip-source { height: 32px; }
 td .owed { display: block; font-size: 12px; }
 .meter { display: inline-flex; align-items: center; gap: 8px; }
 .meter span { position: relative; width: 48px; height: 4px; border-radius: 999px; background: var(--ah-track); overflow: hidden; }
@@ -364,12 +369,19 @@ section.card.is-folded .sec-h { margin-bottom: 0; }
   .hero-actions .btn-primary { flex: 1 1 100%; justify-content: center; }
   .hero-actions .btn-ghost { padding: 0 12px; }
 }
+@media (max-width: 480px) {
+  .ah-hero-card .hero-actions { order: 4; }
+  .ah-hero-card .draft-note { order: 5; }
+  .ah-hero-card > .row-meta { order: 6; }
+  .ah-hero-card .finding { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+  .stat small { -webkit-line-clamp: 1; }
+}
 @media (max-width: 479px) {
   .log-row { grid-template-columns: 52px minmax(0, 1fr); }
   .log-row > .btn, .log-row > span:last-child { grid-column: 2; justify-self: start; }
 }
 .agenda-who .agenda-more { display: none; font-size: 13px; font-weight: 700; color: var(--ah-hero); }
-@media (max-width: 559px) { .agenda-notes .agenda-note:nth-child(n+3) { display: none; } .agenda-who .agenda-more { display: block; } }
+@media (max-width: 559px) { .agenda-notes .agenda-note.is-extra { display: none; } .agenda-who .agenda-more { display: block; } }
 @media (min-width: 440px) { .day-tools .lead.is-date { visibility: hidden; } }
 .stage-h .fold-btn { min-height: 32px; }
 .stage-h .fold-btn span { font-weight: 600; font-size: 12px; color: var(--ah-ink-2); }
@@ -495,7 +507,7 @@ section.card.is-folded .sec-h { margin-bottom: 0; }
     x: "M6 6l12 12|M18 6L6 18",
     moon: "M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z",
     chev: "M6 9l6 6l6-6",
-    clock: "M12 3a9 9 0 1 0 0 18a9 9 0 1 0 0-18|M12 7.5V12l3 2",
+    clock: "M4 12a8 8 0 1 0 2.4-5.7|M4 4v4h4|M12 8v4l3 2",
     undo: "M9 14L4 9l5-5|M4 9h10.5a5.5 5.5 0 0 1 0 11H11",
     sun: "M12 2.5v2|M12 19.5v2|M4.6 4.6l1.4 1.4|M18 18l1.4 1.4|M2.5 12h2|M19.5 12h2|M4.6 19.4L6 18|M18 6l1.4-1.4|M12 7.5a4.5 4.5 0 1 0 0 9a4.5 4.5 0 1 0 0-9"
   };
@@ -1045,7 +1057,7 @@ section.card.is-folded .sec-h { margin-bottom: 0; }
       it.reply_url ? sourceChip({ label: "The reply", url: it.reply_url }) : null].filter(Boolean);
     // Three short lines when a row opens: what to do, when to see it again, and how useful it was.
     var doLine = h("div", { class: "row-actions" }), A = it.actions || [];
-    if (A.indexOf("prep") >= 0 && it.prep_id) doLine.appendChild(h("button", { class: "btn btn-secondary btn-sm", type: "button", onclick: function () { openPrep(it.prep_id); } }, "Prep me"));
+    if (A.indexOf("prep") >= 0 && it.prep_id) doLine.appendChild(h("button", { class: "btn btn-secondary btn-sm", type: "button", onclick: function () { openPrep(it.prep_id); } }, "Prep"));
     // On an ask, the closing tap says what it does: the ask leaves, whatever notes went out for it.
     if (A.indexOf("done") >= 0) doLine.appendChild(h("button", { class: "btn btn-secondary btn-sm", type: "button", onclick: function () { markRowDone(it, dr); } },
       it.kind === "ask" ? "Close ask" : it.kind === "waiting" ? "Got it" : "Done"));
@@ -1137,6 +1149,11 @@ section.card.is-folded .sec-h { margin-bottom: 0; }
     return h("div", { class: "card", "aria-hidden": "true", style: "display:grid;gap:12px" },
       [h("div", { class: "skel", style: "width:36%" }), h("div", { class: "skel", style: "width:88%" }), h("div", { class: "skel", style: "width:64%" })]);
   }
+  // The hero already says who it was promised to and when: its note keeps only what to check.
+  function heroNote(hd) {
+    if (!hd) return "";
+    return (closedInDraft(hd) + (hd.context || "")).replace(/You promised this on [^.]*\.\s*/g, "").trim();
+  }
   function openLabel(label) {
     var l = String(label || "").trim();
     if (!l) return "Open";
@@ -1151,9 +1168,9 @@ section.card.is-folded .sec-h { margin-bottom: 0; }
     var hd = hero.draftDoc || null, hdHref = hd ? gmailHref(hd) : null;
     if (hero.action && hero.action.done) btns.appendChild(h("span", { class: "done-note" }, hero.action.done));
     else if (hero.action) add(h("button", { class: "btn btn-primary", type: "button", onclick: hero.action.fn }, hero.action.label));
-    else if (hd) add(hdHref ? h("a", { class: "btn btn-primary", href: safeUrl(hdHref), target: "_blank", rel: "noopener noreferrer" }, [icon(ICON.ext, 16), "Open draft"])
+    else if (hd) add(hdHref ? h("a", { class: "btn btn-primary", href: safeUrl(hdHref), target: "_blank", rel: "noopener noreferrer" }, [icon(ICON.ext, 16), "Open in Gmail"])
         : h("button", { class: "btn btn-primary", type: "button", onclick: function () { copyText(draftText(hd), "Draft copied"); } }, [icon(ICON.copy, 16), "Copy draft"]));
-    else if (hero.button === "Prep me" && hero.prep_id) add(h("button", { class: "btn btn-primary", type: "button", onclick: function () { openPrep(hero.prep_id); } }, "Prep me"));
+    else if (hero.button === "Prep me" && hero.prep_id) add(h("button", { class: "btn btn-primary", type: "button", onclick: function () { openPrep(hero.prep_id); } }, "Prep"));
     else if (hero.source && safeUrl(hero.source.url)) add(h("a", { class: "btn btn-primary", href: safeUrl(hero.source.url), target: "_blank", rel: "noopener noreferrer" }, [icon(ICON.ext, 16), openLabel(hero.source.label)]));
     // A draft on the hero gets Sent it beside it. A promise keeps Done too: it may have been settled in the room.
     if (hd) add(sentButton(hd, hero.sentFor || null, "btn-ghost"));
@@ -1166,7 +1183,7 @@ section.card.is-folded .sec-h { margin-bottom: 0; }
       h("h1", { class: "statement" }, hero.statement),
       hero.finding ? h("p", { class: "finding" }, hero.finding) : null,
       // What to check before the draft goes: above its buttons, as on every row.
-      hd && (hd.context || closedInDraft(hd)) ? h("p", { class: "draft-note" }, [h("b", null, "Before you send: "), closedInDraft(hd) + (hd.context || "")]) : null,
+      heroNote(hd) ? h("p", { class: "draft-note" }, [h("b", null, "Before you send: "), heroNote(hd)]) : null,
       btns.childNodes.length ? btns : null,
       src ? h("div", { class: "row-meta" }, src) : null]);
   }
@@ -1222,7 +1239,7 @@ section.card.is-folded .sec-h { margin-bottom: 0; }
       cell("schedule", "Meetings", left.length, next ? "Next " + (next.time || "") + " " + who(next) : meetings.length ? "No more today" : "None today"),
       cell("decide", "Decide", counts.decide || 0, urgentIn("decide") ? urgentIn("decide") + " urgent" : firstOf("decide") || (counts.decide ? "CRM changes and meeting logs" : "Nothing to decide"), urgentIn("decide") > 0),
       cell("send", "Send", counts.send || 0, urgentIn("send") ? urgentIn("send") + " overdue" : counts.send ? "Drafts and replies" : "All sent", urgentIn("send") > 0),
-      cell("waiting", "Waiting on others", counts.waiting || 0, firstOf("waiting") || "No one owes you")]);
+      cell("waiting", "Waiting on others", counts.waiting || 0, counts.waiting ? "Tap to see who owes what" : "No one owes you")]);
     var tools = h("div", { class: "day-tools" }, [h("span", { class: "lead" + (S.focus ? "" : " is-date") }, (function () { var d = wall(); return DAYS[d.wd] + " " + pad(d.d) + " " + MONTHS[d.m - 1]; })() +
         (S.focus ? ". Focus: only the top line and your schedule are open" : "")),
       h("button", { class: "chip chip-filter", type: "button", "aria-pressed": S.focus ? "true" : "false", onclick: function () { S.focus = !S.focus; S.focusOpen = {}; remember("ant.focus", S.focus ? "1" : "0"); render(); } }, "Focus")]);
@@ -1304,13 +1321,13 @@ section.card.is-folded .sec-h { margin-bottom: 0; }
         var hot = /^Watch:|\(overdue\)/.test(t);
         var did = (m.note_drafts || [])[k2], ready = did && meetingDraft(did);
         if (ready) drafted += 1;
-        return h("span", { class: "agenda-note" }, [head ? h("b", { class: hot ? "breach" : null }, head + " ") : null, rest,
+        return h("span", { class: "agenda-note" + (k2 >= 2 && !/^And \d+ more/.test(t) ? " is-extra" : "") }, [head ? h("b", { class: hot ? "breach" : null }, head + " ") : null, rest,
           ready ? h("span", { class: "agenda-draft" }, " · draft ready") : null]);
       });
       var kids = [h("span", { class: "agenda-time" }, m.time || ""),
         h("div", { class: "agenda-who" }, [h("b", null, parts[0] || ""), parts.length > 1 ? h("span", null, parts.slice(1).join(", ")) : m.internal ? h("span", null, "Internal") : null,
           notes.length ? h("span", { class: "agenda-notes" }, notes) : null,
-          notes.length > 2 ? h("span", { class: "agenda-more" }, "+" + (notes.length - 2) + " more in Prep") : null]),
+          (function () { var x = notes.filter(function (n) { return /is-extra/.test(n.className); }).length; return x ? h("span", { class: "agenda-more" }, "+" + x + " more in Prep") : null; })()]),
         m.prep_id ? h("span", { class: "agenda-go", "aria-hidden": "true" }, "Prep") : h("span")];
       // The whole row opens the prep card; the hero keeps the one Prep me button.
       agenda.appendChild(m.prep_id ? h("button", { class: cls, type: "button",
@@ -1581,7 +1598,7 @@ section.card.is-folded .sec-h { margin-bottom: 0; }
             current_due: m.next_step_due || null, met: m.met_on, stage: st, clear_step: clear || undefined }, t ? "Saved. Goes to your CRM at the next check." :
             "Saved: the meeting" + (st ? " and the stage" : "") + " go to your CRM at the next check. Add the next step when you have it.");
         } }, [fld("Next step", text), fld("Due", due, "fld-date"), stage ? fld("Stage", h("span", { class: "select" }, [stage, icon(ICON.chev, 16)])) : null, saveBtn()]),
-        h("div", { class: "row-meta" }, [h("span", { class: "status hero" }, "Met"), sourceChip({ label: "CRM", url: m.source_url })])])]), "rdy:" + aid));
+        h("div", { class: "row-meta" }, [h("span", { class: "status hero" }, "Log it"), sourceChip({ label: "CRM", url: m.source_url })])])]), "rdy:" + aid));
     });
     // Replies to pitches fold into one line when there are many: an analyst's morning is not twenty rows of drafts.
     var pitches = ((S.snap.inbound || {}).items) || {}, replies = Object.keys(drafts).filter(function (id) {
@@ -1841,7 +1858,7 @@ section.card.is-folded .sec-h { margin-bottom: 0; }
         breach: nf.breach, source_url: nf.source_url, source_label: "Founder update" } : { statement: "No other flags this week", finding: "Updates read and checked." };
     }
     // The hero's own source: the ask it names for Platform, the flag it names for everyone else.
-    var out = [heroCard(ph ? { kicker: ph.group_asks ? "Founder asks · one note" : ph.ask_id ? "A founder asks" : ph.breach ? "Past a threshold" : ph.company_id ? "Worth a look" : "All clear",
+    var out = [heroCard(ph ? { kicker: ph.group_asks ? "Founder asks · one note" : ph.ask_id ? "A founder asks" : ph.breach ? "Breach" : ph.company_id ? "Worth a look" : "All clear",
       statement: ph.statement, finding: ph.finding, breach: ph.breach,
       // The ask that needs you, with its note when one is ready (written this morning, or since): Open draft, Sent it, and
       // what to check before it goes.
@@ -2074,7 +2091,7 @@ section.card.is-folded .sec-h { margin-bottom: 0; }
     // On a phone the re-up window stays (it drives every alert); the money and owner fold under the name.
     var head = [h("th", null, "LP"), h("th", { class: "r hide-sm" }, "Commitment")];
     if (hasCalled) head.push(h("th", { class: "r hide-sm" }, "Called"), h("th", { class: "r hide-sm" }, "Unfunded"));
-    if (hasOwner) head.push(h("th", { class: "hide-sm" }, "Owner"));
+    if (hasOwner) head.push(h("th", { class: "hide-sm own" }, "Owner"));
     head.push(h("th", null, "Re-up window"), h("th", { class: "r" }, "Last touch"));
     var tbl = h("table", { class: "fit-sm" }, [h("thead", null, h("tr", null, head)),
       h("tbody", null, ids.map(function (id) {
@@ -2086,7 +2103,7 @@ section.card.is-folded .sec-h { margin-bottom: 0; }
         var row = [h("td", null, [l.name || nul(), sub ? h("span", { class: "sub" }, sub) : null]), cell(fmtMoney(l.commitment_usd), "r hide-sm")];
         if (hasCalled) row.push(h("td", { class: "r hide-sm" }, [fmtMoney(l.called_usd) || nul(), l.outstanding_usd ? h("span", { class: "neg owed" }, fmtMoney(l.outstanding_usd) + " due") : null]),
           cell(fmtMoney(l.unfunded_usd), "r hide-sm"));
-        if (hasOwner) row.push(cell(l.owner_name || "You", "hide-sm"));
+        if (hasOwner) row.push(cell(l.owner_name || "You", "hide-sm own"));
         row.push(cell(l.reup_window_start ? fmtDate(l.reup_window_start, false) + " to " + fmtDate(l.reup_window_end, false) : null),
           cell(ago(l.days_since), "r" + (l.alert && l.alert.breach && !l.alert.kind ? " neg" : "")));
         return h("tr", null, row);
@@ -2142,12 +2159,12 @@ section.card.is-folded .sec-h { margin-bottom: 0; }
           : ". Next step: " + (card.deal.next_step || "none") + " "), sourceChip({ label: "CRM", url: card.deal.source_url })])]) : null,
       kv("Who", (card.attendees || []).map(function (a) {
         return h("li", null, [h("b", null, a.name), [a.title, a.company].filter(Boolean).map(function (x) { return ", " + x; }).join("") +
-          " · strength " + (a.strength || 0) + (a.last_touch ? " · last touch " + a.last_touch : "")]);
+          " · strength " + (a.strength || 0) + " of 100" + (a.last_touch ? " · last touch " + a.last_touch : "")]);
       })),
       kv("Recent", (card.history || []).map(function (x) { return h("li", null, [x.date + " · " + x.text + " ", sourceChip({ label: x.type === "meeting" ? "Calendar" : "Email", url: x.source_url })]); })),
       kv("Who on the team knows them", (card.colleagues || []).map(function (c) { return h("li", null, c.colleague + " last spoke with " + c.person + " on " + c.last_touch); })),
       researchBlock(card, meeting),
-      h("p", { class: "prov" }, ["ant. · calendar, email, notes and CRM · ", sourceChip({ label: "Calendar", url: card.source_url })])
+      h("p", { class: "prov" }, "ant. · calendar, email, notes and CRM")
     ].filter(Boolean);
     overlay((card.time ? card.time + " · " : "") + (card.who || card.title || "Meeting"), body);
   }
@@ -2207,6 +2224,7 @@ section.card.is-folded .sec-h { margin-bottom: 0; }
       h("p", { class: "prov" }, ["ant. · CRM, email and notes · ", sourceChip({ label: "Calendar", url: card.source_url })])
     ].filter(Boolean));
   }
+  function keysKv(items) { var k = kv("Keys", items); if (k) k.classList.add("keys-only"); return k; }
   function segKv(title, opts, now, fn) {
     return h("div", { class: "kv" }, [h("h3", null, title), h("div", { class: "seg", role: "group", "aria-label": title }, opts.map(function (o) {
       return h("button", { class: "chip", type: "button", "aria-pressed": now === o[0] ? "true" : "false",
@@ -2221,11 +2239,11 @@ section.card.is-folded .sec-h { margin-bottom: 0; }
     overlay("How ant. works", [
       h("p", { class: "finding" }, "ant. prepares and drafts. You decide. Nothing is sent, deleted or changed in your tools without your tap."),
       kv("Taps", [h("li", null, "Tap a line to act on it: done, snooze, set a next step or draft a note."), h("li", null, "Rate any line Useful, Not useful or Wrong. ant. tunes itself every Sunday."),
-        h("li", null, "What you approve applies at the next hourly check. Undo any tap from Activity, the clock at the top."),
+        h("li", null, "What you approve applies at the next hourly check. Undo any tap from Activity, at the top of the page."),
         h("li", null, "Tap a section's title to fold it. Focus folds everything but the top line and your schedule.")]),
-      kv("Keys", [h("li", null, "j and k move between lines. Enter opens one."), h("li", null, "a marks done. s snoozes until tomorrow. 1, 2 and 3 rate."), h("li", null, "? opens this page. Esc closes it.")]),
-      segKv("Keyboard shortcuts", [["on", "On"], ["off", "Off"]], S.keys ? "on" : "off", function (v) { S.keys = v === "on"; remember("ant.keys", v); }),
-      kv("This week", [h("li", null, "Your score: " + (isNil(sc.overall) ? "not rated yet" : sc.overall + " of 10")), h("li", null, sc.change_note || "No changes yet. Tuning runs Sunday evening.")]),
+      keysKv([h("li", null, "j and k move between lines. Enter opens one."), h("li", null, "a marks done. s snoozes until tomorrow. 1, 2 and 3 rate."), h("li", null, "? opens this page. Esc closes it.")]),
+      (function () { var k = segKv("Keyboard shortcuts", [["on", "On"], ["off", "Off"]], S.keys ? "on" : "off", function (v) { S.keys = v === "on"; remember("ant.keys", v); }); k.classList.add("keys-only"); return k; })(),
+      kv("This week", [h("li", null, isNil(sc.overall) ? "You have not scored ant. this week yet." : "You scored ant. " + sc.overall + " of 10 this week."), h("li", null, sc.change_note || "No changes yet. Tuning runs Sunday evening.")]),
       kv("You", [h("li", null, (c.level_label || "Level not set") + (c.firm ? " at " + c.firm : "")), h("li", null, "Morning brief at " + (c.brief_time || "07:00") + (c.tz ? " (" + c.tz + ")" : ""))]),
       segKv("Appearance", [["system", "Match my device"], ["light", "Light"], ["dark", "Dark"]], themeChoice(), setTheme),
       segKv("Text size", [["comfortable", "Comfortable"], ["compact", "Compact"]], density(), function (v) { setDensity(v); render(); }),
@@ -2263,7 +2281,7 @@ section.card.is-folded .sec-h { margin-bottom: 0; }
   var PROCESSED = ["applied", "failed", "refused", "check", "dismissed"];
   function resultOf(e) {
     if (e.undone) return "Undone " + when_(e.undone);
-    if (e.src === "items") return e.cat === "snoozed" ? "Back " + hhmm(e.v.snoozed_until) : e.cat === "sent" ? "The email went from your Gmail" : "Closed in ant. Home";
+    if (e.src === "items") return e.cat === "snoozed" ? "Back " + hhmm(e.v.snoozed_until) : e.cat === "sent" ? "You marked this sent" : "Closed in ant. Home";
     if (e.src === "ratings") return "ant. tunes itself from this on Sunday";
     var pr = (((S.snap.proposals || {}).items) || {})[e.id] || {};
     if (ENGINE_TAPS.indexOf(e.a.type) >= 0) return "Applied by ant. at each check";
@@ -2440,7 +2458,7 @@ section.card.is-folded .sec-h { margin-bottom: 0; }
       });
     });
     var ab = document.getElementById("activity-btn");
-    if (ab) { ab.textContent = ""; ab.appendChild(icon(ICON.clock, 18)); ab.setAttribute("aria-current", S.tab === "activity" ? "page" : "false"); }
+    if (ab) { ab.textContent = ""; ab.appendChild(icon(ICON.clock, 18)); ab.appendChild(h("span", { class: "act-lbl" }, "Activity")); ab.setAttribute("aria-current", S.tab === "activity" ? "page" : "false"); }
   }
   function hhmm(iso) { var w = wall(Date.parse(iso)); return w ? DAYS[w.wd] + " " + pad(w.hh) + ":" + pad(w.mm) : ""; }
   // One "last check" time for the whole page: the newest finished run, else the brief's own time.

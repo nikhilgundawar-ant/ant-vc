@@ -80,7 +80,7 @@ def _note(changes: list[dict[str, Any]]) -> str:
     direction = "more" if (isinstance(top["to"], (int, float)) and isinstance(top["from"], (int, float)) and top["to"] > top["from"]) else "fewer"
     thing = top["what"].replace(" weight", "")
     if top["what"].endswith("weight"):
-        line = f"I now show {direction} {thing.replace('_', ' ')} items because you rated them: {top['why']}."
+        line = f"ant. now shows {direction} {thing.replace('_', ' ')} items because you rated them: {top['why']}."
     else:
         line = f"I changed {top['what']} from {top['from']} to {top['to']} because {top['why']}."
     if len(changes) > 1:

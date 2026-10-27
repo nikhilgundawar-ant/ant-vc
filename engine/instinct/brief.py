@@ -769,7 +769,7 @@ def candidates(ctx: dict[str, Any], profile: dict[str, Any], parts: dict[str, An
                 elif profile.get("level") == "partner" and (firm_lead_person(a.get("company_id"), mine=True) or {}).get("id") == \
                         (ctx.get("user_person") or {}).get("id") and (ctx.get("user_person") or {}).get("id"):
                     # A partner closest to the company is its board partner: the call is hers, made before anyone sources.
-                    a["warning"] = f"{tight.get('headline') or 'Cash is tight'}: your call before anyone sources"
+                    a["warning"] = f"{tight.get('headline') or 'Cash is tight'}: decide whether to help hire before anyone starts looking"
                 else:
                     prev = re.search(r"check with ([A-Z][\w-]+(?: [A-Z][\w-]+)?) before|(?:^|: )([A-Z][\w-]+(?: [A-Z][\w-]+)?) said yes", before)
                     lead_p = firm_lead_person(a.get("company_id"))

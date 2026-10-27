@@ -1,6 +1,6 @@
 # ant. for VCs: eval scorecard
 
-Run at 28 Oct 2026 00:52. Golden fund: Quillwater Ventures (fictional).
+Run at 28 Oct 2026 01:31. Golden fund: Quillwater Ventures (fictional).
 
 **230 of 230 checks pass.** 7 Claude-run scores skipped: no saved run.
 
@@ -177,7 +177,7 @@ Run at 28 Oct 2026 00:52. Golden fund: Quillwater Ventures (fictional).
 | round11 | the guest list is checked after Tara met its guests; the CFO draft's old 'this week' becomes a date | guest list rewrite: Written before your 22 Oct meeting with Divya, Pooja and Karthik, whom it names:; Mon CFO body has 'this week': False (True) | 'Written before your 22 Oct meeting with ...'; False (True) | yes |
 | round11 | Sent it on a promise's draft keeps the promise: no new draft after the prune, no row after | redrafted []; on Today [] | none; none | yes |
 | round11 | a pitch answered on Thu 22 is never answered again, to Wed 11 Nov | 19 answered; again on [] | N; none | yes |
-| round11 | in a partner's Home a cash warning never tells her to check with a colleague on her own boards | warnings ['Runway under 9 months: your call before anyone sources', 'Burn up 43.3% in a month: your call before anyone sources'] | no 'check with' naming someone else, or 'your call' | yes |
+| round11 | in a partner's Home a cash warning never tells her to check with a colleague on her own boards | warnings ['Runway under 9 months: decide whether to help hire before anyone starts looking', 'Burn up 43.3% in a month: decide whether to help hire before anyone starts looking'] | no 'check with' naming someone else, or 'your call' | yes |
 | round11 | the guard refuses order-like data names at either end and Artifact reads that save files | wrongly allowed []; wrongly refused []; file-saving reads allowed 0; plain read and list True | []; []; 0; True | yes |
 | scale | ten times the golden fund: fast, small, still names the deal | 0.3s, 239 KiB max | < 10s, < 240 KiB | yes |
 | round12 | a pulse that sends no deals keeps every deal's CRM stage label | changed [] | [] | yes |

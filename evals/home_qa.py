@@ -281,7 +281,7 @@ class QA:
             want = len(self.snaps["aditi"]["brief"]["meetings"])
             self.check(sc, "agenda lists every meeting, internal too", page.locator(".agenda-row").count() == want, f"{page.locator('.agenda-row').count()} of {want}")
             self.check(sc, "next meeting marked", page.locator(".agenda-row.is-next .agenda-time").inner_text() == "10:30")
-            self.check(sc, "one Prep me button", page.locator("#view button", has_text="Prep me").count() <= 1)
+            self.check(sc, "one Prep button on the hero", page.locator(".ah-hero-card button", has_text="Prep").count() <= 1)
             self.check(sc, "every row carries a status word", page.evaluate("""Array.from(document.querySelectorAll('#view .row')).every(r => !!r.querySelector('.status'))"""))
             self.check(sc, "copy brief offered", page.locator("button", has_text="Copy brief").count() == 1)
             self.check(sc, "Decide holds the CRM change and Send the drafts", page.locator(DECIDE, has_text="Approve").count() == 1 and
@@ -648,7 +648,7 @@ class QA:
                 self.check(sc + "-calm", "founder asks come first", first == "Founders need", first or "")
                 hero = page.locator(".ah-hero-card .statement").inner_text()
                 # The ask that needs her now: with every note still to send, the oldest ask, with its note one tap away.
-                opens = page.locator(".ah-hero-card a, .ah-hero-card button", has_text=re.compile(r"Open draft|Copy draft")).count()
+                opens = page.locator(".ah-hero-card a, .ah-hero-card button", has_text=re.compile(r"Open draft|Open in Gmail|Copy draft")).count()
                 self.check(sc + "-calm", "Portfolio leads with the ask that needs her, its note one tap away",
                            hero.startswith("Kestrel Pay") and opens >= 1, f"{hero}; draft buttons {opens}")
                 self.shot(page, "tara-portfolio-380")
@@ -1198,7 +1198,7 @@ class QA:
         after = page.locator(".ah-hero-card .statement").inner_text()
         keys = {vh.get("draft"), vh.get("commitment_id"), vh.get("item_id")}
         self.check("hero-sent", "a promise hero with a draft offers Open draft, Sent it and Done; Sent it marks the draft and the promise",
-                   any("draft" in b.lower() for b in btns) and "Sent it" in btns and "Done" in btns and len(btns) <= 3 and
+                   any("draft" in b.lower() or "gmail" in b.lower() for b in btns) and "Sent it" in btns and "Done" in btns and len(btns) <= 3 and
                    keys <= set(wr) and all(wr[k].get("done_at") for k in keys),
                    f"buttons {btns}; wrote {sorted(wr)}")
         self.check("hero-sent", "once sent, the next line steps up as the hero", after != vh["statement"] and after != "Nothing urgent right now", after)
@@ -1698,6 +1698,13 @@ class QA:
         self.shot(page, "folds-380")
         self.common(page, sc)
         ctx.close()
+
+        sc = "hero-fold"
+        for m in ("aditi", "kabir", "meera", "rohan", "tara", "vikram", "solo"):
+            ctx, page = self.open(browser, sc, {"width": 380, "height": 844}, member=m, open_all=False)
+            y = page.evaluate("(() => { var e = document.querySelector('.ah-hero-card .btn-primary'); return e ? e.getBoundingClientRect().bottom : 0; })()")
+            self.check(sc, f"{m}: the top line's main button is on the first phone screen, above the tab bar", y <= 784, f"bottom at {round(y)}px")
+            ctx.close()
 
         sc = "row-actions"
         ctx, page = self.open(browser, sc, PHONE)
