@@ -173,6 +173,8 @@ def bucket_label(it: dict) -> str:
         return "Watch"
     if k in ("inbound", "pass_returned"):
         return "Decide"
+    if k == "waiting" and it.get("to_you") is False:
+        return "Watch"
     if k == "waiting" or w in ("waiting", "asked", "requested"):
         return "Waiting on others"
     if k in ("decision", "signal", "stale", "deal_move", "review"):
@@ -374,7 +376,7 @@ class QA:
                         t in fund.inner_text() for t in ("Fund II", "Committed", "Called", "Unfunded", "45% of commitments")),
                         fund.inner_text().replace("\n", " ")[:120] if fund.count() else "missing")
                     team = page.locator("section.card", has_text="With your team")
-                    self.check(sc, "a colleague's LPs listed with their owner", team.count() == 1 and "Vikram owns this LP" in team.inner_text())
+                    self.check(sc, "a colleague's LPs listed with their owner", team.count() == 1 and "With Vikram" in team.inner_text())
                     if vp == DESK:
                         self.check(sc, "called, unfunded and owner columns", all(page.locator("th", has_text=t).is_visible()
                                                                                 for t in ("Called", "Unfunded", "Owner")))

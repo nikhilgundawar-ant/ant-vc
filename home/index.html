@@ -225,8 +225,8 @@ td.r, th.r { text-align: right; }
 .null { color: var(--ah-ink-3); }
 /* Fund summary on the LPs tab */
 .fund { display: grid; gap: 12px; }
-.fund-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px 16px; }
-.fund-stat { display: grid; gap: 2px; min-width: 0; }
+.fund-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px 16px; align-items: start; }
+.fund-stat { display: grid; gap: 2px; min-width: 0; align-content: start; }
 .fund-stat span { font-weight: 600; font-size: 12px; color: var(--ah-ink-2); }
 .fund-stat b { font-family: var(--ah-display); font-weight: 700; font-size: 20px; letter-spacing: -.015em; color: var(--ah-ink); }
 .fund-stat small { font-size: 12px; color: var(--ah-ink-2); }
@@ -346,6 +346,28 @@ section.card.is-folded .sec-h { margin-bottom: 0; }
 :root[data-ah-density="compact"] .stat { min-height: 56px; padding: 8px 12px; }
 
 @media (max-width: 430px) { .ah-live-pre { display: none; } }
+.today-cols { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 20px; align-items: start; }
+.today-col { display: grid; gap: 20px; min-width: 0; }
+.chip-filter { height: 32px; padding: 0 14px; }
+.inline-form .btn { height: 40px; }
+.fld { display: grid; gap: 4px; flex: 1 1 200px; min-width: 0; }
+.fld > span { font-weight: 600; font-size: 12.5px; color: var(--ah-ink-2); }
+.fld .field, .fld .select, .fld .select select { width: 100%; max-width: 100%; }
+.fld-date { flex: 0 1 168px; }
+.tmrw { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 4px 8px; align-items: baseline; padding-top: 8px; }
+.tmrw span:last-child { display: flex; flex-wrap: wrap; gap: 0 12px; }
+@media (max-width: 559px) {
+  .met-form { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: end; }
+  .met-form > .fld:first-child { grid-column: 1 / -1; }
+  .met-form > .btn { justify-self: start; }
+  .hero-actions { gap: 8px; }
+  .hero-actions .btn-primary { flex: 1 1 100%; justify-content: center; }
+  .hero-actions .btn-ghost { padding: 0 12px; }
+}
+@media (max-width: 479px) {
+  .log-row { grid-template-columns: 52px minmax(0, 1fr); }
+  .log-row > .btn, .log-row > span:last-child { grid-column: 2; justify-self: start; }
+}
 .agenda-who .agenda-more { display: none; font-size: 13px; font-weight: 700; color: var(--ah-hero); }
 @media (max-width: 559px) { .agenda-notes .agenda-note:nth-child(n+3) { display: none; } .agenda-who .agenda-more { display: block; } }
 @media (min-width: 440px) { .day-tools .lead.is-date { visibility: hidden; } }
@@ -356,14 +378,14 @@ section.card.is-folded .sec-h { margin-bottom: 0; }
 @media (max-width: 439px) { .ah-date { display: none; } }
 @media (max-width: 400px) { .ah-hdr.is-old .ah-date { display: none; } }
 @media (min-width: 760px) {
-  .ah-shell { grid-template-columns: 64px minmax(0, 1fr); }
+  .ah-shell { grid-template-columns: 72px minmax(0, 1fr); }
   .ah-rail { display: grid; align-content: start; justify-items: center; gap: 14px; padding: 16px 10px; position: sticky; top: 0; height: 100vh;
     background: var(--ah-page); box-shadow: inset -1px 0 0 var(--ah-rail-edge); }
-  .ah-rail .ah-tab { min-height: 0; padding: 0; width: 44px; height: 38px; color: var(--ah-ink-2); transition: transform 80ms var(--ah-ease); }
-  .ah-rail .ah-tab .lbl { display: none; }
+  .ah-rail .ah-tab { min-height: 0; padding: 0; width: 56px; color: var(--ah-ink-2); gap: 4px; transition: transform 80ms var(--ah-ease); }
+  .ah-rail .ah-tab .lbl { display: block; font-size: 11.5px; line-height: 1.2; }
   .ah-rail .ah-tab-ico { width: 44px; height: 38px; }
-  .ah-rail .ah-tab[aria-selected="true"] { background: var(--ah-hero); box-shadow: var(--ah-elev-tile); color: var(--ah-on-hero); }
-  .ah-rail .ah-tab[aria-selected="true"] .ah-tab-ico { background: transparent; }
+  .ah-rail .ah-tab[aria-selected="true"] { color: var(--ah-hero); }
+  .ah-rail .ah-tab[aria-selected="true"] .ah-tab-ico { background: var(--ah-hero); color: var(--ah-on-hero); box-shadow: var(--ah-elev-tile); }
   .ah-rail .ah-tab:hover { transform: translateY(-1px); }
   .ah-tabs { display: none; }
   .ah-main { padding-block: 32px 48px; padding-left: max(40px, env(safe-area-inset-left, 0px)); padding-right: max(40px, env(safe-area-inset-right, 0px)); }
@@ -842,11 +864,12 @@ section.card.is-folded .sec-h { margin-bottom: 0; }
   // Every row carries a word beside its glyph. Breach is kept for a figure past its threshold; work says Urgent, High, Medium or Low.
   var WORDS = { urgent: ["Urgent", "breach", "breach"], breach: ["Breach", "breach", "breach"], overdue: ["Overdue", "breach", "breach"],
     competing: ["Competing", "breach", "breach"], flagged: ["Hidden instructions ignored", "breach", "breach"],
-    high: ["High", "hero", "high"], due_today: ["Due today", "hero", "high"], stale: ["Stale", "hero", "high"], check: ["Check", "hero", "high"],
-    asked: ["Asked", "hero", "high"], call: ["Book a call", "hero", "high"], due: ["Due", "hero", "medium"],
-    booked: ["Call booked", "", "low"], met: ["Met", "", "low"], looks_done: ["Looks done", "hero", "low"], meeting: ["Meeting today", "hero", "high"],
-    medium: ["Medium", "", "medium"], waiting: ["Waiting on them", "", "medium"], waiting_you: ["Waiting on you", "hero", "high"],
-    requested: ["Intro requested", "", "medium"], made: ["Intro made", "", "low"], nudge: ["Nudge", "hero", "high"], ready: ["Your note is ready", "hero", "high"],
+    high: ["High", "hero", "high"], due_today: ["Due today", "hero", "high"], stale: ["Stale", "hero", "medium"], check: ["Check", "hero", "medium"],
+    asked: ["Asked", "hero", "medium"], call: ["Book a call", "hero", "medium"], due: ["Due", "hero", "medium"],
+    booked: ["Call booked", "", "low"], met: ["Met", "", "low"], looks_done: ["Looks done", "hero", "low"], meeting: ["Meeting today", "hero", "medium"],
+    medium: ["Medium", "", "medium"], waiting: ["Waiting on them", "", "medium"], waiting_you: ["Waiting on you", "hero", "medium"],
+    requested: ["Intro requested", "", "medium"], made: ["Intro made", "", "low"], nudge: ["Nudge", "hero", "medium"], ready: ["Your note is ready", "hero", "medium"],
+    reach: ["Write to them", "hero", "medium"], touch: ["Due a touch", "hero", "medium"],
     replied: ["Replied", "hero", "medium"], answered: ["You replied", "", "low"],
     undated: ["No date", "", "medium"], more_info: ["Ask for more", "", "medium"],
     low: ["Low", "", "low"], moved: ["Moved", "", "low"], cold: ["Going cold", "", "medium"], pass: ["Pass", "", "low"],
@@ -854,7 +877,7 @@ section.card.is-folded .sec-h { margin-bottom: 0; }
   function wordOf(it) { return it.status_word || it.priority || "low"; }
   function statusText(it) {
     var label = (WORDS[wordOf(it)] || WORDS.low)[0];
-    if (wordOf(it) === "due" && it.due) label = "Due " + fmtDate(it.due, false);
+    if (wordOf(it) === "due") label = it.due ? "Due " + fmtDate(it.due, false) : it.kind === "lp" ? "Due a touch" : "Write to them";
     if (wordOf(it) === "asked" && !isNil(it.asked_days)) label = it.asked_days < 1 ? "Asked today" : it.asked_days < 2 ? "Asked yesterday" : "Asked " + it.asked_days + " days ago";
     if (wordOf(it) === "owned" && it.owner_name) label = "With " + it.owner_name;
     if (it.state_label && ["requested", "made", "nudge", "ready", "replied"].indexOf(wordOf(it)) >= 0) label = it.state_label;
@@ -1070,6 +1093,14 @@ section.card.is-folded .sec-h { margin-bottom: 0; }
     if (!open) actions.hidden = true;
     return h("div", { class: "row" + (it.breach ? " is-breach" : "") }, [glyphFor(it), h("div", { class: "row-main" }, [hit, meta, actions])]);
   }
+  function fld(label, el, cls) { return h("label", { class: "fld" + (cls ? " " + cls : "") }, [h("span", null, label), el]); }
+  function draftActions(d, it, after) {
+    var href = gmailHref(d);
+    return h("div", { class: "row-actions" }, [
+      href ? h("a", { class: "btn btn-secondary btn-sm", href: safeUrl(href), target: "_blank", rel: "noopener noreferrer" }, [icon(ICON.ext, 16), "Open in Gmail"]) : null,
+      h("button", { class: "btn btn-sm " + (href ? "btn-ghost" : "btn-secondary"), type: "button", onclick: function () { markSent(d, it); if (after) after(); } }, "Sent it"),
+      copyIcon(d)]);
+  }
   function copyIcon(d) {
     return h("button", { class: "btn btn-ghost btn-sm icon-only", type: "button", "aria-label": "Copy draft", title: "Copy draft",
       onclick: function () { copyText(draftText(d), "Draft copied"); } }, icon(ICON.copy, 16));
@@ -1125,18 +1156,19 @@ section.card.is-folded .sec-h { margin-bottom: 0; }
     else if (hero.button === "Prep me" && hero.prep_id) add(h("button", { class: "btn btn-primary", type: "button", onclick: function () { openPrep(hero.prep_id); } }, "Prep me"));
     else if (hero.source && safeUrl(hero.source.url)) add(h("a", { class: "btn btn-primary", href: safeUrl(hero.source.url), target: "_blank", rel: "noopener noreferrer" }, [icon(ICON.ext, 16), openLabel(hero.source.label)]));
     // A draft on the hero gets Sent it beside it. A promise keeps Done too: it may have been settled in the room.
-    if (hd) add(sentButton(hd, hero.sentFor || null, "btn-secondary"));
+    if (hd) add(sentButton(hd, hero.sentFor || null, "btn-ghost"));
     if (hero.doneable) add(h("button", { class: "btn btn-ghost", type: "button", onclick: function () { markRowDone(hero.doneable, hd); } }, "Done"));
     if (hero.snoozable) add(h("button", { class: "btn btn-ghost", type: "button", title: "See it again tomorrow at 08:00", onclick: function () { snooze(hero.snoozable, morning(1), "tomorrow 08:00"); } }, "Tomorrow"));
-    if (hd && hdHref) add(h("button", { class: "btn btn-ghost", type: "button", onclick: function () { copyText(draftText(hd), "Draft copied"); } }, [icon(ICON.copy, 16), "Copy"]));
-    if (hero.source && hero.source.label && (hero.button !== "Prep me" || hero.draftDoc) && (hero.action || hero.draftDoc || !safeUrl(hero.source.url) || hero.chip)) btns.appendChild(sourceChip(hero.source));
+    if (hd && hdHref) add(h("button", { class: "btn btn-ghost icon-only", type: "button", "aria-label": "Copy draft", title: "Copy draft", onclick: function () { copyText(draftText(hd), "Draft copied"); } }, icon(ICON.copy, 16)));
+    var src = hero.source && hero.source.label && (hero.button !== "Prep me" || hero.draftDoc) && (hero.action || hero.draftDoc || !safeUrl(hero.source.url) || hero.chip) ? sourceChip(hero.source) : null;
     return h("article", { class: "card ruled ah-hero-card" + (hero.breach ? " is-breach" : "") }, [
       h("div", { class: "kicker" }, [h("i"), h("span", null, hero.kicker || "")]),
       h("h1", { class: "statement" }, hero.statement),
       hero.finding ? h("p", { class: "finding" }, hero.finding) : null,
+      // What to check before the draft goes: above its buttons, as on every row.
+      hd && (hd.context || closedInDraft(hd)) ? h("p", { class: "draft-note" }, [h("b", null, "Before you send: "), closedInDraft(hd) + (hd.context || "")]) : null,
       btns.childNodes.length ? btns : null,
-      // What to check before the draft goes: the run's note on its own draft, never only in a list further down.
-      hd && (hd.context || closedInDraft(hd)) ? h("p", { class: "draft-note" }, [h("b", null, "Before you send: "), closedInDraft(hd) + (hd.context || "")]) : null]);
+      src ? h("div", { class: "row-meta" }, src) : null]);
   }
 
   // ---------------------------------------------------------------- Today
@@ -1162,10 +1194,13 @@ section.card.is-folded .sec-h { margin-bottom: 0; }
       status_word: it.status_word };
   }
   var BUCKETS = [["decide", "Decide"], ["send", "Send"], ["waiting", "Waiting on others"], ["watch", "Watch"]];
+  function wide() { try { return window.matchMedia("(min-width: 1100px)").matches; } catch (e) { return false; } }
+  try { window.matchMedia("(min-width: 1100px)").addEventListener("change", function () { if (S.tab === "today") render(); }); } catch (e) {}
   function bucketOf(it) {
     var w = it.status_word;
     if (w === "team" || it.fyi) return "watch";
     if (it.kind === "inbound" || it.kind === "pass_returned") return "decide";
+    if (it.kind === "waiting" && it.to_you === false) return "watch";
     if (it.kind === "waiting" || w === "waiting" || w === "asked" || w === "requested") return "waiting";
     if (["decision", "signal", "stale", "deal_move", "review"].indexOf(it.kind) >= 0) return "decide";
     if (["commitment", "question", "ask", "lp", "relationship"].indexOf(it.kind) >= 0 || it.late_fold) return "send";
@@ -1284,11 +1319,10 @@ section.card.is-folded .sec-h { margin-bottom: 0; }
     });
     if ((b.tomorrow || []).length) {
       var nextDay = (b.tomorrow[0] || {}).day || "Tomorrow";
-      agenda.appendChild(h("p", { class: "prov", style: "padding-top:8px" }, [nextDay + ": "].concat(b.tomorrow.slice(0, 4).map(function (m, i) {
+      agenda.appendChild(h("p", { class: "prov tmrw" }, [h("span", null, nextDay + ":"), h("span", null, b.tomorrow.slice(0, 4).map(function (m) {
         var label = (m.time || "") + " " + String(m.who || "").split(", ").pop();
-        var el = m.prep_id ? h("button", { class: "link-btn", type: "button", "aria-label": "Prep for " + nextDay + " " + label, onclick: function () { openPrep(m.prep_id, m); } }, label) : label;
-        return i ? [" · ", el] : el;
-      }).reduce(function (a, x) { return a.concat(x); }, []))));
+        return m.prep_id ? h("button", { class: "link-btn", type: "button", "aria-label": "Prep for " + nextDay + " " + label, onclick: function () { openPrep(m.prep_id, m); } }, label) : h("span", null, label);
+      }))]));
     }
     // Every open line, sorted by what you do with it. The engine's order holds inside each section.
     var buckets = {};
@@ -1314,14 +1348,17 @@ section.card.is-folded .sec-h { margin-bottom: 0; }
     });
     var done = doneToday();
     // On a wide screen the first section sits under the hero, beside the schedule, so the first screen has no gap.
-    var lead = BUCKETS.map(function (bk) { return cards[bk[0]]; }).filter(Boolean)[0] || null;
-    var heroEl = heroCard(hero);
-    if (heroEl) heroEl.classList.add("area-hero");
-    agenda.classList.add("area-agenda");
-    if (lead) lead.classList.add("area-lead");
-    var out = [dayStrip(b, buckets, counts), h("div", { class: "ah-hero-cols" + (lead ? " has-lead" : "") }, [heroEl, agenda, lead])];
-    var digest = recentDigest(["week_ahead", "digest"]); if (digest) out.push(digest);
-    BUCKETS.forEach(function (bk) { if (cards[bk[0]] && cards[bk[0]] !== lead) out.push(cards[bk[0]]); });
+    // On a wide screen: what you do on the left (the top line, Decide, Send), what you keep an eye on on the right
+    // (the schedule, Waiting, Watch). On a phone, one column in the agreed order.
+    var heroEl = heroCard(hero), digest = recentDigest(["week_ahead", "digest"]);
+    var out = [dayStrip(b, buckets, counts)];
+    if (wide()) {
+      out.push(h("div", { class: "today-cols" }, [h("div", { class: "today-col" }, [heroEl, cards.decide, cards.send, digest]),
+        h("div", { class: "today-col" }, [agenda, cards.waiting, cards.watch])]));
+    } else {
+      out.push(heroEl, agenda, digest);
+      BUCKETS.forEach(function (bk) { if (cards[bk[0]]) out.push(cards[bk[0]]); });
+    }
     if (!Object.keys(cards).length) out.push(emptyCard("Nothing else needs you", "Next check at " + (b.next_check || "the top of the hour") + "."));
     if (done) out.push(done);
     var day = wall().wd; if (day === 5 || day === 6) out.push(scoreCard());
@@ -1442,7 +1479,7 @@ section.card.is-folded .sec-h { margin-bottom: 0; }
       if (p.status === "check" || p.status === "failed" || p.status === "refused" || (p.status === "applied" && p.reason && recent)) {
         if (itemState(id).done_at) return;
         var word = p.status === "failed" ? "Failed" : p.status === "check" ? "Check" : p.status === "refused" ? "Not done" : "Applied in part";
-        rows.push(foldRow(h("div", { class: "row" }, [glyph(p.status === "failed" ? "breach" : "high"), h("div", { class: "row-main" }, [
+        rows.push(foldRow(h("div", { class: "row" }, [glyph(p.status === "failed" ? "breach" : "medium"), h("div", { class: "row-main" }, [
           h("div", { class: "row-hit static" }, [h("span", { class: "row-title" }, ((p.record && p.record.name) ? p.record.name + ": " : "") + (p.title || "CRM update")),
             h("span", { class: "row-detail" }, p.reason || "A run stopped while applying this. Check the record.")]),
           h("div", { class: "row-meta" }, [h("span", { class: "status" + (p.status === "failed" ? " breach" : " hero") }, word),
@@ -1465,7 +1502,7 @@ section.card.is-folded .sec-h { margin-bottom: 0; }
       }
       var act = S.actions[id], decided = act && (act.status === "approved");
       var fields = changeLines(p);
-      rows.push(foldRow(h("div", { class: "row" }, [glyph("high"), h("div", { class: "row-main" }, [
+      rows.push(foldRow(h("div", { class: "row" }, [glyph("medium"), h("div", { class: "row-main" }, [
         h("div", { class: "row-hit static" }, [h("span", { class: "row-title" }, ((p.record && p.record.name) ? p.record.name + ": " : "") + (p.title || "CRM update")),
           h("span", { style: "display:grid;gap:2px" }, fields)]),
         h("div", { class: "row-meta" }, [decided ? h("span", { class: "done-note" }, act.type === "skip" ? "Skipped" : "Approved. ant. saves it to your CRM at the next check.") : h("span", { class: "status" }, "Needs your OK"),
@@ -1496,12 +1533,12 @@ section.card.is-folded .sec-h { margin-bottom: 0; }
     }
     metOpen.forEach(function (m) {
       var aid = m.aid || ("ns_" + m.deal_id);
-      var saveBtn = function () { return h("button", { class: "btn btn-secondary", type: "submit", style: "height:38px" }, sheetCrm() ? "Copy" : "Save"); };
+      var saveBtn = function () { return h("button", { class: "btn btn-secondary", type: "submit" }, sheetCrm() ? "Copy" : "Save"); };
       if (m.step_only) {
         // The meeting is logged and no step stands: the deal says what happens next once you type it.
         var sText = h("input", { class: "field", name: "next", value: "", placeholder: "Next step, e.g. diligence plan", "aria-label": "Next step for " + m.company, maxlength: "140" });
         var sDue = h("input", { class: "field", type: "date", name: "due", "aria-label": "Due date", value: "" });
-        rows.push(foldRow(h("div", { class: "row" }, [glyph("high"), h("div", { class: "row-main" }, [
+        rows.push(foldRow(h("div", { class: "row" }, [glyph("medium"), h("div", { class: "row-main" }, [
           h("div", { class: "row-hit static" }, [h("span", { class: "row-title" }, m.company + ": met " + fmtDate(m.met_on, false) + ", add the next step"),
             h("span", { class: "row-detail" }, "The meeting is in your CRM. The deal has no next step yet")]),
           h("form", { class: "inline-form met-form", onsubmit: function (e) {
@@ -1510,7 +1547,7 @@ section.card.is-folded .sec-h { margin-bottom: 0; }
             if (sheetCrm()) { copyText(m.company + ", Next step: " + t + (sDue.value ? ", due " + fmtDate(sDue.value, false) : ""), "Copied. Paste it into your sheet."); return; }
             approve(aid, "next_step", { deal_id: m.deal_id, company: m.company, text: t, due: sDue.value || null, current: m.next_step || null,
               current_due: m.next_step_due || null, met: null, stage: null }, "Saved. Goes to your CRM at the next check.");
-          } }, [sText, sDue, saveBtn()]),
+          } }, [fld("Next step", sText), fld("Due", sDue, "fld-date"), saveBtn()]),
           h("div", { class: "row-meta" }, [h("span", { class: "status hero" }, "Next step"), sourceChip({ label: "CRM", url: m.source_url })])])]), "rdy:" + aid));
         return;
       }
@@ -1525,7 +1562,7 @@ section.card.is-folded .sec-h { margin-bottom: 0; }
         [h("option", { value: "" }, "Still " + (m.stage || "this stage"))].concat(moves.map(function (x) {
           var o = h("option", { value: x.name }, "Move to " + x.name); if (m.implied_stage && x.key === m.implied_stage.key) o.selected = true; return o;
         }))) : null;
-      rows.push(foldRow(h("div", { class: "row" }, [glyph("high"), h("div", { class: "row-main" }, [
+      rows.push(foldRow(h("div", { class: "row" }, [glyph("medium"), h("div", { class: "row-main" }, [
         h("div", { class: "row-hit static" }, [h("span", { class: "row-title" }, m.company + ": met " + fmtDate(m.met_on, false)),
           h("span", { class: "row-detail" }, "Log the meeting in your CRM. " +
             (m.next_step ? "Its next step is still: " + m.next_step + byDate(m.next_step_due) +
@@ -1543,7 +1580,7 @@ section.card.is-folded .sec-h { margin-bottom: 0; }
           approve(aid, "next_step", { deal_id: m.deal_id, company: m.company, text: t || null, due: t ? (due.value || null) : null, current: m.next_step || null,
             current_due: m.next_step_due || null, met: m.met_on, stage: st, clear_step: clear || undefined }, t ? "Saved. Goes to your CRM at the next check." :
             "Saved: the meeting" + (st ? " and the stage" : "") + " go to your CRM at the next check. Add the next step when you have it.");
-        } }, [text, due, stage ? h("span", { class: "select" }, [stage, icon(ICON.chev, 16)]) : null, saveBtn()]),
+        } }, [fld("Next step", text), fld("Due", due, "fld-date"), stage ? fld("Stage", h("span", { class: "select" }, [stage, icon(ICON.chev, 16)])) : null, saveBtn()]),
         h("div", { class: "row-meta" }, [h("span", { class: "status hero" }, "Met"), sourceChip({ label: "CRM", url: m.source_url })])])]), "rdy:" + aid));
     });
     // Replies to pitches fold into one line when there are many: an analyst's morning is not twenty rows of drafts.
@@ -1645,8 +1682,10 @@ section.card.is-folded .sec-h { margin-bottom: 0; }
       // Early stages fold away for partners and principals; analysts and deal owners see everything. A search or filter opens them.
       var early = ["first_meeting", "screening", "inbound"].indexOf(st.key) >= 0;
       var folds = early && !own && lvl !== "analyst" && lvl !== "solo_gp" && !q && S.filter === "all";
-      var key = st.key || st.name, open = S.stageOpen[key] !== undefined && folds ? S.stageOpen[key] : !folds;
       var flagged = ids.filter(function (id) { return needs(deals[id]); }).length;
+      // For a partner, a stage where nothing needs a look starts folded, with its count on the header.
+      if (!flagged && !own && lvl !== "analyst" && !q && S.filter === "all") folds = true;
+      var key = st.key || st.name, open = S.stageOpen[key] !== undefined && folds ? S.stageOpen[key] : !folds;
       if (!folds && S.stageOpen[key] === false) open = false;
       card.appendChild(h("h3", { class: "stage-h" }, h("button", { class: "fold-btn" + (open ? "" : " is-folded"), type: "button", "aria-expanded": open ? "true" : "false",
           onclick: function () { S.stageOpen[key] = !open; render(); } }, [h("span", { class: "fold-chev" }, icon(ICON.chev, 16)), h("b", null, st.name),
@@ -1682,7 +1721,7 @@ section.card.is-folded .sec-h { margin-bottom: 0; }
         var when = r.booked_on ? "Call booked " + fmtDate(r.booked_on, false) + " " + String(r.booked_on).slice(11, 16) : r.met_on ? "You met them " + fmtDate(r.met_on, false) :
           replyAt ? "You replied " + fmtDate(replyAt, false) + ": waiting on them" :
           r.in_touch ? "You already write to them, so no reply was drafted: answer in your thread" : null;
-        return itemRow({ id: "in_" + r.id, kind: "inbound", group: "inbound", title: r.company + (r.score !== undefined ? " · " + r.score : ""),
+        return itemRow({ id: "in_" + r.id, kind: "inbound", group: "inbound", title: r.company + (r.score !== undefined ? " · fit " + r.score + " of 100" : ""),
           detail: [when, r.pass_log, r.facts, reason ? reason.text : null].filter(Boolean).join(". "), status_word: word,
           source: { label: "Email", url: r.source_url }, entity: { type: "inbound", id: r.id, name: r.company }, actions: ["snooze"] });
       })),
@@ -1741,7 +1780,7 @@ section.card.is-folded .sec-h { margin-bottom: 0; }
         var metOn = d.last_met && (!d.crm_last_contact || String(d.crm_last_contact).slice(0, 10) < String(d.last_met).slice(0, 10)) ? String(d.last_met).slice(0, 10) : null;
         approve("ns_" + id, "next_step", { deal_id: id, company: d.company, text: t, due: date.value || null,
           current: d.next_step || null, current_due: d.next_step_due || null, met: metOn }, "Saved. Goes to your CRM at the next check.");
-      } }, [input, date, h("button", { class: "btn btn-secondary", type: "submit", style: "height:38px" }, sheetCrm() ? "Copy" : "Save")]),
+      } }, [input, date, h("button", { class: "btn btn-secondary", type: "submit" }, sheetCrm() ? "Copy" : "Save")]),
       d.competing && !quiet ? h("button", { class: "btn btn-secondary btn-sm", type: "button", onclick: function () { copyText(partnerLine(d), "Copied for your partners"); } },
         [icon(ICON.copy, 16), "Copy for partners"]) : null,
       quiet ? null : h("button", { class: "btn btn-ghost btn-sm", type: "button", onclick: function () { approve("quiet_" + id, "quiet", { deal_id: id }, "Marked quiet. Kept out of the copied brief, pushes and pre-reads."); } },
@@ -1749,7 +1788,7 @@ section.card.is-folded .sec-h { margin-bottom: 0; }
       toggleBtn("Rate", S.more === key, function () { S.more = S.more === key ? null : key; render(); }),
       S.more === key ? rateChips(hit._item) : null]);
     if (!open) actions.hidden = true;
-    return h("div", { class: "row deal-row" }, [glyph(d.competing ? "breach" : d.stale ? "high" : "low"), h("div", { class: "row-main" }, [hit, meta]),
+    return h("div", { class: "row deal-row" }, [glyph(d.competing ? "breach" : "low"), h("div", { class: "row-main" }, [hit, meta]),
       h("div", { class: "dwell" }, [h("span", { class: "days" + (over ? " over" : "") }, isNil(d.days_in_stage) ? DASH : Number(d.days_in_stage) <= 0 ? "Moved today" :
         over ? plural(d.days_in_stage - d.dwell, "day") + " over (day " + d.days_in_stage + " of " + d.dwell + ")" : "Day " + d.days_in_stage + (d.dwell ? " of " + d.dwell : "")),
         d.dwell ? h("span", { class: "track" + (over ? " over" : ""), "aria-hidden": "true" }, h("b", { style: "width:" + pct + "%" })) : null]), actions]);
@@ -1771,13 +1810,13 @@ section.card.is-folded .sec-h { margin-bottom: 0; }
       h("div", { class: "list" }, decay.map(function (r) {
         return itemRow({ id: "rel_" + r.person_id, kind: "relationship", group: "relationship", title: r.name + (r.company ? ", " + r.company : ""),
           detail: plural(r.days_since, "day") + " since you spoke. Strength " + r.strength + (isNil(r.strength_was) || r.strength_was === r.strength ? "" : ", down from " + r.strength_was) + ".",
-          status_word: "cold", source: { label: "Email", url: r.source_url }, entity: { type: "person", id: r.person_id, name: r.name }, actions: ["draft", "snooze"] });
+          status_word: "reach", source: { label: "Email", url: r.source_url }, entity: { type: "person", id: r.person_id, name: r.name }, actions: ["draft", "snooze"] });
       }))]));
     var top = (p.top || []).slice(0, 40);
     var tbl = h("table", { class: "fit-sm" }, [h("thead", null, h("tr", null, [h("th", null, "Person"), h("th", { class: "hide-sm" }, "Company"), h("th", null, "Strength, of 100"), h("th", { class: "r" }, "Last touch")])),
       h("tbody", null, top.map(function (r) {
         var s = Math.max(0, Math.min(100, Number(r.strength) || 0));
-        return h("tr", null, [cell(r.name || null), cell(r.company || null, "hide-sm"),
+        return h("tr", null, [cell(r.name || null), h("td", { class: "hide-sm" }, r.company || ""),
           h("td", null, h("span", { class: "meter" }, [h("span", null, h("b", { style: "width:" + Math.max(4, s) + "%" })), String(s)])),
           cell(ago(r.days_since), "r")]);
       }))]);
@@ -1820,13 +1859,13 @@ section.card.is-folded .sec-h { margin-bottom: 0; }
     if (asks && !platform) out.push(asks);
     var comps = p.companies || {}, ids = Object.keys(comps).sort(function (a, b) { return String(comps[a].name).localeCompare(String(comps[b].name)); });
     var tbl = h("table", { class: "fit-sm" }, [h("thead", null, h("tr", null, [h("th", null, "Company"), h("th", { class: "hide-sm" }, "Month"), h("th", { class: "r" }, "Revenue"),
-      h("th", { class: "r" }, "Growth"), h("th", { class: "r hide-sm" }, "Burn"), h("th", { class: "r" }, "Runway")])),
+      h("th", { class: "r" }, "Growth"), h("th", { class: "r hide-sm" }, "Burn"), h("th", { class: "r", style: "white-space:nowrap" }, "Runway, months")])),
       h("tbody", null, ids.map(function (id) {
         var c = comps[id], short = !isNil(c.runway_months) && c.runway_months < 9;
         var name = safeUrl(c.source_url) ? h("a", { href: safeUrl(c.source_url), target: "_blank", rel: "noopener noreferrer" }, c.name) : c.name;
         return h("tr", null, [h("td", null, name), cell(isNil(c.month) ? null : fmtMonth(c.month), "hide-sm"), cell(fmtMoney(c.revenue_usd), "r"),
           cell(fmtPct(c.growth_pct), "r" + (c.growth_pct < 0 ? " neg" : "")), cell(fmtMoney(c.burn_usd), "r hide-sm"),
-          cell(isNil(c.runway_months) ? null : Number(c.runway_months).toFixed(1) + " mo", "r" + (short ? " neg" : ""))]);
+          cell(isNil(c.runway_months) ? null : Number(c.runway_months).toFixed(1), "r" + (short ? " neg" : ""))]);
       }))]);
     out.push(h("section", { class: "card", style: "display:grid;gap:8px" }, [h("h2", { class: "sec-h" }, [h("b", null, "KPIs"), h("span", { class: "count" }, "latest month reported")]),
       h("div", { class: "table-wrap" }, tbl), h("p", { class: "prov" }, "ant. · founder updates · as of " + fmtDate(p.as_of))]));
@@ -2019,14 +2058,14 @@ section.card.is-folded .sec-h { margin-bottom: 0; }
     var alerts = (p.alerts || []).filter(function (a) { return !isHidden({ id: a.id }) && a.id !== aid; });
     if (alerts.length) out.push(h("section", { class: "card" }, [h("h2", { class: "sec-h" }, [h("b", null, "Needs you"), h("span", { class: "count" }, String(alerts.length))]),
       h("div", { class: "list" }, alerts.map(function (a) {
-        return itemRow({ id: a.id, kind: "lp", group: "lp", title: a.name, detail: a.text, breach: a.breach, priority: a.priority, status_word: a.breach ? "overdue" : "due",
+        return itemRow({ id: a.id, kind: "lp", group: "lp", title: a.name, detail: a.text, breach: a.breach, priority: a.priority, status_word: a.breach ? "overdue" : "touch",
           source: { label: "CRM", url: a.source_url }, entity: { type: "lp", id: a.lp_id, name: a.name }, actions: ["draft", "snooze"] });
       }))]));
     // A colleague's LP: listed with its owner, never drafted twice.
     var team = p.team_alerts || [];
     if (team.length) out.push(h("section", { class: "card" }, [h("h2", { class: "sec-h" }, [h("b", null, "With your team"), h("span", { class: "count" }, String(team.length))]),
       h("div", { class: "list" }, team.map(function (a) {
-        return itemRow({ id: a.id + "_team", kind: "lp", group: "lp", title: a.name, detail: a.text + ". " + (a.owner_name || "A colleague") + " owns this LP", breach: false,
+        return itemRow({ id: a.id + "_team", kind: "lp", group: "lp", title: a.name, detail: a.text, breach: false,
           status_word: "owned", owner_name: a.owner_name, source: { label: "CRM", url: a.source_url }, entity: { type: "lp", id: a.lp_id, name: a.name }, actions: [] });
       }))]));
     var lps = p.lps || {}, ids = Object.keys(lps).sort(function (a, b) { return (lps[b].days_since || 0) - (lps[a].days_since || 0); });
@@ -2095,10 +2134,8 @@ section.card.is-folded .sec-h { margin-bottom: 0; }
         var href = gmailHref(d);
         return h("li", null, [h("b", null, d.subject || "Draft"), " to " + (d.to_name || d.to || "them"),
           // What to check before it goes, here too: this is the screen opened just before the meeting.
-          d.context || closedInDraft(d) ? h("p", { class: "draft-note" }, [h("b", null, "Before you send: "), closedInDraft(d) + (d.context || "")]) : null, h("div", { class: "row-actions" }, [
-          href ? h("a", { class: "btn btn-secondary btn-sm", href: safeUrl(href), target: "_blank", rel: "noopener noreferrer" }, [icon(ICON.ext, 16), "Open in Gmail"]) : null,
-          h("button", { class: "btn btn-secondary btn-sm", type: "button", onclick: function () { markSent(d, null); closeOverlay(); } }, "Sent it"),
-          h("button", { class: "btn btn-ghost btn-sm", type: "button", onclick: function () { copyText(draftText(d), "Draft copied"); } }, [icon(ICON.copy, 16), "Copy"])])]);
+          d.context || closedInDraft(d) ? h("p", { class: "draft-note" }, [h("b", null, "Before you send: "), closedInDraft(d) + (d.context || "")]) : null,
+          draftActions(d, null, closeOverlay)]);
       }).filter(Boolean)),
       card.deal ? kv("Deal", [h("li", null, [card.deal.stage + ", day " + (isNil(card.deal.days_in_stage) ? DASH : card.deal.days_in_stage) + (card.deal.dwell ? " of " + card.deal.dwell : "") +
         (card.deal.next_step && card.deal.step_went ? ". Sent " + fmtDate(card.deal.step_went, false) + ": " + lowerFirst(card.deal.next_step) + ". Set the next step "
@@ -2282,7 +2319,7 @@ section.card.is-folded .sec-h { margin-bottom: 0; }
     return h("div", { class: "log-row" + (e.undone ? " is-undone" : "") }, [
       h("span", { class: "log-time" }, w ? pad(w.hh) + ":" + pad(w.mm) : ""),
       h("div", { class: "log-main" }, [h("span", { class: "row-title" }, e.t || VERB[e.cat]),
-        h("span", { class: "row-detail" }, VERB[e.cat] + " · " + resultOf(e) + (u && u.note ? ". " + u.note : ""))]),
+        h("span", { class: "row-detail" }, resultOf(e) + (u && u.note ? ". " + u.note : ""))]),
       u && u.fn ? h("button", { class: "btn btn-secondary btn-sm", type: "button", onclick: u.fn }, [icon(ICON.undo, 16), u.label]) : h("span")]);
   }
   function dayLabel(day) {
@@ -2298,7 +2335,8 @@ section.card.is-folded .sec-h { margin-bottom: 0; }
         return h("button", { class: "chip chip-filter", type: "button", "aria-pressed": S.logFilter === f[0] ? "true" : "false",
           onclick: function () { S.logFilter = f[0]; render(); } }, f[1] + " " + f[2]);
       }));
-    var head = h("div", { class: "day" }, [h("div", { class: "sec-h", style: "margin:0" }, [h("b", null, "Activity")]),
+    var head = h("div", { class: "day" }, [h("div", { class: "sec-h", style: "margin:0" }, [h("b", null, "Activity"),
+        h("button", { class: "btn btn-ghost btn-sm", type: "button", style: "margin-left:auto", onclick: function () { go("today"); } }, "Back to Today")]),
       h("p", { class: "prov" }, "Everything you did in ant. Home for the last 90 days. Undo works from here: a change still waiting is withdrawn, and a CRM change already made is put back at the next check."),
       all.length ? filters : null]);
     var list = all.filter(function (e) { return S.logFilter === "all" || e.cat === S.logFilter; });
@@ -2392,9 +2430,10 @@ section.card.is-folded .sec-h { margin-bottom: 0; }
         host.appendChild(h("button", { class: "ah-tab", type: "button", role: "tab", "aria-selected": S.tab === t.key ? "true" : "false", "aria-label": t.label, title: t.label,
           "aria-controls": "view", tabindex: S.tab === t.key || (S.tab === "activity" && t.key === "today") ? "0" : "-1",
           onkeydown: function (e) {
-            if (["ArrowRight", "ArrowLeft", "ArrowUp", "ArrowDown"].indexOf(e.key) < 0) return;
+            if (["ArrowRight", "ArrowLeft", "ArrowUp", "ArrowDown", "Home", "End"].indexOf(e.key) < 0) return;
             e.preventDefault(); e.stopPropagation();
-            var i = tabs.indexOf(t), n = tabs[(i + (e.key === "ArrowRight" || e.key === "ArrowDown" ? 1 : tabs.length - 1)) % tabs.length];
+            var i = tabs.indexOf(t), n = e.key === "Home" ? tabs[0] : e.key === "End" ? tabs[tabs.length - 1] :
+              tabs[(i + (e.key === "ArrowRight" || e.key === "ArrowDown" ? 1 : tabs.length - 1)) % tabs.length];
             go(n.key); var nb = host.querySelector('[aria-label="' + n.label + '"]'); if (nb) nb.focus();
           },
           onclick: function () { go(t.key); } }, [h("span", { class: "ah-tab-ico" }, icon(t.icon, 18)), h("span", { class: "lbl" }, t.label)]));
