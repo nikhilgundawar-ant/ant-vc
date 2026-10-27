@@ -33,4 +33,4 @@ Home opens in light mode. The switch in its header turns on dark mode, and Home 
 /plugin install ant-vc@anthill
 ```
 
-Built by Anthill AI. MIT license. Claude: read CLAUDE.md to install.
+Built by Anthill AI. MIT license. Privacy: [PRIVACY.md](PRIVACY.md). Claude: read CLAUDE.md to install.

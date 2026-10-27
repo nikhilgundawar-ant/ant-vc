@@ -16,5 +16,6 @@
     "meeting prep",
     "crm"
   ],
-  "license": "MIT"
+  "license": "MIT",
+  "privacyPolicyUrl": "https://github.com/nikhilgundawar-ant/ant-vc/blob/main/PRIVACY.md"
 }

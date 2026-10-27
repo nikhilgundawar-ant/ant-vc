@@ -3,6 +3,7 @@
   "owner": {
     "name": "Anthill AI"
   },
+  "description": "Anthill AI plugins for Claude. ant. for VCs: a proactive chief of staff for venture capital teams.",
   "plugins": [
     {
       "name": "ant-vc",
