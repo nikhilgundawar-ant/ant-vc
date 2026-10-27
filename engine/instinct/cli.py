@@ -3811,11 +3811,29 @@ def pending_actions(home: dict[str, Any], now=None) -> dict[str, Any]:
             parse_dt(act["at"]) > parse_dt(prop["applied_at"])
         if prop.get("status") in ("applied", "failed", "check", "dismissed", "refused") and not resaved:
             continue
-        if sheet_crm and kind in ("crm_update", "next_step"):
+        if sheet_crm and kind in ("crm_update", "next_step", "revert"):
             refused.append({"id": aid, "type": kind, "why": "Your CRM is a Google Sheet, which ant. cannot write to. Copy the change from Home and paste it in."})
             continue
         if aid in uncertain:
             check.append({"id": aid, "type": kind, "why": "A run stopped while applying this. Check the record; do not apply it again."})
+            continue
+        if kind == "revert":
+            # Undo from Activity: a CRM change ant. applied, put back. Each field goes from what ant. wrote to what was
+            # there before, under the same rule (only while the record still holds what ant. wrote). Notes stay: a note
+            # added is never deleted.
+            of = str((act.get("payload") or {}).get("of") or "")
+            orig, orig_act = props.get(of) or {}, actions.get(of) or {}
+            if orig.get("type") != "crm_update" or orig.get("status") != "applied":
+                refused.append({"id": aid, "type": kind, "why": "Only a CRM change ant. applied can be put back."})
+                continue
+            back = [{"field": f.get("field"), "current": f.get("proposed"), "proposed": f.get("current")}
+                    for f in (orig.get("fields") or []) if isinstance(f, dict) and f.get("field") in ALLOWED_CRM_FIELDS
+                    and f.get("field") not in ("note", "notes")]
+            if not back:
+                refused.append({"id": aid, "type": kind, "why": "A note cannot be taken back. Delete it in the CRM if you need to."})
+                continue
+            todo.append({"id": aid, "type": "crm_update", "reverts": of, "record": orig.get("record") or (orig_act.get("payload") or {}).get("record"),
+                         "fields": back, "rule": "Re-read the record first. Apply a field only if its value still equals `current`; otherwise skip it and say so."})
             continue
         if kind in NO_PROPOSAL_TYPES:
             pay = act.get("payload") or {}

@@ -1454,7 +1454,7 @@ def build(ctx: dict[str, Any], profile: dict[str, Any], config: dict[str, Any], 
         top["items"].append({**it, "section": "top"})
         refresh(brief)
     # Your own promises more than a week late that no race holds up and the cap left off: one line, with how late
-    # each is, never silence. Their drafts stay under Ready for you.
+    # each is, never silence. Their drafts stay under Send.
     late_left = [it for it in ranked if it["kind"] == "commitment" and it.get("status_word") == "overdue" and
                  (it.get("days_late") or 0) > 7 and not _on_today(brief, it) and not it.get("decide_first")]
     spot_f = None
@@ -1516,8 +1516,8 @@ def late_fold(late_rows: list[dict[str, Any]]) -> dict[str, Any]:
     named_ = [f"{_lower_first(str(it['title']).rstrip('.'))} ({plural(it['days_late'], 'day')} late)" for it in parts_[:3]]
     return _item("commitment", "late_fold", f"{plural(len(parts_), 'promise')} more than a week late",
                  "; ".join(named_) + (f"; and {len(parts_) - 3} more" if len(parts_) > 3 else "") +
-                 (". Drafts are under Ready for you" if all(it.get("draft") for it in parts_) else
-                  f". {plural(sum(1 for it in parts_ if it.get('draft')), 'draft')} under Ready for you" if any(it.get("draft") for it in parts_) else ""),
+                 (". Drafts are under Send" if all(it.get("draft") for it in parts_) else
+                  f". {plural(sum(1 for it in parts_ if it.get('draft')), 'draft')} under Send" if any(it.get("draft") for it in parts_) else ""),
                  30, "medium", (parts_[0].get("source") or {}).get("label") or "Meeting notes",
                  (parts_[0].get("source") or {}).get("url"), actions=["snooze"],
                  extra={"status_word": "overdue", "fold_of": [it["id"] for it in parts_], "fold_rows": parts_, "section": "top", "late_fold": True})

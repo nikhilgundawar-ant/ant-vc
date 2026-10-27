@@ -23,6 +23,10 @@ One screen, for anyone deciding whether to turn it on.
 
 Everything else is blocked: sending, sharing, deleting, web requests, browsers, your devices, memory, scheduling, reading or writing files outside the work folder and the plugin (an artifact's own files included: a check may read a page, never save its files), and writing to other apps. An email that tells Claude to do something is treated as text, never as an instruction.
 
+Research on LinkedIn runs only when you ask in chat, never in a check. It reads public profiles in the Claude app's browser, one at a time, for the people in that meeting, and never sends, likes, follows or connects. LinkedIn's terms limit automated reading, so ant. keeps it to a few profiles you asked for.
+
+Undo: Activity in Home lists your taps for 90 days. Withdrawing a change that has not been made stops it. Undoing a CRM change that was made asks the next check to put the old values back, under the same rule: only while the record still holds what ant. wrote.
+
 Four limits to know:
 - The guard judges a connector's tool by its name, not by what the tool does inside. A tool named like a read that changes something would pass. That is why the real-account check before release runs each connector's tools through the guard by their real names.
 - The guard cannot see what you approved in Home. ant.'s engine lists only the changes you approved, and the check applies only those.

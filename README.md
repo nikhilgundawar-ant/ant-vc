@@ -21,7 +21,13 @@ Your first brief arrives in about 10 minutes. Then: a morning brief, prep before
 
 The one-screen version, for anyone deciding whether to turn it on: [Privacy and trust](TRUST.md).
 
-Home opens in light mode. The switch in its header turns on dark mode, and Home remembers your choice.
+How ant. Home reads:
+
+- **Today** starts with your day in four numbers (meetings, decide, send, waiting on others), then the one thing that matters most, your schedule, and sections by what you do: Decide, Send, Waiting on others, Watch and Done today.
+- **Every section folds.** Tap its title. A folded section still shows its count, how many lines are urgent and its top line. Focus folds everything but the top line and your schedule.
+- **Activity** (the clock at the top) lists every tap for 90 days, by day and kind, with Undo. A change still waiting is withdrawn. A CRM change already made is put back at the next check. A sent email cannot be unsent.
+- **Research** on a prep card reads each person's public LinkedIn profile in the Claude app's browser, only when you ask, and adds an empathy map to the card and a PDF to Drive.
+- Home follows your device's light or dark setting until you pick one. Help sets the theme, Comfortable or Compact text, and keyboard shortcuts.
 
 ## Install
 

@@ -23,13 +23,29 @@ PEOPLE = [("aditi", "Aditi Rao, Partner"), ("kabir", "Kabir Shah, Principal"), (
           ("solo", "A solo GP (Aditi's week, run alone)")]
 
 
+# A few taps from the evening before, so Activity has something to show. Their ids match no line, so Today is unchanged.
+SAMPLE_STATE = {
+    "items": {
+        "demo_sent_1": {"done_at": "2026-10-21T18:10:00+05:30", "sent": True, "t": "Thanks for the call, and the cap table ask", "g": "demo_sent_1",
+                        "at": "2026-10-21T18:10:00+05:30"},
+        "demo_done_1": {"done_at": "2026-10-21T17:40:00+05:30", "closed_by": "done", "t": "Share the Q3 KPI pack with the partners", "g": "demo_done_1",
+                        "at": "2026-10-21T17:40:00+05:30"},
+        "demo_snz_1": {"snoozed_until": "2026-10-22T08:00:00+05:30", "t": "Ledgerline: reference call notes", "g": "demo_snz_1", "at": "2026-10-21T16:05:00+05:30"},
+    },
+    "actions": {
+        "demo_ns_1": {"type": "next_step", "status": "approved", "at": "2026-10-22T06:50:00+05:30", "t": "Halo Reconcile: next step Diligence plan with the CFO",
+                      "payload": {"deal_id": "demo_halo", "company": "Halo Reconcile", "text": "Diligence plan with the CFO", "current": "Partner meeting"}},
+    },
+}
+
+
 def build(out_dir: str) -> str:
     page = open(os.path.join(ROOT, "home", "index.html"), encoding="utf-8").read()
     members = {}
     for key, label in PEOPLE:
         snaps = json.loads(json.dumps(demo.build(key, "https://claude.ai/artifact/demo"), default=str))
         snaps["config"]["demo"] = True
-        members[key] = {"label": label, "snaps": snaps}
+        members[key] = {"label": label, "snaps": snaps, "state": SAMPLE_STATE}
     data = json.dumps({"order": [k for k, _ in PEOPLE], "members": members}, ensure_ascii=False, separators=(",", ":"))
     data = data.replace("</", "<\\/")  # never closes the script tag early
     page = page.replace("<title>ant. Home</title>", "<title>ant. Home Demo</title>", 1)

@@ -3554,3 +3554,41 @@ def suite_round15(record) -> None:
 
 
 SUITES["round15"] = suite_round15
+
+
+def suite_round16(record) -> None:
+    """Round sixteen: Undo from Home's Activity. An applied CRM change is put back field by field under the same
+    still-holds rule; a note, a change never applied, a forged reversal and a Sheet CRM are refused; a reversal
+    applied once is never offered again."""
+    now = datetime(2026, 10, 22, 10, 0, tzinfo=tzinfo("Asia/Kolkata"))
+
+    def home(props, acts, crm="attio"):
+        return {"snap": {"proposals": {"items": props}, "config": {"user_email": "aditi@quillwater.vc", "crm_system": crm}, "lps": {"lps": {}}},
+                "state": {"actions": {"items": acts}}, "ratings": [], "versions": {}, "runs": []}
+    ok_f = [{"field": "stage", "current": "First meeting", "proposed": "Diligence"}, {"field": "notes", "current": None, "proposed": "Met CFO"}]
+    props = {"p1": {"type": "crm_update", "status": "applied", "fields": ok_f, "record": {"name": "Atlas", "id": "r1"}},
+             "p2": {"type": "crm_update", "status": "proposed", "fields": ok_f},
+             "p3": {"type": "crm_update", "status": "applied", "fields": [{"field": "notes", "current": None, "proposed": "x"}]}}
+    acts = {"rv_p1": {"type": "revert", "status": "approved", "payload": {"of": "p1"}, "at": "2026-10-22T09:00:00+05:30"},
+            "rv_p2": {"type": "revert", "status": "approved", "payload": {"of": "p2"}, "at": "2026-10-22T09:00:00+05:30"},
+            "rv_p3": {"type": "revert", "status": "approved", "payload": {"of": "p3"}, "at": "2026-10-22T09:00:00+05:30"},
+            "rv_zz": {"type": "revert", "status": "approved", "payload": {"of": "nope"}, "at": "2026-10-22T09:00:00+05:30"},
+            "rv_w": {"type": "revert", "status": "withdrawn", "payload": {"of": "p1"}, "at": "2026-10-22T09:00:00+05:30"}}
+    res = pending_actions(home(props, acts), now)
+    todo = {p["id"]: p for p in res["pending"]}
+    refused = sorted(r["id"] for r in res["refused"])
+    rv = todo.get("rv_p1") or {}
+    record("round16", "an applied CRM change is put back: same record, stage from Diligence to First meeting, the note left alone",
+           json.dumps(rv.get("fields")), "one field reversed", rv.get("type") == "crm_update" and rv.get("reverts") == "p1" and
+           rv.get("fields") == [{"field": "stage", "current": "Diligence", "proposed": "First meeting"}] and (rv.get("record") or {}).get("id") == "r1")
+    record("round16", "a change never applied, a note only, an unknown change and a withdrawn tap are not put back",
+           f"refused {refused}; pending {sorted(todo)}", "rv_p2, rv_p3, rv_zz refused; rv_w ignored",
+           refused == ["rv_p2", "rv_p3", "rv_zz"] and sorted(todo) == ["rv_p1"])
+    props2 = dict(props, rv_p1={"type": "crm_update", "status": "applied"})
+    again = pending_actions(home(props2, {"rv_p1": acts["rv_p1"]}), now)
+    record("round16", "a reversal applied once is never offered again", json.dumps(again["pending"]), "[]", not again["pending"])
+    sheet = pending_actions(home(props, {"rv_p1": acts["rv_p1"]}, crm="sheet"), now)
+    record("round16", "a Sheet CRM says to change it back by hand", json.dumps(sheet["refused"])[:120], "refused", [r["id"] for r in sheet["refused"]] == ["rv_p1"])
+
+
+SUITES["round16"] = suite_round16

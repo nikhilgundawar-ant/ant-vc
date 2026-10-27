@@ -7,4 +7,4 @@ builds schedules and writes ant. Home snapshots. Python standard library
 only, so it runs anywhere Claude can run Python.
 """
 
-__version__ = "0.7.8"
+__version__ = "0.8.0"

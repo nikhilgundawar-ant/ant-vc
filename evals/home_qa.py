@@ -166,6 +166,32 @@ class _LazySnaps(dict):
         return self[member]
 
 
+def bucket_label(it: dict) -> str:
+    """The Today section Home puts a brief line in (home/index.html, bucketOf)."""
+    w, k = it.get("status_word"), it.get("kind")
+    if w == "team" or it.get("fyi"):
+        return "Your team's deals"
+    if k in ("inbound", "pass_returned"):
+        return "Pitches"
+    if k == "waiting" or w in ("waiting", "asked", "requested"):
+        return "Waiting on others"
+    if k in ("decision", "signal", "stale", "deal_move", "review"):
+        return "Decide"
+    if k in ("commitment", "question", "ask", "lp", "relationship") or it.get("late_fold"):
+        return "Send"
+    return "Watch"
+
+
+DECIDE = "section[aria-label='Decide']"
+SEND = "section[aria-label='Send']"
+READY = "section[aria-label='Decide'], section[aria-label='Send']"
+OPEN_LINES = "#view section.card:not([aria-label='Done today'])"
+
+
+def ready_text(page) -> str:
+    return " ".join(page.locator(READY).all_inner_texts())
+
+
 class QA:
     def __init__(self, out: str):
         self.out = out
@@ -188,7 +214,7 @@ class QA:
             page.add_init_script("try { localStorage.setItem('instinct.theme', " + json.dumps(theme) + "); } catch (e) {}")
         page.route("**/fonts.googleapis.com/**", lambda r: r.abort())
         page.route("**/fonts.gstatic.com/**", lambda r: r.abort())
-        qa = {"snap": cfg.pop("snap") if "snap" in cfg else self.snaps[member], **cfg}
+        qa = {"snap": cfg.pop("snap") if "snap" in cfg else self.snaps[member], "open_all": cfg.pop("open_all", True), **cfg}
         page.add_init_script("window.__QA__ = " + json.dumps(qa) + ";" + MOCK)
         errors: list[str] = []
         page.on("pageerror", lambda e: errors.append(str(e)))
@@ -204,7 +230,7 @@ class QA:
         for sec in self.snaps[member]["brief"]["sections"]:
             for it in sec["items"]:
                 if "done" in (it.get("actions") or []):
-                    return sec["label"], it["title"]
+                    return bucket_label(it), it["title"]
         raise AssertionError("no row with Done on Today")
 
     def tap_done(self, page, member: str = "aditi") -> str:
@@ -256,13 +282,16 @@ class QA:
             self.check(sc, "one Prep me button", page.locator("#view button", has_text="Prep me").count() <= 1)
             self.check(sc, "every row carries a status word", page.evaluate("""Array.from(document.querySelectorAll('#view .row')).every(r => !!r.querySelector('.status'))"""))
             self.check(sc, "copy brief offered", page.locator("button", has_text="Copy brief").count() == 1)
-            self.check(sc, "ready for you shows drafts and a CRM change", page.get_by_text("Ready for you").count() == 1 and page.get_by_text("Draft: Intro").count() == 1)
+            self.check(sc, "Decide holds the CRM change and Send the drafts", page.locator(DECIDE, has_text="Approve").count() == 1 and
+                       page.locator(SEND + " .row-title", has_text="Intro").count() >= 1)
+            self.check(sc, "the day strip counts meetings, decisions, sends and waits",
+                       page.locator(".daystrip .stat").count() == 4 and page.locator(".daystrip .stat", has_text="Decide").count() == 1)
             self.check(sc, "evidence line present", "sources" in page.locator(".evidence").inner_text())
             self.check(sc, "live pill shows the run time", page.locator("#hdr-live-text").text_content() == "As of 07:00",
                        page.locator("#hdr-live-text").inner_text())
-            self.check(sc, "light by default, with a dark switch", page.evaluate("getComputedStyle(document.body).backgroundColor") == "rgb(244, 246, 242)"
+            self.check(sc, "light on a light device, with a dark switch", page.evaluate("getComputedStyle(document.body).backgroundColor") == "rgb(244, 246, 242)"
                        and page.locator("#theme-btn[aria-label='Switch to dark mode']").count() == 1)
-            self.check(sc, "demo banner shown", page.get_by_text("Example data").count() == 1)
+            self.check(sc, "demo banner shown", page.get_by_text("Sample data").count() == 1)
             self.common(page, sc)
             ctx.close()
 
@@ -277,7 +306,8 @@ class QA:
         writes = page.evaluate("window.__writes")
         first = writes[0] if writes else {}
         self.check(sc, "first tap creates state/items", first.get("op") == "set" and first.get("path") == "state/items", json.dumps(first)[:160])
-        self.check(sc, "row disappears", page.get_by_text(title, exact=True).count() == 0)
+        self.check(sc, "row disappears", page.locator(OPEN_LINES).get_by_text(title, exact=True).count() == 0)
+        self.check(sc, "Done today lists it", page.locator("section[aria-label='Done today'] .row-title", has_text=title).count() == 1)
         self.check(sc, "toast offers undo", page.locator(".toast button", has_text="Undo").count() == 1)
         self.shot(page, "toast-380")
         page.locator(".toast button", has_text="Undo").click()
@@ -286,7 +316,7 @@ class QA:
         last = writes[-1] if writes else {}
         cleared = all(v.get("done_at") is None for v in (last.get("data", {}).get("items") or {}).values())
         self.check(sc, "undo clears done_at", last.get("op") == "update" and cleared, json.dumps(last)[:160])
-        self.check(sc, "row returns after undo", page.get_by_text(title, exact=True).count() == 1)
+        self.check(sc, "row returns after undo", page.locator(OPEN_LINES).get_by_text(title, exact=True).count() == 1)
         self.common(page, sc)
         ctx.close()
 
@@ -399,16 +429,16 @@ class QA:
     def approvals(self, browser) -> None:
         sc = "approvals"
         ctx, page = self.open(browser, sc)
-        page.locator("section[aria-label='Ready for you'] button", has_text="Approve").click()
+        page.locator(DECIDE + " button", has_text="Approve").click()
         page.wait_for_timeout(120)
         w = page.evaluate("window.__writes")
         ok = any(v.get("type") == "crm_update" for x in w if x.get("path") == "state/actions" for v in ((x.get("data") or {}).get("items") or {}).values())
         self.check(sc, "CRM change approved", ok)
         self.check(sc, "approved state shown", page.get_by_text("Approved. Applies at the next check.").count() >= 1)
-        page.locator("section[aria-label='Ready for you'] button", has_text="Copy").first.click()
+        page.locator(SEND + " button", has_text="Copy").first.click()
         page.wait_for_timeout(120)
         self.check(sc, "copy gives feedback", page.locator(".toast").count() == 1, page.locator(".toast").inner_text() if page.locator(".toast").count() else "")
-        markup = page.locator("section[aria-label='Ready for you'] .row", has_text="term sheet markup")
+        markup = page.locator(SEND + " .row", has_text="term sheet markup")
         href = markup.locator("a", has_text="Open in Gmail").get_attribute("href") if markup.locator("a", has_text="Open in Gmail").count() else ""
         self.check(sc, "a draft kept in Home opens Gmail filled in, in the user's own account",
                    href.startswith("https://mail.google.com/mail/?authuser=aditi%40quillwater.vc&view=cm") and "ishaan%40atlassettle.com" in href
@@ -430,11 +460,11 @@ class QA:
                                                     "record": {"name": "Beacon Credit Rails"}, "reason": "The CRM refused the date format.",
                                                     "applied_at": "2026-10-22T06:55:00+05:30", "source_url": "https://notes.granola.ai/d/tr05"}
         ctx, page = self.open(browser, "failed-apply", PHONE, snap=snap)
-        row = page.locator("section[aria-label='Ready for you'] .row", has_text="Beacon Credit Rails")
+        row = page.locator(DECIDE + " .row", has_text="Beacon Credit Rails")
         self.check("failed-apply", "a failed change says so", row.locator(".status", has_text="Failed").count() == 1)
         row.locator("button", has_text="Dismiss").click()
         page.wait_for_timeout(100)
-        self.check("failed-apply", "dismiss hides it", page.locator("section[aria-label='Ready for you'] .row", has_text="Beacon Credit Rails").count() == 0)
+        self.check("failed-apply", "dismiss hides it", page.locator(DECIDE + " .row", has_text="Beacon Credit Rails").count() == 0)
         ctx.close()
 
     def keyboard(self, browser) -> None:
@@ -455,25 +485,34 @@ class QA:
         ctx.close()
 
     def theme(self, browser) -> None:
-        """Light by default, even on a device set to dark. The switch turns on dark and the choice survives a reload."""
+        """Home follows the device until the user picks: dark on a dark device, light on a light one. The switch and
+        Help change it, and the choice survives a reload."""
         sc = "theme"
         ctx, page = self.open(browser, sc, PHONE, scheme="dark")
         bg = page.evaluate("getComputedStyle(document.body).backgroundColor")
-        self.check(sc, "light on a device set to dark", bg == "rgb(244, 246, 242)", bg)
+        self.check(sc, "dark on a device set to dark", bg == "rgb(14, 19, 16)", bg)
         page.locator("#theme-btn").click()
         page.wait_for_timeout(60)
         bg = page.evaluate("getComputedStyle(document.body).backgroundColor")
-        self.check(sc, "the switch turns on dark (Inkwell)", bg == "rgb(14, 19, 16)", bg)
-        self.check(sc, "the switch says what it does next", page.locator("#theme-btn").get_attribute("aria-label") == "Switch to light mode")
+        self.check(sc, "the switch turns on light", bg == "rgb(244, 246, 242)", bg)
+        self.check(sc, "the switch says what it does next", page.locator("#theme-btn").get_attribute("aria-label") == "Switch to dark mode")
         page.reload()
         page.wait_for_timeout(250)
-        self.check(sc, "the choice survives a reload", page.evaluate("getComputedStyle(document.body).backgroundColor") == "rgb(14, 19, 16)")
+        self.check(sc, "the choice survives a reload", page.evaluate("getComputedStyle(document.body).backgroundColor") == "rgb(244, 246, 242)")
         page.locator("#help-btn").click()
-        seg = page.locator("[role=dialog] .seg")
-        self.check(sc, "Help offers Light and Dark", seg.locator("button").count() == 2 and seg.locator("button[aria-pressed=true]").inner_text() == "Dark")
-        seg.locator("button", has_text="Light").click()
+        seg = page.locator("[role=dialog] .seg[aria-label='Appearance']")
+        self.check(sc, "Help offers device, light and dark", seg.locator("button").count() == 3 and seg.locator("button[aria-pressed=true]").inner_text() == "Light")
+        seg.locator("button", has_text="Match my device").click()
         page.wait_for_timeout(60)
-        self.check(sc, "Help switches back to light", page.evaluate("getComputedStyle(document.body).backgroundColor") == "rgb(244, 246, 242)")
+        self.check(sc, "Match my device goes back to dark here", page.evaluate("getComputedStyle(document.body).backgroundColor") == "rgb(14, 19, 16)")
+        dens = page.locator("[role=dialog] .seg[aria-label='Text size']")
+        dens.locator("button", has_text="Compact").click()
+        page.wait_for_timeout(60)
+        self.check(sc, "Compact makes the text smaller", page.evaluate("getComputedStyle(document.body).fontSize") == "13.5px")
+        dens.locator("button", has_text="Comfortable").click()
+        page.wait_for_timeout(60)
+        self.check(sc, "Comfortable is 15px", page.evaluate("getComputedStyle(document.body).fontSize") == "15px")
+        page.keyboard.press("Escape")
         self.common(page, sc)
         ctx.close()
         for vp, tag in ((PHONE, "380"), (DESK, "1440")):
@@ -544,7 +583,7 @@ class QA:
                     elif action == "focus":
                         page.keyboard.press("j")
                 elif action == "row":
-                    page.locator("section[aria-label='Next up'] .row-hit").first.click()
+                    page.locator("#view .row-hit").first.click()
                 elif action == "prep":
                     page.locator("button.agenda-row").first.click()
                     scope = "[role=dialog]"
@@ -717,7 +756,7 @@ class QA:
         sheet = json.loads(json.dumps(self.snaps["aditi"]))
         sheet["config"]["crm_system"] = "sheet"
         ctx, page = self.open(browser, "sheet-crm", PHONE, snap=sheet)
-        ready = page.locator("section[aria-label='Ready for you']")
+        ready = page.locator(DECIDE)
         self.check("sheet-crm", "a Sheet CRM shows Copy change, never Approve", ready.locator("button", has_text="Copy change").count() >= 1 and
                    ready.locator("button", has_text="Approve").count() == 0)
         self.check("sheet-crm", "it says to paste it into the sheet", ready.locator(".status", has_text="Paste into your sheet").count() >= 1)
@@ -814,7 +853,7 @@ class QA:
         snap = self.snaps["meera"]
         prompt = next((p for p in (snap["pipeline"].get("met_prompts") or []) if p["company"] == "Halo Reconcile"), None)
         ctx, page = self.open(browser, "met-log", PHONE, member="meera")
-        ready = page.locator("section[aria-label='Ready for you']")
+        ready = page.locator(DECIDE)
         row = ready.locator(".row", has_text="Halo Reconcile: met")
         self.check("met-log", "a founder meeting on your deal offers a one-tap log", prompt is not None and row.count() == 1,
                    row.first.inner_text()[:100] if row.count() else "no row")
@@ -870,7 +909,7 @@ class QA:
                          "implied_stage": {"key": "second_meeting", "name": "Second meeting"}, "step_was_meeting": True,
                          "aid": f"ns_{halo['deal_id']}_2026-10-22"})
         ctx, page = self.open(browser, "met-prefill", PHONE, member="meera", snap=snap)
-        row = page.locator("section[aria-label='Ready for you'] .row", has_text="Halo Reconcile: met").first
+        row = page.locator(DECIDE + " .row", has_text="Halo Reconcile: met").first
         sel = row.locator("select[name=stage]") if row.count() else None
         chosen = sel.evaluate("s => s.options[s.selectedIndex].text") if sel is not None and sel.count() else ""
         empty = row.locator("input[name=next]").input_value() == "" if row.count() else False
@@ -898,7 +937,7 @@ class QA:
             "body": "Hi all,\n\nWho knows someone at a bank who fits?\n\nTara", "note_kind": "team", "source_label": "Email",
             "source_url": "https://mail.google.com/mail/u/0/#all/th0343", "in_gmail": False}
         ctx, page = self.open(browser, "team-note", PHONE, member="tara", snap=tsnap)
-        drow = page.locator("section[aria-label='Ready for you'] .row", has_text="Can anyone help Nimbus Collect?").first
+        drow = page.locator(SEND + " .row", has_text="Can anyone help Nimbus Collect?").first
         href = drow.locator("a", has_text="Open in Gmail").get_attribute("href") if drow.count() and drow.locator("a", has_text="Open in Gmail").count() else ""
         self.check("team-note", "a team note opens Gmail addressed to every colleague on it",
                    "to=aditi%40quillwater.vc%2Ckabir%40quillwater.vc" in str(href), str(href)[:120])
@@ -948,7 +987,7 @@ class QA:
                                                 "stage_key": "second_meeting", "source_url": halo.get("source_url")}] + \
                 [p for p in prompts if p is not halo]
         ctx, page = self.open(browser, "met-step", PHONE, member="meera", snap=snap)
-        row = page.locator("section[aria-label='Ready for you'] .row", has_text="Halo Reconcile: met 22 Oct, add the next step").first
+        row = page.locator(DECIDE + " .row", has_text="Halo Reconcile: met 22 Oct, add the next step").first
         shown = row.count() == 1 and row.locator("select[name=stage]").count() == 0
         blank_saved = True
         if row.count():  # what the user sees before Save
@@ -1183,7 +1222,7 @@ class QA:
         page.locator(".ah-hero-card .hero-actions button", has_text="Done").first.click()
         page.wait_for_timeout(150)
         st = page.locator(".ah-hero-card .statement").inner_text()
-        dup = page.locator("section[aria-label='Next up'] .row-title", has_text=first_row).count()
+        dup = page.locator(OPEN_LINES + " .row-title", has_text=first_row).count()
         self.check("hero-done", "Done on the hero steps the next line up, and it leaves the list", st == first_row and dup == 0, f"{st}; listed {dup}")
         self.shot(page, "hero-done-380")
         self.common(page, "hero-done")
@@ -1217,8 +1256,8 @@ class QA:
         # 5. A closed promise's draft leaves Ready for you.
         mk = next(k for k, d in a["drafts"]["items"].items() if "markup" in str(d.get("subject")).lower())
         ctx, page = self.open(browser, "ready-closed", PHONE, state={"items": {a["drafts"]["items"][mk]["commitment_id"]: {"done_at": "2026-10-22T06:50:00+05:30"}}, "actions": {}})
-        txt = page.locator("section[aria-label='Ready for you']").inner_text() if page.locator("section[aria-label='Ready for you']").count() else ""
-        self.check("ready-closed", "a promise marked done takes its draft out of Ready for you", "term sheet markup" not in txt and "Draft: Intro" in txt, txt[:120])
+        txt = ready_text(page)
+        self.check("ready-closed", "a promise marked done takes its draft out of Ready for you", "term sheet markup" not in txt and "Intro" in txt, txt[:120])
         ctx.close()
         # 6. The prep sheet says what to check before a draft goes, and offers Sent it.
         ctx, page = self.open(browser, "prep-caveat", PHONE)
@@ -1402,7 +1441,7 @@ class QA:
         page.locator("#bottom-tabs button[aria-label='Today']").click()
         page.wait_for_timeout(120)
         # Its reply is under Ready for you, or on the pitch's own row on Today: Sent it is wherever it shows.
-        rfy = page.locator("section[aria-label='Ready for you'] .row", has_text="Harborline").first
+        rfy = page.locator(SEND + " .row", has_text="Harborline").first
         if not rfy.count() or not rfy.locator("button", has_text="Sent it").count():
             rfy = page.locator("#view .row", has_text="Harborline").first
             if rfy.count() and rfy.locator(".row-hit").count():
@@ -1443,7 +1482,7 @@ class QA:
         ctx, page = self.open(browser, "holder-note", PHONE, when=dt.datetime(2026, 10, 23, 7, 0, tzinfo=IST), member="meera", snap=fsnap, state=fstate)
         page.locator("#bottom-tabs button[aria-label='Today']").click()
         page.wait_for_timeout(120)
-        hrow = page.locator("section[aria-label='Ready for you'] .row", has_text="Your view on").first
+        hrow = page.locator(SEND + " .row", has_text="Your view on").first
         htxt = hrow.inner_text() if hrow.count() else ""
         has_sent = hrow.count() == 1 and hrow.locator("button", has_text="Sent it").count() == 1
         pointed = page.locator("#view .row .done-note", has_text="Note to Aditi ready").count()
@@ -1455,7 +1494,7 @@ class QA:
         ctx, page = self.open(browser, "holder-note", PHONE, when=dt.datetime(2026, 10, 23, 7, 10, tzinfo=IST), member="meera", snap=fsnap, state=st2)
         page.locator("#bottom-tabs button[aria-label='Today']").click()
         page.wait_for_timeout(120)
-        after_ = page.locator("section[aria-label='Ready for you'] .row", has_text="Your view on").count()
+        after_ = page.locator(SEND + " .row", has_text="Your view on").count()
         self.check("holder-note", "the note to the partner whose view drafts wait on shows under Ready for you with Sent it, "
                               "each draft it names points at it, and it leaves once every one is sent",
                    bool(hold_[0]) and "Aditi" in htxt and has_sent and after_ == 0 and pointed == len(hold_[1].get("holds") or []),
@@ -1479,7 +1518,7 @@ class QA:
         ctx, page = self.open(browser, "late-drafts", PHONE, when=dt.datetime(2026, 11, 9, 8, 0, tzinfo=IST), member="aditi", snap=asnap, state=astate)
         page.locator("#bottom-tabs button[aria-label='Today']").click()
         page.wait_for_timeout(120)
-        rtxt = page.locator("section[aria-label='Ready for you']").inner_text() if page.locator("section[aria-label='Ready for you']").count() else ""
+        rtxt = ready_text(page)
         fold = page.locator("#view .row-title", has_text=re.compile(r"promises? more than a week late")).count()
         self.check("late-drafts", "a late promise's draft says how late it is, and the late ones are named on Today",
                    bool(re.search(r"\d+ days late", rtxt)) and fold >= 1, f"fold rows {fold}; {rtxt[:140]}")
@@ -1554,7 +1593,7 @@ class QA:
                 done2 = True
         w2 = page.evaluate("window.__writes") or []
         keys2 = (((w2[-1] if w2 else {}).get("data") or {}).get("items") or {})
-        ready2 = page.locator("section[aria-label='Ready for you'] .row", has_text=shared_[1].get("subject") or "-").count()
+        ready2 = page.locator(READY).locator(".row", has_text=shared_[1].get("subject") or "-").count()
         self.check("shared-done", "Done on the second closes the email too, as done, never as sent",
                    done2 and shared_[0] in keys2 and (keys2.get(shared_[0]) or {}).get("closed_by") == "done" and
                    not (keys2.get(shared_[0]) or {}).get("sent") and ready2 == 0 and page.get_by_text("Marked sent").count() == 0,
@@ -1567,7 +1606,7 @@ class QA:
         ctx, page = self.open(browser, "holder-sent", PHONE, when=fri, member="meera", snap=msnap, state=mstate)
         page.locator("#bottom-tabs button[aria-label='Today']").click()
         page.wait_for_timeout(120)
-        hrow = page.locator("section[aria-label='Ready for you'] .row", has_text="Your view on").first
+        hrow = page.locator(SEND + " .row", has_text="Your view on").first
         sent_ok = False
         if hrow.count():
             hrow.locator(".row-hit").first.click()
@@ -1609,12 +1648,137 @@ class QA:
         self.common(page, "step-sent")
         ctx.close()
 
+    def redesign(self, browser) -> None:
+        """Round sixteen: sections fold and remember it, Focus, the day strip, one action line per row, Activity with
+        Undo, the select, and research on the prep card."""
+        sc = "folds"
+        ctx, page = self.open(browser, sc, PHONE, open_all=False)
+        heads = page.locator("#view section.card .fold-btn")
+        self.check(sc, "every Today section has a fold header", heads.count() >= 3 and page.locator("#view section.card[aria-label] > .sec-h:not(:has(.fold-btn))").count() == 0)
+        folded = page.locator("#view section.card.is-folded")
+        names = [x.get_attribute("aria-label") for x in folded.all()]
+        self.check(sc, "Waiting and Watch start folded, Decide and Send open", all(n in ("Waiting on others", "Watch", "Your team's deals", "Done today") for n in names)
+                   and page.locator(DECIDE + ":not(.is-folded)").count() == 1, str(names))
+        if folded.count():
+            first = folded.first
+            label = first.get_attribute("aria-label")
+            self.check(sc, "a folded section keeps its count and top line", first.locator(".count").count() == 1 and first.locator(".fold-peek").count() == 1)
+            first.locator(".fold-btn").click()
+            page.wait_for_timeout(60)
+            self.check(sc, "a tap opens it", page.locator(f"section[aria-label=\"{label}\"]:not(.is-folded)").count() == 1)
+            page.reload()
+            page.wait_for_timeout(250)
+            self.check(sc, "the fold is remembered", page.locator(f"section[aria-label=\"{label}\"]:not(.is-folded)").count() == 1)
+        page.locator(".day-tools button", has_text="Focus").click()
+        page.wait_for_timeout(60)
+        open_ = [x.get_attribute("aria-label") for x in page.locator("#view section.card[aria-label]:not(.is-folded)").all()]
+        self.check(sc, "Focus folds everything but the schedule", open_ == ["Meetings today"], str(open_))
+        page.locator(".daystrip .stat", has_text="Decide").click()
+        page.wait_for_timeout(120)
+        self.check(sc, "a day-strip cell opens its section", page.locator(DECIDE + ":not(.is-folded)").count() == 1)
+        page.locator(".day-tools button", has_text="Focus").click()
+        self.shot(page, "folds-380")
+        self.common(page, sc)
+        ctx.close()
+
+        sc = "row-actions"
+        ctx, page = self.open(browser, sc, PHONE)
+        page.locator("#view .row", has=page.locator("button.row-hit")).first.locator(".row-hit").click()
+        row = page.locator("#view .row", has=page.locator("button.row-hit")).first
+        self.check(sc, "an open row shows one line of actions, with Later and Rate folded",
+                   row.locator("button", has_text="Later").count() == 1 and row.locator("button", has_text="Tomorrow").is_visible() is False
+                   and row.locator(".chip-rate").first.is_visible() is False)
+        row.locator("button", has_text="Later").click()
+        page.wait_for_timeout(60)
+        row = page.locator("#view .row", has=page.locator("button.row-hit")).first
+        self.check(sc, "Later opens the snooze times", row.locator("button", has_text="Tomorrow").is_visible())
+        self.shot(page, "row-later-380")
+        ctx.close()
+
+        sc = "activity"
+        ctx, page = self.open(browser, sc, PHONE, member="kabir")
+        label, title = self.done_row("kabir")
+        page.locator(f"section[aria-label='{label}'] .row-hit", has_text=title).first.click()
+        page.locator(f"section[aria-label='{label}'] .row-actions button", has_text="Done").first.click()
+        page.wait_for_timeout(120)
+        page.locator("#activity-btn").click()
+        page.wait_for_timeout(80)
+        entry = page.locator("section[aria-label='Today'] .log-row", has_text=title)
+        self.check(sc, "Activity lists the tap under Today, by category", entry.count() == 1 and page.locator("section[aria-label='Today'] .log-cat", has_text="Done").count() == 1)
+        self.shot(page, "activity-380")
+        entry.locator("button", has_text="Reopen").click()
+        page.wait_for_timeout(120)
+        w = page.evaluate("window.__writes")
+        last = (w[-1] if w else {}).get("data", {}).get("items") or {}
+        self.check(sc, "Reopen from Activity clears the tap and records it", any(v.get("done_at") is None and v.get("undone") for v in last.values()), json.dumps(last)[:160])
+        page.locator("#bottom-tabs button[aria-label='Today']").click()
+        page.wait_for_timeout(60)
+        self.check(sc, "the line is back on Today", page.locator(OPEN_LINES).get_by_text(title, exact=True).count() == 1)
+        self.common(page, sc)
+        ctx.close()
+
+        sc = "activity-crm"
+        snap = json.loads(json.dumps(self.snaps["aditi"]))
+        props = snap["proposals"]["items"]
+        pid = next(k for k, v in props.items() if v.get("type") == "crm_update")
+        props[pid] = {**props[pid], "status": "applied", "applied_at": "2026-10-22T07:02:00+05:30"}
+        state = {"items": {}, "actions": {pid: {"type": "crm_update", "status": "approved", "payload": {"fields": props[pid].get("fields"), "record": props[pid].get("record")},
+                                               "at": "2026-10-22T06:40:00+05:30", "t": "Atlas: stage"},
+                                         "ns_x": {"type": "next_step", "status": "approved", "payload": {"deal_id": "x", "company": "Halo", "text": "Diligence"},
+                                                  "at": "2026-10-22T06:45:00+05:30", "t": "Halo: next step Diligence"}}}
+        ctx, page = self.open(browser, sc, PHONE, snap=snap, state=state)
+        page.locator("#activity-btn").click()
+        page.wait_for_timeout(80)
+        crm = page.locator(".log-row", has_text="Atlas: stage")
+        pend = page.locator(".log-row", has_text="Halo: next step")
+        self.check(sc, "an applied CRM change offers Reverse in CRM; one still waiting offers Withdraw",
+                   crm.locator("button", has_text="Reverse in CRM").count() == 1 and pend.locator("button", has_text="Withdraw").count() == 1)
+        crm.locator("button", has_text="Reverse in CRM").click()
+        page.wait_for_timeout(120)
+        w = page.evaluate("window.__writes")
+        items = next((x.get("data") or {}).get("items") for x in reversed(w) if x.get("path") == "state/actions")
+        self.check(sc, "Reverse asks the next check to put the old values back", (items.get("rv_" + pid) or {}).get("type") == "revert"
+                   and (items.get("rv_" + pid) or {}).get("payload", {}).get("of") == pid, json.dumps(items)[:160])
+        page.locator(".log-row", has_text="Halo: next step").locator("button", has_text="Withdraw").click()
+        page.wait_for_timeout(120)
+        w = page.evaluate("window.__writes")
+        items = next((x.get("data") or {}).get("items") for x in reversed(w) if x.get("path") == "state/actions")
+        self.check(sc, "Withdraw stops a change that has not been made", (items.get("ns_x") or {}).get("status") == "withdrawn")
+        self.common(page, sc)
+        ctx.close()
+
+        sc = "select"
+        ctx, page = self.open(browser, sc, DESK, snap={**self.snaps["aditi"], "config": {**self.snaps["aditi"]["config"], "demo": True}})
+        ctx.close()
+        sc = "research"
+        ctx, page = self.open(browser, sc, PHONE)
+        page.locator("button.agenda-row").first.click()
+        page.wait_for_timeout(80)
+        dlg = page.locator("[role=dialog]")
+        self.check(sc, "the prep card offers LinkedIn research, said plainly", dlg.get_by_text("Research", exact=True).count() == 1 and
+                   dlg.locator("button", has_text="Copy the request for Claude").count() == 1 and "Nothing is sent" in dlg.inner_text())
+        ctx.close()
+        snap = json.loads(json.dumps(self.snaps["aditi"]))
+        cards = snap["prep"]["cards"]
+        k0 = next(iter(cards))
+        cards[k0]["research"] = [{"name": "Ishaan Rao", "headline": "CEO, Atlas Settlement", "says": "Settlement is the bottleneck", "thinks": "Banks move slowly",
+                                  "does": "Posts weekly on cross-border rails", "feels": "Pressed for time before the round", "points": ["Ask about the bank partner"],
+                                  "source_url": "https://www.linkedin.com/in/example", "read_at": "2026-10-22"}]
+        ctx, page = self.open(browser, "research-map", PHONE, snap=snap)
+        page.locator("button.agenda-row").first.click()
+        page.wait_for_timeout(80)
+        txt = page.locator("[role=dialog]").inner_text() if page.locator("[role=dialog]").count() else ""
+        self.check("research-map", "a research run's empathy map shows on the card: says, thinks, does, feels and the source",
+                   all(t in txt for t in ("Ishaan Rao", "Says", "Thinks", "Does", "Feels", "LinkedIn, read in your browser")), txt[-200:])
+        self.shot(page, "research-380")
+        ctx.close()
+
     def run(self, only: set[str] | None = None) -> int:
         from playwright.sync_api import sync_playwright
         with sync_playwright() as p:
             browser = p.chromium.launch()
             for name in ("today", "done_undo", "prep", "tabs", "pipeline_actions", "approvals", "keyboard", "theme", "colours", "states", "levels",
-                         "round6", "round7", "round8", "round9", "round10", "round11", "round12", "round13"):
+                         "round6", "round7", "round8", "round9", "round10", "round11", "round12", "round13", "redesign"):
                 if only and name not in only:
                     continue
                 try:

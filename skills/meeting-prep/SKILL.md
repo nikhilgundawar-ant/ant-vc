@@ -2,7 +2,7 @@
 name: meeting-prep
 description: Preps a venture investor for an external meeting: who they are, last three interactions, open promises on both sides, deal status, what colleagues know and three questions to ask. Use when the user says "prep me for", "who am I meeting", "brief me on my 3pm", or when the pulse finds a meeting within 150 minutes without a prep card.
 metadata:
-  version: "0.7.8"
+  version: "0.8.0"
 ---
 
 # Meeting prep

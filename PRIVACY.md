@@ -1,6 +1,6 @@
 # ant. for VCs: privacy policy
 
-Last updated: 27 October 2026. This policy covers the ant-vc plugin for Claude, made by Anthill AI.
+Last updated: 28 October 2026. This policy covers the ant-vc plugin for Claude, made by Anthill AI.
 
 ## In short
 
@@ -12,6 +12,7 @@ Last updated: 27 October 2026. This policy covers the ant-vc plugin for Claude, 
 
 - Your email, calendar, meeting notes and CRM, through the Claude connectors you choose to approve.
 - Google Drive and Slack only if you connect them. Slack is read only.
+- Public LinkedIn profiles of the people you are meeting, only when you ask for research in chat. ant. reads them in the Claude app's browser, where you are signed in. It never sends, likes, follows or connects, and scheduled checks never open a browser.
 - It reads only what it needs for your brief, meeting prep, follow-ups, pipeline, portfolio and LP views.
 
 ## What ant. writes
@@ -29,6 +30,8 @@ Last updated: 27 October 2026. This policy covers the ant-vc plugin for Claude, 
 ## How long it is kept
 
 - ant. Home keeps a short working history: drafts for up to 30 days, finished items for about 30 days, and sent-step notes for up to 90 days.
+- Activity keeps a record of your taps (what you marked done, sent, snoozed or approved) for 90 days, so you can undo them.
+- Research maps stay in ant. Home until you remove them; the PDF stays in your Drive.
 - Everything stays until you remove it.
 
 ## Your choices

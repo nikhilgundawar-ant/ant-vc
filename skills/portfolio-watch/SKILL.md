@@ -2,7 +2,7 @@
 name: portfolio-watch
 description: Reads portfolio founders' updates into KPIs, flags drift early (runway under 9 months, burn jumps, revenue misses, key hires leaving, churn spikes), captures founder asks and preps board meetings three days ahead. Use when the user asks "how is the portfolio", "any portfolio flags", "prep me for the board meeting", "what do founders need", or when the Monday digest or pulse finds founder updates.
 metadata:
-  version: "0.7.8"
+  version: "0.8.0"
 ---
 
 # Portfolio watch

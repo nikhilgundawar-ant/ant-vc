@@ -2,7 +2,7 @@
 name: inbound-triage
 description: Triages inbound pitches and intros for a venture firm against its written thesis, checks the pass log, and drafts the right reply (book a call, ask for more, or a kind pass). Use when the user says "triage my inbound", "should we take this meeting", "score this deck", or when the pulse finds new pitch emails.
 metadata:
-  version: "0.7.8"
+  version: "0.8.0"
 ---
 
 # Inbound triage

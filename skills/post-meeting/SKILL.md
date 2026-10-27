@@ -2,7 +2,7 @@
 name: post-meeting
 description: Turns a finished meeting's notes or transcript into a post-meeting pack for a venture investor: a three-line summary, decisions, every commitment with owner and due date, proposed CRM updates and a follow-up email draft. Use when the user says "process my last call", "what did we agree", "follow up on my meeting with", or when the pulse finds new meeting notes.
 metadata:
-  version: "0.7.8"
+  version: "0.8.0"
 ---
 
 # Post-meeting pack

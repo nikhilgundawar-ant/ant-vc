@@ -48,12 +48,12 @@ Create a one-off scheduled task (run once, a few minutes from now) whose prompt 
 - [ ] Stop a run halfway through drafting (pause the task mid-run). The next morning does not draft the same email again.
 - [ ] A draft that offers times: the next morning after one of them has passed, it offers two new ones, and no time sits in two drafts. A draft written before a meeting with that person is rewritten after it.
 - [ ] A founder question on your own deal that has waited two working days: Today says "asked on <date>, no reply yet" with their words, and a reply is ready.
-- [ ] After a founder meeting on your own deal, Ready for you offers "met <date>": Save sets the next step, the stage and the last contact in the CRM at the next check.
+- [ ] After a founder meeting on your own deal, Decide offers "met <date>": Save sets the next step, the stage and the last contact in the CRM at the next check.
 - [ ] Save that log with the step left blank where the CRM's step was the meeting: the CRM's step is emptied at the next check, and from then on Today asks "met <date>, add the next step" until you set one. A colleague's Pipeline counts the new stage's days from the meeting.
 - [ ] A founder ask: mark its note sent; the row says who was asked. After a note to the board partner, "Aditi said yes: ask the team" (with her name) drafts a new note with its own id, shown as "Draft ready" while the first stays sent. Once that note is marked sent, no row says "Draft coming at the next check".
 - [ ] A note with no reply in five working days: the next morning drafts one short nudge per note (one note for three asks gets one nudge naming all three), Today shows one row for it, and one push names it.
 - [ ] A draft with blanks says "Fill in N lines" on its row, never only "Draft ready", and its "Before you send" line shows under the buttons on the row and the hero.
-- [ ] "Sent it" shows wherever a draft does: the hero, a row, Ready for you and the prep sheet. Tap it on the hero: the next line steps up, and a promise's row closes with its draft. On a Portfolio ask, "Close ask" closes the ask itself and the Portfolio hero moves on.
+- [ ] "Sent it" shows wherever a draft does: the hero, a row, Send and the prep sheet. Tap it on the hero: the next line steps up, and a promise's row closes with its draft. On a Portfolio ask, "Close ask" closes the ask itself and the Portfolio hero moves on.
 - [ ] Answer one of your own ask notes from the partner's mailbox: the next morning the asks say "<name> replied on <date>", and no nudge is drafted for that note.
 - [ ] A capital call two weeks unpaid: the chase is drafted once. Mark it sent: no second chase for five working days, none at all if the LP's contact replies, and never a third.
 - [ ] Change a deal's next step on Pipeline, wait for a check to apply it, then change it again the same day: the row says "saving to your CRM at the next check" again, and the next check applies the second step.

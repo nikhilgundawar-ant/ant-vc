@@ -49,10 +49,10 @@
   color-scheme: dark;
 }
 * { box-sizing: border-box; }
-body { margin: 0; background: var(--ah-page); color: var(--ah-ink); font-family: var(--ah-body); font-size: 13.5px; line-height: 1.5;
+body { margin: 0; background: var(--ah-page); color: var(--ah-ink); font-family: var(--ah-body); font-size: 15px; line-height: 1.55;
   -webkit-font-smoothing: antialiased; font-feature-settings: "lnum" 1, "tnum" 1; }
 body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--ah-page); }
-button, input { font: inherit; color: inherit; }
+button, input, select { font: inherit; color: inherit; }
 a { color: var(--ah-hero); text-decoration: none; }
 a:hover { text-decoration: underline; }
 :focus-visible { outline: 2px solid var(--ah-hero); outline-offset: 2px; }
@@ -85,6 +85,7 @@ p { text-wrap: pretty; }
   display: grid; place-items: center; border-radius: 9px; color: var(--ah-hero); }
 .ah-icon-btn svg { width: 18px; height: 18px; transition: transform 80ms var(--ah-ease); }
 .ah-icon-btn:hover svg { transform: translateY(-1px); }
+.ah-icon-btn[aria-current="page"] { background: var(--ah-tint); }
 .seg { display: inline-flex; gap: 4px; padding: 2px; border-radius: 999px; background: var(--ah-control-2); }
 .seg .chip { background: transparent; color: var(--ah-ink-2); }
 .seg .chip[aria-pressed="true"] { background: var(--ah-hero); color: var(--ah-on-hero); }
@@ -101,23 +102,21 @@ p { text-wrap: pretty; }
 .ah-tab[aria-selected="true"] .ah-tab-ico { background: var(--ah-hero); color: var(--ah-on-hero); }
 
 /* Tiles */
-.card { background: var(--ah-surface); border-radius: 12px; box-shadow: var(--ah-elev-1); padding: 16px; min-width: 0;
-  transition: transform 160ms var(--ah-ease), box-shadow 160ms var(--ah-ease); }
-.card:hover { transform: translateY(-1px); box-shadow: var(--ah-elev-2); }
+/* Only controls lift under the pointer: a card you read stays still. */
+.card { background: var(--ah-surface); border-radius: 12px; box-shadow: var(--ah-elev-1); padding: 16px; min-width: 0; }
 .ruled { position: relative; overflow: hidden; box-shadow: var(--ah-elev-hero); }
 .ruled::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--ah-hero-fill); }
 .ruled.is-breach::before { background: var(--ah-breach); }
 .ruled:hover { box-shadow: var(--ah-elev-hero); }
 .ah-hero-card { padding: 24px 20px 20px 24px; display: grid; gap: 16px; }
-.ah-hero-card:hover { transform: translateY(-2px); }
-.kicker { display: flex; align-items: center; gap: 8px; font-weight: 600; font-size: 13px; color: var(--ah-ink-2); }
+.kicker { display: flex; align-items: center; gap: 8px; font-weight: 600; font-size: 14px; color: var(--ah-ink-2); }
 .kicker i { width: 7px; height: 7px; border-radius: 999px; background: var(--ah-hero-fill); flex: none; }
 .is-breach .kicker i { background: var(--ah-breach); }
-.statement { font-family: var(--ah-display); font-weight: 200; font-size: 30px; line-height: 1.12; letter-spacing: -.02em; margin: 0; color: var(--ah-ink); }
-.finding { margin: 0; font-size: 13.5px; color: var(--ah-ink); max-width: 74ch; }
+.statement { font-family: var(--ah-display); font-weight: 200; font-size: 26px; line-height: 1.12; letter-spacing: -.02em; margin: 0; color: var(--ah-ink); }
+.finding { margin: 0; font-size: 15px; line-height: 1.55; color: var(--ah-ink); max-width: 68ch; }
 .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
 
-.btn { height: 32px; padding: 0 14px; border-radius: 9px; border: 0; font-weight: 700; font-size: 13px; cursor: pointer; display: inline-flex;
+.btn { height: 36px; padding: 0 16px; border-radius: 9px; border: 0; font-weight: 700; font-size: 14px; cursor: pointer; display: inline-flex;
   align-items: center; gap: 6px; white-space: nowrap; text-decoration: none; transition: transform 80ms var(--ah-ease), background 80ms var(--ah-ease); }
 .btn:hover { transform: translateY(-1px); text-decoration: none; }
 .btn-primary { background: var(--ah-hero); color: var(--ah-on-hero); }
@@ -126,56 +125,57 @@ p { text-wrap: pretty; }
 .btn-secondary:hover { background: var(--ah-tint); }
 .btn-ghost { background: transparent; color: var(--ah-ink-2); }
 .btn-ghost:hover { background: var(--ah-control-2); }
-.btn-sm { height: 26px; font-size: 12.5px; padding: 0 10px; }
+.btn-sm { height: 32px; font-size: 13.5px; padding: 0 12px; }
 .btn svg { width: 16px; height: 16px; flex: none; }
 
 /* Agenda */
 .ah-hero-cols { display: grid; gap: 20px; }
 .ah-agenda { padding: 12px 16px 10px 20px; }
-.sec-h { display: flex; align-items: baseline; gap: 8px; margin: 0 0 4px; font-weight: 600; font-size: 12px; color: var(--ah-ink-2); }
-.sec-h b { font-family: var(--ah-display); font-weight: 700; font-size: 17px; letter-spacing: -.015em; color: var(--ah-ink); }
-.sec-h .count { margin-left: auto; }
+.sec-h { display: flex; align-items: center; gap: 8px; margin: 0 0 8px; min-height: 32px; font-weight: 600; font-size: 13px; color: var(--ah-ink-2); }
+.sec-h b { font-family: var(--ah-display); font-weight: 700; font-size: 18px; letter-spacing: -.015em; color: var(--ah-ink); }
 .agenda-row { display: grid; grid-template-columns: 58px minmax(0, 1fr) auto; gap: 14px; align-items: center; padding: 10px 0;
   border-top: 1px solid var(--ah-row-rule); }
 .agenda-time { font-family: var(--ah-display); font-weight: 700; font-size: 17px; letter-spacing: -.015em; color: var(--ah-ink); }
 .agenda-row.is-next .agenda-time { color: var(--ah-hero); }
 .agenda-row.is-past .agenda-who b { color: var(--ah-ink-2); font-weight: 600; }
-.agenda-who b { display: block; font-weight: 600; font-size: 13.5px; overflow-wrap: anywhere; }
+.agenda-who b { display: block; font-weight: 600; font-size: 15px; overflow-wrap: anywhere; }
 button.agenda-row { width: 100%; text-align: left; background: transparent; border: 0; border-top: 1px solid var(--ah-row-rule); cursor: pointer;
   border-radius: 3px; font: inherit; color: inherit; }
 .agenda-row.first { border-top: 0; }
-.agenda-go { font-size: 12px; font-weight: 700; color: var(--ah-hero); white-space: nowrap; }
-.agenda-who span { display: block; font-size: 12px; color: var(--ah-ink-2); overflow-wrap: anywhere; }
+.agenda-go { display: inline-flex; align-items: center; height: 32px; padding: 0 12px; border-radius: 9px; box-shadow: inset 0 0 0 1px var(--ah-outline);
+  font-size: 13px; font-weight: 700; color: var(--ah-hero); white-space: nowrap; }
+button.agenda-row:hover .agenda-go { background: var(--ah-tint); }
+.agenda-who span { display: block; font-size: 13px; color: var(--ah-ink-2); overflow-wrap: anywhere; }
 .agenda-who .agenda-notes { display: grid; gap: 2px; margin-top: 4px; }
-.agenda-who .agenda-note { font-size: 12px; color: var(--ah-ink); }
-.agenda-who .agenda-note b { display: inline; font-weight: 700; font-size: 12px; color: var(--ah-ink-2); }
+.agenda-who .agenda-note { font-size: 13.5px; color: var(--ah-ink); }
+.agenda-who .agenda-note b { display: inline; font-weight: 700; font-size: 13.5px; color: var(--ah-ink-2); }
 .agenda-who .agenda-note b.breach { color: var(--ah-breach-ink); }
-.agenda-who .agenda-note .agenda-draft { display: inline; font-size: 12px; font-weight: 700; color: var(--ah-hero); }
+.agenda-who .agenda-note .agenda-draft { display: inline; font-size: 13.5px; font-weight: 700; color: var(--ah-hero); }
 
 /* Item rows */
 .list { display: grid; }
-.row { display: grid; grid-template-columns: 18px minmax(0, 1fr); gap: 12px; align-items: start; padding: 12px 0; border-top: 1px solid var(--ah-row-rule); }
+.row { display: grid; grid-template-columns: 18px minmax(0, 1fr); gap: 12px; align-items: start; padding: 14px 0; border-top: 1px solid var(--ah-row-rule); }
 .list > .row:first-child { border-top: 0; }
-.glyph { width: 18px; height: 18px; margin-top: 2px; display: block; }
-.row-main { min-width: 0; display: grid; gap: 6px; }
+.glyph { width: 18px; height: 18px; margin-top: 4px; display: block; }
+.row-main { min-width: 0; display: grid; gap: 8px; }
 .row-hit { display: grid; gap: 2px; text-align: left; border: 0; background: transparent; padding: 0; margin: 0; cursor: pointer; min-height: 24px;
   border-radius: 3px; width: 100%; }
 .row-hit.static { cursor: default; }
-.row-title { display: block; font-weight: 600; font-size: 13.5px; overflow-wrap: anywhere; color: var(--ah-ink); }
-.row-detail { display: block; font-size: 12.5px; color: var(--ah-ink-2); overflow-wrap: anywhere; }
-.pack-facts { color: var(--ah-ink-2); font-size: 12.5px; }
+.row-title { display: block; font-weight: 600; font-size: 15px; line-height: 1.4; overflow-wrap: anywhere; color: var(--ah-ink); }
+.row-detail { display: block; font-size: 14px; line-height: 1.5; color: var(--ah-ink-2); overflow-wrap: anywhere; max-width: 72ch; }
+.pack-facts { color: var(--ah-ink-2); font-size: 14px; }
 .row-meta { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
 .row-actions { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; padding-top: 2px; }
 .row-actions[hidden] { display: none; }
 .row-open { display: grid; gap: 8px; padding-top: 4px; }
 .row-open[hidden] { display: none; }
 .row-open .row-actions { padding-top: 0; }
-.status { font-size: 12px; font-weight: 600; color: var(--ah-ink-2); }
+.status { font-size: 13px; font-weight: 600; color: var(--ah-ink-2); }
 .status.breach { color: var(--ah-breach-ink); font-weight: 700; }
 .status.hero { color: var(--ah-hero); }
 
 /* Chips */
-.chip { display: inline-flex; align-items: center; gap: 6px; height: 24px; padding: 0 10px; border-radius: 999px; font-weight: 600; font-size: 11.5px;
+.chip { display: inline-flex; align-items: center; gap: 6px; height: 26px; padding: 0 12px; border-radius: 999px; font-weight: 600; font-size: 12.5px;
   white-space: nowrap; border: 0; cursor: pointer; text-decoration: none; transition: transform 80ms var(--ah-ease); }
 .chip:hover { transform: translateY(-1px); text-decoration: none; }
 span.chip { cursor: default; }
@@ -203,7 +203,8 @@ span.chip:hover { transform: none; }
 .days.over { color: var(--ah-breach-ink); font-weight: 700; }
 .deal-row { grid-template-columns: 18px minmax(0, 1fr) auto; }
 .deal-row .row-actions { grid-column: 2 / 4; }
-.inline-form { display: flex; flex-wrap: wrap; gap: 8px; width: 100%; }
+.inline-form { display: flex; flex-wrap: wrap; gap: 8px; width: 100%; min-width: 0; }
+.inline-form .field { width: 120px; }
 .field { height: 38px; border-radius: 999px; border: 0; padding: 0 16px; background: var(--ah-surface); box-shadow: inset 0 0 0 1px var(--ah-field);
   min-width: 0; flex: 1 1 200px; }
 .field[type="date"] { flex: 0 1 168px; }
@@ -212,8 +213,8 @@ span.chip:hover { transform: none; }
 
 /* Tables */
 .table-wrap { overflow-x: auto; margin: 0 -16px; padding: 0 16px; }
-table { border-collapse: collapse; width: 100%; min-width: 520px; font-size: 12.5px; border-radius: 0; }
-th { text-align: left; font-weight: 700; font-size: 12px; color: var(--ah-ink-2); padding: 8px 12px 8px 0; border-bottom: 1px solid var(--ah-row-rule); white-space: nowrap; }
+table { border-collapse: collapse; width: 100%; min-width: 520px; font-size: 14px; border-radius: 0; }
+th { text-align: left; font-weight: 700; font-size: 13px; color: var(--ah-ink-2); padding: 8px 12px 8px 0; border-bottom: 1px solid var(--ah-row-rule); white-space: nowrap; }
 td { padding: 10px 12px 10px 0; border-bottom: 1px solid var(--ah-row-rule); vertical-align: top; }
 tr:last-child td { border-bottom: 0; }
 td.r, th.r { text-align: right; }
@@ -252,8 +253,8 @@ td .owed { display: block; font-size: 12px; }
   background: var(--ah-overlay-ink); color: var(--ah-overlay-text); border-radius: 16px; box-shadow: var(--ah-elev-overlay); padding: 8px 8px 8px 16px;
   display: flex; align-items: center; gap: 12px; font-size: 13px; width: max-content; max-width: calc(100vw - 32px); }
 .toast .btn { background: transparent; color: var(--ah-overlay-text); box-shadow: inset 0 0 0 1px var(--ah-overlay-edge); height: 26px; font-size: 12.5px; }
-.banner { display: flex; flex-wrap: wrap; gap: 4px 12px; align-items: center; padding: 10px 16px; border-radius: 12px; background: var(--ah-tint); color: var(--ah-hero);
-  font-weight: 600; font-size: 12.5px; }
+.banner { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; padding: 12px 16px; border-radius: 12px; background: var(--ah-tint); color: var(--ah-hero);
+  font-weight: 600; font-size: 13.5px; }
 .banner.is-warn { background: var(--ah-breach-tint); color: var(--ah-breach-ink); }
 .banner > * { min-width: 0; overflow-wrap: anywhere; }
 .banner span { font-weight: 400; color: var(--ah-ink); }
@@ -261,29 +262,91 @@ td .owed { display: block; font-size: 12px; }
 .chip-filter { background: var(--ah-control-2); color: var(--ah-ink-2); }
 .chip-filter[aria-pressed="true"] { background: var(--ah-hero); color: var(--ah-on-hero); }
 .field-sm { height: 32px; flex: 1 1 160px; max-width: 280px; }
-.demo-view { display: flex; align-items: center; gap: 8px; flex: 1 1 220px; }
+.demo-view { display: inline-flex; align-items: center; gap: 8px; margin-left: auto; }
 .demo-view span { font-weight: 600; color: var(--ah-hero); white-space: nowrap; }
 .demo-pick { color: var(--ah-ink); }
-.md { display: grid; gap: 6px; font-size: 13px; }
-.md h3 { margin: 6px 0 0; font-weight: 700; font-size: 13px; color: var(--ah-ink); }
+.md { display: grid; gap: 8px; font-size: 14px; }
+.md h3 { margin: 8px 0 0; font-weight: 700; font-size: 14px; color: var(--ah-ink); }
 .md ul { margin: 0; padding-left: 20px; display: grid; gap: 4px; }
 .md p { margin: 0; }
 .watch { margin: 0; font-weight: 700; color: var(--ah-breach-ink); }
 .empty { display: grid; gap: 6px; padding: 24px 20px; color: var(--ah-ink-2); }
 .empty b { font-family: var(--ah-display); font-weight: 200; font-size: 26px; line-height: 1.15; color: var(--ah-ink); letter-spacing: -.02em; }
 .skel { height: 12px; border-radius: 999px; background: var(--ah-surface-2); animation: ah-pulse 1.4s var(--ah-ease) infinite; }
-.evidence { margin: 0; font-size: 11.5px; color: var(--ah-ink-3); }
-.prov { margin: 0; font-size: 11.5px; color: var(--ah-ink-3); }
-.done-note { font-size: 12px; font-weight: 600; color: var(--ah-hero); }
-.link-btn { background: none; border: 0; padding: 0; font: inherit; color: var(--ah-hero); cursor: pointer; text-align: left; }
+.evidence { margin: 0; font-size: 12.5px; color: var(--ah-ink-3); }
+.prov { margin: 0; font-size: 12.5px; color: var(--ah-ink-3); }
+.done-note { font-size: 13px; font-weight: 600; color: var(--ah-hero); }
+.link-btn { background: none; border: 0; padding: 0 4px; min-height: 32px; display: inline-flex; align-items: center; font: inherit; color: var(--ah-hero); cursor: pointer; text-align: left; }
 .link-btn:hover { text-decoration: underline; }
 .link-btn:focus-visible { outline: 2px solid var(--ah-hero); outline-offset: 2px; border-radius: 3px; }
-.draft-note { margin: 0; font-size: 12.5px; line-height: 1.45; color: var(--ah-ink-2); overflow-wrap: anywhere; }
+.draft-note { margin: 0; font-size: 13.5px; line-height: 1.5; color: var(--ah-ink-2); overflow-wrap: anywhere; }
 .draft-note b { font-weight: 600; color: var(--ah-ink); }
+
+/* Section folds: every section header is a button. A folded section keeps its count, its urgent count and its top line. */
+.fold-btn { display: flex; align-items: center; gap: 8px; width: 100%; min-height: 40px; margin: 0; padding: 0; border: 0; background: transparent;
+  cursor: pointer; text-align: left; font: inherit; color: inherit; border-radius: 9px; }
+.fold-chev { width: 32px; height: 32px; display: grid; place-items: center; flex: none; color: var(--ah-ink-2); border-radius: 9px; }
+.fold-chev svg { width: 16px; height: 16px; transition: transform 160ms var(--ah-ease); }
+.fold-btn:hover .fold-chev { background: var(--ah-control-2); }
+.is-folded .fold-chev svg { transform: rotate(-90deg); }
+.sec-h .count { margin-left: auto; display: inline-flex; align-items: center; height: 26px; padding: 0 10px; border-radius: 999px;
+  background: var(--ah-control-2); color: var(--ah-ink-2); font-weight: 700; font-size: 12.5px; white-space: nowrap; }
+.sec-h .chip-breach + .count { margin-left: 0; }
+.sec-h .chip-breach { margin-left: auto; }
+.fold-peek { margin: 0; padding-left: 40px; font-size: 14px; color: var(--ah-ink-2); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+section.card.is-folded .sec-h { margin-bottom: 0; }
+.fold-body[hidden], .row[hidden], tr[hidden] { display: none; }
+.show-all { margin-top: 8px; }
+/* The day at a glance: four cells that open their sections */
+.day { display: grid; gap: 12px; }
+.daystrip { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.stat { display: grid; gap: 4px; align-content: start; text-align: left; min-height: 64px; min-width: 0; padding: 12px 16px; border: 0; border-radius: 12px;
+  background: var(--ah-surface); box-shadow: var(--ah-elev-1); cursor: pointer; font: inherit; color: inherit; transition: transform 80ms var(--ah-ease); }
+.stat:hover { transform: translateY(-1px); }
+.stat span { font-weight: 600; font-size: 13px; color: var(--ah-ink-2); }
+.stat b { font-family: var(--ah-display); font-weight: 700; font-size: 22px; line-height: 1.1; letter-spacing: -.015em; color: var(--ah-ink); }
+.stat small { font-size: 13px; color: var(--ah-ink-2); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.stat small.breach { color: var(--ah-breach-ink); font-weight: 700; }
+.stat.is-zero b { color: var(--ah-ink-3); }
+.day-tools { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.day-tools .lead { margin-right: auto; font-weight: 600; font-size: 13px; color: var(--ah-ink-2); }
+.timeline { position: relative; height: 8px; border-radius: 999px; background: var(--ah-track); margin-top: 4px; }
+.timeline i { position: absolute; top: 0; bottom: 0; border-radius: 999px; background: var(--ah-hero-fill); }
+.timeline em { position: absolute; top: -4px; bottom: -4px; width: 2px; border-radius: 999px; background: var(--ah-breach); }
+.tl-hours { display: flex; justify-content: space-between; font-size: 12px; color: var(--ah-ink-3); }
+/* A row's other choices, one tap away */
+.row-more { display: grid; gap: 8px; }
+.row-more[hidden] { display: none; }
+/* Selects: the app's own chevron, beside the value */
+.select { position: relative; display: inline-flex; align-items: center; min-width: 0; max-width: 100%; }
+.select select { appearance: none; -webkit-appearance: none; height: 32px; border-radius: 9px; padding: 0 40px 0 12px; width: auto; max-width: 280px;
+  flex: none; cursor: pointer; background: var(--ah-surface); color: var(--ah-ink); }
+.inline-form .select { flex: 1 1 160px; }
+.inline-form .select select { height: 38px; width: 100%; max-width: 100%; }
+.select svg { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); width: 16px; height: 16px; color: var(--ah-ink-2); pointer-events: none; }
+/* Activity */
+.log-row { display: grid; grid-template-columns: 52px minmax(0, 1fr) auto; gap: 12px; align-items: start; padding: 12px 0; border-top: 1px solid var(--ah-row-rule); }
+.list > .log-row:first-child, .log-cat + .log-row { border-top: 0; }
+.log-time { font-family: var(--ah-display); font-weight: 700; font-size: 17px; letter-spacing: -.015em; color: var(--ah-ink); }
+.log-main { display: grid; gap: 4px; min-width: 0; }
+.log-row.is-undone .row-title { color: var(--ah-ink-2); }
+.log-cat { margin: 0; padding: 16px 0 4px; font-weight: 700; font-size: 13px; color: var(--ah-ink-2); }
+.log-cat:first-child { padding-top: 0; }
+.ah-view { display: grid; gap: 20px; }
+/* Compact: the same page, tighter */
+:root[data-ah-density="compact"] body { font-size: 13.5px; line-height: 1.45; }
+:root[data-ah-density="compact"] .row { padding: 10px 0; }
+:root[data-ah-density="compact"] .row-main { gap: 6px; }
+:root[data-ah-density="compact"] .row-title { font-size: 14px; }
+:root[data-ah-density="compact"] .row-detail, :root[data-ah-density="compact"] .finding { font-size: 13px; }
+:root[data-ah-density="compact"] .agenda-row { padding: 6px 0; }
+:root[data-ah-density="compact"] .ah-view, :root[data-ah-density="compact"] .ah-main-inner { gap: 14px; }
+:root[data-ah-density="compact"] .card { padding: 12px 16px; }
+:root[data-ah-density="compact"] .stat { min-height: 56px; padding: 8px 12px; }
 
 @media (max-width: 430px) { .ah-live-pre { display: none; } }
 @media (max-width: 400px) { .ah-hdr { gap: 8px; } }
-@media (max-width: 359px) { .ah-date { display: none; } }
+@media (max-width: 439px) { .ah-date { display: none; } }
 @media (max-width: 400px) { .ah-hdr.is-old .ah-date { display: none; } }
 @media (min-width: 760px) {
   .ah-shell { grid-template-columns: 64px minmax(0, 1fr); }
@@ -296,30 +359,34 @@ td .owed { display: block; font-size: 12px; }
   .ah-rail .ah-tab[aria-selected="true"] .ah-tab-ico { background: transparent; }
   .ah-rail .ah-tab:hover { transform: translateY(-1px); }
   .ah-tabs { display: none; }
-  .ah-hdr .ah-mark { display: none; }
   .ah-main { padding-block: 32px 48px; padding-left: max(40px, env(safe-area-inset-left, 0px)); padding-right: max(40px, env(safe-area-inset-right, 0px)); }
   .ah-hero-card { padding: 28px 28px 26px 30px; }
-  .statement { font-size: 36px; }
+  .statement { font-size: 32px; }
   .card { padding: 16px 20px; }
+  .daystrip { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
   .table-wrap { margin: 0 -20px; padding: 0 20px; }
   .scrim { align-items: center; }
   .sheet { border-radius: 12px; padding-block: 24px; }
   .toast { bottom: 24px; }
 }
 @media (min-width: 1100px) {
-  .ah-hero-cols { grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); align-items: start; }
-  .statement { font-size: 40px; }
+  .ah-hero-cols { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); align-items: start; }
+  .ah-hero-cols.has-lead { grid-template-areas: "hero agenda" "lead agenda"; grid-template-rows: auto 1fr; }
+  .ah-hero-cols.has-lead .area-hero { grid-area: hero; }
+  .ah-hero-cols.has-lead .area-agenda { grid-area: agenda; }
+  .ah-hero-cols.has-lead .area-lead { grid-area: lead; }
+  .statement { font-size: 36px; }
 }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
 }
 </style>
-<script>try { if (localStorage.getItem("instinct.theme") === "dark") document.documentElement.setAttribute("data-ah-theme", "dark"); } catch (e) {}</script>
+<script>try { var t = localStorage.getItem("instinct.theme"); if (t === "dark" || (t !== "light" && window.matchMedia && matchMedia("(prefers-color-scheme: dark)").matches)) document.documentElement.setAttribute("data-ah-theme", "dark");
+  if (localStorage.getItem("ant.density") === "compact") document.documentElement.setAttribute("data-ah-density", "compact"); } catch (e) {}</script>
 
 <div class="ah-shell">
   <nav class="ah-rail" aria-label="Sections">
-    <svg class="ah-mark" viewBox="0 0 1024 1024" role="img" aria-label="Anthill"><rect width="1024" height="1024" rx="256" fill="#344C3D"/><rect x="8" y="8" width="1008" height="1008" rx="248" fill="none" stroke="#F4F6F2" stroke-opacity=".14" stroke-width="16"/><g transform="translate(143.4,155.6) scale(0.72)"><rect x="352" y="158" width="320" height="160" rx="80" fill="#F4F6F2"/><rect x="224" y="415" width="576" height="160" rx="80" fill="#9DB29A"/><rect x="96" y="672" width="832" height="160" rx="80" fill="#F4F6F2"/></g></svg>
-    <div id="rail-tabs" role="tablist" aria-orientation="vertical" style="display:grid;gap:14px;margin-top:8px"></div>
+    <div id="rail-tabs" role="tablist" aria-orientation="vertical" style="display:grid;gap:14px"></div>
   </nav>
   <main class="ah-main" id="main">
     <div class="ah-main-inner">
@@ -330,11 +397,12 @@ td .owed { display: block; font-size: 12px; }
         </div>
         <span class="ah-date" id="hdr-date"></span>
         <span class="ah-live" id="hdr-live"><i></i><span id="hdr-live-text">Live</span></span>
+        <button class="ah-icon-btn" id="activity-btn" type="button" aria-label="Activity" title="Activity"></button>
         <button class="ah-icon-btn" id="theme-btn" type="button" aria-label="Switch to dark mode" title="Dark mode"></button>
         <button class="ah-help" id="help-btn" type="button" aria-label="How ant. works"><span>?</span></button>
       </header>
       <div id="banner-slot" style="display:grid;gap:8px"></div>
-      <section id="view" style="display:grid;gap:20px"></section>
+      <section id="view" class="ah-view"></section>
     </div>
   </main>
   <nav class="ah-tabs" id="bottom-tabs" role="tablist" aria-label="Sections"></nav>
@@ -396,6 +464,9 @@ td .owed { display: block; font-size: 12px; }
     lock: "M6 11h12v9H6z|M8.5 11V8a3.5 3.5 0 0 1 7 0v3",
     x: "M6 6l12 12|M18 6L6 18",
     moon: "M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z",
+    chev: "M6 9l6 6l6-6",
+    clock: "M12 3a9 9 0 1 0 0 18a9 9 0 1 0 0-18|M12 7.5V12l3 2",
+    undo: "M9 14L4 9l5-5|M4 9h10.5a5.5 5.5 0 0 1 0 11H11",
     sun: "M12 2.5v2|M12 19.5v2|M4.6 4.6l1.4 1.4|M18 18l1.4 1.4|M2.5 12h2|M19.5 12h2|M4.6 19.4L6 18|M18 6l1.4-1.4|M12 7.5a4.5 4.5 0 1 0 0 9a4.5 4.5 0 1 0 0-9"
   };
 
@@ -481,14 +552,30 @@ td .owed { display: block; font-size: 12px; }
   var S = { snap: {}, items: {}, actions: {}, rated: {}, stageOpen: {}, tab: "today", tabChosen: false, open: null, db: null,
             loaded: false, readOnly: false, error: null, slow: false, runs: [], filter: "all", search: "", allInbound: false, mdOpen: {}, showReplies: false };
   try { var saved = localStorage.getItem("instinct.tab"); if (TAB_KEYS.indexOf(saved) >= 0) S.savedTab = saved; } catch (e) {}
-  if (TAB_KEYS.indexOf(location.hash.slice(1)) >= 0) { S.tab = location.hash.slice(1); S.tabChosen = true; }
+  // Per-device conveniences: which sections are folded, Focus, density. The page works the same without them.
+  S.folds = {}; S.showAll = {}; S.focusOpen = {}; S.more = null; S.later = null; S.logFilter = "all"; S.ratings = [];
+  try { S.folds = JSON.parse(localStorage.getItem("ant.folds") || "{}") || {}; } catch (e) { S.folds = {}; }
+  try { S.focus = localStorage.getItem("ant.focus") === "1"; } catch (e) { S.focus = false; }
+  // Home QA opens every section and list so it can reach each row; its own fold checks turn this off.
+  var QA_OPEN = !!(window.__QA__ && window.__QA__.open_all);
+  function remember(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
+  if (TAB_KEYS.concat(["activity"]).indexOf(location.hash.slice(1)) >= 0) { S.tab = location.hash.slice(1); S.tabChosen = true; }
 
   // ---------------------------------------------------------------- theme: light by default, dark when the user picks it
   function theme() { return document.documentElement.getAttribute("data-ah-theme") === "dark" ? "dark" : "light"; }
+  function themeChoice() { try { var t = localStorage.getItem("instinct.theme"); return t === "dark" || t === "light" ? t : "system"; } catch (e) { return "system"; } }
+  function systemDark() { try { return !!(window.matchMedia && matchMedia("(prefers-color-scheme: dark)").matches); } catch (e) { return false; } }
   function setTheme(t) {
-    if (t === "dark") document.documentElement.setAttribute("data-ah-theme", "dark"); else document.documentElement.removeAttribute("data-ah-theme");
-    try { localStorage.setItem("instinct.theme", t); } catch (e) {}
+    var dark = t === "dark" || (t === "system" && systemDark());
+    if (dark) document.documentElement.setAttribute("data-ah-theme", "dark"); else document.documentElement.removeAttribute("data-ah-theme");
+    remember("instinct.theme", t);
     paintThemeButton();
+  }
+  try { matchMedia("(prefers-color-scheme: dark)").addEventListener("change", function () { if (themeChoice() === "system") setTheme("system"); }); } catch (e) {}
+  function density() { return document.documentElement.getAttribute("data-ah-density") === "compact" ? "compact" : "comfortable"; }
+  function setDensity(d) {
+    if (d === "compact") document.documentElement.setAttribute("data-ah-density", "compact"); else document.documentElement.removeAttribute("data-ah-density");
+    remember("ant.density", d);
   }
   function paintThemeButton() {
     var b = document.getElementById("theme-btn"); if (!b) return;
@@ -546,7 +633,8 @@ td .owed { display: block; font-size: 12px; }
   function loadDemo(key) {
     var d = S.demo, m = d.members[key] || d.members[d.order[0]];
     S.demoKey = d.members[key] ? key : d.order[0];
-    S.snap = JSON.parse(JSON.stringify(m.snaps)); S.items = {}; S.actions = {}; S.rated = {}; S.open = null; S.loaded = true;
+    S.snap = JSON.parse(JSON.stringify(m.snaps)); S.items = JSON.parse(JSON.stringify((m.state || {}).items || {}));
+    S.actions = JSON.parse(JSON.stringify((m.state || {}).actions || {})); S.rated = {}; S.ratings = []; S.open = null; S.loaded = true;
     S.tab = urgentHero(S.snap.brief) ? "today" : (TAB_KEYS.indexOf((S.snap.config || {}).opens_on) >= 0 ? S.snap.config.opens_on : "today");
     S.tabChosen = true; S.search = ""; S.filter = "all";
     render(); window.scrollTo(0, 0);
@@ -579,6 +667,9 @@ td .owed { display: block; font-size: 12px; }
       }, function () { S.error = "db-error"; S.loaded = true; render(); });
       db.doc("state/items").onSnapshot(function (d) { S.items = (d.exists && d.data().items) || {}; render(); }, function () {});
       db.doc("state/actions").onSnapshot(function (d) { S.actions = (d.exists && d.data().items) || {}; render(); }, function () {});
+      db.collection("ratings").orderBy("at", "desc").limit(60).onSnapshot(function (qs) {
+        S.ratings = qs.docs.filter(function (d) { return d.exists; }).map(function (d) { return Object.assign({ id: d.id }, d.data()); }); if (S.tab === "activity") render();
+      }, function () {});
       db.collection("runs").orderBy("started", "desc").limit(3).onSnapshot(function (qs) {
         S.runs = qs.docs.filter(function (d) { return d.exists; }).map(function (d) { return d.data(); }); render();
       }, function () {});
@@ -590,7 +681,7 @@ td .owed { display: block; font-size: 12px; }
   // One write at a time per document. The page is the only writer of state/*; it prunes old entries itself.
   var queues = {};
   function prune(map) {
-    var out = {}, now = Date.now(), keep = 45 * 864e5;
+    var out = {}, now = Date.now(), keep = 90 * 864e5;  // Activity keeps 90 days
     Object.keys(map).forEach(function (k) {
       var v = map[k] || {};
       var stamp = Date.parse(v.done_at || v.snoozed_until || v.at || "") || now;
@@ -615,7 +706,9 @@ td .owed { display: block; font-size: 12px; }
     return p.then(function () { return true; }, function () { toast("Could not save that. Check your connection and try again."); return false; });
   }
   function rate(item, value) {
-    S.rated[item.id] = value; render();
+    S.rated[item.id] = value;
+    if (S.static) S.ratings = [{ id: "r" + Date.now(), item_id: item.id, value: String(value), at: nowIso(), title: String(item.title || "").slice(0, 90) }].concat(S.ratings || []);
+    render();
     if (!S.db || S.readOnly) return;
     S.db.collection("ratings").add({ item_id: item.id, kind: item.kind || item.group || "other", group: item.group || item.kind || "other",
       value: String(value), at: nowIso(), title: String(item.title || "").slice(0, 90) }).catch(function () { toast("Could not save the rating."); });
@@ -623,17 +716,19 @@ td .owed { display: block; font-size: 12px; }
 
   // ---------------------------------------------------------------- taps, each with a 10 second undo
   function keysOf(it) { return it.keys || (it.commitment_id ? [it.id, it.commitment_id] : [it.id]); }
+  // Each tap keeps a short title (t), its group (g, the row's own id) and when it was made (at), so Activity can list it and undo it.
   function setItems(it, fields, label) {
-    var keys = keysOf(it), patch = {}, undo = {};
-    keys.forEach(function (k) {
+    var keys = keysOf(it), patch = {}, undo = {}, at = nowIso();
+    keys.forEach(function (k, i) {
       var before = itemState(k);
-      undo[k] = { snoozed_until: before.snoozed_until || null, done_at: before.done_at || null, sent: before.sent || null, closed_by: before.closed_by || null };
-      patch[k] = Object.assign({}, undo[k], fields);
+      undo[k] = { snoozed_until: before.snoozed_until || null, done_at: before.done_at || null, sent: before.sent || null, closed_by: before.closed_by || null,
+        t: before.t || null, g: before.g || null, at: before.at || null, undone: before.undone || null };
+      patch[k] = Object.assign({}, undo[k], fields, { g: keys[0], at: at, undone: null }, i === 0 ? { t: String(it.title || it.subject || "").slice(0, 120) || null } : {});
       S.items[k] = patch[k];
     });
-    S.open = null; render();
+    S.open = null; S.more = null; S.later = null; render();
     writeState("items", patch).then(function (ok) {
-      if (ok) toast(label, function () { keys.forEach(function (k) { S.items[k] = undo[k]; }); render(); writeState("items", undo); });
+      if (ok) toast(label + ". Undo here or in Activity.", function () { keys.forEach(function (k) { S.items[k] = undo[k]; }); render(); writeState("items", undo); });
     });
   }
   function snooze(it, until, label) { setItems(it, { snoozed_until: until }, "Snoozed until " + label); }
@@ -693,7 +788,7 @@ td .owed { display: block; font-size: 12px; }
   }
   function approve(id, type, payload, label) {
     var before = S.actions[id] || null, patch = {};
-    patch[id] = { type: type, status: "approved", payload: payload || {}, at: nowIso() };
+    patch[id] = { type: type, status: "approved", payload: payload || {}, at: nowIso(), t: tapTitle(type, payload) };
     S.actions[id] = patch[id]; S.open = null; render();
     writeState("actions", patch).then(function (ok) {
       if (ok) toast(label || "Approved. Applies at the next check.", function () {
@@ -701,6 +796,14 @@ td .owed { display: block; font-size: 12px; }
         S.actions[id] = p[id]; render(); writeState("actions", p);
       });
     });
+  }
+  function tapTitle(type, p) {
+    p = p || {};
+    var who = (p.record && p.record.name) || p.company || (p.entity && p.entity.name) || "";
+    if (type === "next_step") return (who ? who + ": " : "") + (p.text ? "next step " + p.text : p.met ? "met " + fmtDate(p.met, false) : "next step");
+    if (type === "crm_update") return (who ? who + ": " : "") + (p.fields || []).map(function (f) { return fieldLabel(f) + " to " + fieldValue(f.proposed); }).join(", ");
+    if (type === "merge" || type === "keep_apart") return (p.a && p.b ? (p.a.name || p.a) + " and " + (p.b.name || p.b) : "Two people");
+    return String(p.title || who || "").slice(0, 120) || null;
   }
   function morning(days) { var d = new Date(); d.setDate(d.getDate() + days); d.setHours(8, 0, 0, 0); return d.toISOString(); }
   function nextMonday() { var d = new Date(); return morning(((8 - d.getDay()) % 7) || 7); }
@@ -943,14 +1046,23 @@ td .owed { display: block; font-size: 12px; }
       doLine.appendChild(h("button", { class: "btn btn-secondary btn-sm", type: "button",
         onclick: function () { approve(it.id, "keep_apart", it.pair, "Kept apart. ant. will not ask again."); } }, "Different people"));
     }
-    var later = it.kind === "review" ? null : h("div", { class: "row-actions", role: "group", "aria-label": "Snooze" }, [h("span", { class: "status" }, "Snooze"),
-      h("button", { class: "btn btn-ghost btn-sm", type: "button", onclick: function () { snooze(it, new Date(Date.now() + 3600e3).toISOString(), "in an hour"); } }, "1 hour"),
+    // One row of choices: what to do, then Later (when to see it again) and Rate. The two open their own short lines.
+    var laterOpen = S.later === it.id, rateOpen = S.more === it.id;
+    if (it.kind !== "review") doLine.appendChild(toggleBtn("Later", laterOpen, function () { S.later = laterOpen ? null : it.id; S.more = null; render(); }));
+    doLine.appendChild(toggleBtn("Rate", rateOpen, function () { S.more = rateOpen ? null : it.id; S.later = null; render(); }));
+    var later = it.kind === "review" ? null : h("div", { class: "row-actions", role: "group", "aria-label": "See it again", hidden: !laterOpen },
+      [h("span", { class: "status" }, "See it again"),
+      h("button", { class: "btn btn-ghost btn-sm", type: "button", onclick: function () { snooze(it, new Date(Date.now() + 3600e3).toISOString(), "in an hour"); } }, "In an hour"),
       h("button", { class: "btn btn-ghost btn-sm", type: "button", onclick: function () { snooze(it, morning(1), "tomorrow 08:00"); } }, "Tomorrow"),
       h("button", { class: "btn btn-ghost btn-sm", type: "button", onclick: function () { snooze(it, nextMonday(), "Monday 08:00"); } }, "Next week")]);
+    var rateLine = h("div", { class: "row-more", hidden: !rateOpen }, rateChips(it));
     var actions = h("div", { class: "row-open" }, [dr && (dr.context || closedInDraft(dr)) ? h("p", { class: "draft-note" }, [h("b", null, "Before you send: "), closedInDraft(dr) + (dr.context || "")]) : null,
-      doLine.childNodes.length ? doLine : null, later, rateChips(it)]);
+      doLine, later, rateLine]);
     if (!open) actions.hidden = true;
     return h("div", { class: "row" + (it.breach ? " is-breach" : "") }, [glyphFor(it), h("div", { class: "row-main" }, [hit, meta, actions])]);
+  }
+  function toggleBtn(label, open, fn) {
+    return h("button", { class: "btn btn-ghost btn-sm", type: "button", "aria-expanded": open ? "true" : "false", onclick: fn }, [label, icon(ICON.chev, 16)]);
   }
   function focusId(id) { setTimeout(function () { var el = document.querySelector('.row-hit[data-id="' + String(id).replace(/"/g, "") + '"]'); if (el) el.focus(); }, 0); }
   function go(tab, open) { S.tab = tab; S.open = open || null; S.tabChosen = true; try { localStorage.setItem("instinct.tab", tab); } catch (e) {} render(); window.scrollTo(0, 0); }
@@ -1009,6 +1121,69 @@ td .owed { display: block; font-size: 12px; }
       question_id: it.question_id, draft: it.draft, entity: it.entity, group_asks: it.group_asks, breach: it.breach, source: it.source,
       status_word: it.status_word };
   }
+  var BUCKETS = [["decide", "Decide"], ["send", "Send"], ["waiting", "Waiting on others"], ["watch", "Watch"], ["pitches", "Pitches"], ["team", "Your team's deals"]];
+  function bucketOf(it) {
+    var w = it.status_word;
+    if (w === "team" || it.fyi) return "team";
+    if (it.kind === "inbound" || it.kind === "pass_returned") return "pitches";
+    if (it.kind === "waiting" || w === "waiting" || w === "asked" || w === "requested") return "waiting";
+    if (["decision", "signal", "stale", "deal_move", "review"].indexOf(it.kind) >= 0) return "decide";
+    if (["commitment", "question", "ask", "lp", "relationship"].indexOf(it.kind) >= 0 || it.late_fold) return "send";
+    return "watch";
+  }
+  // Four cells at the top of Today: meetings, then what to decide, send and chase. Each opens its section.
+  function dayStrip(b, buckets, counts) {
+    var meetings = b.meetings || [], now = Date.now();
+    var left = meetings.filter(function (m) { return !m.start || Date.parse(m.start) >= now - 15 * 60e3; });
+    var next = left[0];
+    var firstOf = function (k) { var it = (buckets[k] || [])[0]; return it ? it.title : null; };
+    var urgentIn = function (k) { return (buckets[k] || []).filter(function (it) { return (WORDS[wordOf(it)] || WORDS.low)[1] === "breach"; }).length; };
+    var cell = function (key, label, n, sub, hot) {
+      return h("button", { class: "stat" + (n ? "" : " is-zero"), type: "button", "aria-label": label + ": " + n + (sub ? ". " + sub : ""),
+        onclick: function () { openSection(key); } }, [h("span", null, label), h("b", null, String(n)), h("small", { class: hot ? "breach" : null }, sub || "")]);
+    };
+    var who = function (m) { return String(m.who || "").split(", ")[0]; };
+    var strip = h("div", { class: "daystrip" }, [
+      cell("schedule", "Meetings", left.length, next ? "Next " + (next.time || "") + " " + who(next) : meetings.length ? "No more today" : "None today"),
+      cell("decide", "Decide", counts.decide || 0, urgentIn("decide") ? urgentIn("decide") + " urgent" : firstOf("decide") || (counts.decide ? "CRM changes and meeting logs" : "Nothing to decide"), urgentIn("decide") > 0),
+      cell("send", "Send", counts.send || 0, urgentIn("send") ? urgentIn("send") + " overdue" : counts.send ? "Drafts and replies" : "All sent", urgentIn("send") > 0),
+      cell("waiting", "Waiting on others", counts.waiting || 0, firstOf("waiting") || "No one owes you")]);
+    var tools = h("div", { class: "day-tools" }, [h("span", { class: "lead" }, (function () { var d = wall(); return DAYS[d.wd] + " " + pad(d.d) + " " + MONTHS[d.m - 1]; })() +
+        (S.focus ? ". Focus: only the top line and your schedule are open" : "")),
+      h("button", { class: "chip chip-filter", type: "button", "aria-pressed": S.focus ? "true" : "false", onclick: function () { S.focus = !S.focus; S.focusOpen = {}; remember("ant.focus", S.focus ? "1" : "0"); render(); } }, "Focus")]);
+    return h("div", { class: "day" }, [tools, strip, timeline(meetings)]);
+  }
+  // The working day as a bar from 08:00 to 20:00: meetings filled in, now marked.
+  function timeline(meetings) {
+    var startH = 8, endH = 20, span = (endH - startH) * 60;
+    var pos = function (iso) { var w = wall(Date.parse(iso)); return w ? Math.max(0, Math.min(100, ((w.hh * 60 + w.mm) - startH * 60) / span * 100)) : null; };
+    var bar = h("div", { class: "timeline", role: "img", "aria-label": meetings.length ? plural(meetings.length, "meeting") + ": " + meetings.map(function (m) { return m.time; }).join(", ") : "No meetings today" });
+    meetings.forEach(function (m) {
+      var a = m.start ? pos(m.start) : null; if (a === null) return;
+      var e = m.end ? pos(m.end) : Math.min(100, a + 60 / span * 100);
+      bar.appendChild(h("i", { style: "left:" + a + "%;width:" + Math.max(1.2, e - a) + "%" }));
+    });
+    var nowAt = pos(new Date().toISOString());
+    if (nowAt !== null && nowAt > 0 && nowAt < 100) bar.appendChild(h("em", { style: "left:" + nowAt + "%" }));
+    return h("div", { style: "display:grid;gap:4px" }, [bar, h("div", { class: "tl-hours", "aria-hidden": "true" }, ["08:00", "11:00", "14:00", "17:00", "20:00"].map(function (t) { return h("span", null, t); }))]);
+  }
+  function openSection(key) {
+    var label = key === "schedule" ? "Meetings today" : (BUCKETS.filter(function (x) { return x[0] === key; })[0] || [])[1];
+    if (!label) return;
+    S.folds[foldKey(label)] = false; if (S.focus) S.focusOpen[label] = true; remember("ant.folds", JSON.stringify(S.folds)); render();
+    var el = document.getElementById("sec-" + key);
+    if (!el) { toast(key === "waiting" ? "No one owes you anything right now." : "Nothing here right now."); return; }
+    if (el.scrollIntoView) el.scrollIntoView({ block: "start", behavior: "smooth" });
+    var btn = el.querySelector(".fold-btn"); if (btn) btn.focus({ preventScroll: true });
+  }
+  // What you closed today, with Undo. The full record is in Activity.
+  function doneToday() {
+    var rows = activityLog().filter(function (e) { return dayOf(e.at) === todayIso() && (e.cat === "sent" || e.cat === "done") && !e.undone; });
+    if (!rows.length) return null;
+    return h("section", { class: "card", "aria-label": "Done today", id: "sec-done" }, [h("h2", { class: "sec-h" }, [h("b", null, "Done today"), h("span", { class: "count" }, String(rows.length))]),
+      h("div", { class: "list" }, rows.slice(0, 8).map(logRow)),
+      h("div", null, h("button", { class: "btn btn-ghost btn-sm show-all", type: "button", onclick: function () { go("activity"); } }, "See all in Activity"))]);
+  }
   function viewToday() {
     var b = S.snap.brief;
     if (!b) return [emptyCard("Your first brief is on its way", "ant. is reading your inbox, calendar and notes. It appears here in a few minutes.")];
@@ -1039,8 +1214,8 @@ td .owed { display: block; font-size: 12px; }
         hero.draftDoc = draftFor({ id: hero.item_id, draft: hero.draft, kind: hero.kind, entity: hero.entity, group_asks: hero.group_asks });
       }
     }
-    var agenda = h("section", { class: "card ruled ah-agenda", "aria-label": "Meetings today" },
-      [h("h2", { class: "sec-h" }, [h("b", null, "Today"), h("span", { class: "count" }, (b.meetings || []).length + " meeting" + ((b.meetings || []).length === 1 ? "" : "s"))])]);
+    var agenda = h("section", { class: "card ruled ah-agenda", "aria-label": "Meetings today", id: "sec-schedule" },
+      [h("h2", { class: "sec-h" }, [h("b", null, "Schedule"), h("span", { class: "count" }, plural((b.meetings || []).length, "meeting"))])]);
     var meetings = b.meetings || [], now = Date.now(), nextIdx = -1;
     meetings.forEach(function (m, i) { if (nextIdx < 0 && (!m.start || Date.parse(m.start) >= now - 15 * 60e3)) nextIdx = i; });
     if (!meetings.length) agenda.appendChild(h("p", { class: "prov", style: "padding:8px 0" }, "No meetings today."));
@@ -1074,22 +1249,40 @@ td .owed { display: block; font-size: 12px; }
         return i ? [" · ", el] : el;
       }).reduce(function (a, x) { return a.concat(x); }, []))));
     }
-    var out = [h("div", { class: "ah-hero-cols" }, [heroCard(hero), agenda])];
-    var digest = recentDigest(["week_ahead", "digest"]); if (digest) out.push(digest);
-    var shown = 0;
+    // Every open line, sorted by what you do with it. The engine's order holds inside each section.
+    var buckets = {};
     (b.sections || []).forEach(function (sec) {
-      var items = (sec.items || []).filter(function (it) { return !isHidden(it) && !(promoted && it.id === promoted.id) && !(hero.item_id && it.id === hero.item_id && hero.live); })
-        .map(function (it) { return liveRow(it, b.as_of); }).filter(Boolean);
-      if (!items.length) return;
-      shown += items.length;
-      out.push(h("section", { class: "card", "aria-label": sec.label }, [h("h2", { class: "sec-h" }, [h("b", null, sec.label), h("span", { class: "count" }, String(items.length))]),
-        h("div", { class: "list" }, items.map(itemRow))]));
+      (sec.items || []).forEach(function (it0) {
+        if (isHidden(it0) || (promoted && it0.id === promoted.id) || (hero.item_id && it0.id === hero.item_id && hero.live)) return;
+        var it = liveRow(it0, b.as_of); if (!it) return;
+        var k = bucketOf(it); (buckets[k] = buckets[k] || []).push(it);
+      });
     });
     var shownDrafts = {};
     if (hero.draftDoc) shownDrafts[hero.draftDoc.id] = true;
     (b.sections || []).forEach(function (sec) { (sec.items || []).forEach(function (it) { var lv = isHidden(it) ? null : liveRow(it, b.as_of), d = lv ? draftFor(lv) : null; if (d) shownDrafts[d.id] = true; }); });
-    var ready = readyForYou(shownDrafts); if (ready) out.push(ready);
-    if (!shown && !ready) out.push(emptyCard("Nothing else needs you", "Next check at " + (b.next_check || "the top of the hour") + "."));
+    var ready = readyForYou(shownDrafts);
+    var cards = {}, counts = {};
+    BUCKETS.forEach(function (bk) {
+      var rows = (buckets[bk[0]] || []).map(itemRow).concat(bk[0] === "decide" ? ready.decide : bk[0] === "send" ? ready.send : []);
+      counts[bk[0]] = rows.length;
+      if (!rows.length) return;
+      var urgent = (buckets[bk[0]] || []).some(function (it) { return (WORDS[wordOf(it)] || WORDS.low)[1] === "breach"; });
+      cards[bk[0]] = h("section", { class: "card", "aria-label": bk[1], id: "sec-" + bk[0], "data-open": urgent ? "1" : null },
+        [h("h2", { class: "sec-h" }, [h("b", null, bk[1]), h("span", { class: "count" }, String(rows.length))]), h("div", { class: "list" }, rows)]);
+    });
+    var done = doneToday();
+    // On a wide screen the first section sits under the hero, beside the schedule, so the first screen has no gap.
+    var lead = BUCKETS.map(function (bk) { return cards[bk[0]]; }).filter(Boolean)[0] || null;
+    var heroEl = heroCard(hero);
+    if (heroEl) heroEl.classList.add("area-hero");
+    agenda.classList.add("area-agenda");
+    if (lead) lead.classList.add("area-lead");
+    var out = [dayStrip(b, buckets, counts), h("div", { class: "ah-hero-cols" + (lead ? " has-lead" : "") }, [heroEl, agenda, lead])];
+    var digest = recentDigest(["week_ahead", "digest"]); if (digest) out.push(digest);
+    BUCKETS.forEach(function (bk) { if (cards[bk[0]] && cards[bk[0]] !== lead) out.push(cards[bk[0]]); });
+    if (!Object.keys(cards).length) out.push(emptyCard("Nothing else needs you", "Next check at " + (b.next_check || "the top of the hour") + "."));
+    if (done) out.push(done);
     var day = wall().wd; if (day === 5 || day === 6) out.push(scoreCard());
     out.push(h("div", { class: "row-meta" }, [h("p", { class: "evidence", style: "margin-right:auto" }, b.evidence || ""),
       b.shareable_text ? h("button", { class: "btn btn-ghost btn-sm", type: "button", onclick: function () { copyText(b.shareable_text, "Brief copied. Quiet deals are left out."); } },
@@ -1169,13 +1362,13 @@ td .owed { display: block; font-size: 12px; }
     return hit;
   }
   function when_(iso) { return dayOf(iso) === todayIso() ? "at " + hhmm(iso).slice(4) : "on " + fmtDate(iso, false); }
-  // "Note to Aditi ready, under Ready for you", then "Asked Aditi at 07:10 for the firm's view", then "Aditi replied at 11:05".
+  // "Note to Aditi ready, under Send", then "Asked Aditi at 07:10 for the firm's view", then "Aditi replied at 11:05".
   function holderLine(hn) {
     if (!hn) return "";
     var first = String(hn.note.to_name || "the partner").split(" ")[0];
     if (hn.sent && hn.note.replied && hn.note.replied.on) return first + " replied " + when_(hn.note.replied.on) + ": read it, then send";
     if (hn.sent) return "Asked " + first + " " + when_(hn.sent) + " for the firm's view";
-    return "Note to " + first + " ready, under Ready for you";
+    return "Note to " + first + " ready, under Send";
   }
   function draftClosed(d) {
     if (d.kind === "holder" && (d.holds || []).length) {
@@ -1194,11 +1387,12 @@ td .owed { display: block; font-size: 12px; }
     var days = Math.round((Date.parse(todayIso() + "T00:00:00Z") - Date.parse(dayOf(c.due) + "T00:00:00Z")) / 864e5);
     return days > 0 ? ", " + plural(days, "day") + " late" : "";
   }
+  // What ant. wrote for you that is not on a line of the brief: CRM changes and meeting logs to decide, drafts to send.
   function readyForYou(skip) {
-    var drafts = ((S.snap.drafts || {}).items) || {}, props = ((S.snap.proposals || {}).items) || {}, rows = [];
+    var drafts = ((S.snap.drafts || {}).items) || {}, props = ((S.snap.proposals || {}).items) || {}, rows = [], sendRows = [];
     Object.keys(drafts).forEach(function (id) {
       var d = drafts[id] || {};
-      if (d.kind === "holder" && !itemState(id).done_at && !(skip && skip[id]) && !draftClosed(d)) rows.push(draftRow(id, d));
+      if (d.kind === "holder" && !itemState(id).done_at && !(skip && skip[id]) && !draftClosed(d)) sendRows.push(draftRow(id, d));
     });
     Object.keys(props).forEach(function (id) {
       var p = props[id] || {};
@@ -1308,7 +1502,7 @@ td .owed { display: block; font-size: 12px; }
           approve(aid, "next_step", { deal_id: m.deal_id, company: m.company, text: t || null, due: t ? (due.value || null) : null, current: m.next_step || null,
             current_due: m.next_step_due || null, met: m.met_on, stage: st, clear_step: clear || undefined }, t ? "Saved. Goes to your CRM at the next check." :
             "Saved: the meeting" + (st ? " and the stage" : "") + " go to your CRM at the next check. Add the next step when you have it.");
-        } }, [text, due, stage, saveBtn()]),
+        } }, [text, due, stage ? h("span", { class: "select" }, [stage, icon(ICON.chev, 16)]) : null, saveBtn()]),
         h("div", { class: "row-meta" }, [h("span", { class: "status hero" }, "Met"), sourceChip({ label: "CRM", url: m.source_url })])])]));
     });
     // Replies to pitches fold into one line when there are many: an analyst's morning is not twenty rows of drafts.
@@ -1321,7 +1515,7 @@ td .owed { display: block; font-size: 12px; }
       replies.forEach(function (id) { var dec = (pitches[drafts[id].inbound_id] || {}).decision || drafts[id].decision; if (n[dec] !== undefined) n[dec] += 1; });
       var parts = [n.call ? plural(n.call, "call") : null, n.more_info ? plural(n.more_info, "ask") + " for more" : null,
         n.pass ? n.pass + (n.pass === 1 ? " kind pass" : " kind passes") : null].filter(Boolean);
-      rows.push(h("div", { class: "row" }, [glyph("medium"), h("div", { class: "row-main" }, [
+      sendRows.push(h("div", { class: "row" }, [glyph("medium"), h("div", { class: "row-main" }, [
         h("div", { class: "row-hit static" }, [h("span", { class: "row-title" }, replies.length + " replies to pitches, ready to send"),
           h("span", { class: "row-detail" }, (parts.length ? parts.join(", ") + ". " : "") + "Oldest pitch first")]),
         h("div", { class: "row-actions" }, h("button", { class: "btn btn-secondary btn-sm", type: "button", "aria-expanded": folded ? "false" : "true",
@@ -1331,14 +1525,13 @@ td .owed { display: block; font-size: 12px; }
       var d = drafts[id] || {};
       if (itemState(id).done_at || (skip && skip[id]) || draftClosed(d) || d.kind === "holder") return;
       if (folded && replies.indexOf(id) >= 0) return;
-      rows.push(draftRow(id, d));
+      sendRows.push(draftRow(id, d));
     });
-    if (!rows.length) return null;
-    return h("section", { class: "card", "aria-label": "Ready for you" }, [h("h2", { class: "sec-h" }, [h("b", null, "Ready for you"), h("span", { class: "count" }, String(rows.length))]), h("div", { class: "list" }, rows)]);
+    return { decide: rows, send: sendRows };
   }
   function draftRow(id, d) {
       return h("div", { class: "row" }, [glyph("medium"), h("div", { class: "row-main" }, [
-        h("div", { class: "row-hit static" }, [h("span", { class: "row-title" }, "Draft: " + (d.subject || "follow-up")),
+        h("div", { class: "row-hit static" }, [h("span", { class: "row-title" }, String(d.subject || "Follow-up").replace(/^(Re|Fwd?):\s*/i, "")),
           h("span", { class: "row-detail" }, "To " + (d.to_name || d.to || "") + lateBy(d) + (closedInDraft(d) ? ". " + closedInDraft(d).trim().replace(/\.$/, "") : "") + (d.context ? ". " + d.context : ""))]),
         h("div", { class: "row-meta" }, [h("span", { class: "status" + (draftGaps(d) ? " hero" : "") }, draftGaps(d) ? "Fill in " + plural(draftGaps(d), "line") :
           d.in_gmail ? "In your Gmail drafts" : "Ready to send"), sourceChip({ label: d.source_label || "Source", url: d.source_url })]),
@@ -1509,7 +1702,8 @@ td .owed { display: block; font-size: 12px; }
         [icon(ICON.copy, 16), "Copy for partners"]) : null,
       quiet ? null : h("button", { class: "btn btn-ghost btn-sm", type: "button", onclick: function () { approve("quiet_" + id, "quiet", { deal_id: id }, "Marked quiet. Kept out of the copied brief, pushes and pre-reads."); } },
         [icon(ICON.lock, 16), "Mark quiet"]),
-      rateChips(hit._item)]);
+      toggleBtn("Rate", S.more === key, function () { S.more = S.more === key ? null : key; render(); }),
+      S.more === key ? rateChips(hit._item) : null]);
     if (!open) actions.hidden = true;
     return h("div", { class: "row deal-row" }, [glyph(d.competing ? "breach" : d.stale ? "high" : "low"), h("div", { class: "row-main" }, [hit, meta]),
       h("div", { class: "dwell" }, [h("span", { class: "days" + (over ? " over" : "") }, isNil(d.days_in_stage) ? DASH : Number(d.days_in_stage) <= 0 ? "Moved today" :
@@ -1527,7 +1721,8 @@ td .owed { display: block; font-size: 12px; }
       action: pid ? (actionOf(pid) ? { done: "Draft coming at the next check" } : { label: "Draft a note", fn: function () {
         approve(pid, "draft", { kind: "relationship", entity: { type: "person", id: ph.person_id, name: ph.name }, title: ph.statement, detail: ph.finding }, "ant. drafts it at the next check. Nothing is sent.");
       } }) : null } : null)];
-    var decay = (p.decay || []).filter(function (r) { return !isHidden({ id: "rel_" + r.person_id }); });
+    // The hero's person is not listed again below it.
+    var decay = (p.decay || []).filter(function (r) { return !isHidden({ id: "rel_" + r.person_id }) && !(ph && r.person_id === ph.person_id); });
     if (decay.length) out.push(h("section", { class: "card" }, [h("h2", { class: "sec-h" }, [h("b", null, "Going cold"), h("span", { class: "count" }, String(decay.length))]),
       h("div", { class: "list" }, decay.map(function (r) {
         return itemRow({ id: "rel_" + r.person_id, kind: "relationship", group: "relationship", title: r.name + (r.company ? ", " + r.company : ""),
@@ -1535,7 +1730,7 @@ td .owed { display: block; font-size: 12px; }
           status_word: "cold", source: { label: "Email", url: r.source_url }, entity: { type: "person", id: r.person_id, name: r.name }, actions: ["draft", "snooze"] });
       }))]));
     var top = (p.top || []).slice(0, 40);
-    var tbl = h("table", { class: "fit-sm" }, [h("thead", null, h("tr", null, [h("th", null, "Person"), h("th", { class: "hide-sm" }, "Company"), h("th", null, "Strength"), h("th", { class: "r" }, "Last touch")])),
+    var tbl = h("table", { class: "fit-sm" }, [h("thead", null, h("tr", null, [h("th", null, "Person"), h("th", { class: "hide-sm" }, "Company"), h("th", null, "Strength, of 100"), h("th", { class: "r" }, "Last touch")])),
       h("tbody", null, top.map(function (r) {
         var s = Math.max(0, Math.min(100, Number(r.strength) || 0));
         return h("tr", null, [cell(r.name || null), cell(r.company || null, "hide-sm"),
@@ -1572,7 +1767,7 @@ td .owed { display: block; font-size: 12px; }
       source: ph.source_url ? { label: ph.source_label || "Founder update", url: ph.source_url } : flags[0] && ph.company_id ? { label: "Founder update", url: flags[0].source_url } : null } : null)];
     var asks = asksCard(), platform = (cfg().modules || {}).portfolio === "asks";
     if (asks && platform) out.push(asks);
-    var vis = flags.filter(function (f) { return !isHidden({ id: f.id }); });
+    var vis = flags.filter(function (f) { return !isHidden({ id: f.id }) && !(ph && !ph.ask_id && ph.company_id && f.company_id === ph.company_id && String(ph.statement || "").indexOf(f.company) === 0 && f === flags.filter(function (g) { return !isHidden({ id: g.id }); })[0]); });
     if (vis.length) out.push(h("section", { class: "card" }, [h("h2", { class: "sec-h" }, [h("b", null, "Flags"), h("span", { class: "count" }, String(vis.length))]),
       h("div", { class: "list" }, vis.map(function (f) {
         return itemRow({ id: f.id, kind: "portfolio", group: "portfolio", title: f.company + ": " + (f.headline || String(f.text || "").split(":")[0]), detail: f.detail || f.text,
@@ -1777,7 +1972,7 @@ td .owed { display: block; font-size: 12px; }
           stat("Next re-up window", f.next_window ? fmtDate(f.next_window, false) : null, null)]),
         pct === null ? null : h("div", { class: "track fund-track", role: "img", "aria-label": pct + "% of commitments called" }, h("b", { style: "width:" + pct + "%" }))]));
     });
-    var alerts = (p.alerts || []).filter(function (a) { return !isHidden({ id: a.id }); });
+    var alerts = (p.alerts || []).filter(function (a) { return !isHidden({ id: a.id }) && a.id !== aid; });
     if (alerts.length) out.push(h("section", { class: "card" }, [h("h2", { class: "sec-h" }, [h("b", null, "Needs you"), h("span", { class: "count" }, String(alerts.length))]),
       h("div", { class: "list" }, alerts.map(function (a) {
         return itemRow({ id: a.id, kind: "lp", group: "lp", title: a.name, detail: a.text, breach: a.breach, priority: a.priority, status_word: a.breach ? "overdue" : "due",
@@ -1841,7 +2036,7 @@ td .owed { display: block; font-size: 12px; }
       card.watch ? h("p", { class: "watch" }, "Watch: " + card.watch) : null,
       card.finding && card.finding !== card.watch ? h("p", { class: "finding" }, card.finding) : null,
       card.context && card.context !== card.finding ? h("p", { class: "finding" }, card.context) : null,
-      kv(card.questions && card.questions.length ? "Questions ant. suggests" : "Worth raising", qs.map(function (q) { return h("li", null, q); }), true),
+      kv(card.questions && card.questions.length ? "Ask" : "Worth raising", qs.map(function (q) { return h("li", null, q); }), true),
       kv("Open promises", (card.open_commitments || []).map(function (c) {
         var mine = c.side ? c.side === "us" : String(c.owed_by || "").toLowerCase() === me;
         var who = mine ? "You owe" : String(c.owed_by || "They").split(" ")[0] + " owes";
@@ -1866,12 +2061,38 @@ td .owed { display: block; font-size: 12px; }
         return h("li", null, [h("b", null, a.name), [a.title, a.company].filter(Boolean).map(function (x) { return ", " + x; }).join("") +
           " · strength " + (a.strength || 0) + (a.last_touch ? " · last touch " + a.last_touch : "")]);
       })),
-      kv("Last three interactions", (card.history || []).map(function (x) { return h("li", null, [x.date + " · " + x.text + " ", sourceChip({ label: x.type === "meeting" ? "Calendar" : "Email", url: x.source_url })]); })),
-      kv("Colleagues who know them", (card.colleagues || []).map(function (c) { return h("li", null, c.colleague + " last spoke with " + c.person + " on " + c.last_touch); })),
-      safeUrl(card.empathy_map_url) ? h("div", null, h("a", { class: "btn btn-secondary", href: safeUrl(card.empathy_map_url), target: "_blank", rel: "noopener noreferrer" }, [icon(ICON.ext, 16), "Open empathy map"])) : null,
+      kv("Recent", (card.history || []).map(function (x) { return h("li", null, [x.date + " · " + x.text + " ", sourceChip({ label: x.type === "meeting" ? "Calendar" : "Email", url: x.source_url })]); })),
+      kv("Who on the team knows them", (card.colleagues || []).map(function (c) { return h("li", null, c.colleague + " last spoke with " + c.person + " on " + c.last_touch); })),
+      researchBlock(card, meeting),
       h("p", { class: "prov" }, ["ant. · calendar, email, notes and CRM · ", sourceChip({ label: "Calendar", url: card.source_url })])
     ].filter(Boolean);
     overlay((card.time ? card.time + " · " : "") + (card.who || card.title || "Meeting"), body);
+  }
+  // Research on the people you meet: an empathy map per person from their public LinkedIn, read in the Claude app's
+  // browser while you are there. Home cannot read LinkedIn itself, and scheduled checks never open a browser.
+  function researchBlock(card, meeting) {
+    // A person's map lives in snap/research, keyed by email or name, so it shows on every card that has them.
+    var lib = ((S.snap.research || {}).people) || {};
+    var maps = (card.research && card.research.length ? card.research : (card.attendees || []).map(function (a) {
+      return lib[String(a.email || "").toLowerCase()] || lib[a.name] || null; })).filter(function (r) { return r && r.name; });
+    var kids = [h("h3", null, "Research")];
+    maps.forEach(function (r) {
+      kids.push(h("div", { class: "md" }, [h("p", null, [h("b", null, r.name), r.headline ? ", " + r.headline : ""]),
+        h("ul", null, [["Says", r.says], ["Thinks", r.thinks], ["Does", r.does], ["Feels", r.feels]].filter(function (x) { return x[1]; }).map(function (x) {
+          return h("li", null, [h("b", null, x[0] + ": "), String(x[1])]); })),
+        (r.points || []).length ? h("ol", null, r.points.slice(0, 3).map(function (q) { return h("li", null, q); })) : null,
+        h("p", { class: "prov" }, ["LinkedIn, read in your browser" + (r.read_at ? " · " + fmtDate(r.read_at, false) : "") + " ", sourceChip({ label: "Profile", url: r.source_url }),
+          safeUrl(r.drive_url) ? " " : null, safeUrl(r.drive_url) ? sourceChip({ label: "PDF in Drive", url: r.drive_url }) : null])]));
+    });
+    if (safeUrl(card.empathy_map_url)) kids.push(h("div", null, h("a", { class: "btn btn-secondary btn-sm", href: safeUrl(card.empathy_map_url), target: "_blank", rel: "noopener noreferrer" },
+      [icon(ICON.ext, 16), "Open the empathy map"])));
+    if (!maps.length) {
+      var ask = "Research my " + (card.time || (meeting && meeting.time) || "") + " meeting with " + (card.who || card.title || "them") + " on LinkedIn";
+      kids.push(h("p", { class: "finding" }, "ant. can read each person's public LinkedIn profile in the Claude app's browser and build an empathy map: what they say, think, do and feel, and three things to raise. Nothing is sent, liked or followed."));
+      kids.push(h("div", { class: "row-actions" }, [h("button", { class: "btn btn-secondary btn-sm", type: "button",
+        onclick: function () { copyText(ask.replace(/\s+/g, " "), "Copied. Paste it in Claude: the map lands on this card and in your Drive folder."); } }, [icon(ICON.copy, 16), "Copy the request for Claude"])]));
+    }
+    return h("div", { class: "kv" }, kids);
   }
   // A partner sync or IC: each deal to decide with why now, then the promises inside the team.
   function openPartnerPack(card) {
@@ -1903,23 +2124,216 @@ td .owed { display: block; font-size: 12px; }
       h("p", { class: "prov" }, ["ant. · CRM, email and notes · ", sourceChip({ label: "Calendar", url: card.source_url })])
     ].filter(Boolean));
   }
+  function segKv(title, opts, now, fn) {
+    return h("div", { class: "kv" }, [h("h3", null, title), h("div", { class: "seg", role: "group", "aria-label": title }, opts.map(function (o) {
+      return h("button", { class: "chip", type: "button", "aria-pressed": now === o[0] ? "true" : "false",
+        onclick: function (e) {
+          var me = e.currentTarget; fn(o[0]);
+          Array.prototype.forEach.call(me.parentNode.children, function (x) { x.setAttribute("aria-pressed", x === me ? "true" : "false"); });
+        } }, o[1]);
+    }))]);
+  }
   function openHelp() {
     var sc = S.snap.scorecard || {}, c = cfg();
     overlay("How ant. works", [
       h("p", { class: "finding" }, "ant. prepares and drafts. You decide. Nothing is sent, deleted or changed in your tools without your tap."),
       kv("Taps", [h("li", null, "Tap a line to act on it: done, snooze, set a next step or draft a note."), h("li", null, "Rate any line Useful, Not useful or Wrong. ant. tunes itself every Sunday."),
-        h("li", null, "What you approve applies at the next hourly check. Every tap has Undo for 10 seconds.")]),
+        h("li", null, "What you approve applies at the next hourly check. Undo any tap from Activity, the clock at the top."),
+        h("li", null, "Tap a section's title to fold it. Focus folds everything but the top line and your schedule.")]),
       kv("Keys", [h("li", null, "j and k move between lines. Enter opens one."), h("li", null, "a marks done. s snoozes until tomorrow. 1, 2 and 3 rate."), h("li", null, "? opens this page. Esc closes it.")]),
+      segKv("Keyboard shortcuts", [["on", "On"], ["off", "Off"]], S.keys ? "on" : "off", function (v) { S.keys = v === "on"; remember("ant.keys", v); }),
       kv("This week", [h("li", null, "Your score: " + (isNil(sc.overall) ? "not rated yet" : sc.overall + " of 10")), h("li", null, sc.change_note || "No changes yet. Tuning runs Sunday evening.")]),
       kv("You", [h("li", null, (c.level_label || "Level not set") + (c.firm ? " at " + c.firm : "")), h("li", null, "Morning brief at " + (c.brief_time || "07:00") + (c.tz ? " (" + c.tz + ")" : ""))]),
-      h("div", { class: "kv" }, [h("h3", null, "Appearance"), h("div", { class: "seg", role: "group", "aria-label": "Appearance" }, [["light", "Light"], ["dark", "Dark"]].map(function (o) {
-        return h("button", { class: "chip", type: "button", "aria-pressed": theme() === o[0] ? "true" : "false",
-          onclick: function (e) {
-            var me = e.currentTarget; setTheme(o[0]);
-            Array.prototype.forEach.call(me.parentNode.children, function (x) { x.setAttribute("aria-pressed", x === me ? "true" : "false"); });
-          } }, o[1]);
-      }))]),
+      segKv("Appearance", [["system", "Match my device"], ["light", "Light"], ["dark", "Dark"]], themeChoice(), setTheme),
+      segKv("Text size", [["comfortable", "Comfortable"], ["compact", "Compact"]], density(), function (v) { setDensity(v); render(); }),
       h("p", { class: "prov" }, "This page is private to you. To stop ant. and wipe this data, tell Claude “turn off ant.”.")]);
+  }
+
+
+  // ---------------------------------------------------------------- Activity: every tap for 90 days, with Undo
+  var CAT = [["sent", "Sent"], ["done", "Done"], ["snoozed", "Snoozed"], ["draft", "Drafts asked for"], ["crm", "CRM changes"], ["calendar", "Calendar holds"],
+    ["people", "People"], ["pipeline", "Pipeline"], ["dismissed", "Dismissed"], ["rated", "Rated"], ["other", "Other"]];
+  var ACT_CAT = { draft: "draft", next_step: "crm", crm_update: "crm", revert: "crm", calendar_hold: "calendar", merge: "people", keep_apart: "people",
+    quiet: "pipeline", skip: "dismissed" };
+  var VERB = { sent: "Marked sent", done: "Marked done", snoozed: "Snoozed", draft: "Asked ant. to draft", crm: "CRM change", calendar: "Calendar hold",
+    people: "People", pipeline: "Marked quiet", dismissed: "Skipped", rated: "Rated", other: "Tap" };
+  function activityLog() {
+    var out = [], cutoff = Date.now() - 90 * 864e5;
+    Object.keys(S.items || {}).forEach(function (k) {
+      var v = S.items[k] || {};
+      if (!v.t || (v.g && v.g !== k)) return;  // one entry per tap: the row's own id
+      var cat = v.sent ? "sent" : v.done_at ? "done" : v.snoozed_until ? "snoozed" : v.uc || null;
+      if (!cat) return;
+      out.push({ id: k, src: "items", at: v.at || v.done_at || v.undone, t: v.t, cat: cat, undone: v.undone || null, v: v });
+    });
+    Object.keys(S.actions || {}).forEach(function (k) {
+      var a = S.actions[k] || {};
+      if (!a.at || !a.type) return;
+      out.push({ id: k, src: "actions", at: a.at, t: a.t || tapTitle(a.type, a.payload) || VERB[ACT_CAT[a.type] || "other"], cat: ACT_CAT[a.type] || "other",
+        undone: a.status === "withdrawn" ? (a.withdrawn_at || a.at) : null, a: a });
+    });
+    (S.ratings || []).forEach(function (r) {
+      if (r && r.at) out.push({ id: r.id, src: "ratings", at: r.at, t: (r.title || "A line") + ": " + String(r.value || "").replace(/_/g, " "), cat: "rated", r: r });
+    });
+    return out.filter(function (e) { return Date.parse(e.at) > cutoff; }).sort(function (x, y) { return laterThan(x.at, y.at) ? -1 : 1; });
+  }
+  var PROCESSED = ["applied", "failed", "refused", "check", "dismissed"];
+  function resultOf(e) {
+    if (e.undone) return "Undone " + when_(e.undone);
+    if (e.src === "items") return e.cat === "snoozed" ? "Back " + hhmm(e.v.snoozed_until) : e.cat === "sent" ? "The email went from your Gmail" : "Closed in ant. Home";
+    if (e.src === "ratings") return "ant. tunes itself from this on Sunday";
+    var pr = (((S.snap.proposals || {}).items) || {})[e.id] || {};
+    if (ENGINE_TAPS.indexOf(e.a.type) >= 0) return "Applied by ant. at each check";
+    if (pr.status === "applied") return "Applied " + when_(pr.applied_at || e.at);
+    if (pr.status === "failed" || pr.status === "refused") return (pr.status === "failed" ? "Failed" : "Not done") + (pr.reason ? ": " + pr.reason : "");
+    if (pr.status === "check") return "Check the record by hand";
+    return "Waiting for the next check";
+  }
+  var ENGINE_TAPS = ["merge", "keep_apart", "quiet", "skip"];
+  // What Undo can do for one tap: a change still waiting is withdrawn; a CRM change already made gets a reverse
+  // change at the next check; an email cannot be unsent, only unmarked.
+  function undoFor(e) {
+    if (e.undone) return null;
+    if (e.src === "items") return { label: e.cat === "sent" ? "Not sent? Unmark" : e.cat === "snoozed" ? "Bring back" : "Reopen", fn: function () { reopen(e); } };
+    if (e.src === "ratings") return { label: "Remove", fn: function () { unrate(e.r); } };
+    var a = e.a, pay = a.payload || {}, pr = (((S.snap.proposals || {}).items) || {})[e.id] || {};
+    if (a.status !== "approved") return null;
+    if (ENGINE_TAPS.indexOf(a.type) >= 0 || PROCESSED.indexOf(pr.status) < 0) return { label: ENGINE_TAPS.indexOf(a.type) >= 0 ? "Undo" : "Withdraw", fn: function () { withdraw(e); } };
+    if (pr.status !== "applied") return null;
+    if (S.actions["rv_" + e.id]) return { note: "Reversal asked for" };
+    if (a.type === "crm_update" && !sheetCrm()) return { label: "Reverse in CRM", fn: function () {
+      approve("rv_" + e.id, "revert", { of: e.id, title: "Undo " + (e.t || "a CRM change") }, "ant. puts the old values back at the next check."); } };
+    if (a.type === "next_step" && pay.text && pay.current && !pay.stage && !pay.met && !sheetCrm()) return { label: "Reverse in CRM", fn: function () {
+      approve("rv_" + e.id, "next_step", { deal_id: pay.deal_id, company: pay.company, text: pay.current, due: pay.current_due || null, current: pay.text,
+        current_due: pay.due || null, met: null, stage: null, reverts: e.id }, "ant. puts the old step back at the next check."); } };
+    if (a.type === "next_step") return { note: pay.current ? "Change it back in your CRM. It was: " + pay.current : "Change it back in your CRM" };
+    if (a.type === "draft") return { note: "The draft is written. Delete it from your drafts if you do not need it" };
+    if (a.type === "calendar_hold") return { note: "Delete the hold in your calendar" };
+    return null;
+  }
+  function reopen(e) {
+    var patch = {}, cat = e.cat;
+    Object.keys(S.items).forEach(function (k) {
+      var v = S.items[k] || {};
+      if (k !== e.id && v.g !== e.id) return;
+      patch[k] = Object.assign({}, v, { snoozed_until: null, done_at: null, sent: null, closed_by: null, undone: k === e.id ? nowIso() : null, uc: k === e.id ? cat : null });
+      S.items[k] = patch[k];
+    });
+    render();
+    writeState("items", patch).then(function (ok) { if (ok) toast(cat === "snoozed" ? "Back on Today" : "Reopened. It is back on Today at once."); });
+  }
+  function withdraw(e) {
+    var patch = {}; patch[e.id] = Object.assign({}, e.a, { status: "withdrawn", withdrawn_at: nowIso() });
+    S.actions[e.id] = patch[e.id]; render();
+    writeState("actions", patch).then(function (ok) { if (ok) toast(ENGINE_TAPS.indexOf(e.a.type) >= 0 ? "Undone. ant. stops applying it at the next check." : "Withdrawn. Nothing will change."); });
+  }
+  function unrate(r) {
+    S.ratings = (S.ratings || []).filter(function (x) { return x.id !== r.id; }); render();
+    if (S.db && !S.readOnly) S.db.doc("ratings/" + r.id).delete().then(function () { toast("Rating removed"); }, function () { toast("Could not remove the rating."); });
+  }
+  function logRow(e) {
+    var u = undoFor(e), w = wall(Date.parse(e.at));
+    return h("div", { class: "log-row" + (e.undone ? " is-undone" : "") }, [
+      h("span", { class: "log-time" }, w ? pad(w.hh) + ":" + pad(w.mm) : ""),
+      h("div", { class: "log-main" }, [h("span", { class: "row-title" }, e.t || VERB[e.cat]),
+        h("span", { class: "row-detail" }, VERB[e.cat] + " · " + resultOf(e) + (u && u.note ? ". " + u.note : ""))]),
+      u && u.fn ? h("button", { class: "btn btn-secondary btn-sm", type: "button", onclick: u.fn }, [icon(ICON.undo, 16), u.label]) : h("span")]);
+  }
+  function dayLabel(day) {
+    if (day === todayIso()) return "Today";
+    if (day === dayIso(-1)) return "Yesterday";
+    var d = new Date(day + "T12:00:00Z"); return DAYS[d.getUTCDay()] + " " + fmtDate(day, false);
+  }
+  function viewActivity() {
+    var all = activityLog(), seen = {};
+    all.forEach(function (e) { seen[e.cat] = (seen[e.cat] || 0) + 1; });
+    var filters = h("div", { class: "filters", role: "group", "aria-label": "Show" }, [["all", "All", all.length]].concat(CAT.filter(function (c) { return seen[c[0]]; }).map(function (c) { return [c[0], c[1], seen[c[0]]]; }))
+      .map(function (f) {
+        return h("button", { class: "chip chip-filter", type: "button", "aria-pressed": S.logFilter === f[0] ? "true" : "false",
+          onclick: function () { S.logFilter = f[0]; render(); } }, f[1] + " " + f[2]);
+      }));
+    var head = h("div", { class: "day" }, [h("div", { class: "sec-h", style: "margin:0" }, [h("b", null, "Activity")]),
+      h("p", { class: "prov" }, "Everything you did in ant. Home for the last 90 days. Undo works from here: a change still waiting is withdrawn, and a CRM change already made is put back at the next check."),
+      all.length ? filters : null]);
+    var list = all.filter(function (e) { return S.logFilter === "all" || e.cat === S.logFilter; });
+    if (!list.length) return [head, emptyCard("Nothing here yet", "Each tap you make shows here, with Undo.")];
+    var days = [], byDay = {};
+    list.forEach(function (e) { var d = dayOf(e.at); if (!byDay[d]) { byDay[d] = []; days.push(d); } byDay[d].push(e); });
+    return [head].concat(days.map(function (d) {
+      var rows = [];
+      CAT.forEach(function (c) {
+        var es = byDay[d].filter(function (e) { return e.cat === c[0]; }); if (!es.length) return;
+        rows.push(h("h3", { class: "log-cat" }, c[1]));
+        es.forEach(function (e) { rows.push(logRow(e)); });
+      });
+      return h("section", { class: "card", "aria-label": dayLabel(d) }, [h("h2", { class: "sec-h" }, [h("b", null, dayLabel(d)), h("span", { class: "count" }, String(byDay[d].length))]),
+        h("div", { class: "list" }, rows)]);
+    }));
+  }
+
+  // ---------------------------------------------------------------- folds: every section header opens and closes its section
+  var FOLD_DEFAULT = { "today|Waiting on others": true, "today|Watch": true, "today|Done today": true, "today|Your team's deals": true };
+  function foldKey(label) { return S.tab + "|" + label; }
+  function isFolded(label, sec) {
+    if (S.focus && S.tab === "today" && label !== "Meetings today") return !S.focusOpen[label];
+    var k = foldKey(label);
+    if (QA_OPEN && !Object.prototype.hasOwnProperty.call(S.folds, k)) return false;
+    if (Object.prototype.hasOwnProperty.call(S.folds, k)) return !!S.folds[k];
+    if (sec.getAttribute("data-open") === "1") return false;
+    if (S.tab === "activity") return label !== "Today" && label !== "Yesterday";
+    return !!FOLD_DEFAULT[k];
+  }
+  var foldSeq = 0;
+  function peekOf(body) {
+    var el = body.querySelector(".agenda-row.is-next") || body.querySelector(".row-title, .agenda-row, td, p, li");
+    if (!el) return "";
+    var t = el.classList && el.classList.contains("agenda-row") ? Array.prototype.map.call(el.querySelectorAll(".agenda-time, .agenda-who > b"), function (x) { return x.textContent; }).join(" ") : el.textContent;
+    t = String(t || "").replace(/\s+/g, " ").trim();
+    return t.length > 96 ? t.slice(0, 95) + "…" : t;
+  }
+  function enhance(root) {
+    Array.prototype.forEach.call(root.querySelectorAll("section.card"), function (sec) {
+      var head = sec.firstElementChild;
+      if (!head || !head.classList.contains("sec-h") || head.querySelector(".fold-btn")) return;
+      // A section names itself by its title when it has no label of its own.
+      if (!sec.getAttribute("aria-label")) { var tb = head.querySelector("b"); if (!tb) return; sec.setAttribute("aria-label", tb.textContent); }
+      var label = sec.getAttribute("aria-label"), body = h("div", { class: "fold-body", id: "fold-" + (++foldSeq) });
+      while (head.nextSibling) body.appendChild(head.nextSibling);
+      var opened = S.open && body.querySelector('[data-id="' + String(S.open).replace(/"/g, "") + '"]');
+      var folded = !opened && isFolded(label, sec);
+      var btn = h("button", { class: "fold-btn", type: "button", "aria-expanded": folded ? "false" : "true", "aria-controls": body.id, "data-label": label },
+        [h("span", { class: "fold-chev" }, icon(ICON.chev, 16))]);
+      while (head.firstChild) btn.appendChild(head.firstChild);
+      var urgent = body.querySelectorAll(".row .status.breach").length;
+      if (folded && urgent) btn.insertBefore(h("span", { class: "chip chip-breach" }, [h("i"), urgent + " urgent"]), btn.querySelector(".count"));
+      btn.addEventListener("click", function () {
+        if (S.focus && S.tab === "today" && label !== "Meetings today") S.focusOpen[label] = folded;
+        else { S.folds[foldKey(label)] = !folded; remember("ant.folds", JSON.stringify(S.folds)); }
+        render();
+        var again = document.querySelector('.fold-btn[data-label="' + label.replace(/"/g, "") + '"]'); if (again) again.focus();
+      });
+      head.appendChild(btn);
+      if (folded) { sec.classList.add("is-folded"); body.hidden = true; var pk = peekOf(body); if (pk) sec.appendChild(h("p", { class: "fold-peek" }, pk)); }
+      sec.appendChild(body);
+      limitRows(body, label);
+    });
+  }
+  // Long lists show their first five lines, long tables their first eight, then "Show all".
+  function limitRows(body, label) {
+    var key = foldKey(label);
+    [[".list", ":scope > .row", 6, 5], ["tbody", ":scope > tr", 10, 8]].forEach(function (spec) {
+      Array.prototype.forEach.call(body.querySelectorAll(spec[0]), function (list, i) {
+        var rows = list.querySelectorAll(spec[1]), k = key + "#" + i;
+        if (rows.length <= spec[2]) return;
+        var keep = S.open && list.querySelector('[data-id="' + String(S.open).replace(/"/g, "") + '"]');
+        var all = (QA_OPEN && S.showAll[k] === undefined) || !!S.showAll[k] || !!keep;
+        if (!all) Array.prototype.forEach.call(rows, function (r, j) { if (j >= spec[3]) r.hidden = true; });
+        var more = h("button", { class: "btn btn-ghost btn-sm show-all", type: "button", "aria-expanded": all ? "true" : "false",
+          onclick: function () { S.showAll[k] = !all; render(); } }, all ? "Show less" : "Show all (" + rows.length + ")");
+        var host = list.closest(".table-wrap") || list;
+        host.parentNode.insertBefore(h("div", null, more), host.nextSibling);
+      });
+    });
   }
 
   // ---------------------------------------------------------------- render
@@ -1933,6 +2347,8 @@ td .owed { display: block; font-size: 12px; }
           onclick: function () { go(t.key); } }, [h("span", { class: "ah-tab-ico" }, icon(t.icon, 18)), h("span", { class: "lbl" }, t.label)]));
       });
     });
+    var ab = document.getElementById("activity-btn");
+    if (ab) { ab.textContent = ""; ab.appendChild(icon(ICON.clock, 18)); ab.setAttribute("aria-current", S.tab === "activity" ? "page" : "false"); }
   }
   function hhmm(iso) { var w = wall(Date.parse(iso)); return w ? DAYS[w.wd] + " " + pad(w.hh) + ":" + pad(w.mm) : ""; }
   // One "last check" time for the whole page: the newest finished run, else the brief's own time.
@@ -1954,12 +2370,12 @@ td .owed { display: block; font-size: 12px; }
   function banners(host) {
     var c = cfg(), b = S.snap.brief || {};
     if (c.demo) {
-      var note = h("div", { class: "banner", role: "note" }, "Example data. Quillwater Ventures is a fictional fund. Your own Home fills from your tools.");
+      var note = h("div", { class: "banner", role: "note" }, [h("span", null, [h("b", null, "Sample data"), " from a made-up fund, Quillwater Ventures."])]);
       if (S.static && S.demo) {
-        var pick = h("select", { class: "field field-sm demo-pick", "aria-label": "View as" });
+        var pick = h("select", { class: "field demo-pick", "aria-label": "View as" });
         S.demo.order.forEach(function (k) { var o = h("option", { value: k }, S.demo.members[k].label); if (k === S.demoKey) o.selected = true; pick.appendChild(o); });
         pick.addEventListener("change", function () { loadDemo(pick.value); });
-        note.appendChild(h("label", { class: "demo-view" }, [h("span", null, "View as"), pick]));
+        note.appendChild(h("label", { class: "demo-view" }, [h("span", null, "View as"), h("span", { class: "select" }, [pick, icon(ICON.chev, 16)])]));
       }
       host.appendChild(note); return;
     }
@@ -1983,7 +2399,7 @@ td .owed { display: block; font-size: 12px; }
       h("span", null, "In Claude, open Scheduled tasks. Check that “ant.” is on, with Automatically approve turned on.")]));
   }
   function render() {
-    if (!tabShown(S.tab)) S.tab = "today";
+    if (S.tab !== "activity" && !tabShown(S.tab)) S.tab = "today";
     renderTabs();
     var view = document.getElementById("view"), banner = document.getElementById("banner-slot");
     view.textContent = ""; banner.textContent = "";
@@ -2012,16 +2428,27 @@ td .owed { display: block; font-size: 12px; }
       return;
     }
     banners(banner);
-    var parts = S.tab === "pipeline" ? viewPipeline() : S.tab === "people" ? viewPeople() : S.tab === "portfolio" ? viewPortfolio() : S.tab === "lps" ? viewLps() : viewToday();
+    var parts = S.tab === "pipeline" ? viewPipeline() : S.tab === "people" ? viewPeople() : S.tab === "portfolio" ? viewPortfolio() : S.tab === "lps" ? viewLps() :
+      S.tab === "activity" ? viewActivity() : viewToday();
     parts.forEach(function (p) { if (p) view.appendChild(p); });
+    enhance(view);
   }
 
   // ---------------------------------------------------------------- keyboard
+  try { S.keys = localStorage.getItem("ant.keys") !== "off"; } catch (e) { S.keys = true; }
   document.addEventListener("keydown", function (e) {
+    var sheet = document.querySelector(".sheet");
+    if (e.key === "Tab" && sheet) {
+      var f = Array.prototype.filter.call(sheet.querySelectorAll("button, a[href], input, select, textarea"), function (x) { return x.offsetParent; });
+      if (f.length && (e.shiftKey ? document.activeElement === f[0] : document.activeElement === f[f.length - 1])) { e.preventDefault(); (e.shiftKey ? f[f.length - 1] : f[0]).focus(); }
+      else if (f.length && !sheet.contains(document.activeElement)) { e.preventDefault(); f[0].focus(); }
+      return;
+    }
+    if (e.key !== "Escape" && !S.keys) return;
     if (e.key === "Escape") { if (document.querySelector(".scrim")) { closeOverlay(); return; } if (S.open) { var o = S.open; S.open = null; render(); focusId(o); } return; }
     var tag = e.target && e.target.tagName;
     if (tag === "INPUT" || tag === "TEXTAREA" || e.metaKey || e.ctrlKey || e.altKey || document.querySelector(".scrim")) return;
-    var hits = Array.prototype.slice.call(document.querySelectorAll("#view .row-hit[data-id]")), i = hits.indexOf(document.activeElement);
+    var hits = Array.prototype.filter.call(document.querySelectorAll("#view .row-hit[data-id]"), function (x) { return x.offsetParent; }), i = hits.indexOf(document.activeElement);
     if (e.key === "j" || e.key === "k") { e.preventDefault(); var n = hits[i < 0 ? 0 : Math.max(0, Math.min(hits.length - 1, i + (e.key === "j" ? 1 : -1)))]; if (n) n.focus(); return; }
     if (e.key === "?") { openHelp(); return; }
     var it = i >= 0 ? hits[i]._item : null; if (!it) return;
@@ -2030,6 +2457,7 @@ td .owed { display: block; font-size: 12px; }
     else if (e.key === "1" || e.key === "2" || e.key === "3") { rate(it, ["useful", "not_useful", "wrong"][Number(e.key) - 1]); toast("Thanks. ant. tunes itself from this on Sunday."); focusId(hits[i].getAttribute("data-id")); }
   });
   document.getElementById("help-btn").addEventListener("click", openHelp);
+  document.getElementById("activity-btn").addEventListener("click", function () { go(S.tab === "activity" ? "today" : "activity"); });
   document.getElementById("theme-btn").addEventListener("click", function () { setTheme(theme() === "dark" ? "light" : "dark"); });
   paintThemeButton();
 
