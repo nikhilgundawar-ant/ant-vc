@@ -116,7 +116,7 @@ def card(ctx: dict[str, Any], meeting: dict[str, Any], commitments: list[dict[st
     firm_name = ((ctx.get("bundle") or {}).get("firm") or {}).get("name")
     hist_rows = [{"date": fmt_short_date(it["date"]), "iso": it["date"].isoformat(), "type": it["type"],
                   "text": clip(clean_title(it.get("subject"), firm_name) if it["type"] == "meeting" else (it.get("subject") or ""), 90),
-                  "source_url": it.get("url")}
+                  "source_url": it.get("url"), **({"note_id": it["transcript_id"]} if it.get("transcript_id") else {})}
                  for it in history]
     # Promises with anyone at their companies, not only the people in the room.
     comp_ids = {p.get("company_id") for p in ext if p.get("company_id")}

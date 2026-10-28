@@ -2,7 +2,7 @@
 name: tuning
 description: Tunes ant. for one user every Sunday from their ratings, edits and Friday score, moving ranking weights, brief length and stale thresholds in the direction they point, and writes the weekly scorecard. Use when a scheduled task runs ant-vc tuning, or the user says "tune ant.", "show my ant. scorecard" or "why did you change my brief".
 metadata:
-  version: "0.9.0"
+  version: "0.10.0"
 ---
 
 # Weekly tuning

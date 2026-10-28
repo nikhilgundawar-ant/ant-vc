@@ -810,6 +810,11 @@ def build(member: str = "aditi", home_url: str | None = None) -> dict[str, dict]
         {"name": "Gmail", "category": "email", "ok": True}, {"name": "Google Calendar", "category": "calendar", "ok": True},
         {"name": "Granola", "category": "notes", "ok": True}, {"name": "Affinity", "category": "crm", "ok": True},
         {"name": "Google Drive", "category": "drive", "ok": True}]}
+    # Granola gives a summary with most notes: two demo notes carry one, the rest show "Write a TL;DR" in the side panel.
+    for nid, text in (("tr03", "- Atlas wants our markup before 23 Oct; Bluepeak's term sheet is on the table.\n- Two terms matter most to them: the board seat and the option pool.\n- You owe the markup; they owe legal counsel's contact."),
+                      ("tr13", "- Runway is under 9 months on the current plan.\n- The board will ask for a plan past 12 months.\n- The September MIS is late; the founder will send it before the board.")):
+        if nid in ((snaps.get("notes") or {}).get("items") or {}):
+            snaps["notes"]["items"][nid]["summary"] = text
     return snaps
 
 

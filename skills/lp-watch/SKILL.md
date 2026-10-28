@@ -2,7 +2,7 @@
 name: lp-watch
 description: Keeps a venture firm's LP relationships warm and quarterly reporting painless. Flags LPs untouched before their re-up window, tracks LP questions, and drafts the quarterly LP letter from portfolio KPIs and fund data. Use when the user asks "which LPs need a touch", "LP update", "draft the quarterly letter", "Fund III re-up", or when the Monday digest runs for partner, finance or solo GP profiles.
 metadata:
-  version: "0.9.0"
+  version: "0.10.0"
 ---
 
 # LP watch

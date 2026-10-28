@@ -67,3 +67,11 @@ Every `file_path` and `out_dir` you give ArtifactData is an absolute path inside
 - Each document stays under 256 KiB; the engine trims the oldest entries first.
 - The store holds 25,000 documents. Tuning deletes ratings older than 60 days and runs beyond the newest 200.
 - The page is private to its owner. Database rules give read and write to the owner only. Never change them.
+
+## Meeting notes (`snap/notes`)
+
+Every build keeps the last 30 days of meeting notes for Home's side panel: title, date, link, the notes app's name, attendees,
+the notes app's summary when it gave one (`summary`), the promises from that meeting, and up to 160 lines, trimmed. Notes merge
+across runs, so a check that reads no transcripts keeps what Home has. A TL;DR Home writes itself with Claude is kept in
+`state/tldr`, written once per note. Any source chip whose link is a note in `snap/notes` opens the side panel, with
+"Open in Granola" (or the notes app's name) one tap further.

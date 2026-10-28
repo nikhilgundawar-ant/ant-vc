@@ -1,0 +1,420 @@
+{
+ "checks": 68,
+ "failed": 0,
+ "complete": false,
+ "scenarios": [
+  "redesign",
+  "round19"
+ ],
+ "page_sha256": "4ded92ab5887",
+ "rows": [
+  {
+   "scenario": "folds",
+   "check": "every Today section has a fold header",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "folds",
+   "check": "Waiting and Watch start folded, Decide and Send open",
+   "ok": true,
+   "detail": "[]"
+  },
+  {
+   "scenario": "folds",
+   "check": "Focus folds everything but the schedule",
+   "ok": true,
+   "detail": "['Schedule']"
+  },
+  {
+   "scenario": "folds",
+   "check": "a day-strip cell opens its section",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "folds",
+   "check": "a CRM change shows Approve as a pill on its row, before it is opened",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "folds",
+   "check": "a draft has a Sent it circle, Open in Gmail first among its pills, and Copy",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "folds",
+   "check": "every row has at most three pills, all the same height, and the half-width ones the same width",
+   "ok": true,
+   "detail": "[{\"n\": 2, \"h\": 1, \"w\": 1}, {\"n\": 1, \"h\": 1, \"w\": 1}, {\"n\": 2, \"h\": 1, \"w\": 1}, {\"n\": 2, \"h\": 1, \"w\": 1}, {\"n\": 2, \"h\": 1, \"w\": 1}, {\"n\": 1, \"h\": 1, \"w\": 1}]"
+  },
+  {
+   "scenario": "folds",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "folds",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "folds",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "folds",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "folds",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "hero-fold",
+   "check": "aditi: the top line's main button is on the first phone screen, above the tab bar",
+   "ok": true,
+   "detail": "bottom at 510px"
+  },
+  {
+   "scenario": "hero-fold",
+   "check": "kabir: the top line's main button is on the first phone screen, above the tab bar",
+   "ok": true,
+   "detail": "bottom at 539px"
+  },
+  {
+   "scenario": "hero-fold",
+   "check": "meera: the top line's main button is on the first phone screen, above the tab bar",
+   "ok": true,
+   "detail": "bottom at 591px"
+  },
+  {
+   "scenario": "hero-fold",
+   "check": "rohan: the top line's main button is on the first phone screen, above the tab bar",
+   "ok": true,
+   "detail": "bottom at 486px"
+  },
+  {
+   "scenario": "hero-fold",
+   "check": "tara: the top line's main button is on the first phone screen, above the tab bar",
+   "ok": true,
+   "detail": "bottom at 510px"
+  },
+  {
+   "scenario": "hero-fold",
+   "check": "vikram: the top line's main button is on the first phone screen, above the tab bar",
+   "ok": true,
+   "detail": "bottom at 562px"
+  },
+  {
+   "scenario": "hero-fold",
+   "check": "solo: the top line's main button is on the first phone screen, above the tab bar",
+   "ok": true,
+   "detail": "bottom at 510px"
+  },
+  {
+   "scenario": "row-actions",
+   "check": "a row shows Later as a pill with its times folded, and the rating once it is open",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "row-actions",
+   "check": "Later opens the snooze times",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "activity",
+   "check": "Activity lists the tap under Today, by category",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "activity",
+   "check": "Reopen from Activity clears the tap and records it",
+   "ok": true,
+   "detail": "{\"t_cabd370eab\": {\"snoozed_until\": null, \"done_at\": null, \"sent\": null, \"closed_by\": null, \"t\": \"Forward the Cobalt AA notes\", \"g\": \"t_cabd370eab\", \"at\": \"2026-"
+  },
+  {
+   "scenario": "activity",
+   "check": "the line is back on Today",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "activity",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "activity",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "activity",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "activity",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "activity",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "activity-crm",
+   "check": "an applied CRM change offers Reverse in CRM; one still waiting offers Withdraw",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "activity-crm",
+   "check": "Reverse asks the next check to put the old values back",
+   "ok": true,
+   "detail": "{\"rv_pr_gravity_next\": {\"type\": \"revert\", \"status\": \"approved\", \"payload\": {\"of\": \"pr_gravity_next\", \"title\": \"Undo Atlas: stage\"}, \"at\": \"2026-10-22T01:35:00.0"
+  },
+  {
+   "scenario": "activity-crm",
+   "check": "Withdraw stops a change that has not been made",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "activity-crm",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "activity-crm",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "0 primary"
+  },
+  {
+   "scenario": "activity-crm",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "activity-crm",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "activity-crm",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "research",
+   "check": "the prep card says research runs by itself in the desktop app, and offers Claude instead",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "research-map",
+   "check": "a research run's empathy map shows on the card: says, thinks, does, feels and the source",
+   "ok": true,
+   "detail": "ts weekly on cross-border rails\nFeels: Pressed for time before the round\nAsk about the bank partner\n\nLinkedIn, read in your browser \u00b7 22 Oct Profile Doc in Drive\n\nant. \u00b7 calendar, email, notes and CRM"
+  },
+  {
+   "scenario": "pills",
+   "check": "the day reads as pills with counts, in order, and an empty section takes no pill",
+   "ok": true,
+   "detail": "['Meetings', 'Decisions', 'Threads']"
+  },
+  {
+   "scenario": "pills",
+   "check": "the pills take one line on a laptop",
+   "ok": true,
+   "detail": "48px"
+  },
+  {
+   "scenario": "pills",
+   "check": "on a wide card every row's pills stack on its right edge, one width",
+   "ok": true,
+   "detail": "[{\"right\": 0, \"beside\": true, \"w\": 156, \"list\": 578}, {\"right\": 0, \"beside\": true, \"w\": 156, \"list\": 578}, {\"right\": 0, \"beside\": true, \"w\": 156, \"list\": 578}, {\"right\": 0, \"beside\": true, \"w\": 156, \"list\": 578}]"
+  },
+  {
+   "scenario": "pills",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "pills",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "pills",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "pills",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "pills",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "pills-phone",
+   "check": "on a phone the pills sit under the line, 40px tall",
+   "ok": true,
+   "detail": "[{\"below\": true, \"h\": 40}, {\"below\": true, \"h\": 40}, {\"below\": true, \"h\": 40}, {\"below\": true, \"h\": 40}]"
+  },
+  {
+   "scenario": "pills-phone",
+   "check": "on a phone the day's pills take one line",
+   "ok": true,
+   "detail": "[48, False]"
+  },
+  {
+   "scenario": "pills-phone",
+   "check": "the done circle is a 44px target",
+   "ok": true,
+   "detail": "44px"
+  },
+  {
+   "scenario": "pills-phone",
+   "check": "a swipe right on a row finishes it, as its circle does",
+   "ok": true,
+   "detail": "[{\"op\": \"set\", \"path\": \"state/items\", \"data\": {\"items\": {\"dr_k_4d53f12d9b\": {\"snoozed_until\": null, \"done_at\": \"2026-10-22T01:35:00.000Z\", \""
+  },
+  {
+   "scenario": "pills-phone",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "pills-phone",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "pills-phone",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "pills-phone",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "pills-phone",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "notes-drawer",
+   "check": "the prep card opens as a side panel on a laptop",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "notes-drawer",
+   "check": "a promise from a meeting links its notes",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "notes-drawer",
+   "check": "the notes open in the side panel: TL;DR, notes, and Open in the notes app",
+   "ok": true,
+   "detail": "[0, 560] 'Back\\nAtlas Settlement: terms call\\n\\n20 Oct \u00b7 Granola \u00b7 Aditi Rao, Ishaan Verma\\n\\nT'"
+  },
+  {
+   "scenario": "notes-drawer",
+   "check": "a note without a TL;DR gets one from Claude on open",
+   "ok": true,
+   "detail": "Atlas wants our markup before 23 Oct; Bluepeak's term sheet is on the table.\nTwo"
+  },
+  {
+   "scenario": "notes-drawer",
+   "check": "the notes panel has Back to the prep card",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "notes-drawer",
+   "check": "Back returns to the prep card",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "notes-drawer",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "notes-drawer",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "notes-drawer",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "notes-drawer",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "notes-drawer",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "notes-phone",
+   "check": "on a phone the notes rise from the bottom, full width",
+   "ok": true,
+   "detail": "[0, 0]"
+  }
+ ]
+}

@@ -19,7 +19,7 @@ from typing import Any
 from .util import dump, load
 
 SNAP_DOCS = ["config", "brief", "prep", "pipeline", "people", "portfolio", "lps", "drafts", "proposals", "commitments",
-             "inbound", "scorecard", "review", "asks", "digests", "directory"]
+             "inbound", "scorecard", "review", "asks", "digests", "directory", "notes"]
 VOLATILE = ("as_of", "updated_at")
 MAX_DOC_BYTES = 240 * 1024
 BATCH_SIZE = 50

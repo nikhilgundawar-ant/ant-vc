@@ -50,6 +50,40 @@ All scores below are simulations: one Claude agent played every panel member or 
 
 Claude-run evals (round five, on 0.4.0 skills): inbound triage 25 of 25 decisions match, scheduled pulse 15 of 15 safety checks, Claude-written brief 9 of 10 top lines, setup and morning brief run end to end. Their findings (46 numbered issues) were fixed in rounds five and six. Their 13 scores are read from saved runs kept out of git, so the runner counts them only where those runs exist. The Friday pulse on 0.7.2 scored 7 of 10 as Meera and as Tara; their 23 findings are fixed in round ten. The scheduled runs on 0.7.3 scored 7 of 10 each (Tara's nudge morning, Tara's and Meera's Fridays); their 30 findings are fixed in round eleven, except one product idea kept for later (a note to the partner whose view several drafts wait on). On 0.7.4 the same three runs scored 8, 8 and 7; round twelve fixes their findings, that note included, except one kept as a known limit: a scheduled run still types its bundle by hand. On 0.7.5 they scored 8, 8 and 8.5; round thirteen fixes their findings. On 0.7.6 they scored 9, 9 and 8 (`evals/reports/claude-runs/r13-summary.md`); round fourteen fixes their medium findings.
 
+## Round nineteen (0.10.0): rows like the owner's own app
+
+The owner shared their personal app as the reference. What came over:
+
+- **Count pills.** Meetings, Decisions, Threads and Waiting on others are one line of pills with a count each, in place of four stat cards. The count turns red when something in it is urgent. An empty section takes no pill. On a phone the strip is one line ("Waiting" for short).
+- **Sections renamed** to match: Decide is Decisions, Send is Threads.
+- **Row anatomy.** A done circle on the left (Done, Sent it, Got it, Close ask, or Seen on a line with nothing to finish). Then the line. Its actions are pills of one size: stacked on the right when the card has room (a container query at 560px), two to a line under the text when it does not. At most two action pills plus Later. More goes in the details, which the title opens, with the rating.
+- **Swipe on a phone.** Right finishes the row, as the circle does. Left snoozes it until tomorrow. The row tints past the threshold, and the Undo toast follows.
+- **Meeting notes in a side panel.** A notes chip opens a right-hand panel on a laptop and a bottom sheet on a phone. It shows the TL;DR, the promises from the meeting, and the notes with times. "Open in Granola" (or the notes app's name) is the main button.
+  - The TL;DR is the notes app's own summary when there is one. Otherwise Claude writes it on open and Home keeps it in `state/tldr`.
+  - The engine writes `snap/notes`: 30 days, merged across runs, capped at 150k characters.
+  - Prep and the partner pack open as side panels too. Notes opened from them have Back.
+- **Ask and search** read the notes: the TL;DR, the promises and the first lines.
+
+Council (simulated, five roles): round one scored 6.5 / 6 / 6 / 7 / 6. Fixed after that round:
+
+- one row pattern;
+- sans fallback for headings;
+- outlined pills of one width;
+- one-line strip;
+- swipe feedback;
+- even footer;
+- neutral circle.
+
+Round two scored 7.5 / 7.5 / 7.5 / 7.5 / 7, and its remaining fixes were applied: Copy moves into the details when Gmail is one tap away, one pill colour, no icons in side pills, even footer on a laptop.
+
+Still open, by choice:
+
+- CRM proposals keep Approve and Skip with no circle, since a check mark must never mean "write to the CRM".
+- The hero keeps Sent it and Done side by side.
+- The agenda keeps its colour cues.
+
+Checks: Home QA 755/755, engine 235/235 (7 skipped), lint 0.
+
 ## Round sixteen: the ant. Home redesign
 
 The owner asked for a Home a partner can read in seconds: the day in logical sections, every section folding, an Activity log with Undo, LinkedIn research on the people they meet, and calmer type. A simulated design council (five roles, one Claude agent) audited 0.7.8 and then reviewed each of three build rounds.

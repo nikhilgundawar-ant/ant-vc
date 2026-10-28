@@ -41,7 +41,7 @@ Every command reads a bundle: one JSON file holding what you gathered from the u
                "messages": [{"from": {"name": "", "email": ""}, "date": "", "text": ""}], "labels": []}],
   "events": [{"id": "", "title": "", "start": "", "end": "", "url": "", "attendees": [{"name": "", "email": ""}]}],
   "transcripts": [{"id": "", "event_id": "", "title": "", "date": "", "url": "", "attendees": [{"name": "", "email": ""}],
-                   "lines": [{"speaker": "", "text": ""}]}],
+                   "lines": [{"t": "00:01:27", "speaker": "", "text": ""}], "summary": "<the notes app's own summary, when it gives one: Home shows it as the TL;DR>"}],
   "crm": {"system": "affinity", "companies": [{"id": "", "name": "", "domain": "", "status": "portfolio|pipeline|passed|lp|fund|other", "sectors": [], "hq": "", "url": "", "description": "",
                  "entry_stage": "<portfolio only: the round we first invested in>", "check_usd": 0}],
           "people": [{"id": "", "name": "", "email": "", "company_id": "", "title": "", "url": "", "strength_by_member": {"colleague@firm.vc": 60}}],

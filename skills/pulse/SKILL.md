@@ -2,7 +2,7 @@
 name: pulse
 description: Runs ant.'s scheduled check for a venture investor, and anything due with it (morning brief, Thursday review, Monday digest, Sunday tuning and week ahead). Use when a scheduled task says "run the ant-vc pulse skill", or the user asks ant. to "check in", "catch me up since this morning" or "anything new".
 metadata:
-  version: "0.9.0"
+  version: "0.10.0"
 ---
 
 # ant. pulse

@@ -1,6 +1,6 @@
 # ant. for VCs: eval scorecard
 
-Run at 28 Oct 2026 10:49. Golden fund: Quillwater Ventures (fictional).
+Run at 28 Oct 2026 12:25. Golden fund: Quillwater Ventures (fictional).
 
 **235 of 235 checks pass.** 7 Claude-run scores skipped: no saved run.
 
@@ -40,7 +40,7 @@ Run at 28 Oct 2026 10:49. Golden fund: Quillwater Ventures (fictional).
 | tuning | changes follow the ratings | 5/5 | 5/5 | yes |
 | safety | source, quiet and memo checks | 3/3 | 3/3 | yes |
 | safety | injection cases | 50/50 | all | yes |
-| homedb | snapshot sizes, batches and version pins | max 62 KiB, 12 docs | <= 256 KiB, pins kept | yes |
+| homedb | snapshot sizes, batches and version pins | max 62 KiB, 13 docs | <= 256 KiB, pins kept | yes |
 | actions | Home taps flow back through the engine | 6/6 | all | yes |
 | safety | no send tools in skills | 0 violations | 0 | yes |
 | plugin | skills well-formed | 14/14 | all | yes |

@@ -23,7 +23,7 @@ The one-screen version, for anyone deciding whether to turn it on: [Privacy and 
 
 How ant. Home reads:
 
-- **Today** starts with your day in four numbers (meetings, decide, send, waiting on others), then the one thing that matters most, your schedule, and sections by what you do: Decide, Send, Waiting on others, Watch and Done today.
+- **Today** starts with your day as four pills with counts (Meetings, Decisions, Threads, Waiting on others), then the one thing that matters most, your schedule, and sections by what you do: Decisions, Threads, Waiting on others, Watch and Done today. Every row has a done circle on the left and its actions as pills on the right (under the line on a phone); meeting notes open in a side panel with a TL;DR.
 - **Every section folds.** Tap its title. A folded section still shows its count, how many lines are urgent and its top line. Focus folds everything but the top line and your schedule.
 - **Activity** (the clock at the top) lists every tap for 90 days, by day and kind, with Undo. A change still waiting is withdrawn. A CRM change already made is put back at the next check. A sent email cannot be unsent.
 - **Research runs by itself.** Each time you open Home in the Claude desktop app, it reads the public LinkedIn profiles of the people in today's and tomorrow's external meetings, in the app's browser, and adds an empathy map to each prep card and a Google Doc to Drive.

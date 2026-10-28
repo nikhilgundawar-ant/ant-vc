@@ -2,7 +2,7 @@
 name: research
 description: Researches the people a venture investor is about to meet from their public LinkedIn profiles, in the Claude app's built-in browser, and builds an empathy map per person (says, thinks, does, feels, three things to raise) on the meeting's prep card and as a PDF in Drive. Use when the user says "research my 3pm", "research the people I'm meeting", "empathy map for", or pastes "Research my ... meeting with ... on LinkedIn" from ant. Home. Never in a scheduled run.
 metadata:
-  version: "0.9.0"
+  version: "0.10.0"
 ---
 
 # Research the people you meet

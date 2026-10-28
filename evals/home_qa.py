@@ -200,21 +200,23 @@ def bucket_label(it: dict) -> str:
     if w == "team" or it.get("fyi"):
         return "Watch"
     if k in ("inbound", "pass_returned"):
-        return "Decide"
+        return "Decisions"
     if k == "waiting" and it.get("to_you") is False:
         return "Watch"
     if k == "waiting" or w in ("waiting", "asked", "requested"):
         return "Waiting on others"
     if k in ("decision", "signal", "stale", "deal_move", "review"):
-        return "Decide"
+        return "Decisions"
     if k in ("commitment", "question", "ask", "lp", "relationship") or it.get("late_fold"):
-        return "Send"
+        return "Threads"
     return "Watch"
 
 
-DECIDE = "section[aria-label='Decide']"
-SEND = "section[aria-label='Send']"
-READY = "section[aria-label='Decide'], section[aria-label='Send']"
+DECIDE = "section[aria-label='Decisions']"
+SEND = "section[aria-label='Threads']"
+READY = "section[aria-label='Decisions'], section[aria-label='Threads']"
+# A row's buttons: the done circle on the left, the pills on the side, and the ones in its open details.
+ROW_BTN = "button.row-done, .row-side button, .row-side a, .row-open button"
 OPEN_LINES = "#view section.card:not([aria-label='Done today'])"
 
 
@@ -267,7 +269,7 @@ class QA:
         label, title = self.done_row(member)
         sec = page.locator(f"section[aria-label='{label}']")
         sec.locator(".row-hit", has_text=title).first.click()
-        sec.locator(".row-actions button", has_text="Done").first.click()
+        sec.locator(":is(button.row-done, .row-open .row-actions button)", has_text="Done").first.click()
         return title
 
     def shot(self, page, name: str) -> None:
@@ -315,7 +317,8 @@ class QA:
             self.check(sc, "Decide holds the CRM change and Send the drafts", page.locator(DECIDE, has_text="Approve").count() == 1 and
                        page.locator(SEND + " .row-title", has_text="Intro").count() >= 1)
             self.check(sc, "the day strip counts meetings, decisions, sends and waits",
-                       page.locator(".daystrip .stat").count() == 4 and page.locator(".daystrip .stat", has_text="Decide").count() == 1)
+                       2 <= page.locator(".pills .pill").count() <= 4 and page.locator(".pills .pill[data-key='decide']", has_text="Decisions").count() == 1
+                       and page.locator(".pills .pill .cnt").count() == page.locator(".pills .pill").count())
             self.check(sc, "evidence line present", "sources" in page.locator(".evidence").inner_text())
             self.check(sc, "live pill shows the run time", page.locator("#hdr-live-text").text_content() == "As of 07:00",
                        page.locator("#hdr-live-text").inner_text())
@@ -331,7 +334,7 @@ class QA:
         label, title = self.done_row("kabir")
         page.locator(f"section[aria-label='{label}'] .row-hit", has_text=title).first.click()
         self.shot(page, "row-open-380")
-        page.locator(f"section[aria-label='{label}'] .row-actions button", has_text="Done").first.click()
+        page.locator(f"section[aria-label='{label}'] :is(button.row-done, .row-open .row-actions button)", has_text="Done").first.click()
         page.wait_for_timeout(120)
         writes = page.evaluate("window.__writes")
         first = writes[0] if writes else {}
@@ -1272,7 +1275,7 @@ class QA:
             has=page.locator(".row-title", has_text=re.compile("^" + re.escape(co0) + ":"))).first
         row.locator(".row-hit").first.click()
         page.wait_for_timeout(60)
-        labels = row.locator(".row-actions button").all_inner_texts()
+        labels = row.locator(ROW_BTN).all_inner_texts()
         row.locator("button", has_text="Close ask").first.click()
         page.wait_for_timeout(150)
         wr = self._writes(page)
@@ -1594,7 +1597,7 @@ class QA:
         if tapped:
             row1.locator(".row-hit").first.click()
             page.wait_for_timeout(60)
-            row1.locator(".row-actions button", has_text="Done").first.click()
+            row1.locator(":is(button.row-done, .row-open .row-actions button)", has_text="Done").first.click()
             page.wait_for_timeout(150)
         toast1 = page.locator(".toast").inner_text() if page.locator(".toast").count() else ""
         w1 = page.evaluate("window.__writes") or []
@@ -1616,7 +1619,7 @@ class QA:
         self.shot(page, "shared-done-380")
         done2 = False
         if row2.count():
-            btn2 = row2.locator(".row-actions button", has_text="Done")
+            btn2 = row2.locator(":is(button.row-done, .row-open .row-actions button)", has_text="Done")
             if btn2.count():
                 btn2.first.click()
                 page.wait_for_timeout(150)
@@ -1703,26 +1706,24 @@ class QA:
         page.wait_for_timeout(60)
         open_ = [x.get_attribute("aria-label") for x in page.locator("#view section.card[aria-label]:not(.is-folded)").all()]
         self.check(sc, "Focus folds everything but the schedule", open_ == ["Schedule"], str(open_))
-        page.locator(".daystrip .stat", has_text="Decide").click()
+        page.locator(".pills .pill[data-key='decide']").click()
         page.wait_for_timeout(120)
         self.check(sc, "a day-strip cell opens its section", page.locator(DECIDE + ":not(.is-folded)").count() == 1)
         page.locator(".day-tools button", has_text="Focus").click()
         page.wait_for_timeout(60)
         rdy = page.locator(DECIDE + " .row", has=page.locator("button.row-hit[data-id^='rdy:']")).first
-        closed = rdy.locator("button", has_text="Approve").is_visible() is False if rdy.locator("button", has_text="Approve").count() else True
-        rdy.locator(".row-hit").click()
-        page.wait_for_timeout(60)
-        rdy = page.locator(DECIDE + " .row", has=page.locator("button.row-hit[data-id^='rdy:']")).first
-        self.check(sc, "a CRM change reads like any row: closed until tapped, then Approve", closed and rdy.locator("button", has_text="Approve").is_visible())
+        self.check(sc, "a CRM change shows Approve as a pill on its row, before it is opened",
+                   rdy.locator(".row-side button", has_text="Approve").count() == 1 and rdy.locator(".row-side button", has_text="Approve").is_visible())
         drow = page.locator(SEND + " .row").first
-        drow.locator(".row-hit").click()
-        page.wait_for_timeout(60)
-        drow = page.locator(SEND + " .row").first
-        self.check(sc, "a draft opens with Open in Gmail first, Sent it quiet and Copy as an icon",
-                   drow.locator("a.btn-secondary", has_text="Open in Gmail").count() == 1 and drow.locator("button.btn-ghost", has_text="Sent it").count() == 1
+        self.check(sc, "a draft has a Sent it circle, Open in Gmail first among its pills, and Copy",
+                   drow.locator("button.row-done[aria-label='Sent it']").count() == 1 and drow.locator(".row-side > *").first.inner_text().strip() == "Open in Gmail"
                    and drow.locator("button[aria-label='Copy draft']").count() == 1)
-        ctl = page.evaluate("Array.from(document.querySelectorAll('#view button, #view a, #view input, #view select')).filter(e => e.offsetParent).length")
-        self.check(sc, "Today shows few controls at once", ctl <= 32, f"{ctl} visible")
+        sizes = page.evaluate("""Array.from(document.querySelectorAll('#view .row-side')).filter(e => e.offsetParent).map(s => {
+            var b = Array.from(s.children).filter(c => c.offsetParent), single = b.filter(c => c.getBoundingClientRect().width < s.getBoundingClientRect().width - 1);
+            return { n: b.length, h: Array.from(new Set(b.map(c => Math.round(c.getBoundingClientRect().height)))).length,
+                     w: Array.from(new Set(single.map(c => Math.round(c.getBoundingClientRect().width)))).length }; })""")
+        self.check(sc, "every row has at most three pills, all the same height, and the half-width ones the same width",
+                   bool(sizes) and all(x["n"] <= 3 and x["h"] == 1 and x["w"] <= 1 for x in sizes), json.dumps(sizes[:6]))
         self.shot(page, "folds-380")
         self.common(page, sc)
         ctx.close()
@@ -1738,9 +1739,9 @@ class QA:
         ctx, page = self.open(browser, sc, PHONE)
         page.locator("#view .row", has=page.locator("button.row-hit:not([data-id^='rdy:'])")).first.locator(".row-hit").click()
         row = page.locator("#view .row", has=page.locator("button.row-hit:not([data-id^='rdy:'])")).first
-        self.check(sc, "an open row shows one line of actions, with Later and Rate folded",
-                   row.locator("button", has_text="Later").count() == 1 and row.locator("button", has_text="Tomorrow").is_visible() is False
-                   and row.locator(".chip-rate").first.is_visible() is False)
+        self.check(sc, "a row shows Later as a pill with its times folded, and the rating once it is open",
+                   row.locator(".row-side button", has_text="Later").count() == 1 and row.locator("button", has_text="Tomorrow").is_visible() is False
+                   and row.locator(".chip-rate").first.is_visible())
         row.locator("button", has_text="Later").click()
         page.wait_for_timeout(60)
         row = page.locator("#view .row", has=page.locator("button.row-hit:not([data-id^='rdy:'])")).first
@@ -1752,7 +1753,7 @@ class QA:
         ctx, page = self.open(browser, sc, PHONE, member="kabir")
         label, title = self.done_row("kabir")
         page.locator(f"section[aria-label='{label}'] .row-hit", has_text=title).first.click()
-        page.locator(f"section[aria-label='{label}'] .row-actions button", has_text="Done").first.click()
+        page.locator(f"section[aria-label='{label}'] :is(button.row-done, .row-open .row-actions button)", has_text="Done").first.click()
         page.wait_for_timeout(120)
         page.locator("#activity-btn").click()
         page.wait_for_timeout(80)
@@ -1918,7 +1919,7 @@ class QA:
         snap["proposals"]["items"][pid] = {**snap["proposals"]["items"][pid], "status": "applied", "applied_at": "2026-10-22T07:01:00+05:30"}
         ctx, page = self.open(browser, sc, PHONE, snap=snap, state={"items": {}, "actions": {}, "settings": {"auto_apply": True}}, open_all=True)
         self.check(sc, "the Decide badge counts only what needs you", page.locator(DECIDE + " .sec-h .count").inner_text() ==
-                   page.locator(".daystrip .stat", has_text="Decide").locator("b").inner_text())
+                   page.locator(".pills .pill[data-key='decide'] .cnt").inner_text())
         self.check(sc, "Today says what ant. did by itself, and Done today lists it with Undo", page.locator(".recap", has_text="by itself").count() == 1 and
                    page.locator("section[aria-label='Done today'] .log-row", has_text="Done by itself").locator("button", has_text="Reverse in CRM").count() == 1)
         ctx.close()
@@ -2006,7 +2007,7 @@ class QA:
         ctx, page = self.open(browser, sc, PHONE, state={"items": {}, "actions": {}, "settings": {"auto_apply": True}})
         self.check(sc, "in automatic mode a CRM change says it applies by itself, offers Apply now and Don't apply, and leaves the Decide count",
                    page.locator(DECIDE + " .status", has_text="Applies by itself").count() >= 1 and page.locator(DECIDE + " button", has_text="Apply now").count() >= 1
-                   and page.locator(DECIDE + " button", has_text="Don't apply").count() >= 1 and page.locator(".daystrip .stat", has_text="+1 runs by itself").count() == 1)
+                   and page.locator(DECIDE + " button", has_text="Don't apply").count() >= 1 and "+1 runs by itself" in (page.locator(".pills .pill[data-key='decide']").get_attribute("aria-label") or ""))
         page.locator("#help-btn").click()
         seg = page.locator("[role=dialog] .seg[aria-label='CRM changes and calendar holds']")
         seg.locator("button", has_text="Ask me first").click()
@@ -2015,12 +2016,101 @@ class QA:
         self.check(sc, "Help switches automatic mode off, saved for the hourly checks", bool(w) and (w[-1]["data"]["items"] or {}).get("auto_apply") is False, json.dumps(w[-1:])[:120])
         ctx.close()
 
+    def round19(self, browser) -> None:
+        """Round nineteen, after the owner's own app: count pills, a done circle, pills of one size on the right of each
+        row on a laptop and under it on a phone, swipe, and meeting notes in a side panel with a TL;DR."""
+        sc = "pills"
+        ctx, page = self.open(browser, sc, DESK, open_all=False)
+        labels = [(x or "").split(":")[0] for x in page.eval_on_selector_all(".pills .pill", "els => els.map(e => e.getAttribute('aria-label'))")]
+        order = ["Meetings", "Decisions", "Threads", "Waiting on others"]
+        zero = page.eval_on_selector_all(".pills .pill:not([data-key='schedule']) .cnt", "els => els.filter(e => e.textContent.trim() === '0').length")
+        self.check(sc, "the day reads as pills with counts, in order, and an empty section takes no pill",
+                   labels and labels[0] == "Meetings" and labels == [x for x in order if x in labels] and zero == 0, str(labels))
+        h_ = page.evaluate("(() => { var p = document.querySelector('.pills'); return p ? p.getBoundingClientRect().height : 999; })()")
+        self.check(sc, "the pills take one line on a laptop", h_ <= 48, f"{round(h_)}px")
+        # On a laptop the pills stack at the right of each row, left edges in line.
+        geo = page.evaluate("""Array.from(document.querySelectorAll('#view .list .row')).filter(r => r.offsetParent && r.querySelector('.row-side')).map(r => {
+            var side = r.querySelector('.row-side').getBoundingClientRect(), main = r.querySelector('.row-main').getBoundingClientRect(), row = r.getBoundingClientRect();
+            return { right: Math.round(row.right - side.right), beside: side.left >= main.right - 1, w: Math.round(side.width), list: Math.round(r.parentElement.getBoundingClientRect().width) }; })""")
+        wide = [g for g in geo if g["list"] >= 560]
+        self.check(sc, "on a wide card every row's pills stack on its right edge, one width", bool(wide) and all(g["beside"] and g["right"] <= 1 for g in wide)
+                   and len({g["w"] for g in wide}) == 1, json.dumps(wide[:4]))
+        self.shot(page, "pills-1440")
+        self.common(page, sc)
+        ctx.close()
+        sc = "pills-phone"
+        ctx, page = self.open(browser, sc, PHONE, member="kabir", open_all=False)
+        geo = page.evaluate("""Array.from(document.querySelectorAll('#view .list .row')).filter(r => r.offsetParent && r.querySelector('.row-side')).map(r => {
+            var side = r.querySelector('.row-side').getBoundingClientRect(), main = r.querySelector('.row-main').getBoundingClientRect();
+            return { below: side.top >= main.bottom - 1, h: Math.round(r.querySelector('.row-side > *').getBoundingClientRect().height) }; })""")
+        self.check(sc, "on a phone the pills sit under the line, 40px tall", bool(geo) and all(g["below"] and g["h"] >= 40 for g in geo), json.dumps(geo[:4]))
+        ph = page.evaluate("(() => { var p = document.querySelector('.pills'); return [p.scrollHeight, p.scrollWidth <= p.clientWidth + 1]; })()")
+        self.check(sc, "on a phone the day's pills take one line", ph[0] <= 48, str(ph))
+        circ = page.evaluate("(() => { var b = document.querySelector('#view .row-done'); if (!b) return 0; var r = b.getBoundingClientRect(); return Math.min(r.width, r.height); })()")
+        self.check(sc, "the done circle is a 44px target", circ >= 44, f"{circ}px")
+        # Swipe right on a row with a circle: it finishes the row, as the circle does.
+        label, title = self.done_row("kabir")
+        sec = page.locator(f"section[aria-label='{label}']")
+        if sec.locator(".fold-btn[aria-expanded='false']").count():
+            sec.locator(".fold-btn").first.click(); page.wait_for_timeout(60)
+        row = sec.locator(".row", has=page.locator(".row-hit", has_text=title)).first
+        before = len(page.evaluate("window.__writes"))
+        box = row.bounding_box()
+        page.evaluate("""([sel, t, x, y]) => { var r = Array.from(document.querySelectorAll(sel)).find(e => e.querySelector('.row-hit') && e.querySelector('.row-hit').textContent.indexOf(t) >= 0);
+            var mk = (type, cx) => { var tt = new Touch({ identifier: 1, target: r, clientX: cx, clientY: y }); r.dispatchEvent(new TouchEvent(type, { touches: type === 'touchend' ? [] : [tt], changedTouches: [tt], bubbles: true })); };
+            mk('touchstart', x); mk('touchmove', x + 30); mk('touchmove', x + 110); mk('touchend', x + 110); }""",
+            [f"section[aria-label='{label}'] .row", title, box["x"] + 60, box["y"] + 20])
+        page.wait_for_timeout(120)
+        wr = [w_ for w_ in page.evaluate("window.__writes")[before:] if w_.get("path") == "state/items"]
+        self.check(sc, "a swipe right on a row finishes it, as its circle does", bool(wr), json.dumps(wr[-1:])[:140])
+        self.shot(page, "pills-380")
+        self.common(page, sc)
+        ctx.close()
+        # Meeting notes: a notes chip opens the side panel with the TL;DR, the promises and the notes, and Open in Granola.
+        sc = "notes-drawer"
+        ctx, page = self.open(browser, sc, DESK, open_all=False, sample={"answer": "- Runway is 8 months.\n- The board wants a plan past 12 months."})
+        page.locator(".ah-agenda button.agenda-row").first.click()
+        page.wait_for_timeout(120)
+        self.check(sc, "the prep card opens as a side panel on a laptop", page.locator(".scrim.is-drawer .sheet.drawer").count() == 1)
+        chip = page.locator(".sheet button.chip-source[aria-label^='Open meeting notes']").first
+        self.check(sc, "a promise from a meeting links its notes", chip.count() == 1)
+        if chip.count():
+            chip.click()
+            page.wait_for_timeout(200)
+            sheet = page.locator(".sheet.drawer")
+            txt = sheet.inner_text()
+            right = page.evaluate("(() => { var s = document.querySelector('.sheet.drawer').getBoundingClientRect(); return [Math.round(innerWidth - s.right), Math.round(s.width)]; })()")
+            self.check(sc, "the notes open in the side panel: TL;DR, notes, and Open in the notes app", "TL;DR" in txt and "Notes" in txt and
+                       sheet.locator(".sheet-foot a.btn-primary", has_text="Open in").count() == 1 and right[0] == 0 and right[1] <= 560, f"{right} {txt[:80]!r}")
+            self.check(sc, "a note without a TL;DR gets one from Claude on open", sheet.locator(".tldr li").count() >= 1 or "Runway" in sheet.locator(".tldr").inner_text(),
+                       sheet.locator(".tldr").inner_text()[:80])
+            self.check(sc, "the notes panel has Back to the prep card", sheet.locator(".sheet-h button", has_text="Back").count() == 1)
+            self.shot(page, "notes-drawer-1440")
+            sheet.locator(".sheet-h button", has_text="Back").click()
+            page.wait_for_timeout(100)
+            self.check(sc, "Back returns to the prep card", page.locator(".sheet.drawer .kv h3", has_text="Who").count() >= 1)
+        self.common(page, sc)
+        ctx.close()
+        sc = "notes-phone"
+        ctx, page = self.open(browser, sc, PHONE, open_all=False, sample={"answer": "- One line."})
+        page.evaluate("document.querySelector('.ah-agenda button.agenda-row').click()")
+        page.wait_for_timeout(100)
+        chip = page.locator(".sheet button.chip-source[aria-label^='Open meeting notes']").first
+        if chip.count():
+            chip.click(); page.wait_for_timeout(150)
+            b = page.evaluate("(() => { var s = document.querySelector('.sheet.drawer').getBoundingClientRect(); return [Math.round(s.bottom - innerHeight), Math.round(s.width - innerWidth)]; })()")
+            self.check(sc, "on a phone the notes rise from the bottom, full width", b == [0, 0], str(b))
+            self.shot(page, "notes-380")
+        else:
+            self.check(sc, "on a phone the notes rise from the bottom, full width", False, "no notes chip")
+        ctx.close()
+
     def run(self, only: set[str] | None = None) -> int:
         from playwright.sync_api import sync_playwright
         with sync_playwright() as p:
             browser = p.chromium.launch()
             for name in ("today", "done_undo", "prep", "tabs", "pipeline_actions", "approvals", "keyboard", "theme", "colours", "states", "levels",
-                         "round6", "round7", "round8", "round9", "round10", "round11", "round12", "round13", "redesign", "round17"):
+                         "round6", "round7", "round8", "round9", "round10", "round11", "round12", "round13", "redesign", "round17", "round19"):
                 if only and name not in only:
                     continue
                 try:

@@ -1,0 +1,185 @@
+{
+ "checks": 29,
+ "failed": 0,
+ "complete": false,
+ "scenarios": [
+  "round19"
+ ],
+ "page_sha256": "780cc0df5c3e",
+ "rows": [
+  {
+   "scenario": "pills",
+   "check": "the day reads as pills with counts, in order, and an empty section takes no pill",
+   "ok": true,
+   "detail": "['Meetings', 'Decisions', 'Threads']"
+  },
+  {
+   "scenario": "pills",
+   "check": "the pills take one line on a laptop",
+   "ok": true,
+   "detail": "48px"
+  },
+  {
+   "scenario": "pills",
+   "check": "on a wide card every row's pills stack on its right edge, one width",
+   "ok": true,
+   "detail": "[{\"right\": 0, \"beside\": true, \"w\": 156, \"list\": 578}, {\"right\": 0, \"beside\": true, \"w\": 156, \"list\": 578}, {\"right\": 0, \"beside\": true, \"w\": 156, \"list\": 578}, {\"right\": 0, \"beside\": true, \"w\": 156, \"list\": 578}]"
+  },
+  {
+   "scenario": "pills",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "pills",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "pills",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "pills",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "pills",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "pills-phone",
+   "check": "on a phone the pills sit under the line, 40px tall",
+   "ok": true,
+   "detail": "[{\"below\": true, \"h\": 40}, {\"below\": true, \"h\": 40}, {\"below\": true, \"h\": 40}, {\"below\": true, \"h\": 40}]"
+  },
+  {
+   "scenario": "pills-phone",
+   "check": "on a phone the day's pills take one line",
+   "ok": true,
+   "detail": "[48, False]"
+  },
+  {
+   "scenario": "pills-phone",
+   "check": "the done circle is a 44px target",
+   "ok": true,
+   "detail": "44px"
+  },
+  {
+   "scenario": "pills-phone",
+   "check": "a swipe right on a row finishes it, as its circle does",
+   "ok": true,
+   "detail": "[{\"op\": \"set\", \"path\": \"state/items\", \"data\": {\"items\": {\"dr_k_4d53f12d9b\": {\"snoozed_until\": null, \"done_at\": \"2026-10-22T01:35:00.000Z\", \""
+  },
+  {
+   "scenario": "pills-phone",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "pills-phone",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "pills-phone",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "pills-phone",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "pills-phone",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "notes-drawer",
+   "check": "the prep card opens as a side panel on a laptop",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "notes-drawer",
+   "check": "a promise from a meeting links its notes",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "notes-drawer",
+   "check": "the notes open in the side panel: TL;DR, notes, and Open in the notes app",
+   "ok": true,
+   "detail": "[0, 560] 'Back\\nAtlas Settlement: terms call\\n\\n20 Oct \u00b7 Granola \u00b7 Aditi Rao, Ishaan Verma\\n\\nT'"
+  },
+  {
+   "scenario": "notes-drawer",
+   "check": "a note without a TL;DR gets one from Claude on open",
+   "ok": true,
+   "detail": "Atlas wants our markup before 23 Oct; Bluepeak's term sheet is on the table.\nTwo"
+  },
+  {
+   "scenario": "notes-drawer",
+   "check": "the notes panel has Back to the prep card",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "notes-drawer",
+   "check": "Back returns to the prep card",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "notes-drawer",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "notes-drawer",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "notes-drawer",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "notes-drawer",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "notes-drawer",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "notes-phone",
+   "check": "on a phone the notes rise from the bottom, full width",
+   "ok": true,
+   "detail": "[0, 0]"
+  }
+ ]
+}

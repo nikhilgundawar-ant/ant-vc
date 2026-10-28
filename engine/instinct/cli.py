@@ -3629,7 +3629,69 @@ def _snapshots(ctx, config, profile, the_brief, prep_by_meeting, store, signals,
         items[kind] = {"kind": kind, "title": DIGEST_TITLE.get(kind, "ant. digest"), "markdown": clip(str(digest["markdown"]), 12000),
                        "as_of": now_iso}
         snaps["digests"] = {"as_of": now_iso, "items": items}
+    notes_doc = _notes_snap(bundle, store, home, ctx, now_iso)
+    if notes_doc:
+        snaps["notes"] = notes_doc
     return snaps
+
+
+NOTE_HOSTS = (("granola", "Granola"), ("fireflies", "Fireflies"), ("otter", "Otter"), ("fathom", "Fathom"), ("notion", "Notion"),
+              ("zoom", "Zoom"), ("meet.google", "Google Meet"), ("docs.google", "Google Docs"), ("tldv", "tl;dv"), ("avoma", "Avoma"))
+NOTES_KEEP_DAYS = 30
+NOTES_MAX = 40
+NOTES_BUDGET = 150_000  # characters across every note, well under the 256 KB a Home doc can hold
+
+
+def _note_source(url: Any) -> str:
+    u = str(url or "").lower()
+    return next((label for key, label in NOTE_HOSTS if key in u), "your notes app")
+
+
+def _notes_snap(bundle, store, home, ctx, now_iso) -> dict[str, Any] | None:
+    """Meeting notes for Home's side panel: a TL;DR when the notes app gave one, the promises, and the lines, trimmed.
+
+    Notes are merged across runs (a check that reads no transcripts keeps what Home has) and kept 30 days."""
+    old = dict((((home["snap"].get("notes") or {}).get("items")) or {}))
+    promises: dict[str, list[dict[str, Any]]] = {}
+    for c in store or []:
+        tid = c.get("transcript_id")
+        if tid and c.get("what"):
+            promises.setdefault(str(tid), []).append({"what": clip(str(c["what"]), 200), "by": c.get("owed_by"), "side": c.get("side"),
+                                                       "due": c.get("due"), "status": c.get("status") or "open"})
+    for tr in bundle.get("transcripts") or []:
+        tid = str(tr.get("id") or "")
+        if not tid:
+            continue
+        lines, raw = commit_mod.transcript_lines(tr), tr.get("lines") or []
+        summary = tr.get("summary") or tr.get("tldr") or tr.get("notes")
+        if isinstance(summary, list):
+            summary = "\n".join(f"- {s}" for s in summary if s)
+        old[tid] = {
+            "id": tid, "event_id": tr.get("event_id"), "title": clip(str(tr.get("title") or "Meeting"), 120), "date": tr.get("date"),
+            "url": tr.get("url"), "source": _note_source(tr.get("url")),
+            "attendees": [a.get("name") for a in tr.get("attendees") or [] if isinstance(a, dict) and a.get("name")][:12],
+            "summary": clip(str(summary), 1500) if summary else (old.get(tid) or {}).get("summary"),
+            "lines": [{"t": (raw[i] if i < len(raw) and isinstance(raw[i], dict) else {}).get("t"),
+                       "who": l["speaker"], "text": clip(str(l["text"]), 400)} for i, l in enumerate(lines[:160]) if str(l.get("text") or "").strip()],
+            "more": max(0, len(lines) - 160),
+        }
+    if not old:
+        return None
+    for tid, n in old.items():
+        n["promises"] = promises.get(tid, n.get("promises") or [])[:8]
+    fresh = [n for n in old.values() if not (parse_dt(n.get("date")) and (ctx["now"] - parse_dt(n["date"])).days > NOTES_KEEP_DAYS)]
+    fresh.sort(key=lambda n: str(n.get("date") or ""), reverse=True)
+    items, used = {}, 0
+    for n in fresh[:NOTES_MAX]:
+        size = len(json.dumps(n, default=str))
+        if used + size > NOTES_BUDGET:
+            n = {**n, "lines": n["lines"][:40], "more": n.get("more", 0) + max(0, len(n["lines"]) - 40)}
+            size = len(json.dumps(n, default=str))
+            if used + size > NOTES_BUDGET:
+                break
+        items[n["id"]] = n
+        used += size
+    return {"as_of": now_iso, "items": items}
 
 
 def _lower(text: str, names: Any = ()) -> str:

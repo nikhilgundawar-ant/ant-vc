@@ -2,7 +2,7 @@
 name: setup
 description: Sets up ant. for VCs end to end. Use when the user says "set up ant.", "install ant.", "set this up" about the ant-vc plugin or its GitHub link, "onboard me to ant.", or "continue ant. setup". Connects their tools, builds their private ant. Home, confirms three things, schedules two hourly loops and delivers the first brief.
 metadata:
-  version: "0.9.0"
+  version: "0.10.0"
 ---
 
 # Set up ant. for VCs
@@ -106,7 +106,7 @@ If a memory tool is available, save one short note: ant. Home link, level, brief
 
 Show the first brief in chat: the hero card, today's meetings and the top items, each line with its source link. Then one closing message:
 
-"ant. is live. Your Home has today's brief and your <the level's other tabs, joined as a list: "pipeline, people and portfolio">. <When Home holds changes or drafts: "<n> drafts wait under Send and <m> CRM changes under Decide; nothing happens until you tap.">. <When no founder update was read: "Portfolio fills in as founder updates arrive.">. Next brief: <the build report's `next_brief`, such as "07:00 tomorrow" or "Mon 07:00">. I check in every hour on weekdays and three times a day at weekends. Say 'pin ant.' to keep Home in your sidebar, or 'turn off ant.' any time."
+"ant. is live. Your Home has today's brief and your <the level's other tabs, joined as a list: "pipeline, people and portfolio">. <When Home holds changes or drafts: "<n> drafts wait under Threads and <m> CRM changes under Decisions; nothing happens until you tap.">. <When no founder update was read: "Portfolio fills in as founder updates arrive.">. Next brief: <the build report's `next_brief`, such as "07:00 tomorrow" or "Mon 07:00">. I check in every hour on weekdays and three times a day at weekends. Say 'pin ant.' to keep Home in your sidebar, or 'turn off ant.' any time."
 
 List only the tabs the user's level has, and leave out a sentence in angle brackets when it does not apply.
 

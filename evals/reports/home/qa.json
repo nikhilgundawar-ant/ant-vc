@@ -1,9 +1,9 @@
 {
- "checks": 565,
+ "checks": 755,
  "failed": 0,
  "complete": true,
  "scenarios": "all",
- "page_sha256": "365ffaf630fe",
+ "page_sha256": "38443577c7e2",
  "rows": [
   {
    "scenario": "today-380",
@@ -61,7 +61,7 @@
   },
   {
    "scenario": "today-380",
-   "check": "one Prep me button",
+   "check": "one Prep button on the hero",
    "ok": true,
    "detail": ""
   },
@@ -79,7 +79,13 @@
   },
   {
    "scenario": "today-380",
-   "check": "ready for you shows drafts and a CRM change",
+   "check": "Decide holds the CRM change and Send the drafts",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "today-380",
+   "check": "the day strip counts meetings, decisions, sends and waits",
    "ok": true,
    "detail": ""
   },
@@ -97,7 +103,7 @@
   },
   {
    "scenario": "today-380",
-   "check": "light by default, with a dark switch",
+   "check": "light on a light device, with a dark switch",
    "ok": true,
    "detail": ""
   },
@@ -193,7 +199,7 @@
   },
   {
    "scenario": "today-1440",
-   "check": "one Prep me button",
+   "check": "one Prep button on the hero",
    "ok": true,
    "detail": ""
   },
@@ -211,7 +217,13 @@
   },
   {
    "scenario": "today-1440",
-   "check": "ready for you shows drafts and a CRM change",
+   "check": "Decide holds the CRM change and Send the drafts",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "today-1440",
+   "check": "the day strip counts meetings, decisions, sends and waits",
    "ok": true,
    "detail": ""
   },
@@ -229,7 +241,7 @@
   },
   {
    "scenario": "today-1440",
-   "check": "light by default, with a dark switch",
+   "check": "light on a light device, with a dark switch",
    "ok": true,
    "detail": ""
   },
@@ -283,6 +295,12 @@
   },
   {
    "scenario": "done-undo",
+   "check": "Done today lists it",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "done-undo",
    "check": "toast offers undo",
    "ok": true,
    "detail": ""
@@ -291,7 +309,7 @@
    "scenario": "done-undo",
    "check": "undo clears done_at",
    "ok": true,
-   "detail": "{\"op\": \"update\", \"path\": \"state/items\", \"data\": {\"items\": {\"t_cabd370eab\": {\"snoozed_until\": null, \"done_at\": null, \"sent\": null, \"closed_by\": null}, \"k_4d53f12"
+   "detail": "{\"op\": \"update\", \"path\": \"state/items\", \"data\": {\"items\": {\"t_cabd370eab\": {\"snoozed_until\": null, \"done_at\": null, \"sent\": null, \"closed_by\": null, \"t\": null, "
   },
   {
    "scenario": "done-undo",
@@ -1033,15 +1051,15 @@
   },
   {
    "scenario": "theme",
-   "check": "light on a device set to dark",
+   "check": "dark on a device set to dark",
    "ok": true,
-   "detail": "rgb(244, 246, 242)"
+   "detail": "rgb(14, 19, 16)"
   },
   {
    "scenario": "theme",
-   "check": "the switch turns on dark (Inkwell)",
+   "check": "the switch turns on light",
    "ok": true,
-   "detail": "rgb(14, 19, 16)"
+   "detail": "rgb(244, 246, 242)"
   },
   {
    "scenario": "theme",
@@ -1057,13 +1075,25 @@
   },
   {
    "scenario": "theme",
-   "check": "Help offers Light and Dark",
+   "check": "Help offers device, light and dark",
    "ok": true,
    "detail": ""
   },
   {
    "scenario": "theme",
-   "check": "Help switches back to light",
+   "check": "Match my device goes back to dark here",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "theme",
+   "check": "Compact makes the text smaller",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "theme",
+   "check": "Comfortable is 15px",
    "ok": true,
    "detail": ""
   },
@@ -1185,289 +1215,289 @@
    "scenario": "colour-light-aditi-today",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "106 texts, 58 marks, min 3.24:1"
+   "detail": "137 texts, 70 marks, min 3.24:1"
   },
   {
    "scenario": "colour-light-aditi-today-desk",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "102 texts, 58 marks, min 3.24:1"
+   "detail": "141 texts, 72 marks, min 3.24:1"
   },
   {
    "scenario": "colour-light-aditi-row-open",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "113 texts, 58 marks, min 3.24:1"
+   "detail": "137 texts, 70 marks, min 3.24:1"
   },
   {
    "scenario": "colour-light-aditi-prep",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "38 texts, 10 marks, min 5.05:1"
+   "detail": "37 texts, 22 marks, min 5.05:1"
   },
   {
    "scenario": "colour-light-aditi-partner-pack",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "71 texts, 2 marks, min 5.05:1"
+   "detail": "71 texts, 10 marks, min 5.05:1"
   },
   {
    "scenario": "colour-light-aditi-help",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "20 texts, 3 marks, min 5.05:1"
+   "detail": "39 texts, 9 marks, min 5.05:1"
   },
   {
    "scenario": "colour-light-aditi-toast",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "103 texts, 57 marks, min 3.24:1"
+   "detail": "140 texts, 71 marks, min 3.24:1"
   },
   {
    "scenario": "colour-light-aditi-pipeline",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "258 texts, 71 marks, min 3.24:1"
+   "detail": "269 texts, 63 marks, min 3.24:1"
   },
   {
    "scenario": "colour-light-aditi-deal-open",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "268 texts, 75 marks, min 3.24:1"
+   "detail": "269 texts, 66 marks, min 3.24:1"
   },
   {
    "scenario": "colour-light-aditi-people",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "113 texts, 31 marks, min 5.05:1"
+   "detail": "117 texts, 40 marks, min 5.05:1"
   },
   {
    "scenario": "colour-light-aditi-portfolio",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "127 texts, 38 marks, min 5.05:1"
+   "detail": "144 texts, 50 marks, min 5.05:1"
   },
   {
    "scenario": "colour-light-aditi-lps",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "108 texts, 34 marks, min 6.52:1"
+   "detail": "115 texts, 45 marks, min 6.12:1"
   },
   {
    "scenario": "colour-light-kabir-today",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "107 texts, 39 marks, min 4.65:1"
+   "detail": "132 texts, 53 marks, min 4.65:1"
   },
   {
    "scenario": "colour-light-meera-pipeline",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "105 texts, 42 marks, min 3.24:1"
+   "detail": "113 texts, 44 marks, min 3.24:1"
   },
   {
    "scenario": "colour-light-rohan-today",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "93 texts, 41 marks, min 4.65:1"
+   "detail": "129 texts, 53 marks, min 4.65:1"
   },
   {
    "scenario": "colour-light-rohan-pipeline",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "106 texts, 40 marks, min 3.24:1"
+   "detail": "126 texts, 44 marks, min 3.24:1"
   },
   {
    "scenario": "colour-light-tara-portfolio",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "111 texts, 31 marks, min 5.05:1"
+   "detail": "127 texts, 42 marks, min 5.05:1"
   },
   {
    "scenario": "colour-light-vikram-lps",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "110 texts, 32 marks, min 6.52:1"
+   "detail": "111 texts, 42 marks, min 6.12:1"
   },
   {
    "scenario": "colour-light-vikram-today",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "79 texts, 42 marks, min 4.65:1"
+   "detail": "108 texts, 50 marks, min 4.65:1"
   },
   {
    "scenario": "colour-light-banners",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "109 texts, 58 marks, min 3.24:1"
+   "detail": "139 texts, 70 marks, min 3.24:1"
   },
   {
    "scenario": "colour-light-friday",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "120 texts, 59 marks, min 3.24:1"
+   "detail": "150 texts, 72 marks, min 3.24:1"
   },
   {
    "scenario": "colour-light-empty",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "11 texts, 27 marks, min 6.8:1"
+   "detail": "11 texts, 35 marks, min 7.39:1"
   },
   {
    "scenario": "colour-light-hover",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "612 texts, 58 marks, min 3.24:1"
+   "detail": "846 texts, 72 marks, min 3.24:1"
   },
   {
    "scenario": "colour-light-focus",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "102 texts, 59 marks, min 3.24:1"
+   "detail": "141 texts, 73 marks, min 3.24:1"
   },
   {
    "scenario": "colour-dark-aditi-today",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "106 texts, 66 marks, min 3.8:1"
+   "detail": "137 texts, 78 marks, min 3.8:1"
   },
   {
    "scenario": "colour-dark-aditi-today-desk",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "102 texts, 66 marks, min 3.8:1"
+   "detail": "141 texts, 80 marks, min 3.8:1"
   },
   {
    "scenario": "colour-dark-aditi-row-open",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "113 texts, 66 marks, min 3.8:1"
+   "detail": "137 texts, 78 marks, min 3.8:1"
   },
   {
    "scenario": "colour-dark-aditi-prep",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "38 texts, 10 marks, min 4.98:1"
+   "detail": "37 texts, 22 marks, min 4.98:1"
   },
   {
    "scenario": "colour-dark-aditi-partner-pack",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "71 texts, 2 marks, min 4.98:1"
+   "detail": "71 texts, 10 marks, min 4.98:1"
   },
   {
    "scenario": "colour-dark-aditi-help",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "20 texts, 3 marks, min 4.98:1"
+   "detail": "39 texts, 9 marks, min 4.98:1"
   },
   {
    "scenario": "colour-dark-aditi-toast",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "103 texts, 65 marks, min 3.8:1"
+   "detail": "140 texts, 79 marks, min 3.8:1"
   },
   {
    "scenario": "colour-dark-aditi-pipeline",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "258 texts, 79 marks, min 3.8:1"
+   "detail": "269 texts, 71 marks, min 3.8:1"
   },
   {
    "scenario": "colour-dark-aditi-deal-open",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "268 texts, 83 marks, min 3.8:1"
+   "detail": "269 texts, 74 marks, min 3.8:1"
   },
   {
    "scenario": "colour-dark-aditi-people",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "113 texts, 39 marks, min 6.04:1"
+   "detail": "117 texts, 48 marks, min 6.04:1"
   },
   {
    "scenario": "colour-dark-aditi-portfolio",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "127 texts, 46 marks, min 6.04:1"
+   "detail": "144 texts, 58 marks, min 6.04:1"
   },
   {
    "scenario": "colour-dark-aditi-lps",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "108 texts, 42 marks, min 7.84:1"
+   "detail": "115 texts, 53 marks, min 6.48:1"
   },
   {
    "scenario": "colour-dark-kabir-today",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "107 texts, 47 marks, min 6.29:1"
+   "detail": "132 texts, 61 marks, min 6.38:1"
   },
   {
    "scenario": "colour-dark-meera-pipeline",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "105 texts, 50 marks, min 3.8:1"
+   "detail": "113 texts, 52 marks, min 3.8:1"
   },
   {
    "scenario": "colour-dark-rohan-today",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "93 texts, 49 marks, min 6.04:1"
+   "detail": "129 texts, 61 marks, min 6.04:1"
   },
   {
    "scenario": "colour-dark-rohan-pipeline",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "106 texts, 48 marks, min 3.8:1"
+   "detail": "126 texts, 52 marks, min 3.8:1"
   },
   {
    "scenario": "colour-dark-tara-portfolio",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "111 texts, 39 marks, min 6.04:1"
+   "detail": "127 texts, 50 marks, min 6.04:1"
   },
   {
    "scenario": "colour-dark-vikram-lps",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "110 texts, 40 marks, min 7.84:1"
+   "detail": "111 texts, 50 marks, min 6.48:1"
   },
   {
    "scenario": "colour-dark-vikram-today",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "79 texts, 50 marks, min 6.78:1"
+   "detail": "108 texts, 58 marks, min 6.38:1"
   },
   {
    "scenario": "colour-dark-banners",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "109 texts, 66 marks, min 3.8:1"
+   "detail": "139 texts, 78 marks, min 3.8:1"
   },
   {
    "scenario": "colour-dark-friday",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "120 texts, 67 marks, min 3.8:1"
+   "detail": "150 texts, 80 marks, min 3.8:1"
   },
   {
    "scenario": "colour-dark-empty",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "11 texts, 35 marks, min 7.84:1"
+   "detail": "11 texts, 43 marks, min 7.84:1"
   },
   {
    "scenario": "colour-dark-hover",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "612 texts, 66 marks, min 3.8:1"
+   "detail": "846 texts, 80 marks, min 3.8:1"
   },
   {
    "scenario": "colour-dark-focus",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "102 texts, 67 marks, min 3.8:1"
+   "detail": "141 texts, 81 marks, min 3.8:1"
   },
   {
    "scenario": "meera-default",
@@ -1707,7 +1737,7 @@
    "scenario": "check-late",
    "check": "one last-check time on the page",
    "ok": true,
-   "detail": "Last check 07:30 | ant. has not checked since Thu 07:30.\nIn Claude, open Schedu"
+   "detail": "07:30 | ant. has not checked since Thu 07:30.\nIn Claude, open Schedu"
   },
   {
    "scenario": "db-error",
@@ -2289,7 +2319,7 @@
    "scenario": "waiting-founder",
    "check": "the row says Waiting on you, with the reply drafted and the line she must fill",
    "ok": true,
-   "detail": "Copperleaf Collect: Debashish asked on 13 Oct, no reply yet\n\"If we get to a term sheet with you, what would the timeline"
+   "detail": "Sent it\nCopperleaf Collect: Debashish asked on 13 Oct, no reply yet\n\"If we get to a term sheet with you, what would the "
   },
   {
    "scenario": "waiting-founder",
@@ -2337,7 +2367,7 @@
    "scenario": "met-log",
    "check": "a founder meeting on your deal offers a one-tap log",
    "ok": true,
-   "detail": "Halo Reconcile: met 20 Oct\n\u201cHalo Reconcile <> Quillwater\u201d. Log it in your CRM. It still says next: S"
+   "detail": "Halo Reconcile: met 20 Oct\nLog the meeting in your CRM. Its next step is still: Second meeting by 24"
   },
   {
    "scenario": "met-log",
@@ -2385,7 +2415,7 @@
    "scenario": "ask-requested",
    "check": "a sent note moves the ask on and says who was asked",
    "ok": true,
-   "detail": "Nimbus Collect: An introduction to two banks as customers\nAsked Aditi for the intro on 22 Oct. Divya"
+   "detail": "Close ask\nNimbus Collect: An introduction to two banks as customers\nAsked Aditi for the intro on 22 "
   },
   {
    "scenario": "ask-requested",
@@ -2505,7 +2535,7 @@
    "scenario": "ask-nudge",
    "check": "five working days after the note with no reply, the ask asks for a nudge",
    "ok": true,
-   "detail": "Nimbus Collect: An introduction to two banks as customers\nAsked Aditi for the intro on 22 Oct, no reply in 6 working day"
+   "detail": "Close ask\nNimbus Collect: An introduction to two banks as customers\nAsked Aditi for the intro on 22 Oct, no reply in 6 w"
   },
   {
    "scenario": "ask-nudge",
@@ -2649,7 +2679,7 @@
    "scenario": "ask-team-ready",
    "check": "the team note shows as ready on the ask's row, said once",
    "ok": true,
-   "detail": "Orbit Treasury: Introductions to senior engineers, two hires this quarter\nTeam note ready: no reply from Aditi since 22 "
+   "detail": "Close ask\nOrbit Treasury: Introductions to senior engineers, two hires this quarter\nTeam note ready: no reply from Aditi"
   },
   {
    "scenario": "ask-team-ready",
@@ -2721,7 +2751,7 @@
    "scenario": "nudge-group",
    "check": "one row on Today for one note's nudge, with its draft, its note and a way to each ask",
    "ok": true,
-   "detail": "group 1; singles 0; 2 founder asks wait on Aditi\nYour 22 Oct note to Aditi: no answer yet on Kestrel Pay and Orbit Treasury, 5 working days. Nudge ready\nNudge ready\nFounder updates"
+   "detail": "group 1; singles 0; Sent it\n2 founder asks wait on Aditi\nYour 22 Oct note to Aditi: no answer yet on Kestrel Pay and Orbit Treasury, 5 working days. Nudge ready\nNudge ready\n\nBefore"
   },
   {
    "scenario": "nudge-group",
@@ -2763,7 +2793,7 @@
    "scenario": "nudge-sent",
    "check": "once the nudge is sent, each ask says who was nudged and when",
    "ok": true,
-   "detail": "Founders need\n3\nNimbus Collect: An introduction to two banks as customers\nIntro made on 26 Oct. Divya Raman asked on 13 Oct. Warm path: Aditi knows Raj Malhotra"
+   "detail": "Founders need\n3\nClose ask\nNimbus Collect: An introduction to two banks as customers\nIntro made on 26 Oct. Divya Raman asked on 13 Oct. Warm path: Aditi knows Ra"
   },
   {
    "scenario": "nudge-sent",
@@ -2799,7 +2829,7 @@
    "scenario": "no-draft-coming",
    "check": "after the follow-up team note is sent, no row on any tab says 'Draft coming'",
    "ok": true,
-   "detail": "Nimbus Collect: An introduction to two banks as customers\nAsked the team on 29 Oct. Divya Raman asked on 13 Oct. Warm pa"
+   "detail": "Close ask\nNimbus Collect: An introduction to two banks as customers\nAsked the team on 29 Oct. Divya Raman asked on 13 Oc"
   },
   {
    "scenario": "no-draft-coming",
@@ -2871,7 +2901,7 @@
    "scenario": "hero-sent",
    "check": "a promise hero with a draft offers Open draft, Sent it and Done; Sent it marks the draft and the promise",
    "ok": true,
-   "detail": "buttons ['Open draft', 'Sent it', 'Done']; wrote ['dr_k_c1aa612254', 'k_c1aa612254', 't_8f20210e05']"
+   "detail": "buttons ['Open in Gmail', 'Sent it', 'Done']; wrote ['dr_k_c1aa612254', 'k_c1aa612254', 't_8f20210e05']"
   },
   {
    "scenario": "hero-sent",
@@ -2961,7 +2991,7 @@
    "scenario": "close-ask",
    "check": "an ask closes with 'Close ask', which writes only the ask, and the Portfolio hero moves on",
    "ok": true,
-   "detail": "buttons ['Close ask', 'Sent it', 'Copy draft', '1 hour', 'Tomorrow', 'Next week']; wrote ['t_1d7b287123']; hero Kestrel Pay: introductions to senior eng -> Orbit Treasury: introductions to senior "
+   "detail": "buttons ['Close ask', 'Copy', 'Useful', 'Not useful', 'Wrong', 'Open in Gmail', 'Sent it', 'Later']; wrote ['t_1d7b287123']; hero Kestrel Pay: introductions to senior eng -> Orbit Treasury: introductions to senior "
   },
   {
    "scenario": "close-ask",
@@ -2997,7 +3027,7 @@
    "scenario": "ready-closed",
    "check": "a promise marked done takes its draft out of Ready for you",
    "ok": true,
-   "detail": "Ready for you\n4\nGravity Payouts: next step from the partner prep on 15 Oct\nNext step: Partner meeting Monday \u2192 Reference"
+   "detail": "Decisions\n2\nGravity Payouts: next step from the partner prep on 15 Oct\nNext step: Partner meeting Monday \u2192 Reference cal"
   },
   {
    "scenario": "prep-caveat",
@@ -3009,7 +3039,7 @@
    "scenario": "replied",
    "check": "an ask whose note got a reply says who replied and when, and offers no nudge; the note's ask the reply left out says so, never 'no reply'",
    "ok": true,
-   "detail": "Orbit Treasury: Introductions to senior engineers, two hires this quarter\nAditi replied on 26 Oct: r | Nimbus Collect: An introduction to two banks as customers\nNudge to Aditi ready: Aditi answered on Kestrel Pay and Orbit Treasury on 26 Oct, not this one. Divya "
+   "detail": "Close ask\nOrbit Treasury: Introductions to senior engineers, two hires this quarter\nAditi replied on | Close ask\nNimbus Collect: An introduction to two banks as customers\nNudge to Aditi ready: Aditi answered on Kestrel Pay and Orbit Treasury on 26 Oct, not this o"
   },
   {
    "scenario": "replied",
@@ -3045,7 +3075,7 @@
    "scenario": "coming-answered",
    "check": "a tap a run answered never reads 'Draft coming', after its draft left Home",
    "ok": true,
-   "detail": "LP: Tidewater Foundation\nNo touch in 120 days\nDue\nCRM"
+   "detail": "Seen\nLP: Tidewater Foundation\nNo touch in 120 days\nDue a touch\nLater"
   },
   {
    "scenario": "step-resaved",
@@ -3093,7 +3123,7 @@
    "scenario": "nudge-sent",
    "check": "Sent it on a grouped nudge says 'Nudged Aditi' at once, on Today and the Portfolio hero",
    "ok": true,
-   "detail": "row: 3 founder asks wait on Aditi\nNudged Aditi on 29 Oct: no answer yet on Kestrel Pay, Nimbus Collect and Orbit Treasury.\nNu; hero: A founder asks\nNimbus Collect: an introduction to two banks as customers\n\nNudged Aditi on 29 Oct. Divya Raman asked on 1"
+   "detail": "row: Seen\n3 founder asks wait on Aditi\nNudged Aditi on 29 Oct: no answer yet on Kestrel Pay, Nimbus Collect and Orbit Treasur; hero: A founder asks\nNimbus Collect: an introduction to two banks as customers\n\nNudged Aditi on 29 Oct. Divya Raman asked on 1"
   },
   {
    "scenario": "nudge-sent",
@@ -3153,19 +3183,19 @@
    "scenario": "pitch-replied",
    "check": "after Sent it on a pitch's reply, the Pitches list says you replied, not 'Book a call'",
    "ok": true,
-   "detail": "Harborline Treasury \u00b7 93\nYou replied 22 Oct: waiting on them. Seed, $3M, treasury management, Delaware and Bangalore\nYou"
+   "detail": "Seen\nHarborline Treasury \u00b7 fit 93 of 100\nYou replied 22 Oct: waiting on them. Seed, $3M, treasury management, Delaware a"
   },
   {
    "scenario": "monday-prep",
    "check": "on a Friday Today names Monday's meetings, and each opens its prep",
    "ok": true,
-   "detail": "Today\n0 meetings\n\nNo meetings today.\n\nMonday: 10:00 Monday partner meeting; sheet 10:00 \u00b7 Monday partner meeting\n\nDecide on Gravity Payouts by"
+   "detail": "Schedule\n0 meetings\n\nNo meetings today.\n\nMonday:\n10:00 Monday partner meeting; sheet 10:00 \u00b7 Monday partner meeting\n\nDecide on Gravity Payouts by"
   },
   {
    "scenario": "holder-note",
    "check": "the note to the partner whose view drafts wait on shows under Ready for you with Sent it, each draft it names points at it, and it leaves once every one is sent",
    "ok": true,
-   "detail": "Draft: Your view on 2 founder emails and Sable Fraud AI\nTo Aditi Rao. 2 drafts wait on Aditi's view, and 1 decision is due: one short note a; rows pointing at it 2; after both sent 0"
+   "detail": "Sent it\nYour view on 2 founder emails and Sable Fraud AI\nTo Aditi Rao\nReady to send\n\nBefore you send: 2 drafts wait on Aditi's view, and 1 d; rows pointing at it 2; after both sent 0"
   },
   {
    "scenario": "holder-note",
@@ -3207,7 +3237,7 @@
    "scenario": "late-drafts",
    "check": "a late promise's draft says how late it is, and the late ones are named on Today",
    "ok": true,
-   "detail": "fold rows 1; Ready for you\n3\nDraft: Atlas Settlement: our term sheet markup\nTo Ishaan Verma, 17 days late. Written before your 22 Oct meeting, which has "
+   "detail": "fold rows 1; Decisions\n1\nSeen\nAtlas Settlement: term sheet from Bluepeak Partners\nTheir deadline 05 Nov has passed. Ishaan wrote on 21 Oct: \"We also have"
   },
   {
    "scenario": "late-drafts",
@@ -3279,7 +3309,7 @@
    "scenario": "shared-done",
    "check": "Done on one of two promises in one email closes that promise, not the email: no 'Marked sent', the other promise keeps the email, which says to take the closed promise's lines out",
    "ok": true,
-   "detail": "toast 'Marked done\\nUndo'; wrote ['k_e9eab86816', 't_a1afa2bb60']; Sent it on the other row 1; note 'Before you send: Intro two CFO candidates is marked done: take its lines out. Written before your 22 Oct meeting, which '"
+   "detail": "toast 'Marked done. Undo here or in Activity.\\nUndo'; wrote ['k_e9eab86816', 't_a1afa2bb60']; Sent it on the other row 1; note 'Before you send: Intro two CFO candidates is marked done: take its lines out. Written before your 22 Oct meeting, which '"
   },
   {
    "scenario": "shared-done",
@@ -3394,6 +3424,1116 @@
    "check": "no script errors",
    "ok": true,
    "detail": ""
+  },
+  {
+   "scenario": "folds",
+   "check": "every Today section has a fold header",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "folds",
+   "check": "Waiting and Watch start folded, Decide and Send open",
+   "ok": true,
+   "detail": "[]"
+  },
+  {
+   "scenario": "folds",
+   "check": "Focus folds everything but the schedule",
+   "ok": true,
+   "detail": "['Schedule']"
+  },
+  {
+   "scenario": "folds",
+   "check": "a day-strip cell opens its section",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "folds",
+   "check": "a CRM change shows Approve as a pill on its row, before it is opened",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "folds",
+   "check": "a draft has a Sent it circle, Open in Gmail first among its pills, and Copy",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "folds",
+   "check": "every row has at most three pills, all the same height, and the half-width ones the same width",
+   "ok": true,
+   "detail": "[{\"n\": 2, \"h\": 1, \"w\": 1}, {\"n\": 1, \"h\": 1, \"w\": 1}, {\"n\": 2, \"h\": 1, \"w\": 1}, {\"n\": 2, \"h\": 1, \"w\": 1}, {\"n\": 2, \"h\": 1, \"w\": 1}, {\"n\": 1, \"h\": 1, \"w\": 1}]"
+  },
+  {
+   "scenario": "folds",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "folds",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "folds",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "folds",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "folds",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "hero-fold",
+   "check": "aditi: the top line's main button is on the first phone screen, above the tab bar",
+   "ok": true,
+   "detail": "bottom at 510px"
+  },
+  {
+   "scenario": "hero-fold",
+   "check": "kabir: the top line's main button is on the first phone screen, above the tab bar",
+   "ok": true,
+   "detail": "bottom at 539px"
+  },
+  {
+   "scenario": "hero-fold",
+   "check": "meera: the top line's main button is on the first phone screen, above the tab bar",
+   "ok": true,
+   "detail": "bottom at 591px"
+  },
+  {
+   "scenario": "hero-fold",
+   "check": "rohan: the top line's main button is on the first phone screen, above the tab bar",
+   "ok": true,
+   "detail": "bottom at 486px"
+  },
+  {
+   "scenario": "hero-fold",
+   "check": "tara: the top line's main button is on the first phone screen, above the tab bar",
+   "ok": true,
+   "detail": "bottom at 510px"
+  },
+  {
+   "scenario": "hero-fold",
+   "check": "vikram: the top line's main button is on the first phone screen, above the tab bar",
+   "ok": true,
+   "detail": "bottom at 562px"
+  },
+  {
+   "scenario": "hero-fold",
+   "check": "solo: the top line's main button is on the first phone screen, above the tab bar",
+   "ok": true,
+   "detail": "bottom at 510px"
+  },
+  {
+   "scenario": "row-actions",
+   "check": "a row shows Later as a pill with its times folded, and the rating once it is open",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "row-actions",
+   "check": "Later opens the snooze times",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "activity",
+   "check": "Activity lists the tap under Today, by category",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "activity",
+   "check": "Reopen from Activity clears the tap and records it",
+   "ok": true,
+   "detail": "{\"t_cabd370eab\": {\"snoozed_until\": null, \"done_at\": null, \"sent\": null, \"closed_by\": null, \"t\": \"Forward the Cobalt AA notes\", \"g\": \"t_cabd370eab\", \"at\": \"2026-"
+  },
+  {
+   "scenario": "activity",
+   "check": "the line is back on Today",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "activity",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "activity",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "activity",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "activity",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "activity",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "activity-crm",
+   "check": "an applied CRM change offers Reverse in CRM; one still waiting offers Withdraw",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "activity-crm",
+   "check": "Reverse asks the next check to put the old values back",
+   "ok": true,
+   "detail": "{\"rv_pr_gravity_next\": {\"type\": \"revert\", \"status\": \"approved\", \"payload\": {\"of\": \"pr_gravity_next\", \"title\": \"Undo Atlas: stage\"}, \"at\": \"2026-10-22T01:35:00.0"
+  },
+  {
+   "scenario": "activity-crm",
+   "check": "Withdraw stops a change that has not been made",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "activity-crm",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "activity-crm",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "0 primary"
+  },
+  {
+   "scenario": "activity-crm",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "activity-crm",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "activity-crm",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "research",
+   "check": "the prep card says research runs by itself in the desktop app, and offers Claude instead",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "research-map",
+   "check": "a research run's empathy map shows on the card: says, thinks, does, feels and the source",
+   "ok": true,
+   "detail": "ts weekly on cross-border rails\nFeels: Pressed for time before the round\nAsk about the bank partner\n\nLinkedIn, read in your browser \u00b7 22 Oct Profile Doc in Drive\n\nant. \u00b7 calendar, email, notes and CRM"
+  },
+  {
+   "scenario": "ask",
+   "check": "Ask is a tab, and the search icon is in the header",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "ask",
+   "check": "typing finds matches in the Home's own data",
+   "ok": true,
+   "detail": "['10:30 Ishaan Verma, Atlas Settlement\\nMeeting \u00b7 Watch: term sheet from Bluepeak Partners, decide by 05 Nov \u00b7 You owe: send the term sheet markup', '12:00 Partner sync\\nMeeting \u00b7 Decide: Sable Fraud AI, by 23 Oct \u00b7 Decide: Gravity Payouts, by 31 Oct \u00b7 And 9 more, with yours: Atlas Settlement, Beacon Credit Rails and 2 more', 'Atlas Settlement\\nPipeline \u00b7 Term sheet \u00b7 Send term sheet markup \u00b7 Series A']"
+  },
+  {
+   "scenario": "ask",
+   "check": "Enter asks Claude with the Home's data and streams the answer",
+   "ok": true,
+   "detail": "Atlas Settlement: term sheet markup is due 23 Oct.\n\nFrom your ant. Home data \u00b7 a"
+  },
+  {
+   "scenario": "ask",
+   "check": "the Ask tab keeps the conversation",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "ask",
+   "check": "/ opens Ask from any screen",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "ask",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "ask",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "ask",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "ask",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "ask",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "ask-none",
+   "check": "without Claude, Ask still finds things and says what it needs",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "research-auto",
+   "check": "while research runs on a 320px phone, the page stays inside the screen",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "research-auto",
+   "check": "on opening Home, ant. researches today's people in the app's browser by itself and keeps the map",
+   "ok": true,
+   "detail": "tools ['create_file', 'find', 'get_page_text', 'navigate', 'search_files']; kept ['arjun@gravitypayouts.com', 'ishaan@atlassettle.com', 'lata@orbittreasury.in']"
+  },
+  {
+   "scenario": "research-auto",
+   "check": "it only reads: navigate, page text and find; it never clicks or types, and it opens the profile by its own link",
+   "ok": true,
+   "detail": "['create_file', 'find', 'get_page_text', 'navigate', 'search_files']"
+  },
+  {
+   "scenario": "research-auto",
+   "check": "each map is saved as a Google Doc in the research folder",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "research-auto",
+   "check": "the prep card shows the map: says, thinks, does, feels and the source",
+   "ok": true,
+   "detail": " goes live\nAsk about Bluepeak's terms\nConfirm the ESOP pool\n\nLinkedIn, read in your browser \u00b7 22 Oct Profile Doc in Drive\n\nant. \u00b7 calendar, email, notes and CRM"
+  },
+  {
+   "scenario": "research-signin",
+   "check": "when LinkedIn wants a sign-in, Home says so once and stops",
+   "ok": true,
+   "detail": "Sample data from a made-up fund, Quillwater Ventures. Meetings\n3\nDecisions\n2\nThreads\n3\n\nThu 22 Oct \u00b7 Next: 10:30 Ishaan "
+  },
+  {
+   "scenario": "research-demo",
+   "check": "colleagues at your own firm are never researched",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "by-itself",
+   "check": "the Decide badge counts only what needs you",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "by-itself",
+   "check": "Today says what ant. did by itself, and Done today lists it with Undo",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "ask-contrast",
+   "check": "the Ask answer passes contrast in light mode",
+   "ok": true,
+   "detail": "[]"
+  },
+  {
+   "scenario": "ask-contrast",
+   "check": "the finished answer is announced once for screen readers",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "hero-banner",
+   "check": "aditi: with the research banner showing, the main button stays above the tab bar",
+   "ok": true,
+   "detail": "bottom at 510px"
+  },
+  {
+   "scenario": "hero-banner",
+   "check": "aditi: the banner never widens the page",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "hero-banner",
+   "check": "kabir: with the research banner showing, the main button stays above the tab bar",
+   "ok": true,
+   "detail": "bottom at 539px"
+  },
+  {
+   "scenario": "hero-banner",
+   "check": "kabir: the banner never widens the page",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "hero-banner",
+   "check": "meera: with the research banner showing, the main button stays above the tab bar",
+   "ok": true,
+   "detail": "bottom at 591px"
+  },
+  {
+   "scenario": "hero-banner",
+   "check": "meera: the banner never widens the page",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "hero-banner",
+   "check": "rohan: with the research banner showing, the main button stays above the tab bar",
+   "ok": true,
+   "detail": "bottom at 486px"
+  },
+  {
+   "scenario": "hero-banner",
+   "check": "rohan: the banner never widens the page",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "hero-banner",
+   "check": "tara: with the research banner showing, the main button stays above the tab bar",
+   "ok": true,
+   "detail": "bottom at 510px"
+  },
+  {
+   "scenario": "hero-banner",
+   "check": "tara: the banner never widens the page",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "hero-banner",
+   "check": "vikram: with the research banner showing, the main button stays above the tab bar",
+   "ok": true,
+   "detail": "bottom at 562px"
+  },
+  {
+   "scenario": "hero-banner",
+   "check": "vikram: the banner never widens the page",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "hero-banner",
+   "check": "solo: with the research banner showing, the main button stays above the tab bar",
+   "ok": true,
+   "detail": "bottom at 510px"
+  },
+  {
+   "scenario": "hero-banner",
+   "check": "solo: the banner never widens the page",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "narrow-tabs",
+   "check": "aditi Today: fits a 320px screen",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "narrow-tabs",
+   "check": "aditi Pipeline: fits a 320px screen",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "narrow-tabs",
+   "check": "aditi People: fits a 320px screen",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "narrow-tabs",
+   "check": "aditi Portfolio: fits a 320px screen",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "narrow-tabs",
+   "check": "aditi LPs: fits a 320px screen",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "narrow-tabs",
+   "check": "aditi Ask: fits a 320px screen",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "narrow-tabs",
+   "check": "aditi: no focused control hides under the tab bar",
+   "ok": true,
+   "detail": "0 hidden"
+  },
+  {
+   "scenario": "narrow-tabs",
+   "check": "aditi: a table that scrolls sideways can be reached by keyboard",
+   "ok": true,
+   "detail": "0 unreachable"
+  },
+  {
+   "scenario": "narrow-tabs",
+   "check": "aditi Portfolio: its table fits a 320px screen without scrolling",
+   "ok": true,
+   "detail": "0 scroll"
+  },
+  {
+   "scenario": "narrow-tabs",
+   "check": "aditi LPs: its table fits a 320px screen without scrolling",
+   "ok": true,
+   "detail": "0 scroll"
+  },
+  {
+   "scenario": "resize",
+   "check": "aditi: narrowing the window re-checks the tables",
+   "ok": true,
+   "detail": "0 unreachable"
+  },
+  {
+   "scenario": "narrow-tabs",
+   "check": "kabir Today: fits a 320px screen",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "narrow-tabs",
+   "check": "kabir Pipeline: fits a 320px screen",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "narrow-tabs",
+   "check": "kabir People: fits a 320px screen",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "narrow-tabs",
+   "check": "kabir Portfolio: fits a 320px screen",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "narrow-tabs",
+   "check": "kabir Ask: fits a 320px screen",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "narrow-tabs",
+   "check": "kabir: no focused control hides under the tab bar",
+   "ok": true,
+   "detail": "0 hidden"
+  },
+  {
+   "scenario": "narrow-tabs",
+   "check": "kabir: a table that scrolls sideways can be reached by keyboard",
+   "ok": true,
+   "detail": "0 unreachable"
+  },
+  {
+   "scenario": "narrow-tabs",
+   "check": "kabir Portfolio: its table fits a 320px screen without scrolling",
+   "ok": true,
+   "detail": "0 scroll"
+  },
+  {
+   "scenario": "resize",
+   "check": "kabir: narrowing the window re-checks the tables",
+   "ok": true,
+   "detail": "0 unreachable"
+  },
+  {
+   "scenario": "narrow-tabs",
+   "check": "meera Today: fits a 320px screen",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "narrow-tabs",
+   "check": "meera Pipeline: fits a 320px screen",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "narrow-tabs",
+   "check": "meera People: fits a 320px screen",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "narrow-tabs",
+   "check": "meera Portfolio: fits a 320px screen",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "narrow-tabs",
+   "check": "meera Ask: fits a 320px screen",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "narrow-tabs",
+   "check": "meera: no focused control hides under the tab bar",
+   "ok": true,
+   "detail": "0 hidden"
+  },
+  {
+   "scenario": "narrow-tabs",
+   "check": "meera: a table that scrolls sideways can be reached by keyboard",
+   "ok": true,
+   "detail": "0 unreachable"
+  },
+  {
+   "scenario": "narrow-tabs",
+   "check": "meera Portfolio: its table fits a 320px screen without scrolling",
+   "ok": true,
+   "detail": "0 scroll"
+  },
+  {
+   "scenario": "resize",
+   "check": "meera: narrowing the window re-checks the tables",
+   "ok": true,
+   "detail": "0 unreachable"
+  },
+  {
+   "scenario": "narrow-tabs",
+   "check": "rohan Today: fits a 320px screen",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "narrow-tabs",
+   "check": "rohan Pipeline: fits a 320px screen",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "narrow-tabs",
+   "check": "rohan People: fits a 320px screen",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "narrow-tabs",
+   "check": "rohan Ask: fits a 320px screen",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "narrow-tabs",
+   "check": "rohan: no focused control hides under the tab bar",
+   "ok": true,
+   "detail": "0 hidden"
+  },
+  {
+   "scenario": "narrow-tabs",
+   "check": "rohan: a table that scrolls sideways can be reached by keyboard",
+   "ok": true,
+   "detail": "0 unreachable"
+  },
+  {
+   "scenario": "narrow-tabs",
+   "check": "tara Today: fits a 320px screen",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "narrow-tabs",
+   "check": "tara People: fits a 320px screen",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "narrow-tabs",
+   "check": "tara Portfolio: fits a 320px screen",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "narrow-tabs",
+   "check": "tara Ask: fits a 320px screen",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "narrow-tabs",
+   "check": "tara: no focused control hides under the tab bar",
+   "ok": true,
+   "detail": "0 hidden"
+  },
+  {
+   "scenario": "narrow-tabs",
+   "check": "tara: a table that scrolls sideways can be reached by keyboard",
+   "ok": true,
+   "detail": "0 unreachable"
+  },
+  {
+   "scenario": "narrow-tabs",
+   "check": "tara Portfolio: its table fits a 320px screen without scrolling",
+   "ok": true,
+   "detail": "0 scroll"
+  },
+  {
+   "scenario": "resize",
+   "check": "tara: narrowing the window re-checks the tables",
+   "ok": true,
+   "detail": "0 unreachable"
+  },
+  {
+   "scenario": "narrow-tabs",
+   "check": "vikram Today: fits a 320px screen",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "narrow-tabs",
+   "check": "vikram People: fits a 320px screen",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "narrow-tabs",
+   "check": "vikram Portfolio: fits a 320px screen",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "narrow-tabs",
+   "check": "vikram LPs: fits a 320px screen",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "narrow-tabs",
+   "check": "vikram Ask: fits a 320px screen",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "narrow-tabs",
+   "check": "vikram: no focused control hides under the tab bar",
+   "ok": true,
+   "detail": "0 hidden"
+  },
+  {
+   "scenario": "narrow-tabs",
+   "check": "vikram: a table that scrolls sideways can be reached by keyboard",
+   "ok": true,
+   "detail": "0 unreachable"
+  },
+  {
+   "scenario": "narrow-tabs",
+   "check": "vikram Portfolio: its table fits a 320px screen without scrolling",
+   "ok": true,
+   "detail": "0 scroll"
+  },
+  {
+   "scenario": "narrow-tabs",
+   "check": "vikram LPs: its table fits a 320px screen without scrolling",
+   "ok": true,
+   "detail": "0 scroll"
+  },
+  {
+   "scenario": "resize",
+   "check": "vikram: narrowing the window re-checks the tables",
+   "ok": true,
+   "detail": "0 unreachable"
+  },
+  {
+   "scenario": "narrow-tabs",
+   "check": "solo Today: fits a 320px screen",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "narrow-tabs",
+   "check": "solo Pipeline: fits a 320px screen",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "narrow-tabs",
+   "check": "solo People: fits a 320px screen",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "narrow-tabs",
+   "check": "solo Portfolio: fits a 320px screen",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "narrow-tabs",
+   "check": "solo LPs: fits a 320px screen",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "narrow-tabs",
+   "check": "solo Ask: fits a 320px screen",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "narrow-tabs",
+   "check": "solo: no focused control hides under the tab bar",
+   "ok": true,
+   "detail": "0 hidden"
+  },
+  {
+   "scenario": "narrow-tabs",
+   "check": "solo: a table that scrolls sideways can be reached by keyboard",
+   "ok": true,
+   "detail": "0 unreachable"
+  },
+  {
+   "scenario": "narrow-tabs",
+   "check": "solo Portfolio: its table fits a 320px screen without scrolling",
+   "ok": true,
+   "detail": "0 scroll"
+  },
+  {
+   "scenario": "narrow-tabs",
+   "check": "solo LPs: its table fits a 320px screen without scrolling",
+   "ok": true,
+   "detail": "0 scroll"
+  },
+  {
+   "scenario": "resize",
+   "check": "solo: narrowing the window re-checks the tables",
+   "ok": true,
+   "detail": "0 unreachable"
+  },
+  {
+   "scenario": "settings",
+   "check": "Settings lists each kind of tool with what is connected and what ant. may do",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "settings",
+   "check": "a missing tool offers Connect, which opens Claude's connector page",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "settings",
+   "check": "Add a tool finds Fireflies, read only by default",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "settings",
+   "check": "setting the CRM to read only is saved for the checks",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "settings",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "settings",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "0 primary"
+  },
+  {
+   "scenario": "settings",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "settings",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "settings",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "settings-phone",
+   "check": "on a phone, Help leads to Settings",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "settings-phone",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "settings-phone",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "0 primary"
+  },
+  {
+   "scenario": "settings-phone",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "settings-phone",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "settings-phone",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "auto-apply",
+   "check": "in automatic mode a CRM change says it applies by itself, offers Apply now and Don't apply, and leaves the Decide count",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "auto-apply",
+   "check": "Help switches automatic mode off, saved for the hourly checks",
+   "ok": true,
+   "detail": "[{\"op\": \"set\", \"path\": \"state/settings\", \"data\": {\"items\": {\"auto_apply\": false}}}]"
+  },
+  {
+   "scenario": "pills",
+   "check": "the day reads as pills with counts, in order, and an empty section takes no pill",
+   "ok": true,
+   "detail": "['Meetings', 'Decisions', 'Threads']"
+  },
+  {
+   "scenario": "pills",
+   "check": "the pills take one line on a laptop",
+   "ok": true,
+   "detail": "48px"
+  },
+  {
+   "scenario": "pills",
+   "check": "on a wide card every row's pills stack on its right edge, one width",
+   "ok": true,
+   "detail": "[{\"right\": 0, \"beside\": true, \"w\": 156, \"list\": 578}, {\"right\": 0, \"beside\": true, \"w\": 156, \"list\": 578}, {\"right\": 0, \"beside\": true, \"w\": 156, \"list\": 578}, {\"right\": 0, \"beside\": true, \"w\": 156, \"list\": 578}]"
+  },
+  {
+   "scenario": "pills",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "pills",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "pills",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "pills",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "pills",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "pills-phone",
+   "check": "on a phone the pills sit under the line, 40px tall",
+   "ok": true,
+   "detail": "[{\"below\": true, \"h\": 40}, {\"below\": true, \"h\": 40}, {\"below\": true, \"h\": 40}, {\"below\": true, \"h\": 40}]"
+  },
+  {
+   "scenario": "pills-phone",
+   "check": "on a phone the day's pills take one line",
+   "ok": true,
+   "detail": "[48, False]"
+  },
+  {
+   "scenario": "pills-phone",
+   "check": "the done circle is a 44px target",
+   "ok": true,
+   "detail": "44px"
+  },
+  {
+   "scenario": "pills-phone",
+   "check": "a swipe right on a row finishes it, as its circle does",
+   "ok": true,
+   "detail": "[{\"op\": \"set\", \"path\": \"state/items\", \"data\": {\"items\": {\"dr_k_4d53f12d9b\": {\"snoozed_until\": null, \"done_at\": \"2026-10-22T01:35:00.000Z\", \""
+  },
+  {
+   "scenario": "pills-phone",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "pills-phone",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "pills-phone",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "pills-phone",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "pills-phone",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "notes-drawer",
+   "check": "the prep card opens as a side panel on a laptop",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "notes-drawer",
+   "check": "a promise from a meeting links its notes",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "notes-drawer",
+   "check": "the notes open in the side panel: TL;DR, notes, and Open in the notes app",
+   "ok": true,
+   "detail": "[0, 560] 'Back\\nAtlas Settlement: terms call\\n\\n20 Oct \u00b7 Granola \u00b7 Aditi Rao, Ishaan Verma\\n\\nT'"
+  },
+  {
+   "scenario": "notes-drawer",
+   "check": "a note without a TL;DR gets one from Claude on open",
+   "ok": true,
+   "detail": "Atlas wants our markup before 23 Oct; Bluepeak's term sheet is on the table.\nTwo"
+  },
+  {
+   "scenario": "notes-drawer",
+   "check": "the notes panel has Back to the prep card",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "notes-drawer",
+   "check": "Back returns to the prep card",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "notes-drawer",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "notes-drawer",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "notes-drawer",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "notes-drawer",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "notes-drawer",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "notes-phone",
+   "check": "on a phone the notes rise from the bottom, full width",
+   "ok": true,
+   "detail": "[0, 0]"
   }
  ]
 }

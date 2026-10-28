@@ -2,7 +2,7 @@
 name: pipeline-watch
 description: Watches a venture firm's deal pipeline for stale deals, missing next steps and signals that another fund is moving, and writes the weekly pipeline review and the partner-meeting pre-read. Use when the user says "pipeline review", "which deals are stuck", "partner meeting pre-read", "where are my deals", or when a scheduled task runs pipeline-watch.
 metadata:
-  version: "0.9.0"
+  version: "0.10.0"
 ---
 
 # Pipeline watch
