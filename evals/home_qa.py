@@ -1956,6 +1956,10 @@ class QA:
               var els = Array.from(document.querySelectorAll('#view button, #view a[href], #view input, #view textarea, #view select')).filter(e => e.offsetParent);
               els.forEach(e => { e.focus(); var r = e.getBoundingClientRect(); if (r.top >= bar - 1) n += 1; }); return n; })()""")
             self.check("narrow-tabs", f"{m}: no focused control hides under the tab bar", hidden == 0, f"{hidden} hidden")
+            page.locator("#bottom-tabs button[aria-label='People']").click()
+            page.wait_for_timeout(60)
+            bad = page.evaluate("Array.from(document.querySelectorAll('.table-wrap')).filter(w => w.scrollWidth > w.clientWidth + 1 && w.getAttribute('tabindex') !== '0').length")
+            self.check("narrow-tabs", f"{m}: a table that scrolls sideways can be reached by keyboard", bad == 0, f"{bad} unreachable")
             ctx.close()
 
         sc = "auto-apply"

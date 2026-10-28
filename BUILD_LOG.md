@@ -21,8 +21,8 @@ Built from the council plan "Instinct for VCs: Council Plan and One-Shot Build S
 | Panel tests | `round6` and `round6b` suites: the VC panel's round-five tests on the same Thursday-to-Monday replay, for all seven panel members; `evals6` pins the round-six Claude-run findings; `round7` to `round10` pin the VC panel's round-six to round-nine tests; `evals8` pins the round-eight Claude-run findings; `round9` to `round15` replay every panel member with each run reading only its own window (all seven match the full replay at every run), with taps, replies in mail and sent chases to Mon 23 Nov; `round11` also pins the 0.7.3 Claude-run findings and the round-nine council's conditions J to P, `round12` the 0.7.4 Claude-run findings and the round-eleven panel's tests, `round13` the 0.7.5 Claude-run findings, the round-ten council's conditions Q to W and the round-twelve panel's tests, and `round14` the round-eleven council's conditions X to AB, the 0.7.6 Claude runs and the round-thirteen panel | pass: no push inside a meeting, at most four a day, every pushed item on Today, one sync pack for all, calendar truth to Monday, founders' words kept, and the rest |
 | Guard | `evals/runner.py --suite guard`: every allowed step and every known way out, on the connectors' real argument names, in three transcript layouts; `round11` adds data names that order something at either end, and Artifact reads that save files | 718 of 718, and the round-eleven probes |
 | Five-day replay and outages | Setup, then every scheduled run Thursday to Monday; the CRM or email down for four hours | Home never loses LPs, companies, flags, signals or promises; no false all-clear; an outage pushes once |
-| Design lint | `python3 evals/design_lint.py` | 0 violations in 340 CSS rules |
-| Home QA | `python3 evals/home_qa.py` (Playwright, phone and desktop, light and dark, every level) | 689 of 689 |
+| Design lint | `python3 evals/design_lint.py` | 0 violations in 344 CSS rules |
+| Home QA | `python3 evals/home_qa.py` (Playwright, phone and desktop, light and dark, every level) | 696 of 696 |
 | Safety lint and manifest | `python3 -I -S engine/instinct.py lint --root .`, `claude plugin validate .` | 0 violations; validates (warnings: no LICENSE, no privacy URL) |
 | Claude in the loop | Skills run end to end by fresh Claude agents against mock connectors (`evals/eval-mode.md`) | reports in `evals/reports/claude-runs/` |
 | Councils | A simulated VC panel (one persona per level), a simulated product council (PM, designer, AI engineer, QA lead) and a simulated design council (SaaS product design, information architecture, visual design, accessibility, behavioural psychology) | reports in `evals/reports/council/` |
@@ -63,6 +63,7 @@ The owner asked for a Home a partner can read in seconds: the day in logical sec
 | Round 4 (0.9.0: Ask, research by itself, automatic mode) | 8.5 | 8.5 | 8.5 | 8.5 | 8.5 |
 | Round 5 | 9 | 9 | 8.5 | 8.5 | 9 |
 | Round 6 | 9.5 | 9 | 9 | 8.5 | 9 |
+| Round 7 | 9.5 | 9 | 9 | 9 | 9.5 |
 
 Rounds 6 and 7 fixed the round-five and round-six findings: every tab fits a 320px screen and no focused control hides under the tab bar (both pinned for every level), the research banner no longer widens a phone page (pinned for every level at 320 and 380 px), research messages sit under the top line, the Decide badge counts only what needs you, and focus stays on the tab you tapped.
 

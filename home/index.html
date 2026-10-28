@@ -302,6 +302,10 @@ td .owed { display: block; font-size: 12px; }
 .fold-peek { margin: 0; padding-left: 40px; font-size: 14px; color: var(--ah-ink-2); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 section.card.is-folded .sec-h { margin-bottom: 0; }
 .fold-body[hidden], .row[hidden], tr[hidden] { display: none; }
+.table-wrap.scrolls { box-shadow: inset -14px 0 12px -12px var(--ah-scrim); }
+.table-wrap:focus-visible { outline: 2px solid var(--ah-hero); outline-offset: 2px; }
+.banner-actions { display: flex; gap: 8px; margin-left: auto; flex: none; }
+@media (max-width: 399px) { .meter span { width: 40px; } }
 .show-all { margin-top: 8px; }
 /* The day at a glance: four cells that open their sections */
 .day { display: grid; gap: 12px; }
@@ -1420,11 +1424,12 @@ td a, .md li a, .kv li a { display: inline-flex; align-items: center; min-height
     var heroEl = heroCard(hero), digest = recentDigest(["week_ahead", "digest"]);
     // A research message waits under the top line, so the main button is never pushed off a phone screen.
     var rsMsg = !S.rs.running && S.rs.note ? h("div", { class: "banner is-msg", role: "status", "aria-live": "polite" }, [h("span", { id: "rs-note" }, S.rs.note),
-      S.rs.halted && S.mcp && /Sign in/.test(S.rs.note) ? h("button", { class: "btn btn-secondary btn-sm", type: "button", style: "margin-left:auto", onclick: function () {
+      h("div", { class: "banner-actions" }, [S.rs.halted && S.mcp && /Sign in/.test(S.rs.note) ? h("button", { class: "btn btn-secondary btn-sm", type: "button", onclick: function () {
         bcall("navigate", { url: "https://www.linkedin.com/login" }).then(function () { toast("LinkedIn is open in the Claude app's browser. Sign in, then open a prep card and tap Try again."); },
           function () { toast("Open LinkedIn in the Claude app's browser and sign in there."); }); } }, "Open LinkedIn") : null,
-      h("button", { class: "btn btn-ghost btn-sm", type: "button", style: S.rs.halted && S.mcp && /Sign in/.test(S.rs.note) ? null : "margin-left:auto",
-        onclick: function () { S.rs.note = null; render(); var pb = document.querySelector(".ah-hero-card .btn-primary"); if (pb) pb.focus(); } }, "Dismiss")]) : null;
+      h("button", { class: "btn btn-ghost btn-sm", type: "button",
+        onclick: function () { S.rs.note = null; render(); var pb = document.querySelector(".ah-hero-card .btn-primary") || document.querySelector("#view .ah-hero-card");
+          if (pb) { if (!pb.matches("button, a")) pb.setAttribute("tabindex", "-1"); pb.focus(); } } }, "Dismiss")])]) : null;
     var out = [dayStrip(b, buckets, counts)];
     if (wide()) {
       out.push(h("div", { class: "today-cols" }, [h("div", { class: "today-col" }, [heroEl, rsMsg, cards.decide, cards.send, digest]),
@@ -1890,7 +1895,7 @@ td a, .md li a, .kv li a { display: inline-flex; align-items: center; min-height
           status_word: "reach", source: { label: "Email", url: r.source_url }, entity: { type: "person", id: r.person_id, name: r.name }, actions: ["draft", "snooze"] });
       }))]));
     var top = (p.top || []).slice(0, 40);
-    var tbl = h("table", { class: "fit-sm" }, [h("thead", null, h("tr", null, [h("th", null, "Person"), h("th", { class: "hide-sm" }, "Company"), h("th", null, "Strength, of 100"), h("th", { class: "r" }, "Last touch")])),
+    var tbl = h("table", { class: "fit-sm" }, [h("thead", null, h("tr", null, [h("th", null, "Person"), h("th", { class: "hide-sm" }, "Company"), h("th", null, ["Strength", h("span", { class: "hide-sm" }, ", of 100")]), h("th", { class: "r" }, "Last touch")])),
       h("tbody", null, top.map(function (r) {
         var s = Math.max(0, Math.min(100, Number(r.strength) || 0));
         return h("tr", null, [cell(r.name || null), h("td", { class: "hide-sm" }, r.company || ""),
@@ -2503,6 +2508,12 @@ td a, .md li a, .kv li a { display: inline-flex; align-items: center; min-height
       if (folded) { sec.classList.add("is-folded"); body.hidden = true; var pk = peekOf(body); if (pk) sec.appendChild(h("p", { class: "fold-peek" }, pk)); }
       sec.appendChild(body);
       limitRows(body, label);
+      Array.prototype.forEach.call(body.querySelectorAll(".table-wrap"), function (w) {
+        if (w.scrollWidth <= w.clientWidth + 1) return;
+        w.setAttribute("tabindex", "0"); w.setAttribute("role", "region"); w.setAttribute("aria-label", label + ", scrolls sideways");
+        var edge = function () { w.classList.toggle("scrolls", w.scrollLeft + w.clientWidth < w.scrollWidth - 2); };
+        w.addEventListener("scroll", edge); edge();
+      });
     });
   }
   // Long lists show their first five lines, long tables their first eight, then "Show all".
@@ -2537,12 +2548,12 @@ td a, .md li a, .kv li a { display: inline-flex; align-items: center; min-height
       seen[label + kind] = true; out.push({ label: label, sub: (kind ? kind + " · " : "") + (sub || ""), go: fn });
     };
     var b = S.snap.brief || {};
-    (b.meetings || []).forEach(function (m) { hit((m.time || "") + " " + (m.who || ""), (m.notes || []).join(" "), function () { if (m.prep_id) openPrep(m.prep_id, m); else go("today"); }, "Meeting"); });
+    (b.meetings || []).forEach(function (m) { hit((m.time || "") + " " + (m.who || ""), (m.notes || []).join(" · "), function () { if (m.prep_id) openPrep(m.prep_id, m); else go("today"); }, "Meeting"); });
     (b.sections || []).forEach(function (sec) { (sec.items || []).forEach(function (it) { hit(it.title, it.detail, function () { go("today", it.id); setTimeout(function () { focusId(it.id); }, 30); }, "Today"); }); });
     var deals = ((S.snap.pipeline || {}).deals) || {};
     Object.keys(deals).forEach(function (id) { var d = deals[id]; if (d.active) hit(d.company || "Deal", [d.stage, d.next_step, d.round].filter(Boolean).join(" · "), function () { go("pipeline", "deal:" + id); }, "Pipeline"); });
     var pp = S.snap.people || {};
-    (pp.top || []).concat(pp.decay || []).forEach(function (r) { hit(r.name || "", [r.company, isNil(r.days_since) ? null : r.days_since + " days since you spoke"].filter(Boolean).join(" · "), function () { go("people"); }, "People"); });
+    (pp.top || []).concat(pp.decay || []).forEach(function (r) { hit(r.name || "", [r.company, isNil(r.days_since) ? null : Number(r.days_since) <= 0 ? "Spoke today" : Number(r.days_since) === 1 ? "Spoke yesterday" : r.days_since + " days since you spoke"].filter(Boolean).join(" · "), function () { go("people"); }, "People"); });
     var comps = ((S.snap.portfolio || {}).companies) || {};
     Object.keys(comps).forEach(function (id) { var c = comps[id]; hit(c.name || "", [fmtMoney(c.revenue_usd) ? fmtMoney(c.revenue_usd) + " revenue" : null, isNil(c.runway_months) ? null : Number(c.runway_months).toFixed(1) + " months runway"].filter(Boolean).join(" · "), function () { go("portfolio"); }, "Portfolio"); });
     var lps = ((S.snap.lps || {}).lps) || {};
