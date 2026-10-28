@@ -3,7 +3,7 @@
   {
    "theme": "light",
    "state": "aditi-today",
-   "checked": 138,
+   "checked": 137,
    "marks": 76,
    "min": 3.24,
    "fails": 0
@@ -19,7 +19,7 @@
   {
    "theme": "light",
    "state": "aditi-row-open",
-   "checked": 138,
+   "checked": 137,
    "marks": 76,
    "min": 3.24,
    "fails": 0
@@ -51,7 +51,7 @@
   {
    "theme": "light",
    "state": "aditi-toast",
-   "checked": 141,
+   "checked": 140,
    "marks": 77,
    "min": 3.24,
    "fails": 0
@@ -99,7 +99,7 @@
   {
    "theme": "light",
    "state": "kabir-today",
-   "checked": 133,
+   "checked": 132,
    "marks": 55,
    "min": 4.65,
    "fails": 0
@@ -115,7 +115,7 @@
   {
    "theme": "light",
    "state": "rohan-today",
-   "checked": 130,
+   "checked": 129,
    "marks": 55,
    "min": 4.65,
    "fails": 0
@@ -155,7 +155,7 @@
   {
    "theme": "light",
    "state": "banners",
-   "checked": 140,
+   "checked": 139,
    "marks": 76,
    "min": 3.24,
    "fails": 0
@@ -163,7 +163,7 @@
   {
    "theme": "light",
    "state": "friday",
-   "checked": 151,
+   "checked": 150,
    "marks": 78,
    "min": 3.24,
    "fails": 0
@@ -195,7 +195,7 @@
   {
    "theme": "dark",
    "state": "aditi-today",
-   "checked": 138,
+   "checked": 137,
    "marks": 84,
    "min": 3.8,
    "fails": 0
@@ -211,7 +211,7 @@
   {
    "theme": "dark",
    "state": "aditi-row-open",
-   "checked": 138,
+   "checked": 137,
    "marks": 84,
    "min": 3.8,
    "fails": 0
@@ -243,7 +243,7 @@
   {
    "theme": "dark",
    "state": "aditi-toast",
-   "checked": 141,
+   "checked": 140,
    "marks": 85,
    "min": 3.8,
    "fails": 0
@@ -291,7 +291,7 @@
   {
    "theme": "dark",
    "state": "kabir-today",
-   "checked": 133,
+   "checked": 132,
    "marks": 63,
    "min": 6.38,
    "fails": 0
@@ -307,7 +307,7 @@
   {
    "theme": "dark",
    "state": "rohan-today",
-   "checked": 130,
+   "checked": 129,
    "marks": 63,
    "min": 6.04,
    "fails": 0
@@ -347,7 +347,7 @@
   {
    "theme": "dark",
    "state": "banners",
-   "checked": 140,
+   "checked": 139,
    "marks": 84,
    "min": 3.8,
    "fails": 0
@@ -355,7 +355,7 @@
   {
    "theme": "dark",
    "state": "friday",
-   "checked": 151,
+   "checked": 150,
    "marks": 86,
    "min": 3.8,
    "fails": 0

@@ -61,7 +61,7 @@ Claude-run evals (round five, on 0.4.0 skills): inbound triage 25 of 25 decision
   - Red is used once a row: Competing. Days over and overdue steps are bold ink. "On track" is a quiet dash; a missing step reads "Set a step".
 - **Today:** the top line has one way to finish (Sent it with a draft, Done without). Agenda red is for overdue only. Pills stack on the right from 380px cards. A row drops a status tag the line already says. One label for a ready draft: "Draft ready". The day line shows "3 of 9 cleared".
 
-Council (simulated): round three 8 / 7.5 / 8 / 8 / 7.5, round four 8.5 / 8.5 / 8.5 / 8.5 / 8, then round five fixes applied. What the council says only real use can settle: a phone check of swipe, Undo and the panel; a VoiceOver pass; headings judged with Raleway loaded; three days of dogfood.
+Council (simulated): round three 8 / 7.5 / 8 / 8 / 7.5, round four 8.5 / 8.5 / 8.5 / 8.5 / 8, round five 9 / 9 / 9 / 9 / 8.5. Its last two fixes were applied after that round and not re-scored: the cleared count now counts what you can clear yourself (Decisions, Threads, Watch and the top line; not Waiting), it is a live region, and on a phone the date drops from that line so Focus stays on it. What the council says only real use can settle: a phone check of swipe, Undo and the panel; a VoiceOver pass; headings judged with Raleway loaded; three days of dogfood.
 
 ## Round nineteen (0.10.0): rows like the owner's own app
 

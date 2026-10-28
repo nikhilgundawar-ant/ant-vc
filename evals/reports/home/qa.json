@@ -3,7 +3,7 @@
  "failed": 0,
  "complete": true,
  "scenarios": "all",
- "page_sha256": "c77a6aa4ae01",
+ "page_sha256": "bc5954300a2e",
  "rows": [
   {
    "scenario": "today-380",
@@ -1221,7 +1221,7 @@
    "scenario": "colour-light-aditi-today",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "138 texts, 76 marks, min 3.24:1"
+   "detail": "137 texts, 76 marks, min 3.24:1"
   },
   {
    "scenario": "colour-light-aditi-today-desk",
@@ -1233,7 +1233,7 @@
    "scenario": "colour-light-aditi-row-open",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "138 texts, 76 marks, min 3.24:1"
+   "detail": "137 texts, 76 marks, min 3.24:1"
   },
   {
    "scenario": "colour-light-aditi-prep",
@@ -1257,7 +1257,7 @@
    "scenario": "colour-light-aditi-toast",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "141 texts, 77 marks, min 3.24:1"
+   "detail": "140 texts, 77 marks, min 3.24:1"
   },
   {
    "scenario": "colour-light-aditi-pipeline",
@@ -1293,7 +1293,7 @@
    "scenario": "colour-light-kabir-today",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "133 texts, 55 marks, min 4.65:1"
+   "detail": "132 texts, 55 marks, min 4.65:1"
   },
   {
    "scenario": "colour-light-meera-pipeline",
@@ -1305,7 +1305,7 @@
    "scenario": "colour-light-rohan-today",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "130 texts, 55 marks, min 4.65:1"
+   "detail": "129 texts, 55 marks, min 4.65:1"
   },
   {
    "scenario": "colour-light-rohan-pipeline",
@@ -1335,13 +1335,13 @@
    "scenario": "colour-light-banners",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "140 texts, 76 marks, min 3.24:1"
+   "detail": "139 texts, 76 marks, min 3.24:1"
   },
   {
    "scenario": "colour-light-friday",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "151 texts, 78 marks, min 3.24:1"
+   "detail": "150 texts, 78 marks, min 3.24:1"
   },
   {
    "scenario": "colour-light-empty",
@@ -1365,7 +1365,7 @@
    "scenario": "colour-dark-aditi-today",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "138 texts, 84 marks, min 3.8:1"
+   "detail": "137 texts, 84 marks, min 3.8:1"
   },
   {
    "scenario": "colour-dark-aditi-today-desk",
@@ -1377,7 +1377,7 @@
    "scenario": "colour-dark-aditi-row-open",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "138 texts, 84 marks, min 3.8:1"
+   "detail": "137 texts, 84 marks, min 3.8:1"
   },
   {
    "scenario": "colour-dark-aditi-prep",
@@ -1401,7 +1401,7 @@
    "scenario": "colour-dark-aditi-toast",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "141 texts, 85 marks, min 3.8:1"
+   "detail": "140 texts, 85 marks, min 3.8:1"
   },
   {
    "scenario": "colour-dark-aditi-pipeline",
@@ -1437,7 +1437,7 @@
    "scenario": "colour-dark-kabir-today",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "133 texts, 63 marks, min 6.38:1"
+   "detail": "132 texts, 63 marks, min 6.38:1"
   },
   {
    "scenario": "colour-dark-meera-pipeline",
@@ -1449,7 +1449,7 @@
    "scenario": "colour-dark-rohan-today",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "130 texts, 63 marks, min 6.04:1"
+   "detail": "129 texts, 63 marks, min 6.04:1"
   },
   {
    "scenario": "colour-dark-rohan-pipeline",
@@ -1479,13 +1479,13 @@
    "scenario": "colour-dark-banners",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "140 texts, 84 marks, min 3.8:1"
+   "detail": "139 texts, 84 marks, min 3.8:1"
   },
   {
    "scenario": "colour-dark-friday",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "151 texts, 86 marks, min 3.8:1"
+   "detail": "150 texts, 86 marks, min 3.8:1"
   },
   {
    "scenario": "colour-dark-empty",
@@ -3507,43 +3507,43 @@
    "scenario": "hero-fold",
    "check": "aditi: the top line's main button is on the first phone screen, above the tab bar",
    "ok": true,
-   "detail": "bottom at 538px"
+   "detail": "bottom at 510px"
   },
   {
    "scenario": "hero-fold",
    "check": "kabir: the top line's main button is on the first phone screen, above the tab bar",
    "ok": true,
-   "detail": "bottom at 567px"
+   "detail": "bottom at 539px"
   },
   {
    "scenario": "hero-fold",
    "check": "meera: the top line's main button is on the first phone screen, above the tab bar",
    "ok": true,
-   "detail": "bottom at 639px"
+   "detail": "bottom at 619px"
   },
   {
    "scenario": "hero-fold",
    "check": "rohan: the top line's main button is on the first phone screen, above the tab bar",
    "ok": true,
-   "detail": "bottom at 515px"
+   "detail": "bottom at 486px"
   },
   {
    "scenario": "hero-fold",
    "check": "tara: the top line's main button is on the first phone screen, above the tab bar",
    "ok": true,
-   "detail": "bottom at 538px"
+   "detail": "bottom at 510px"
   },
   {
    "scenario": "hero-fold",
    "check": "vikram: the top line's main button is on the first phone screen, above the tab bar",
    "ok": true,
-   "detail": "bottom at 590px"
+   "detail": "bottom at 562px"
   },
   {
    "scenario": "hero-fold",
    "check": "solo: the top line's main button is on the first phone screen, above the tab bar",
    "ok": true,
-   "detail": "bottom at 558px"
+   "detail": "bottom at 510px"
   },
   {
    "scenario": "row-actions",
@@ -3765,7 +3765,7 @@
    "scenario": "research-signin",
    "check": "when LinkedIn wants a sign-in, Home says so once and stops",
    "ok": true,
-   "detail": "Sample data from a made-up fund, Quillwater Ventures. Meetings\n3\nDecisions\n2\nThreads\n3\n\nThu 22 Oct \u00b7 Next: 10:30 Ishaan "
+   "detail": "Sample data from a made-up fund, Quillwater Ventures. Meetings\n3\nDecisions\n2\nThreads\n3\n\nNext: 10:30 Ishaan Verma \u00b7 0 of "
   },
   {
    "scenario": "research-demo",
@@ -3801,7 +3801,7 @@
    "scenario": "hero-banner",
    "check": "aditi: with the research banner showing, the main button stays above the tab bar",
    "ok": true,
-   "detail": "bottom at 538px"
+   "detail": "bottom at 510px"
   },
   {
    "scenario": "hero-banner",
@@ -3813,7 +3813,7 @@
    "scenario": "hero-banner",
    "check": "kabir: with the research banner showing, the main button stays above the tab bar",
    "ok": true,
-   "detail": "bottom at 567px"
+   "detail": "bottom at 539px"
   },
   {
    "scenario": "hero-banner",
@@ -3825,7 +3825,7 @@
    "scenario": "hero-banner",
    "check": "meera: with the research banner showing, the main button stays above the tab bar",
    "ok": true,
-   "detail": "bottom at 639px"
+   "detail": "bottom at 619px"
   },
   {
    "scenario": "hero-banner",
@@ -3837,7 +3837,7 @@
    "scenario": "hero-banner",
    "check": "rohan: with the research banner showing, the main button stays above the tab bar",
    "ok": true,
-   "detail": "bottom at 515px"
+   "detail": "bottom at 486px"
   },
   {
    "scenario": "hero-banner",
@@ -3849,7 +3849,7 @@
    "scenario": "hero-banner",
    "check": "tara: with the research banner showing, the main button stays above the tab bar",
    "ok": true,
-   "detail": "bottom at 538px"
+   "detail": "bottom at 510px"
   },
   {
    "scenario": "hero-banner",
@@ -3861,7 +3861,7 @@
    "scenario": "hero-banner",
    "check": "vikram: with the research banner showing, the main button stays above the tab bar",
    "ok": true,
-   "detail": "bottom at 590px"
+   "detail": "bottom at 562px"
   },
   {
    "scenario": "hero-banner",
@@ -3873,7 +3873,7 @@
    "scenario": "hero-banner",
    "check": "solo: with the research banner showing, the main button stays above the tab bar",
    "ok": true,
-   "detail": "bottom at 558px"
+   "detail": "bottom at 510px"
   },
   {
    "scenario": "hero-banner",

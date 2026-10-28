@@ -1533,8 +1533,12 @@ button.chip-source svg { width: 12px; height: 12px; }
       : [h("span", { class: "is-date" }, date + " · "), meetings.length ? "No more meetings today" : "No meetings today"];
     // A small finish line: what you cleared today against what is still open in the three sections that need you.
     var cleared = activityLog().filter(function (e) { return dayOf(e.at) === todayIso() && (e.cat === "sent" || e.cat === "done") && !e.undone; }).length;
-    var openN = (counts.decide || 0) + (counts.send || 0) + (counts.waiting || 0);
-    if (cleared || openN) nextLine = nextLine.concat([h("span", { class: "day-progress" }, " · " + (openN ? cleared + " of " + (cleared + openN) + " cleared" : "All clear"))]);
+    // What you can clear yourself: decisions, threads, the watch list and the top line. Waiting is other people's work.
+    var openN = (counts.decide || 0) + (counts.send || 0) + (counts.watch || 0) + (b.hero && b.hero.item_id && !isHidden({ id: b.hero.item_id, commitment_id: b.hero.commitment_id }) ? 1 : 0);
+    if (cleared || openN) {
+      nextLine = nextLine.filter(function (x) { return !(x && x.classList && x.classList.contains("is-date")); });
+      nextLine = nextLine.concat([h("span", { class: "day-progress", role: "status", "aria-live": "polite" }, " · " + (openN ? cleared + " of " + (cleared + openN) + " cleared" : "All clear"))]);
+    }
     var tools = h("div", { class: "day-tools" }, [h("p", { class: "day-next lead" }, nextLine.concat(S.focus ? [". Focus: only the top line and your schedule are open"] : [])),
       h("button", { class: "chip chip-filter", type: "button", "aria-pressed": S.focus ? "true" : "false", onclick: function () { S.focus = !S.focus; S.focusOpen = {}; remember("ant.focus", S.focus ? "1" : "0"); render(); } }, "Focus")]);
     var byItself = activityLog().filter(function (e) { return e.auto && dayOf(e.at) === todayIso(); });
