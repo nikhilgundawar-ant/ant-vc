@@ -502,7 +502,7 @@ td a, .md li a, .kv li a { display: inline-flex; align-items: center; min-height
 .row.swipe-r { background: var(--ah-tint); }
 .row.swipe-l { background: var(--ah-control-2); }
 .row.is-leaving { opacity: .4; transition: opacity 200ms var(--ah-ease); }
-@container (min-width: 440px) {
+@container (min-width: 380px) {
   .row { grid-template-columns: 44px minmax(0, 1fr) 124px; gap: 0 12px; }
   .row-side { grid-column: 3; grid-row: 1 / span 3; grid-template-columns: minmax(0, 1fr); gap: 6px; padding-block: 6px; }
   .row-side .btn { height: 32px; padding: 0 8px; }
@@ -520,7 +520,9 @@ td a, .md li a, .kv li a { display: inline-flex; align-items: center; min-height
 /* Deals table: sortable headers, a filter under each one on a laptop, a filter bar above on a phone */
 .th-sort { display: inline-flex; align-items: center; gap: 4px; border: 0; background: transparent; padding: 0; min-height: 32px; font: inherit; font-weight: 700; color: inherit; cursor: pointer; white-space: nowrap; }
 .th-sort:hover { color: var(--ah-hero); }
-.th-arrow { font-size: 12px; color: var(--ah-ink-3); }
+.th-arrow { font-size: 12px; color: var(--ah-ink-3); opacity: 0; }
+.th-sort:hover .th-arrow, .th-sort:focus-visible .th-arrow { opacity: 1; }
+.th-arrow.is-on { opacity: 1; }
 .th-arrow.is-on { color: var(--ah-hero); }
 .filter-row td { padding: 0 12px 8px 0; border-bottom: 1px solid var(--ah-row-rule); }
 .filter-row td:last-child { padding-right: 0; }
@@ -532,7 +534,12 @@ td a, .md li a, .kv li a { display: inline-flex; align-items: center; min-height
 .deals td { vertical-align: middle; }
 .deals .row-hit { min-height: 32px; }
 .deals .row-detail { font-size: 13.5px; color: var(--ah-ink); }
-.deals .row-detail.neg { color: var(--ah-breach-ink); }
+.deals .row-detail.neg { color: var(--ah-ink); font-weight: 700; }
+.deals .row-detail.is-empty { color: var(--ah-ink-2); }
+.deals .days.over { color: var(--ah-ink); }
+.deals .track.over b { background: var(--ah-ink-2); }
+.deals .row-title { color: var(--ah-hero); }
+.deals .row-hit:hover .row-title { text-decoration: underline; }
 .deals .sub { display: none; }
 .cell-note { display: block; width: 100%; font-size: 12.5px; color: var(--ah-ink-2); }
 .deals .dwell { justify-items: start; }
@@ -1917,7 +1924,9 @@ button.chip-source svg { width: 12px; height: 12px; }
         h("div", { class: "row-actions" }, [
           href ? h("a", { class: "btn btn-secondary btn-sm", href: safeUrl(href), target: "_blank", rel: "noopener noreferrer" }, [icon(ICON.ext, 16), "Open in Gmail"]) : null,
           sentButton(Object.assign({ id: id }, d), null, "btn-ghost btn-sm", true),
-          copyPill(d)])])]), "rdy:" + id);
+          href ? null : copyPill(d)]),
+        // With Gmail one tap away, Copy waits in the details.
+        href ? h("div", { class: "row-actions" }, copyPill(d)) : null])]), "rdy:" + id);
   }
   function scoreCard() {
     var id = "weekly-score-" + isoWeek(), done = S.rated[id];
@@ -2136,10 +2145,10 @@ button.chip-source svg { width: 12px; height: 12px; }
       h("td", null, hit),
       h("td", { class: "hide-sm" }, d.stage || DASH),
       h("td", { class: "hide-sm" }, h("div", { class: "dwell" }, [days, d.dwell ? h("span", { class: "track" + (x.over ? " over" : ""), "aria-hidden": "true" }, h("b", { style: "width:" + pct + "%" })) : null])),
-      h("td", null, h("div", { class: "row-meta" }, [x.word ? statusFor({ status_word: x.word }) : h("span", { class: "status" }, "On track"),
+      h("td", null, h("div", { class: "row-meta" }, [x.word ? statusFor({ status_word: x.word }) : h("span", { class: "null", "aria-label": "On track" }, DASH),
         x.quiet && x.word !== "quiet" ? h("span", { class: "chip chip-quiet" }, [icon(ICON.lock, 12), "Quiet"]) : null,
         d.asked && d.asked.on ? h("span", { class: "cell-note" }, String(d.asked.person || "They").split(" ")[0] + " asked on " + fmtDate(d.asked.on, false) + ", no reply yet") : null])),
-      h("td", null, h("span", { class: "row-detail" + (x.stepState === "overdue" ? " neg" : "") }, x.next)),
+      h("td", null, h("span", { class: "row-detail" + (x.stepState === "overdue" ? " neg" : x.stepState === "none" ? " is-empty" : "") }, x.stepState === "none" && /^No next step/.test(x.next) ? "Set a step" : x.next)),
       solo ? null : h("td", { class: "hide-sm" }, x.lead || DASH),
       h("td", { class: "hide-sm" }, x.round || DASH)]);
   }
