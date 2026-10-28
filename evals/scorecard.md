@@ -1,6 +1,6 @@
 # ant. for VCs: eval scorecard
 
-Run at 28 Oct 2026 09:03. Golden fund: Quillwater Ventures (fictional).
+Run at 28 Oct 2026 09:53. Golden fund: Quillwater Ventures (fictional).
 
 **233 of 233 checks pass.** 7 Claude-run scores skipped: no saved run.
 
