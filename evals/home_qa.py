@@ -1809,7 +1809,8 @@ class QA:
         page.wait_for_timeout(80)
         dlg = page.locator("[role=dialog]")
         self.check(sc, "the prep card says research runs by itself in the desktop app, and offers Claude instead", dlg.get_by_text("Research", exact=True).count() == 1 and
-                   dlg.locator("button", has_text="Ask Claude instead").count() == 1 and "Claude desktop app" in dlg.inner_text())
+                   ((dlg.locator("button", has_text="Ask Claude instead").count() == 1 and "Claude desktop app" in dlg.inner_text()) or
+                    (dlg.locator("a", has_text="This morning's map in Drive").count() == 1 and dlg.locator("button", has_text="Research now").count() == 0)))
         ctx.close()
         snap = json.loads(json.dumps(self.snaps["aditi"]))
         cards = snap["prep"]["cards"]
@@ -1908,11 +1909,37 @@ class QA:
         self.check("research-demo", "colleagues at your own firm are never researched", not any(c["tool"] == "navigate" and "Ishaan" in c["input"].get("url", "") for c in page.evaluate("window.__mcp")))
         ctx.close()
 
+        sc = "by-itself"
+        snap = json.loads(json.dumps(self.snaps["aditi"]))
+        pid = next(k for k, v in snap["proposals"]["items"].items() if v.get("type") == "crm_update")
+        snap["proposals"]["items"][pid] = {**snap["proposals"]["items"][pid], "status": "applied", "applied_at": "2026-10-22T07:01:00+05:30"}
+        ctx, page = self.open(browser, sc, PHONE, snap=snap, state={"items": {}, "actions": {}, "settings": {"auto_apply": True}}, open_all=True)
+        self.check(sc, "Today says what ant. did by itself, and Done today lists it with Undo", page.locator(".recap", has_text="by itself").count() == 1 and
+                   page.locator("section[aria-label='Done today'] .log-row", has_text="Done by itself").locator("button", has_text="Reverse in CRM").count() == 1)
+        ctx.close()
+        ctx, page = self.open(browser, "ask-contrast", PHONE, sample={"answer": "- Atlas Settlement: markup due 23 Oct."})
+        page.locator("#ask-btn").click()
+        page.locator("[role=dialog] textarea").fill("What is due?")
+        page.locator("[role=dialog] textarea").press("Enter")
+        page.wait_for_timeout(200)
+        res = page.evaluate(SCAN, ".sheet")
+        self.check("ask-contrast", "the Ask answer passes contrast in light mode", not res["fails"], json.dumps(res["fails"][:2]))
+        self.check("ask-contrast", "the finished answer is announced once for screen readers", "Atlas Settlement" in page.locator("#ask-status").text_content())
+        ctx.close()
+        for m in ("aditi", "kabir", "meera", "rohan", "tara", "vikram", "solo"):
+            ctx, page = self.open(browser, "hero-banner", {"width": 380, "height": 844}, member=m, open_all=False, sample={"answer": "ok"}, mcp={"pages": ["Sign in to LinkedIn. Join now"]})
+            page.wait_for_timeout(300)
+            y = page.evaluate("(() => { var e = document.querySelector('.ah-hero-card .btn-primary'); return e ? e.getBoundingClientRect().bottom : 0; })()")
+            self.check("hero-banner", f"{m}: with the research banner showing, the main button stays above the tab bar", y <= 784, f"bottom at {round(y)}px")
+            ctx.close()
+
         sc = "auto-apply"
         ctx, page = self.open(browser, sc, PHONE, state={"items": {}, "actions": {}, "settings": {"auto_apply": True}})
-        self.check(sc, "in automatic mode a CRM change says it applies by itself", page.locator(DECIDE + " .status", has_text="Applies by itself").count() >= 1)
+        self.check(sc, "in automatic mode a CRM change says it applies by itself, offers Apply now and Don't apply, and leaves the Decide count",
+                   page.locator(DECIDE + " .status", has_text="Applies by itself").count() >= 1 and page.locator(DECIDE + " button", has_text="Apply now").count() >= 1
+                   and page.locator(DECIDE + " button", has_text="Don't apply").count() >= 1 and page.locator(".daystrip .stat", has_text="runs by itself").count() == 1)
         page.locator("#help-btn").click()
-        seg = page.locator("[role=dialog] .seg[aria-label='CRM changes from your notes']")
+        seg = page.locator("[role=dialog] .seg[aria-label='CRM changes and calendar holds']")
         seg.locator("button", has_text="Ask me first").click()
         page.wait_for_timeout(80)
         w = [x for x in page.evaluate("window.__writes") if x.get("path") == "state/settings"]

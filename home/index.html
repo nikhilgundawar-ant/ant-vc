@@ -354,7 +354,7 @@ section.card.is-folded .sec-h { margin-bottom: 0; }
 @media (max-width: 360px) { .ah-icon-btn, .ah-help { width: 32px; margin: -8px -2px; } }
 /* Ask */
 .ask-form { display: flex; gap: 8px; align-items: flex-end; }
-.ask-form textarea { flex: 1 1 auto; min-width: 0; min-height: 44px; max-height: 160px; resize: vertical; border: 0; border-radius: 12px; padding: 10px 14px;
+.ask-form textarea { flex: 1 1 auto; min-width: 0; min-height: 44px; max-height: 160px; resize: none; border: 0; border-radius: 12px; padding: 10px 14px;
   background: var(--ah-surface); color: var(--ah-ink); box-shadow: inset 0 0 0 1px var(--ah-field); font: inherit; line-height: 1.45; }
 .ask-form textarea:focus { outline: none; box-shadow: inset 0 0 0 1.5px var(--ah-hero), 0 0 0 4px var(--ah-halo); }
 .ask-form textarea::placeholder { color: var(--ah-ink-3); opacity: 1; }
@@ -373,6 +373,13 @@ section.card.is-folded .sec-h { margin-bottom: 0; }
 .hit b { font-weight: 600; font-size: 15px; }
 .hit span { font-size: 13px; color: var(--ah-ink-2); }
 .suggest { display: flex; flex-wrap: wrap; gap: 8px; }
+.banner-line { flex-wrap: nowrap; min-height: 44px; padding-block: 6px; }
+.banner-line > span { flex: 1 1 auto; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.banner-line .btn { flex: none; }
+.bubble .prov { color: var(--ah-ink-2); }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+td a { display: inline-flex; align-items: center; min-height: 24px; }
+.recap { margin: 0; }
 .today-cols { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 20px; align-items: start; }
 .today-col { display: grid; gap: 20px; min-width: 0; }
 .chip-filter { height: 32px; padding: 0 14px; }
@@ -473,6 +480,7 @@ section.card.is-folded .sec-h { margin-bottom: 0; }
 </div>
 <div id="overlay-slot"></div>
 <div id="toast-slot" aria-live="polite"></div>
+<div id="ask-status" class="sr-only" role="status" aria-live="polite"></div>
 
 <script>
 (function () {
@@ -1266,13 +1274,17 @@ section.card.is-folded .sec-h { margin-bottom: 0; }
     var who = function (m) { return String(m.who || "").split(", ")[0]; };
     var strip = h("div", { class: "daystrip" }, [
       cell("schedule", "Meetings", left.length, next ? "Next " + (next.time || "") + " " + who(next) : meetings.length ? "No more today" : "None today"),
-      cell("decide", "Decide", counts.decide || 0, urgentIn("decide") ? urgentIn("decide") + " urgent" : firstOf("decide") || (counts.decide ? "CRM changes and meeting logs" : "Nothing to decide"), urgentIn("decide") > 0),
+      cell("decide", "Decide", counts.decide || 0, urgentIn("decide") ? urgentIn("decide") + " urgent" : counts.autoDecide ? counts.autoDecide + " more " + (counts.autoDecide === 1 ? "runs" : "run") + " by itself" :
+        firstOf("decide") || (counts.decide ? "CRM changes and meeting logs" : "Nothing to decide"), urgentIn("decide") > 0),
       cell("send", "Send", counts.send || 0, urgentIn("send") ? urgentIn("send") + " overdue" : counts.send ? "Drafts and replies" : "All sent", urgentIn("send") > 0),
       cell("waiting", "Waiting on others", counts.waiting || 0, counts.waiting ? "Tap to see who owes what" : "No one owes you")]);
     var tools = h("div", { class: "day-tools" }, [h("span", { class: "lead" + (S.focus ? "" : " is-date") }, (function () { var d = wall(); return DAYS[d.wd] + " " + pad(d.d) + " " + MONTHS[d.m - 1]; })() +
         (S.focus ? ". Focus: only the top line and your schedule are open" : "")),
       h("button", { class: "chip chip-filter", type: "button", "aria-pressed": S.focus ? "true" : "false", onclick: function () { S.focus = !S.focus; S.focusOpen = {}; remember("ant.focus", S.focus ? "1" : "0"); render(); } }, "Focus")]);
-    return h("div", { class: "day" }, [tools, strip, timeline(meetings)]);
+    var byItself = activityLog().filter(function (e) { return e.auto && dayOf(e.at) === todayIso(); });
+    var recap = byItself.length ? h("p", { class: "prov recap" }, ["ant. did " + plural(byItself.length, "thing") + " by itself today. ",
+      h("button", { class: "link-btn", type: "button", onclick: function () { go("activity"); } }, "Review")]) : null;
+    return h("div", { class: "day" }, [tools, strip, timeline(meetings), recap]);
   }
   // The working day as a bar from 08:00 to 20:00: meetings filled in, now marked.
   function timeline(meetings) {
@@ -1299,7 +1311,7 @@ section.card.is-folded .sec-h { margin-bottom: 0; }
   }
   // What you closed today, with Undo. The full record is in Activity.
   function doneToday() {
-    var rows = activityLog().filter(function (e) { return dayOf(e.at) === todayIso() && (e.cat === "sent" || e.cat === "done") && !e.undone; });
+    var rows = activityLog().filter(function (e) { return dayOf(e.at) === todayIso() && (e.cat === "sent" || e.cat === "done" || e.auto) && !e.undone; });
     if (!rows.length) return null;
     return h("section", { class: "card", "aria-label": "Done today", id: "sec-done" }, [h("h2", { class: "sec-h" }, [h("b", null, "Done today"), h("span", { class: "count" }, String(rows.length))]),
       h("div", { class: "list" }, rows.slice(0, 8).map(logRow)),
@@ -1386,7 +1398,8 @@ section.card.is-folded .sec-h { margin-bottom: 0; }
     var cards = {}, counts = {};
     BUCKETS.forEach(function (bk) {
       var rows = (buckets[bk[0]] || []).map(itemRow).concat(bk[0] === "decide" ? ready.decide : bk[0] === "send" ? ready.send : []);
-      counts[bk[0]] = rows.length;
+      counts[bk[0]] = rows.filter(function (r) { return !r.classList.contains("is-auto"); }).length;
+      if (bk[0] === "decide") counts.autoDecide = rows.length - counts.decide;
       if (!rows.length) return;
       var urgent = (buckets[bk[0]] || []).some(function (it) { return (WORDS[wordOf(it)] || WORDS.low)[1] === "breach"; });
       cards[bk[0]] = h("section", { class: "card", "aria-label": bk[1], id: "sec-" + bk[0], "data-open": urgent ? "1" : null },
@@ -1547,16 +1560,18 @@ section.card.is-folded .sec-h { margin-bottom: 0; }
         return;
       }
       var act = S.actions[id], decided = act && (act.status === "approved");
+      var autoOn = (S.settings || {}).auto_apply === true && !sheetCrm();
       var fields = changeLines(p);
       rows.push(foldRow(h("div", { class: "row" }, [glyph("medium"), h("div", { class: "row-main" }, [
         h("div", { class: "row-hit static" }, [h("span", { class: "row-title" }, ((p.record && p.record.name) ? p.record.name + ": " : "") + (p.title || "CRM update")),
           h("span", { style: "display:grid;gap:2px" }, fields)]),
         h("div", { class: "row-meta" }, [decided ? h("span", { class: "done-note" }, act.type === "skip" ? "Skipped" : "Approved. ant. saves it to your CRM at the next check.") :
-          (S.settings || {}).auto_apply === true ? h("span", { class: "status hero" }, "Applies by itself at the next check") : h("span", { class: "status" }, "Needs your OK"),
+          autoOn ? h("span", { class: "status hero" }, "Applies by itself at " + ((S.snap.brief || {}).next_check || "the next check")) : h("span", { class: "status" }, "Needs your OK"),
           sourceChip({ label: p.source_label || "Meeting notes", url: p.source_url })]),
         decided ? null : h("div", { class: "row-actions" }, [
-          h("button", { class: "btn btn-secondary btn-sm", type: "button", onclick: function () { approve(id, p.type || "crm_update", { fields: p.fields, record: p.record }); } }, "Approve"),
-          h("button", { class: "btn btn-ghost btn-sm", type: "button", onclick: function () { approve(id, "skip", {}, "Skipped"); } }, "Skip")])])]), "rdy:" + id));
+          h("button", { class: "btn btn-secondary btn-sm", type: "button", onclick: function () { approve(id, p.type || "crm_update", { fields: p.fields, record: p.record }); } }, autoOn ? "Apply now" : "Approve"),
+          h("button", { class: "btn btn-ghost btn-sm", type: "button", onclick: function () { approve(id, "skip", {}, autoOn ? "Not applied. ant. leaves it as it is." : "Skipped"); } }, autoOn ? "Don't apply" : "Skip")])])]), "rdy:" + id));
+      if (autoOn && !decided) rows[rows.length - 1].classList.add("is-auto");
     });
     // After a founder meeting on your own deal: one tap logs it in the CRM, with the next step and, when it moved, the stage.
     var metOpen = ((S.snap.pipeline || {}).met_prompts || []).filter(function (m) {
@@ -2212,10 +2227,13 @@ section.card.is-folded .sec-h { margin-bottom: 0; }
           return h("li", null, [h("b", null, x[0] + ": "), String(x[1])]); })),
         (r.points || []).length ? h("ol", null, r.points.slice(0, 3).map(function (q) { return h("li", null, q); })) : null,
         h("p", { class: "prov" }, ["LinkedIn, read in your browser" + (r.read_at ? " · " + fmtDate(r.read_at, false) : "") + " ", sourceChip({ label: "Profile", url: r.source_url }),
-          safeUrl(r.drive_url) ? " " : null, safeUrl(r.drive_url) ? sourceChip({ label: "PDF in Drive", url: r.drive_url }) : null])]));
+          safeUrl(r.drive_url || card.empathy_map_url) ? " " : null, safeUrl(r.drive_url || card.empathy_map_url) ? sourceChip({ label: "Doc in Drive", url: r.drive_url || card.empathy_map_url }) : null])]));
     });
-    if (safeUrl(card.empathy_map_url)) kids.push(h("div", null, h("a", { class: "btn btn-secondary btn-sm", href: safeUrl(card.empathy_map_url), target: "_blank", rel: "noopener noreferrer" },
-      [icon(ICON.ext, 16), "Open the empathy map"])));
+    if (!maps.length && safeUrl(card.empathy_map_url)) {
+      kids.push(h("div", null, h("a", { class: "btn btn-secondary btn-sm", href: safeUrl(card.empathy_map_url), target: "_blank", rel: "noopener noreferrer" },
+        [icon(ICON.ext, 16), "This morning's map in Drive"])));
+      return h("div", { class: "kv" }, kids);
+    }
     if (!maps.length) {
       var ask = "Research my " + (card.time || (meeting && meeting.time) || "") + " meeting with " + (card.who || card.title || "them") + " on LinkedIn";
       var canRun = !!S.mcp && !S.static && !S.readOnly;
@@ -2225,7 +2243,7 @@ section.card.is-folded .sec-h { margin-bottom: 0; }
         "Open ant. Home in the Claude desktop app and ant. researches each person on LinkedIn automatically before the meeting. Or ask Claude in a chat."));
       if (S.rs.note) kids.push(h("p", { class: "prov", id: "rs-note" }, S.rs.note));
       kids.push(h("div", { class: "row-actions" }, [
-        canRun && !S.rs.running ? h("button", { class: "btn btn-secondary btn-sm", type: "button", onclick: function () { runResearch(rsCandidates(card)); closeOverlay(); toast("Researching on LinkedIn in the Claude app's browser. The map lands on this card."); } }, [icon(ICON.search, 16), "Research now"]) : null,
+        canRun && !S.rs.running ? h("button", { class: "btn btn-secondary btn-sm", type: "button", onclick: function () { runResearch(rsCandidates(card)); closeOverlay(); toast("Researching on LinkedIn in the Claude app's browser. The map lands on this card."); } }, [icon(ICON.search, 16), S.rs.halted ? "Try again" : "Research now"]) : null,
         S.static ? null : h("button", { class: "btn btn-ghost btn-sm", type: "button",
           onclick: function () { copyText(ask.replace(/\s+/g, " "), "Copied. Paste it in Claude: it can use the app's browser or Chrome."); } }, [icon(ICON.copy, 16), "Ask Claude instead"])]));
     }
@@ -2275,7 +2293,13 @@ section.card.is-folded .sec-h { margin-bottom: 0; }
     var sc = S.snap.scorecard || {}, c = cfg();
     overlay("How ant. works", [
       h("p", { class: "finding" }, "ant. reads, prepares, drafts and researches by itself. It never sends an email or deletes anything: you press Send. " +
-        ((S.settings || {}).auto_apply === true ? "CRM changes from your notes and holds on your own calendar apply automatically, with Undo in Activity." : "CRM changes wait for your Approve.")),
+        ((S.settings || {}).auto_apply === true ? "CRM changes from your notes and holds on your own calendar apply by themselves." : "CRM changes and holds wait for your Approve.")),
+      S.static ? null : h("div", { class: "kv" }, [h("h3", null, "Runs by itself"), h("p", { class: "prov" }, "Emails never send by themselves: you press Send.")]),
+      S.static ? null : segKv("CRM changes and calendar holds", [["auto", "By itself"], ["ask", "Ask me first"]], (S.settings || {}).auto_apply === true ? "auto" : "ask", function (v) {
+        S.settings = Object.assign({}, S.settings || {}, { auto_apply: v === "auto" });
+        if (S.db && !S.readOnly) { var r = S.db.doc("state/settings"); r.set({ items: S.settings }).then(function () { toast(v === "auto" ? "CRM changes and holds on your calendar now apply at each check. Undo CRM changes from Activity; delete a hold in your calendar." : "ant. asks before each CRM change and hold."); }, function () { toast("Could not save that."); }); }
+      }),
+      S.static ? null : segKv("Research before meetings", [["auto", "By itself"], ["off", "Off"]], rsSetting(), function (v) { remember("ant.research", v); }),
       kv("Ask", [h("li", null, "Press / or the search icon on any screen to find a deal, person or LP, or to ask a question about your data.")]),
       kv("Taps", [h("li", null, "Tap a line to act on it: done, snooze, set a next step or draft a note."), h("li", null, "Rate any line Useful, Not useful or Wrong. ant. tunes itself every Sunday."),
         h("li", null, "What you approve applies at the next hourly check. Undo any tap from Activity, at the top of the page."),
@@ -2284,11 +2308,6 @@ section.card.is-folded .sec-h { margin-bottom: 0; }
       (function () { var k = segKv("Keyboard shortcuts", [["on", "On"], ["off", "Off"]], S.keys ? "on" : "off", function (v) { S.keys = v === "on"; remember("ant.keys", v); }); k.classList.add("keys-only"); return k; })(),
       kv("This week", [h("li", null, isNil(sc.overall) ? "You have not scored ant. this week yet." : "You scored ant. " + sc.overall + " of 10 this week."), h("li", null, sc.change_note || "No changes yet. Tuning runs Sunday evening.")]),
       kv("You", [h("li", null, (c.level_label || "Level not set") + (c.firm ? " at " + c.firm : "")), h("li", null, "Morning brief at " + (c.brief_time || "07:00") + (c.tz ? " (" + c.tz + ")" : ""))]),
-      S.static ? null : segKv("CRM changes from your notes", [["auto", "Apply automatically"], ["ask", "Ask me first"]], (S.settings || {}).auto_apply === true ? "auto" : "ask", function (v) {
-        S.settings = Object.assign({}, S.settings || {}, { auto_apply: v === "auto" });
-        if (S.db && !S.readOnly) { var r = S.db.doc("state/settings"); r.set({ items: S.settings }).then(function () { toast(v === "auto" ? "CRM changes and holds on your calendar now apply at each check. Undo any from Activity." : "ant. asks before each CRM change."); }, function () { toast("Could not save that."); }); }
-      }),
-      S.static ? null : segKv("Research before meetings", [["auto", "Automatic"], ["off", "Off"]], rsSetting(), function (v) { remember("ant.research", v); }),
       segKv("Appearance", [["system", "Match my device"], ["light", "Light"], ["dark", "Dark"]], themeChoice(), setTheme),
       segKv("Text size", [["comfortable", "Comfortable"], ["compact", "Compact"]], density(), function (v) { setDensity(v); render(); }),
       h("p", { class: "prov" }, "This page is private to you. To stop ant. and wipe this data, tell Claude “turn off ant.”.")]);
@@ -2321,8 +2340,8 @@ section.card.is-folded .sec-h { margin-bottom: 0; }
     Object.keys(props_).forEach(function (k) {
       var pr = props_[k] || {};
       if (S.actions[k] || !pr.applied_at || (pr.type !== "crm_update" && pr.type !== "calendar_hold") || ["applied", "failed"].indexOf(pr.status) < 0) return;
-      out.push({ id: k, src: "actions", at: pr.applied_at, t: ((pr.record && pr.record.name) ? pr.record.name + ": " : "") + (pr.title || "CRM change") + " (by itself)",
-        cat: pr.type === "calendar_hold" ? "calendar" : "crm", undone: null, a: { type: pr.type, status: "approved", payload: { fields: pr.fields, record: pr.record }, at: pr.applied_at } });
+      out.push({ id: k, src: "actions", at: pr.applied_at, t: "Done by itself: " + ((pr.record && pr.record.name) ? pr.record.name + ", " : "") + (pr.title || "CRM change"),
+        cat: pr.type === "calendar_hold" ? "calendar" : "crm", undone: null, auto: true, a: { type: pr.type, status: "approved", payload: { fields: pr.fields, record: pr.record }, at: pr.applied_at } });
     });
     (S.ratings || []).forEach(function (r) {
       if (r && r.at) out.push({ id: r.id, src: "ratings", at: r.at, t: (r.title || "A line") + ": " + String(r.value || "").replace(/_/g, " "), cat: "rated", r: r });
@@ -2406,7 +2425,7 @@ section.card.is-folded .sec-h { margin-bottom: 0; }
       }));
     var head = h("div", { class: "day" }, [h("div", { class: "sec-h", style: "margin:0" }, [h("b", null, "Activity"),
         h("button", { class: "btn btn-ghost btn-sm", type: "button", style: "margin-left:auto", onclick: function () { go("today"); } }, "Back to Today")]),
-      h("p", { class: "prov" }, "Everything you did in ant. Home for the last 90 days. Undo works from here: a change still waiting is withdrawn, and a CRM change already made is put back at the next check."),
+      h("p", { class: "prov" }, "Everything you and ant. did in ant. Home for the last 90 days. Undo works from here: a change still waiting is withdrawn, and a CRM change already made is put back at the next check."),
       all.length ? filters : null]);
     var list = all.filter(function (e) { return S.logFilter === "all" || e.cat === S.logFilter; });
     if (!list.length) return [head, emptyCard("Nothing here yet", "Each tap you make shows here, with Undo.")];
@@ -2585,10 +2604,21 @@ section.card.is-folded .sec-h { margin-bottom: 0; }
     var a = { role: "ant", text: "", live: true }; S.chat.push(a);
     S.askDraft = ""; paint();
     askClaude(question, function (t) { a.text = t; paint(); })
-      .then(function (t) { a.text = t; a.live = false; paint(); }, function (e) { a.live = false; a.failed = true; a.text = (e && e.text) || ""; a.note = askError(e); paint(); });
+      .then(function (t) { a.text = t; a.live = false; paint(); announce(t); }, function (e) { a.live = false; a.failed = true; a.text = (e && e.text) || ""; a.note = askError(e); paint(); announce(a.note); });
+  }
+  // Screen readers hear the finished answer once, not every streamed piece.
+  function announce(t) { var el = document.getElementById("ask-status"); if (el) { el.textContent = ""; setTimeout(function () { el.textContent = String(t || "").slice(0, 600); }, 50); } }
+  function nameSuggestions() {
+    var deals = ((S.snap.pipeline || {}).deals) || {};
+    return Object.keys(deals).filter(function (k) { return deals[k].active; }).slice(0, 4).map(function (k) { return String(deals[k].company || ""); }).filter(Boolean);
+  }
+  function suggestChips(onPick) {
+    var noClaude = S.sample === null, list = noClaude ? nameSuggestions() : SUGGEST.slice(0, 3);
+    return h("div", { class: "suggest" }, list.map(function (q) { return h("button", { class: "chip chip-filter", type: "button", "aria-pressed": "false", onclick: function () { onPick(q, noClaude); } }, q); }));
   }
   function chatView(list) {
-    return h("div", { class: "chat", "aria-live": "polite" }, list.map(function (m) {
+    var live = list.some(function (m) { return m.live; });
+    return h("div", { class: "chat", "aria-busy": live ? "true" : "false" }, list.map(function (m) {
       if (m.role === "me") return h("div", { class: "bubble me" }, m.text);
       return h("div", { class: "bubble ant" }, [m.text ? mdBlock(m.text) : h("span", { class: "status" }, m.live ? "Thinking…" : ""),
         m.note ? h("p", { class: "prov" }, m.note) : m.live ? null : h("p", { class: "prov" }, "From your ant. Home data · ant. can be wrong: check the source before you act")]);
@@ -2624,8 +2654,7 @@ section.card.is-folded .sec-h { margin-bottom: 0; }
       h("h2", { class: "sec-h", style: "margin:0" }, [h("b", null, "Ask")]),
       h("p", { class: "finding" }, noClaude ? "Type a name or a company to find it in your Home. Answers to questions need ant. Home open in the Claude app." :
         "Ask anything about your deals, people, portfolio, LPs and promises. ant. answers from your Home's own data; matches show as you type."),
-      S.chat.length ? null : h("div", { class: "suggest" }, SUGGEST.map(function (q) {
-        return h("button", { class: "chip chip-filter", type: "button", "aria-pressed": "false", onclick: function () { if (noClaude) { S.askDraft = q; render(); return; } ask(q, render); } }, q); })),
+      S.chat.length ? null : suggestChips(function (q, find) { if (find) { S.askDraft = q; render(); return; } ask(q, render); }),
       form, hitsBox]);
     var log = S.chat.length ? h("section", { class: "card", "aria-label": "Conversation", "data-fold": "no", style: "display:grid;gap:12px" }, [
       h("div", { class: "sec-h", style: "margin:0" }, [h("b", null, "Conversation"), h("button", { class: "btn btn-ghost btn-sm", type: "button", style: "margin-left:auto",
@@ -2647,8 +2676,13 @@ section.card.is-folded .sec-h { margin-bottom: 0; }
       form._box.value = ""; hitsBox.textContent = ""; ask(q, function () { paint(); if (S.tab === "ask") render(); });
     }, true);
     form._box._onType = function (v) { hitsBox.textContent = ""; var l = hitsList(v); if (l) hitsBox.appendChild(l); };
+    var chips = S.chat.length ? null : suggestChips(function (q, find) {
+      if (find) { form._box.value = q; S.askDraft = q; form._box._onType(q); return; }
+      if (chips && chips.parentNode) chips.parentNode.removeChild(chips);
+      ask(q, function () { paint(); if (S.tab === "ask") render(); });
+    });
     overlay("Ask ant.", [h("p", { class: "prov" }, S.sample === null ? "Find a deal, person, LP or company. Questions need ant. Home open in the Claude app." :
-      "Find anything, or ask a question about your data. Enter asks; matches show as you type."), form, hitsBox, chatBox]);
+      "Find anything, or ask a question about your data. Enter asks; matches show as you type."), form, chips, hitsBox, chatBox]);
     paint();
     setTimeout(function () { form._box.focus(); }, 0);
   }
@@ -2700,7 +2734,12 @@ section.card.is-folded .sec-h { margin-bottom: 0; }
     S.rs.running = true; S.rs.stop = false; S.rs.halted = false;
     var done = 0;
     var next = function (i) {
-      if (i >= list.length || S.rs.stop) { S.rs.running = false; S.rs.who = null; rsNote(S.rs.halted ? S.rs.note : S.rs.stop ? "Research stopped." : done ? "Research done: " + plural(done, "empathy map") + " on your prep cards." : S.rs.note); return Promise.resolve(); }
+      if (i >= list.length || S.rs.stop) {
+        S.rs.running = false; S.rs.who = null;
+        if (S.rs.halted) rsNote(S.rs.note);
+        else { S.rs.note = null; render(); toast(S.rs.stop ? "Research stopped." : done ? "Research done: " + plural(done, "empathy map") + " on your prep cards." : "No new people to research."); }
+        return Promise.resolve();
+      }
       var p = list[i]; S.rs.who = p.person.name; rsNote("Reading " + p.person.name + "'s LinkedIn in the Claude app's browser…");
       return rsOne(p).then(function (ok) { if (ok) done += 1; return pause(8000 + Math.random() * 4000); },
         function (e) { rsNote(e && e.say ? e.say : "Could not read LinkedIn for " + p.person.name + "."); if (e && e.halt) { S.rs.stop = true; S.rs.halted = true; } return e && e.halt ? null : markTried(p.key); })
@@ -2840,7 +2879,7 @@ section.card.is-folded .sec-h { margin-bottom: 0; }
   }
   function banners(host) {
     var c = cfg(), b = S.snap.brief || {};
-    if (S.rs.running || (S.rs.note && S.tab === "today")) host.appendChild(h("div", { class: "banner", role: "status" }, [h("span", { id: "rs-note" }, S.rs.note || ""),
+    if (S.rs.running || (S.rs.note && S.tab === "today")) host.appendChild(h("div", { class: "banner banner-line", role: "status" }, [h("span", { id: "rs-note" }, S.rs.note || ""),
       S.rs.running ? h("button", { class: "btn btn-ghost btn-sm", type: "button", style: "margin-left:auto", onclick: function () { S.rs.stop = true; rsNote("Stopping after this person…"); } }, "Stop") :
       h("button", { class: "btn btn-ghost btn-sm", type: "button", style: "margin-left:auto", onclick: function () { S.rs.note = null; render(); } }, "Dismiss")]));
     if (c.demo) {
