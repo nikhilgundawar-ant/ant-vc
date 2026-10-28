@@ -1,9 +1,9 @@
 {
- "checks": 755,
+ "checks": 784,
  "failed": 0,
  "complete": true,
  "scenarios": "all",
- "page_sha256": "38443577c7e2",
+ "page_sha256": "3999689d7e92",
  "rows": [
   {
    "scenario": "today-380",
@@ -463,9 +463,9 @@
   },
   {
    "scenario": "pipeline-380",
-   "check": "early stages fold for a partner",
+   "check": "deals are one table with a filter under every column",
    "ok": true,
-   "detail": ""
+   "detail": "7"
   },
   {
    "scenario": "pipeline-380",
@@ -691,9 +691,9 @@
   },
   {
    "scenario": "pipeline-1440",
-   "check": "early stages fold for a partner",
+   "check": "deals are one table with a filter under every column",
    "ok": true,
-   "detail": ""
+   "detail": "7"
   },
   {
    "scenario": "pipeline-1440",
@@ -890,6 +890,12 @@
   {
    "scenario": "lps-1440",
    "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "pipeline-actions",
+   "check": "a company opens its deal in the side panel",
    "ok": true,
    "detail": ""
   },
@@ -1257,13 +1263,13 @@
    "scenario": "colour-light-aditi-pipeline",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "269 texts, 63 marks, min 3.24:1"
+   "detail": "324 texts, 45 marks, min 3.24:1"
   },
   {
    "scenario": "colour-light-aditi-deal-open",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "269 texts, 66 marks, min 3.24:1"
+   "detail": "226 texts, 52 marks, min 3.24:1"
   },
   {
    "scenario": "colour-light-aditi-people",
@@ -1293,7 +1299,7 @@
    "scenario": "colour-light-meera-pipeline",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "113 texts, 44 marks, min 3.24:1"
+   "detail": "105 texts, 37 marks, min 3.24:1"
   },
   {
    "scenario": "colour-light-rohan-today",
@@ -1305,7 +1311,7 @@
    "scenario": "colour-light-rohan-pipeline",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "126 texts, 44 marks, min 3.24:1"
+   "detail": "158 texts, 40 marks, min 3.24:1"
   },
   {
    "scenario": "colour-light-tara-portfolio",
@@ -1401,13 +1407,13 @@
    "scenario": "colour-dark-aditi-pipeline",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "269 texts, 71 marks, min 3.8:1"
+   "detail": "324 texts, 53 marks, min 3.8:1"
   },
   {
    "scenario": "colour-dark-aditi-deal-open",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "269 texts, 74 marks, min 3.8:1"
+   "detail": "226 texts, 60 marks, min 3.8:1"
   },
   {
    "scenario": "colour-dark-aditi-people",
@@ -1437,7 +1443,7 @@
    "scenario": "colour-dark-meera-pipeline",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "113 texts, 52 marks, min 3.8:1"
+   "detail": "105 texts, 45 marks, min 3.8:1"
   },
   {
    "scenario": "colour-dark-rohan-today",
@@ -1449,7 +1455,7 @@
    "scenario": "colour-dark-rohan-pipeline",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "126 texts, 52 marks, min 3.8:1"
+   "detail": "158 texts, 48 marks, min 3.8:1"
   },
   {
    "scenario": "colour-dark-tara-portfolio",
@@ -2331,7 +2337,7 @@
    "scenario": "waiting-founder",
    "check": "the pipeline row says who waits and since when",
    "ok": true,
-   "detail": "Copperleaf Collect\nDebashish asked on 13 Oct, no reply yet. Next: Second meeting by 25 Oct\nWaiting on you\nME \u00b7 Partner: "
+   "detail": "Copperleaf Collect\nFirst meeting \u00b7 day 5\n\t\nWaiting on you\nDebashish asked on 13 Oct, no reply yet\n\t\nSecond meeting by 25"
   },
   {
    "scenario": "waiting-founder",
@@ -2899,9 +2905,9 @@
   },
   {
    "scenario": "hero-sent",
-   "check": "a promise hero with a draft offers Open draft, Sent it and Done; Sent it marks the draft and the promise",
+   "check": "a promise hero with a draft offers Open draft and Sent it, one way to finish; Sent it marks the draft and the promise",
    "ok": true,
-   "detail": "buttons ['Open in Gmail', 'Sent it', 'Done']; wrote ['dr_k_c1aa612254', 'k_c1aa612254', 't_8f20210e05']"
+   "detail": "buttons ['Open in Gmail', 'Sent it', 'Tomorrow']; wrote ['dr_k_c1aa612254', 'k_c1aa612254', 't_8f20210e05']"
   },
   {
    "scenario": "hero-sent",
@@ -3081,7 +3087,7 @@
    "scenario": "step-resaved",
    "check": "a step saved again after the last was applied shows as saving",
    "ok": true,
-   "detail": "Zeno Treasury\nPartner meeting on 3 Nov (saving to your CRM at the next check)\nME \u00b7 Partner: Aditi \u00b7 Seed $2M\nCRM\nDay 4 of 7"
+   "detail": "Zeno Treasury\nFirst meeting \u00b7 day 4\n\t\nOn track\n\t\nPartner meeting on 3 Nov (saving to your CRM at the next check)"
   },
   {
    "scenario": "met-fold",
@@ -3165,7 +3171,7 @@
    "scenario": "utc-step",
    "check": "a tap stamped in UTC after a run's +05:30 apply reads as newer: the step shows as saving",
    "ok": true,
-   "detail": "Zeno Treasury\nReference calls with Shreya (saving to your CRM at the next check)\nME \u00b7 Partner: Aditi \u00b7 Seed $2M\nCRM\nDay 4 of 7"
+   "detail": "Zeno Treasury\nFirst meeting \u00b7 day 4\n\t\nOn track\n\t\nReference calls with Shreya (saving to your CRM at the next check)"
   },
   {
    "scenario": "was-due",
@@ -3393,7 +3399,7 @@
    "scenario": "step-sent",
    "check": "a CRM step you marked sent reads 'Sent 23 Oct: send term sheet markup' on Pipeline, never 'Next:'",
    "ok": true,
-   "detail": "Atlas Settlement\nSent 23 Oct: send term sheet markup. Add the next step. Ishaan wrote: \u201cWe also have a term sheet from Bluepeak Partners and need to decide by 5"
+   "detail": "Atlas Settlement\nTerm sheet \u00b7 day 9\n\t\nCompeting\n\t\nSent 23 Oct: send term sheet markup. Add the next step"
   },
   {
    "scenario": "step-sent",
@@ -4375,6 +4381,12 @@
   },
   {
    "scenario": "pills",
+   "check": "on a narrower card the pills still stack on the right",
+   "ok": true,
+   "detail": "[]"
+  },
+  {
+   "scenario": "pills",
    "check": "on a wide card every row's pills stack on its right edge, one width",
    "ok": true,
    "detail": "[{\"right\": 0, \"beside\": true, \"w\": 156, \"list\": 578}, {\"right\": 0, \"beside\": true, \"w\": 156, \"list\": 578}, {\"right\": 0, \"beside\": true, \"w\": 156, \"list\": 578}, {\"right\": 0, \"beside\": true, \"w\": 156, \"list\": 578}]"
@@ -4534,6 +4546,168 @@
    "check": "on a phone the notes rise from the bottom, full width",
    "ok": true,
    "detail": "[0, 0]"
+  },
+  {
+   "scenario": "deals-table",
+   "check": "the Stage filter keeps only that stage",
+   "ok": true,
+   "detail": "2 of 37"
+  },
+  {
+   "scenario": "deals-table",
+   "check": "Clear filters brings every deal back",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "deals-table",
+   "check": "Status: Needs a look keeps only competing and stale deals",
+   "ok": true,
+   "detail": "Stale; Competing; Competing; Competing"
+  },
+  {
+   "scenario": "deals-table",
+   "check": "typing in the company filter keeps every letter and narrows the rows",
+   "ok": true,
+   "detail": "Ster"
+  },
+  {
+   "scenario": "deals-table",
+   "check": "column 1 has a named filter",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "deals-table",
+   "check": "column 2 has a named filter",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "deals-table",
+   "check": "column 3 has a named filter",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "deals-table",
+   "check": "column 4 has a named filter",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "deals-table",
+   "check": "column 5 has a named filter",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "deals-table",
+   "check": "column 6 has a named filter",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "deals-table",
+   "check": "column 7 has a named filter",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "deals-table",
+   "check": "a header sorts its column and says so",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "deals-table",
+   "check": "a second tap sorts the other way",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "deals-table",
+   "check": "a company opens its deal in a side panel with the next-step form and Open in CRM",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "deals-table",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "deals-table",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "deals-table",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "deals-table",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "deals-table",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "deals-table-phone",
+   "check": "on a phone the filters sit above the table, one per column",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "deals-table-phone",
+   "check": "on a phone the table fits without sideways scrolling",
+   "ok": true,
+   "detail": "[316, 348]"
+  },
+  {
+   "scenario": "deals-table-phone",
+   "check": "a phone filter narrows the table too",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "deals-table-phone",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "deals-table-phone",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "deals-table-phone",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "deals-table-phone",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "deals-table-phone",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
   }
  ]
 }

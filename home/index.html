@@ -502,6 +502,12 @@ td a, .md li a, .kv li a { display: inline-flex; align-items: center; min-height
 .row.swipe-r { background: var(--ah-tint); }
 .row.swipe-l { background: var(--ah-control-2); }
 .row.is-leaving { opacity: .4; transition: opacity 200ms var(--ah-ease); }
+@container (min-width: 440px) {
+  .row { grid-template-columns: 44px minmax(0, 1fr) 124px; gap: 0 12px; }
+  .row-side { grid-column: 3; grid-row: 1 / span 3; grid-template-columns: minmax(0, 1fr); gap: 6px; padding-block: 6px; }
+  .row-side .btn { height: 32px; padding: 0 8px; }
+  .row-later { padding-bottom: 4px; }
+}
 @container (min-width: 560px) {
   .row { grid-template-columns: 44px minmax(0, 1fr) 156px; gap: 0 12px; }
   .row-side { grid-column: 3; grid-row: 1 / span 3; grid-template-columns: minmax(0, 1fr); gap: 6px; padding-block: 6px; }
@@ -511,6 +517,39 @@ td a, .md li a, .kv li a { display: inline-flex; align-items: center; min-height
 /* Pipeline rows keep their own shape: the days in stage on the right. */
 .row.deal-row { grid-template-columns: 18px minmax(0, 1fr) auto; gap: 12px; padding: 14px 0; }
 .deal-row .row-main { padding-block: 0; }
+/* Deals table: sortable headers, a filter under each one on a laptop, a filter bar above on a phone */
+.th-sort { display: inline-flex; align-items: center; gap: 4px; border: 0; background: transparent; padding: 0; min-height: 32px; font: inherit; font-weight: 700; color: inherit; cursor: pointer; white-space: nowrap; }
+.th-sort:hover { color: var(--ah-hero); }
+.th-arrow { font-size: 12px; color: var(--ah-ink-3); }
+.th-arrow.is-on { color: var(--ah-hero); }
+.filter-row td { padding: 0 12px 8px 0; border-bottom: 1px solid var(--ah-row-rule); }
+.filter-row td:last-child { padding-right: 0; }
+.tf { height: 32px; width: 100%; min-width: 0; font-size: 13px; border-radius: 999px; padding: 0 12px; flex: none; }
+.tf-wrap { width: 100%; }
+.tf-wrap select.tf { height: 32px; width: 100%; max-width: 100%; padding: 0 32px 0 12px; border-radius: 999px; font-size: 13px; }
+.tf-wrap.is-on select, .tf.is-on { box-shadow: inset 0 0 0 1.5px var(--ah-hero); }
+.filter-bar { display: none; }
+.deals td { vertical-align: middle; }
+.deals .row-hit { min-height: 32px; }
+.deals .row-detail { font-size: 13.5px; color: var(--ah-ink); }
+.deals .row-detail.neg { color: var(--ah-breach-ink); }
+.deals .sub { display: none; }
+.cell-note { display: block; width: 100%; font-size: 12.5px; color: var(--ah-ink-2); }
+.deals .dwell { justify-items: start; }
+.deals tbody tr:hover td { background: var(--ah-tint); }
+.deals tr.is-breach td:first-child { box-shadow: inset 3px 0 0 var(--ah-breach); padding-left: 10px; }
+table.deals { min-width: 760px; }
+@media (max-width: 759px) {
+  .filter-row { display: none; }
+  .filter-bar { display: grid; gap: 8px; }
+  .filter-top { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px; align-items: center; }
+  .filter-top .btn { height: 32px; }
+  .filter-more { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  .filter-more[hidden] { display: none; }
+  table.deals { min-width: 0; }
+  .deals .hide-sm { display: none; }
+  .deals .sub { display: block; }
+}
 /* The day at a glance: one line of pills, each with its count, each opening its section */
 .pills { display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; margin: -4px; padding: 4px; }
 .pills::-webkit-scrollbar { display: none; }
@@ -819,7 +858,7 @@ button.chip-source svg { width: 12px; height: 12px; }
     S.snap = JSON.parse(JSON.stringify(m.snaps)); S.items = JSON.parse(JSON.stringify((m.state || {}).items || {}));
     S.actions = JSON.parse(JSON.stringify((m.state || {}).actions || {})); S.rated = {}; S.ratings = []; S.open = null; S.loaded = true;
     S.tab = urgentHero(S.snap.brief) ? "today" : (TAB_KEYS.indexOf((S.snap.config || {}).opens_on) >= 0 ? S.snap.config.opens_on : "today");
-    S.tabChosen = true; S.search = ""; S.filter = "all";
+    S.tabChosen = true; S.search = ""; S.filter = "all"; S.pf = null;
     render(); window.scrollTo(0, 0);
   }
   function startDb() {
@@ -1388,7 +1427,8 @@ button.chip-source svg { width: 12px; height: 12px; }
     else if (hero.source && safeUrl(hero.source.url)) add(h("a", { class: "btn btn-primary", href: safeUrl(hero.source.url), target: "_blank", rel: "noopener noreferrer" }, [icon(ICON.ext, 16), openLabel(hero.source.label)]));
     // A draft on the hero gets Sent it beside it. A promise keeps Done too: it may have been settled in the room.
     if (hd) add(sentButton(hd, hero.sentFor || null, "btn-ghost"));
-    if (hero.doneable) add(h("button", { class: "btn btn-ghost", type: "button", onclick: function () { markRowDone(hero.doneable, hd); } }, "Done"));
+    // One way to finish on the top line: Sent it when there is a draft, Done when there is not.
+    if (hero.doneable && !hd) add(h("button", { class: "btn btn-ghost", type: "button", onclick: function () { markRowDone(hero.doneable, hd); } }, "Done"));
     if (hero.snoozable) add(h("button", { class: "btn btn-ghost", type: "button", title: "See it again tomorrow at 08:00", onclick: function () { snooze(hero.snoozable, morning(1), "tomorrow 08:00"); } }, "Tomorrow"));
     if (hd && hdHref) add(h("button", { class: "btn btn-ghost icon-only", type: "button", "aria-label": "Copy draft", title: "Copy draft", onclick: function () { copyText(draftText(hd), "Draft copied"); } }, icon(ICON.copy, 16)));
     var src = hero.source && hero.source.label && (hero.button !== "Prep me" || hero.draftDoc) && (hero.action || hero.draftDoc || !safeUrl(hero.source.url) || hero.chip) ? sourceChip(hero.source) : null;
@@ -1548,7 +1588,7 @@ button.chip-source svg { width: 12px; height: 12px; }
       var drafted = 0;
       var notes = (m.notes || []).slice(0, 3).map(function (n, k2) {
         var t = String(n), k = t.indexOf(": "), head = k > 0 && k < 26 ? t.slice(0, k + 1) : "", rest = head ? t.slice(k + 2) : t;
-        var hot = /^Watch:|\(overdue\)/.test(t);
+        var hot = /\(overdue\)/.test(t);
         var did = (m.note_drafts || [])[k2], ready = did && meetingDraft(did);
         if (ready) drafted += 1;
         return h("span", { class: "agenda-note" + (k2 >= 2 && !/^And \d+ more/.test(t) ? " is-extra" : "") }, [head ? h("b", { class: hot ? "breach" : null }, head + " ") : null, rest,
@@ -1911,48 +1951,7 @@ button.chip-source svg { width: 12px; height: 12px; }
     var needs = function (d) { return d.competing || d.stale; };
     var myOwn = function (d) { return String(d.owner || "").toLowerCase() === me || (d.team || []).map(function (t) { return String(t).toLowerCase(); }).indexOf(me) >= 0; };
     var lvl = cfg().level, mineCount = own ? 0 : all.filter(function (id) { return myOwn(deals[id]); }).length;
-    // An analyst starts on their own deals; one tap shows the whole pipeline.
-    if (!S.filterChosen && lvl === "analyst" && mineCount) S.filter = "mine";
-    if (S.filter === "mine" && !mineCount) S.filter = "all";
-    var pickFilter = function (f) { return function () { S.filter = f; S.filterChosen = true; render(); }; };
-    var q = S.search.trim().toLowerCase();
-    var card = h("section", { class: "card", "aria-label": "Deals by stage" }, h("h2", { class: "sec-h" }, [h("b", null, "Deals by stage"), h("span", { class: "count" }, String(all.length))])), any = false;
-    if (all.length > 8 || (mineCount && mineCount < all.length)) {
-      var search = all.length > 8 ? h("input", { class: "field field-sm", type: "search", placeholder: "Find a company", "aria-label": "Find a company", value: S.search }) : null;
-      if (search) search.addEventListener("input", function () { S.search = search.value; render(); var el = document.querySelector("input[type=search]"); if (el) { el.focus(); el.setSelectionRange(el.value.length, el.value.length); } });
-      card.appendChild(h("div", { class: "filters", style: "padding-bottom:8px" }, [
-        h("button", { class: "chip chip-filter", type: "button", "aria-pressed": S.filter === "all" ? "true" : "false", onclick: pickFilter("all") }, "All " + all.length),
-        mineCount && mineCount < all.length ? h("button", { class: "chip chip-filter", type: "button", "aria-pressed": S.filter === "mine" ? "true" : "false", onclick: pickFilter("mine") }, "Mine " + mineCount) : null,
-        h("button", { class: "chip chip-filter", type: "button", "aria-pressed": S.filter === "needs" ? "true" : "false", onclick: pickFilter("needs") },
-          "Needs a look " + all.filter(function (id) { return needs(deals[id]); }).length), search]));
-    }
-    // Partners read from the closing end; an analyst works from the top of the funnel.
-    var order = (p.stages || []).slice(); if (lvl !== "analyst") order.reverse();
-    order.forEach(function (raw) {
-      var st = typeof raw === "string" ? { key: null, name: raw } : raw;
-      var ids = all.filter(function (id) {
-        var d = deals[id];
-        return (st.key ? d.stage_key === st.key : d.stage === st.name) && (S.filter !== "needs" || needs(d)) && (S.filter !== "mine" || myOwn(d)) &&
-          (!q || String(d.company || "").toLowerCase().indexOf(q) >= 0);
-      });
-      if (!ids.length) return;
-      any = true;
-      ids.sort(function (a, b) { return (deals[b].competing ? 2 : 0) + (deals[b].stale ? 1 : 0) - (deals[a].competing ? 2 : 0) - (deals[a].stale ? 1 : 0); });
-      // Early stages fold away for partners and principals; analysts and deal owners see everything. A search or filter opens them.
-      var early = ["first_meeting", "screening", "inbound"].indexOf(st.key) >= 0;
-      var folds = early && !own && lvl !== "analyst" && lvl !== "solo_gp" && !q && S.filter === "all";
-      var flagged = ids.filter(function (id) { return needs(deals[id]); }).length;
-      // For a partner, a stage where nothing needs a look starts folded, with its count on the header.
-      if (!flagged && !own && lvl !== "analyst" && !q && S.filter === "all") folds = true;
-      var key = st.key || st.name, open = S.stageOpen[key] !== undefined && folds ? S.stageOpen[key] : !folds;
-      if (!folds && S.stageOpen[key] === false) open = false;
-      card.appendChild(h("h3", { class: "stage-h" }, h("button", { class: "fold-btn" + (open ? "" : " is-folded"), type: "button", "aria-expanded": open ? "true" : "false",
-          onclick: function () { S.stageOpen[key] = !open; render(); } }, [h("span", { class: "fold-chev" }, icon(ICON.chev, 16)), h("b", null, st.name),
-          h("span", null, plural(ids.length, "deal") + (flagged ? " · " + flagged + " need a look" : ""))])));
-      if (open) card.appendChild(h("div", { class: "list" }, ids.map(function (id) { return dealRow(id, deals[id]); })));
-    });
-    if (!any) card.appendChild(h("p", { class: "prov" }, q || S.filter !== "all" ? "No deals match." : own ? "No active deals you own. Deals you lead or work on in the CRM show here." : "No active deals."));
-    out.push(card);
+    out.push(dealsTable(p, deals, all, { own: own, lvl: lvl, me: me, mineCount: mineCount, needs: needs, myOwn: myOwn }));
     var inbound = inboundCard(); if (inbound) out.push(inbound);
     if (own) out.push(h("p", { class: "prov" }, "Showing deals you own or work on. Ask Claude “show the whole pipeline” to see every deal."));
     return out;
@@ -1997,60 +1996,184 @@ button.chip-source svg { width: 12px; height: 12px; }
       (d.deadline_gap ? ". " + d.deadline_gap : "") + ". Next: " + (d.next_step && !d.step_went ? d.next_step + byDate(d.next_step_due) : "none set") +
       "." + (safeUrl(d.source_url) ? " " + safeUrl(d.source_url) : "");
   }
-  function dealRow(id, d) {
-    var quiet = d.quiet || !!actionOf("quiet_" + id), ns = pendingStepTap(id), key = "deal:" + id, open = S.open === key;
-    var over = d.dwell && d.days_in_stage > d.dwell, pct = d.dwell ? Math.min(100, Math.round(100 * (d.days_in_stage || 0) / d.dwell)) : 0;
-    var np = ns ? ns.payload || {} : {};
+  // Deals by stage as one table: a filter on every column, a tap on a header sorts by it, a tap on a company opens its
+  // details in the side panel (next step, copy for partners, mark quiet, rating).
+  function dealFacts(id, d) {
+    var quiet = d.quiet || !!actionOf("quiet_" + id), ns = pendingStepTap(id), np = ns ? ns.payload || {} : {};
+    var over = d.dwell && d.days_in_stage > d.dwell;
     var next = ns ? (np.text ? np.text + (np.due ? " by " + fmtDate(np.due, false) : "")
         : "Met " + fmtDate(np.met || d.last_met, false) + (np.stage ? ", moving to " + np.stage : "") + (np.clear_step ? ", no next step yet" : "")) +
         " (saving to your CRM at the next check)"
       : d.next_step && d.step_went ? "Sent " + fmtDate(d.step_went, false) + ": " + lowerFirst(d.next_step) + ". Add the next step"
-      : d.next_step ? "Next: " + d.next_step + byDate(d.next_step_due)
-      : d.next_meeting ? "Next: meeting " + hhmm(d.next_meeting)
+      : d.next_step ? d.next_step + byDate(d.next_step_due)
+      : d.next_meeting ? "Meeting " + hhmm(d.next_meeting)
       : d.last_met ? "Met " + fmtDate(d.last_met, false) + ". Add the next step" : "No next step set";
-    var hit = h("button", { class: "row-hit", type: "button", "aria-expanded": open ? "true" : "false", "data-id": key,
-      onclick: function () { S.open = open ? null : key; render(); focusId(key); } },
-      [h("span", { class: "row-title" }, d.company || "Deal"), h("span", { class: "row-detail" }, (d.deadline_gap ? d.deadline_gap + ". " : "") +
-        (d.asked && d.asked.on ? String(d.asked.person || "They").split(" ")[0] + " asked on " + fmtDate(d.asked.on, false) + ", no reply yet. " : "") + next +
-        (d.competing_evidence ? ". " + (d.competing_said_by && !d.competing_summary ? String(d.competing_said_by).split(" ")[0] + " wrote: \u201c" +
+    var word = d.competing ? "competing" : d.asked ? "waiting_you" : d.stale ? "stale" : quiet ? "quiet" : null;
+    var stepState = ns ? "saving" : !d.next_step && !d.next_meeting ? "none" : d.next_step_due && dayOf(d.next_step_due) < todayIso() && !d.step_went ? "overdue" : "set";
+    var soloGp = cfg().level === "solo_gp", ownerName = d.owner ? String(d.owner).split("@")[0] : "";
+    var lead = soloGp ? null : d.owner ? ownerName.split(/[._-]/)[0].replace(/^./, function (c) { return c.toUpperCase(); }) : null;
+    return { quiet: quiet, over: over, next: next, word: word, stepState: stepState, lead: lead,
+      round: [d.round, fmtMoney(d.raise_usd)].filter(Boolean).join(" · "),
+      partner: !soloGp && d.partner && String(d.partner).split(" ")[0].toLowerCase() !== ownerName.toLowerCase() ? String(d.partner).split(" ")[0] : null,
+      reason: (d.stale_reasons || []).filter(function (x) { return !/past the \d+-day mark/.test(String(x)); })[0] || null,
+      detail: (d.deadline_gap ? d.deadline_gap + ". " : "") + (d.asked && d.asked.on ? String(d.asked.person || "They").split(" ")[0] + " asked on " + fmtDate(d.asked.on, false) + ", no reply yet. " : "") +
+        (d.competing_evidence ? (d.competing_said_by && !d.competing_summary ? String(d.competing_said_by).split(" ")[0] + " wrote: \u201c" +
           String(d.competing_evidence).replace(/[.\s]+$/, "") + "\u201d" : d.competing_said_by ? "From " + String(d.competing_said_by).split(" ")[0] +
           "'s email, " + (String(d.owner || "").toLowerCase() === String(cfg().user_email || "").toLowerCase() && d.owner ? "in your CRM" : "shared by the deal team") +
-          ": " + String(d.competing_evidence).replace(/[.\s]+$/, "") : d.competing_evidence) : ""))]);
+          ": " + String(d.competing_evidence).replace(/[.\s]+$/, "") : d.competing_evidence) : "") };
+  }
+  var DAY_BANDS = [["", "Any"], ["over", "Past its mark"], ["w1", "Under a week"], ["w4", "1 to 4 weeks"], ["old", "Over 4 weeks"]];
+  var STATUS_OPTS = [["", "Any"], ["needs", "Needs a look"], ["competing", "Competing"], ["stale", "Stale"], ["waiting_you", "Waiting on you"], ["quiet", "Quiet"], ["ok", "On track"]];
+  var STEP_OPTS = [["", "Any"], ["set", "Has a step"], ["overdue", "Step overdue"], ["none", "No step"], ["saving", "Saving to CRM"]];
+  function dealsTable(p, deals, all, o) {
+    if (!S.pf) S.pf = { company: "", stage: "", days: "", status: "", next: "", lead: !o.own && o.lvl === "analyst" && o.mineCount && o.mineCount < all.length ? "_mine" : "", round: "" };
+    var f = S.pf;
+    if (f.lead === "_mine" && !o.mineCount) f.lead = "";
+    var stages = (p.stages || []).map(function (raw) { return typeof raw === "string" ? { key: null, name: raw } : raw; });
+    if (o.lvl !== "analyst") stages.reverse();  // partners read from the closing end; an analyst works from the top of the funnel
+    var stageIdx = function (d) { for (var i = 0; i < stages.length; i++) if (stages[i].key ? d.stage_key === stages[i].key : d.stage === stages[i].name) return i; return 99; };
+    var facts = {}; all.forEach(function (id) { facts[id] = dealFacts(id, deals[id]); });
+    var uniq = function (fn) { var seen = {}, outv = []; all.forEach(function (id) { var v = fn(id); if (v && !seen[v]) { seen[v] = true; outv.push(v); } }); return outv; };
+    var stageNames = stages.filter(function (st) { return all.some(function (id) { return stageIdx(deals[id]) === stages.indexOf(st); }); }).map(function (st) { return st.name; });
+    var leads = uniq(function (id) { return facts[id].lead; }).sort(), rounds = uniq(function (id) { return deals[id].round; });
+    var match = function (id) {
+      var d = deals[id], x = facts[id], days = Number(d.days_in_stage);
+      if (f.company && String(d.company || "").toLowerCase().indexOf(f.company.trim().toLowerCase()) < 0) return false;
+      if (f.stage && d.stage !== f.stage) return false;
+      if (f.days === "over" && !x.over) return false;
+      if (f.days === "w1" && !(days < 7)) return false;
+      if (f.days === "w4" && !(days >= 7 && days <= 28)) return false;
+      if (f.days === "old" && !(days > 28)) return false;
+      if (f.status === "needs" && !o.needs(d)) return false;
+      if (f.status === "ok" && (x.word && x.word !== "quiet")) return false;
+      if (f.status && ["needs", "ok"].indexOf(f.status) < 0 && x.word !== f.status && !(f.status === "quiet" && x.quiet)) return false;
+      if (f.next && x.stepState !== f.next) return false;
+      if (f.lead === "_mine" && !o.myOwn(d)) return false;
+      if (f.lead && f.lead !== "_mine" && x.lead !== f.lead) return false;
+      if (f.round && d.round !== f.round) return false;
+      return true;
+    };
+    var ids = all.filter(match);
+    var srt = S.psort || { col: "stage", dir: 1 };
+    var keyOf = {
+      company: function (id) { return String(deals[id].company || "").toLowerCase(); },
+      stage: function (id) { return stageIdx(deals[id]) * 10 - ((deals[id].competing ? 2 : 0) + (deals[id].stale ? 1 : 0)); },
+      days: function (id) { return Number(deals[id].days_in_stage) || 0; },
+      status: function (id) { var w = facts[id].word; return w === "competing" ? 0 : w === "waiting_you" ? 1 : w === "stale" ? 2 : w === "quiet" ? 4 : 3; },
+      next: function (id) { return ["overdue", "none", "saving", "set"].indexOf(facts[id].stepState); },
+      lead: function (id) { return String(facts[id].lead || "~"); },
+      round: function (id) { return Number(deals[id].raise_usd) || 0; }
+    };
+    ids.sort(function (a, b) { var ka = keyOf[srt.col](a), kb = keyOf[srt.col](b); return (ka < kb ? -1 : ka > kb ? 1 : 0) * srt.dir || String(deals[a].company).localeCompare(String(deals[b].company)); });
+    var solo = o.lvl === "solo_gp";
+    var COLS = [["company", "Company", ""], ["stage", "Stage", "hide-sm"], ["days", "In stage", "hide-sm"], ["status", "Status", ""], ["next", "Next step", ""]]
+      .concat(solo ? [] : [["lead", "Lead", "hide-sm"]]).concat([["round", "Round", "hide-sm"]]);
+    var set = function (k, v) { S.pf[k] = v; S.pfFocus = k; render(); };
+    var sel = function (k, label, opts) {
+      var el = h("select", { class: "field tf", name: "f-" + k, "aria-label": "Filter by " + label.toLowerCase() }, opts.map(function (x) {
+        var op = h("option", { value: x[0] }, x[1]); if (x[0] === (f[k] || "")) op.selected = true; return op; }));
+      el.addEventListener("change", function () { set(k, el.value); });
+      return h("span", { class: "select tf-wrap" + (f[k] ? " is-on" : "") }, [el, icon(ICON.chev, 16)]);
+    };
+    var control = function (k) {
+      if (k === "company") {
+        var inp = h("input", { class: "field tf" + (f.company ? " is-on" : ""), type: "search", name: "f-company", placeholder: "Find a company", "aria-label": "Find a company", value: f.company });
+        inp.addEventListener("input", function () { S.pf.company = inp.value; S.pfFocus = "company"; render(); });
+        return inp;
+      }
+      if (k === "stage") return sel(k, "Stage", [["", "Any"]].concat(stageNames.map(function (n) { return [n, n]; })));
+      if (k === "days") return sel(k, "Time in stage", DAY_BANDS);
+      if (k === "status") return sel(k, "Status", STATUS_OPTS);
+      if (k === "next") return sel(k, "Next step", STEP_OPTS);
+      if (k === "lead") return sel(k, "Lead", [["", "Any"]].concat(o.mineCount && o.mineCount < all.length ? [["_mine", "Mine"]] : [], leads.map(function (n) { return [n, n]; })));
+      return sel(k, "Round", [["", "Any"]].concat(rounds.map(function (n) { return [n, n]; })));
+    };
+    var head = h("tr", null, COLS.map(function (c) {
+      var on = srt.col === c[0];
+      return h("th", { class: c[2] || null, scope: "col", "aria-sort": on ? (srt.dir > 0 ? "ascending" : "descending") : "none" },
+        h("button", { class: "th-sort", type: "button", onclick: function () { S.psort = { col: c[0], dir: on ? -srt.dir : 1 }; render(); } },
+          [c[1], h("span", { class: "th-arrow" + (on ? " is-on" : ""), "aria-hidden": "true" }, on && srt.dir < 0 ? "\u2191" : "\u2193")]));
+    }));
+    var filterRow = h("tr", { class: "filter-row" }, COLS.map(function (c) { return h("td", { class: c[2] || null }, control(c[0])); }));
+    // On a phone the same filters sit above the table, two to a line.
+    // On a phone the company box shows; the other filters open under one button, so the table starts near the top.
+    var active = Object.keys(f).filter(function (k) { return f[k]; }).length, moreOn = COLS.slice(1).filter(function (c) { return f[c[0]]; }).length;
+    var moreOpen = S.pfMore || false;
+    var bar = h("div", { class: "filter-bar" }, [h("div", { class: "filter-top" }, [control("company"),
+      h("button", { class: "btn btn-quiet btn-sm", type: "button", "aria-expanded": moreOpen ? "true" : "false", onclick: function () { S.pfMore = !moreOpen; render(); } },
+        moreOn ? "Filters · " + moreOn : "Filters")]),
+      h("div", { class: "filter-more", hidden: !moreOpen }, COLS.slice(1).map(function (c) { return h("label", { class: "fld" }, [h("span", null, c[1]), control(c[0])]); }))]);
+    var rows = ids.map(function (id) { return dealTr(id, deals[id], facts[id], solo); });
+    var table = h("div", { class: "table-wrap deals-wrap", tabindex: "0", role: "region", "aria-label": "Deals table" }, h("table", { class: "deals fit-sm" }, [
+      h("thead", null, [head, filterRow]), h("tbody", null, rows.length ? rows : [h("tr", null, h("td", { colspan: String(COLS.length) }, h("p", { class: "prov" },
+        all.length ? "No deals match these filters." : o.own ? "No active deals you own. Deals you lead or work on in the CRM show here." : "No active deals.")))])]));
+    var needsN = all.filter(function (id) { return o.needs(deals[id]); }).length;
+    var tools = h("div", { class: "filters" }, [h("span", { class: "status" }, ids.length === all.length ? plural(all.length, "deal") : ids.length + " of " + plural(all.length, "deal")),
+      needsN ? h("button", { class: "chip chip-filter", type: "button", "aria-pressed": f.status === "needs" ? "true" : "false", onclick: function () { set("status", f.status === "needs" ? "" : "needs"); } }, "Needs a look " + needsN) : null,
+      o.mineCount && o.mineCount < all.length ? h("button", { class: "chip chip-filter", type: "button", "aria-pressed": f.lead === "_mine" ? "true" : "false", onclick: function () { set("lead", f.lead === "_mine" ? "" : "_mine"); } }, "Mine " + o.mineCount) : null,
+      active ? h("button", { class: "btn btn-ghost btn-sm", type: "button", style: "margin-left:auto", onclick: function () { S.pf = { company: "", stage: "", days: "", status: "", next: "", lead: "", round: "" }; S.pfFocus = null; render(); } }, "Clear filters") : null]);
+    var card = h("section", { class: "card", "aria-label": "Deals by stage", "data-fold": "no" }, [h("h2", { class: "sec-h" }, [h("b", null, "Deals by stage"), h("span", { class: "count" }, String(all.length))]),
+      tools, bar, table]);
+    // A filter keeps its focus across the redraw, so typing in the company box never loses a letter.
+    if (S.pfFocus) setTimeout(function () {
+      var el = document.querySelector((matchMedia("(max-width: 759px)").matches ? ".filter-bar" : ".filter-row") + " [name='f-" + S.pfFocus + "']");
+      if (el && document.activeElement !== el) { el.focus(); if (el.setSelectionRange && el.type === "search") el.setSelectionRange(el.value.length, el.value.length); }
+    }, 0);
+    // Opened from Today ("Set next step") or from search: the deal's panel opens on arrival.
+    if (S.open && String(S.open).indexOf("deal:") === 0 && deals[S.open.slice(5)] && !document.querySelector(".scrim")) {
+      var want = S.open.slice(5); setTimeout(function () { if (!document.querySelector(".scrim")) openDeal(want); }, 0);
+    }
+    return card;
+  }
+  function dealTr(id, d, x, solo) {
+    var key = "deal:" + id, pct = d.dwell ? Math.min(100, Math.round(100 * (d.days_in_stage || 0) / d.dwell)) : 0;
+    var hit = h("button", { class: "row-hit", type: "button", "data-id": key, "aria-haspopup": "dialog", onclick: function () { openDeal(id); } },
+      [h("span", { class: "row-title" }, d.company || "Deal"), h("span", { class: "sub" }, [d.stage, isNil(d.days_in_stage) ? null : "day " + d.days_in_stage].filter(Boolean).join(" · "))]);
     hit._item = { id: "deal_" + id, kind: "deal", group: "deal_move", title: d.company };
-    var word = d.competing ? "competing" : d.asked ? "waiting_you" : d.stale ? "stale" : quiet ? "quiet" : null;
-    var ownerName = d.owner ? String(d.owner).split("@")[0] : "", soloGp = cfg().level === "solo_gp";
-    // A one-person fund owns every deal: no owner initials, no sponsoring partner.
-    var facts = [soloGp ? null : initials(d.owner), !soloGp && d.partner && String(d.partner).split(" ")[0].toLowerCase() !== ownerName.toLowerCase() ? "Partner: " + String(d.partner).split(" ")[0] : null,
-      [d.round, fmtMoney(d.raise_usd)].filter(Boolean).join(" ")].filter(Boolean).join(" · ");
-    var meta = h("div", { class: "row-meta" }, [
-      word ? statusFor({ status_word: word }) : null,
-      (function () { var r = (d.stale_reasons || []).filter(function (x) { return !/past the \d+-day mark/.test(String(x)); })[0];
-        return d.stale && r ? h("span", { class: "status" }, r) : null; })(),
-      quiet && word !== "quiet" ? h("span", { class: "chip chip-quiet" }, [icon(ICON.lock, 12), "Quiet"]) : null,
-      facts ? h("span", { class: "status" }, facts) : null,
-      sourceChip({ label: "CRM", url: d.source_url })]);
+    var days = h("span", { class: "days" + (x.over ? " over" : "") }, isNil(d.days_in_stage) ? DASH : Number(d.days_in_stage) <= 0 ? "Moved today" :
+      x.over ? plural(d.days_in_stage - d.dwell, "day") + " over" : "Day " + d.days_in_stage + (d.dwell ? " of " + d.dwell : ""));
+    return h("tr", { class: "deal-row" + (d.competing ? " is-breach" : "") }, [
+      h("td", null, hit),
+      h("td", { class: "hide-sm" }, d.stage || DASH),
+      h("td", { class: "hide-sm" }, h("div", { class: "dwell" }, [days, d.dwell ? h("span", { class: "track" + (x.over ? " over" : ""), "aria-hidden": "true" }, h("b", { style: "width:" + pct + "%" })) : null])),
+      h("td", null, h("div", { class: "row-meta" }, [x.word ? statusFor({ status_word: x.word }) : h("span", { class: "status" }, "On track"),
+        x.quiet && x.word !== "quiet" ? h("span", { class: "chip chip-quiet" }, [icon(ICON.lock, 12), "Quiet"]) : null,
+        d.asked && d.asked.on ? h("span", { class: "cell-note" }, String(d.asked.person || "They").split(" ")[0] + " asked on " + fmtDate(d.asked.on, false) + ", no reply yet") : null])),
+      h("td", null, h("span", { class: "row-detail" + (x.stepState === "overdue" ? " neg" : "") }, x.next)),
+      solo ? null : h("td", { class: "hide-sm" }, x.lead || DASH),
+      h("td", { class: "hide-sm" }, x.round || DASH)]);
+  }
+  function openDeal(id) {
+    var deals = ((S.snap.pipeline || {}).deals) || {}, d = deals[id]; if (!d) return;
+    S.open = null;
+    var x = dealFacts(id, d), key = "deal:" + id, it = { id: "deal_" + id, kind: "deal", group: "deal_move", title: d.company };
     var input = h("input", { class: "field", name: "next", placeholder: "Next step, e.g. reference calls", "aria-label": "Next step for " + d.company, maxlength: "140" });
     var date = h("input", { class: "field", type: "date", name: "due", "aria-label": "Due date" });
-    var actions = h("div", { class: "row-actions" }, [
-      h("form", { class: "inline-form", onsubmit: function (e) {
-        e.preventDefault(); var t = input.value.trim(); if (!t) { input.focus(); return; }
-        if (sheetCrm()) { copyText((d.company || "Deal") + ", Next step: " + t + (date.value ? ", due " + fmtDate(date.value, false) : ""), "Copied. Paste it into your sheet."); return; }
-        // What Home showed rides with the tap, so the check never overwrites a step someone changed since.
-        var metOn = d.last_met && (!d.crm_last_contact || String(d.crm_last_contact).slice(0, 10) < String(d.last_met).slice(0, 10)) ? String(d.last_met).slice(0, 10) : null;
-        approve("ns_" + id, "next_step", { deal_id: id, company: d.company, text: t, due: date.value || null,
-          current: d.next_step || null, current_due: d.next_step_due || null, met: metOn }, "Saved. Goes to your CRM at the next check.");
-      } }, [input, date, h("button", { class: "btn btn-secondary", type: "submit" }, sheetCrm() ? "Copy" : "Save")]),
-      d.competing && !quiet ? h("button", { class: "btn btn-secondary btn-sm", type: "button", onclick: function () { copyText(partnerLine(d), "Copied for your partners"); } },
-        [icon(ICON.copy, 16), "Copy for partners"]) : null,
-      quiet ? null : h("button", { class: "btn btn-ghost btn-sm", type: "button", onclick: function () { approve("quiet_" + id, "quiet", { deal_id: id }, "Marked quiet. Kept out of the copied brief, pushes and pre-reads."); } },
-        [icon(ICON.lock, 16), "Mark quiet"]),
-      toggleBtn("Rate", S.more === key, function () { S.more = S.more === key ? null : key; render(); }),
-      S.more === key ? rateChips(hit._item) : null]);
-    if (!open) actions.hidden = true;
-    return h("div", { class: "row deal-row" }, [glyph(d.competing ? "breach" : "low"), h("div", { class: "row-main" }, [hit, meta]),
-      h("div", { class: "dwell" }, [h("span", { class: "days" + (over ? " over" : "") }, isNil(d.days_in_stage) ? DASH : Number(d.days_in_stage) <= 0 ? "Moved today" :
-        over ? plural(d.days_in_stage - d.dwell, "day") + " over (day " + d.days_in_stage + " of " + d.dwell + ")" : "Day " + d.days_in_stage + (d.dwell ? " of " + d.dwell : "")),
-        d.dwell ? h("span", { class: "track" + (over ? " over" : ""), "aria-hidden": "true" }, h("b", { style: "width:" + pct + "%" })) : null]), actions]);
+    var form = h("form", { class: "inline-form", onsubmit: function (e) {
+      e.preventDefault(); var t = input.value.trim(); if (!t) { input.focus(); return; }
+      if (sheetCrm()) { copyText((d.company || "Deal") + ", Next step: " + t + (date.value ? ", due " + fmtDate(date.value, false) : ""), "Copied. Paste it into your sheet."); return; }
+      // What Home showed rides with the tap, so the check never overwrites a step someone changed since.
+      var metOn = d.last_met && (!d.crm_last_contact || String(d.crm_last_contact).slice(0, 10) < String(d.last_met).slice(0, 10)) ? String(d.last_met).slice(0, 10) : null;
+      closeOverlay();
+      approve("ns_" + id, "next_step", { deal_id: id, company: d.company, text: t, due: date.value || null,
+        current: d.next_step || null, current_due: d.next_step_due || null, met: metOn }, "Saved. Goes to your CRM at the next check.");
+    } }, [fld("Next step", input), fld("Due", date, "fld-date"), h("button", { class: "btn btn-secondary", type: "submit" }, sheetCrm() ? "Copy" : "Save")]);
+    var facts = [x.lead ? "Lead: " + x.lead : null, x.partner ? "Partner: " + x.partner : null, x.round || null].filter(Boolean).join(" · ");
+    var body = [
+      h("div", { class: "row-meta" }, [x.word ? statusFor({ status_word: x.word }) : h("span", { class: "status" }, "On track"), d.stale && x.reason ? h("span", { class: "status" }, x.reason) : null,
+        x.quiet && x.word !== "quiet" ? h("span", { class: "chip chip-quiet" }, [icon(ICON.lock, 12), "Quiet"]) : null]),
+      x.detail ? h("p", { class: "finding" }, x.detail) : null,
+      kv("Now", [h("li", null, "Next: " + x.next), facts ? h("li", null, facts) : null].filter(Boolean)),
+      h("div", { class: "kv" }, [h("h3", null, "Set the next step"), form]),
+      h("div", { class: "row-actions" }, [
+        d.competing && !x.quiet ? h("button", { class: "btn btn-secondary btn-sm", type: "button", onclick: function () { copyText(partnerLine(d), "Copied for your partners"); } }, [icon(ICON.copy, 16), "Copy for partners"]) : null,
+        x.quiet ? null : h("button", { class: "btn btn-ghost btn-sm", type: "button", onclick: function () { closeOverlay(); approve("quiet_" + id, "quiet", { deal_id: id }, "Marked quiet. Kept out of the copied brief, pushes and pre-reads."); } },
+          [icon(ICON.lock, 16), "Mark quiet"])]),
+      h("div", { class: "row-more" }, [h("span", { class: "status" }, "Was this useful?"), rateChips(it)])
+    ];
+    var sub = [d.stage, isNil(d.days_in_stage) ? null : "day " + d.days_in_stage + (d.dwell ? " of " + d.dwell : "")].filter(Boolean).join(" · ");
+    overlay(d.company || "Deal", body, { drawer: true, sub: sub, reopen: function () { openDeal(id); },
+      foot: [safeUrl(d.source_url) ? h("a", { class: "btn btn-primary", href: safeUrl(d.source_url), target: "_blank", rel: "noopener noreferrer" }, [icon(ICON.ext, 16), "Open in CRM"]) : null] });
   }
 
   // ---------------------------------------------------------------- People

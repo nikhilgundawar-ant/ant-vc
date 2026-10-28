@@ -394,7 +394,10 @@ class QA:
                     got_in = page.locator("section[aria-label='Pitches'] .row").count()
                     self.check(sc, "inbound listed with reasons", got_in == want_in and want_in > 0, f"{got_in} of {want_in}")
                     self.check(sc, "filters at this size", page.locator(".chip-filter", has_text="Needs a look").count() == 1)
-                    self.check(sc, "early stages fold for a partner", page.locator(".stage-h button[aria-expanded=false]").count() >= 1)
+                    cols = page.locator("table.deals thead tr:first-child th").count()
+                    self.check(sc, "deals are one table with a filter under every column", cols >= 6 and
+                               page.locator("table.deals .filter-row td").count() == cols and
+                               page.locator("table.deals .filter-row td :is(select, input)").count() == cols and page.locator("table.deals th button.th-sort").count() == cols, str(cols))
                     self.check(sc, "every active deal is listed", *self._deal_count(page, "aditi"))
                 if key == "people":
                     self.check(sc, "relationship table filled", page.locator("tbody tr").count() >= 10)
@@ -434,8 +437,9 @@ class QA:
         hit = page.locator(".deal-row .row-hit").first
         company = hit.locator(".row-title").inner_text()
         hit.click()
-        page.locator(".deal-row .field[name=next]").first.fill("Reference calls with three customers")
-        page.locator(".deal-row button[type=submit]").first.click()
+        self.check(sc, "a company opens its deal in the side panel", page.locator(".sheet.drawer .field[name=next]").count() == 1)
+        page.locator(".sheet .field[name=next]").first.fill("Reference calls with three customers")
+        page.locator(".sheet button[type=submit]").first.click()
         page.wait_for_timeout(120)
         w = page.evaluate("window.__writes")
         act = next((x for x in w if x.get("path") == "state/actions"), {})
@@ -445,14 +449,14 @@ class QA:
         self.check(sc, "row shows the pending next step", page.get_by_text("saving to your CRM at the next check").count() >= 1)
         hit = page.locator(".deal-row .row-hit", has_text=company).first
         hit.click()
-        page.locator(".deal-row button", has_text="Mark quiet").first.click()
+        page.locator(".sheet button", has_text="Mark quiet").first.click()
         page.wait_for_timeout(120)
         w = page.evaluate("window.__writes")
         self.check(sc, "quiet saved", any(v.get("type") == "quiet" for x in w if x.get("path") == "state/actions" for v in ((x.get("data") or {}).get("items") or {}).values()))
         self.check(sc, "quiet chip shows", page.locator(".chip-quiet").count() >= 1)
         comp = page.locator(".deal-row", has=page.locator(".status.breach", has_text="Competing")).first
         comp.locator(".row-hit").click()
-        comp.locator("button", has_text="Copy for partners").click()
+        page.locator(".sheet button", has_text="Copy for partners").click()
         page.wait_for_timeout(120)
         self.check(sc, "a competing deal copies a line for partners", page.locator(".toast", has_text="Copied for your partners").count() == 1)
         self.shot(page, "pipeline-actions-1440")
@@ -776,7 +780,7 @@ class QA:
             if m == "rohan":
                 page.locator("#bottom-tabs button[aria-label='Pipeline']").click()
                 page.wait_for_timeout(60)
-                first = page.locator(".stage-h b").first.inner_text()
+                first = page.locator("table.deals tbody tr .row-hit .sub").first.inner_text().split(" · ")[0]
                 self.check(sc, "analyst pipeline opens on Mine, top of the funnel first",
                            page.locator(".chip-filter[aria-pressed=true]", has_text="Mine").count() == 1 and first in ("Inbound", "Screening", "First meeting"), first)
                 self.shot(page, "level-rohan-pipeline-380")
@@ -872,7 +876,7 @@ class QA:
         self.check("waiting-founder", "it quotes the founder's own question", "what would the timeline look like?" in (row.inner_text() if row.count() else ""))
         page.locator("#bottom-tabs button[aria-label='Pipeline']").click()
         page.wait_for_timeout(100)
-        prow = page.locator("#view .row", has_text="Copperleaf Collect").first
+        prow = page.locator("#view tr.deal-row", has_text="Copperleaf Collect").first
         self.check("waiting-founder", "the pipeline row says who waits and since when",
                    prow.count() == 1 and "Debashish asked on 13 Oct, no reply yet" in prow.inner_text() and
                    prow.locator(".status", has_text="Waiting on you").count() == 1, prow.inner_text()[:120] if prow.count() else "no row")
@@ -1228,8 +1232,8 @@ class QA:
         wr = self._writes(page)
         after = page.locator(".ah-hero-card .statement").inner_text()
         keys = {vh.get("draft"), vh.get("commitment_id"), vh.get("item_id")}
-        self.check("hero-sent", "a promise hero with a draft offers Open draft, Sent it and Done; Sent it marks the draft and the promise",
-                   any("draft" in b.lower() or "gmail" in b.lower() for b in btns) and "Sent it" in btns and "Done" in btns and len(btns) <= 3 and
+        self.check("hero-sent", "a promise hero with a draft offers Open draft and Sent it, one way to finish; Sent it marks the draft and the promise",
+                   any("draft" in b.lower() or "gmail" in b.lower() for b in btns) and "Sent it" in btns and "Done" not in btns and len(btns) <= 3 and
                    keys <= set(wr) and all(wr[k].get("done_at") for k in keys),
                    f"buttons {btns}; wrote {sorted(wr)}")
         self.check("hero-sent", "once sent, the next line steps up as the hero", after != vh["statement"] and after != "Nothing urgent right now", after)
@@ -1673,7 +1677,7 @@ class QA:
         ctx, page = self.open(browser, "step-sent", PHONE, when=dt.datetime(2026, 10, 26, 8, 0, tzinfo=IST), member="aditi", snap=asnap, state=astate)
         page.locator("#bottom-tabs button[aria-label='Pipeline']").click()
         page.wait_for_timeout(120)
-        arow = page.locator("#view .row", has_text="Atlas Settlement").first
+        arow = page.locator("#view tr.deal-row", has_text="Atlas Settlement").first
         atxt = arow.inner_text() if arow.count() else ""
         self.check("step-sent", "a CRM step you marked sent reads 'Sent 23 Oct: send term sheet markup' on Pipeline, never 'Next:'",
                    "Sent 23 Oct: send term sheet markup" in atxt and "Next: Send term sheet markup" not in atxt, atxt[:160])
@@ -2033,6 +2037,8 @@ class QA:
             var side = r.querySelector('.row-side').getBoundingClientRect(), main = r.querySelector('.row-main').getBoundingClientRect(), row = r.getBoundingClientRect();
             return { right: Math.round(row.right - side.right), beside: side.left >= main.right - 1, w: Math.round(side.width), list: Math.round(r.parentElement.getBoundingClientRect().width) }; })""")
         wide = [g for g in geo if g["list"] >= 560]
+        mid = [g for g in geo if 440 <= g["list"] < 560]
+        self.check(sc, "on a narrower card the pills still stack on the right", all(g["beside"] for g in mid), json.dumps(mid[:3]))
         self.check(sc, "on a wide card every row's pills stack on its right edge, one width", bool(wide) and all(g["beside"] and g["right"] <= 1 for g in wide)
                    and len({g["w"] for g in wide}) == 1, json.dumps(wide[:4]))
         self.shot(page, "pills-1440")
@@ -2105,12 +2111,78 @@ class QA:
             self.check(sc, "on a phone the notes rise from the bottom, full width", False, "no notes chip")
         ctx.close()
 
+    def round20(self, browser) -> None:
+        """Round twenty: Deals by stage as one table, a filter on every column, sortable headers, the deal in a side panel."""
+        sc = "deals-table"
+        ctx, page = self.open(browser, sc, DESK, open_all=False)
+        page.locator("#rail-tabs button[aria-label='Pipeline']").click()
+        page.wait_for_timeout(100)
+        rows = lambda: page.locator("table.deals tbody tr.deal-row")
+        total = rows().count()
+        stage = page.locator("table.deals tbody tr.deal-row td:nth-child(2)").first.inner_text()
+        page.locator(".filter-row select[name='f-stage']").select_option(stage)
+        page.wait_for_timeout(80)
+        stages = page.locator("table.deals tbody tr.deal-row td:nth-child(2)").all_inner_texts()
+        self.check(sc, "the Stage filter keeps only that stage", bool(stages) and all(x == stage for x in stages) and len(stages) < total, f"{len(stages)} of {total}")
+        page.locator("button", has_text="Clear filters").click()
+        page.wait_for_timeout(60)
+        self.check(sc, "Clear filters brings every deal back", rows().count() == total)
+        page.locator(".filter-row select[name='f-status']").select_option("needs")
+        page.wait_for_timeout(60)
+        st = page.locator("table.deals tbody tr.deal-row td:nth-child(4)").all_inner_texts()
+        self.check(sc, "Status: Needs a look keeps only competing and stale deals", bool(st) and all(("Competing" in x or "Stale" in x) for x in st), "; ".join(st[:4]))
+        page.locator("button", has_text="Clear filters").click()
+        box = page.locator(".filter-row input[name='f-company']")
+        name = page.locator("table.deals tbody tr .row-title").first.inner_text()
+        box.click(); page.keyboard.type(name[:4], delay=30)
+        page.wait_for_timeout(80)
+        typed = page.locator(".filter-row input[name='f-company']").input_value()
+        self.check(sc, "typing in the company filter keeps every letter and narrows the rows", typed == name[:4] and
+                   all(name[:4].lower() in t.lower() for t in page.locator("table.deals tbody tr .row-title").all_inner_texts()), typed)
+        page.locator("button", has_text="Clear filters").click()
+        for col in range(1, page.locator(".filter-row td").count() + 1):
+            ctl = page.locator(f".filter-row td:nth-child({col}) :is(select, input)")
+            self.check(sc, f"column {col} has a named filter", ctl.count() == 1 and bool(ctl.get_attribute("aria-label")))
+        page.locator("th button.th-sort", has_text="In stage").click()
+        page.wait_for_timeout(60)
+        self.check(sc, "a header sorts its column and says so", page.locator("th[aria-sort='ascending']", has_text="In stage").count() == 1)
+        page.locator("th button.th-sort", has_text="In stage").click()
+        page.wait_for_timeout(60)
+        self.check(sc, "a second tap sorts the other way", page.locator("th[aria-sort='descending']", has_text="In stage").count() == 1)
+        page.locator("table.deals tbody tr .row-hit").first.click()
+        page.wait_for_timeout(80)
+        self.check(sc, "a company opens its deal in a side panel with the next-step form and Open in CRM",
+                   page.locator(".scrim.is-drawer .sheet.drawer .field[name=next]").count() == 1 and page.locator(".sheet-foot a", has_text="Open in CRM").count() == 1)
+        page.keyboard.press("Escape")
+        self.shot(page, "deals-table-1440")
+        self.common(page, sc)
+        ctx.close()
+        sc = "deals-table-phone"
+        ctx, page = self.open(browser, sc, PHONE, open_all=False)
+        page.locator("#bottom-tabs button[aria-label='Pipeline']").click()
+        page.wait_for_timeout(100)
+        self.check(sc, "on a phone only the company box and a Filters button show at first", page.locator(".filter-bar input[name='f-company']").is_visible()
+                   and page.locator(".filter-more").is_hidden())
+        page.locator(".filter-bar button", has_text="Filters").click()
+        page.wait_for_timeout(60)
+        self.check(sc, "Filters opens one filter per column, above the table", page.locator(".filter-more").is_visible() and
+                   page.locator(".filter-bar :is(select, input)").count() == page.locator("table.deals thead tr:first-child th").count())
+        w = page.evaluate("(() => { var t = document.querySelector('table.deals'), wr = t.closest('.table-wrap'); return [t.scrollWidth, wr.clientWidth]; })()")
+        self.check(sc, "on a phone the table fits without sideways scrolling", w[0] <= w[1] + 1, str(w))
+        page.locator(".filter-bar select[name='f-next']").select_option("none")
+        page.wait_for_timeout(80)
+        self.check(sc, "a phone filter narrows the table too", page.locator("table.deals tbody tr.deal-row").count() >= 0 and
+                   page.locator(".filter-bar select[name='f-next']").input_value() == "none")
+        self.shot(page, "deals-table-380")
+        self.common(page, sc)
+        ctx.close()
+
     def run(self, only: set[str] | None = None) -> int:
         from playwright.sync_api import sync_playwright
         with sync_playwright() as p:
             browser = p.chromium.launch()
             for name in ("today", "done_undo", "prep", "tabs", "pipeline_actions", "approvals", "keyboard", "theme", "colours", "states", "levels",
-                         "round6", "round7", "round8", "round9", "round10", "round11", "round12", "round13", "redesign", "round17", "round19"):
+                         "round6", "round7", "round8", "round9", "round10", "round11", "round12", "round13", "redesign", "round17", "round19", "round20"):
                 if only and name not in only:
                     continue
                 try:

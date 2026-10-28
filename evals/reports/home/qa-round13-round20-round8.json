@@ -1,0 +1,445 @@
+{
+ "checks": 72,
+ "failed": 0,
+ "complete": false,
+ "scenarios": [
+  "round13",
+  "round20",
+  "round8"
+ ],
+ "page_sha256": "3999689d7e92",
+ "rows": [
+  {
+   "scenario": "met-prefill",
+   "check": "the met log fills in from the meeting: the stage the invite names, no stale step",
+   "ok": true,
+   "detail": "Move to Second meeting; empty step True"
+  },
+  {
+   "scenario": "met-prefill",
+   "check": "one tap saves the meeting and the stage, and clears the step that was this meeting",
+   "ok": true,
+   "detail": "{\"deal_id\": \"d_halo\", \"company\": \"Halo Reconcile\", \"text\": null, \"due\": null, \"current\": \"Second meeting\", \"current_due\": \"2026-10-24\", \"met\": \"2026-10-22\", \"st ['ns_d_halo_2026-10-22']"
+  },
+  {
+   "scenario": "met-prefill",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "met-prefill",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "met-prefill",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "met-prefill",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "met-prefill",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "team-note",
+   "check": "a team note opens Gmail addressed to every colleague on it",
+   "ok": true,
+   "detail": "https://mail.google.com/mail/?authuser=tara%40quillwater.vc&view=cm&fs=1&to=aditi%40quillwater.vc%2Ckabir%40quillwater.v"
+  },
+  {
+   "scenario": "team-note",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "team-note",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "team-note",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "team-note",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "team-note",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "ask-nudge",
+   "check": "five working days after the note with no reply, the ask asks for a nudge",
+   "ok": true,
+   "detail": "Close ask\nNimbus Collect: An introduction to two banks as customers\nAsked Aditi for the intro on 22 Oct, no reply in 6 w"
+  },
+  {
+   "scenario": "ask-nudge",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "ask-nudge",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "ask-nudge",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "ask-nudge",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "ask-nudge",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "solo-asks",
+   "check": "a solo GP is offered no note to a team, and Today has no team words",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "solo-asks",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "solo-asks",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "solo-asks",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "solo-asks",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "solo-asks",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "shared-done",
+   "check": "Done on one of two promises in one email closes that promise, not the email: no 'Marked sent', the other promise keeps the email, which says to take the closed promise's lines out",
+   "ok": true,
+   "detail": "toast 'Marked done. Undo here or in Activity.\\nUndo'; wrote ['k_e9eab86816', 't_a1afa2bb60']; Sent it on the other row 1; note 'Before you send: Intro two CFO candidates is marked done: take its lines out. Written before your 22 Oct meeting, which '"
+  },
+  {
+   "scenario": "shared-done",
+   "check": "Done on the second closes the email too, as done, never as sent",
+   "ok": true,
+   "detail": "wrote ['dr_k_e9eab86816', 'k_76e229ee1b', 't_0ddf7373ca']; ready rows 0"
+  },
+  {
+   "scenario": "shared-done",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "shared-done",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "shared-done",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "shared-done",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "shared-done",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "holder-sent",
+   "check": "after Sent it on the note to Aditi, each row it names says 'Asked Aditi at 07:00 for the firm's view'",
+   "ok": true,
+   "detail": "rows saying it 2 of 2"
+  },
+  {
+   "scenario": "holder-sent",
+   "check": "once Aditi replied, those rows say 'Aditi replied at 11:05: read it, then send'",
+   "ok": true,
+   "detail": "rows saying it 2"
+  },
+  {
+   "scenario": "holder-sent",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "holder-sent",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "holder-sent",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "holder-sent",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "holder-sent",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "step-sent",
+   "check": "a CRM step you marked sent reads 'Sent 23 Oct: send term sheet markup' on Pipeline, never 'Next:'",
+   "ok": true,
+   "detail": "Atlas Settlement\nTerm sheet \u00b7 day 9\n\t\nCompeting\n\t\nSent 23 Oct: send term sheet markup. Add the next step"
+  },
+  {
+   "scenario": "step-sent",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "step-sent",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "step-sent",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "step-sent",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "step-sent",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "deals-table",
+   "check": "the Stage filter keeps only that stage",
+   "ok": true,
+   "detail": "2 of 37"
+  },
+  {
+   "scenario": "deals-table",
+   "check": "Clear filters brings every deal back",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "deals-table",
+   "check": "Status: Needs a look keeps only competing and stale deals",
+   "ok": true,
+   "detail": "Stale; Competing; Competing; Competing"
+  },
+  {
+   "scenario": "deals-table",
+   "check": "typing in the company filter keeps every letter and narrows the rows",
+   "ok": true,
+   "detail": "Ster"
+  },
+  {
+   "scenario": "deals-table",
+   "check": "column 1 has a named filter",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "deals-table",
+   "check": "column 2 has a named filter",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "deals-table",
+   "check": "column 3 has a named filter",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "deals-table",
+   "check": "column 4 has a named filter",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "deals-table",
+   "check": "column 5 has a named filter",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "deals-table",
+   "check": "column 6 has a named filter",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "deals-table",
+   "check": "column 7 has a named filter",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "deals-table",
+   "check": "a header sorts its column and says so",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "deals-table",
+   "check": "a second tap sorts the other way",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "deals-table",
+   "check": "a company opens its deal in a side panel with the next-step form and Open in CRM",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "deals-table",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "deals-table",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "deals-table",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "deals-table",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "deals-table",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "deals-table-phone",
+   "check": "on a phone the filters sit above the table, one per column",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "deals-table-phone",
+   "check": "on a phone the table fits without sideways scrolling",
+   "ok": true,
+   "detail": "[316, 348]"
+  },
+  {
+   "scenario": "deals-table-phone",
+   "check": "a phone filter narrows the table too",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "deals-table-phone",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "deals-table-phone",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "deals-table-phone",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "deals-table-phone",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "deals-table-phone",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  }
+ ]
+}

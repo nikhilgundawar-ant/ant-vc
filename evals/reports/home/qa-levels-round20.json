@@ -1,0 +1,438 @@
+{
+ "checks": 71,
+ "failed": 0,
+ "complete": false,
+ "scenarios": [
+  "levels",
+  "round20"
+ ],
+ "page_sha256": "019afda9f5b8",
+ "rows": [
+  {
+   "scenario": "level-aditi",
+   "check": "hero states a fact",
+   "ok": true,
+   "detail": "Review the board deck"
+  },
+  {
+   "scenario": "level-aditi",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "level-aditi",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "level-aditi",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "level-aditi",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "level-aditi",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "level-kabir",
+   "check": "hero states a fact",
+   "ok": true,
+   "detail": "Share the diligence checklist"
+  },
+  {
+   "scenario": "level-kabir",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "level-kabir",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "level-kabir",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "level-kabir",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "level-kabir",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "level-meera",
+   "check": "hero states a fact",
+   "ok": true,
+   "detail": "Sable Fraud AI: term sheet from Monsoon Arc Ventures"
+  },
+  {
+   "scenario": "level-meera",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "level-meera",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "level-meera",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "level-meera",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "level-meera",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "level-rohan",
+   "check": "hero states a fact",
+   "ok": true,
+   "detail": "Market map of AA players"
+  },
+  {
+   "scenario": "level-rohan",
+   "check": "analyst pipeline opens on Mine, top of the funnel first",
+   "ok": true,
+   "detail": "Inbound"
+  },
+  {
+   "scenario": "level-rohan",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "level-rohan",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "level-rohan",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "level-rohan",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "level-rohan",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "level-tara",
+   "check": "hero states a fact",
+   "ok": true,
+   "detail": "Intro two CFO candidates"
+  },
+  {
+   "scenario": "level-tara",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "level-tara",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "level-tara",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "level-tara",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "level-tara",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "level-vikram",
+   "check": "hero states a fact",
+   "ok": true,
+   "detail": "Answer the fee offset question"
+  },
+  {
+   "scenario": "level-vikram",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "level-vikram",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "level-vikram",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "level-vikram",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "level-vikram",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "level-solo",
+   "check": "hero states a fact",
+   "ok": true,
+   "detail": "Review the board deck"
+  },
+  {
+   "scenario": "level-solo",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "level-solo",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "level-solo",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "level-solo",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "level-solo",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "deals-table",
+   "check": "the Stage filter keeps only that stage",
+   "ok": true,
+   "detail": "2 of 37"
+  },
+  {
+   "scenario": "deals-table",
+   "check": "Clear filters brings every deal back",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "deals-table",
+   "check": "Status: Needs a look keeps only competing and stale deals",
+   "ok": true,
+   "detail": "Stale; Competing; Competing; Competing"
+  },
+  {
+   "scenario": "deals-table",
+   "check": "typing in the company filter keeps every letter and narrows the rows",
+   "ok": true,
+   "detail": "Ster"
+  },
+  {
+   "scenario": "deals-table",
+   "check": "column 1 has a named filter",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "deals-table",
+   "check": "column 2 has a named filter",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "deals-table",
+   "check": "column 3 has a named filter",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "deals-table",
+   "check": "column 4 has a named filter",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "deals-table",
+   "check": "column 5 has a named filter",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "deals-table",
+   "check": "column 6 has a named filter",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "deals-table",
+   "check": "column 7 has a named filter",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "deals-table",
+   "check": "a header sorts its column and says so",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "deals-table",
+   "check": "a second tap sorts the other way",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "deals-table",
+   "check": "a company opens its deal in a side panel with the next-step form and Open in CRM",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "deals-table",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "deals-table",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "deals-table",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "deals-table",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "deals-table",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "deals-table-phone",
+   "check": "on a phone only the company box and a Filters button show at first",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "deals-table-phone",
+   "check": "Filters opens one filter per column, above the table",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "deals-table-phone",
+   "check": "on a phone the table fits without sideways scrolling",
+   "ok": true,
+   "detail": "[316, 348]"
+  },
+  {
+   "scenario": "deals-table-phone",
+   "check": "a phone filter narrows the table too",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "deals-table-phone",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "deals-table-phone",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "deals-table-phone",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "deals-table-phone",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "deals-table-phone",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  }
+ ]
+}

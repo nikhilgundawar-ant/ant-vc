@@ -59,16 +59,16 @@
   {
    "theme": "light",
    "state": "aditi-pipeline",
-   "checked": 269,
-   "marks": 63,
+   "checked": 324,
+   "marks": 45,
    "min": 3.24,
    "fails": 0
   },
   {
    "theme": "light",
    "state": "aditi-deal-open",
-   "checked": 269,
-   "marks": 66,
+   "checked": 226,
+   "marks": 52,
    "min": 3.24,
    "fails": 0
   },
@@ -107,8 +107,8 @@
   {
    "theme": "light",
    "state": "meera-pipeline",
-   "checked": 113,
-   "marks": 44,
+   "checked": 105,
+   "marks": 37,
    "min": 3.24,
    "fails": 0
   },
@@ -123,8 +123,8 @@
   {
    "theme": "light",
    "state": "rohan-pipeline",
-   "checked": 126,
-   "marks": 44,
+   "checked": 158,
+   "marks": 40,
    "min": 3.24,
    "fails": 0
   },
@@ -251,16 +251,16 @@
   {
    "theme": "dark",
    "state": "aditi-pipeline",
-   "checked": 269,
-   "marks": 71,
+   "checked": 324,
+   "marks": 53,
    "min": 3.8,
    "fails": 0
   },
   {
    "theme": "dark",
    "state": "aditi-deal-open",
-   "checked": 269,
-   "marks": 74,
+   "checked": 226,
+   "marks": 60,
    "min": 3.8,
    "fails": 0
   },
@@ -299,8 +299,8 @@
   {
    "theme": "dark",
    "state": "meera-pipeline",
-   "checked": 113,
-   "marks": 52,
+   "checked": 105,
+   "marks": 45,
    "min": 3.8,
    "fails": 0
   },
@@ -315,8 +315,8 @@
   {
    "theme": "dark",
    "state": "rohan-pipeline",
-   "checked": 126,
-   "marks": 52,
+   "checked": 158,
+   "marks": 48,
    "min": 3.8,
    "fails": 0
   },
