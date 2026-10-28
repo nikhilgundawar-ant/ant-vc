@@ -1,8 +1,8 @@
 # ant. for VCs: eval scorecard
 
-Run at 28 Oct 2026 01:31. Golden fund: Quillwater Ventures (fictional).
+Run at 28 Oct 2026 09:03. Golden fund: Quillwater Ventures (fictional).
 
-**230 of 230 checks pass.** 7 Claude-run scores skipped: no saved run.
+**233 of 233 checks pass.** 7 Claude-run scores skipped: no saved run.
 
 | Suite | Check | Result | Threshold | Pass |
 | --- | --- | --- | --- | --- |
@@ -236,6 +236,9 @@ Run at 28 Oct 2026 01:31. Golden fund: Quillwater Ventures (fictional).
 | round16 | a change never applied, a note only, an unknown change and a withdrawn tap are not put back | refused ['rv_p2', 'rv_p3', 'rv_zz']; pending ['rv_p1'] | rv_p2, rv_p3, rv_zz refused; rv_w ignored | yes |
 | round16 | a reversal applied once is never offered again | [] | [] | yes |
 | round16 | a Sheet CRM says to change it back by hand | [{"id": "rv_p1", "type": "revert", "why": "Your CRM is a Google Sheet, which ant. cannot write to. Copy the change from  | refused | yes |
+| round17 | automatic mode applies a proposed CRM change and an own-calendar hold untapped, marked auto | pending ['p1', 'p3'] | p1, p3 | yes |
+| round17 | a skipped change, a hand-copied one and an applied one stay put; an invite or an unknown field is still refused | refused ['p4', 'p7']; engine ['p2'] | p4, p7 refused; p2 skipped | yes |
+| round17 | with automatic mode off or never set, nothing applies without a tap | [] [] | [] [] | yes |
 | llm | commitments read from meeting notes | skipped | - | skipped |
 | llm | inbound triage agrees with partner judgment | skipped | - | skipped |
 | llm | memo claims linked to a source | skipped | - | skipped |

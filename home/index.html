@@ -351,6 +351,28 @@ section.card.is-folded .sec-h { margin-bottom: 0; }
 :root[data-ah-density="compact"] .stat { min-height: 56px; padding: 8px 12px; }
 
 @media (max-width: 430px) { .ah-live-pre { display: none; } }
+@media (max-width: 360px) { .ah-icon-btn, .ah-help { width: 32px; margin: -8px -2px; } }
+/* Ask */
+.ask-form { display: flex; gap: 8px; align-items: flex-end; }
+.ask-form textarea { flex: 1 1 auto; min-width: 0; min-height: 44px; max-height: 160px; resize: vertical; border: 0; border-radius: 12px; padding: 10px 14px;
+  background: var(--ah-surface); color: var(--ah-ink); box-shadow: inset 0 0 0 1px var(--ah-field); font: inherit; line-height: 1.45; }
+.ask-form textarea:focus { outline: none; box-shadow: inset 0 0 0 1.5px var(--ah-hero), 0 0 0 4px var(--ah-halo); }
+.ask-form textarea::placeholder { color: var(--ah-ink-3); opacity: 1; }
+.ask-form .btn { height: 44px; }
+.chat { display: grid; gap: 12px; }
+.bubble { max-width: 72ch; padding: 12px 16px; border-radius: 12px; line-height: 1.5; overflow-wrap: anywhere; }
+.bubble.me { justify-self: end; background: var(--ah-tint); color: var(--ah-ink); }
+.bubble.ant { justify-self: start; background: var(--ah-surface-2); color: var(--ah-ink); }
+.bubble.ant .md { font-size: 15px; }
+.bubble .prov { margin-top: 8px; }
+.hits { display: grid; }
+.hit { display: grid; gap: 2px; text-align: left; border: 0; background: transparent; padding: 10px 8px; min-height: 44px; border-radius: 9px; cursor: pointer; font: inherit; color: inherit;
+  border-top: 1px solid var(--ah-row-rule); }
+.hits > .hit:first-child { border-top: 0; }
+.hit:hover { background: var(--ah-tint); }
+.hit b { font-weight: 600; font-size: 15px; }
+.hit span { font-size: 13px; color: var(--ah-ink-2); }
+.suggest { display: flex; flex-wrap: wrap; gap: 8px; }
 .today-cols { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 20px; align-items: start; }
 .today-col { display: grid; gap: 20px; min-width: 0; }
 .chip-filter { height: 32px; padding: 0 14px; }
@@ -438,6 +460,7 @@ section.card.is-folded .sec-h { margin-bottom: 0; }
         </div>
         <span class="ah-date" id="hdr-date"></span>
         <span class="ah-live" id="hdr-live"><i></i><span id="hdr-live-text">Live</span></span>
+        <button class="ah-icon-btn" id="ask-btn" type="button" aria-label="Ask about your data" title="Ask (/)"></button>
         <button class="ah-icon-btn" id="activity-btn" type="button" aria-label="Activity" title="Activity"></button>
         <button class="ah-icon-btn" id="theme-btn" type="button" aria-label="Switch to dark mode" title="Dark mode"></button>
         <button class="ah-help" id="help-btn" type="button" aria-label="How ant. works"><span>?</span></button>
@@ -507,6 +530,9 @@ section.card.is-folded .sec-h { margin-bottom: 0; }
     x: "M6 6l12 12|M18 6L6 18",
     moon: "M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z",
     chev: "M6 9l6 6l6-6",
+    ask: "M5 5h14v10H10l-5 4z|M9 9.5h6|M9 12h4",
+    search: "M10.5 4a6.5 6.5 0 1 0 0 13a6.5 6.5 0 1 0 0-13|M15.5 15.5L20 20",
+    stop: "M7 7h10v10H7z",
     clock: "M4 12a8 8 0 1 0 2.4-5.7|M4 4v4h4|M12 8v4l3 2",
     undo: "M9 14L4 9l5-5|M4 9h10.5a5.5 5.5 0 0 1 0 11H11",
     sun: "M12 2.5v2|M12 19.5v2|M4.6 4.6l1.4 1.4|M18 18l1.4 1.4|M2.5 12h2|M19.5 12h2|M4.6 19.4L6 18|M18 6l1.4-1.4|M12 7.5a4.5 4.5 0 1 0 0 9a4.5 4.5 0 1 0 0-9"
@@ -588,7 +614,8 @@ section.card.is-folded .sec-h { margin-bottom: 0; }
     { key: "pipeline", label: "Pipeline", icon: ICON.pipeline },
     { key: "people", label: "People", icon: ICON.people },
     { key: "portfolio", label: "Portfolio", icon: ICON.portfolio },
-    { key: "lps", label: "LPs", icon: ICON.lps }
+    { key: "lps", label: "LPs", icon: ICON.lps },
+    { key: "ask", label: "Ask", icon: ICON.ask }
   ];
   var TAB_KEYS = TABS.map(function (t) { return t.key; });
   var S = { snap: {}, items: {}, actions: {}, rated: {}, stageOpen: {}, tab: "today", tabChosen: false, open: null, db: null,
@@ -698,6 +725,7 @@ section.card.is-folded .sec-h { margin-bottom: 0; }
         var next = {};
         qs.docs.forEach(function (d) { if (d.exists) next[d.id] = d.data(); });
         S.snap = next; S.loaded = true;
+        setTimeout(maybeAutoResearch, 0);
         var c = next.config || {};
         if (!S.tabChosen) {
           var pushedRow = (next.brief || {}).pushed_item || null;
@@ -709,6 +737,7 @@ section.card.is-folded .sec-h { margin-bottom: 0; }
       }, function () { S.error = "db-error"; S.loaded = true; render(); });
       db.doc("state/items").onSnapshot(function (d) { S.items = (d.exists && d.data().items) || {}; render(); }, function () {});
       db.doc("state/actions").onSnapshot(function (d) { S.actions = (d.exists && d.data().items) || {}; render(); }, function () {});
+      db.doc("state/settings").onSnapshot(function (d) { S.settings = (d.exists && d.data().items) || {}; render(); }, function () {});
       db.collection("ratings").orderBy("at", "desc").limit(60).onSnapshot(function (qs) {
         S.ratings = qs.docs.filter(function (d) { return d.exists; }).map(function (d) { return Object.assign({ id: d.id }, d.data()); }); if (S.tab === "activity") render();
       }, function () {});
@@ -1522,7 +1551,8 @@ section.card.is-folded .sec-h { margin-bottom: 0; }
       rows.push(foldRow(h("div", { class: "row" }, [glyph("medium"), h("div", { class: "row-main" }, [
         h("div", { class: "row-hit static" }, [h("span", { class: "row-title" }, ((p.record && p.record.name) ? p.record.name + ": " : "") + (p.title || "CRM update")),
           h("span", { style: "display:grid;gap:2px" }, fields)]),
-        h("div", { class: "row-meta" }, [decided ? h("span", { class: "done-note" }, act.type === "skip" ? "Skipped" : "Approved. ant. saves it to your CRM at the next check.") : h("span", { class: "status" }, "Needs your OK"),
+        h("div", { class: "row-meta" }, [decided ? h("span", { class: "done-note" }, act.type === "skip" ? "Skipped" : "Approved. ant. saves it to your CRM at the next check.") :
+          (S.settings || {}).auto_apply === true ? h("span", { class: "status hero" }, "Applies by itself at the next check") : h("span", { class: "status" }, "Needs your OK"),
           sourceChip({ label: p.source_label || "Meeting notes", url: p.source_url })]),
         decided ? null : h("div", { class: "row-actions" }, [
           h("button", { class: "btn btn-secondary btn-sm", type: "button", onclick: function () { approve(id, p.type || "crm_update", { fields: p.fields, record: p.record }); } }, "Approve"),
@@ -2188,9 +2218,16 @@ section.card.is-folded .sec-h { margin-bottom: 0; }
       [icon(ICON.ext, 16), "Open the empathy map"])));
     if (!maps.length) {
       var ask = "Research my " + (card.time || (meeting && meeting.time) || "") + " meeting with " + (card.who || card.title || "them") + " on LinkedIn";
-      kids.push(h("p", { class: "finding" }, "ant. can read each person's public LinkedIn profile in the Claude app's browser and build an empathy map: what they say, think, do and feel, and three things to raise. Nothing is sent, liked or followed."));
-      kids.push(h("div", { class: "row-actions" }, [h("button", { class: "btn btn-secondary btn-sm", type: "button",
-        onclick: function () { copyText(ask.replace(/\s+/g, " "), "Copied. Paste it in Claude: the map lands on this card and in your Drive folder."); } }, [icon(ICON.copy, 16), "Copy the request for Claude"])]));
+      var canRun = !!S.mcp && !S.static && !S.readOnly;
+      kids.push(h("p", { class: "finding" }, canRun ? (S.rs.running ? "Researching now, in the Claude app's browser." :
+        "ant. reads each person's public LinkedIn profile in the Claude app's browser before the meeting and writes an empathy map: what they say, think, do and feel, and three things to raise. Nothing is sent, liked or followed.") :
+        S.static ? "On your own Home, ant. reads each person's LinkedIn in the Claude app's browser before the meeting and adds an empathy map here. Sample data has no real people to research." :
+        "Open ant. Home in the Claude desktop app and ant. researches each person on LinkedIn automatically before the meeting. Or ask Claude in a chat."));
+      if (S.rs.note) kids.push(h("p", { class: "prov", id: "rs-note" }, S.rs.note));
+      kids.push(h("div", { class: "row-actions" }, [
+        canRun && !S.rs.running ? h("button", { class: "btn btn-secondary btn-sm", type: "button", onclick: function () { runResearch(rsCandidates(card)); closeOverlay(); toast("Researching on LinkedIn in the Claude app's browser. The map lands on this card."); } }, [icon(ICON.search, 16), "Research now"]) : null,
+        S.static ? null : h("button", { class: "btn btn-ghost btn-sm", type: "button",
+          onclick: function () { copyText(ask.replace(/\s+/g, " "), "Copied. Paste it in Claude: it can use the app's browser or Chrome."); } }, [icon(ICON.copy, 16), "Ask Claude instead"])]));
     }
     return h("div", { class: "kv" }, kids);
   }
@@ -2237,7 +2274,9 @@ section.card.is-folded .sec-h { margin-bottom: 0; }
   function openHelp() {
     var sc = S.snap.scorecard || {}, c = cfg();
     overlay("How ant. works", [
-      h("p", { class: "finding" }, "ant. prepares and drafts. You decide. Nothing is sent, deleted or changed in your tools without your tap."),
+      h("p", { class: "finding" }, "ant. reads, prepares, drafts and researches by itself. It never sends an email or deletes anything: you press Send. " +
+        ((S.settings || {}).auto_apply === true ? "CRM changes from your notes and holds on your own calendar apply automatically, with Undo in Activity." : "CRM changes wait for your Approve.")),
+      kv("Ask", [h("li", null, "Press / or the search icon on any screen to find a deal, person or LP, or to ask a question about your data.")]),
       kv("Taps", [h("li", null, "Tap a line to act on it: done, snooze, set a next step or draft a note."), h("li", null, "Rate any line Useful, Not useful or Wrong. ant. tunes itself every Sunday."),
         h("li", null, "What you approve applies at the next hourly check. Undo any tap from Activity, at the top of the page."),
         h("li", null, "Tap a section's title to fold it. Focus folds everything but the top line and your schedule.")]),
@@ -2245,6 +2284,11 @@ section.card.is-folded .sec-h { margin-bottom: 0; }
       (function () { var k = segKv("Keyboard shortcuts", [["on", "On"], ["off", "Off"]], S.keys ? "on" : "off", function (v) { S.keys = v === "on"; remember("ant.keys", v); }); k.classList.add("keys-only"); return k; })(),
       kv("This week", [h("li", null, isNil(sc.overall) ? "You have not scored ant. this week yet." : "You scored ant. " + sc.overall + " of 10 this week."), h("li", null, sc.change_note || "No changes yet. Tuning runs Sunday evening.")]),
       kv("You", [h("li", null, (c.level_label || "Level not set") + (c.firm ? " at " + c.firm : "")), h("li", null, "Morning brief at " + (c.brief_time || "07:00") + (c.tz ? " (" + c.tz + ")" : ""))]),
+      S.static ? null : segKv("CRM changes from your notes", [["auto", "Apply automatically"], ["ask", "Ask me first"]], (S.settings || {}).auto_apply === true ? "auto" : "ask", function (v) {
+        S.settings = Object.assign({}, S.settings || {}, { auto_apply: v === "auto" });
+        if (S.db && !S.readOnly) { var r = S.db.doc("state/settings"); r.set({ items: S.settings }).then(function () { toast(v === "auto" ? "CRM changes and holds on your calendar now apply at each check. Undo any from Activity." : "ant. asks before each CRM change."); }, function () { toast("Could not save that."); }); }
+      }),
+      S.static ? null : segKv("Research before meetings", [["auto", "Automatic"], ["off", "Off"]], rsSetting(), function (v) { remember("ant.research", v); }),
       segKv("Appearance", [["system", "Match my device"], ["light", "Light"], ["dark", "Dark"]], themeChoice(), setTheme),
       segKv("Text size", [["comfortable", "Comfortable"], ["compact", "Compact"]], density(), function (v) { setDensity(v); render(); }),
       h("p", { class: "prov" }, "This page is private to you. To stop ant. and wipe this data, tell Claude “turn off ant.”.")]);
@@ -2272,6 +2316,13 @@ section.card.is-folded .sec-h { margin-bottom: 0; }
       if (!a.at || !a.type) return;
       out.push({ id: k, src: "actions", at: a.at, t: a.t || tapTitle(a.type, a.payload) || VERB[ACT_CAT[a.type] || "other"], cat: ACT_CAT[a.type] || "other",
         undone: a.status === "withdrawn" ? (a.withdrawn_at || a.at) : null, a: a });
+    });
+    var props_ = ((S.snap.proposals || {}).items) || {};
+    Object.keys(props_).forEach(function (k) {
+      var pr = props_[k] || {};
+      if (S.actions[k] || !pr.applied_at || (pr.type !== "crm_update" && pr.type !== "calendar_hold") || ["applied", "failed"].indexOf(pr.status) < 0) return;
+      out.push({ id: k, src: "actions", at: pr.applied_at, t: ((pr.record && pr.record.name) ? pr.record.name + ": " : "") + (pr.title || "CRM change") + " (by itself)",
+        cat: pr.type === "calendar_hold" ? "calendar" : "crm", undone: null, a: { type: pr.type, status: "approved", payload: { fields: pr.fields, record: pr.record }, at: pr.applied_at } });
     });
     (S.ratings || []).forEach(function (r) {
       if (r && r.at) out.push({ id: r.id, src: "ratings", at: r.at, t: (r.title || "A line") + ": " + String(r.value || "").replace(/_/g, " "), cat: "rated", r: r });
@@ -2396,7 +2447,7 @@ section.card.is-folded .sec-h { margin-bottom: 0; }
   function enhance(root) {
     Array.prototype.forEach.call(root.querySelectorAll("section.card"), function (sec) {
       var head = sec.firstElementChild;
-      if (!head || !head.classList.contains("sec-h") || head.querySelector(".fold-btn")) return;
+      if (!head || !head.classList.contains("sec-h") || head.querySelector(".fold-btn") || sec.getAttribute("data-fold") === "no") return;
       // A section names itself by its title when it has no label of its own.
       if (!sec.getAttribute("aria-label")) { var tb = head.querySelector("b"); if (!tb) return; sec.setAttribute("aria-label", tb.textContent); }
       var label = sec.getAttribute("aria-label"), body = h("div", { class: "fold-body", id: "fold-" + (++foldSeq) });
@@ -2436,6 +2487,316 @@ section.card.is-folded .sec-h { margin-bottom: 0; }
         host.parentNode.insertBefore(h("div", null, more), host.nextSibling);
       });
     });
+  }
+
+
+  // ---------------------------------------------------------------- Ask: find anything in your data, or ask ant. about it
+  // Instant matches come from what Home already holds. A question goes to Claude on the viewer's own account
+  // (the sample capability) with a compact copy of Home's data; Claude cannot browse or change anything from here.
+  S.chat = []; S.askDraft = ""; S.askCtl = null;
+  function searchAll(q) {
+    q = String(q || "").trim().toLowerCase(); if (q.length < 2) return [];
+    var out = [], seen = {}, words = q.split(/\s+/);
+    var hit = function (label, sub, fn, kind) {
+      var hay = (label + " " + (sub || "")).toLowerCase();
+      if (seen[label + kind] || !words.every(function (w) { return hay.indexOf(w) >= 0; })) return;
+      seen[label + kind] = true; out.push({ label: label, sub: (kind ? kind + " · " : "") + (sub || ""), go: fn });
+    };
+    var b = S.snap.brief || {};
+    (b.meetings || []).forEach(function (m) { hit((m.time || "") + " " + (m.who || ""), (m.notes || []).join(" "), function () { if (m.prep_id) openPrep(m.prep_id, m); else go("today"); }, "Meeting"); });
+    (b.sections || []).forEach(function (sec) { (sec.items || []).forEach(function (it) { hit(it.title, it.detail, function () { go("today", it.id); setTimeout(function () { focusId(it.id); }, 30); }, "Today"); }); });
+    var deals = ((S.snap.pipeline || {}).deals) || {};
+    Object.keys(deals).forEach(function (id) { var d = deals[id]; if (d.active) hit(d.company || "Deal", [d.stage, d.next_step, d.round].filter(Boolean).join(" · "), function () { go("pipeline", "deal:" + id); }, "Pipeline"); });
+    var pp = S.snap.people || {};
+    (pp.top || []).concat(pp.decay || []).forEach(function (r) { hit(r.name || "", [r.company, isNil(r.days_since) ? null : r.days_since + " days since you spoke"].filter(Boolean).join(" · "), function () { go("people"); }, "People"); });
+    var comps = ((S.snap.portfolio || {}).companies) || {};
+    Object.keys(comps).forEach(function (id) { var c = comps[id]; hit(c.name || "", [fmtMoney(c.revenue_usd) ? fmtMoney(c.revenue_usd) + " revenue" : null, isNil(c.runway_months) ? null : Number(c.runway_months).toFixed(1) + " months runway"].filter(Boolean).join(" · "), function () { go("portfolio"); }, "Portfolio"); });
+    var lps = ((S.snap.lps || {}).lps) || {};
+    Object.keys(lps).forEach(function (id) { var l = lps[id]; hit(l.name || "", [fmtMoney(l.commitment_usd) ? fmtMoney(l.commitment_usd) + " committed" : null, isNil(l.days_since) ? null : "last touch " + l.days_since + " days ago"].filter(Boolean).join(" · "), function () { go("lps"); }, "LPs"); });
+    var drafts = ((S.snap.drafts || {}).items) || {};
+    Object.keys(drafts).forEach(function (id) { var d = drafts[id]; if (d && !itemState(id).done_at) hit(String(d.subject || "Draft"), "To " + (d.to_name || d.to || ""), function () { go("today"); }, "Draft"); });
+    return out.slice(0, 8);
+  }
+  function line(parts) { return parts.filter(function (x) { return !isNil(x) && x !== ""; }).join(" | "); }
+  // What Claude reads: Home's own data, compact, newest first, capped well under the prompt limit.
+  function askContext() {
+    var c = cfg(), b = S.snap.brief || {}, out = [];
+    out.push("USER: " + line([c.user_name, c.level_label, c.firm]) + ". Today is " + DAYS[wall().wd] + " " + todayIso() + " (" + (c.tz || "local time") + ").");
+    out.push("\nMEETINGS TODAY"); (b.meetings || []).forEach(function (m) { out.push(line([m.time, m.who, (m.notes || []).join("; ")])); });
+    (b.tomorrow || []).forEach(function (m) { out.push(line(["Tomorrow " + (m.time || ""), m.who])); });
+    if (b.hero && b.hero.statement) out.push("\nTOP LINE: " + line([b.hero.kicker, b.hero.statement, b.hero.finding]));
+    out.push("\nOPEN LINES ON TODAY");
+    (b.sections || []).forEach(function (sec) { (sec.items || []).forEach(function (it) { if (!isHidden(it)) out.push(line([statusText(it), it.title, it.detail])); }); });
+    var deals = ((S.snap.pipeline || {}).deals) || {};
+    out.push("\nPIPELINE (company | stage | days in stage | next step | due | owner | round | flags)");
+    Object.keys(deals).forEach(function (id) { var d = deals[id]; if (!d.active || d.quiet) return;
+      out.push(line([d.company, d.stage, d.days_in_stage, d.next_step, d.next_step_due, d.owner, [d.round, fmtMoney(d.raise_usd)].filter(Boolean).join(" "),
+        [d.competing ? "competing: " + (d.competing_evidence || "another fund") : null, d.stale ? "stale" : null].filter(Boolean).join(", ")])); });
+    var pp = S.snap.people || {};
+    out.push("\nRELATIONSHIPS (name | company | strength of 100 | days since last touch)");
+    (pp.decay || []).concat((pp.top || []).slice(0, 40)).forEach(function (r) { out.push(line([r.name, r.company, r.strength, r.days_since])); });
+    var po = S.snap.portfolio || {}, comps = po.companies || {};
+    out.push("\nPORTFOLIO (company | month | revenue | growth % | burn | runway months)");
+    Object.keys(comps).forEach(function (id) { var x = comps[id]; out.push(line([x.name, x.month, fmtMoney(x.revenue_usd), x.growth_pct, fmtMoney(x.burn_usd), x.runway_months])); });
+    (po.flags || []).forEach(function (f) { out.push("Flag: " + line([f.company, f.headline || f.text, f.detail])); });
+    var asks = ((S.snap.asks || {}).items) || {};
+    Object.keys(asks).forEach(function (k) { var a = asks[k]; if (a && a.status !== "done") out.push("Founder ask: " + line([a.company, a.ask, a.warning])); });
+    var lps = ((S.snap.lps || {}).lps) || {};
+    out.push("\nLPS (name | committed | called | unfunded | owner | last touch days | re-up window)");
+    Object.keys(lps).forEach(function (id) { var l = lps[id]; out.push(line([l.name, fmtMoney(l.commitment_usd), fmtMoney(l.called_usd), fmtMoney(l.unfunded_usd), l.owner_name, l.days_since,
+      l.reup_window_start ? l.reup_window_start + " to " + l.reup_window_end : null])); });
+    var cm = ((S.snap.commitments || {}).items) || {};
+    out.push("\nPROMISES (who owes | what | due | status)");
+    Object.keys(cm).forEach(function (k) { var x = cm[k]; if (x && x.status !== "done" && !itemState(k).done_at) out.push(line([x.owed_by, x.what, x.due, x.status])); });
+    var dr = ((S.snap.drafts || {}).items) || {};
+    out.push("\nDRAFTS WAITING");
+    Object.keys(dr).forEach(function (k) { var d = dr[k]; if (d && !itemState(k).done_at) out.push(line([d.subject, "to " + (d.to_name || d.to || ""), d.context])); });
+    var lib = ((S.snap.research || {}).people) || {};
+    Object.keys(lib).forEach(function (k) { var r = lib[k]; if (r && r.name) out.push("Research: " + line([r.name, r.headline, r.says, r.does, (r.points || []).join("; ")])); });
+    return out.join("\n").slice(0, 90000);
+  }
+  var ASK_RULES = "You are ant., a chief of staff for a venture investor. Answer the question using only the data below, which is the investor's own ant. Home. " +
+    "Write plain, short sentences; use a short bulleted list when you list several things. Name companies, people and dates exactly as the data does, and give " +
+    "dates as 23 Oct. Never invent a number, a name or a date. If the data does not hold the answer, say so in one line and say which tool would have it " +
+    "(email, calendar, CRM, notes). Do not offer to send, change or schedule anything: ant. Home does that with its own buttons.\n\nDATA\n";
+  function askClaude(question, onText) {
+    if (!S.sample) return Promise.reject({ code: "unavailable" });
+    if (S.askCtl) S.askCtl.abort();
+    var ctl = S.askCtl = new AbortController();
+    var turns = [{ role: "user", content: ASK_RULES + askContext() }];
+    S.chat.slice(-8).forEach(function (m) { if (m.text && !m.failed) turns.push({ role: m.role === "me" ? "user" : "assistant", content: m.text }); });
+    turns.push({ role: "user", content: question });
+    return S.sample(turns, { cache: false, signal: ctl.signal, onText: function (u) { onText(u.text); } })
+      .then(function (r) { if (S.askCtl === ctl) S.askCtl = null; return r.text; }, function (e) { if (S.askCtl === ctl) S.askCtl = null; throw e; });
+  }
+  function askError(e) {
+    var c = (e && e.code) || "";
+    if (c === "unavailable" || c === "not_granted" || c === "sampling_disabled" || c === "not_declared" || c === "capability_disabled")
+      return S.static ? "Asking needs this page open in the Claude app, with Claude allowed for it." : "Asking needs Claude allowed for ant. Home. Open its permissions in the Claude app, or ask Claude in a chat.";
+    if (c === "rate_limited") return "Claude is busy or your usage limit is reached. Try again in a little while.";
+    if (c === "cancelled") return "Stopped.";
+    if (c === "refused") return "Claude did not answer that one. Try asking it another way.";
+    return "That did not go through. Try again.";
+  }
+  // One question, one answer: added to the conversation, streamed into whatever shows it.
+  function ask(question, paint) {
+    question = String(question || "").trim(); if (!question) return;
+    S.chat.push({ role: "me", text: question });
+    var a = { role: "ant", text: "", live: true }; S.chat.push(a);
+    S.askDraft = ""; paint();
+    askClaude(question, function (t) { a.text = t; paint(); })
+      .then(function (t) { a.text = t; a.live = false; paint(); }, function (e) { a.live = false; a.failed = true; a.text = (e && e.text) || ""; a.note = askError(e); paint(); });
+  }
+  function chatView(list) {
+    return h("div", { class: "chat", "aria-live": "polite" }, list.map(function (m) {
+      if (m.role === "me") return h("div", { class: "bubble me" }, m.text);
+      return h("div", { class: "bubble ant" }, [m.text ? mdBlock(m.text) : h("span", { class: "status" }, m.live ? "Thinking…" : ""),
+        m.note ? h("p", { class: "prov" }, m.note) : m.live ? null : h("p", { class: "prov" }, "From your ant. Home data · ant. can be wrong: check the source before you act")]);
+    }));
+  }
+  var SUGGEST = ["What do I owe people this week?", "Which deals need a decision soon?", "Who should I catch up with?", "What should I know before my next meeting?", "Which portfolio companies are short on runway?"];
+  function askForm(onAsk, autofocus) {
+    var box = h("textarea", { "aria-label": "Ask about your data", placeholder: "Ask about a deal, person or LP", rows: "1" });
+    box.value = S.askDraft || "";
+    box.addEventListener("input", function () { S.askDraft = box.value; if (box._onType) box._onType(box.value); });
+    box.addEventListener("keydown", function (e) { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); onAsk(box.value); } });
+    var busy = !!S.askCtl;
+    var btn = busy ? h("button", { class: "btn btn-secondary", type: "button", onclick: function () { if (S.askCtl) S.askCtl.abort(); } }, [icon(ICON.stop, 16), "Stop"])
+      : h("button", { class: "btn btn-primary", type: "submit" }, "Ask");
+    var form = h("form", { class: "ask-form", onsubmit: function (e) { e.preventDefault(); onAsk(box.value); } }, [box, btn]);
+    form._box = box;
+    if (autofocus) setTimeout(function () { box.focus(); box.setSelectionRange(box.value.length, box.value.length); }, 0);
+    return form;
+  }
+  function hitsList(q) {
+    var hs = searchAll(q);
+    if (!hs.length) return null;
+    return h("div", { class: "hits", role: "list", "aria-label": "Matches in your data" }, hs.map(function (x) {
+      return h("button", { class: "hit", type: "button", role: "listitem", onclick: function () { closeOverlay(); x.go(); } }, [h("b", null, x.label), h("span", null, x.sub)]);
+    }));
+  }
+  function viewAsk() {
+    var noClaude = S.sample === null;
+    var hitsBox = h("div", null, hitsList(S.askDraft));
+    var form = askForm(function (q) { if (noClaude) { toast(askError({ code: "unavailable" })); return; } ask(q, render); }, true);
+    form._box._onType = function (v) { hitsBox.textContent = ""; var l = hitsList(v); if (l) hitsBox.appendChild(l); };
+    var intro = h("section", { class: "card", "aria-label": "Ask", "data-fold": "no", style: "display:grid;gap:12px" }, [
+      h("h2", { class: "sec-h", style: "margin:0" }, [h("b", null, "Ask")]),
+      h("p", { class: "finding" }, noClaude ? "Type a name or a company to find it in your Home. Answers to questions need ant. Home open in the Claude app." :
+        "Ask anything about your deals, people, portfolio, LPs and promises. ant. answers from your Home's own data; matches show as you type."),
+      S.chat.length ? null : h("div", { class: "suggest" }, SUGGEST.map(function (q) {
+        return h("button", { class: "chip chip-filter", type: "button", "aria-pressed": "false", onclick: function () { if (noClaude) { S.askDraft = q; render(); return; } ask(q, render); } }, q); })),
+      form, hitsBox]);
+    var log = S.chat.length ? h("section", { class: "card", "aria-label": "Conversation", "data-fold": "no", style: "display:grid;gap:12px" }, [
+      h("div", { class: "sec-h", style: "margin:0" }, [h("b", null, "Conversation"), h("button", { class: "btn btn-ghost btn-sm", type: "button", style: "margin-left:auto",
+        onclick: function () { if (S.askCtl) S.askCtl.abort(); S.chat = []; render(); } }, "Start over")]),
+      chatView(S.chat)]) : null;
+    return [intro, log];
+  }
+  // Quick ask from any screen: the same search and the same conversation, in a sheet.
+  function openQuick() {
+    var hitsBox = h("div"), chatBox = h("div");
+    var paint = function () {
+      chatBox.textContent = "";
+      var last = S.chat.slice(-2);
+      if (last.length) chatBox.appendChild(chatView(last));
+      if (S.chat.length > 2) chatBox.appendChild(h("button", { class: "btn btn-ghost btn-sm", type: "button", onclick: function () { closeOverlay(); go("ask"); } }, "See the whole conversation in Ask"));
+    };
+    var form = askForm(function (q) {
+      if (S.sample === null) { toast(askError({ code: "unavailable" })); return; }
+      form._box.value = ""; hitsBox.textContent = ""; ask(q, function () { paint(); if (S.tab === "ask") render(); });
+    }, true);
+    form._box._onType = function (v) { hitsBox.textContent = ""; var l = hitsList(v); if (l) hitsBox.appendChild(l); };
+    overlay("Ask ant.", [h("p", { class: "prov" }, S.sample === null ? "Find a deal, person, LP or company. Questions need ant. Home open in the Claude app." :
+      "Find anything, or ask a question about your data. Enter asks; matches show as you type."), form, hitsBox, chatBox]);
+    paint();
+    setTimeout(function () { form._box.focus(); }, 0);
+  }
+
+  // ---------------------------------------------------------------- Research: LinkedIn in the Claude app's browser, automatically
+  // When Home is open in the Claude desktop app, it researches the people in today's and tomorrow's external meetings:
+  // it opens LinkedIn in the app's own browser (where the user is signed in), reads each profile, asks Claude for an
+  // empathy map, keeps it in snap/research and saves a Google Doc to Drive. Reading only: it never clicks Connect,
+  // Message, Follow or Like. One person at a time, at most five per opening, each person once a month.
+  S.rs = { running: false, who: null, note: null, stop: false };
+  function rsSetting() { try { return localStorage.getItem("ant.research") === "off" ? "off" : "auto"; } catch (e) { return "auto"; } }
+  function rsKey(a) { return String(a.email || a.name || "").toLowerCase(); }
+  function rsCandidates(onlyCard) {
+    var lib = ((S.snap.research || {}).people) || {}, tried = ((S.snap.research || {}).tried) || {}, dom = String(cfg().firm_domain || "").toLowerCase();
+    var cards = ((S.snap.prep || {}).cards) || {}, out = [], seen = {};
+    Object.keys(cards).forEach(function (k) {
+      var c = cards[k];
+      if (!c || c.kind === "partner" || (onlyCard && c !== onlyCard)) return;
+      var day = dayOf(c.start || ""); if (!onlyCard && day !== todayIso() && day !== dayIso(1)) return;
+      (c.attendees || []).forEach(function (a) {
+        var key = rsKey(a); if (!key || seen[key] || !a.name) return;
+        if (dom && String(a.email || "").toLowerCase().split("@")[1] === dom) return;
+        var have = lib[key]; if (have && Date.now() - Date.parse(have.read_at || 0) < 30 * 864e5) return;
+        if (!onlyCard && tried[key] && Date.now() - Date.parse(tried[key]) < 2 * 864e5) return;
+        seen[key] = true; out.push({ key: key, person: a, card: c });
+      });
+    });
+    return out.slice(0, 5);
+  }
+  function maybeAutoResearch() {
+    if (S.rsAuto || S.static || S.readOnly || !S.mcp || !S.loaded || !S.db || rsSetting() === "off") return;
+    var list = rsCandidates(); if (!list.length) return;
+    S.rsAuto = true; runResearch(list);
+  }
+  function textOf(r) {
+    if (!r) return "";
+    var p = r.payload;
+    if (typeof p === "string") return p;
+    if (p && typeof p === "object") { if (typeof p.text === "string") return p.text; return JSON.stringify(p); }
+    return (r.content || []).map(function (b) { return b.text || ""; }).join("\n");
+  }
+  var BROWSER = "host:claude_browser";
+  function bcall(tool, input) { return S.mcp.callTool(BROWSER, tool, input || {}); }
+  var PACE = window.__QA__ ? 0.002 : 1;  // Home QA runs the same steps without the reading-pace waits
+  function pause(ms) { return new Promise(function (r) { setTimeout(r, ms * PACE); }); }
+  function rsNote(t) { S.rs.note = t; if (S.tab === "today") render(); var el = document.getElementById("rs-note"); if (el) el.textContent = t; }
+  function runResearch(list) {
+    if (S.rs.running || !list.length) return Promise.resolve();
+    S.rs.running = true; S.rs.stop = false; S.rs.halted = false;
+    var done = 0;
+    var next = function (i) {
+      if (i >= list.length || S.rs.stop) { S.rs.running = false; S.rs.who = null; rsNote(S.rs.halted ? S.rs.note : S.rs.stop ? "Research stopped." : done ? "Research done: " + plural(done, "empathy map") + " on your prep cards." : S.rs.note); return Promise.resolve(); }
+      var p = list[i]; S.rs.who = p.person.name; rsNote("Reading " + p.person.name + "'s LinkedIn in the Claude app's browser…");
+      return rsOne(p).then(function (ok) { if (ok) done += 1; return pause(8000 + Math.random() * 4000); },
+        function (e) { rsNote(e && e.say ? e.say : "Could not read LinkedIn for " + p.person.name + "."); if (e && e.halt) { S.rs.stop = true; S.rs.halted = true; } return e && e.halt ? null : markTried(p.key); })
+        .then(function () { return next(i + 1); });
+    };
+    return next(0);
+  }
+  function halt(say) { return { halt: true, say: say }; }
+  function browserError(e) {
+    var c = (e && e.code) || "";
+    if (c === "server_not_connected") return halt("Research runs when ant. Home is open in the Claude desktop app.");
+    if (c === "not_in_manifest" || c === "approval_required" || c === "cancelled" || c === "blocked_by_policy") return halt("Research needs the Claude app's browser allowed for ant. Home.");
+    return { say: "The browser did not answer. ant. tries again next time you open Home." };
+  }
+  function rsOne(p) {
+    var a = p.person, q = [a.name, a.company].filter(Boolean).join(" ");
+    var url = "https://www.linkedin.com/search/results/people/?keywords=" + encodeURIComponent(q);
+    var page = "";
+    return bcall("navigate", { url: url }).catch(function (e) { throw browserError(e); })
+      .then(function () { return pause(3500); })
+      .then(function () { return bcall("get_page_text", { max_chars: 8000 }); })
+      .then(function (r) {
+        var t = textOf(r);
+        if (/sign in|join now|log in to linkedin|authwall/i.test(t) && !/results/i.test(t)) throw halt("Sign in to LinkedIn once in the Claude app's browser, then reopen Home. ant. researches your meetings from there.");
+        return bcall("find", { query: a.name });
+      })
+      .then(function (r) {
+        var t = textOf(r), lines = t.split("\n"), ref = null;
+        lines.some(function (l) { var m = l.match(/ref_\d+/); if (m && /link/i.test(l)) { ref = m[0]; return true; } return false; });
+        if (!ref) { var m2 = t.match(/ref_\d+/); ref = m2 ? m2[0] : null; }
+        if (!ref) throw { say: "No LinkedIn profile found for " + a.name + "." };
+        return bcall("computer", { action: "left_click", ref: ref, action_summary: "Opens " + a.name + "'s LinkedIn profile" });
+      })
+      .then(function () { return pause(4000); })
+      .then(function () { return bcall("get_page_text", { max_chars: 20000 }); })
+      .then(function (r) {
+        page = textOf(r);
+        if (!S.sample) throw halt("Allow Claude for ant. Home so it can write the empathy maps.");
+        var c = p.card;
+        var known = ["Meeting: " + (c.title || c.who || "") + " on " + fmtDate(c.start, false) + " at " + (c.time || ""),
+          "Their role as ant. knows it: " + [a.title, a.company].filter(Boolean).join(", "),
+          c.watch ? "Watch: " + c.watch : "", c.finding ? "What matters: " + c.finding : "",
+          (c.open_commitments || []).map(function (x) { return (x.side === "us" ? "We owe: " : "They owe: ") + x.what; }).join("; "),
+          (c.history || []).slice(0, 3).map(function (x) { return x.date + ": " + x.text; }).join("; ")].filter(Boolean).join("\n");
+        return S.sample.json("You write empathy maps that help a venture investor prepare for a meeting. Below is the text of a LinkedIn page that should be " +
+          a.name + "'s profile" + (a.company ? " at " + a.company : "") + ", and what the investor already knows. Reply with only a JSON object: " +
+          '{"match": true or false (is this page really this person?), "name": "", "headline": "", "says": "", "thinks": "", "does": "", "feels": "", ' +
+          '"company": "one line on their firm: for an investor, thesis and recent bets; for a founder or leader, stage, scale and product", ' +
+          '"points": ["three specific things to raise in this meeting"]}. Each field is one plain sentence. "says" stays close to their own public words; ' +
+          '"thinks" and "feels" are your reading, so write them as a reading. Leave out family, health, politics, religion and anything else not about work.\n\n' +
+          "WHAT THE INVESTOR KNOWS\n" + known + "\n\nLINKEDIN PAGE TEXT\n" + page.slice(0, 16000), { modelTier: "default" });
+      })
+      .then(function (m) {
+        if (!m || m.match === false || !m.name) throw { say: "The LinkedIn page did not look like " + a.name + "; skipped." };
+        var map = { name: String(m.name || a.name), headline: String(m.headline || ""), says: String(m.says || ""), thinks: String(m.thinks || ""), does: String(m.does || ""),
+          feels: String(m.feels || ""), company: String(m.company || ""), points: (m.points || []).slice(0, 3).map(String), source_url: url, read_at: nowIso(), auto: true };
+        return driveDoc(map, p).then(function (link) { if (link) map.drive_url = link; return saveResearch(p.key, map); }).then(function () { return true; });
+      });
+  }
+  function saveResearch(key, map) {
+    var patch = { people: {} }; patch.people[key] = map;
+    S.snap.research = S.snap.research || {}; S.snap.research.people = Object.assign({}, S.snap.research.people || {}, patch.people);
+    if (!S.db) return Promise.resolve();
+    var ref = S.db.doc("snap/research");
+    return ref.update(patch).catch(function () { return ref.set(Object.assign({ people: {}, tried: {} }, S.snap.research)); }).catch(function () {});
+  }
+  function markTried(key) {
+    var t = {}; t[key] = nowIso();
+    S.snap.research = S.snap.research || {}; S.snap.research.tried = Object.assign({}, S.snap.research.tried || {}, t);
+    if (!S.db) return Promise.resolve();
+    var ref = S.db.doc("snap/research");
+    return ref.update({ tried: t }).catch(function () { return ref.set(Object.assign({ people: {}, tried: {} }, S.snap.research)); }).catch(function () {});
+  }
+  // A Google Doc per person in the research folder, when Google Drive is connected. Failure never stops the map.
+  function driveDoc(map, p) {
+    if (!S.mcp) return Promise.resolve(null);
+    var folderName = cfg().research_folder || "ant. research";
+    var esc = function (x) { return String(x || "").replace(/[&<>]/g, function (ch) { return ch === "&" ? "&amp;" : ch === "<" ? "&lt;" : "&gt;"; }); };
+    var title = dayOf(p.card.start || nowIso()) + " " + map.name + (p.person.company ? ", " + p.person.company : "");
+    var html = "<h1>" + esc(map.name) + "</h1><p>" + esc(map.headline) + "</p><p>" + esc(p.card.title || "") + ", " + esc(fmtDate(p.card.start, false)) + " " + esc(p.card.time || "") + "</p>" +
+      "<h2>Empathy map</h2><p><b>Says:</b> " + esc(map.says) + "</p><p><b>Thinks:</b> " + esc(map.thinks) + "</p><p><b>Does:</b> " + esc(map.does) + "</p><p><b>Feels:</b> " + esc(map.feels) + "</p>" +
+      "<h2>Their company</h2><p>" + esc(map.company) + "</p><h2>Raise in the meeting</h2><ol>" + map.points.map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("") + "</ol>" +
+      "<p>Source: LinkedIn, read in the Claude app's browser on " + esc(fmtDate(map.read_at)) + ". ant. for VCs.</p>";
+    var D = "Google Drive";
+    var findFolder = function () {
+      return S.mcp.callTool(D, "search_files", { query: "title = '" + folderName.replace(/'/g, "\\'") + "' and mimeType = 'application/vnd.google-apps.folder'", pageSize: 1, excludeContentSnippets: true })
+        .then(function (r) { var pl = r.payload || {}, f = (pl.files || pl.items || [])[0]; return f && f.id ? f.id : null; });
+    };
+    return (S.rsFolder ? Promise.resolve(S.rsFolder) : findFolder().then(function (id) {
+      return id || S.mcp.callTool(D, "create_file", { title: folderName, contentMimeType: "application/vnd.google-apps.folder" }).then(function (r) { return (r.payload || {}).id || null; });
+    })).then(function (folder) {
+      S.rsFolder = folder || null;
+      return S.mcp.callTool(D, "create_file", Object.assign({ title: title, textContent: html, contentMimeType: "text/html" }, folder ? { parentId: folder } : {}));
+    }).then(function (r) {
+      var f = r.payload || {}; return safeUrl(f.webViewLink) || safeUrl(f.alternateLink) || (f.id ? "https://docs.google.com/document/d/" + f.id + "/edit" : null);
+    }).catch(function () { return null; });
   }
 
   // ---------------------------------------------------------------- render
@@ -2479,6 +2840,9 @@ section.card.is-folded .sec-h { margin-bottom: 0; }
   }
   function banners(host) {
     var c = cfg(), b = S.snap.brief || {};
+    if (S.rs.running || (S.rs.note && S.tab === "today")) host.appendChild(h("div", { class: "banner", role: "status" }, [h("span", { id: "rs-note" }, S.rs.note || ""),
+      S.rs.running ? h("button", { class: "btn btn-ghost btn-sm", type: "button", style: "margin-left:auto", onclick: function () { S.rs.stop = true; rsNote("Stopping after this person…"); } }, "Stop") :
+      h("button", { class: "btn btn-ghost btn-sm", type: "button", style: "margin-left:auto", onclick: function () { S.rs.note = null; render(); } }, "Dismiss")]));
     if (c.demo) {
       var note = h("div", { class: "banner", role: "note" }, [h("span", null, [h("b", null, "Sample data"), " from a made-up fund, Quillwater Ventures."])]);
       if (S.static && S.demo) {
@@ -2521,8 +2885,9 @@ section.card.is-folded .sec-h { margin-bottom: 0; }
       live.className = "ah-live" + (old ? " is-old" : "");
       live.parentNode.className = "ah-hdr" + (old ? " is-old" : "");
       liveText.textContent = "";
-      liveText.appendChild(h("span", { class: old ? null : "ah-live-pre" }, old ? "Last check " : "As of "));
+      liveText.appendChild(h("span", { class: "ah-live-pre" }, old ? "Last check " : "As of "));
       liveText.appendChild(document.createTextNode((wallDay(t) === wallDay(d) ? "" : DAYS[t.wd] + " ") + pad(t.hh) + ":" + pad(t.mm)));
+      live.setAttribute("title", liveText.textContent);
     } else { live.className = "ah-live"; liveText.textContent = S.loaded ? "Waiting" : "Loading"; }
     if (!S.loaded && !S.error) {
       view.appendChild(skeletonCard()); view.appendChild(skeletonCard());
@@ -2539,7 +2904,7 @@ section.card.is-folded .sec-h { margin-bottom: 0; }
     }
     banners(banner);
     var parts = S.tab === "pipeline" ? viewPipeline() : S.tab === "people" ? viewPeople() : S.tab === "portfolio" ? viewPortfolio() : S.tab === "lps" ? viewLps() :
-      S.tab === "activity" ? viewActivity() : viewToday();
+      S.tab === "activity" ? viewActivity() : S.tab === "ask" ? viewAsk() : viewToday();
     parts.forEach(function (p) { if (p) view.appendChild(p); });
     enhance(view);
   }
@@ -2563,17 +2928,24 @@ section.card.is-folded .sec-h { margin-bottom: 0; }
     var hits = Array.prototype.filter.call(document.querySelectorAll("#view .row-hit[data-id]"), function (x) { return x.offsetParent; }), i = hits.indexOf(document.activeElement);
     if (e.key === "j" || e.key === "k") { e.preventDefault(); var n = hits[i < 0 ? 0 : Math.max(0, Math.min(hits.length - 1, i + (e.key === "j" ? 1 : -1)))]; if (n) n.focus(); return; }
     if (e.key === "?") { openHelp(); return; }
+    if (e.key === "/") { e.preventDefault(); openQuick(); return; }
     var it = i >= 0 ? hits[i]._item : null; if (!it) return;
     if (e.key === "a" && (it.actions || []).indexOf("done") >= 0) markDone(it);
     else if (e.key === "s" && it.kind !== "deal" && it.kind !== "review") snooze(it, morning(1), "tomorrow 08:00");
     else if (e.key === "1" || e.key === "2" || e.key === "3") { rate(it, ["useful", "not_useful", "wrong"][Number(e.key) - 1]); toast("Thanks. ant. tunes itself from this on Sunday."); focusId(hits[i].getAttribute("data-id")); }
   });
   document.getElementById("help-btn").addEventListener("click", openHelp);
+  document.getElementById("ask-btn").appendChild(icon(ICON.search, 18));
+  document.getElementById("ask-btn").addEventListener("click", function () { openQuick(); });
   document.getElementById("activity-btn").addEventListener("click", function () { go(S.tab === "activity" ? "today" : "activity"); });
   document.getElementById("theme-btn").addEventListener("click", function () { setTheme(theme() === "dark" ? "light" : "dark"); });
   paintThemeButton();
 
   render();
   startDb();
+  if (window.claude && typeof window.claude.use === "function") {
+    window.claude.use("sample").then(function (fn) { S.sample = fn || null; if (S.tab === "ask") render(); }).catch(function () { S.sample = null; });
+    if (!S.static) window.claude.use("mcp").then(function (m) { S.mcp = m || null; maybeAutoResearch(); }).catch(function () { S.mcp = null; });
+  } else { S.sample = null; S.mcp = null; }
 })();
 </script>

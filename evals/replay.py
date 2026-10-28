@@ -3592,3 +3592,39 @@ def suite_round16(record) -> None:
 
 
 SUITES["round16"] = suite_round16
+
+
+def suite_round17(record) -> None:
+    """Round seventeen: automatic mode. With state/settings auto_apply on, a CRM change and an own-calendar hold a run
+    proposed apply without a tap; one you skipped or withdrew does not; a hold that invites someone is still refused;
+    with it off, nothing applies untapped."""
+    now = datetime(2026, 10, 22, 10, 0, tzinfo=tzinfo("Asia/Kolkata"))
+    props = {"p1": {"type": "crm_update", "status": "proposed", "fields": [{"field": "stage", "current": "a", "proposed": "b"}], "record": {"id": "r1"}},
+             "p2": {"type": "crm_update", "status": "proposed", "fields": [{"field": "stage", "current": "a", "proposed": "b"}]},
+             "p3": {"type": "calendar_hold", "status": "proposed", "event": {"title": "Prep"}, "attendees": []},
+             "p4": {"type": "calendar_hold", "status": "proposed", "event": {"title": "Call"}, "attendees": ["raj@fablebank.in"]},
+             "p5": {"type": "crm_update", "status": "proposed", "by_hand": True, "fields": [{"field": "stage", "current": "a", "proposed": "b"}]},
+             "p6": {"type": "crm_update", "status": "applied", "fields": [{"field": "stage", "current": "a", "proposed": "b"}]},
+             "p7": {"type": "crm_update", "status": "proposed", "fields": [{"field": "owner", "current": "a", "proposed": "b"}]}}
+    acts = {"p2": {"type": "skip", "status": "approved", "at": "2026-10-22T09:00:00+05:30"}}
+
+    def home(auto):
+        st = {"actions": {"items": acts}}
+        if auto is not None:
+            st["settings"] = {"items": {"auto_apply": auto}}
+        return {"snap": {"proposals": {"items": props}, "config": {"user_email": "aditi@quillwater.vc", "crm_system": "attio"}, "lps": {"lps": {}}},
+                "state": st, "ratings": [], "versions": {}, "runs": []}
+    on = pending_actions(home(True), now)
+    pend = sorted(p["id"] for p in on["pending"])
+    refused = sorted(r["id"] for r in on["refused"])
+    record("round17", "automatic mode applies a proposed CRM change and an own-calendar hold untapped, marked auto",
+           f"pending {pend}", "p1, p3", pend == ["p1", "p3"] and all(p.get("auto") for p in on["pending"] if p["type"] == "crm_update"))
+    record("round17", "a skipped change, a hand-copied one and an applied one stay put; an invite or an unknown field is still refused",
+           f"refused {refused}; engine {on['applied_by_engine']}", "p4, p7 refused; p2 skipped", refused == ["p4", "p7"] and on["applied_by_engine"] == ["p2"])
+    off = pending_actions(home(False), now)
+    none = pending_actions(home(None), now)
+    record("round17", "with automatic mode off or never set, nothing applies without a tap", f"{off['pending']} {none['pending']}", "[] []",
+           not off["pending"] and not none["pending"])
+
+
+SUITES["round17"] = suite_round17

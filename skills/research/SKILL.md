@@ -2,10 +2,12 @@
 name: research
 description: Researches the people a venture investor is about to meet from their public LinkedIn profiles, in the Claude app's built-in browser, and builds an empathy map per person (says, thinks, does, feels, three things to raise) on the meeting's prep card and as a PDF in Drive. Use when the user says "research my 3pm", "research the people I'm meeting", "empathy map for", or pastes "Research my ... meeting with ... on LinkedIn" from ant. Home. Never in a scheduled run.
 metadata:
-  version: "0.8.0"
+  version: "0.9.0"
 ---
 
 # Research the people you meet
+
+ant. Home does this by itself when it is open in the Claude desktop app: it reads today's and tomorrow's attendees in the app's browser and writes their maps. This skill is for asking in chat: a person Home could not read, a meeting further ahead, or Claude in Chrome when the user names it.
 
 The user is in the conversation and asked for this. It reads public profiles only, at reading pace, in the user's own signed-in browser. It never sends, likes, follows, connects, messages or endorses anything.
 
@@ -22,7 +24,7 @@ From the calendar: the meeting the user named (the pasted line from Home names i
 
 ## 2. Read LinkedIn in the built-in browser
 
-Use the Claude app's built-in browser (read the `built-in-browser` skill first, if it is listed). If it is not available, say so and ask whether to use Claude in Chrome instead; never switch on your own.
+Use the Claude app's built-in browser (read the `built-in-browser` skill first, if it is listed). When the user names Chrome, use Claude in Chrome (read the `chrome-browser` skill first, if it is listed). If the browser asked for is not available, say so and ask whether to use the other; never switch on your own.
 
 1. Open linkedin.com. If it asks to sign in, ask the user to sign in in that browser pane, then wait for them. Never type a password and never ask for one.
 2. For each person: search LinkedIn for their name and company, open the profile that matches both (when two match or none does, ask the user which, or skip that person and say so), and read the headline, About, current and past roles, and the five most recent posts or comments in their activity.
@@ -44,6 +46,6 @@ Leave out anything personal that is not about their work: family, health, politi
 
 ## 4. Save it
 
-1. Build one PDF, "Empathy map: <meeting> <date>", one page per person, with the source link under each. When Google Drive is connected, save it in a folder named "ant. research" (create the folder the first time); else attach it here. Put its link in each person's `drive_url`.
+1. Build one PDF, "Empathy map: <meeting> <date>", one page per person, with the source link under each. When Google Drive is connected, save it in the folder named in `snap/config` `research_folder`, else "ant. research" (create the folder the first time), named "<meeting date> <name>, <company>"; else attach it here. Put its link in each person's `drive_url`.
 2. Read `snap/research` from ant. Home (`shared/home.md`, Read), add or replace each person under `people`, keyed by their email (else their name), and write it back with ArtifactData `set` on `snap/research`. Write nothing else in Home.
 3. In chat: one line per person ("Ishaan Verma: pressed to close the bank partner before the round; ask about the timeline"), then "The maps are on the prep card in ant. Home."

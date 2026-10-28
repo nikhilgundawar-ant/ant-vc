@@ -2,7 +2,7 @@
 name: morning-brief
 description: Writes a venture investor's morning brief from their email, calendar, meeting notes and CRM. Use when a scheduled task runs the ant-vc morning brief, or the user asks "what's my day", "brief me", "morning brief", "what needs me today" or "week ahead". Ranks what matters for their level, preps today's meetings and updates ant. Home.
 metadata:
-  version: "0.8.0"
+  version: "0.9.0"
 ---
 
 # Morning brief

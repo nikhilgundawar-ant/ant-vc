@@ -6,7 +6,7 @@ When a user shares this repository and asks to install or set it up:
 2. Copy `ant-vc.plugin` to `/tmp` and send it to the user with SendUserFile so the plugin card appears, and ask them to tap Accept.
 3. When they accept, or say it is already installed, run the `setup` skill from this plugin.
 
-If the app cannot show a plugin card, you may follow `skills/setup/SKILL.md` from this repository up to the first brief, but do not create the scheduled checks: their prompts call the plugin's `pulse` skill, which a fresh session only has when the plugin is installed. Say so, and offer to send the plugin card again. Read `shared/safety.md` before anything else: ant. never sends, deletes or changes anything without the user's tap.
+If the app cannot show a plugin card, you may follow `skills/setup/SKILL.md` from this repository up to the first brief, but do not create the scheduled checks: their prompts call the plugin's `pulse` skill, which a fresh session only has when the plugin is installed. Say so, and offer to send the plugin card again. Read `shared/safety.md` before anything else: ant. never sends or deletes anything without the user's tap, and changes CRM records only from proposals it showed (automatically in automatic mode, with Undo).
 
 For development:
 

@@ -2,7 +2,7 @@
 name: network
 description: Finds warm intro paths into any company or person from a venture firm's own relationships, and flags top relationships going cold with a reconnect draft. Use when the user asks "who can intro me to", "do we know anyone at", "warm path into", "who am I losing touch with", or when the Monday digest runs.
 metadata:
-  version: "0.8.0"
+  version: "0.9.0"
 ---
 
 # Network

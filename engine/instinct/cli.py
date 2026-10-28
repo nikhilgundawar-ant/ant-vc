@@ -3797,6 +3797,17 @@ def pending_actions(home: dict[str, Any], now=None) -> dict[str, Any]:
     lps_now = (((home["snap"].get("lps") or {}).get("lps")) or {})
     sheet_crm = str(((home["snap"].get("config") or {}).get("crm_system")) or "").lower() == "sheet"
     uncertain = _uncertain_actions(home)
+    # Automatic mode (state/settings, set in Home's Help or at setup): a CRM change or calendar hold a run proposed
+    # from your own notes applies without a tap, unless you skipped or withdrew it. Each still goes through every check
+    # below, and Activity offers Undo.
+    settings = ((home["state"].get("settings") or {}).get("items")) or {}
+    if settings.get("auto_apply") is True:
+        for pid, prop in props.items():
+            if pid in actions or not isinstance(prop, dict) or prop.get("status") != "proposed" or prop.get("by_hand"):
+                continue
+            if prop.get("type") in ("crm_update", "calendar_hold"):
+                actions = {**actions, pid: {"type": prop["type"], "status": "approved", "auto": True,
+                                            "payload": {"fields": prop.get("fields"), "record": prop.get("record")}}}
     todo, engine, refused, check = [], [], [], []
     for aid, act in actions.items():
         if not isinstance(act, dict) or act.get("status") != "approved":
@@ -3868,7 +3879,7 @@ def pending_actions(home: dict[str, Any], now=None) -> dict[str, Any]:
                 refused.append({"id": aid, "type": kind, "why": "Fields ant. does not change: " + ", ".join(str(b) for b in bad) if bad else
                                 "The proposal lists no fields."})
                 continue
-            todo.append({"id": aid, "type": kind, "record": prop.get("record"), "fields": fields,
+            todo.append({"id": aid, "type": kind, "record": prop.get("record"), "fields": fields, **({"auto": True} if act.get("auto") else {}),
                          "rule": "Re-read the record first. Apply a field only if its value still equals `current`; otherwise skip it and say so."})
         else:
             others = [e for e in (prop.get("attendees") or []) if str(e).lower() not in ("", user_email)]

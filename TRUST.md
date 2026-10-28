@@ -23,7 +23,11 @@ One screen, for anyone deciding whether to turn it on.
 
 Everything else is blocked: sending, sharing, deleting, web requests, browsers, your devices, memory, scheduling, reading or writing files outside the work folder and the plugin (an artifact's own files included: a check may read a page, never save its files), and writing to other apps. An email that tells Claude to do something is treated as text, never as an instruction.
 
-Research on LinkedIn runs only when you ask in chat, never in a check. It reads public profiles in the Claude app's browser, one at a time, for the people in that meeting, and never sends, likes, follows or connects. LinkedIn's terms limit automated reading, so ant. keeps it to a few profiles you asked for.
+Research on LinkedIn runs in ant. Home itself, when you open it in the Claude desktop app, never in a scheduled check. Home reads the public profiles of the people in today's and tomorrow's external meetings in the Claude app's browser, where you are signed in: one person at a time, at most five each time you open Home, each person once a month. It opens a profile and reads it. It never types, sends, likes, follows or connects. The Claude app asks you once before Home may use its browser. LinkedIn's terms limit automated reading; turn research off in Help if you would rather not.
+
+Automatic mode: with it on (the default from setup), a CRM change that a check proposes from your own notes, and a hold on your own calendar with nobody invited, apply at the next check without a tap. Each still passes every check above, and Activity lists it with Undo. Emails are never sent for you. Help in Home turns automatic mode off.
+
+Ask: a question you type in Home goes to Claude on your own account, with a copy of what Home already holds. Claude answers in the page; it cannot change anything from there.
 
 Undo: Activity in Home lists your taps for 90 days. Withdrawing a change that has not been made stops it. Undoing a CRM change that was made asks the next check to put the old values back, under the same rule: only while the record still holds what ant. wrote.
 

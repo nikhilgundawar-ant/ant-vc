@@ -2,7 +2,7 @@
 name: deal-memo
 description: Drafts an investment committee memo for a deal at diligence or later from meeting notes, data room files, CRM notes, company data and references, with every claim linked to its source and no invented numbers. Use when the user says "write the memo for", "IC memo", "draft the investment memo", or "memo for partner meeting".
 metadata:
-  version: "0.8.0"
+  version: "0.9.0"
 ---
 
 # Deal memo

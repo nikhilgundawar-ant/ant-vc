@@ -12,7 +12,8 @@ Last updated: 28 October 2026. This policy covers the ant-vc plugin for Claude, 
 
 - Your email, calendar, meeting notes and CRM, through the Claude connectors you choose to approve.
 - Google Drive and Slack only if you connect them. Slack is read only.
-- Public LinkedIn profiles of the people you are meeting, only when you ask for research in chat. ant. reads them in the Claude app's browser, where you are signed in. It never sends, likes, follows or connects, and scheduled checks never open a browser.
+- Public LinkedIn profiles of the people in your external meetings, when ant. Home is open in the Claude desktop app (or when you ask in chat). ant. reads them in the Claude app's browser, where you are signed in. It never sends, likes, follows or connects, and scheduled checks never open a browser. You can turn research off in Home's Help.
+- When you use Ask in Home, your question and a copy of Home's data go to Claude on your own account to write the answer.
 - It reads only what it needs for your brief, meeting prep, follow-ups, pipeline, portfolio and LP views.
 
 ## What ant. writes

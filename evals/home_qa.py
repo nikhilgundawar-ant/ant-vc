@@ -60,6 +60,11 @@ MOCK = r"""
     },
     doc: function (path) {
       var key = path.split("/")[1];
+      if (path.indexOf("snap/") === 0) return {
+        update: function (d) { if (!SNAP[key]) return Promise.reject({ code: "invalid_argument", message: "document does not exist" });
+          merge(SNAP[key], JSON.parse(JSON.stringify(d))); window.__writes.push({ op: "update", path: path, data: d }); return Promise.resolve(); },
+        set: function (d) { SNAP[key] = JSON.parse(JSON.stringify(d)); window.__writes.push({ op: "set", path: path, data: d }); return Promise.resolve(); }
+      };
       return {
         onSnapshot: function (next) { listeners[key] = next; emit(key); return function () {}; },
         update: function (d) {
@@ -75,7 +80,30 @@ MOCK = r"""
     }
   };
   var user = { isOwner: function () { return Promise.resolve(CFG.owner !== false); } };
-  window.claude = { use: function (name) { return Promise.resolve(name === "db" ? (CFG.noDb ? null : db) : name === "user" ? user : null); } };
+  window.__samples = []; window.__mcp = [];
+  var sample = null, mcp = null;
+  if (CFG.sample) {
+    sample = function (input, opts) {
+      window.__samples.push(input);
+      if (CFG.sample.fail) return Promise.reject({ code: CFG.sample.fail, message: "mock" });
+      var t = CFG.sample.answer || "An answer.";
+      return new Promise(function (res) { setTimeout(function () { if (opts && opts.onText) opts.onText({ text: t, delta: t }); res({ text: t, truncated: false, modelTierApplied: "default" }); }, 30); });
+    };
+    sample.json = function (input) { window.__samples.push(input); return Promise.resolve(JSON.parse(JSON.stringify(CFG.sample.json || {}))); };
+  }
+  if (CFG.mcp) {
+    var pages = CFG.mcp.pages || [], n = 0, files = 0;
+    mcp = { callTool: function (server, tool, input) {
+      window.__mcp.push({ server: server, tool: tool, input: input });
+      if (CFG.mcp.fail) return Promise.reject({ code: CFG.mcp.fail, message: "mock" });
+      if (tool === "get_page_text") return Promise.resolve({ content: [], payload: pages[Math.min(n++, pages.length - 1)] || "" });
+      if (tool === "find") return Promise.resolve({ content: [], payload: '- link "' + (input.query || "") + '" [ref_7]' });
+      if (tool === "search_files") return Promise.resolve({ content: [], payload: { files: [] } });
+      if (tool === "create_file") { files += 1; return Promise.resolve({ content: [], payload: { id: "f" + files, webViewLink: "https://docs.google.com/document/d/f" + files + "/edit" } }); }
+      return Promise.resolve({ content: [], payload: "ok" });
+    } };
+  }
+  window.claude = { use: function (name) { return Promise.resolve(name === "db" ? (CFG.noDb ? null : db) : name === "user" ? user : name === "sample" ? sample : name === "mcp" ? mcp : null); } };
 })();
 """
 
@@ -719,7 +747,7 @@ class QA:
                    page.locator("#hdr-date").inner_text() + " | " + page.locator("#hdr-live-text").text_content())
         ctx.close()
         ctx, page = self.open(browser, "stale-run", PHONE, when=dt.datetime(2026, 10, 22, 11, 30, tzinfo=IST))
-        self.check("stale-run", "old run is labelled", page.locator("#hdr-live-text").inner_text() == "Last check 07:00")
+        self.check("stale-run", "old run is labelled", page.locator("#hdr-live-text").text_content() == "Last check 07:00" and page.locator("#hdr-live").get_attribute("title") == "Last check 07:00")
         ctx.close()
         ctx, page = self.open(browser, "friday", PHONE, when=dt.datetime(2026, 10, 23, 9, 0, tzinfo=IST))
         card = page.locator("#view section.card", has_text="One question")
@@ -1780,8 +1808,8 @@ class QA:
         page.locator("button.agenda-row").first.click()
         page.wait_for_timeout(80)
         dlg = page.locator("[role=dialog]")
-        self.check(sc, "the prep card offers LinkedIn research, said plainly", dlg.get_by_text("Research", exact=True).count() == 1 and
-                   dlg.locator("button", has_text="Copy the request for Claude").count() == 1 and "Nothing is sent" in dlg.inner_text())
+        self.check(sc, "the prep card says research runs by itself in the desktop app, and offers Claude instead", dlg.get_by_text("Research", exact=True).count() == 1 and
+                   dlg.locator("button", has_text="Ask Claude instead").count() == 1 and "Claude desktop app" in dlg.inner_text())
         ctx.close()
         snap = json.loads(json.dumps(self.snaps["aditi"]))
         cards = snap["prep"]["cards"]
@@ -1798,12 +1826,105 @@ class QA:
         self.shot(page, "research-380")
         ctx.close()
 
+    def round17(self, browser) -> None:
+        """Round seventeen: Ask from every screen, research that runs by itself in the Claude app's browser, and
+        automatic CRM changes."""
+        sc = "ask"
+        ctx, page = self.open(browser, sc, PHONE, sample={"answer": "- **Atlas Settlement**: term sheet markup is due 23 Oct."})
+        self.check(sc, "Ask is a tab, and the search icon is in the header", page.locator("#bottom-tabs button[aria-label='Ask']").count() == 1
+                   and page.locator("#ask-btn").count() == 1)
+        page.locator("#ask-btn").click()
+        page.wait_for_timeout(60)
+        box = page.locator("[role=dialog] textarea")
+        box.fill("atlas")
+        page.wait_for_timeout(60)
+        hits = page.locator("[role=dialog] .hit").all_inner_texts()
+        self.check(sc, "typing finds matches in the Home's own data", any("Atlas Settlement" in x for x in hits), str(hits[:3]))
+        box.fill("What do I owe Atlas?")
+        box.press("Enter")
+        page.wait_for_timeout(200)
+        got = page.locator("[role=dialog] .bubble.ant").inner_text() if page.locator("[role=dialog] .bubble.ant").count() else ""
+        sent = page.evaluate("window.__samples")
+        first = sent[0] if sent else []
+        self.check(sc, "Enter asks Claude with the Home's data and streams the answer", "term sheet markup" in got and isinstance(first, list)
+                   and "DATA" in first[0]["content"] and "Atlas Settlement" in first[0]["content"] and first[-1]["content"] == "What do I owe Atlas?", got[:80])
+        page.keyboard.press("Escape")
+        page.locator("#bottom-tabs button[aria-label='Ask']").click()
+        page.wait_for_timeout(60)
+        self.check(sc, "the Ask tab keeps the conversation", page.locator(".bubble.me", has_text="What do I owe Atlas?").count() == 1)
+        self.shot(page, "ask-380")
+        page.locator("#bottom-tabs button[aria-label='Today']").click()
+        page.keyboard.press("/")
+        page.wait_for_timeout(60)
+        self.check(sc, "/ opens Ask from any screen", page.locator("[role=dialog]", has_text="Ask ant.").count() == 1)
+        self.common(page, sc)
+        ctx.close()
+        ctx, page = self.open(browser, "ask-none", PHONE)
+        page.locator("#bottom-tabs button[aria-label='Ask']").click()
+        page.wait_for_timeout(60)
+        self.check("ask-none", "without Claude, Ask still finds things and says what it needs", "open in the Claude app" in page.locator("#view").inner_text())
+        ctx.close()
+
+        sc = "research-auto"
+        profile = ("Ishaan Verma\nCEO at Atlas Settlement\nAbout\nBuilding settlement rails for cross-border payments. Posts weekly about bank partnerships.\n"
+                   "Experience\nAtlas Settlement, CEO, 2023 to now\nActivity\nWe just signed our second bank partner.")
+        mp = {"match": True, "name": "Ishaan Verma", "headline": "CEO, Atlas Settlement", "says": "Settlement is the bottleneck in cross-border payments.",
+              "thinks": "He likely worries banks move slower than his round.", "does": "Signs bank partners and posts about them weekly.",
+              "feels": "Probably pressed for time before the term sheet deadline.", "company": "Seed-stage settlement rails, two bank partners.",
+              "points": ["Ask when the second bank goes live", "Ask about Bluepeak's terms", "Confirm the ESOP pool"]}
+        ctx, page = self.open(browser, sc, PHONE, sample={"answer": "ok", "json": mp},
+                              mcp={"pages": ["Search results People Ishaan Verma CEO Atlas Settlement", profile, "results", profile, "results", profile]})
+        page.wait_for_timeout(900)
+        calls = page.evaluate("window.__mcp")
+        tools = sorted({c["tool"] for c in calls})
+        clicks = [c["input"] for c in calls if c["tool"] == "computer"]
+        writes = [w for w in page.evaluate("window.__writes") if str(w.get("path", "")).startswith("snap/research")]
+        people = {}
+        for w in writes:
+            people.update(((w.get("data") or {}).get("people")) or {})
+        self.check(sc, "on opening Home, ant. researches today's people in the app's browser by itself and keeps the map",
+                   "ishaan@atlassettle.com" in people and people["ishaan@atlassettle.com"].get("says") and
+                   any(c["server"] == "host:claude_browser" and c["tool"] == "navigate" and "linkedin.com" in c["input"]["url"] for c in calls), f"tools {tools}; kept {sorted(people)[:3]}")
+        self.check(sc, "it only reads: navigate, page text, find and one click on the profile link per person, never typing",
+                   set(t for t in tools if t not in ("search_files", "create_file")) <= {"navigate", "get_page_text", "find", "computer"}
+                   and all(c.get("action") == "left_click" and "profile" in c.get("action_summary", "") for c in clicks), str(clicks[:2]))
+        self.check(sc, "each map is saved as a Google Doc in the research folder", any(c["tool"] == "create_file" and c["input"].get("contentMimeType") == "text/html" for c in calls)
+                   and str(people.get("ishaan@atlassettle.com", {}).get("drive_url", "")).startswith("https://docs.google.com/"))
+        page.locator("button.agenda-row").first.click()
+        page.wait_for_timeout(80)
+        txt = page.locator("[role=dialog]").inner_text() if page.locator("[role=dialog]").count() else ""
+        self.check(sc, "the prep card shows the map: says, thinks, does, feels and the source", all(t in txt for t in ("Says", "Thinks", "Does", "Feels", "LinkedIn, read in your browser")), txt[-160:])
+        self.shot(page, "research-auto-380")
+        ctx.close()
+        ctx, page = self.open(browser, "research-signin", PHONE, sample={"answer": "ok", "json": mp}, mcp={"pages": ["Sign in to LinkedIn. Join now"]})
+        page.wait_for_timeout(500)
+        banner = page.locator("#banner-slot").inner_text()
+        self.check("research-signin", "when LinkedIn wants a sign-in, Home says so once and stops", "Sign in to LinkedIn" in banner and
+                   sum(1 for c in page.evaluate("window.__mcp") if c["tool"] == "navigate") == 1, banner[:120])
+        ctx.close()
+        ctx, page = self.open(browser, "research-demo", PHONE, sample={"answer": "ok", "json": mp}, mcp={"pages": [profile]},
+                              snap={**self.snaps["aditi"], "config": {**self.snaps["aditi"]["config"], "firm_domain": "atlassettle.com"}})
+        page.wait_for_timeout(400)
+        self.check("research-demo", "colleagues at your own firm are never researched", not any(c["tool"] == "navigate" and "Ishaan" in c["input"].get("url", "") for c in page.evaluate("window.__mcp")))
+        ctx.close()
+
+        sc = "auto-apply"
+        ctx, page = self.open(browser, sc, PHONE, state={"items": {}, "actions": {}, "settings": {"auto_apply": True}})
+        self.check(sc, "in automatic mode a CRM change says it applies by itself", page.locator(DECIDE + " .status", has_text="Applies by itself").count() >= 1)
+        page.locator("#help-btn").click()
+        seg = page.locator("[role=dialog] .seg[aria-label='CRM changes from your notes']")
+        seg.locator("button", has_text="Ask me first").click()
+        page.wait_for_timeout(80)
+        w = [x for x in page.evaluate("window.__writes") if x.get("path") == "state/settings"]
+        self.check(sc, "Help switches automatic mode off, saved for the hourly checks", bool(w) and (w[-1]["data"]["items"] or {}).get("auto_apply") is False, json.dumps(w[-1:])[:120])
+        ctx.close()
+
     def run(self, only: set[str] | None = None) -> int:
         from playwright.sync_api import sync_playwright
         with sync_playwright() as p:
             browser = p.chromium.launch()
             for name in ("today", "done_undo", "prep", "tabs", "pipeline_actions", "approvals", "keyboard", "theme", "colours", "states", "levels",
-                         "round6", "round7", "round8", "round9", "round10", "round11", "round12", "round13", "redesign"):
+                         "round6", "round7", "round8", "round9", "round10", "round11", "round12", "round13", "redesign", "round17"):
                 if only and name not in only:
                     continue
                 try:

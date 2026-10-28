@@ -2,7 +2,7 @@
 name: pulse
 description: Runs ant.'s scheduled check for a venture investor, and anything due with it (morning brief, Thursday review, Monday digest, Sunday tuning and week ahead). Use when a scheduled task says "run the ant-vc pulse skill", or the user asks ant. to "check in", "catch me up since this morning" or "anything new".
 metadata:
-  version: "0.8.0"
+  version: "0.9.0"
 ---
 
 # ant. pulse
@@ -52,7 +52,7 @@ The jobs, in the order to do them:
 
 Run `python3 -I -S instinct-engine/instinct.py actions --home ./home-db --now <started>` (the run's start from `due`; a tap older than 30 days is never offered again).
 
-- `pending`: apply each one. Before each tool call that changes something outside Home (a CRM write, a calendar hold, a Gmail draft), mark it applying on the run row (`shared/home.md`, Write step 2; the update merges, so each mark adds one key).
+- `pending`: apply each one. An entry with `auto: true` is a change the user lets ant. make without a tap (automatic mode in `state/settings`); apply it exactly like an approved one. Before each tool call that changes something outside Home (a CRM write, a calendar hold, a Gmail draft), mark it applying on the run row (`shared/home.md`, Write step 2; the update merges, so each mark adds one key).
   - `crm_update` (also an Undo from Home's Activity: it carries `reverts`, the change it puts back, and its fields run from what ant. wrote back to what was there): re-read the record. For each field, apply `proposed` only if the record still holds `current`; a field that already holds `proposed` is done; a field someone changed since is skipped. Apply the other fields even when one is skipped. `note` and `notes` add a note to the record and never overwrite one.
   - `next_step`: re-read the deal. If it is no longer open (passed or closed), apply nothing and record it as failed with that reason. If its next step or its due date no longer matches the payload's `current` and `current_due` (someone changed them after Home showed them), apply nothing and record it as failed: "Changed in the CRM since you set it". Otherwise, in one CRM call when the CRM takes several fields at once (one applying mark for the action):
     - `text` (and `due`): set the next step and its due date. With no `text`, leave the next step as it is: the user logged the meeting only. With no `text` and `clear_step` true, empty the next step and its due date by writing null (the old step was this meeting, and Home asks for the new one after this run). When a field already holds the value you would write, leave it and record it under `already`.
