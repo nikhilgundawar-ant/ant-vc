@@ -303,6 +303,8 @@ td .owed { display: block; font-size: 12px; }
 section.card.is-folded .sec-h { margin-bottom: 0; }
 .fold-body[hidden], .row[hidden], tr[hidden] { display: none; }
 .table-wrap.scrolls { box-shadow: inset -14px 0 12px -12px var(--ah-scrim); }
+:root[data-ah-theme="dark"] .table-wrap.scrolls { box-shadow: inset -1px 0 0 var(--ah-outline), inset -14px 0 12px -12px var(--ah-scrim); }
+th:last-child, td:last-child { padding-right: 0; }
 .table-wrap:focus-visible { outline: 2px solid var(--ah-hero); outline-offset: 2px; }
 .banner-actions { display: flex; gap: 8px; margin-left: auto; flex: none; }
 @media (max-width: 399px) { .meter span { width: 40px; } }
@@ -1941,7 +1943,7 @@ td a, .md li a, .kv li a { display: inline-flex; align-items: center; min-height
     if (asks && !platform) out.push(asks);
     var comps = p.companies || {}, ids = Object.keys(comps).sort(function (a, b) { return String(comps[a].name).localeCompare(String(comps[b].name)); });
     var tbl = h("table", { class: "fit-sm" }, [h("thead", null, h("tr", null, [h("th", null, "Company"), h("th", { class: "hide-sm" }, "Month"), h("th", { class: "r" }, "Revenue"),
-      h("th", { class: "r" }, "Growth"), h("th", { class: "r hide-sm" }, "Burn"), h("th", { class: "r", style: "white-space:nowrap" }, "Runway, months")])),
+      h("th", { class: "r" }, "Growth"), h("th", { class: "r hide-sm" }, "Burn"), h("th", { class: "r", style: "white-space:nowrap" }, ["Runway", h("span", { class: "hide-sm" }, ", months")])])),
       h("tbody", null, ids.map(function (id) {
         var c = comps[id], short = !isNil(c.runway_months) && c.runway_months < 9;
         var name = safeUrl(c.source_url) ? h("a", { href: safeUrl(c.source_url), target: "_blank", rel: "noopener noreferrer" }, c.name) : c.name;
@@ -2157,7 +2159,7 @@ td a, .md li a, .kv li a { display: inline-flex; align-items: center; min-height
     var head = [h("th", null, "LP"), h("th", { class: "r hide-sm" }, "Commitment")];
     if (hasCalled) head.push(h("th", { class: "r hide-sm" }, "Called"), h("th", { class: "r hide-sm" }, "Unfunded"));
     if (hasOwner) head.push(h("th", { class: "hide-sm own" }, "Owner"));
-    head.push(h("th", null, "Re-up window"), h("th", { class: "r" }, "Last touch"));
+    head.push(h("th", null, ["Re-up", h("span", { class: "hide-sm" }, " window")]), h("th", { class: "r" }, "Last touch"));
     var tbl = h("table", { class: "fit-sm" }, [h("thead", null, h("tr", null, head)),
       h("tbody", null, ids.map(function (id) {
         var l = lps[id];
@@ -2508,14 +2510,22 @@ td a, .md li a, .kv li a { display: inline-flex; align-items: center; min-height
       if (folded) { sec.classList.add("is-folded"); body.hidden = true; var pk = peekOf(body); if (pk) sec.appendChild(h("p", { class: "fold-peek" }, pk)); }
       sec.appendChild(body);
       limitRows(body, label);
-      Array.prototype.forEach.call(body.querySelectorAll(".table-wrap"), function (w) {
-        if (w.scrollWidth <= w.clientWidth + 1) return;
-        w.setAttribute("tabindex", "0"); w.setAttribute("role", "region"); w.setAttribute("aria-label", label + ", scrolls sideways");
-        var edge = function () { w.classList.toggle("scrolls", w.scrollLeft + w.clientWidth < w.scrollWidth - 2); };
-        w.addEventListener("scroll", edge); edge();
-      });
+      Array.prototype.forEach.call(body.querySelectorAll(".table-wrap"), function (w) { w.setAttribute("data-label", label); });
+    });
+    checkTables(root);
+  }
+  // A table wider than its card is a labelled keyboard stop with an edge while more is to the right; checked again on resize.
+  function checkTables(root) {
+    Array.prototype.forEach.call((root || document).querySelectorAll(".table-wrap"), function (w) {
+      var wide = w.scrollWidth > w.clientWidth + 1;
+      if (wide) { w.setAttribute("tabindex", "0"); w.setAttribute("role", "region"); w.setAttribute("aria-label", (w.getAttribute("data-label") || "Table") + ", scrolls sideways"); }
+      else { w.removeAttribute("tabindex"); w.removeAttribute("role"); w.removeAttribute("aria-label"); }
+      if (!w._edge) { w._edge = function () { w.classList.toggle("scrolls", w.scrollWidth > w.clientWidth + 1 && w.scrollLeft + w.clientWidth < w.scrollWidth - 2); }; w.addEventListener("scroll", w._edge); }
+      w._edge();
     });
   }
+  var resizeT = null;
+  window.addEventListener("resize", function () { clearTimeout(resizeT); resizeT = setTimeout(function () { checkTables(document.getElementById("view")); }, 150); });
   // Long lists show their first five lines, long tables their first eight, then "Show all".
   function limitRows(body, label) {
     var key = foldKey(label);

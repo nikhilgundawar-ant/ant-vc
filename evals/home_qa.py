@@ -398,7 +398,7 @@ class QA:
                 if key == "lps":
                     want = len(self.snaps["aditi"]["lps"]["lps"])
                     self.check(sc, "every LP is listed", page.locator("tbody tr").count() == want, f"{page.locator('tbody tr').count()} of {want}")
-                    self.check(sc, "re-up window visible", page.locator("th", has_text="Re-up window").is_visible())
+                    self.check(sc, "re-up window visible", page.locator("th", has_text="Re-up").is_visible())
                     fund = page.locator("section.fund")
                     self.check(sc, "fund summary: committed, called, unfunded", fund.count() == 1 and all(
                         t in fund.inner_text() for t in ("Fund II", "Committed", "Called", "Unfunded", "45% of commitments")),
@@ -1960,6 +1960,20 @@ class QA:
             page.wait_for_timeout(60)
             bad = page.evaluate("Array.from(document.querySelectorAll('.table-wrap')).filter(w => w.scrollWidth > w.clientWidth + 1 && w.getAttribute('tabindex') !== '0').length")
             self.check("narrow-tabs", f"{m}: a table that scrolls sideways can be reached by keyboard", bad == 0, f"{bad} unreachable")
+            for tab in ("Portfolio", "LPs"):
+                b_ = page.locator(f"#bottom-tabs button[aria-label='{tab}']")
+                if b_.count():
+                    b_.click(); page.wait_for_timeout(60)
+                    sw = page.evaluate("Array.from(document.querySelectorAll('.table-wrap')).filter(w => w.scrollWidth > w.clientWidth + 1).length")
+                    self.check("narrow-tabs", f"{m} {tab}: its table fits a 320px screen without scrolling", sw == 0, f"{sw} scroll")
+            ctx.close()
+            ctx, page = self.open(browser, "resize", DESK, member=m, open_all=False)
+            b_ = page.locator("#rail-tabs button[aria-label='Portfolio']")
+            if b_.count():
+                b_.click(); page.wait_for_timeout(60)
+                page.set_viewport_size({"width": 300, "height": 700}); page.wait_for_timeout(300)
+                bad = page.evaluate("Array.from(document.querySelectorAll('.table-wrap')).filter(w => w.scrollWidth > w.clientWidth + 1 && w.getAttribute('tabindex') !== '0').length")
+                self.check("resize", f"{m}: narrowing the window re-checks the tables", bad == 0, f"{bad} unreachable")
             ctx.close()
 
         sc = "auto-apply"
