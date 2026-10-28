@@ -65,6 +65,7 @@ The owner asked for a Home a partner can read in seconds: the day in logical sec
 | Round 6 | 9.5 | 9 | 9 | 8.5 | 9 |
 | Round 7 | 9.5 | 9 | 9 | 9 | 9.5 |
 | Round 8 | 9.5 | 9 | 9 | 9.5 | 9.5 |
+| Round 9 | 9.5 | 9.5 | 9.5 | 9.5 | 9.5 |
 
 Rounds 6 and 7 fixed the round-five and round-six findings: every tab fits a 320px screen and no focused control hides under the tab bar (both pinned for every level), the research banner no longer widens a phone page (pinned for every level at 320 and 380 px), research messages sit under the top line, the Decide badge counts only what needs you, and focus stays on the tab you tapped.
 

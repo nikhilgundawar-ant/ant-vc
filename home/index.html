@@ -223,7 +223,7 @@ td { padding: 10px 12px 10px 0; border-bottom: 1px solid var(--ah-row-rule); ver
 tr:last-child td { border-bottom: 0; }
 td.r, th.r { text-align: right; }
 .sub { display: none; font-size: 12px; color: var(--ah-ink-2); }
-@media (max-width: 559px) { .hide-sm { display: none; } table.fit-sm { min-width: 0; } .sub { display: block; } }
+@media (max-width: 559px) { .sr-sm { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; } .hide-sm { display: none; } table.fit-sm { min-width: 0; } .sub { display: block; } }
 .neg { color: var(--ah-breach-ink); font-weight: 700; }
 .null { color: var(--ah-ink-3); }
 /* Fund summary on the LPs tab */
@@ -1943,7 +1943,7 @@ td a, .md li a, .kv li a { display: inline-flex; align-items: center; min-height
     if (asks && !platform) out.push(asks);
     var comps = p.companies || {}, ids = Object.keys(comps).sort(function (a, b) { return String(comps[a].name).localeCompare(String(comps[b].name)); });
     var tbl = h("table", { class: "fit-sm" }, [h("thead", null, h("tr", null, [h("th", null, "Company"), h("th", { class: "hide-sm" }, "Month"), h("th", { class: "r" }, "Revenue"),
-      h("th", { class: "r" }, "Growth"), h("th", { class: "r hide-sm" }, "Burn"), h("th", { class: "r", style: "white-space:nowrap" }, ["Runway", h("span", { class: "hide-sm" }, ", months")])])),
+      h("th", { class: "r" }, "Growth"), h("th", { class: "r hide-sm" }, "Burn"), h("th", { class: "r", style: "white-space:nowrap" }, ["Runway", h("span", { class: "sr-sm" }, ", months")])])),
       h("tbody", null, ids.map(function (id) {
         var c = comps[id], short = !isNil(c.runway_months) && c.runway_months < 9;
         var name = safeUrl(c.source_url) ? h("a", { href: safeUrl(c.source_url), target: "_blank", rel: "noopener noreferrer" }, c.name) : c.name;
@@ -1951,7 +1951,7 @@ td a, .md li a, .kv li a { display: inline-flex; align-items: center; min-height
           cell(fmtPct(c.growth_pct), "r" + (c.growth_pct < 0 ? " neg" : "")), cell(fmtMoney(c.burn_usd), "r hide-sm"),
           cell(isNil(c.runway_months) ? null : Number(c.runway_months).toFixed(1), "r" + (short ? " neg" : ""))]);
       }))]);
-    out.push(h("section", { class: "card", style: "display:grid;gap:8px" }, [h("h2", { class: "sec-h" }, [h("b", null, "KPIs"), h("span", { class: "count" }, "latest month reported")]),
+    out.push(h("section", { class: "card", style: "display:grid;gap:8px" }, [h("h2", { class: "sec-h" }, [h("b", null, "KPIs"), h("span", { class: "count" }, "latest month")]),
       h("div", { class: "table-wrap" }, tbl), h("p", { class: "prov" }, "ant. · founder updates · as of " + fmtDate(p.as_of))]));
     return out;
   }
@@ -2159,7 +2159,7 @@ td a, .md li a, .kv li a { display: inline-flex; align-items: center; min-height
     var head = [h("th", null, "LP"), h("th", { class: "r hide-sm" }, "Commitment")];
     if (hasCalled) head.push(h("th", { class: "r hide-sm" }, "Called"), h("th", { class: "r hide-sm" }, "Unfunded"));
     if (hasOwner) head.push(h("th", { class: "hide-sm own" }, "Owner"));
-    head.push(h("th", null, ["Re-up", h("span", { class: "hide-sm" }, " window")]), h("th", { class: "r" }, "Last touch"));
+    head.push(h("th", null, ["Re-up", h("span", { class: "sr-sm" }, " window")]), h("th", { class: "r" }, "Last touch"));
     var tbl = h("table", { class: "fit-sm" }, [h("thead", null, h("tr", null, head)),
       h("tbody", null, ids.map(function (id) {
         var l = lps[id];
