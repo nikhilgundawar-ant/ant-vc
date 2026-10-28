@@ -532,6 +532,9 @@ td a, .md li a, .kv li a { display: inline-flex; align-items: center; min-height
 .tf-wrap.is-on select, .tf.is-on { box-shadow: inset 0 0 0 1.5px var(--ah-hero); }
 .filter-bar { display: none; }
 .deals td { vertical-align: middle; }
+.deals td .status { display: inline-flex; align-items: center; height: 24px; padding: 0 10px; border-radius: 999px; background: var(--ah-control-2); color: var(--ah-ink-2); font-size: 12.5px; }
+.deals td .status.breach { background: var(--ah-breach-tint); color: var(--ah-breach-ink); }
+.deals td.quiet-cell { color: var(--ah-ink-2); font-size: 13.5px; }
 .deals .row-hit { min-height: 32px; }
 .deals .row-detail { font-size: 13.5px; color: var(--ah-ink); }
 .deals .row-detail.neg { color: var(--ah-ink); font-weight: 700; }
@@ -549,7 +552,10 @@ table.deals { min-width: 760px; }
 @media (max-width: 759px) {
   .filter-row { display: none; }
   .filter-bar { display: grid; gap: 8px; }
-  .filter-top { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px; align-items: center; }
+  .filter-top { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; gap: 8px; align-items: center; }
+  .deals-tools-clear { display: none; }
+  .deals .sub-word { font-weight: 700; color: var(--ah-ink); }
+  .deals .sub-word.is-hot { color: var(--ah-breach-ink); }
   .filter-top .btn { height: 32px; }
   .filter-more { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
   .filter-more[hidden] { display: none; }
@@ -574,6 +580,7 @@ table.deals { min-width: 760px; }
 .pill.is-zero .cnt { background: var(--ah-control-2); color: var(--ah-ink-2); }
 .day-next { margin: 0; font-size: 13.5px; color: var(--ah-ink-2); }
 .day-next b { font-weight: 700; color: var(--ah-ink); }
+.day-progress { color: var(--ah-hero); font-weight: 700; }
 @media (max-width: 400px) { .pill { padding: 0 6px 0 12px; font-size: 13px; gap: 6px; } .pills { gap: 6px; } .pill .cnt { min-width: 24px; height: 24px; padding: 0 6px; } }
 /* Side panel: meeting notes and prep open beside the page on a laptop, from the bottom on a phone */
 .sheet.drawer { padding-bottom: 0; }
@@ -1219,7 +1226,7 @@ button.chip-source svg { width: 12px; height: 12px; }
     var open = S.open === it.id;
     var hit = h("button", { class: "row-hit", type: "button", "aria-expanded": open ? "true" : "false", "data-id": it.id,
       onclick: function () { S.open = open ? null : it.id; render(); focusId(it.id); } },
-      [h("span", { class: "row-title" }, it.title), it.detail ? h("span", { class: "row-detail" }, it.detail) : null]);
+      [h("span", { class: "row-title" }, it.title), it.detail ? h("span", { class: "row-detail" }, unsaid(it.detail, statusText(it))) : null]);
     hit._item = it;
     var act = actionOf(it.id), dr = draftFor(it);
     // An ask whose note went out offers the next note, under its own tap; the sent note's tap is never reused.
@@ -1241,6 +1248,7 @@ button.chip-source svg { width: 12px; height: 12px; }
     if (chipText && /ready$/i.test(statusText(it)) && /ready$/i.test(chipText)) chipText = null;
     // A draft or a decision that waits on a partner's view points at the note that asks for it, then says it went.
     var held = holderNote(dr ? dr.id : null, it.deal_id || null);
+    // The line already says its state ("Looks done: you emailed them on 18 Oct"): the tag below would only repeat it.
     var meta = h("div", { class: "row-meta" }, [statusFor(it), chipText ? h("span", { class: "status hero" }, chipText) :
       sentNow ? h("span", { class: "done-note" }, "Marked sent " + fmtDate(sentNow, false)) :
       coming && !dr && !/coming/i.test(statusText(it) + " " + (it.detail || "")) ? h("span", { class: "done-note" }, "Draft coming at the next check") : null,
@@ -1340,6 +1348,14 @@ button.chip-source svg { width: 12px; height: 12px; }
       if (dx > 72 && circle) circle.click(); else if (dx < -72 && later) later();
     });
     return row;
+  }
+  // A line that opens with its own status ("Looks done: you emailed them") loses the repeat; the tag below says it.
+  function unsaid(detail, status) {
+    var d = String(detail || ""), st = String(status || "");
+    // Only a label followed by a colon repeats: "Asked Aditi for the intro on 22 Oct" is a sentence and stays whole.
+    if (!st || d.toLowerCase().indexOf(st.toLowerCase() + ":") !== 0) return d;
+    var rest = d.slice(st.length + 1).replace(/^\s+/, "");
+    return rest ? rest.charAt(0).toUpperCase() + rest.slice(1) : d;
   }
   function fld(label, el, cls) { return h("label", { class: "fld" + (cls ? " " + cls : "") }, [h("span", null, label), el]); }
   function draftActions(d, it, after) {
@@ -1515,6 +1531,10 @@ button.chip-source svg { width: 12px; height: 12px; }
     var d0 = wall(), date = DAYS[d0.wd] + " " + pad(d0.d) + " " + MONTHS[d0.m - 1];
     var nextLine = next ? [h("span", { class: "is-date" }, date + " · "), "Next: ", h("b", null, (next.time || "") + " " + who(next))]
       : [h("span", { class: "is-date" }, date + " · "), meetings.length ? "No more meetings today" : "No meetings today"];
+    // A small finish line: what you cleared today against what is still open in the three sections that need you.
+    var cleared = activityLog().filter(function (e) { return dayOf(e.at) === todayIso() && (e.cat === "sent" || e.cat === "done") && !e.undone; }).length;
+    var openN = (counts.decide || 0) + (counts.send || 0) + (counts.waiting || 0);
+    if (cleared || openN) nextLine = nextLine.concat([h("span", { class: "day-progress" }, " · " + (openN ? cleared + " of " + (cleared + openN) + " cleared" : "All clear"))]);
     var tools = h("div", { class: "day-tools" }, [h("p", { class: "day-next lead" }, nextLine.concat(S.focus ? [". Focus: only the top line and your schedule are open"] : [])),
       h("button", { class: "chip chip-filter", type: "button", "aria-pressed": S.focus ? "true" : "false", onclick: function () { S.focus = !S.focus; S.focusOpen = {}; remember("ant.focus", S.focus ? "1" : "0"); render(); } }, "Focus")]);
     var byItself = activityLog().filter(function (e) { return e.auto && dayOf(e.at) === todayIso(); });
@@ -1919,7 +1939,7 @@ button.chip-source svg { width: 12px; height: 12px; }
         h("div", { class: "row-hit static" }, [h("span", { class: "row-title" }, String(d.subject || "Follow-up").replace(/^(Re|Fwd?):\s*/i, "")),
           h("span", { class: "row-detail" }, "To " + (d.to_name || d.to || "") + lateBy(d))]),
         h("div", { class: "row-meta" }, [h("span", { class: "status" + (draftGaps(d) ? " hero" : "") }, draftGaps(d) ? "Fill in " + plural(draftGaps(d), "line") :
-          d.in_gmail ? "In your Gmail drafts" : "Ready to send"), sourceChip({ label: d.source_label || "Source", url: d.source_url })]),
+          d.in_gmail ? "In your Gmail drafts" : "Draft ready"), sourceChip({ label: d.source_label || "Source", url: d.source_url })]),
         note ? h("p", { class: "draft-note" }, [h("b", null, "Before you send: "), note]) : null,
         h("div", { class: "row-actions" }, [
           href ? h("a", { class: "btn btn-secondary btn-sm", href: safeUrl(href), target: "_blank", rel: "noopener noreferrer" }, [icon(ICON.ext, 16), "Open in Gmail"]) : null,
@@ -2075,9 +2095,9 @@ button.chip-source svg { width: 12px; height: 12px; }
     };
     ids.sort(function (a, b) { var ka = keyOf[srt.col](a), kb = keyOf[srt.col](b); return (ka < kb ? -1 : ka > kb ? 1 : 0) * srt.dir || String(deals[a].company).localeCompare(String(deals[b].company)); });
     var solo = o.lvl === "solo_gp";
-    var COLS = [["company", "Company", ""], ["stage", "Stage", "hide-sm"], ["days", "In stage", "hide-sm"], ["status", "Status", ""], ["next", "Next step", ""]]
+    var COLS = [["company", "Company", ""], ["stage", "Stage", "hide-sm"], ["days", "In stage", "hide-sm"], ["status", "Status", "hide-sm"], ["next", "Next step", ""]]
       .concat(solo ? [] : [["lead", "Lead", "hide-sm"]]).concat([["round", "Round", "hide-sm"]]);
-    var set = function (k, v) { S.pf[k] = v; S.pfFocus = k; render(); };
+    var set = function (k, v) { S.pf[k] = v; S.pfFocus = k; if (matchMedia("(max-width: 759px)").matches && k !== "company") { S.pfMore = false; S.pfFocus = null; } render(); };
     var sel = function (k, label, opts) {
       var el = h("select", { class: "field tf", name: "f-" + k, "aria-label": "Filter by " + label.toLowerCase() }, opts.map(function (x) {
         var op = h("option", { value: x[0] }, x[1]); if (x[0] === (f[k] || "")) op.selected = true; return op; }));
@@ -2110,8 +2130,15 @@ button.chip-source svg { width: 12px; height: 12px; }
     var moreOpen = S.pfMore || false;
     var bar = h("div", { class: "filter-bar" }, [h("div", { class: "filter-top" }, [control("company"),
       h("button", { class: "btn btn-quiet btn-sm", type: "button", "aria-expanded": moreOpen ? "true" : "false", onclick: function () { S.pfMore = !moreOpen; render(); } },
-        moreOn ? "Filters · " + moreOn : "Filters")]),
-      h("div", { class: "filter-more", hidden: !moreOpen }, COLS.slice(1).map(function (c) { return h("label", { class: "fld" }, [h("span", null, c[1]), control(c[0])]); }))]);
+        moreOn ? "Filters · " + moreOn : "Filters"),
+      active ? h("button", { class: "btn btn-ghost btn-sm", type: "button", onclick: function () { S.pf = { company: "", stage: "", days: "", status: "", next: "", lead: "", round: "" }; S.pfFocus = null; render(); } }, "Clear") : null]),
+      h("div", { class: "filter-more", hidden: !moreOpen }, COLS.slice(1).map(function (c) { return h("label", { class: "fld" }, [h("span", null, c[1]), control(c[0])]); }).concat([
+        h("label", { class: "fld" }, [h("span", null, "Sort by"), (function () {
+          var el = h("select", { class: "field tf", name: "f-sort", "aria-label": "Sort by" }, COLS.map(function (c) {
+            return [[c[0] + ":1", c[1] + (c[0] === "days" || c[0] === "round" ? ", low first" : ", A first")], [c[0] + ":-1", c[1] + (c[0] === "days" || c[0] === "round" ? ", high first" : ", Z first")]];
+          }).reduce(function (a, b) { return a.concat(b); }, []).map(function (x) { var op = h("option", { value: x[0] }, x[1]); if (x[0] === srt.col + ":" + srt.dir) op.selected = true; return op; }));
+          el.addEventListener("change", function () { var v = el.value.split(":"); S.psort = { col: v[0], dir: Number(v[1]) }; S.pfMore = false; render(); });
+          return h("span", { class: "select tf-wrap" }, [el, icon(ICON.chev, 16)]); })()])]))]);
     var rows = ids.map(function (id) { return dealTr(id, deals[id], facts[id], solo); });
     var table = h("div", { class: "table-wrap deals-wrap", tabindex: "0", role: "region", "aria-label": "Deals table" }, h("table", { class: "deals fit-sm" }, [
       h("thead", null, [head, filterRow]), h("tbody", null, rows.length ? rows : [h("tr", null, h("td", { colspan: String(COLS.length) }, h("p", { class: "prov" },
@@ -2120,7 +2147,7 @@ button.chip-source svg { width: 12px; height: 12px; }
     var tools = h("div", { class: "filters" }, [h("span", { class: "status" }, ids.length === all.length ? plural(all.length, "deal") : ids.length + " of " + plural(all.length, "deal")),
       needsN ? h("button", { class: "chip chip-filter", type: "button", "aria-pressed": f.status === "needs" ? "true" : "false", onclick: function () { set("status", f.status === "needs" ? "" : "needs"); } }, "Needs a look " + needsN) : null,
       o.mineCount && o.mineCount < all.length ? h("button", { class: "chip chip-filter", type: "button", "aria-pressed": f.lead === "_mine" ? "true" : "false", onclick: function () { set("lead", f.lead === "_mine" ? "" : "_mine"); } }, "Mine " + o.mineCount) : null,
-      active ? h("button", { class: "btn btn-ghost btn-sm", type: "button", style: "margin-left:auto", onclick: function () { S.pf = { company: "", stage: "", days: "", status: "", next: "", lead: "", round: "" }; S.pfFocus = null; render(); } }, "Clear filters") : null]);
+      active ? h("button", { class: "btn btn-ghost btn-sm deals-tools-clear", type: "button", style: "margin-left:auto", onclick: function () { S.pf = { company: "", stage: "", days: "", status: "", next: "", lead: "", round: "" }; S.pfFocus = null; render(); } }, "Clear filters") : null]);
     var card = h("section", { class: "card", "aria-label": "Deals by stage", "data-fold": "no" }, [h("h2", { class: "sec-h" }, [h("b", null, "Deals by stage"), h("span", { class: "count" }, String(all.length))]),
       tools, bar, table]);
     // A filter keeps its focus across the redraw, so typing in the company box never loses a letter.
@@ -2137,20 +2164,22 @@ button.chip-source svg { width: 12px; height: 12px; }
   function dealTr(id, d, x, solo) {
     var key = "deal:" + id, pct = d.dwell ? Math.min(100, Math.round(100 * (d.days_in_stage || 0) / d.dwell)) : 0;
     var hit = h("button", { class: "row-hit", type: "button", "data-id": key, "aria-haspopup": "dialog", onclick: function () { openDeal(id); } },
-      [h("span", { class: "row-title" }, d.company || "Deal"), h("span", { class: "sub" }, [d.stage, isNil(d.days_in_stage) ? null : "day " + d.days_in_stage].filter(Boolean).join(" · "))]);
+      [h("span", { class: "row-title" }, d.company || "Deal"), h("span", { class: "sub" }, [d.stage, isNil(d.days_in_stage) ? null : "day " + d.days_in_stage].filter(Boolean).join(" · ")),
+        x.word ? h("span", { class: "sub sub-word" + ((WORDS[x.word] || [])[1] === "breach" ? " is-hot" : "") }, statusText({ status_word: x.word })) : null,
+        d.asked && d.asked.on ? h("span", { class: "sub" }, String(d.asked.person || "They").split(" ")[0] + " asked on " + fmtDate(d.asked.on, false) + ", no reply yet") : null]);
     hit._item = { id: "deal_" + id, kind: "deal", group: "deal_move", title: d.company };
     var days = h("span", { class: "days" + (x.over ? " over" : "") }, isNil(d.days_in_stage) ? DASH : Number(d.days_in_stage) <= 0 ? "Moved today" :
       x.over ? plural(d.days_in_stage - d.dwell, "day") + " over" : "Day " + d.days_in_stage + (d.dwell ? " of " + d.dwell : ""));
     return h("tr", { class: "deal-row" + (d.competing ? " is-breach" : "") }, [
       h("td", null, hit),
-      h("td", { class: "hide-sm" }, d.stage || DASH),
+      h("td", { class: "hide-sm quiet-cell" }, d.stage || DASH),
       h("td", { class: "hide-sm" }, h("div", { class: "dwell" }, [days, d.dwell ? h("span", { class: "track" + (x.over ? " over" : ""), "aria-hidden": "true" }, h("b", { style: "width:" + pct + "%" })) : null])),
-      h("td", null, h("div", { class: "row-meta" }, [x.word ? statusFor({ status_word: x.word }) : h("span", { class: "null", "aria-label": "On track" }, DASH),
+      h("td", { class: "hide-sm" }, h("div", { class: "row-meta" }, [x.word ? statusFor({ status_word: x.word }) : h("span", { class: "null", "aria-label": "On track" }, DASH),
         x.quiet && x.word !== "quiet" ? h("span", { class: "chip chip-quiet" }, [icon(ICON.lock, 12), "Quiet"]) : null,
         d.asked && d.asked.on ? h("span", { class: "cell-note" }, String(d.asked.person || "They").split(" ")[0] + " asked on " + fmtDate(d.asked.on, false) + ", no reply yet") : null])),
       h("td", null, h("span", { class: "row-detail" + (x.stepState === "overdue" ? " neg" : x.stepState === "none" ? " is-empty" : "") }, x.stepState === "none" && /^No next step/.test(x.next) ? "Set a step" : x.next)),
-      solo ? null : h("td", { class: "hide-sm" }, x.lead || DASH),
-      h("td", { class: "hide-sm" }, x.round || DASH)]);
+      solo ? null : h("td", { class: "hide-sm quiet-cell" }, x.lead || DASH),
+      h("td", { class: "hide-sm quiet-cell" }, x.round || DASH)]);
   }
   function openDeal(id) {
     var deals = ((S.snap.pipeline || {}).deals) || {}, d = deals[id]; if (!d) return;

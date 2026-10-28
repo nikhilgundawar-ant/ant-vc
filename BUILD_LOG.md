@@ -50,6 +50,19 @@ All scores below are simulations: one Claude agent played every panel member or 
 
 Claude-run evals (round five, on 0.4.0 skills): inbound triage 25 of 25 decisions match, scheduled pulse 15 of 15 safety checks, Claude-written brief 9 of 10 top lines, setup and morning brief run end to end. Their findings (46 numbered issues) were fixed in rounds five and six. Their 13 scores are read from saved runs kept out of git, so the runner counts them only where those runs exist. The Friday pulse on 0.7.2 scored 7 of 10 as Meera and as Tara; their 23 findings are fixed in round ten. The scheduled runs on 0.7.3 scored 7 of 10 each (Tara's nudge morning, Tara's and Meera's Fridays); their 30 findings are fixed in round eleven, except one product idea kept for later (a note to the partner whose view several drafts wait on). On 0.7.4 the same three runs scored 8, 8 and 7; round twelve fixes their findings, that note included, except one kept as a known limit: a scheduled run still types its bundle by hand. On 0.7.5 they scored 8, 8 and 8.5; round thirteen fixes their findings. On 0.7.6 they scored 9, 9 and 8 (`evals/reports/claude-runs/r13-summary.md`); round fourteen fixes their medium findings.
 
+## Round twenty: Deals by stage as a table, and the council pushed further
+
+- **Deals by stage is one table.** Columns: Company, Stage, In stage (day x of y with a bar), Status, Next step, Lead, Round.
+  - Every column has a filter under its header: a search box for company, a select for each of the others.
+  - Every header sorts; the active one shows its arrow and `aria-sort`.
+  - Quick chips: Needs a look, Mine, Clear filters.
+  - A company opens its deal in the side panel: status, what the other fund did, the next-step form, Copy for partners, Mark quiet, the rating and Open in CRM.
+  - On a phone: company search, one Filters button (with the number of filters on), a Clear button and a Sort by select. The table keeps Company (with stage, day and status under it) and Next step.
+  - Red is used once a row: Competing. Days over and overdue steps are bold ink. "On track" is a quiet dash; a missing step reads "Set a step".
+- **Today:** the top line has one way to finish (Sent it with a draft, Done without). Agenda red is for overdue only. Pills stack on the right from 380px cards. A row drops a status tag the line already says. One label for a ready draft: "Draft ready". The day line shows "3 of 9 cleared".
+
+Council (simulated): round three 8 / 7.5 / 8 / 8 / 7.5, round four 8.5 / 8.5 / 8.5 / 8.5 / 8, then round five fixes applied. What the council says only real use can settle: a phone check of swipe, Undo and the panel; a VoiceOver pass; headings judged with Raleway loaded; three days of dogfood.
+
 ## Round nineteen (0.10.0): rows like the owner's own app
 
 The owner shared their personal app as the reference. What came over:

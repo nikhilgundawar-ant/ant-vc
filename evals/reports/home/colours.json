@@ -3,7 +3,7 @@
   {
    "theme": "light",
    "state": "aditi-today",
-   "checked": 137,
+   "checked": 138,
    "marks": 76,
    "min": 3.24,
    "fails": 0
@@ -11,7 +11,7 @@
   {
    "theme": "light",
    "state": "aditi-today-desk",
-   "checked": 141,
+   "checked": 142,
    "marks": 78,
    "min": 3.24,
    "fails": 0
@@ -19,7 +19,7 @@
   {
    "theme": "light",
    "state": "aditi-row-open",
-   "checked": 137,
+   "checked": 138,
    "marks": 76,
    "min": 3.24,
    "fails": 0
@@ -51,7 +51,7 @@
   {
    "theme": "light",
    "state": "aditi-toast",
-   "checked": 140,
+   "checked": 141,
    "marks": 77,
    "min": 3.24,
    "fails": 0
@@ -67,7 +67,7 @@
   {
    "theme": "light",
    "state": "aditi-deal-open",
-   "checked": 217,
+   "checked": 191,
    "marks": 52,
    "min": 3.24,
    "fails": 0
@@ -99,7 +99,7 @@
   {
    "theme": "light",
    "state": "kabir-today",
-   "checked": 132,
+   "checked": 133,
    "marks": 55,
    "min": 4.65,
    "fails": 0
@@ -107,7 +107,7 @@
   {
    "theme": "light",
    "state": "meera-pipeline",
-   "checked": 96,
+   "checked": 86,
    "marks": 37,
    "min": 3.24,
    "fails": 0
@@ -115,7 +115,7 @@
   {
    "theme": "light",
    "state": "rohan-today",
-   "checked": 129,
+   "checked": 130,
    "marks": 55,
    "min": 4.65,
    "fails": 0
@@ -147,7 +147,7 @@
   {
    "theme": "light",
    "state": "vikram-today",
-   "checked": 108,
+   "checked": 109,
    "marks": 52,
    "min": 4.65,
    "fails": 0
@@ -155,7 +155,7 @@
   {
    "theme": "light",
    "state": "banners",
-   "checked": 139,
+   "checked": 140,
    "marks": 76,
    "min": 3.24,
    "fails": 0
@@ -163,7 +163,7 @@
   {
    "theme": "light",
    "state": "friday",
-   "checked": 150,
+   "checked": 151,
    "marks": 78,
    "min": 3.24,
    "fails": 0
@@ -179,7 +179,7 @@
   {
    "theme": "light",
    "state": "hover",
-   "checked": 846,
+   "checked": 852,
    "marks": 78,
    "min": 3.24,
    "fails": 0
@@ -187,7 +187,7 @@
   {
    "theme": "light",
    "state": "focus",
-   "checked": 141,
+   "checked": 142,
    "marks": 79,
    "min": 3.24,
    "fails": 0
@@ -195,7 +195,7 @@
   {
    "theme": "dark",
    "state": "aditi-today",
-   "checked": 137,
+   "checked": 138,
    "marks": 84,
    "min": 3.8,
    "fails": 0
@@ -203,7 +203,7 @@
   {
    "theme": "dark",
    "state": "aditi-today-desk",
-   "checked": 141,
+   "checked": 142,
    "marks": 86,
    "min": 3.8,
    "fails": 0
@@ -211,7 +211,7 @@
   {
    "theme": "dark",
    "state": "aditi-row-open",
-   "checked": 137,
+   "checked": 138,
    "marks": 84,
    "min": 3.8,
    "fails": 0
@@ -243,7 +243,7 @@
   {
    "theme": "dark",
    "state": "aditi-toast",
-   "checked": 140,
+   "checked": 141,
    "marks": 85,
    "min": 3.8,
    "fails": 0
@@ -259,7 +259,7 @@
   {
    "theme": "dark",
    "state": "aditi-deal-open",
-   "checked": 217,
+   "checked": 191,
    "marks": 60,
    "min": 3.8,
    "fails": 0
@@ -291,7 +291,7 @@
   {
    "theme": "dark",
    "state": "kabir-today",
-   "checked": 132,
+   "checked": 133,
    "marks": 63,
    "min": 6.38,
    "fails": 0
@@ -299,7 +299,7 @@
   {
    "theme": "dark",
    "state": "meera-pipeline",
-   "checked": 96,
+   "checked": 86,
    "marks": 45,
    "min": 3.8,
    "fails": 0
@@ -307,7 +307,7 @@
   {
    "theme": "dark",
    "state": "rohan-today",
-   "checked": 129,
+   "checked": 130,
    "marks": 63,
    "min": 6.04,
    "fails": 0
@@ -339,7 +339,7 @@
   {
    "theme": "dark",
    "state": "vikram-today",
-   "checked": 108,
+   "checked": 109,
    "marks": 60,
    "min": 6.38,
    "fails": 0
@@ -347,7 +347,7 @@
   {
    "theme": "dark",
    "state": "banners",
-   "checked": 139,
+   "checked": 140,
    "marks": 84,
    "min": 3.8,
    "fails": 0
@@ -355,7 +355,7 @@
   {
    "theme": "dark",
    "state": "friday",
-   "checked": 150,
+   "checked": 151,
    "marks": 86,
    "min": 3.8,
    "fails": 0
@@ -371,7 +371,7 @@
   {
    "theme": "dark",
    "state": "hover",
-   "checked": 846,
+   "checked": 852,
    "marks": 86,
    "min": 3.8,
    "fails": 0
@@ -379,7 +379,7 @@
   {
    "theme": "dark",
    "state": "focus",
-   "checked": 141,
+   "checked": 142,
    "marks": 87,
    "min": 3.8,
    "fails": 0

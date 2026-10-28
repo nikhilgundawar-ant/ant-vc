@@ -3,7 +3,7 @@
  "failed": 0,
  "complete": true,
  "scenarios": "all",
- "page_sha256": "ec0eb595893a",
+ "page_sha256": "c77a6aa4ae01",
  "rows": [
   {
    "scenario": "today-380",
@@ -1221,19 +1221,19 @@
    "scenario": "colour-light-aditi-today",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "137 texts, 76 marks, min 3.24:1"
+   "detail": "138 texts, 76 marks, min 3.24:1"
   },
   {
    "scenario": "colour-light-aditi-today-desk",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "141 texts, 78 marks, min 3.24:1"
+   "detail": "142 texts, 78 marks, min 3.24:1"
   },
   {
    "scenario": "colour-light-aditi-row-open",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "137 texts, 76 marks, min 3.24:1"
+   "detail": "138 texts, 76 marks, min 3.24:1"
   },
   {
    "scenario": "colour-light-aditi-prep",
@@ -1257,7 +1257,7 @@
    "scenario": "colour-light-aditi-toast",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "140 texts, 77 marks, min 3.24:1"
+   "detail": "141 texts, 77 marks, min 3.24:1"
   },
   {
    "scenario": "colour-light-aditi-pipeline",
@@ -1269,7 +1269,7 @@
    "scenario": "colour-light-aditi-deal-open",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "217 texts, 52 marks, min 3.24:1"
+   "detail": "191 texts, 52 marks, min 3.24:1"
   },
   {
    "scenario": "colour-light-aditi-people",
@@ -1293,19 +1293,19 @@
    "scenario": "colour-light-kabir-today",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "132 texts, 55 marks, min 4.65:1"
+   "detail": "133 texts, 55 marks, min 4.65:1"
   },
   {
    "scenario": "colour-light-meera-pipeline",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "96 texts, 37 marks, min 3.24:1"
+   "detail": "86 texts, 37 marks, min 3.24:1"
   },
   {
    "scenario": "colour-light-rohan-today",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "129 texts, 55 marks, min 4.65:1"
+   "detail": "130 texts, 55 marks, min 4.65:1"
   },
   {
    "scenario": "colour-light-rohan-pipeline",
@@ -1329,19 +1329,19 @@
    "scenario": "colour-light-vikram-today",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "108 texts, 52 marks, min 4.65:1"
+   "detail": "109 texts, 52 marks, min 4.65:1"
   },
   {
    "scenario": "colour-light-banners",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "139 texts, 76 marks, min 3.24:1"
+   "detail": "140 texts, 76 marks, min 3.24:1"
   },
   {
    "scenario": "colour-light-friday",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "150 texts, 78 marks, min 3.24:1"
+   "detail": "151 texts, 78 marks, min 3.24:1"
   },
   {
    "scenario": "colour-light-empty",
@@ -1353,31 +1353,31 @@
    "scenario": "colour-light-hover",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "846 texts, 78 marks, min 3.24:1"
+   "detail": "852 texts, 78 marks, min 3.24:1"
   },
   {
    "scenario": "colour-light-focus",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "141 texts, 79 marks, min 3.24:1"
+   "detail": "142 texts, 79 marks, min 3.24:1"
   },
   {
    "scenario": "colour-dark-aditi-today",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "137 texts, 84 marks, min 3.8:1"
+   "detail": "138 texts, 84 marks, min 3.8:1"
   },
   {
    "scenario": "colour-dark-aditi-today-desk",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "141 texts, 86 marks, min 3.8:1"
+   "detail": "142 texts, 86 marks, min 3.8:1"
   },
   {
    "scenario": "colour-dark-aditi-row-open",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "137 texts, 84 marks, min 3.8:1"
+   "detail": "138 texts, 84 marks, min 3.8:1"
   },
   {
    "scenario": "colour-dark-aditi-prep",
@@ -1401,7 +1401,7 @@
    "scenario": "colour-dark-aditi-toast",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "140 texts, 85 marks, min 3.8:1"
+   "detail": "141 texts, 85 marks, min 3.8:1"
   },
   {
    "scenario": "colour-dark-aditi-pipeline",
@@ -1413,7 +1413,7 @@
    "scenario": "colour-dark-aditi-deal-open",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "217 texts, 60 marks, min 3.8:1"
+   "detail": "191 texts, 60 marks, min 3.8:1"
   },
   {
    "scenario": "colour-dark-aditi-people",
@@ -1437,19 +1437,19 @@
    "scenario": "colour-dark-kabir-today",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "132 texts, 63 marks, min 6.38:1"
+   "detail": "133 texts, 63 marks, min 6.38:1"
   },
   {
    "scenario": "colour-dark-meera-pipeline",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "96 texts, 45 marks, min 3.8:1"
+   "detail": "86 texts, 45 marks, min 3.8:1"
   },
   {
    "scenario": "colour-dark-rohan-today",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "129 texts, 63 marks, min 6.04:1"
+   "detail": "130 texts, 63 marks, min 6.04:1"
   },
   {
    "scenario": "colour-dark-rohan-pipeline",
@@ -1473,19 +1473,19 @@
    "scenario": "colour-dark-vikram-today",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "108 texts, 60 marks, min 6.38:1"
+   "detail": "109 texts, 60 marks, min 6.38:1"
   },
   {
    "scenario": "colour-dark-banners",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "139 texts, 84 marks, min 3.8:1"
+   "detail": "140 texts, 84 marks, min 3.8:1"
   },
   {
    "scenario": "colour-dark-friday",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "150 texts, 86 marks, min 3.8:1"
+   "detail": "151 texts, 86 marks, min 3.8:1"
   },
   {
    "scenario": "colour-dark-empty",
@@ -1497,13 +1497,13 @@
    "scenario": "colour-dark-hover",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "846 texts, 86 marks, min 3.8:1"
+   "detail": "852 texts, 86 marks, min 3.8:1"
   },
   {
    "scenario": "colour-dark-focus",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "141 texts, 87 marks, min 3.8:1"
+   "detail": "142 texts, 87 marks, min 3.8:1"
   },
   {
    "scenario": "meera-default",
@@ -2337,7 +2337,7 @@
    "scenario": "waiting-founder",
    "check": "the pipeline row says who waits and since when",
    "ok": true,
-   "detail": "Copperleaf Collect\nFirst meeting \u00b7 day 5\n\t\nWaiting on you\nDebashish asked on 13 Oct, no reply yet\n\t\nSecond meeting by 25"
+   "detail": "Copperleaf Collect\nFirst meeting \u00b7 day 5\nWaiting on you\nDebashish asked on 13 Oct, no reply yet\n\t\nSecond meeting by 25 O"
   },
   {
    "scenario": "waiting-founder",
@@ -2685,7 +2685,7 @@
    "scenario": "ask-team-ready",
    "check": "the team note shows as ready on the ask's row, said once",
    "ok": true,
-   "detail": "Close ask\nOrbit Treasury: Introductions to senior engineers, two hires this quarter\nTeam note ready: no reply from Aditi"
+   "detail": "Close ask\nOrbit Treasury: Introductions to senior engineers, two hires this quarter\nNo reply from Aditi since 22 Oct. Vi"
   },
   {
    "scenario": "ask-team-ready",
@@ -3087,7 +3087,7 @@
    "scenario": "step-resaved",
    "check": "a step saved again after the last was applied shows as saving",
    "ok": true,
-   "detail": "Zeno Treasury\nFirst meeting \u00b7 day 4\n\t\n\u2014\n\t\nPartner meeting on 3 Nov (saving to your CRM at the next check)"
+   "detail": "Zeno Treasury\nFirst meeting \u00b7 day 4\n\t\nPartner meeting on 3 Nov (saving to your CRM at the next check)"
   },
   {
    "scenario": "met-fold",
@@ -3171,7 +3171,7 @@
    "scenario": "utc-step",
    "check": "a tap stamped in UTC after a run's +05:30 apply reads as newer: the step shows as saving",
    "ok": true,
-   "detail": "Zeno Treasury\nFirst meeting \u00b7 day 4\n\t\n\u2014\n\t\nReference calls with Shreya (saving to your CRM at the next check)"
+   "detail": "Zeno Treasury\nFirst meeting \u00b7 day 4\n\t\nReference calls with Shreya (saving to your CRM at the next check)"
   },
   {
    "scenario": "was-due",
@@ -3201,7 +3201,7 @@
    "scenario": "holder-note",
    "check": "the note to the partner whose view drafts wait on shows under Ready for you with Sent it, each draft it names points at it, and it leaves once every one is sent",
    "ok": true,
-   "detail": "Sent it\nYour view on 2 founder emails and Sable Fraud AI\nTo Aditi Rao\nReady to send\n\nBefore you send: 2 drafts wait on Aditi's view, and 1 d; rows pointing at it 2; after both sent 0"
+   "detail": "Sent it\nYour view on 2 founder emails and Sable Fraud AI\nTo Aditi Rao\nDraft ready\n\nBefore you send: 2 drafts wait on Aditi's view, and 1 dec; rows pointing at it 2; after both sent 0"
   },
   {
    "scenario": "holder-note",
@@ -3399,7 +3399,7 @@
    "scenario": "step-sent",
    "check": "a CRM step you marked sent reads 'Sent 23 Oct: send term sheet markup' on Pipeline, never 'Next:'",
    "ok": true,
-   "detail": "Atlas Settlement\nTerm sheet \u00b7 day 9\n\t\nCompeting\n\t\nSent 23 Oct: send term sheet markup. Add the next step"
+   "detail": "Atlas Settlement\nTerm sheet \u00b7 day 9\nCompeting\n\t\nSent 23 Oct: send term sheet markup. Add the next step"
   },
   {
    "scenario": "step-sent",
@@ -3507,43 +3507,43 @@
    "scenario": "hero-fold",
    "check": "aditi: the top line's main button is on the first phone screen, above the tab bar",
    "ok": true,
-   "detail": "bottom at 510px"
+   "detail": "bottom at 538px"
   },
   {
    "scenario": "hero-fold",
    "check": "kabir: the top line's main button is on the first phone screen, above the tab bar",
    "ok": true,
-   "detail": "bottom at 539px"
+   "detail": "bottom at 567px"
   },
   {
    "scenario": "hero-fold",
    "check": "meera: the top line's main button is on the first phone screen, above the tab bar",
    "ok": true,
-   "detail": "bottom at 591px"
+   "detail": "bottom at 639px"
   },
   {
    "scenario": "hero-fold",
    "check": "rohan: the top line's main button is on the first phone screen, above the tab bar",
    "ok": true,
-   "detail": "bottom at 486px"
+   "detail": "bottom at 515px"
   },
   {
    "scenario": "hero-fold",
    "check": "tara: the top line's main button is on the first phone screen, above the tab bar",
    "ok": true,
-   "detail": "bottom at 510px"
+   "detail": "bottom at 538px"
   },
   {
    "scenario": "hero-fold",
    "check": "vikram: the top line's main button is on the first phone screen, above the tab bar",
    "ok": true,
-   "detail": "bottom at 562px"
+   "detail": "bottom at 590px"
   },
   {
    "scenario": "hero-fold",
    "check": "solo: the top line's main button is on the first phone screen, above the tab bar",
    "ok": true,
-   "detail": "bottom at 510px"
+   "detail": "bottom at 558px"
   },
   {
    "scenario": "row-actions",
@@ -3801,7 +3801,7 @@
    "scenario": "hero-banner",
    "check": "aditi: with the research banner showing, the main button stays above the tab bar",
    "ok": true,
-   "detail": "bottom at 510px"
+   "detail": "bottom at 538px"
   },
   {
    "scenario": "hero-banner",
@@ -3813,7 +3813,7 @@
    "scenario": "hero-banner",
    "check": "kabir: with the research banner showing, the main button stays above the tab bar",
    "ok": true,
-   "detail": "bottom at 539px"
+   "detail": "bottom at 567px"
   },
   {
    "scenario": "hero-banner",
@@ -3825,7 +3825,7 @@
    "scenario": "hero-banner",
    "check": "meera: with the research banner showing, the main button stays above the tab bar",
    "ok": true,
-   "detail": "bottom at 591px"
+   "detail": "bottom at 639px"
   },
   {
    "scenario": "hero-banner",
@@ -3837,7 +3837,7 @@
    "scenario": "hero-banner",
    "check": "rohan: with the research banner showing, the main button stays above the tab bar",
    "ok": true,
-   "detail": "bottom at 486px"
+   "detail": "bottom at 515px"
   },
   {
    "scenario": "hero-banner",
@@ -3849,7 +3849,7 @@
    "scenario": "hero-banner",
    "check": "tara: with the research banner showing, the main button stays above the tab bar",
    "ok": true,
-   "detail": "bottom at 510px"
+   "detail": "bottom at 538px"
   },
   {
    "scenario": "hero-banner",
@@ -3861,7 +3861,7 @@
    "scenario": "hero-banner",
    "check": "vikram: with the research banner showing, the main button stays above the tab bar",
    "ok": true,
-   "detail": "bottom at 562px"
+   "detail": "bottom at 590px"
   },
   {
    "scenario": "hero-banner",
@@ -3873,7 +3873,7 @@
    "scenario": "hero-banner",
    "check": "solo: with the research banner showing, the main button stays above the tab bar",
    "ok": true,
-   "detail": "bottom at 510px"
+   "detail": "bottom at 558px"
   },
   {
    "scenario": "hero-banner",

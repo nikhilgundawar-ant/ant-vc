@@ -1,0 +1,1317 @@
+{
+ "checks": 217,
+ "failed": 0,
+ "complete": false,
+ "scenarios": [
+  "round12",
+  "round13",
+  "round17",
+  "round8",
+  "round9"
+ ],
+ "page_sha256": "c77a6aa4ae01",
+ "rows": [
+  {
+   "scenario": "met-prefill",
+   "check": "the met log fills in from the meeting: the stage the invite names, no stale step",
+   "ok": true,
+   "detail": "Move to Second meeting; empty step True"
+  },
+  {
+   "scenario": "met-prefill",
+   "check": "one tap saves the meeting and the stage, and clears the step that was this meeting",
+   "ok": true,
+   "detail": "{\"deal_id\": \"d_halo\", \"company\": \"Halo Reconcile\", \"text\": null, \"due\": null, \"current\": \"Second meeting\", \"current_due\": \"2026-10-24\", \"met\": \"2026-10-22\", \"st ['ns_d_halo_2026-10-22']"
+  },
+  {
+   "scenario": "met-prefill",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "met-prefill",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "met-prefill",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "met-prefill",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "met-prefill",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "team-note",
+   "check": "a team note opens Gmail addressed to every colleague on it",
+   "ok": true,
+   "detail": "https://mail.google.com/mail/?authuser=tara%40quillwater.vc&view=cm&fs=1&to=aditi%40quillwater.vc%2Ckabir%40quillwater.v"
+  },
+  {
+   "scenario": "team-note",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "team-note",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "team-note",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "team-note",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "team-note",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "ask-nudge",
+   "check": "five working days after the note with no reply, the ask asks for a nudge",
+   "ok": true,
+   "detail": "Close ask\nNimbus Collect: An introduction to two banks as customers\nAsked Aditi for the intro on 22 Oct, no reply in 6 w"
+  },
+  {
+   "scenario": "ask-nudge",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "ask-nudge",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "ask-nudge",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "ask-nudge",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "ask-nudge",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "solo-asks",
+   "check": "a solo GP is offered no note to a team, and Today has no team words",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "solo-asks",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "solo-asks",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "solo-asks",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "solo-asks",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "solo-asks",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "met-step",
+   "check": "a log saved with no step asks for the step alone, never saves it blank, and saves it under its own tap",
+   "ok": true,
+   "detail": "shown True; blank saved False; {\"deal_id\": \"d_halo\", \"company\": \"Halo Reconcile\", \"text\": \"Diligence plan with the CFO\", \"due\": null, \"current\": null, "
+  },
+  {
+   "scenario": "met-step",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "met-step",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "met-step",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "met-step",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "met-step",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "ask-team",
+   "check": "after the board note, 'Aditi said yes: ask the team' is a new tap with its own id, never the first note again",
+   "ok": true,
+   "detail": "offered True; first note again False; tap ['t_3461c2ec2f_team']"
+  },
+  {
+   "scenario": "ask-team",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "ask-team",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "ask-team",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "ask-team",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "ask-team",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "ask-team-ready",
+   "check": "the team note shows as ready on the ask's row, said once",
+   "ok": true,
+   "detail": "Close ask\nOrbit Treasury: Introductions to senior engineers, two hires this quarter\nNo reply from Aditi since 22 Oct. Vi"
+  },
+  {
+   "scenario": "ask-team-ready",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "ask-team-ready",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "ask-team-ready",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "ask-team-ready",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "ask-team-ready",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "solo-pipeline",
+   "check": "a solo GP's Pipeline shows no owner initials and no partner",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "solo-pipeline",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "solo-pipeline",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "solo-pipeline",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "solo-pipeline",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "solo-pipeline",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "nudge-sent",
+   "check": "Sent it on a grouped nudge says 'Nudged Aditi' at once, on Today and the Portfolio hero",
+   "ok": true,
+   "detail": "row: Seen\n3 founder asks wait on Aditi\nNudged Aditi on 29 Oct: no answer yet on Kestrel Pay, Nimbus Collect and Orbit Treasur; hero: A founder asks\nNimbus Collect: an introduction to two banks as customers\n\nNudged Aditi on 29 Oct. Divya Raman asked on 1"
+  },
+  {
+   "scenario": "nudge-sent",
+   "check": "after Close ask the Portfolio hero's 'more open' counts the asks still showing",
+   "ok": true,
+   "detail": "nway under 9 months. Vikram Rao asked on 11 Oct. 1 more open; rows 3 -> 2"
+  },
+  {
+   "scenario": "nudge-sent",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "nudge-sent",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "nudge-sent",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "nudge-sent",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "nudge-sent",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "utc-step",
+   "check": "a tap stamped in UTC after a run's +05:30 apply reads as newer: the step shows as saving",
+   "ok": true,
+   "detail": "Zeno Treasury\nFirst meeting \u00b7 day 4\n\t\nReference calls with Shreya (saving to your CRM at the next check)"
+  },
+  {
+   "scenario": "was-due",
+   "check": "no Pipeline row says 'by' a date that has passed",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "got-it",
+   "check": "what someone owes you clears with Got it, which marks the promise",
+   "ok": true,
+   "detail": "Fatima Sheikh owes you: send a shortlist of venues: wrote ['k_079b94f3db', 't_79319786ad']"
+  },
+  {
+   "scenario": "pitch-replied",
+   "check": "after Sent it on a pitch's reply, the Pitches list says you replied, not 'Book a call'",
+   "ok": true,
+   "detail": "Seen\nHarborline Treasury \u00b7 fit 93 of 100\nYou replied 22 Oct: waiting on them. Seed, $3M, treasury management, Delaware a"
+  },
+  {
+   "scenario": "monday-prep",
+   "check": "on a Friday Today names Monday's meetings, and each opens its prep",
+   "ok": true,
+   "detail": "Schedule\n0 meetings\n\nNo meetings today.\n\nMonday:\n10:00 Monday partner meeting; sheet 10:00 \u00b7 Monday partner meeting\n\nDecide on Gravity Payouts by"
+  },
+  {
+   "scenario": "holder-note",
+   "check": "the note to the partner whose view drafts wait on shows under Ready for you with Sent it, each draft it names points at it, and it leaves once every one is sent",
+   "ok": true,
+   "detail": "Sent it\nYour view on 2 founder emails and Sable Fraud AI\nTo Aditi Rao\nDraft ready\n\nBefore you send: 2 drafts wait on Aditi's view, and 1 dec; rows pointing at it 2; after both sent 0"
+  },
+  {
+   "scenario": "holder-note",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "holder-note",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "holder-note",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "holder-note",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "holder-note",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "pushed-row",
+   "check": "a push that named a row opens Home on Today with that row open",
+   "ok": true,
+   "detail": "today 1; expanded true"
+  },
+  {
+   "scenario": "late-drafts",
+   "check": "a late promise's draft says how late it is, and the late ones are named on Today",
+   "ok": true,
+   "detail": "fold rows 1; Decisions\n1\nSeen\nAtlas Settlement: term sheet from Bluepeak Partners\nTheir deadline 05 Nov has passed. Ishaan wrote on 21 Oct: \"We also have"
+  },
+  {
+   "scenario": "late-drafts",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "late-drafts",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "late-drafts",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "late-drafts",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "late-drafts",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "chase-sent",
+   "check": "after Sent it on a chase the hero says it was marked sent, with no 'Second note ready'",
+   "ok": true,
+   "detail": "Capital call\nPeregrine Trust owes $150K on a capital call\n\nCalled on 05 Oct, 24 days ago; chased Peter on 22 Oct, no reply in 5 working days. Marked sent 29 Oct"
+  },
+  {
+   "scenario": "chase-sent",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "chase-sent",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "chase-sent",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "chase-sent",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "chase-sent",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "shared-done",
+   "check": "Done on one of two promises in one email closes that promise, not the email: no 'Marked sent', the other promise keeps the email, which says to take the closed promise's lines out",
+   "ok": true,
+   "detail": "toast 'Marked done. Undo here or in Activity.\\nUndo'; wrote ['k_e9eab86816', 't_a1afa2bb60']; Sent it on the other row 1; note 'Before you send: Intro two CFO candidates is marked done: take its lines out. Written before your 22 Oct meeting, which '"
+  },
+  {
+   "scenario": "shared-done",
+   "check": "Done on the second closes the email too, as done, never as sent",
+   "ok": true,
+   "detail": "wrote ['dr_k_e9eab86816', 'k_76e229ee1b', 't_0ddf7373ca']; ready rows 0"
+  },
+  {
+   "scenario": "shared-done",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "shared-done",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "shared-done",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "shared-done",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "shared-done",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "holder-sent",
+   "check": "after Sent it on the note to Aditi, each row it names says 'Asked Aditi at 07:00 for the firm's view'",
+   "ok": true,
+   "detail": "rows saying it 2 of 2"
+  },
+  {
+   "scenario": "holder-sent",
+   "check": "once Aditi replied, those rows say 'Aditi replied at 11:05: read it, then send'",
+   "ok": true,
+   "detail": "rows saying it 2"
+  },
+  {
+   "scenario": "holder-sent",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "holder-sent",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "holder-sent",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "holder-sent",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "holder-sent",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "step-sent",
+   "check": "a CRM step you marked sent reads 'Sent 23 Oct: send term sheet markup' on Pipeline, never 'Next:'",
+   "ok": true,
+   "detail": "Atlas Settlement\nTerm sheet \u00b7 day 9\nCompeting\n\t\nSent 23 Oct: send term sheet markup. Add the next step"
+  },
+  {
+   "scenario": "step-sent",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "step-sent",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "step-sent",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "step-sent",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "step-sent",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "ask",
+   "check": "Ask is a tab, and the search icon is in the header",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "ask",
+   "check": "typing finds matches in the Home's own data",
+   "ok": true,
+   "detail": "['10:30 Ishaan Verma, Atlas Settlement\\nMeeting \u00b7 Watch: term sheet from Bluepeak Partners, decide by 05 Nov \u00b7 You owe: send the term sheet markup', '12:00 Partner sync\\nMeeting \u00b7 Decide: Sable Fraud AI, by 23 Oct \u00b7 Decide: Gravity Payouts, by 31 Oct \u00b7 And 9 more, with yours: Atlas Settlement, Beacon Credit Rails and 2 more', 'Atlas Settlement\\nPipeline \u00b7 Term sheet \u00b7 Send term sheet markup \u00b7 Series A']"
+  },
+  {
+   "scenario": "ask",
+   "check": "Enter asks Claude with the Home's data and streams the answer",
+   "ok": true,
+   "detail": "Atlas Settlement: term sheet markup is due 23 Oct.\n\nFrom your ant. Home data \u00b7 a"
+  },
+  {
+   "scenario": "ask",
+   "check": "the Ask tab keeps the conversation",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "ask",
+   "check": "/ opens Ask from any screen",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "ask",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "ask",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "ask",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "ask",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "ask",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "ask-none",
+   "check": "without Claude, Ask still finds things and says what it needs",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "research-auto",
+   "check": "while research runs on a 320px phone, the page stays inside the screen",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "research-auto",
+   "check": "on opening Home, ant. researches today's people in the app's browser by itself and keeps the map",
+   "ok": true,
+   "detail": "tools ['create_file', 'find', 'get_page_text', 'navigate', 'search_files']; kept ['arjun@gravitypayouts.com', 'ishaan@atlassettle.com', 'lata@orbittreasury.in']"
+  },
+  {
+   "scenario": "research-auto",
+   "check": "it only reads: navigate, page text and find; it never clicks or types, and it opens the profile by its own link",
+   "ok": true,
+   "detail": "['create_file', 'find', 'get_page_text', 'navigate', 'search_files']"
+  },
+  {
+   "scenario": "research-auto",
+   "check": "each map is saved as a Google Doc in the research folder",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "research-auto",
+   "check": "the prep card shows the map: says, thinks, does, feels and the source",
+   "ok": true,
+   "detail": " goes live\nAsk about Bluepeak's terms\nConfirm the ESOP pool\n\nLinkedIn, read in your browser \u00b7 22 Oct Profile Doc in Drive\n\nant. \u00b7 calendar, email, notes and CRM"
+  },
+  {
+   "scenario": "research-signin",
+   "check": "when LinkedIn wants a sign-in, Home says so once and stops",
+   "ok": true,
+   "detail": "Sample data from a made-up fund, Quillwater Ventures. Meetings\n3\nDecisions\n2\nThreads\n3\n\nThu 22 Oct \u00b7 Next: 10:30 Ishaan "
+  },
+  {
+   "scenario": "research-demo",
+   "check": "colleagues at your own firm are never researched",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "by-itself",
+   "check": "the Decide badge counts only what needs you",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "by-itself",
+   "check": "Today says what ant. did by itself, and Done today lists it with Undo",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "ask-contrast",
+   "check": "the Ask answer passes contrast in light mode",
+   "ok": true,
+   "detail": "[]"
+  },
+  {
+   "scenario": "ask-contrast",
+   "check": "the finished answer is announced once for screen readers",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "hero-banner",
+   "check": "aditi: with the research banner showing, the main button stays above the tab bar",
+   "ok": true,
+   "detail": "bottom at 538px"
+  },
+  {
+   "scenario": "hero-banner",
+   "check": "aditi: the banner never widens the page",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "hero-banner",
+   "check": "kabir: with the research banner showing, the main button stays above the tab bar",
+   "ok": true,
+   "detail": "bottom at 567px"
+  },
+  {
+   "scenario": "hero-banner",
+   "check": "kabir: the banner never widens the page",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "hero-banner",
+   "check": "meera: with the research banner showing, the main button stays above the tab bar",
+   "ok": true,
+   "detail": "bottom at 639px"
+  },
+  {
+   "scenario": "hero-banner",
+   "check": "meera: the banner never widens the page",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "hero-banner",
+   "check": "rohan: with the research banner showing, the main button stays above the tab bar",
+   "ok": true,
+   "detail": "bottom at 515px"
+  },
+  {
+   "scenario": "hero-banner",
+   "check": "rohan: the banner never widens the page",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "hero-banner",
+   "check": "tara: with the research banner showing, the main button stays above the tab bar",
+   "ok": true,
+   "detail": "bottom at 538px"
+  },
+  {
+   "scenario": "hero-banner",
+   "check": "tara: the banner never widens the page",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "hero-banner",
+   "check": "vikram: with the research banner showing, the main button stays above the tab bar",
+   "ok": true,
+   "detail": "bottom at 590px"
+  },
+  {
+   "scenario": "hero-banner",
+   "check": "vikram: the banner never widens the page",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "hero-banner",
+   "check": "solo: with the research banner showing, the main button stays above the tab bar",
+   "ok": true,
+   "detail": "bottom at 558px"
+  },
+  {
+   "scenario": "hero-banner",
+   "check": "solo: the banner never widens the page",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "narrow-tabs",
+   "check": "aditi Today: fits a 320px screen",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "narrow-tabs",
+   "check": "aditi Pipeline: fits a 320px screen",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "narrow-tabs",
+   "check": "aditi People: fits a 320px screen",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "narrow-tabs",
+   "check": "aditi Portfolio: fits a 320px screen",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "narrow-tabs",
+   "check": "aditi LPs: fits a 320px screen",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "narrow-tabs",
+   "check": "aditi Ask: fits a 320px screen",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "narrow-tabs",
+   "check": "aditi: no focused control hides under the tab bar",
+   "ok": true,
+   "detail": "0 hidden"
+  },
+  {
+   "scenario": "narrow-tabs",
+   "check": "aditi: a table that scrolls sideways can be reached by keyboard",
+   "ok": true,
+   "detail": "0 unreachable"
+  },
+  {
+   "scenario": "narrow-tabs",
+   "check": "aditi Portfolio: its table fits a 320px screen without scrolling",
+   "ok": true,
+   "detail": "0 scroll"
+  },
+  {
+   "scenario": "narrow-tabs",
+   "check": "aditi LPs: its table fits a 320px screen without scrolling",
+   "ok": true,
+   "detail": "0 scroll"
+  },
+  {
+   "scenario": "resize",
+   "check": "aditi: narrowing the window re-checks the tables",
+   "ok": true,
+   "detail": "0 unreachable"
+  },
+  {
+   "scenario": "narrow-tabs",
+   "check": "kabir Today: fits a 320px screen",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "narrow-tabs",
+   "check": "kabir Pipeline: fits a 320px screen",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "narrow-tabs",
+   "check": "kabir People: fits a 320px screen",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "narrow-tabs",
+   "check": "kabir Portfolio: fits a 320px screen",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "narrow-tabs",
+   "check": "kabir Ask: fits a 320px screen",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "narrow-tabs",
+   "check": "kabir: no focused control hides under the tab bar",
+   "ok": true,
+   "detail": "0 hidden"
+  },
+  {
+   "scenario": "narrow-tabs",
+   "check": "kabir: a table that scrolls sideways can be reached by keyboard",
+   "ok": true,
+   "detail": "0 unreachable"
+  },
+  {
+   "scenario": "narrow-tabs",
+   "check": "kabir Portfolio: its table fits a 320px screen without scrolling",
+   "ok": true,
+   "detail": "0 scroll"
+  },
+  {
+   "scenario": "resize",
+   "check": "kabir: narrowing the window re-checks the tables",
+   "ok": true,
+   "detail": "0 unreachable"
+  },
+  {
+   "scenario": "narrow-tabs",
+   "check": "meera Today: fits a 320px screen",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "narrow-tabs",
+   "check": "meera Pipeline: fits a 320px screen",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "narrow-tabs",
+   "check": "meera People: fits a 320px screen",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "narrow-tabs",
+   "check": "meera Portfolio: fits a 320px screen",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "narrow-tabs",
+   "check": "meera Ask: fits a 320px screen",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "narrow-tabs",
+   "check": "meera: no focused control hides under the tab bar",
+   "ok": true,
+   "detail": "0 hidden"
+  },
+  {
+   "scenario": "narrow-tabs",
+   "check": "meera: a table that scrolls sideways can be reached by keyboard",
+   "ok": true,
+   "detail": "0 unreachable"
+  },
+  {
+   "scenario": "narrow-tabs",
+   "check": "meera Portfolio: its table fits a 320px screen without scrolling",
+   "ok": true,
+   "detail": "0 scroll"
+  },
+  {
+   "scenario": "resize",
+   "check": "meera: narrowing the window re-checks the tables",
+   "ok": true,
+   "detail": "0 unreachable"
+  },
+  {
+   "scenario": "narrow-tabs",
+   "check": "rohan Today: fits a 320px screen",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "narrow-tabs",
+   "check": "rohan Pipeline: fits a 320px screen",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "narrow-tabs",
+   "check": "rohan People: fits a 320px screen",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "narrow-tabs",
+   "check": "rohan Ask: fits a 320px screen",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "narrow-tabs",
+   "check": "rohan: no focused control hides under the tab bar",
+   "ok": true,
+   "detail": "0 hidden"
+  },
+  {
+   "scenario": "narrow-tabs",
+   "check": "rohan: a table that scrolls sideways can be reached by keyboard",
+   "ok": true,
+   "detail": "0 unreachable"
+  },
+  {
+   "scenario": "narrow-tabs",
+   "check": "tara Today: fits a 320px screen",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "narrow-tabs",
+   "check": "tara People: fits a 320px screen",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "narrow-tabs",
+   "check": "tara Portfolio: fits a 320px screen",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "narrow-tabs",
+   "check": "tara Ask: fits a 320px screen",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "narrow-tabs",
+   "check": "tara: no focused control hides under the tab bar",
+   "ok": true,
+   "detail": "0 hidden"
+  },
+  {
+   "scenario": "narrow-tabs",
+   "check": "tara: a table that scrolls sideways can be reached by keyboard",
+   "ok": true,
+   "detail": "0 unreachable"
+  },
+  {
+   "scenario": "narrow-tabs",
+   "check": "tara Portfolio: its table fits a 320px screen without scrolling",
+   "ok": true,
+   "detail": "0 scroll"
+  },
+  {
+   "scenario": "resize",
+   "check": "tara: narrowing the window re-checks the tables",
+   "ok": true,
+   "detail": "0 unreachable"
+  },
+  {
+   "scenario": "narrow-tabs",
+   "check": "vikram Today: fits a 320px screen",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "narrow-tabs",
+   "check": "vikram People: fits a 320px screen",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "narrow-tabs",
+   "check": "vikram Portfolio: fits a 320px screen",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "narrow-tabs",
+   "check": "vikram LPs: fits a 320px screen",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "narrow-tabs",
+   "check": "vikram Ask: fits a 320px screen",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "narrow-tabs",
+   "check": "vikram: no focused control hides under the tab bar",
+   "ok": true,
+   "detail": "0 hidden"
+  },
+  {
+   "scenario": "narrow-tabs",
+   "check": "vikram: a table that scrolls sideways can be reached by keyboard",
+   "ok": true,
+   "detail": "0 unreachable"
+  },
+  {
+   "scenario": "narrow-tabs",
+   "check": "vikram Portfolio: its table fits a 320px screen without scrolling",
+   "ok": true,
+   "detail": "0 scroll"
+  },
+  {
+   "scenario": "narrow-tabs",
+   "check": "vikram LPs: its table fits a 320px screen without scrolling",
+   "ok": true,
+   "detail": "0 scroll"
+  },
+  {
+   "scenario": "resize",
+   "check": "vikram: narrowing the window re-checks the tables",
+   "ok": true,
+   "detail": "0 unreachable"
+  },
+  {
+   "scenario": "narrow-tabs",
+   "check": "solo Today: fits a 320px screen",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "narrow-tabs",
+   "check": "solo Pipeline: fits a 320px screen",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "narrow-tabs",
+   "check": "solo People: fits a 320px screen",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "narrow-tabs",
+   "check": "solo Portfolio: fits a 320px screen",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "narrow-tabs",
+   "check": "solo LPs: fits a 320px screen",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "narrow-tabs",
+   "check": "solo Ask: fits a 320px screen",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "narrow-tabs",
+   "check": "solo: no focused control hides under the tab bar",
+   "ok": true,
+   "detail": "0 hidden"
+  },
+  {
+   "scenario": "narrow-tabs",
+   "check": "solo: a table that scrolls sideways can be reached by keyboard",
+   "ok": true,
+   "detail": "0 unreachable"
+  },
+  {
+   "scenario": "narrow-tabs",
+   "check": "solo Portfolio: its table fits a 320px screen without scrolling",
+   "ok": true,
+   "detail": "0 scroll"
+  },
+  {
+   "scenario": "narrow-tabs",
+   "check": "solo LPs: its table fits a 320px screen without scrolling",
+   "ok": true,
+   "detail": "0 scroll"
+  },
+  {
+   "scenario": "resize",
+   "check": "solo: narrowing the window re-checks the tables",
+   "ok": true,
+   "detail": "0 unreachable"
+  },
+  {
+   "scenario": "settings",
+   "check": "Settings lists each kind of tool with what is connected and what ant. may do",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "settings",
+   "check": "a missing tool offers Connect, which opens Claude's connector page",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "settings",
+   "check": "Add a tool finds Fireflies, read only by default",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "settings",
+   "check": "setting the CRM to read only is saved for the checks",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "settings",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "settings",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "0 primary"
+  },
+  {
+   "scenario": "settings",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "settings",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "settings",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "settings-phone",
+   "check": "on a phone, Help leads to Settings",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "settings-phone",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "settings-phone",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "0 primary"
+  },
+  {
+   "scenario": "settings-phone",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "settings-phone",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "settings-phone",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "auto-apply",
+   "check": "in automatic mode a CRM change says it applies by itself, offers Apply now and Don't apply, and leaves the Decide count",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "auto-apply",
+   "check": "Help switches automatic mode off, saved for the hourly checks",
+   "ok": true,
+   "detail": "[{\"op\": \"set\", \"path\": \"state/settings\", \"data\": {\"items\": {\"auto_apply\": false}}}]"
+  }
+ ]
+}

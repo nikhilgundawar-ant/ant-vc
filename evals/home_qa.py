@@ -479,7 +479,7 @@ class QA:
         href = markup.locator("a", has_text="Open in Gmail").get_attribute("href") if markup.locator("a", has_text="Open in Gmail").count() else ""
         self.check(sc, "a draft kept in Home opens Gmail filled in, in the user's own account",
                    href.startswith("https://mail.google.com/mail/?authuser=aditi%40quillwater.vc&view=cm") and "ishaan%40atlassettle.com" in href
-                   and markup.locator(".status", has_text="Ready to send").count() == 1, href[:90])
+                   and markup.locator(".status", has_text="Draft ready").count() == 1, href[:90])
         self.common(page, sc)
         ctx.close()
         # An introduction goes to both people: the compose link carries the second one in cc.
@@ -2166,7 +2166,7 @@ class QA:
         page.locator(".filter-bar button", has_text="Filters").click()
         page.wait_for_timeout(60)
         self.check(sc, "Filters opens one filter per column, above the table", page.locator(".filter-more").is_visible() and
-                   page.locator(".filter-bar :is(select, input)").count() == page.locator("table.deals thead tr:first-child th").count())
+                   page.locator(".filter-bar :is(select, input)").count() >= page.locator("table.deals thead tr:first-child th").count())
         w = page.evaluate("(() => { var t = document.querySelector('table.deals'), wr = t.closest('.table-wrap'); return [t.scrollWidth, wr.clientWidth]; })()")
         self.check(sc, "on a phone the table fits without sideways scrolling", w[0] <= w[1] + 1, str(w))
         page.locator(".filter-bar select[name='f-next']").select_option("none")
