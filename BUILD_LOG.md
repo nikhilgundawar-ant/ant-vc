@@ -22,7 +22,7 @@ Built from the council plan "Instinct for VCs: Council Plan and One-Shot Build S
 | Guard | `evals/runner.py --suite guard`: every allowed step and every known way out, on the connectors' real argument names, in three transcript layouts; `round11` adds data names that order something at either end, and Artifact reads that save files | 718 of 718, and the round-eleven probes |
 | Five-day replay and outages | Setup, then every scheduled run Thursday to Monday; the CRM or email down for four hours | Home never loses LPs, companies, flags, signals or promises; no false all-clear; an outage pushes once |
 | Design lint | `python3 evals/design_lint.py` | 0 violations in 340 CSS rules |
-| Home QA | `python3 evals/home_qa.py` (Playwright, phone and desktop, light and dark, every level) | 647 of 647 |
+| Home QA | `python3 evals/home_qa.py` (Playwright, phone and desktop, light and dark, every level) | 689 of 689 |
 | Safety lint and manifest | `python3 -I -S engine/instinct.py lint --root .`, `claude plugin validate .` | 0 violations; validates (warnings: no LICENSE, no privacy URL) |
 | Claude in the loop | Skills run end to end by fresh Claude agents against mock connectors (`evals/eval-mode.md`) | reports in `evals/reports/claude-runs/` |
 | Councils | A simulated VC panel (one persona per level), a simulated product council (PM, designer, AI engineer, QA lead) and a simulated design council (SaaS product design, information architecture, visual design, accessibility, behavioural psychology) | reports in `evals/reports/council/` |
@@ -62,8 +62,9 @@ The owner asked for a Home a partner can read in seconds: the day in logical sec
 | Round 3 | 8.5 | 8.5 | 8.5 | 8.5 | 8 |
 | Round 4 (0.9.0: Ask, research by itself, automatic mode) | 8.5 | 8.5 | 8.5 | 8.5 | 8.5 |
 | Round 5 | 9 | 9 | 8.5 | 8.5 | 9 |
+| Round 6 | 9.5 | 9 | 9 | 8.5 | 9 |
 
-Round 6 fixed the round-five findings: the research banner no longer widens a phone page (pinned for every level at 320 and 380 px), research messages sit under the top line, the Decide badge counts only what needs you, and focus stays on the tab you tapped.
+Rounds 6 and 7 fixed the round-five and round-six findings: every tab fits a 320px screen and no focused control hides under the tab bar (both pinned for every level), the research banner no longer widens a phone page (pinned for every level at 320 and 380 px), research messages sit under the top line, the Decide badge counts only what needs you, and focus stays on the tab you tapped.
 
 ### 0.9.0: ant. works by itself
 

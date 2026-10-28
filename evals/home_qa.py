@@ -1940,11 +1940,29 @@ class QA:
             self.check("hero-banner", f"{m}: the banner never widens the page", wide <= 0, f"overflow {wide}px")
             ctx.close()
 
+        for m in ("aditi", "kabir", "meera", "rohan", "tara", "vikram", "solo"):
+            ctx, page = self.open(browser, "narrow-tabs", {"width": 320, "height": 700}, member=m, open_all=False)
+            for tab in ("Today", "Pipeline", "People", "Portfolio", "LPs", "Ask"):
+                b_ = page.locator(f"#bottom-tabs button[aria-label='{tab}']")
+                if not b_.count():
+                    continue
+                b_.click()
+                page.wait_for_timeout(60)
+                wide = page.evaluate("document.documentElement.scrollWidth - window.innerWidth")
+                self.check("narrow-tabs", f"{m} {tab}: fits a 320px screen", wide <= 0, f"overflow {wide}px")
+            page.locator("#bottom-tabs button[aria-label='Today']").click()
+            page.wait_for_timeout(60)
+            hidden = page.evaluate("""(() => { var bar = document.getElementById('bottom-tabs').getBoundingClientRect().top, n = 0;
+              var els = Array.from(document.querySelectorAll('#view button, #view a[href], #view input, #view textarea, #view select')).filter(e => e.offsetParent);
+              els.forEach(e => { e.focus(); var r = e.getBoundingClientRect(); if (r.top >= bar - 1) n += 1; }); return n; })()""")
+            self.check("narrow-tabs", f"{m}: no focused control hides under the tab bar", hidden == 0, f"{hidden} hidden")
+            ctx.close()
+
         sc = "auto-apply"
         ctx, page = self.open(browser, sc, PHONE, state={"items": {}, "actions": {}, "settings": {"auto_apply": True}})
         self.check(sc, "in automatic mode a CRM change says it applies by itself, offers Apply now and Don't apply, and leaves the Decide count",
                    page.locator(DECIDE + " .status", has_text="Applies by itself").count() >= 1 and page.locator(DECIDE + " button", has_text="Apply now").count() >= 1
-                   and page.locator(DECIDE + " button", has_text="Don't apply").count() >= 1 and page.locator(".daystrip .stat", has_text="runs by itself").count() == 1)
+                   and page.locator(DECIDE + " button", has_text="Don't apply").count() >= 1 and page.locator(".daystrip .stat", has_text="+1 runs by itself").count() == 1)
         page.locator("#help-btn").click()
         seg = page.locator("[role=dialog] .seg[aria-label='CRM changes and calendar holds']")
         seg.locator("button", has_text="Ask me first").click()

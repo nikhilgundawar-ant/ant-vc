@@ -376,8 +376,8 @@ section.card.is-folded .sec-h { margin-bottom: 0; }
 .banner { min-width: 0; max-width: 100%; }
 .banner-line { flex-wrap: nowrap; min-height: 44px; padding-block: 6px; }
 .banner-line > span { flex: 1 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.banner-line.is-msg { flex-wrap: wrap; }
-.banner-line.is-msg > span { white-space: normal; }
+section.card > *, .ah-view > *, .today-col > * { min-width: 0; }
+@media (max-width: 1099px) { html { scroll-padding-bottom: calc(76px + env(safe-area-inset-bottom, 0px)); } }
 .banner-line .btn { flex: none; }
 .bubble .prov { color: var(--ah-ink-2); }
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
@@ -1282,7 +1282,7 @@ td a, .md li a, .kv li a { display: inline-flex; align-items: center; min-height
     var who = function (m) { return String(m.who || "").split(", ")[0]; };
     var strip = h("div", { class: "daystrip" }, [
       cell("schedule", "Meetings", left.length, next ? "Next " + (next.time || "") + " " + who(next) : meetings.length ? "No more today" : "None today"),
-      cell("decide", "Decide", counts.decide || 0, urgentIn("decide") ? urgentIn("decide") + " urgent" : counts.autoDecide ? counts.autoDecide + " " + (counts.autoDecide === 1 ? "runs" : "run") + " by itself" :
+      cell("decide", "Decide", counts.decide || 0, urgentIn("decide") ? urgentIn("decide") + " urgent" : counts.autoDecide ? "+" + counts.autoDecide + " " + (counts.autoDecide === 1 ? "runs" : "run") + " by itself" :
         firstOf("decide") || (counts.decide ? "CRM changes and meeting logs" : "Nothing to decide"), urgentIn("decide") > 0),
       cell("send", "Send", counts.send || 0, urgentIn("send") ? urgentIn("send") + " overdue" : counts.send ? "Drafts and replies" : "All sent", urgentIn("send") > 0),
       cell("waiting", "Waiting on others", counts.waiting || 0, counts.waiting ? "Tap to see who owes what" : "No one owes you")]);
@@ -1419,8 +1419,12 @@ td a, .md li a, .kv li a { display: inline-flex; align-items: center; min-height
     // (the schedule, Waiting, Watch). On a phone, one column in the agreed order.
     var heroEl = heroCard(hero), digest = recentDigest(["week_ahead", "digest"]);
     // A research message waits under the top line, so the main button is never pushed off a phone screen.
-    var rsMsg = !S.rs.running && S.rs.note ? h("div", { class: "banner is-msg", role: "status" }, [h("span", { id: "rs-note" }, S.rs.note),
-      h("button", { class: "btn btn-ghost btn-sm", type: "button", style: "margin-left:auto", onclick: function () { S.rs.note = null; render(); } }, "Dismiss")]) : null;
+    var rsMsg = !S.rs.running && S.rs.note ? h("div", { class: "banner is-msg", role: "status", "aria-live": "polite" }, [h("span", { id: "rs-note" }, S.rs.note),
+      S.rs.halted && S.mcp && /Sign in/.test(S.rs.note) ? h("button", { class: "btn btn-secondary btn-sm", type: "button", style: "margin-left:auto", onclick: function () {
+        bcall("navigate", { url: "https://www.linkedin.com/login" }).then(function () { toast("LinkedIn is open in the Claude app's browser. Sign in, then open a prep card and tap Try again."); },
+          function () { toast("Open LinkedIn in the Claude app's browser and sign in there."); }); } }, "Open LinkedIn") : null,
+      h("button", { class: "btn btn-ghost btn-sm", type: "button", style: S.rs.halted && S.mcp && /Sign in/.test(S.rs.note) ? null : "margin-left:auto",
+        onclick: function () { S.rs.note = null; render(); var pb = document.querySelector(".ah-hero-card .btn-primary"); if (pb) pb.focus(); } }, "Dismiss")]) : null;
     var out = [dayStrip(b, buckets, counts)];
     if (wide()) {
       out.push(h("div", { class: "today-cols" }, [h("div", { class: "today-col" }, [heroEl, rsMsg, cards.decide, cards.send, digest]),
@@ -2434,7 +2438,7 @@ td a, .md li a, .kv li a { display: inline-flex; align-items: center; min-height
         return h("button", { class: "chip chip-filter", type: "button", "aria-pressed": S.logFilter === f[0] ? "true" : "false",
           onclick: function () { S.logFilter = f[0]; render(); } }, f[1] + " " + f[2]);
       }));
-    var head = h("div", { class: "day" }, [h("div", { class: "sec-h", style: "margin:0" }, [h("b", { id: "activity-h", tabindex: "-1" }, "Activity"),
+    var head = h("div", { class: "day" }, [h("div", { class: "sec-h", style: "margin:0" }, [h("h2", { id: "activity-h", tabindex: "-1", style: "margin:0;font-family:var(--ah-display);font-weight:700;font-size:18px;letter-spacing:-.015em;color:var(--ah-ink)" }, "Activity"),
         h("button", { class: "btn btn-ghost btn-sm", type: "button", style: "margin-left:auto", onclick: function () { go("today"); } }, "Back to Today")]),
       h("p", { class: "prov" }, "Everything you and ant. did in ant. Home for the last 90 days. Undo works from here: a change still waiting is withdrawn, and a CRM change already made is put back at the next check."),
       all.length ? filters : null]);
