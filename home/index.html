@@ -373,12 +373,15 @@ section.card.is-folded .sec-h { margin-bottom: 0; }
 .hit b { font-weight: 600; font-size: 15px; }
 .hit span { font-size: 13px; color: var(--ah-ink-2); }
 .suggest { display: flex; flex-wrap: wrap; gap: 8px; }
+.banner { min-width: 0; max-width: 100%; }
 .banner-line { flex-wrap: nowrap; min-height: 44px; padding-block: 6px; }
-.banner-line > span { flex: 1 1 auto; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.banner-line > span { flex: 1 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.banner-line.is-msg { flex-wrap: wrap; }
+.banner-line.is-msg > span { white-space: normal; }
 .banner-line .btn { flex: none; }
 .bubble .prov { color: var(--ah-ink-2); }
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
-td a { display: inline-flex; align-items: center; min-height: 24px; }
+td a, .md li a, .kv li a { display: inline-flex; align-items: center; min-height: 24px; }
 .recap { margin: 0; }
 .today-cols { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 20px; align-items: start; }
 .today-col { display: grid; gap: 20px; min-width: 0; }
@@ -472,7 +475,7 @@ td a { display: inline-flex; align-items: center; min-height: 24px; }
         <button class="ah-icon-btn" id="theme-btn" type="button" aria-label="Switch to dark mode" title="Dark mode"></button>
         <button class="ah-help" id="help-btn" type="button" aria-label="How ant. works"><span>?</span></button>
       </header>
-      <div id="banner-slot" style="display:grid;gap:8px"></div>
+      <div id="banner-slot" style="display:grid;gap:8px;grid-template-columns:minmax(0,1fr)"></div>
       <section id="view" class="ah-view" role="tabpanel" aria-label="Content"></section>
     </div>
   </main>
@@ -1247,6 +1250,11 @@ td a { display: inline-flex; align-items: center; min-height: 24px; }
       question_id: it.question_id, draft: it.draft, entity: it.entity, group_asks: it.group_asks, breach: it.breach, source: it.source,
       status_word: it.status_word };
   }
+  // Rows that apply by themselves go last, under their own small label.
+  function sortAuto(rows) {
+    var mine = rows.filter(function (r) { return !r.classList.contains("is-auto"); }), auto = rows.filter(function (r) { return r.classList.contains("is-auto"); });
+    return auto.length ? mine.concat([h("h3", { class: "log-cat" }, "Runs by itself")], auto) : rows;
+  }
   var BUCKETS = [["decide", "Decide"], ["send", "Send"], ["waiting", "Waiting on others"], ["watch", "Watch"]];
   function wide() { try { return window.matchMedia("(min-width: 1100px)").matches; } catch (e) { return false; } }
   try { window.matchMedia("(min-width: 1100px)").addEventListener("change", function () { if (S.tab === "today") render(); }); } catch (e) {}
@@ -1274,7 +1282,7 @@ td a { display: inline-flex; align-items: center; min-height: 24px; }
     var who = function (m) { return String(m.who || "").split(", ")[0]; };
     var strip = h("div", { class: "daystrip" }, [
       cell("schedule", "Meetings", left.length, next ? "Next " + (next.time || "") + " " + who(next) : meetings.length ? "No more today" : "None today"),
-      cell("decide", "Decide", counts.decide || 0, urgentIn("decide") ? urgentIn("decide") + " urgent" : counts.autoDecide ? counts.autoDecide + " more " + (counts.autoDecide === 1 ? "runs" : "run") + " by itself" :
+      cell("decide", "Decide", counts.decide || 0, urgentIn("decide") ? urgentIn("decide") + " urgent" : counts.autoDecide ? counts.autoDecide + " " + (counts.autoDecide === 1 ? "runs" : "run") + " by itself" :
         firstOf("decide") || (counts.decide ? "CRM changes and meeting logs" : "Nothing to decide"), urgentIn("decide") > 0),
       cell("send", "Send", counts.send || 0, urgentIn("send") ? urgentIn("send") + " overdue" : counts.send ? "Drafts and replies" : "All sent", urgentIn("send") > 0),
       cell("waiting", "Waiting on others", counts.waiting || 0, counts.waiting ? "Tap to see who owes what" : "No one owes you")]);
@@ -1283,7 +1291,7 @@ td a { display: inline-flex; align-items: center; min-height: 24px; }
       h("button", { class: "chip chip-filter", type: "button", "aria-pressed": S.focus ? "true" : "false", onclick: function () { S.focus = !S.focus; S.focusOpen = {}; remember("ant.focus", S.focus ? "1" : "0"); render(); } }, "Focus")]);
     var byItself = activityLog().filter(function (e) { return e.auto && dayOf(e.at) === todayIso(); });
     var recap = byItself.length ? h("p", { class: "prov recap" }, ["ant. did " + plural(byItself.length, "thing") + " by itself today. ",
-      h("button", { class: "link-btn", type: "button", onclick: function () { go("activity"); } }, "Review")]) : null;
+      h("button", { class: "link-btn", type: "button", onclick: function () { go("activity"); var hd = document.getElementById("activity-h"); if (hd) hd.focus(); } }, "Review")]) : null;
     return h("div", { class: "day" }, [tools, strip, timeline(meetings), recap]);
   }
   // The working day as a bar from 08:00 to 20:00: meetings filled in, now marked.
@@ -1403,19 +1411,22 @@ td a { display: inline-flex; align-items: center; min-height: 24px; }
       if (!rows.length) return;
       var urgent = (buckets[bk[0]] || []).some(function (it) { return (WORDS[wordOf(it)] || WORDS.low)[1] === "breach"; });
       cards[bk[0]] = h("section", { class: "card", "aria-label": bk[1], id: "sec-" + bk[0], "data-open": urgent ? "1" : null },
-        [h("h2", { class: "sec-h" }, [h("b", null, bk[1]), h("span", { class: "count" }, String(rows.length))]), h("div", { class: "list" }, rows)]);
+        [h("h2", { class: "sec-h" }, [h("b", null, bk[1]), h("span", { class: "count" }, String(counts[bk[0]] || rows.length))]), h("div", { class: "list" }, sortAuto(rows))]);
     });
     var done = doneToday();
     // On a wide screen the first section sits under the hero, beside the schedule, so the first screen has no gap.
     // On a wide screen: what you do on the left (the top line, Decide, Send), what you keep an eye on on the right
     // (the schedule, Waiting, Watch). On a phone, one column in the agreed order.
     var heroEl = heroCard(hero), digest = recentDigest(["week_ahead", "digest"]);
+    // A research message waits under the top line, so the main button is never pushed off a phone screen.
+    var rsMsg = !S.rs.running && S.rs.note ? h("div", { class: "banner is-msg", role: "status" }, [h("span", { id: "rs-note" }, S.rs.note),
+      h("button", { class: "btn btn-ghost btn-sm", type: "button", style: "margin-left:auto", onclick: function () { S.rs.note = null; render(); } }, "Dismiss")]) : null;
     var out = [dayStrip(b, buckets, counts)];
     if (wide()) {
-      out.push(h("div", { class: "today-cols" }, [h("div", { class: "today-col" }, [heroEl, cards.decide, cards.send, digest]),
+      out.push(h("div", { class: "today-cols" }, [h("div", { class: "today-col" }, [heroEl, rsMsg, cards.decide, cards.send, digest]),
         h("div", { class: "today-col" }, [agenda, cards.waiting, cards.watch])]));
     } else {
-      out.push(heroEl, agenda, digest);
+      out.push(heroEl, rsMsg, agenda, digest);
       BUCKETS.forEach(function (bk) { if (cards[bk[0]]) out.push(cards[bk[0]]); });
     }
     if (!Object.keys(cards).length) out.push(emptyCard("Nothing else needs you", "Next check at " + (b.next_check || "the top of the hour") + "."));
@@ -2423,7 +2434,7 @@ td a { display: inline-flex; align-items: center; min-height: 24px; }
         return h("button", { class: "chip chip-filter", type: "button", "aria-pressed": S.logFilter === f[0] ? "true" : "false",
           onclick: function () { S.logFilter = f[0]; render(); } }, f[1] + " " + f[2]);
       }));
-    var head = h("div", { class: "day" }, [h("div", { class: "sec-h", style: "margin:0" }, [h("b", null, "Activity"),
+    var head = h("div", { class: "day" }, [h("div", { class: "sec-h", style: "margin:0" }, [h("b", { id: "activity-h", tabindex: "-1" }, "Activity"),
         h("button", { class: "btn btn-ghost btn-sm", type: "button", style: "margin-left:auto", onclick: function () { go("today"); } }, "Back to Today")]),
       h("p", { class: "prov" }, "Everything you and ant. did in ant. Home for the last 90 days. Undo works from here: a change still waiting is withdrawn, and a CRM change already made is put back at the next check."),
       all.length ? filters : null]);
@@ -2763,7 +2774,7 @@ td a { display: inline-flex; align-items: center; min-height: 24px; }
       .then(function () { return bcall("get_page_text", { max_chars: 8000 }); })
       .then(function (r) {
         var t = textOf(r);
-        if (/sign in|join now|log in to linkedin|authwall/i.test(t) && !/results/i.test(t)) throw halt("Sign in to LinkedIn once in the Claude app's browser, then reopen Home. ant. researches your meetings from there.");
+        if (/sign in|join now|log in to linkedin|authwall/i.test(t) && !/results/i.test(t)) throw halt("Sign in to LinkedIn in the Claude app's browser to research your meetings.");
         return bcall("find", { query: a.name });
       })
       .then(function (r) {
@@ -2854,7 +2865,8 @@ td a { display: inline-flex; align-items: center; min-height: 24px; }
               tabs[(i + (e.key === "ArrowRight" || e.key === "ArrowDown" ? 1 : tabs.length - 1)) % tabs.length];
             go(n.key); var nb = host.querySelector('[aria-label="' + n.label + '"]'); if (nb) nb.focus();
           },
-          onclick: function () { go(t.key); } }, [h("span", { class: "ah-tab-ico" }, icon(t.icon, 18)), h("span", { class: "lbl" }, t.label)]));
+          onclick: function () { var id = host.id; go(t.key); var nb = document.querySelector("#" + id + ' [aria-label="' + t.label + '"]'); if (nb) nb.focus({ preventScroll: true }); } },
+          [h("span", { class: "ah-tab-ico" }, icon(t.icon, 18)), h("span", { class: "lbl" }, t.label)]));
       });
     });
     var ab = document.getElementById("activity-btn");
@@ -2879,7 +2891,7 @@ td a { display: inline-flex; align-items: center; min-height: 24px; }
   }
   function banners(host) {
     var c = cfg(), b = S.snap.brief || {};
-    if (S.rs.running || (S.rs.note && S.tab === "today")) host.appendChild(h("div", { class: "banner banner-line", role: "status" }, [h("span", { id: "rs-note" }, S.rs.note || ""),
+    if (S.rs.running) host.appendChild(h("div", { class: "banner banner-line", role: "status" }, [h("span", { id: "rs-note" }, S.rs.note || ""),
       S.rs.running ? h("button", { class: "btn btn-ghost btn-sm", type: "button", style: "margin-left:auto", onclick: function () { S.rs.stop = true; rsNote("Stopping after this person…"); } }, "Stop") :
       h("button", { class: "btn btn-ghost btn-sm", type: "button", style: "margin-left:auto", onclick: function () { S.rs.note = null; render(); } }, "Dismiss")]));
     if (c.demo) {

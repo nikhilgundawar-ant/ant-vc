@@ -1873,8 +1873,11 @@ class QA:
               "thinks": "He likely worries banks move slower than his round.", "does": "Signs bank partners and posts about them weekly.",
               "feels": "Probably pressed for time before the term sheet deadline.", "company": "Seed-stage settlement rails, two bank partners.",
               "points": ["Ask when the second bank goes live", "Ask about Bluepeak's terms", "Confirm the ESOP pool"]}
-        ctx, page = self.open(browser, sc, PHONE, sample={"answer": "ok", "json": mp},
+        ctx, page = self.open(browser, sc, {"width": 320, "height": 780}, sample={"answer": "ok", "json": mp},
                               mcp={"pages": ["Search results People Ishaan Verma CEO Atlas Settlement", profile, "results", profile, "results", profile]})
+        page.wait_for_timeout(5)
+        self.check(sc, "while research runs on a 320px phone, the page stays inside the screen",
+                   page.evaluate("document.documentElement.scrollWidth - window.innerWidth") <= 0)
         page.wait_for_timeout(900)
         calls = page.evaluate("window.__mcp")
         tools = sorted({c["tool"] for c in calls})
@@ -1899,7 +1902,7 @@ class QA:
         ctx.close()
         ctx, page = self.open(browser, "research-signin", PHONE, sample={"answer": "ok", "json": mp}, mcp={"pages": ["Sign in to LinkedIn. Join now"]})
         page.wait_for_timeout(500)
-        banner = page.locator("#banner-slot").inner_text()
+        banner = page.locator("#banner-slot").inner_text() + " " + page.locator("#view").inner_text()
         self.check("research-signin", "when LinkedIn wants a sign-in, Home says so once and stops", "Sign in to LinkedIn" in banner and
                    sum(1 for c in page.evaluate("window.__mcp") if c["tool"] == "navigate") == 1, banner[:120])
         ctx.close()
@@ -1914,6 +1917,8 @@ class QA:
         pid = next(k for k, v in snap["proposals"]["items"].items() if v.get("type") == "crm_update")
         snap["proposals"]["items"][pid] = {**snap["proposals"]["items"][pid], "status": "applied", "applied_at": "2026-10-22T07:01:00+05:30"}
         ctx, page = self.open(browser, sc, PHONE, snap=snap, state={"items": {}, "actions": {}, "settings": {"auto_apply": True}}, open_all=True)
+        self.check(sc, "the Decide badge counts only what needs you", page.locator(DECIDE + " .sec-h .count").inner_text() ==
+                   page.locator(".daystrip .stat", has_text="Decide").locator("b").inner_text())
         self.check(sc, "Today says what ant. did by itself, and Done today lists it with Undo", page.locator(".recap", has_text="by itself").count() == 1 and
                    page.locator("section[aria-label='Done today'] .log-row", has_text="Done by itself").locator("button", has_text="Reverse in CRM").count() == 1)
         ctx.close()
@@ -1931,6 +1936,8 @@ class QA:
             page.wait_for_timeout(300)
             y = page.evaluate("(() => { var e = document.querySelector('.ah-hero-card .btn-primary'); return e ? e.getBoundingClientRect().bottom : 0; })()")
             self.check("hero-banner", f"{m}: with the research banner showing, the main button stays above the tab bar", y <= 784, f"bottom at {round(y)}px")
+            wide = page.evaluate("document.documentElement.scrollWidth - window.innerWidth")
+            self.check("hero-banner", f"{m}: the banner never widens the page", wide <= 0, f"overflow {wide}px")
             ctx.close()
 
         sc = "auto-apply"

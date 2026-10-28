@@ -89,3 +89,11 @@ Keep one row per day.
 ## 8. Turn off
 
 - [ ] Say "turn off ant." once. Both tasks are gone, Home's collections are empty, and the page is deleted only if you said yes.
+
+## 0.9.0: what runs by itself
+
+- [ ] Open ant. Home in the Claude desktop app with a meeting today. Allow the app's browser when asked. Home opens LinkedIn in the app's browser, reads each attendee, and an empathy map appears on the prep card. A Google Doc lands in the research folder in Drive.
+- [ ] Signed out of LinkedIn in the app's browser: Home says "Sign in to LinkedIn" once and stops.
+- [ ] Ask (/): matches as you type; a question streams an answer from Home's data. Stop works.
+- [ ] Automatic mode on: a CRM change proposed from a meeting applies at the next check without a tap, shows on Today's recap and in Activity, and Reverse in CRM puts it back at the following check.
+

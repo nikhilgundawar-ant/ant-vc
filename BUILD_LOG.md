@@ -1,12 +1,12 @@
 # Build log: ant. for VCs (formerly Instinct for VCs)
 
-Built from the council plan "Instinct for VCs: Council Plan and One-Shot Build Spec". This log records what ships, how it was tested, what the councils said and what changed on the way. Version 0.8.0.
+Built from the council plan "Instinct for VCs: Council Plan and One-Shot Build Spec". This log records what ships, how it was tested, what the councils said and what changed on the way. Version 0.9.0.
 
 ## What ships
 
 | Part | What it is |
 | --- | --- |
-| Plugin | `ant-vc.plugin` (0.8.0): 14 skills, the engine, the ontology, ant. Home, two scheduled tasks and a guard for them |
+| Plugin | `ant-vc.plugin` (0.9.0): 14 skills, the engine, the ontology, ant. Home, two scheduled tasks and a guard for them |
 | Skills | setup, pulse, morning-brief, meeting-prep, research, post-meeting, pipeline-watch, inbound-triage, deal-memo, network, portfolio-watch, lp-watch, tuning, settings |
 | Engine | `engine/instinct/`, Python standard library only, run isolated (`python3 -I -S`). People resolution, relationship graph, stale deals, competing-fund signals, promises, thesis triage, portfolio drift, LP alerts and capital calls, warm paths, brief ranking, prep cards and sync packs, the push picker, what is due each hour, weekly tuning, Home snapshots |
 | ant. Home | `home/index.html`: one private page on the Anthill Evergreen design system, following the device's light or dark setting. Today (by the job: Decide, Send, Waiting on others, Watch), Pipeline, People, Portfolio, LPs and Activity; every section folds; tabs follow the user's level. Taps write to the page's own database; the hourly run applies them |
@@ -15,14 +15,14 @@ Built from the council plan "Instinct for VCs: Council Plan and One-Shot Build S
 
 ## How it was tested
 
-| Loop | Tool | Result at 0.8.0 |
+| Loop | Tool | Result at 0.9.0 |
 | --- | --- | --- |
-| Engine and multi-run suites | `python3 evals/runner.py` against the fictional Quillwater Ventures (6 members, 45 deals, 25 transcripts, 30 pitches, 12 portfolio companies, 15 LPs), a second renamed fund, a ten-times fund and a solo GP | 230 engine and replay checks pass on a clean clone (about 340 s), which skips the 7 score groups read from saved Claude runs (kept out of git); with those runs present, 243 of 243 |
+| Engine and multi-run suites | `python3 evals/runner.py` against the fictional Quillwater Ventures (6 members, 45 deals, 25 transcripts, 30 pitches, 12 portfolio companies, 15 LPs), a second renamed fund, a ten-times fund and a solo GP | 233 engine and replay checks pass on a clean clone (about 340 s), which skips the 7 score groups read from saved Claude runs (kept out of git); with those runs present, 246 of 246 |
 | Panel tests | `round6` and `round6b` suites: the VC panel's round-five tests on the same Thursday-to-Monday replay, for all seven panel members; `evals6` pins the round-six Claude-run findings; `round7` to `round10` pin the VC panel's round-six to round-nine tests; `evals8` pins the round-eight Claude-run findings; `round9` to `round15` replay every panel member with each run reading only its own window (all seven match the full replay at every run), with taps, replies in mail and sent chases to Mon 23 Nov; `round11` also pins the 0.7.3 Claude-run findings and the round-nine council's conditions J to P, `round12` the 0.7.4 Claude-run findings and the round-eleven panel's tests, `round13` the 0.7.5 Claude-run findings, the round-ten council's conditions Q to W and the round-twelve panel's tests, and `round14` the round-eleven council's conditions X to AB, the 0.7.6 Claude runs and the round-thirteen panel | pass: no push inside a meeting, at most four a day, every pushed item on Today, one sync pack for all, calendar truth to Monday, founders' words kept, and the rest |
 | Guard | `evals/runner.py --suite guard`: every allowed step and every known way out, on the connectors' real argument names, in three transcript layouts; `round11` adds data names that order something at either end, and Artifact reads that save files | 718 of 718, and the round-eleven probes |
 | Five-day replay and outages | Setup, then every scheduled run Thursday to Monday; the CRM or email down for four hours | Home never loses LPs, companies, flags, signals or promises; no false all-clear; an outage pushes once |
-| Design lint | `python3 evals/design_lint.py` | 0 violations in 311 CSS rules |
-| Home QA | `python3 evals/home_qa.py` (Playwright, phone and desktop, light and dark, every level) | 609 of 609 |
+| Design lint | `python3 evals/design_lint.py` | 0 violations in 340 CSS rules |
+| Home QA | `python3 evals/home_qa.py` (Playwright, phone and desktop, light and dark, every level) | 647 of 647 |
 | Safety lint and manifest | `python3 -I -S engine/instinct.py lint --root .`, `claude plugin validate .` | 0 violations; validates (warnings: no LICENSE, no privacy URL) |
 | Claude in the loop | Skills run end to end by fresh Claude agents against mock connectors (`evals/eval-mode.md`) | reports in `evals/reports/claude-runs/` |
 | Councils | A simulated VC panel (one persona per level), a simulated product council (PM, designer, AI engineer, QA lead) and a simulated design council (SaaS product design, information architecture, visual design, accessibility, behavioural psychology) | reports in `evals/reports/council/` |
@@ -60,8 +60,17 @@ The owner asked for a Home a partner can read in seconds: the day in logical sec
 | Round 1 | 7 | 7.5 | 7.5 | 8 | 6.5 |
 | Round 2 | 8 | 8 | 8 | 8.5 | 7.5 |
 | Round 3 | 8.5 | 8.5 | 8.5 | 8.5 | 8 |
+| Round 4 (0.9.0: Ask, research by itself, automatic mode) | 8.5 | 8.5 | 8.5 | 8.5 | 8.5 |
+| Round 5 | 9 | 9 | 8.5 | 8.5 | 9 |
 
-Round 4 then fixed the round-three findings (the hero's main button above the phone tab bar for every level, no repeated dates in the hero, one label per action, Activity says only what it knows). It has not been scored by the council yet.
+Round 6 fixed the round-five findings: the research banner no longer widens a phone page (pinned for every level at 320 and 380 px), research messages sit under the top line, the Decide badge counts only what needs you, and focus stays on the tab you tapped.
+
+### 0.9.0: ant. works by itself
+
+- **Ask** on every screen (a tab, the search icon and /): instant matches from Home's data, and answers from Claude on the user's own account, from a compact copy of Home's data.
+- **Research by itself.** With Home open in the Claude desktop app, it reads today's and tomorrow's external attendees on LinkedIn in the app's browser (navigate, page text, find, one click on the profile link; it never types), writes an empathy map with Claude, keeps it in `snap/research` and saves a Google Doc to the research folder in Drive. At most five people per opening, each once a month; a sign-in wall stops it with one line.
+- **Automatic mode** (`state/settings` `auto_apply`, on from setup): CRM changes from the user's notes and holds on their own calendar apply at the next check, with Undo in Activity and a recap on Today. Emails never send by themselves. Pinned in the `round17` suite.
+- **Not verified on a real device:** the result shapes of the Claude app's browser tools as Home calls them, and the Google Drive folder and Doc calls. Home QA runs both against mocks; the smoke checklist covers them on a real account.
 
 - **Today by the job.** A day strip (meetings, Decide, Send, Waiting on others), the one thing, the schedule, then Decide, Send, Waiting on others, Watch and Done today. On desktop, what you do sits on the left and what you watch on the right.
 - **Every section folds** and remembers it per device. A folded section keeps its count, its urgent count and its top line. Focus folds everything but the top line and the schedule. Long lists show five rows, tables eight.
