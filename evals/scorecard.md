@@ -1,8 +1,8 @@
 # ant. for VCs: eval scorecard
 
-Run at 28 Oct 2026 09:53. Golden fund: Quillwater Ventures (fictional).
+Run at 28 Oct 2026 10:49. Golden fund: Quillwater Ventures (fictional).
 
-**233 of 233 checks pass.** 7 Claude-run scores skipped: no saved run.
+**235 of 235 checks pass.** 7 Claude-run scores skipped: no saved run.
 
 | Suite | Check | Result | Threshold | Pass |
 | --- | --- | --- | --- | --- |
@@ -239,6 +239,8 @@ Run at 28 Oct 2026 09:53. Golden fund: Quillwater Ventures (fictional).
 | round17 | automatic mode applies a proposed CRM change and an own-calendar hold untapped, marked auto | pending ['p1', 'p3'] | p1, p3 | yes |
 | round17 | a skipped change, a hand-copied one and an applied one stay put; an invite or an unknown field is still refused | refused ['p4', 'p7']; engine ['p2'] | p4, p7 refused; p2 skipped | yes |
 | round17 | with automatic mode off or never set, nothing applies without a tap | [] [] | [] [] | yes |
+| round18 | a CRM and calendar set to read only in Settings take no change, tapped or automatic, and say why | pending []; refused ['ns', 'p1', 'p2'] | none; ns, p1, p2 | yes |
+| round18 | set back to update, they apply | ['ns', 'p1', 'p2'] | ns, p1, p2 | yes |
 | llm | commitments read from meeting notes | skipped | - | skipped |
 | llm | inbound triage agrees with partner judgment | skipped | - | skipped |
 | llm | memo claims linked to a source | skipped | - | skipped |

@@ -3628,3 +3628,26 @@ def suite_round17(record) -> None:
 
 
 SUITES["round17"] = suite_round17
+
+
+def suite_round18(record) -> None:
+    """Round eighteen: Settings in Home. A CRM or calendar set to read only takes no change, tapped or automatic; set
+    back to update, it does."""
+    now = datetime(2026, 10, 22, 10, 0, tzinfo=tzinfo("Asia/Kolkata"))
+    props = {"p1": {"type": "crm_update", "status": "proposed", "fields": [{"field": "stage", "current": "a", "proposed": "b"}]},
+             "p2": {"type": "calendar_hold", "status": "proposed", "event": {"title": "Prep"}, "attendees": []}}
+    acts = {"ns": {"type": "next_step", "status": "approved", "payload": {"deal_id": "d1", "text": "Call Raj"}, "at": "2026-10-22T09:00:00+05:30"}}
+
+    def run(access):
+        home = {"snap": {"proposals": {"items": props}, "config": {"user_email": "a@q.vc", "crm_system": "attio"}, "lps": {"lps": {}}},
+                "state": {"actions": {"items": acts}, "settings": {"items": {"auto_apply": True, "access": access}}}, "ratings": [], "versions": {}, "runs": []}
+        return pending_actions(home, now)
+    ro = run({"crm": "read", "calendar": "read"})
+    record("round18", "a CRM and calendar set to read only in Settings take no change, tapped or automatic, and say why",
+           f"pending {[p['id'] for p in ro['pending']]}; refused {sorted(r['id'] for r in ro['refused'])}", "none; ns, p1, p2",
+           not ro["pending"] and sorted(r["id"] for r in ro["refused"]) == ["ns", "p1", "p2"] and all("Settings" in r["why"] for r in ro["refused"]))
+    rw = run({"crm": "update", "calendar": "holds"})
+    record("round18", "set back to update, they apply", f"{sorted(p['id'] for p in rw['pending'])}", "ns, p1, p2", sorted(p["id"] for p in rw["pending"]) == ["ns", "p1", "p2"])
+
+
+SUITES["round18"] = suite_round18

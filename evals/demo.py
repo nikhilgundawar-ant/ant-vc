@@ -805,6 +805,11 @@ def build(member: str = "aditi", home_url: str | None = None) -> dict[str, dict]
     snaps["scorecard"] = {"week": "2026-W43", "overall": 9, "catches": 4, "prep_on_time": "11/11", "commitments_closed": "7/8",
                           "crm_clean": "5/6", "noise": "3/41",
                           "change_note": "ant. now shows more signal items because you rated them: 6 useful, 0 not useful, 0 wrong.", "history": []}
+    # What the demo fund has connected: Home's Settings shows these, and offers the rest.
+    snaps["connectors"] = {"checked_at": snaps["brief"]["as_of"], "items": [
+        {"name": "Gmail", "category": "email", "ok": True}, {"name": "Google Calendar", "category": "calendar", "ok": True},
+        {"name": "Granola", "category": "notes", "ok": True}, {"name": "Affinity", "category": "crm", "ok": True},
+        {"name": "Google Drive", "category": "drive", "ok": True}]}
     return snaps
 
 

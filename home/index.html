@@ -357,6 +357,21 @@ th:last-child, td:last-child { padding-right: 0; }
 :root[data-ah-density="compact"] .stat { min-height: 56px; padding: 8px 12px; }
 
 @media (max-width: 430px) { .ah-live-pre { display: none; } }
+/* Settings and tools */
+.rail-foot { margin-top: 24px; padding-top: 16px; box-shadow: 0 -1px 0 var(--ah-rail-edge); display: grid; justify-items: center; }
+.ah-rail .ah-tab.is-current .ah-tab-ico { background: var(--ah-hero); color: var(--ah-on-hero); box-shadow: var(--ah-elev-tile); }
+.ah-rail .ah-tab.is-current { color: var(--ah-hero); }
+.tool-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px 16px; align-items: center; padding: 14px 0; border-top: 1px solid var(--ah-row-rule); }
+.list > .tool-row:first-child { border-top: 0; }
+.tool-row .seg { justify-self: end; flex-wrap: wrap; }
+.tool-name { display: grid; gap: 2px; min-width: 0; }
+.tool-name b { font-weight: 600; font-size: 15px; }
+.tool-name span { font-size: 13.5px; color: var(--ah-ink-2); }
+.dot { display: inline-block; width: 8px; height: 8px; border-radius: 999px; background: var(--ah-mid-sage); margin-right: 6px; vertical-align: middle; }
+.dot.off { background: var(--ah-ink-3); }
+.dot.warn { background: var(--ah-breach); }
+.meter-line { display: grid; gap: 8px; }
+@media (max-width: 559px) { .tool-row { grid-template-columns: minmax(0, 1fr); } .tool-row .seg, .tool-row > .btn, .tool-row > a.btn { justify-self: start; } }
 @media (max-width: 360px) { .ah-icon-btn, .ah-help { width: 32px; margin: -8px -2px; } }
 /* Ask */
 .ask-form { display: flex; gap: 8px; align-items: flex-end; }
@@ -548,6 +563,8 @@ td a, .md li a, .kv li a { display: inline-flex; align-items: center; min-height
     moon: "M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z",
     chev: "M6 9l6 6l6-6",
     ask: "M5 5h14v10H10l-5 4z|M9 9.5h6|M9 12h4",
+    gear: "M12 9a3 3 0 1 0 0 6a3 3 0 1 0 0-6|M19 12a7 7 0 0 0-.1-1.2l2-1.6l-2-3.4l-2.4 1a7 7 0 0 0-2-1.2L14 3h-4l-.5 2.6a7 7 0 0 0-2 1.2l-2.4-1l-2 3.4l2 1.6A7 7 0 0 0 5 12c0 .4 0 .8.1 1.2l-2 1.6l2 3.4l2.4-1a7 7 0 0 0 2 1.2L10 21h4l.5-2.6a7 7 0 0 0 2-1.2l2.4 1l2-3.4l-2-1.6c.1-.4.1-.8.1-1.2",
+    plug: "M9 3v5|M15 3v5|M6 8h12v3a6 6 0 0 1-12 0z|M12 17v4",
     search: "M10.5 4a6.5 6.5 0 1 0 0 13a6.5 6.5 0 1 0 0-13|M15.5 15.5L20 20",
     stop: "M7 7h10v10H7z",
     clock: "M4 12a8 8 0 1 0 2.4-5.7|M4 4v4h4|M12 8v4l3 2",
@@ -645,7 +662,7 @@ td a, .md li a, .kv li a { display: inline-flex; align-items: center; min-height
   // Home QA opens every section and list so it can reach each row; its own fold checks turn this off.
   var QA_OPEN = !!(window.__QA__ && window.__QA__.open_all);
   function remember(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
-  if (TAB_KEYS.concat(["activity"]).indexOf(location.hash.slice(1)) >= 0) { S.tab = location.hash.slice(1); S.tabChosen = true; }
+  if (TAB_KEYS.concat(["activity", "settings"]).indexOf(location.hash.slice(1)) >= 0) { S.tab = location.hash.slice(1); S.tabChosen = true; }
 
   // ---------------------------------------------------------------- theme: light by default, dark when the user picks it
   function theme() { return document.documentElement.getAttribute("data-ah-theme") === "dark" ? "dark" : "light"; }
@@ -2314,6 +2331,7 @@ td a, .md li a, .kv li a { display: inline-flex; align-items: center; min-height
   function openHelp() {
     var sc = S.snap.scorecard || {}, c = cfg();
     overlay("How ant. works", [
+      h("div", null, h("button", { class: "btn btn-secondary btn-sm", type: "button", onclick: function () { closeOverlay(); go("settings"); } }, [icon(ICON.gear, 16), "Settings and your tools"])),
       h("p", { class: "finding" }, "ant. reads, prepares, drafts and researches by itself. It never sends an email or deletes anything: you press Send. " +
         ((S.settings || {}).auto_apply === true ? "CRM changes from your notes and holds on your own calendar apply by themselves." : "CRM changes and holds wait for your Approve.")),
       S.static ? null : h("div", { class: "kv" }, [h("h3", null, "Runs by itself"), h("p", { class: "prov" }, "Emails never send by themselves: you press Send.")]),
@@ -2793,7 +2811,7 @@ td a, .md li a, .kv li a { display: inline-flex; align-items: center; min-height
   function rsOne(p) {
     var a = p.person, q = [a.name, a.company].filter(Boolean).join(" ");
     var url = "https://www.linkedin.com/search/results/people/?keywords=" + encodeURIComponent(q);
-    var page = "";
+    var page = "", profileUrl = url;
     return bcall("navigate", { url: url }).catch(function (e) { throw browserError(e); })
       .then(function () { return pause(3500); })
       .then(function () { return bcall("get_page_text", { max_chars: 8000 }); })
@@ -2803,11 +2821,12 @@ td a, .md li a, .kv li a { display: inline-flex; align-items: center; min-height
         return bcall("find", { query: a.name });
       })
       .then(function (r) {
-        var t = textOf(r), lines = t.split("\n"), ref = null;
-        lines.some(function (l) { var m = l.match(/ref_\d+/); if (m && /link/i.test(l)) { ref = m[0]; return true; } return false; });
-        if (!ref) { var m2 = t.match(/ref_\d+/); ref = m2 ? m2[0] : null; }
-        if (!ref) throw { say: "No LinkedIn profile found for " + a.name + "." };
-        return bcall("computer", { action: "left_click", ref: ref, action_summary: "Opens " + a.name + "'s LinkedIn profile" });
+        // find lists links with their address: link "Ishaan Verma" [ref_7] href="https://www.linkedin.com/in/..."
+        var t = textOf(r), href = null;
+        t.split("\n").some(function (l) { var m = l.match(/href="(https:\/\/[a-z.]*linkedin\.com\/in\/[^"?#]+)/i); if (m && /link/i.test(l)) { href = m[1]; return true; } return false; });
+        if (!href) throw { say: "No LinkedIn profile found for " + a.name + "." };
+        profileUrl = href;
+        return bcall("navigate", { url: href });
       })
       .then(function () { return pause(4000); })
       .then(function () { return bcall("get_page_text", { max_chars: 20000 }); })
@@ -2831,7 +2850,7 @@ td a, .md li a, .kv li a { display: inline-flex; align-items: center; min-height
       .then(function (m) {
         if (!m || m.match === false || !m.name) throw { say: "The LinkedIn page did not look like " + a.name + "; skipped." };
         var map = { name: String(m.name || a.name), headline: String(m.headline || ""), says: String(m.says || ""), thinks: String(m.thinks || ""), does: String(m.does || ""),
-          feels: String(m.feels || ""), company: String(m.company || ""), points: (m.points || []).slice(0, 3).map(String), source_url: url, read_at: nowIso(), auto: true };
+          feels: String(m.feels || ""), company: String(m.company || ""), points: (m.points || []).slice(0, 3).map(String), source_url: profileUrl, read_at: nowIso(), auto: true };
         return driveDoc(map, p).then(function (link) { if (link) map.drive_url = link; return saveResearch(p.key, map); }).then(function () { return true; });
       });
   }
@@ -2870,8 +2889,123 @@ td a, .md li a, .kv li a { display: inline-flex; align-items: center; min-height
       S.rsFolder = folder || null;
       return S.mcp.callTool(D, "create_file", Object.assign({ title: title, textContent: html, contentMimeType: "text/html" }, folder ? { parentId: folder } : {}));
     }).then(function (r) {
-      var f = r.payload || {}; return safeUrl(f.webViewLink) || safeUrl(f.alternateLink) || (f.id ? "https://docs.google.com/document/d/" + f.id + "/edit" : null);
+      var f = r.payload || {}; return safeUrl(f.viewUrl) || safeUrl(f.webViewLink) || safeUrl(f.alternateLink) || (f.id ? "https://docs.google.com/document/d/" + f.id + "/edit" : null);
     }).catch(function () { return null; });
+  }
+
+
+  // ---------------------------------------------------------------- Settings: your tools, what ant. may do with each, and adding more
+  // The page cannot connect a tool itself: Claude's own connector settings do that, one sign-in per tool. Home shows what is
+  // connected (from each check's snap/connectors), opens the right place to add one, and keeps what ant. may do with each
+  // kind of tool in state/settings.access, which the hourly checks and the engine obey.
+  var CATS = [
+    { key: "email", name: "Email", need: true, levels: [["drafts", "Read and save drafts"], ["read", "Read only"], ["off", "Off"]], def: "drafts",
+      why: "Promises, replies and pitches. ant. saves drafts; you press Send." },
+    { key: "calendar", name: "Calendar", need: true, levels: [["holds", "Read and add holds"], ["read", "Read only"], ["off", "Off"]], def: "holds",
+      why: "Your day and who you meet. Holds go on your own calendar with nobody invited." },
+    { key: "notes", name: "Meeting notes", rec: true, levels: [["read", "Read"], ["off", "Off"]], def: "read",
+      why: "What was said and promised in each meeting." },
+    { key: "crm", name: "CRM", rec: true, levels: [["update", "Read and update"], ["read", "Read only"], ["off", "Off"]], def: "update",
+      why: "Deals, stages and next steps. Updates come only from your own notes, with Undo." },
+    { key: "drive", name: "Files", rec: true, levels: [["save", "Read and save research"], ["read", "Read only"], ["off", "Off"]], def: "save",
+      why: "Decks, LP lists and the empathy maps ant. writes." },
+    { key: "chat", name: "Team chat", levels: [["read", "Read"], ["off", "Off"]], def: "read", why: "Asks and updates from your team. Read only, always." },
+    { key: "data", name: "Company data", levels: [["read", "Read"], ["off", "Off"]], def: "read", why: "Funding rounds and company facts for pitches and prep." }
+  ];
+  var CATALOG = [
+    ["Gmail", "email"], ["Outlook", "email"], ["Google Calendar", "calendar"], ["Outlook Calendar", "calendar"],
+    ["Granola", "notes"], ["Fireflies", "notes"], ["Otter", "notes"], ["Fathom", "notes"], ["Read AI", "notes"], ["Zoom", "notes"],
+    ["Affinity", "crm"], ["Attio", "crm"], ["HubSpot", "crm"], ["Salesforce", "crm"], ["Pipedrive", "crm"], ["Notion", "crm"], ["Airtable", "crm"], ["Google Sheets", "crm"],
+    ["Google Drive", "drive"], ["Dropbox", "drive"], ["Box", "drive"], ["Microsoft OneDrive", "drive"], ["DocSend", "drive"],
+    ["Slack", "chat"], ["Microsoft Teams", "chat"],
+    ["Crunchbase", "data"], ["PitchBook", "data"], ["Harmonic", "data"], ["Carta", "data"]
+  ];
+  var CONNECT_URL = "https://claude.ai/settings/connectors";
+  function catOf(key) { return CATS.filter(function (c) { return c.key === key; })[0]; }
+  function connected() {
+    var sc = S.snap.connectors || {}, list = (sc.items || cfg().connectors || []).map(function (x) { return typeof x === "string" ? { name: x } : x; });
+    return list.filter(function (x) { return x && x.name; }).map(function (x) {
+      var known = CATALOG.filter(function (k) { return k[0].toLowerCase() === String(x.name).toLowerCase(); })[0];
+      return { name: x.name, category: x.category || (known ? known[1] : "data"), ok: x.ok !== false };
+    });
+  }
+  function accessOf(key) { var a = ((S.settings || {}).access || {})[key]; return a || (catOf(key) || {}).def || "read"; }
+  function setAccess(key, level) {
+    var acc = Object.assign({}, (S.settings || {}).access || {}); acc[key] = level;
+    S.settings = Object.assign({}, S.settings || {}, { access: acc });
+    var c = catOf(key), word = ((c.levels.filter(function (l) { return l[0] === level; })[0]) || [])[1] || level;
+    if (S.static) { render(); toast(c.name + ": " + word + ". In your own Home this applies at the next check."); return; }
+    if (!S.db || S.readOnly) { toast("Read-only here."); return; }
+    S.db.doc("state/settings").set({ items: S.settings }).then(function () { render(); toast(c.name + ": " + word + ". ant. follows this from the next check."); }, function () { toast("Could not save that."); });
+  }
+  function unavailableOf(cat) {
+    var u = ((S.snap.brief || {}).unavailable || []).filter(function (x) { return x.source === cat || String(x.label || "").toLowerCase() === cat; })[0];
+    return u || null;
+  }
+  function connectButton(name, primary) {
+    return h("a", { class: "btn btn-sm " + (primary ? "btn-secondary" : "btn-ghost"), href: safeUrl(CONNECT_URL), target: "_blank", rel: "noopener noreferrer",
+      onclick: function () { S.wanted = Object.assign({}, S.wanted || {}); S.wanted[name] = true; setTimeout(render, 300); } }, [icon(ICON.ext, 16), "Connect " + name]);
+  }
+  function viewSettings() {
+    var mine = connected(), byCat = {};
+    mine.forEach(function (t) { (byCat[t.category] = byCat[t.category] || []).push(t); });
+    var essentials = CATS.filter(function (c) { return c.need || c.rec; });
+    var have = essentials.filter(function (c) { return byCat[c.key]; }).length;
+    var head = h("section", { class: "card", "aria-label": "Settings", "data-fold": "no", style: "display:grid;gap:12px" }, [
+      h("h2", { class: "sec-h", style: "margin:0" }, [h("b", { id: "settings-h", tabindex: "-1" }, "Settings")]),
+      h("p", { class: "finding" }, have === essentials.length ? "Everything ant. needs is connected. Each check uses it as you set below." :
+        have + " of " + essentials.length + " tools ant. works best with are connected. Connect the rest in two taps: Connect opens Claude's connector page, you sign in once, and ant. starts reading at the next check."),
+      h("div", { class: "track fund-track", role: "img", "aria-label": have + " of " + essentials.length + " connected" }, h("b", { style: "width:" + Math.round(100 * have / essentials.length) + "%" }))]);
+    // Your tools: one row per kind of tool, with what ant. may do with it.
+    var rows = CATS.map(function (c) {
+      var tools = byCat[c.key] || [], u = unavailableOf(c.key), lvl = accessOf(c.key);
+      var status = !tools.length ? (S.wanted && Object.keys(S.wanted).some(function (n) { return CATALOG.some(function (k) { return k[0] === n && k[1] === c.key; }); }) ?
+          "Connecting: ant. starts reading at the next check" : c.need ? "Not connected. ant. needs this one" : "Not connected") :
+        u ? "Needs you to sign in again in Claude" : lvl === "off" ? "Connected, but ant. leaves it alone" : "Working";
+      var dot = !tools.length || lvl === "off" ? "dot off" : u ? "dot warn" : "dot";
+      var suggest = CATALOG.filter(function (k) { return k[1] === c.key; }).slice(0, 2).map(function (k) { return k[0]; });
+      return h("div", { class: "tool-row" }, [
+        h("div", { class: "tool-name" }, [h("b", null, c.name + (tools.length ? ": " + tools.map(function (t) { return t.name; }).join(", ") : "")),
+          h("span", null, [h("i", { class: dot, "aria-hidden": "true" }), status]), h("span", null, c.why)]),
+        tools.length ? h("div", { class: "seg", role: "group", "aria-label": c.name + ": what ant. may do" }, c.levels.map(function (l) {
+          return h("button", { class: "chip", type: "button", "aria-pressed": lvl === l[0] ? "true" : "false", onclick: function () { if (lvl !== l[0]) setAccess(c.key, l[0]); } }, l[1]);
+        })) : connectButton(suggest[0] || c.name, !!(c.need || c.rec))]);
+    });
+    var tools = h("section", { class: "card", "aria-label": "Your tools" }, [h("h2", { class: "sec-h" }, [h("b", null, "Your tools"),
+      h("span", { class: "count" }, have + " of " + essentials.length)]), h("div", { class: "list" }, rows),
+      h("p", { class: "prov" }, "ant. never sends, deletes or shares anything in these tools. To remove a tool completely, disconnect it in Claude's connector page.")]);
+    // Add a tool: search the tools VCs use, connect in Claude, read only by default.
+    var results = h("div", { class: "hits" });
+    var box = h("input", { class: "field", type: "search", placeholder: "Find a tool, for example Fireflies or Notion", "aria-label": "Find a tool to connect", value: S.toolQuery || "" });
+    var paint = function () {
+      results.textContent = "";
+      var q = String(box.value || "").trim().toLowerCase();
+      var list = CATALOG.filter(function (k) { return !q || k[0].toLowerCase().indexOf(q) >= 0 || catOf(k[1]).name.toLowerCase().indexOf(q) >= 0; });
+      if (!q) list = list.filter(function (k) { return !mine.some(function (t) { return t.name.toLowerCase() === k[0].toLowerCase(); }); }).slice(0, 8);
+      list.slice(0, 12).forEach(function (k) {
+        var on = mine.some(function (t) { return t.name.toLowerCase() === k[0].toLowerCase(); });
+        results.appendChild(h("div", { class: "tool-row" }, [h("div", { class: "tool-name" }, [h("b", null, k[0]), h("span", null, catOf(k[1]).name + " · " + (on ? "Connected" : "ant. reads it, nothing more, until you choose otherwise"))]),
+          on ? h("span", { class: "status hero" }, "Connected") : connectButton(k[0], false)]));
+      });
+      if (q && !list.length) results.appendChild(h("div", { class: "tool-row" }, [h("div", { class: "tool-name" }, [h("b", null, box.value), h("span", null, "Not on ant.'s list. Claude may still have it: search its connector page.")]),
+        h("a", { class: "btn btn-sm btn-secondary", href: safeUrl(CONNECT_URL), target: "_blank", rel: "noopener noreferrer" }, [icon(ICON.ext, 16), "Search in Claude"])]));
+    };
+    box.addEventListener("input", function () { S.toolQuery = box.value; paint(); });
+    paint();
+    var add = h("section", { class: "card", "aria-label": "Add a tool", style: "display:grid;gap:12px" }, [h("h2", { class: "sec-h", style: "margin:0" }, [h("b", null, "Add a tool")]),
+      h("p", { class: "prov" }, "Pick a tool and tap Connect. Claude opens its connector page: tap Connect there and sign in. A new tool starts as read only: ant. reads it and changes nothing. Or tell Claude in a chat, for example “connect Fireflies to ant.”, and it finds the tool for you."),
+      box, results]);
+    // What runs by itself, and how Home looks.
+    var prefs = h("section", { class: "card", "aria-label": "Runs by itself", style: "display:grid;gap:12px" }, [h("h2", { class: "sec-h", style: "margin:0" }, [h("b", null, "Runs by itself")]),
+      h("p", { class: "prov" }, "Emails never send by themselves: you press Send."),
+      S.static ? null : segKv("CRM changes and calendar holds", [["auto", "By itself"], ["ask", "Ask me first"]], (S.settings || {}).auto_apply === true ? "auto" : "ask", function (v) {
+        S.settings = Object.assign({}, S.settings || {}, { auto_apply: v === "auto" });
+        if (S.db && !S.readOnly) S.db.doc("state/settings").set({ items: S.settings }).then(function () { toast(v === "auto" ? "CRM changes and holds now apply at each check, with Undo in Activity." : "ant. asks before each CRM change and hold."); }, function () { toast("Could not save that."); });
+      }),
+      S.static ? null : segKv("Research before meetings", [["auto", "By itself"], ["off", "Off"]], rsSetting(), function (v) { remember("ant.research", v); }),
+      segKv("Appearance", [["system", "Match my device"], ["light", "Light"], ["dark", "Dark"]], themeChoice(), setTheme),
+      segKv("Text size", [["comfortable", "Comfortable"], ["compact", "Compact"]], density(), function (v) { setDensity(v); render(); })]);
+    return [head, tools, add, prefs];
   }
 
   // ---------------------------------------------------------------- render
@@ -2894,6 +3028,11 @@ td a, .md li a, .kv li a { display: inline-flex; align-items: center; min-height
           [h("span", { class: "ah-tab-ico" }, icon(t.icon, 18)), h("span", { class: "lbl" }, t.label)]));
       });
     });
+    var sb = h("button", { class: "ah-tab", type: "button", "aria-label": "Settings", title: "Settings and tools", "aria-current": S.tab === "settings" ? "page" : "false",
+      onclick: function () { go("settings"); var nb = document.querySelector('#rail-tabs [aria-label="Settings"]'); if (nb) nb.focus({ preventScroll: true }); } },
+      [h("span", { class: "ah-tab-ico" }, icon(ICON.gear, 18)), h("span", { class: "lbl" }, "Settings")]);
+    if (S.tab === "settings") sb.classList.add("is-current");
+    rail.appendChild(h("div", { class: "rail-foot" }, sb));
     var ab = document.getElementById("activity-btn");
     if (ab) { ab.textContent = ""; ab.appendChild(icon(ICON.clock, 18)); ab.appendChild(h("span", { class: "act-lbl" }, "Activity")); ab.setAttribute("aria-current", S.tab === "activity" ? "page" : "false"); }
   }
@@ -2949,7 +3088,7 @@ td a, .md li a, .kv li a { display: inline-flex; align-items: center; min-height
       h("span", null, "In Claude, open Scheduled tasks. Check that “ant.” is on, with Automatically approve turned on.")]));
   }
   function render() {
-    if (S.tab !== "activity" && !tabShown(S.tab)) S.tab = "today";
+    if (S.tab !== "activity" && S.tab !== "settings" && !tabShown(S.tab)) S.tab = "today";
     renderTabs();
     var view = document.getElementById("view"), banner = document.getElementById("banner-slot");
     view.textContent = ""; banner.textContent = "";
@@ -2980,7 +3119,7 @@ td a, .md li a, .kv li a { display: inline-flex; align-items: center; min-height
     }
     banners(banner);
     var parts = S.tab === "pipeline" ? viewPipeline() : S.tab === "people" ? viewPeople() : S.tab === "portfolio" ? viewPortfolio() : S.tab === "lps" ? viewLps() :
-      S.tab === "activity" ? viewActivity() : S.tab === "ask" ? viewAsk() : viewToday();
+      S.tab === "activity" ? viewActivity() : S.tab === "ask" ? viewAsk() : S.tab === "settings" ? viewSettings() : viewToday();
     parts.forEach(function (p) { if (p) view.appendChild(p); });
     enhance(view);
   }

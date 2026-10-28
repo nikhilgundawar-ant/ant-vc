@@ -97,7 +97,7 @@ MOCK = r"""
       window.__mcp.push({ server: server, tool: tool, input: input });
       if (CFG.mcp.fail) return Promise.reject({ code: CFG.mcp.fail, message: "mock" });
       if (tool === "get_page_text") return Promise.resolve({ content: [], payload: pages[Math.min(n++, pages.length - 1)] || "" });
-      if (tool === "find") return Promise.resolve({ content: [], payload: '- link "' + (input.query || "") + '" [ref_7]' });
+      if (tool === "find") return Promise.resolve({ content: [], payload: 'Found 2 match(es) for "' + (input.query || "") + '":\n- generic "' + (input.query || "") + '" [ref_3]\n- link "' + (input.query || "") + '" [ref_7] href="https://www.linkedin.com/in/' + String(input.query || "x").toLowerCase().replace(/[^a-z]/g, "") + '/"' });
       if (tool === "search_files") return Promise.resolve({ content: [], payload: { files: [] } });
       if (tool === "create_file") { files += 1; return Promise.resolve({ content: [], payload: { id: "f" + files, webViewLink: "https://docs.google.com/document/d/f" + files + "/edit" } }); }
       return Promise.resolve({ content: [], payload: "ok" });
@@ -1889,9 +1889,9 @@ class QA:
         self.check(sc, "on opening Home, ant. researches today's people in the app's browser by itself and keeps the map",
                    "ishaan@atlassettle.com" in people and people["ishaan@atlassettle.com"].get("says") and
                    any(c["server"] == "host:claude_browser" and c["tool"] == "navigate" and "linkedin.com" in c["input"]["url"] for c in calls), f"tools {tools}; kept {sorted(people)[:3]}")
-        self.check(sc, "it only reads: navigate, page text, find and one click on the profile link per person, never typing",
-                   set(t for t in tools if t not in ("search_files", "create_file")) <= {"navigate", "get_page_text", "find", "computer"}
-                   and all(c.get("action") == "left_click" and "profile" in c.get("action_summary", "") for c in clicks), str(clicks[:2]))
+        self.check(sc, "it only reads: navigate, page text and find; it never clicks or types, and it opens the profile by its own link",
+                   set(t for t in tools if t not in ("search_files", "create_file")) <= {"navigate", "get_page_text", "find"} and not clicks
+                   and any(c["tool"] == "navigate" and "/in/ishaanverma/" in c["input"]["url"] for c in calls), str(tools))
         self.check(sc, "each map is saved as a Google Doc in the research folder", any(c["tool"] == "create_file" and c["input"].get("contentMimeType") == "text/html" for c in calls)
                    and str(people.get("ishaan@atlassettle.com", {}).get("drive_url", "")).startswith("https://docs.google.com/"))
         page.locator("button.agenda-row").first.click()
@@ -1975,6 +1975,32 @@ class QA:
                 bad = page.evaluate("Array.from(document.querySelectorAll('.table-wrap')).filter(w => w.scrollWidth > w.clientWidth + 1 && w.getAttribute('tabindex') !== '0').length")
                 self.check("resize", f"{m}: narrowing the window re-checks the tables", bad == 0, f"{bad} unreachable")
             ctx.close()
+
+        sc = "settings"
+        ctx, page = self.open(browser, sc, DESK)
+        page.locator("#rail-tabs button[aria-label='Settings']").click()
+        page.wait_for_timeout(80)
+        txt = page.locator("#view").inner_text()
+        self.check(sc, "Settings lists each kind of tool with what is connected and what ant. may do", all(t in txt for t in ("Email: Gmail", "CRM: Affinity", "Read and update", "Team chat")))
+        self.check(sc, "a missing tool offers Connect, which opens Claude's connector page", page.locator("#view a", has_text="Connect Slack").get_attribute("href") == "https://claude.ai/settings/connectors")
+        page.locator("#view input[type=search]").fill("firef")
+        page.wait_for_timeout(60)
+        self.check(sc, "Add a tool finds Fireflies, read only by default", page.locator("#view .tool-row", has_text="Fireflies").count() == 1 and "reads it, nothing more" in page.locator("#view .tool-row", has_text="Fireflies").inner_text())
+        page.locator("#view .seg[aria-label='CRM: what ant. may do'] button", has_text="Read only").click()
+        page.wait_for_timeout(80)
+        w = [x for x in page.evaluate("window.__writes") if x.get("path") == "state/settings"]
+        self.check(sc, "setting the CRM to read only is saved for the checks", bool(w) and ((w[-1]["data"]["items"] or {}).get("access") or {}).get("crm") == "read")
+        self.shot(page, "settings-1440")
+        self.common(page, sc)
+        ctx.close()
+        ctx, page = self.open(browser, "settings-phone", PHONE)
+        page.locator("#help-btn").click()
+        page.locator("[role=dialog] button", has_text="Settings and your tools").click()
+        page.wait_for_timeout(80)
+        self.check("settings-phone", "on a phone, Help leads to Settings", page.locator("section[aria-label='Your tools']").count() == 1)
+        self.shot(page, "settings-380")
+        self.common(page, "settings-phone")
+        ctx.close()
 
         sc = "auto-apply"
         ctx, page = self.open(browser, sc, PHONE, state={"items": {}, "actions": {}, "settings": {"auto_apply": True}})

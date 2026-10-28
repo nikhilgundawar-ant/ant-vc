@@ -24,7 +24,8 @@ When the prompt carries `[ant-vc-scheduled-run]`, run `echo instinct-guard-canar
 1. Copy the engine into a work folder (`<plugin root>/shared/engine.md`).
 2. Find the Home link: from the scheduled task's prompt, else from memory, else from the Artifact list ("ant. Home"). If there is none, say "ant. is not set up yet. Say 'set up ant.' to start." and stop.
 3. Read Home into `./home-db` as `<plugin root>/shared/home.md` describes: `snap`, `state` and the latest `runs`. If a read fails, stop with one line saying ant. could not read Home; never build without it.
-4. Run `cp ./home-db/snap/config.json config.json`. The engine reads the config as Home saved it, version wrapper and all; never retype it.
+4. Read `state/settings` `access` (what the user lets ant. do with each kind of tool; Home's Settings sets it). Skip reading any kind set to `off`. Save drafts to Gmail only while email is `drafts` (the default); otherwise keep them in Home. Then write `snap/connectors` as `{"checked_at": "<started>", "items": [{"name": "<connector's name as Claude shows it>", "category": "email|calendar|notes|crm|drive|chat|data", "ok": true|false}]}` (ArtifactData `set`, file inside the work folder): the connectors this run could use, so Home's Settings shows what is connected. A connector the user added since the last run is read from this run on, read only, unless Settings says more.
+5. Run `cp ./home-db/snap/config.json config.json`. The engine reads the config as Home saved it, version wrapper and all; never retype it.
 
 ## 2. What is due
 

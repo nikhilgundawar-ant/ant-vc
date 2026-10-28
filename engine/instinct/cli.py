@@ -3808,6 +3808,8 @@ def pending_actions(home: dict[str, Any], now=None) -> dict[str, Any]:
             if prop.get("type") in ("crm_update", "calendar_hold"):
                 actions = {**actions, pid: {"type": prop["type"], "status": "approved", "auto": True,
                                             "payload": {"fields": prop.get("fields"), "record": prop.get("record")}}}
+    # What the user lets ant. do with each kind of tool (Home, Settings): a CRM or calendar set to read only takes no change.
+    access = settings.get("access") if isinstance(settings.get("access"), dict) else {}
     todo, engine, refused, check = [], [], [], []
     for aid, act in actions.items():
         if not isinstance(act, dict) or act.get("status") != "approved":
@@ -3821,6 +3823,12 @@ def pending_actions(home: dict[str, Any], now=None) -> dict[str, Any]:
         resaved = kind == "next_step" and parse_dt(act.get("at")) and parse_dt(prop.get("applied_at")) and \
             parse_dt(act["at"]) > parse_dt(prop["applied_at"])
         if prop.get("status") in ("applied", "failed", "check", "dismissed", "refused") and not resaved:
+            continue
+        if kind in ("crm_update", "next_step", "revert") and access.get("crm") in ("read", "off"):
+            refused.append({"id": aid, "type": kind, "why": "Your CRM is set to read only in ant. Home's Settings. Change it there to let ant. update it."})
+            continue
+        if kind == "calendar_hold" and access.get("calendar") in ("read", "off"):
+            refused.append({"id": aid, "type": kind, "why": "Your calendar is set to read only in ant. Home's Settings."})
             continue
         if sheet_crm and kind in ("crm_update", "next_step", "revert"):
             refused.append({"id": aid, "type": kind, "why": "Your CRM is a Google Sheet, which ant. cannot write to. Copy the change from Home and paste it in."})

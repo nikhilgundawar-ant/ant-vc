@@ -28,6 +28,8 @@ Write the changed config back to `snap/config` with its version pinned, then say
 | Level (for example "I'm a principal now") | Set `level` and `level_label`. Load that profile's `today_items`, `brief_words`, `weights`, `modules`, `pipeline_scope` and `opens_on` from `ontology/profiles.json`. The two tasks stay; each run reads the new level and does what it has. |
 | Thesis | Take their words. Update `thesis` and set `confirmed: true`. |
 | "Show the whole pipeline" or "only my deals" | Set `pipeline_scope` to `full` or `own`. |
+| "Connect <tool> to ant." (or "add Fireflies", "set up Notion") | Search the registry (SearchMcpRegistry) for the tool, and show the match with SuggestConnectors: "Tap Connect and sign in once." After they connect, add it to `snap/connectors` and say "ant. reads <tool> from the next check, read only. Change that in Home, Settings." Never give a new tool more than read access unless the user asks. |
+| "Remove <tool>" or "stop reading <tool>" | Set that kind of tool to `off` in `state/settings` `access` and say "ant. leaves <tool> alone from the next check. To disconnect it from Claude too, use Claude's connector settings." |
 | "Apply CRM changes automatically" or "ask me before CRM changes" | Write `state/settings` with `{"items": {"auto_apply": true}}` or `false` (ArtifactData `set`). Help in Home has the same switch. |
 | "Put research in <folder>" | Set `research_folder` to that Drive folder's name. Home saves each empathy map there. |
 | "Update ant. Home" (or after a plugin update) | Read `<plugin root>/home/index.html` in full and publish it to the Home link (`url`), with the capabilities `setup` step 5 lists. The link, the data and the user's taps stay. Then say "ant. Home is on <version>." |
