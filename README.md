@@ -2,6 +2,8 @@
 
 A proactive chief of staff for your fund, inside the Claude app. Private to you.
 
+**New here? Read the [install guide](INSTALL.md)**: six steps, about 10 minutes, with diagrams of how ant. works.
+
 1. In the Claude app, paste this repository's link and say "Install ant.". Tap Accept on the plugin card.
 2. Connect your tools when asked: email and calendar, plus meeting notes and your CRM if you use them. Each asks you to sign in once.
 3. Answer three quick questions: your role, your thesis, your brief time.

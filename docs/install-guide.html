@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ant. Install Guide</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Raleway:wght@200;300;700&display=swap">
+<style>
+/* Layout: one reading column (max 880px). Each section is a band: a label, a heading, then a diagram built from boxes and arrows that stack on a phone.
+   Colors and type follow ant. Home (Anthill Evergreen), so the guide looks like the product it installs. */
+:root {
+  --page: #F4F6F2; --surface: #FFFFFF; --tint: #EDF2EC; --sage: #BFCFBB; --mid: #8EA58C;
+  --hero: #344C3D; --on-hero: #FFFFFF; --ink: #0B0B0C; --ink-2: #55555C; --ink-3: #6E6E76;
+  --rule: rgba(11, 11, 12, .08); --breach: #B3261E; --breach-tint: #FEF0EF;
+  --shadow: 0 1px 2px rgba(11, 11, 12, .04), 0 14px 30px -22px rgba(11, 11, 12, .35);
+  --display: "Raleway", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+  --body: "Nunito", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+  --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --page: #0E1310; --surface: #172019; --tint: rgba(191, 207, 187, .12); --sage: #2C3A30; --mid: #8EA58C;
+  --hero: #BFCFBB; --on-hero: #0E1310; --ink: #F4F6F2; --ink-2: #ABB4AC; --ink-3: #949E96;
+  --rule: rgba(244, 246, 242, .09); --breach: #FB9797; --breach-tint: rgba(248, 113, 113, .14);
+  --shadow: 0 1px 2px rgba(0, 0, 0, .3), 0 14px 30px -22px rgba(0, 0, 0, .85); color-scheme: dark; } }
+:root[data-theme="dark"] {
+  --page: #0E1310; --surface: #172019; --tint: rgba(191, 207, 187, .12); --sage: #2C3A30; --mid: #8EA58C;
+  --hero: #BFCFBB; --on-hero: #0E1310; --ink: #F4F6F2; --ink-2: #ABB4AC; --ink-3: #949E96;
+  --rule: rgba(244, 246, 242, .09); --breach: #FB9797; --breach-tint: rgba(248, 113, 113, .14);
+  --shadow: 0 1px 2px rgba(0, 0, 0, .3), 0 14px 30px -22px rgba(0, 0, 0, .85); color-scheme: dark; }
+
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--page); color: var(--ink); font: 16px/1.6 var(--body);
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 0 64px; }
+.wrap { max-width: 880px; margin: 0 auto; display: grid; gap: 56px; }
+a { color: var(--hero); font-weight: 700; text-underline-offset: 3px; }
+a:focus-visible, button:focus-visible { outline: 3px solid var(--mid); outline-offset: 2px; border-radius: 6px; }
+h1, h2, h3 { font-family: var(--display); text-wrap: balance; margin: 0; }
+p { margin: 0; }
+.label { font: 800 12px/1 var(--body); letter-spacing: .12em; text-transform: uppercase; color: var(--ink-3); }
+
+/* top */
+header { padding-top: 48px; display: grid; gap: 20px; }
+.brand { font: 700 22px/1 var(--display); letter-spacing: -.02em; color: var(--hero); }
+h1 { font-weight: 200; font-size: clamp(36px, 7vw, 56px); line-height: 1.05; letter-spacing: -.03em; }
+h1 b { font-weight: 700; }
+.lede { font-size: 18px; color: var(--ink-2); max-width: 60ch; }
+.facts { display: flex; flex-wrap: wrap; gap: 8px; }
+.fact { display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px; border-radius: 999px; background: var(--tint); font-weight: 700; font-size: 14px; }
+.fact span { color: var(--ink-2); font-weight: 600; }
+
+section { display: grid; gap: 20px; }
+h2 { font-weight: 700; font-size: clamp(24px, 4vw, 32px); letter-spacing: -.02em; line-height: 1.15; }
+.sub { color: var(--ink-2); max-width: 62ch; }
+
+/* what you need */
+.need { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; }
+.card { background: var(--surface); border-radius: 16px; box-shadow: var(--shadow); padding: 20px; display: grid; gap: 8px; align-content: start; min-width: 0; }
+.card h3 { font-size: 17px; font-weight: 700; }
+.card ul { margin: 0; padding-left: 18px; display: grid; gap: 4px; color: var(--ink-2); }
+.tag { justify-self: start; font: 800 11px/1 var(--body); letter-spacing: .08em; text-transform: uppercase; padding: 5px 8px; border-radius: 999px; }
+.tag.must { background: var(--hero); color: var(--on-hero); }
+.tag.nice { background: var(--tint); color: var(--ink-2); }
+
+/* install flow: a numbered sequence, so the numbers carry meaning */
+.flow { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; counter-reset: step; }
+.flow > li { display: grid; grid-template-columns: 48px minmax(0, 1fr); gap: 16px; position: relative; padding-bottom: 24px; }
+.flow > li:last-child { padding-bottom: 0; }
+.flow > li::before { counter-increment: step; content: counter(step); width: 48px; height: 48px; border-radius: 999px; background: var(--hero); color: var(--on-hero);
+  display: grid; place-items: center; font: 700 20px/1 var(--display); position: relative; z-index: 1; }
+.flow > li:not(:last-child)::after { content: ""; position: absolute; left: 23px; top: 48px; bottom: 0; width: 2px; background: var(--sage); }
+.flow .step { background: var(--surface); border-radius: 16px; box-shadow: var(--shadow); padding: 16px 20px; display: grid; gap: 8px; min-width: 0; }
+.step h3 { font-size: 18px; font-weight: 700; display: flex; flex-wrap: wrap; gap: 8px; align-items: baseline; }
+.step h3 small { font: 700 13px/1 var(--body); color: var(--ink-3); }
+.step p { color: var(--ink-2); }
+.say { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.quote { font: 600 15px/1.4 var(--mono); background: var(--tint); padding: 6px 10px; border-radius: 9px; overflow-wrap: anywhere; }
+.copy { border: 0; background: transparent; color: var(--hero); font: 700 13px/1 var(--body); padding: 8px; cursor: pointer; border-radius: 6px; }
+.copy:hover { background: var(--tint); }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { font-size: 13px; font-weight: 700; padding: 4px 10px; border-radius: 999px; border: 1px solid var(--rule); background: var(--page); }
+.note { font-size: 14px; color: var(--ink-2); border-left: 3px solid var(--mid); padding-left: 12px; }
+.warn { background: var(--breach-tint); border-radius: 12px; padding: 12px 16px; font-size: 15px; }
+.warn b { color: var(--breach); }
+
+/* how it works: a loop of boxes */
+.loop { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0; align-items: stretch; }
+.node { background: var(--surface); border-radius: 16px; box-shadow: var(--shadow); padding: 16px; display: grid; gap: 6px; align-content: start; min-width: 0; }
+.node.dark { background: var(--hero); color: var(--on-hero); }
+.node.dark p { color: var(--on-hero); opacity: .85; }
+.node b { font: 700 16px/1.2 var(--display); }
+.node p { font-size: 13.5px; line-height: 1.45; color: var(--ink-2); }
+.arrow { display: grid; place-items: center; color: var(--mid); }
+.arrow svg { width: 28px; height: 28px; }
+.loop-row { display: grid; grid-template-columns: minmax(0, 1fr) 32px minmax(0, 1fr) 32px minmax(0, 1fr) 32px minmax(0, 1fr); align-items: stretch; }
+.back { margin-top: 12px; display: flex; align-items: center; gap: 12px; color: var(--ink-2); font-size: 14px; }
+.back::before { content: ""; flex: 1; height: 0; border-top: 2px dashed var(--sage); }
+.back::after { content: ""; flex: 1; height: 0; border-top: 2px dashed var(--sage); }
+@media (max-width: 720px) {
+  .loop-row { grid-template-columns: minmax(0, 1fr); }
+  .loop-row .arrow svg { transform: rotate(90deg); }
+  .loop-row .arrow { height: 32px; }
+}
+
+/* the day */
+.day { background: var(--surface); border-radius: 16px; box-shadow: var(--shadow); padding: 20px; display: grid; gap: 16px; }
+.track { position: relative; height: 12px; border-radius: 999px; background: var(--tint); }
+.track i { position: absolute; top: 0; bottom: 0; width: 2px; background: var(--mid); }
+.when { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; }
+.when div { display: grid; gap: 2px; min-width: 0; }
+.when b { font: 700 15px/1.3 var(--display); }
+.when time { font: 800 13px/1 var(--body); color: var(--hero); font-variant-numeric: tabular-nums; letter-spacing: .02em; }
+.when span { font-size: 14px; color: var(--ink-2); }
+.week { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 6px; }
+.dayc { border-radius: 12px; background: var(--tint); padding: 10px 8px; display: grid; gap: 4px; align-content: start; min-height: 92px; min-width: 0; }
+.dayc b { font: 800 12px/1 var(--body); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); }
+.dayc span { font-size: 12.5px; line-height: 1.35; font-weight: 700; overflow-wrap: anywhere; }
+.dayc.wk { background: transparent; border: 1px dashed var(--sage); }
+@media (max-width: 560px) { .week { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+/* trust */
+.trust { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
+.trust .card h3 { display: flex; gap: 8px; align-items: center; }
+.dot { width: 10px; height: 10px; border-radius: 999px; flex: none; }
+.dot.r { background: var(--mid); } .dot.w { background: var(--hero); } .dot.n { background: var(--breach); }
+
+/* help */
+details { background: var(--surface); border-radius: 12px; box-shadow: var(--shadow); padding: 4px 20px; }
+summary { cursor: pointer; font-weight: 700; padding: 14px 0; list-style: none; display: flex; justify-content: space-between; gap: 12px; }
+summary::-webkit-details-marker { display: none; }
+summary::after { content: "+"; font: 300 22px/1 var(--display); color: var(--ink-3); }
+details[open] summary::after { content: "\2212"; }
+details p { padding-bottom: 16px; color: var(--ink-2); }
+.help { display: grid; gap: 8px; }
+
+.links { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+.links a { background: var(--surface); box-shadow: var(--shadow); border-radius: 16px; padding: 16px 20px; text-decoration: none; display: grid; gap: 4px; color: var(--ink); }
+.links a span { font-weight: 600; font-size: 14px; color: var(--ink-2); }
+.links a b { color: var(--hero); }
+footer { color: var(--ink-3); font-size: 14px; }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header>
+    <div class="brand">ant.</div>
+    <h1>Set up <b>ant. for VCs</b> in about ten minutes</h1>
+    <p class="lede">ant. is a chief of staff for your fund that lives in the Claude app. It reads your email, calendar, notes and CRM, and gives you one private page each morning: what to decide, what to send, who owes you what, and prep before every meeting.</p>
+    <div class="facts">
+      <span class="fact">10 min <span>to the first brief</span></span>
+      <span class="fact">2 <span>tools required</span></span>
+      <span class="fact">3 <span>questions</span></span>
+      <span class="fact">0 <span>emails sent without your tap</span></span>
+    </div>
+  </header>
+
+  <section aria-labelledby="need">
+    <span class="label">Before you start</span>
+    <h2 id="need">What you need</h2>
+    <div class="need">
+      <div class="card"><span class="tag must">Required</span><h3>The Claude app</h3><ul><li>Signed in, with plugins and scheduled tasks available on your plan</li><li>The desktop app is best. Research on the people you meet runs only there.</li></ul></div>
+      <div class="card"><span class="tag must">Required</span><h3>Email and calendar</h3><ul><li>Gmail and Google Calendar</li><li>Each asks you to sign in once</li></ul></div>
+      <div class="card"><span class="tag nice">Recommended</span><h3>Notes, CRM, Drive</h3><ul><li>Meeting notes: Granola, Zoom, Fathom, Fireflies or Otter</li><li>CRM: Affinity, Attio, HubSpot, Salesforce, Airtable, Notion, or a Google Sheet</li><li>Google Drive, for empathy maps</li></ul></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="install">
+    <span class="label">Install</span>
+    <h2 id="install">Six steps, in order</h2>
+    <ol class="flow">
+      <li><div class="step">
+        <h3>Download the plugin <small>1 min</small></h3>
+        <p>Open the latest release on GitHub and download <b>ant-vc.plugin</b>.</p>
+        <p><a href="https://github.com/nikhilgundawar-ant/ant-vc/releases/latest" target="_blank" rel="noopener noreferrer">Latest release on GitHub</a></p>
+      </div></li>
+      <li><div class="step">
+        <h3>Accept it in Claude <small>1 min</small></h3>
+        <p>Open the file in the Claude app, or drop it into a chat. A plugin card appears. Tap <b>Accept</b>.</p>
+      </div></li>
+      <li><div class="step">
+        <h3>Start setup <small>10 sec</small></h3>
+        <p>In a new chat, type:</p>
+        <div class="say"><code class="quote" id="cmd-setup">set up ant.</code><button class="copy" type="button" data-copy="cmd-setup">Copy</button></div>
+      </div></li>
+      <li><div class="step">
+        <h3>Connect your tools <small>3 min</small></h3>
+        <p>ant. shows a Connect card for each tool it can use. Tap Connect on the ones you use and skip the rest. Then tap <b>Done</b>.</p>
+        <div class="chips"><span class="chip">Gmail</span><span class="chip">Google Calendar</span><span class="chip">Granola</span><span class="chip">CRM</span><span class="chip">Google Drive</span><span class="chip">Slack (read only)</span></div>
+        <p class="note">Already connected but switched off in this chat? Turn it on from the chat's connector menu.</p>
+      </div></li>
+      <li><div class="step">
+        <h3>Answer three questions <small>1 min</small></h3>
+        <p>Your role (partner, principal, associate, analyst, platform, finance and IR, or solo GP), your thesis in two lines (ant. drafts it from your email), and when you want your brief (07:00 is the default).</p>
+      </div></li>
+      <li><div class="step">
+        <h3>Approve the two scheduled checks <small>1 min</small></h3>
+        <p>ant. creates two scheduled tasks: <b>ant.</b> runs every hour on weekdays, and <b>ant. weekend</b> runs three times a day on weekends. Your first brief and your ant. Home page arrive about ten minutes after you start.</p>
+        <p class="warn"><b>Do this or the checks will wait for you:</b> open Scheduled tasks, pick "ant." and "ant. weekend", and switch on <b>Automatically approve</b>. A guard still blocks anything except reading your tools, updating Home, CRM changes you approved, holds on your own calendar and saving drafts.</p>
+      </div></li>
+    </ol>
+  </section>
+
+  <section aria-labelledby="how">
+    <span class="label">How it works</span>
+    <h2 id="how">One loop, every hour</h2>
+    <p class="sub">Nothing runs on an Anthill server. Each check happens inside your own Claude account, and everything it builds lands on one private page only you can open.</p>
+    <div class="loop-row" role="list" aria-label="How a check works, in order">
+      <div class="node" role="listitem"><b>Your tools</b><p>Email, calendar, meeting notes, CRM. Read through connectors you approved.</p></div>
+      <div class="arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+      <div class="node" role="listitem"><b>Hourly check</b><p>Finds promises, stale deals, pitches, founder updates and LP calls. A guard blocks sending and anything not on its list.</p></div>
+      <div class="arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+      <div class="node dark" role="listitem"><b>ant. Home</b><p>Your private page: Today, Pipeline, People, Portfolio, LPs, Reminders. Every line links to its source.</p></div>
+      <div class="arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+      <div class="node" role="listitem"><b>You tap</b><p>Done, Approve, Skip, Send, Remind me. Every tap has Undo. Emails go only after Send, then Send now.</p></div>
+    </div>
+    <div class="back">the next check applies what you approved, then reads again</div>
+  </section>
+
+  <section aria-labelledby="day">
+    <span class="label">After setup</span>
+    <h2 id="day">What a week with ant. looks like</h2>
+    <div class="day">
+      <div class="track" aria-hidden="true"><i style="left:22%"></i><i style="left:40%"></i><i style="left:58%"></i><i style="left:78%"></i></div>
+      <div class="when">
+        <div><time>07:00</time><b>Morning brief</b><span>The one thing that matters most, then decisions, drafts to send and who owes you.</span></div>
+        <div><time>Before each meeting</time><b>Prep card</b><span>Who they are, what you promised, three questions, and an empathy map.</span></div>
+        <div><time>After each meeting</time><b>Follow-ups</b><span>Promises pulled from your notes, drafts written, CRM changes proposed.</span></div>
+        <div><time>All day</time><b>At most 4 pushes</b><span>Only what cannot wait, and never during a meeting.</span></div>
+      </div>
+      <div class="week" aria-label="The week">
+        <div class="dayc"><b>Mon</b><span>08:00 digest</span></div>
+        <div class="dayc"><b>Tue</b><span>Hourly checks</span></div>
+        <div class="dayc"><b>Wed</b><span>Hourly checks</span></div>
+        <div class="dayc"><b>Thu</b><span>16:00 pipeline review</span></div>
+        <div class="dayc"><b>Fri</b><span>Hourly checks</span></div>
+        <div class="dayc wk"><b>Sat</b><span>3 light checks</span></div>
+        <div class="dayc wk"><b>Sun</b><span>18:00 week ahead and tuning</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="trust">
+    <span class="label">Your data</span>
+    <h2 id="trust">What ant. can and cannot do</h2>
+    <div class="trust">
+      <div class="card"><h3><span class="dot r" aria-hidden="true"></span>Reads</h3><ul><li>Email, calendar and meeting notes</li><li>Your CRM</li><li>Public LinkedIn profiles of people you meet, in the desktop app</li></ul></div>
+      <div class="card"><h3><span class="dot w" aria-hidden="true"></span>Writes, with Undo</h3><ul><li>Email drafts, never sent for you</li><li>CRM fields and notes you approved</li><li>Holds on your own calendar, nobody invited</li></ul></div>
+      <div class="card"><h3><span class="dot n" aria-hidden="true"></span>Never</h3><ul><li>Sends an email without your two taps</li><li>Deletes anything</li><li>Sends your data to Anthill or anyone else</li></ul></div>
+    </div>
+    <p class="note">To stop everything, say "turn off ant.". It stops the checks and wipes its data.</p>
+  </section>
+
+  <section aria-labelledby="help">
+    <span class="label">If something is off</span>
+    <h2 id="help">Quick fixes</h2>
+    <div class="help">
+      <details><summary>The checks keep asking me to approve</summary><p>Open Scheduled tasks, pick "ant." and "ant. weekend", and switch on Automatically approve. If your organization does not allow it, the checks still run when you approve each one.</p></details>
+      <details><summary>My drafts are not in Gmail</summary><p>Some Gmail connectors cannot save drafts. Then drafts wait in ant. Home, one tap from a filled-in Gmail message. Connect a Gmail tool that saves drafts later and it just works.</p></details>
+      <details><summary>My CRM is a Google Sheet</summary><p>ant. reads the sheet and suggests changes. It cannot write to a sheet, so tap Copy on a change and paste it in.</p></details>
+      <details><summary>No empathy maps on my prep cards</summary><p>Research runs only when you open Home in the Claude desktop app, because it uses the app's browser to read public LinkedIn profiles.</p></details>
+      <details><summary>Setup stopped halfway</summary><p>Type "continue ant. setup". It finds what is already done and picks up from there. It never makes a second Home.</p></details>
+      <details><summary>I use Claude Code instead</summary><p>Run <code class="quote">/plugin marketplace add nikhilgundawar-ant/ant-vc</code> then <code class="quote">/plugin install ant-vc@anthill</code>, then say "set up ant.".</p></details>
+    </div>
+  </section>
+
+  <section aria-labelledby="more">
+    <span class="label">Next</span>
+    <h2 id="more">See it before you install</h2>
+    <div class="links">
+      <a href="https://claude.ai/artifact/8SzHVyrLnoTVkSiaGSxXZW" target="_blank" rel="noopener noreferrer"><b>Sample ant. Home</b><span>Quillwater Ventures, a fictional fund, with a view per role</span></a>
+      <a href="https://github.com/nikhilgundawar-ant/ant-vc/blob/main/TRUST.md" target="_blank" rel="noopener noreferrer"><b>Privacy and trust</b><span>The one-screen version of what it touches</span></a>
+      <a href="https://github.com/nikhilgundawar-ant/ant-vc" target="_blank" rel="noopener noreferrer"><b>Source on GitHub</b><span>MIT license, every check in the open</span></a>
+    </div>
+  </section>
+
+  <footer>Built by Anthill AI. ant. for VCs 0.11.1.</footer>
+</div>
+
+<script>
+document.querySelectorAll(".copy").forEach(function (b) {
+  b.addEventListener("click", function () {
+    var el = document.getElementById(b.getAttribute("data-copy")), text = el ? el.textContent : "";
+    var done = function () { b.textContent = "Copied"; setTimeout(function () { b.textContent = "Copy"; }, 1500); };
+    var pick = function () { var r = document.createRange(); r.selectNodeContents(el); var s = getSelection(); s.removeAllRanges(); s.addRange(r); b.textContent = "Selected"; };
+    try { navigator.clipboard.writeText(text).then(done, pick); } catch (e) { pick(); }
+  });
+});
+</script>
+</body>
+</html>
