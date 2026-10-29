@@ -67,8 +67,8 @@
   {
    "theme": "light",
    "state": "aditi-deal-open",
-   "checked": 267,
-   "marks": 91,
+   "checked": 243,
+   "marks": 78,
    "min": 3.24,
    "fails": 0
   },
@@ -259,8 +259,8 @@
   {
    "theme": "dark",
    "state": "aditi-deal-open",
-   "checked": 267,
-   "marks": 99,
+   "checked": 243,
+   "marks": 86,
    "min": 3.8,
    "fails": 0
   },

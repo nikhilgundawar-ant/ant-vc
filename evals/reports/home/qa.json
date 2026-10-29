@@ -1,9 +1,9 @@
 {
- "checks": 847,
- "failed": 0,
+ "checks": 849,
+ "failed": 1,
  "complete": true,
  "scenarios": "all",
- "page_sha256": "5435a1a733c0",
+ "page_sha256": "c91679a281a7",
  "rows": [
   {
    "scenario": "today-380",
@@ -1269,7 +1269,7 @@
    "scenario": "colour-light-aditi-deal-open",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "267 texts, 91 marks, min 3.24:1"
+   "detail": "243 texts, 78 marks, min 3.24:1"
   },
   {
    "scenario": "colour-light-aditi-people",
@@ -1413,7 +1413,7 @@
    "scenario": "colour-dark-aditi-deal-open",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "267 texts, 99 marks, min 3.8:1"
+   "detail": "243 texts, 86 marks, min 3.8:1"
   },
   {
    "scenario": "colour-dark-aditi-people",
@@ -3681,7 +3681,7 @@
    "scenario": "ask",
    "check": "Enter asks Claude with the Home's data and streams the answer",
    "ok": true,
-   "detail": "Atlas Settlement: term sheet markup is due 23 Oct.\n\nFrom your ant. Home data \u00b7 A"
+   "detail": "Atlas Settlement: term sheet markup is due 23 Oct.\n\nFrom your ant. Home data \u00b7 B"
   },
   {
    "scenario": "ask",
@@ -4741,7 +4741,7 @@
   },
   {
    "scenario": "panel-decision",
-   "check": "Was this right? keeps the user's own words for the next check",
+   "check": "Not right, under the recommendation, keeps the user's words and the text they judged",
    "ok": true,
    "detail": ""
   },
@@ -4762,6 +4762,18 @@
    "check": "a tap on a colleague copies them in",
    "ok": true,
    "detail": ""
+  },
+  {
+   "scenario": "panel-decision",
+   "check": "Send sits in the panel's footer, always in reach",
+   "ok": false,
+   "detail": ""
+  },
+  {
+   "scenario": "panel-decision",
+   "check": "a summary that names none of this thread's people warns, and Send becomes Send anyway",
+   "ok": true,
+   "detail": "1 'Send anyway' btn btn-secondary"
   },
   {
    "scenario": "panel-decision",
@@ -4945,7 +4957,7 @@
   },
   {
    "scenario": "ask-structured",
-   "check": "Ask offers a model and an effort",
+   "check": "Ask offers Quick, Balanced, Thorough, and a custom model and effort",
    "ok": true,
    "detail": ""
   },

@@ -97,3 +97,17 @@ Keep one row per day.
 - [ ] Ask (/): matches as you type; a question streams an answer from Home's data. Stop works.
 - [ ] Automatic mode on: a CRM change proposed from a meeting applies at the next check without a tap, shows on Today's recap and in Activity, and Reverse in CRM puts it back at the following check.
 
+
+## 0.11.0: side panels, sending from Home, reminders (real account, laptop and phone)
+
+- [ ] Open a Decision, a Thread, a Waiting row, a deal, a pitch, a person, a portfolio company and an LP. Each opens a side panel (laptop) or a bottom sheet (phone) with a TL;DR, a timeline newest first, and a link on every event that opens the right email, event, note or record.
+- [ ] Tap a citation number: the timeline jumps to that event and its chip opens the source.
+- [ ] A TL;DR that does not name the record shows the warning, and the main button reads "Send anyway" or "Approve anyway".
+- [ ] Edit a draft, tap a colleague to Cc them, tap Send, read the recipients, tap Send now. The email arrives from your Gmail in Verdana, with the Cc, in the original thread when the draft had one. The row shows Sent. Nothing sends before Send now.
+- [ ] Tap Not right, write what was off. It shows in Settings under "What ant. learned from you"; the next recommendation for that record says it follows your note; Remove stops it.
+- [ ] PDF on three panels (laptop, iPhone, Android): the save prompt shows a .pdf named date then title; the links in the PDF open.
+- [ ] Research a founder from their panel in the desktop app: the empathy map, career and track record appear; the PDF lands in your research folder named date, person, company; "Research the company and market" adds competitors with links from the search page only.
+- [ ] Ask: Quick, Balanced, Thorough and Custom (model and effort) each answer; an answer comparing companies shows a table and a chart whose bars match the table.
+- [ ] The floating Ask and the bell sit bottom right on every screen but Ask and Reminders, never over the tab bar or the home indicator. Add "chase X tomorrow at 5pm": it is due tomorrow 17:00 your time; the next check adds what bears on it; on the day it sits on Today with a brief.
+- [ ] Settings shows icons for each tool's level, with the level's words under them; a screen reader reads each icon's name.
+- [ ] VoiceOver and TalkBack: the circles, the citation buttons, the warning, the Send confirm, the icon chips.

@@ -50,6 +50,43 @@ All scores below are simulations: one Claude agent played every panel member or 
 
 Claude-run evals (round five, on 0.4.0 skills): inbound triage 25 of 25 decisions match, scheduled pulse 15 of 15 safety checks, Claude-written brief 9 of 10 top lines, setup and morning brief run end to end. Their findings (46 numbered issues) were fixed in rounds five and six. Their 13 scores are read from saved runs kept out of git, so the runner counts them only where those runs exist. The Friday pulse on 0.7.2 scored 7 of 10 as Meera and as Tara; their 23 findings are fixed in round ten. The scheduled runs on 0.7.3 scored 7 of 10 each (Tara's nudge morning, Tara's and Meera's Fridays); their 30 findings are fixed in round eleven, except one product idea kept for later (a note to the partner whose view several drafts wait on). On 0.7.4 the same three runs scored 8, 8 and 7; round twelve fixes their findings, that note included, except one kept as a known limit: a scheduled run still types its bundle by hand. On 0.7.5 they scored 8, 8 and 8.5; round thirteen fixes their findings. On 0.7.6 they scored 9, 9 and 8 (`evals/reports/claude-runs/r13-summary.md`); round fourteen fixes their medium findings.
 
+## Round twenty-one (0.11.0): a side panel for everything, sending from Home, reminders
+
+What the owner asked, and what shipped:
+
+- **Every row opens a side panel** (Today's Decisions, Threads, Waiting and Watch; Pipeline deals and pitches; People; Portfolio; LPs; prep attendees):
+  - status;
+  - a TL;DR and, for a decision, a recommendation with reasons; every line cites a numbered timeline event, and a line or reason with no matching event is dropped;
+  - the actions; the draft; what only this kind has; a vertical timeline newest first (five, then Show all), each event with its platform and link; details.
+  - The footer holds the main action (Send, Approve), then the record's link and PDF.
+  - A summary that names none of the record's people or companies warns, and the main action reads "Send anyway".
+- **Engine timelines:** `snap/timeline_0..3`, built from mail, meetings, notes, promises, CRM stage moves, passes, founder updates, LP calls, pitches and files shared, merged across runs, 14 events, 180 days. Every event has its link.
+- **Drafts you edit and send from Home:**
+  - To, Cc with your firm's people as chips, Subject, Draft.
+  - Send shows the recipients and waits for Send now; then Gmail `send_message`, once, as you, in Verdana, in the thread when there is one.
+  - Claude never sends: the safety lint allows only Home's capability manifest.
+  - A draft for what someone owes you is written on the spot as a reminder.
+- **Founder 360:** empathy map (what they say and do cites LinkedIn; what they think and feel is marked ant.'s read), career, track record, company, website, market, competitors (links only from the pages read), and the deck and model shared by email.
+- **PDF:** every side panel; empathy maps go to Drive as two-page PDFs named date, person, company.
+- **Ask:** Quick, Balanced, Thorough or Custom (model and effort); answers as a lead line, points, tables and SVG charts.
+- **Reminders:** a floating Ask button and a bell, a Reminders place on the left, due reminders on Today with a brief. The engine writes what bears on each one (`snap/reminders`); the pulse adds what it finds in mail and calendar.
+- **Settings:** access levels as icons, as Claude shows connector permissions, with the level's words under them.
+- **Was it right?** The owner asked whether Useful / Not useful added value. As built before, only a little: weekly tuning moved how high each kind of line ranks, and nothing more. Now:
+  - Right call? sits under the recommendation, and Not right asks what was off.
+  - The vote keeps the text it judged and is scoped to the record and kind of line.
+  - Recommendations and drafts read the user's notes and the edits they made before sending; the factual TL;DR never does.
+  - Settings lists what ant. learned, with Remove. Checks read 180 days of it.
+
+Council (simulated, five roles): round one 6.5 / 6 / 7 / 7 / 6, round two 8.5 / 8 / 8.5 / 8 / 8, round three 9 / 8.5 / 8.5 / 9 / 8.5. Round three's last five fixes were applied after it and not re-scored:
+
+- portfolio numbers against plan;
+- one rule for unsourced reasons;
+- Send anyway;
+- no pointer sections;
+- phone Remind layout.
+
+The council's view is that 9.5 now depends on real use: Gmail sending, PDF saving on phones, the summary guard on real data, whether notes visibly change drafts, real fonts and screen readers. Those checks are in `evals/smoke-checklist.md`.
+
 ## Round twenty: Deals by stage as a table, and the council pushed further
 
 - **Deals by stage is one table.** Columns: Company, Stage, In stage (day x of y with a bar), Status, Next step, Lead, Round.

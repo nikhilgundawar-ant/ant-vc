@@ -2,7 +2,7 @@
 name: setup
 description: Sets up ant. for VCs end to end. Use when the user says "set up ant.", "install ant.", "set this up" about the ant-vc plugin or its GitHub link, "onboard me to ant.", or "continue ant. setup". Connects their tools, builds their private ant. Home, confirms three things, schedules two hourly loops and delivers the first brief.
 metadata:
-  version: "0.10.0"
+  version: "0.11.0"
 ---
 
 # Set up ant. for VCs

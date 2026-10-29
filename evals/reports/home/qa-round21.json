@@ -1,11 +1,11 @@
 {
- "checks": 62,
+ "checks": 64,
  "failed": 0,
  "complete": false,
  "scenarios": [
   "round21"
  ],
- "page_sha256": "5435a1a733c0",
+ "page_sha256": "c91679a281a7",
  "rows": [
   {
    "scenario": "panel-decision",
@@ -33,7 +33,7 @@
   },
   {
    "scenario": "panel-decision",
-   "check": "Was this right? keeps the user's own words for the next check",
+   "check": "Not right, under the recommendation, keeps the user's words and the text they judged",
    "ok": true,
    "detail": ""
   },
@@ -54,6 +54,18 @@
    "check": "a tap on a colleague copies them in",
    "ok": true,
    "detail": ""
+  },
+  {
+   "scenario": "panel-decision",
+   "check": "Send sits in the panel's footer, always in reach",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "panel-decision",
+   "check": "a summary that names none of this thread's people warns, and Send becomes Send anyway",
+   "ok": true,
+   "detail": "1 'Send anyway' btn btn-secondary"
   },
   {
    "scenario": "panel-decision",
@@ -237,7 +249,7 @@
   },
   {
    "scenario": "ask-structured",
-   "check": "Ask offers a model and an effort",
+   "check": "Ask offers Quick, Balanced, Thorough, and a custom model and effort",
    "ok": true,
    "detail": ""
   },

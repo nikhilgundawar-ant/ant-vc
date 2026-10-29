@@ -2,7 +2,7 @@
 name: settings
 description: Changes, pauses or turns off ant. for VCs. Use when the user says "turn off ant.", "pause ant.", "resume ant.", "wipe my ant. data", "change my brief time", "I'm a principal now", "edit my thesis", "show the whole pipeline", "check ant.", "pin ant." or "ant. settings".
 metadata:
-  version: "0.10.0"
+  version: "0.11.0"
 ---
 
 # ant. settings

@@ -2190,8 +2190,8 @@ class QA:
         """Round twenty-one: a side panel for every row (TL;DR with sources, recommendation, timeline, an editable draft sent
         from Home after a confirm, Was this right?, PDF), the founder 360, Ask with model and effort and charts, reminders
         with the floating button, and Settings as icons."""
-        tl = {"tldr": [{"text": "Atlas wants the markup by 23 Oct.", "cites": [1]}, {"text": "Bluepeak is moving on terms.", "cites": [2]}],
-              "recommendation": {"text": "Send the markup today and ask for counsel's contact.", "why": [{"text": "Their deadline is 5 Nov.", "cites": [1]}]},
+        tl = {"tldr": [{"text": "Gravity Payouts set reference calls with three gig platforms.", "cites": [1]}, {"text": "Bluepeak is moving on terms.", "cites": [2]}],
+              "recommendation": {"text": "Approve the new next step for Gravity Payouts.", "why": [{"text": "Gravity Payouts agreed it in the partner prep.", "cites": [1]}]},
               "subject": "Quick reminder", "body": "Hi, a quick reminder on the cap table. Could you send it this week? Aditi"}
         sc = "panel-decision"
         ctx, page = self.open(browser, sc, DESK, open_all=False, inline=False, sample={"answer": "x", "json": tl}, mcp={"pages": ["ok"]})
@@ -2206,12 +2206,12 @@ class QA:
         self.check(sc, "the timeline is vertical, newest first, and every event links to its source", evs.count() >= 1 and linked == evs.count(), f"{linked} of {evs.count()}")
         dates = page.evaluate("Array.from(document.querySelectorAll('.sheet .tl time')).map(t => t.getAttribute('datetime'))")
         self.check(sc, "timeline events run newest first", dates == sorted(dates, reverse=True), str(dates[:4]))
-        page.locator(".sheet .judge button", has_text="Not useful").click()
+        page.locator(".sheet .pn-brief .judge button", has_text="Not right").click()
         page.locator(".sheet .judge input[name=why]").fill("Too generic, name the counsel")
         page.locator(".sheet .judge button", has_text="Tell ant.").click()
         page.wait_for_timeout(80)
         notes = [w for w in page.evaluate("window.__writes") if w.get("collection") == "ratings" and (w.get("data") or {}).get("note")]
-        self.check(sc, "Was this right? keeps the user's own words for the next check", bool(notes) and "counsel" in notes[-1]["data"]["note"])
+        self.check(sc, "Not right, under the recommendation, keeps the user's words and the text they judged", bool(notes) and "counsel" in notes[-1]["data"]["note"] and bool(notes[-1]["data"].get("about")))
         page.locator(".sheet-foot .pdf-btn").click()
         page.wait_for_timeout(150)
         dl = page.evaluate("window.__downloads")
@@ -2230,7 +2230,12 @@ class QA:
         page.wait_for_timeout(60)
         self.check(sc, "a tap on a colleague copies them in", mate in page.locator(".sheet .composer [name=cc]").input_value())
         page.locator(".sheet .composer [name=body]").fill("Hi both, connecting you as promised. Aditi")
-        page.locator(".sheet .composer-acts button", has_text="Send").first.click()
+        foot = page.locator(".sheet-foot button").first
+        self.check(sc, "Send sits in the panel's footer, always in reach", foot.inner_text().strip().startswith("Send"))
+        self.check(sc, "a summary that names none of this thread's people warns, and Send becomes Send anyway",
+                   page.locator(".sheet .watch-note").count() == 1 and foot.inner_text().strip() == "Send anyway" and "btn-primary" not in (foot.get_attribute("class") or ""),
+                   f"{page.locator('.sheet .watch-note').count()} {foot.inner_text()!r} {foot.get_attribute('class')}")
+        foot.click()
         page.wait_for_timeout(60)
         conf = page.locator(".sheet .send-confirm")
         self.check(sc, "Send first shows who it goes to and waits", conf.is_visible() and "Send to" in conf.inner_text() and not [m for m in page.evaluate("window.__mcp") if m["tool"] == "send_message"])
@@ -2253,7 +2258,7 @@ class QA:
         if sec.locator(".row-hit").count():
             sec.locator(".row-hit").first.click()
             page.wait_for_timeout(200)
-            btn = page.locator(".sheet .composer button", has_text="Write a reminder")
+            btn = page.locator(".sheet-foot button", has_text="Write a reminder")
             ok_btn = btn.count() == 1
             if ok_btn:
                 btn.click(); page.wait_for_timeout(120)
@@ -2320,7 +2325,9 @@ class QA:
         md = "Two companies are short on runway.\n\n| Company | Runway |\n|---|---|\n| Orbit Treasury | 8.0 |\n| Kestrel Pay | 10.5 |\n\n```chart\n{\"type\": \"bar\", \"title\": \"Runway, months\", \"unit\": \"\", \"labels\": [\"Orbit\", \"Kestrel\"], \"values\": [8, 10.5]}\n```"
         ctx, page = self.open(browser, sc, DESK, open_all=False, sample={"answer": md})
         page.locator("#rail-tabs button[aria-label='Ask']").click(); page.wait_for_timeout(100)
-        self.check(sc, "Ask offers a model and an effort", page.locator(".ask-picks select[name=model] option").count() == 4 and page.locator(".ask-picks select[name=effort] option").count() == 4)
+        self.check(sc, "Ask offers Quick, Balanced, Thorough, and a custom model and effort", page.locator(".ask-picks select[name=style] option").count() == 4 and
+                   page.locator(".ask-picks select[name=model] option").count() == 4 and page.locator(".ask-picks select[name=effort] option").count() == 4)
+        page.locator(".ask-picks select[name=style]").select_option("custom")
         page.locator(".ask-picks select[name=model]").select_option("opus")
         page.locator(".ask-picks select[name=effort]").select_option("high")
         page.locator(".ask-form textarea").fill("Who is short on runway?")

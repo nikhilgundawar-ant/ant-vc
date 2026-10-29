@@ -2,7 +2,7 @@
 name: tuning
 description: Tunes ant. for one user every Sunday from their ratings, edits and Friday score, moving ranking weights, brief length and stale thresholds in the direction they point, and writes the weekly scorecard. Use when a scheduled task runs ant-vc tuning, or the user says "tune ant.", "show my ant. scorecard" or "why did you change my brief".
 metadata:
-  version: "0.10.0"
+  version: "0.11.0"
 ---
 
 # Weekly tuning
@@ -37,5 +37,5 @@ Write `snap/scorecard`:
 ## 4. Save and clean up
 
 1. Merge `tuned/config-update.json` into `snap/config` with ArtifactData `update` and its `file_path`, as an absolute path inside the work folder (pin the version), then write the scorecard. Only the tuned fields change: the weights, items in Today, the stale-deal pace and `tuned_at`. In a scheduled run the guard refuses any other change to the settings, which belong to setup and the settings skill.
-2. Delete ratings older than 60 days and `runs` rows beyond the newest 200 (ArtifactData delete).
+2. Delete ratings older than 60 days, except rows with a `note` or `kind: "draft_edit"` (what the user taught ant.: keep those 180 days, until the user removes them in Settings), and `runs` rows beyond the newest 200 (ArtifactData delete).
 3. Run by hand: end with the change note as the final line, or `No changes this week`. Inside the Sunday run: put the change note at the top of the week ahead and let the pulse end the run.
