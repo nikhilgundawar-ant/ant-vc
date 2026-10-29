@@ -115,6 +115,7 @@ p { text-wrap: pretty; }
 .kicker { display: flex; align-items: center; gap: 8px; font-weight: 600; font-size: 14px; color: var(--ah-ink-2); }
 .kicker i { width: 7px; height: 7px; border-radius: 999px; background: var(--ah-hero-fill); flex: none; }
 .is-breach .kicker i { background: var(--ah-breach); }
+.statement, .finding, .sheet-h h2, .sheet-sub, .fold-btn b, .kv h3, .row-title, .tl-text, .fact-v, dd { overflow-wrap: anywhere; }
 .statement { font-family: var(--ah-display); font-weight: 200; font-size: 26px; line-height: 1.12; letter-spacing: -.02em; margin: 0; color: var(--ah-ink); }
 .finding { margin: 0; font-size: 15px; line-height: 1.55; color: var(--ah-ink); max-width: 68ch; }
 .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
@@ -257,7 +258,7 @@ td .owed { display: block; font-size: 12px; }
 .kv li { overflow-wrap: anywhere; }
 .kv .seg { justify-self: start; }
 .kv .row-actions { padding-top: 4px; }
-.toast { position: fixed; left: 50%; transform: translateX(-50%); bottom: calc(76px + env(safe-area-inset-bottom, 0px)); z-index: 50;
+.toast { position: fixed; left: 50%; transform: translateX(-50%); bottom: calc(76px + 64px + env(safe-area-inset-bottom, 0px)); z-index: 50;
   background: var(--ah-overlay-ink); color: var(--ah-overlay-text); border-radius: 16px; box-shadow: var(--ah-elev-overlay); padding: 8px 8px 8px 16px;
   display: flex; align-items: center; gap: 12px; font-size: 13px; width: max-content; max-width: calc(100vw - 32px); }
 .toast .btn { background: transparent; color: var(--ah-overlay-text); box-shadow: inset 0 0 0 1px var(--ah-overlay-edge); height: 26px; font-size: 12.5px; }
@@ -283,6 +284,8 @@ td .owed { display: block; font-size: 12px; }
 .skel { height: 12px; border-radius: 999px; background: var(--ah-surface-2); animation: ah-pulse 1.4s var(--ah-ease) infinite; }
 .evidence { margin: 0; font-size: 12.5px; color: var(--ah-ink-3); }
 .prov { margin: 0; font-size: 12.5px; color: var(--ah-ink-3); }
+.answer-code { margin: 0; padding: 12px; border-radius: 9px; background: var(--ah-tint); overflow-x: auto; font: 13.5px/1.5 ui-monospace, SFMono-Regular, Menlo, monospace; white-space: pre; }
+.tldr .prov { color: var(--ah-ink-2); }
 .done-note { font-size: 13px; font-weight: 600; color: var(--ah-hero); }
 .link-btn { background: none; border: 0; padding: 0 4px; min-height: 32px; display: inline-flex; align-items: center; font: inherit; color: var(--ah-hero); cursor: pointer; text-align: left; }
 .link-btn:hover { text-decoration: underline; }
@@ -526,6 +529,7 @@ td a, .md li a, .kv li a { display: inline-flex; align-items: center; min-height
 .tl-ev.is-flash .tl-body { animation: ah-flash 1.6s var(--ah-ease); border-radius: 9px; }
 @keyframes ah-flash { 0% { background: var(--ah-tint-hover); } 100% { background: transparent; } }
 .h3-note { font-weight: 400; color: var(--ah-ink-3); }
+.watch-note, .send-confirm p { overflow-wrap: anywhere; }
 .watch-note { margin: 0; font-size: 13px; font-weight: 700; color: var(--ah-breach-ink); }
 .read-tag { font-size: 12px; font-style: italic; color: var(--ah-ink-3); }
 .emp dd.is-read { font-style: italic; }
@@ -535,12 +539,13 @@ td a, .md li a, .kv li a { display: inline-flex; align-items: center; min-height
 .tl-ev[hidden] { display: none; }
 .foot-short { display: none; }
 @media (max-width: 400px) { .sheet-foot .foot-lbl { display: none; } .sheet-foot .foot-short { display: inline; } }
-@media (pointer: coarse) { .judge .chip-rate { height: 44px; padding: 0 18px; } }
 .judge .chip-rate { height: 36px; padding: 0 16px; }
+@media (pointer: coarse) { .judge .chip-rate { height: 44px; padding: 0 18px; } }
 .lvl-word { white-space: normal; text-align: right; max-width: 220px; }
 .access-key { margin: 0 0 8px; display: flex; flex-wrap: wrap; gap: 8px 16px; font-size: 12.5px; color: var(--ah-ink-2); }
 .access-key span { display: inline-flex; align-items: center; gap: 4px; }
 /* The floating Ask button, with the reminder bell beside it */
+@media (pointer: coarse) { .pill, .sheet .chip, .quick-seg .chip, .sheet-h .btn, .sheet-h .btn-sm, .icon-chip, .sheet .btn-sm { min-height: 44px; } .sheet-h .btn { min-width: 44px; } .icon-chip { height: 44px; } .pill { height: 44px; } }
 .fab { position: fixed; z-index: 30; right: max(16px, env(safe-area-inset-right, 0px)); bottom: calc(76px + env(safe-area-inset-bottom, 0px)); display: flex; align-items: center; gap: 8px; }
 .fab-main { height: 48px; padding: 0 20px 0 16px; border: 0; border-radius: 999px; background: var(--ah-hero); color: var(--ah-on-hero); box-shadow: var(--ah-elev-3);
   display: inline-flex; align-items: center; gap: 8px; font: inherit; font-weight: 800; font-size: 15px; cursor: pointer; transition: transform 80ms var(--ah-ease); }
@@ -577,7 +582,7 @@ td a, .md li a, .kv li a { display: inline-flex; align-items: center; min-height
 .chart { width: 100%; max-width: 520px; height: auto; }
 .ch-axis { stroke: var(--ah-outline); stroke-width: 1; }
 .ch-bar { fill: var(--ah-hero-fill); }
-.ch-bar.neg { fill: var(--ah-breach); }
+.ch-bar.neg { fill: var(--ah-breach-ink); }
 .ch-line { stroke: var(--ah-hero-fill); stroke-width: 2.5; }
 .ch-dot { fill: var(--ah-hero-fill); }
 .ch-val { fill: var(--ah-ink); font-size: 13px; font-weight: 700; }
@@ -589,7 +594,7 @@ td a, .md li a, .kv li a { display: inline-flex; align-items: center; min-height
 .pn-rec h4, .kv h4 { margin: 0; font-weight: 700; font-size: 12px; color: var(--ah-ink-2); }
 .pn-rec p { margin: 0; font-weight: 700; font-size: 15px; color: var(--ah-ink); }
 .pn-rec ul { margin: 0; padding-left: 20px; display: grid; gap: 4px; font-size: 14px; }
-.cite { display: inline-grid; place-items: center; min-width: 20px; height: 20px; padding: 0 6px; margin-left: 4px; border: 0; border-radius: 999px; vertical-align: 1px;
+.cite { display: inline-grid; place-items: center; min-width: 24px; height: 24px; padding: 0 6px; margin-left: 4px; border: 0; border-radius: 999px; vertical-align: 1px;
   background: var(--ah-surface); color: var(--ah-hero); box-shadow: inset 0 0 0 1px var(--ah-outline); font: inherit; font-weight: 700; font-size: 11.5px; line-height: 1; cursor: pointer; text-decoration: none; }
 .cite:hover { background: var(--ah-tint-hover); text-decoration: none; }
 .tl { list-style: none; margin: 0; padding: 0; display: grid; position: relative; }
@@ -918,7 +923,7 @@ button.chip-source svg { width: 12px; height: 12px; }
             loaded: false, readOnly: false, error: null, slow: false, runs: [], filter: "all", search: "", allInbound: false, mdOpen: {}, showReplies: false };
   try { var saved = localStorage.getItem("instinct.tab"); if (TAB_KEYS.indexOf(saved) >= 0) S.savedTab = saved; } catch (e) {}
   // Per-device conveniences: which sections are folded, Focus, density. The page works the same without them.
-  S.folds = {}; S.showAll = {}; S.focusOpen = {}; S.more = null; S.later = null; S.tldr = {}; S.tldrBusy = {}; S.tldrErr = {}; S.noteOpen = null; S.pnBusy = {}; S.pnErr = {}; S.edits = {}; S.composeBusy = {}; S.curPanel = null; S.reminders = {}; S.remBusy = {}; S.logFilter = "all"; S.ratings = [];
+  S.folds = {}; S.showAll = {}; S.focusOpen = {}; S.more = null; S.later = null; S.tldr = {}; S.tldrBusy = {}; S.tldrErr = {}; S.noteOpen = null; S.pnBusy = {}; S.pnErr = {}; S.edits = {}; S.composeBusy = {}; S.sending = {}; S.boxes = {}; S.curPanel = null; S.reminders = {}; S.remBusy = {}; S.remErr = {}; S.logFilter = "all"; S.ratings = [];
   try { S.folds = JSON.parse(localStorage.getItem("ant.folds") || "{}") || {}; } catch (e) { S.folds = {}; }
   try { S.focus = localStorage.getItem("ant.focus") === "1"; } catch (e) { S.focus = false; }
   // Home QA opens every section and list so it can reach each row; its own fold checks turn this off.
@@ -1113,10 +1118,10 @@ button.chip-source svg { width: 12px; height: 12px; }
   function closesRow(dr, it) {
     return !!(it && it.id && it.kind !== "ask" && !it.group_asks && (dr.commitment_id || dr.question_id || dr.inbound_id || it.kind === "relationship"));
   }
-  function markSent(dr, it) {
+  function markSent(dr, it, how) {
     var keys = [dr.id].concat(dr.commitment_id ? [dr.commitment_id] : [], dr.commitment_ids || [], closesRow(dr, it) ? [it.id] : []);
     setItems({ id: dr.id, keys: keys.filter(function (k, i, all) { return k && all.indexOf(k) === i; }), title: dr.subject }, { done_at: nowIso(), sent: true },
-      "Marked sent");
+      how || "Marked sent");
   }
   // A draft that keeps another promise still open stays: Done settles one promise, never the email the other one rides in.
   function keepsOther(dr, it) {
@@ -1181,10 +1186,10 @@ button.chip-source svg { width: 12px; height: 12px; }
   function morning(days) { var d = new Date(); d.setDate(d.getDate() + days); d.setHours(8, 0, 0, 0); return d.toISOString(); }
   function nextMonday() { var d = new Date(); return morning(((8 - d.getDay()) % 7) || 7); }
 
-  var toastTimer = null;
+  var toastTimer = null, uiSeq = 0;
   function toast(text, undo) {
     var slot = document.getElementById("toast-slot"); slot.textContent = "";
-    var t = h("div", { class: "toast", role: "status" }, [h("span", null, text)]);
+    var t = h("div", { class: "toast", role: "status" }, [h("span", null, text)]); t._at = ++uiSeq;
     if (undo) t.appendChild(h("button", { class: "btn", type: "button", onclick: function () { slot.textContent = ""; undo(); } }, "Undo"));
     slot.appendChild(t);
     clearTimeout(toastTimer); toastTimer = setTimeout(function () { slot.textContent = ""; }, 10000);
@@ -1708,7 +1713,7 @@ button.chip-source svg { width: 12px; height: 12px; }
     S.folds[foldKey(label)] = false; if (S.focus) S.focusOpen[label] = true; remember("ant.folds", JSON.stringify(S.folds)); render();
     var el = document.getElementById("sec-" + key);
     if (!el) { toast(key === "waiting" ? "No one owes you anything right now." : "Nothing here right now."); return; }
-    if (el.scrollIntoView) el.scrollIntoView({ block: "start", behavior: "smooth" });
+    if (el.scrollIntoView) el.scrollIntoView({ block: "start", behavior: smooth() });
     var btn = el.querySelector(".fold-btn"); if (btn) btn.focus({ preventScroll: true });
   }
   // What you closed today, with Undo. The full record is in Activity.
@@ -1886,9 +1891,12 @@ button.chip-source svg { width: 12px; height: 12px; }
         try { var spec = JSON.parse(buf.join("\n")); var ch = chartSvg(spec); if (ch) wrap.appendChild(ch); } catch (e) { /* a chart that does not parse is left out */ }
         i = j + 1; list = null; continue;
       }
-      if (/^```/.test(t)) { var k = i + 1; while (k < lines.length && !/^```/.test(lines[k].trim())) k++; i = k + 1; continue; }
+      if (/^```/.test(t)) { var k = i + 1, code = []; while (k < lines.length && !/^```/.test(lines[k].trim())) { code.push(lines[k]); k++; }
+        if (k >= lines.length) break;  // still streaming
+        if (code.join("").trim()) wrap.appendChild(h("pre", { class: "answer-code" }, code.join("\n")));
+        i = k + 1; list = null; continue; }
       if (/^\|.*\|$/.test(t) && i + 1 < lines.length && /^\|?\s*:?-{2,}/.test(lines[i + 1].trim())) {
-        var cells = function (row) { return row.trim().replace(/^\||\|$/g, "").split("|").map(function (c) { return c.trim(); }); };
+        var cells = function (row) { return row.trim().replace(/^\||\|$/g, "").replace(/\\\|/g, "\u0000").split("|").map(function (c) { return c.replace(/\u0000/g, "|").trim(); }); };
         var head = cells(t), rows = []; i += 2;
         while (i < lines.length && /^\|.*\|$/.test(lines[i].trim())) { rows.push(cells(lines[i])); i++; }
         var num = head.map(function (_, c) { return rows.length && rows.every(function (r) { return /^[−\-$₹]?[\d.,]+\s*[%KMBkmb]?$|^—$/.test(r[c] || ""); }); });
@@ -1899,7 +1907,7 @@ button.chip-source svg { width: 12px; height: 12px; }
       if (!t) { list = null; i++; continue; }
       if (/^#{1,4}\s/.test(t)) { list = null; wrap.appendChild(h("h3", null, inline(t.replace(/^#+\s*/, "")))); }
       else if (/^[-*]\s/.test(t)) { if (!list || list.tagName !== "UL") { list = h("ul"); wrap.appendChild(list); } list.appendChild(h("li", null, inline(t.slice(2)))); }
-      else if (/^\d+[.)]\s/.test(t)) { if (!list || list.tagName !== "OL") { list = h("ol"); wrap.appendChild(list); } list.appendChild(h("li", null, inline(t.replace(/^\d+[.)]\s/, "")))); }
+      else if (/^\d+[.)]\s/.test(t)) { if (!list || list.tagName !== "OL") { var st0 = parseInt(t, 10); list = h("ol", st0 > 1 ? { start: String(st0) } : null); wrap.appendChild(list); } list.appendChild(h("li", null, inline(t.replace(/^\d+[.)]\s/, "")))); }
       else if (/^\*\*[^*]+\*\*:?$/.test(t) || (!wrap.childNodes.length && t.length < 160)) { list = null; wrap.appendChild(h("p", { class: "answer-lead" }, inline(t))); }
       else para(t);
       i++;
@@ -1907,24 +1915,64 @@ button.chip-source svg { width: 12px; height: 12px; }
     return wrap;
   }
   // A small chart drawn in SVG, in the page's own colours: bars for a comparison, a line for a trend.
+  // Before hiding the control that has focus, hand focus to the panel's main button or its heading.
+  function keepFocus(box) {
+    var a = document.activeElement; if (!box || !a || !box.contains(a)) return;
+    var sh = box.closest(".sheet"), t = sh && (sh.querySelector(".sheet-foot .btn-primary") || sh.querySelector(".sheet-h h2"));
+    if (t && t.tagName === "H2") t.setAttribute("tabindex", "-1");
+    if (t) t.focus();
+  }
+  var smooth = function () { try { return matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth"; } catch (e) { return "auto"; } };
   function chartSvg(c) {
-    var labels = (c.labels || []).slice(0, 12).map(String), vals = (c.values || []).slice(0, labels.length).map(Number);
-    if (!labels.length || vals.some(function (v) { return !isFinite(v); })) return null;
-    var W = 360, H = 210, L = 12, B = 34, T = 22, max = Math.max.apply(null, vals.concat([0])), min = Math.min.apply(null, vals.concat([0]));
-    var span = max - min || 1, y = function (v) { return T + (H - T - B) * (1 - (v - min) / span); }, step = (W - L - 12) / labels.length;
+    var allL = (c.labels || []).map(String), CAP = 16, labels = allL.slice(0, CAP);
+    if (!Array.isArray(c.values)) return null;
+    labels = labels.slice(0, c.values.length);
+    // A missing value is no mark at all, never a 0.
+    var raw = c.values.slice(0, labels.length).map(function (v) { return v === null || v === undefined ? NaN : typeof v === "number" ? v : Infinity; });
+    // A null is a gap; a string or a non-finite number means the chart is not trustworthy, so it is left out.
+    if (!labels.length || raw.some(function (v) { return v === v && !isFinite(v); }) || raw.every(function (v) { return v !== v; })) return null;
+    var vals = raw.map(function (v) { return v === v ? v : 0; }), gone = function (k) { return raw[k] !== raw[k]; };
+    var W = Math.max(260, Math.min(520, (window.innerWidth || 400) - 72)), H = 210, L = 12, B = 34, T = 22, max = Math.max.apply(null, vals.concat([0])), min = Math.min.apply(null, vals.concat([0]));
+    var span = max - min || 1, step = (W - L - 12) / labels.length;
+    if (!isFinite(span)) return null;
+    var cut = allL.length > labels.length ? " (first " + labels.length + " of " + allL.length + ")" : "";
+    // Bars too narrow for their labels lie on their side: one row a label, so nothing overlaps.
+    var flat = c.type !== "line" && step < 56;
+    if (flat) H = T + labels.length * 28 + 4;
+    var y = function (v) { return T + (H - T - B) * (1 - (v - min) / span); };
     var NSV = "http://www.w3.org/2000/svg", svg = document.createElementNS(NSV, "svg");
     svg.setAttribute("viewBox", "0 0 " + W + " " + H); svg.setAttribute("class", "chart"); svg.setAttribute("role", "img");
     var fmtV = function (v) { var a = Math.abs(v), s_ = a >= 1e9 ? (v / 1e9).toFixed(1) + "B" : a >= 1e6 ? (v / 1e6).toFixed(1) + "M" : a >= 1e3 ? (v / 1e3).toFixed(0) + "K" : String(Math.round(v * 10) / 10); return (c.unit === "$" ? "$" : "") + s_ + (c.unit && c.unit !== "$" ? c.unit : ""); };
-    svg.setAttribute("aria-label", (c.title || "Chart") + ": " + labels.map(function (l, k) { return l + " " + fmtV(vals[k]); }).join(", "));
+    svg.setAttribute("aria-label", (c.title || "Chart") + cut + ": " + labels.map(function (l, k) { return l + " " + (gone(k) ? "no data" : fmtV(vals[k])); }).join(", "));
     var el = function (tag, at, txt) { var e = document.createElementNS(NSV, tag); Object.keys(at).forEach(function (k) { e.setAttribute(k, at[k]); }); if (txt !== undefined) e.textContent = txt; svg.appendChild(e); return e; };
+    if (flat) {
+      var LX = Math.min(130, Math.round(W * 0.36)), RX = W - 56, xs = function (v) { return LX + (RX - LX) * (v - min) / span; };
+      el("line", { x1: xs(0), x2: xs(0), y1: T - 6, y2: H - 2, class: "ch-axis" });
+      labels.forEach(function (l, k) {
+        var cy = T + k * 28 + 14, v = vals[k], x0 = Math.min(xs(v), xs(0));
+        el("text", { x: 4, y: cy + 4, class: "ch-lab" }, l.length > 16 ? l.slice(0, 15) + "…" : l);
+        if (gone(k)) { el("text", { x: xs(0) + 4, y: cy + 4, class: "ch-val" }, "no data"); return; }
+        el("rect", { x: x0, y: cy - 8, width: Math.max(1, Math.abs(xs(v) - xs(0))), height: 16, rx: 3, class: v < 0 ? "ch-bar neg" : "ch-bar" });
+        el("text", { x: Math.max(xs(v), xs(0)) + 4, y: cy + 4, class: "ch-val" }, fmtV(v));
+      });
+      svg.setAttribute("viewBox", "0 0 " + W + " " + H);
+      return h("figure", { class: "chart-fig" }, [c.title || cut ? h("figcaption", null, (c.title || "") + cut) : null, svg]);
+    }
     el("line", { x1: L, x2: W - 8, y1: y(0), y2: y(0), class: "ch-axis" });
+    // Keep only as many labels as fit side by side, about 7px a letter at this size.
+    var labW = Math.max.apply(null, labels.map(function (l) { return Math.min(14, l.length) * 7 + 10; })), every = Math.max(1, Math.ceil(Math.max(56, labW) / step));
     if (c.type === "line") {
-      el("polyline", { points: vals.map(function (v, k) { return (L + step * k + step / 2) + "," + y(v); }).join(" "), class: "ch-line", fill: "none" });
-      vals.forEach(function (v, k) { el("circle", { cx: L + step * k + step / 2, cy: y(v), r: 3.5, class: "ch-dot" }); });
-    } else vals.forEach(function (v, k) { var x = L + step * k + step * 0.18, w = step * 0.64; el("rect", { x: x, y: Math.min(y(v), y(0)), width: w, height: Math.max(1, Math.abs(y(v) - y(0))), rx: 3, class: v < 0 ? "ch-bar neg" : "ch-bar" }); });
-    vals.forEach(function (v, k) { el("text", { x: L + step * k + step / 2, y: Math.min(y(v), y(0)) - 5, "text-anchor": "middle", class: "ch-val" }, fmtV(v)); });
-    labels.forEach(function (l, k) { el("text", { x: L + step * k + step / 2, y: H - B + 16, "text-anchor": "middle", class: "ch-lab" }, l.length > 14 ? l.slice(0, 13) + "…" : l); });
-    return h("figure", { class: "chart-fig" }, [c.title ? h("figcaption", null, c.title) : null, svg]);
+      el("polyline", { points: vals.map(function (v, k) { return gone(k) ? null : (L + step * k + step / 2) + "," + y(v); }).filter(Boolean).join(" "), class: "ch-line", fill: "none" });
+      vals.forEach(function (v, k) { if (gone(k)) return; el("circle", { cx: L + step * k + step / 2, cy: y(v), r: 3.5, class: "ch-dot" }); });
+    } else vals.forEach(function (v, k) { if (gone(k)) return; var x = L + step * k + step * 0.18, w = step * 0.64; el("rect", { x: x, y: Math.min(y(v), y(0)), width: w, height: Math.max(1, Math.abs(y(v) - y(0))), rx: 3, class: v < 0 ? "ch-bar neg" : "ch-bar" }); });
+    vals.forEach(function (v, k) { if (!gone(k) && (k % every === 0 || k === vals.length - 1)) el("text", { x: L + step * k + step / 2, y: Math.min(y(v), y(0)) - 5, "text-anchor": "middle", class: "ch-val" }, fmtV(v)); });
+    labels.forEach(function (l, k) {
+      var last = k === labels.length - 1;
+      if (k % every && !last) return;
+      if (last && k % every && (k % every) < every * 0.75) return;  // too close to the label before it
+      var first = k === 0, x = first ? L : last ? W - 8 : L + step * k + step / 2;
+      el("text", { x: x, y: H - B + 16, "text-anchor": first ? "start" : last ? "end" : "middle", class: "ch-lab" }, l.length > 14 ? l.slice(0, 13) + "…" : l); });
+    return h("figure", { class: "chart-fig" }, [c.title || cut ? h("figcaption", null, (c.title || "") + cut) : null, svg]);
   }
   function digestCard(d) {
     var open = !!S.mdOpen[d.kind];
@@ -2721,11 +2769,12 @@ button.chip-source svg { width: 12px; height: 12px; }
     var all = tlAll(), seen = {}, out = [];
     (keys || []).concat([]).forEach(function (k) { (all[k] || []).forEach(function (e) { if (e && e.id && !seen[e.id]) { seen[e.id] = true; out.push(e); } }); });
     (extra || []).forEach(function (e) { if (e && e.id && !seen[e.id] && e.at) { seen[e.id] = true; out.push(e); } });
-    out.sort(function (a, b) { return String(b.at).localeCompare(String(a.at)); });
-    return out.slice(0, 24);
+    out.sort(function (a, b) { var x = Date.parse(a.at), y = Date.parse(b.at); return (isNaN(y) ? -Infinity : y) - (isNaN(x) ? -Infinity : x) || 0; });  // by the real instant: Home writes UTC, the engine the fund's zone
+    var top = out.slice(0, 24); top.total = out.length;
+    return top;
   }
   var KIND_WORD = { email: "Email", meeting: "Meeting", notes: "Notes", promise: "Promise", crm: "CRM", pass: "Pass", update: "Update", lp: "LP", pitch: "Pitch", draft: "Draft", you: "You", doc: "File" };
-  function evWhen(at) { var w = wall(Date.parse(at)); return w ? pad(w.d) + " " + MONTHS[w.m - 1] + (w.y !== wall().y ? " " + w.y : "") + (/T\d/.test(String(at)) && (w.hh || w.mm) ? " · " + pad(w.hh) + ":" + pad(w.mm) : "") : fmtDate(at, false); }
+  function evWhen(at) { if (!/T\d/.test(String(at || ""))) return fmtDate(at, String(at || "").slice(0, 4) !== String((wall() || {}).y)); var w = wall(Date.parse(at)); return w ? pad(w.d) + " " + MONTHS[w.m - 1] + (w.y !== wall().y ? " " + w.y : "") + (/T\d/.test(String(at)) && (w.hh || w.mm) ? " · " + pad(w.hh) + ":" + pad(w.mm) : "") : fmtDate(at, false); }
   // A number on a TL;DR line: a tap takes you to that event in the timeline, whose chip opens the source itself.
   function citeChip(ev, n) {
     if (!ev) return null;
@@ -2733,7 +2782,7 @@ button.chip-source svg { width: 12px; height: 12px; }
       var sheet = e.currentTarget.closest(".sheet"), li = sheet && sheet.querySelector("#tl-" + (n - 1));
       if (!li) return;
       if (li.hidden) showAllEvents(li.parentNode);
-      li.scrollIntoView({ block: "center", behavior: "smooth" });
+      li.scrollIntoView({ block: "center", behavior: smooth() });
       li.classList.remove("is-flash"); void li.offsetWidth; li.classList.add("is-flash");
       var link = li.querySelector("a, button"); if (link) link.focus({ preventScroll: true });
     } }, String(n));
@@ -2753,7 +2802,7 @@ button.chip-source svg { width: 12px; height: 12px; }
           h("span", { class: "tl-kind" }, KIND_WORD[e.kind] || "Event")]), h("p", { class: "tl-text" }, e.text), h("div", { class: "row-meta" }, srcLink(e))])]);
     }));
     if (!first || evs.length <= first) return list;
-    var more = h("button", { class: "btn btn-ghost btn-sm tl-more", type: "button", "aria-expanded": "false", onclick: function () { showAllEvents(list); } }, "Show all " + evs.length);
+    var more = h("button", { class: "btn btn-ghost btn-sm tl-more", type: "button", "aria-expanded": "false", onclick: function () { showAllEvents(list); } }, (evs.total > evs.length ? "Show latest " + evs.length + " of " + evs.total : "Show all " + evs.length));
     list._more = more;
     return h("div", { class: "tl-wrap" }, [list, more]);
   }
@@ -2769,7 +2818,7 @@ button.chip-source svg { width: 12px; height: 12px; }
   // recommendation and draft Home writes reads them, and says so.
   function guidance(scope) {
     var all = (S.ratings || []).filter(function (r) { return r && r.note && !r.dropped && (r.value === "note" || r.kind === "draft_edit"); })
-      .sort(function (a, b) { return String(b.at).localeCompare(String(a.at)); });
+      .sort(function (a, b) { var x = Date.parse(a.at), y = Date.parse(b.at); return (isNaN(y) ? -Infinity : y) - (isNaN(x) ? -Infinity : x) || 0; });
     if (!scope) return all.slice(0, 40);
     // A note about one record or kind of line shapes only that; a note with neither is general.
     return all.filter(function (r) { return (!r.ent && !r.scope_kind) || (r.ent && (scope.keys || []).indexOf(r.ent) >= 0) || (r.scope_kind && r.scope_kind === scope.kind) || r.kind === "draft_edit"; }).slice(0, 12);
@@ -2788,7 +2837,7 @@ button.chip-source svg { width: 12px; height: 12px; }
   // timeline event is left out; a summary that names none of this record's own names says to check it.
   function panelBrief(spec, evs) {
     var key = "pn:" + spec.key + ":" + hashOf((evs[0] || {}).id + "|" + evs.length + "|" + (spec.facts || []).map(function (f) { return f[1]; }).join("|"));
-    var box = h("div", { class: "tldr pn-brief", "aria-live": "polite" });
+    var box = h("div", { class: "tldr pn-brief" });
     // A cite counts only when its event shares a name or a number with the line: "Bluepeak", "23 Oct", "$2M".
     var toks = function (t) { return (String(t || "").match(/\b[A-Z][A-Za-z]{3,}\b|\d[\d.,]*/g) || []).map(function (x) { return x.toLowerCase(); }).filter(function (x) { return GENERIC.indexOf(x) < 0; }); };
     var ok = function (l) {
@@ -2853,27 +2902,28 @@ button.chip-source svg { width: 12px; height: 12px; }
     var it = spec.item || { id: spec.key, kind: "panel", title: spec.title }, wrap = h("div", { class: "judge" }), note = null;
     var judged = String(((j || {}).recommendation || {}).text || ((j || {}).tldr || []).map(function (l) { return l.text; }).join(" ")).slice(0, 400);
     var save = function (value, text) {
-      rate(it, value);
+      S.rated[it.id] = value;
+      Array.prototype.forEach.call(wrap.querySelectorAll(".chip-rate"), function (c) { c.setAttribute("aria-pressed", c.getAttribute("data-v") === value ? "true" : "false"); });
       var row = { item_id: it.id, kind: it.kind || "panel", group: it.group || it.kind || "panel", value: text ? "note" : value, about: judged, note: text ? text.slice(0, 280) : null,
         ent: (spec.keys || [])[0] || null, scope_kind: it.kind || null, at: nowIso(), title: String(it.title || "").slice(0, 90) };
       if (S.db && !S.readOnly) S.db.collection("ratings").add(row).catch(function () {});
-      if (text) S.ratings = [Object.assign({ id: "n" + Date.now() }, row)].concat(S.ratings || []);
+      if (text || S.static) S.ratings = [Object.assign({ id: "n" + Date.now() }, row)].concat(S.ratings || []);
     };
     var pick = function (v) {
       if (v === "useful") { save("useful"); wrap.appendChild(h("p", { class: "prov" }, "Saved. ant. keeps doing this.")); return; }
-      rate(it, "not_useful");
       if (note) return;
+      save("not_useful");
       var inp = h("input", { class: "field", name: "why", maxlength: "280", placeholder: "What was off? e.g. too long, wrong person", "aria-label": "What was off" });
       note = h("form", { class: "inline-form", onsubmit: function (e) {
         e.preventDefault(); var t = inp.value.trim(); if (!t) { inp.focus(); return; }
-        save("not_useful", t);
+        save("not_useful", t);  // the note row only: the vote is already counted
         note.replaceWith(h("p", { class: "prov" }, "Saved. Used from the next recommendation and draft for this. See it in Settings."));
       } }, [inp, h("button", { class: "btn btn-secondary", type: "submit" }, "Tell ant.")]);
       wrap.appendChild(note); inp.focus();
     };
     wrap.appendChild(h("div", { class: "rate-row", role: "group", "aria-label": spec.recommend ? "Was the recommendation right?" : "Was this right?" }, [h("span", { class: "status" }, "Right call?")].concat(
       [["useful", "Right"], ["not_useful", "Not right"]].map(function (r) {
-        return h("button", { class: "chip chip-rate", type: "button", "aria-pressed": S.rated[it.id] === r[0] ? "true" : "false", onclick: function () { pick(r[0]); } }, r[1]);
+        return h("button", { class: "chip chip-rate", type: "button", "data-v": r[0], "aria-pressed": S.rated[it.id] === r[0] ? "true" : "false", onclick: function () { pick(r[0]); } }, r[1]);
       }))));
     return wrap;
   }
@@ -2888,7 +2938,20 @@ button.chip-source svg { width: 12px; height: 12px; }
     var me = String(cfg().user_email || "").toLowerCase();
     return (cfg().firm_members || []).filter(function (m) { return m && m.email && String(m.email).toLowerCase() !== me; });
   }
-  function addrList(v) { return String(v || "").split(/[,;\s]+/).map(function (x) { return x.trim(); }).filter(function (x) { return /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(x); }); }
+  // "Ishaan Verma <ishaan@x.com>, raj@y.com; z@w.com": the addresses alone. addrBad lists what is not an address.
+  var ADDR = /^[^@\s<>,;"]+@[^@\s<>,;"]+\.[^@\s<>,;"]+$/;
+  // A name before a <address> is dropped, even "Verma, Ishaan <i@x.com>" as Outlook pastes it; other text is read as addresses.
+  function addrToks(v) {
+    var parts = String(v || "").replace(/"[^"]*"\s*/g, "").split(/<([^>]*)>/), out = [], words = function (x) { return x.split(/[,;\s]+/).map(function (y) { return y.trim(); }).filter(Boolean); };
+    parts.forEach(function (p, i) {
+      if (i % 2) { out.push(p.trim()); return; }
+      var w = words(p);
+      out = out.concat(i < parts.length - 1 ? w.filter(function (x) { return x.indexOf("@") >= 0; }) : w);
+    });
+    return out.filter(Boolean);
+  }
+  function addrList(v) { return addrToks(v).filter(function (x) { return ADDR.test(x); }); }
+  function addrBad(v) { return addrToks(v).filter(function (x) { return !ADDR.test(x); }); }
   // One line on how a draft changed before it went: what the next drafts should learn from.
   function editSummary(a, b) {
     var sent = function (t) { return String(t || "").split(/(?<=[.!?])\s+|\n+/).map(function (x) { return x.trim(); }).filter(Boolean); };
@@ -2906,6 +2969,7 @@ button.chip-source svg { width: 12px; height: 12px; }
     var d = spec.draft || null, ek = "ed:" + spec.key;
     var ed = S.edits[ek] || (d ? { to: d.to || "", cc: d.cc || "", subject: d.subject || "", body: d.body || "", base: d.body || "" } : null);
     var box = h("div", { class: "composer" });
+    S.boxes[ek] = box;  // the composer on screen for this draft, if any
     var paint = function () {
       box.textContent = "";
       if (!ed) {
@@ -2923,7 +2987,8 @@ button.chip-source svg { width: 12px; height: 12px; }
       var subject = h("input", { class: "field", name: "subject", value: ed.subject, "aria-label": "Subject" });
       var body = h("textarea", { class: "field draft-body", name: "body", rows: "9", "aria-label": "Draft" });
       body.value = ed.body;
-      [to, cc, subject, body].forEach(function (el) { el.addEventListener("input", function () { ed[el.name] = el.value; S.edits[ek] = ed; }); });
+      [to, cc, subject, body].forEach(function (el) { el.addEventListener("input", function () { ed[el.name] = el.value; S.edits[ek] = ed;
+        var gl = box.querySelector("a.gmail-open"), u = gl && safeUrl(gmailHref({ to: ed.to, cc: ed.cc, subject: ed.subject, body: ed.body })); if (u) gl.href = u; }); });
       var team = h("div", { class: "team-chips", role: "group", "aria-label": "Copy in your team" }, firmPeople().map(function (m) {
         var on = addrList(ed.cc).map(function (x) { return x.toLowerCase(); }).indexOf(String(m.email).toLowerCase()) >= 0;
         return h("button", { class: "chip chip-filter", type: "button", "aria-pressed": on ? "true" : "false", title: m.email,
@@ -2931,21 +2996,24 @@ button.chip-source svg { width: 12px; height: 12px; }
             var list = addrList(ed.cc), low = list.map(function (x) { return x.toLowerCase(); }), i = low.indexOf(String(m.email).toLowerCase());
             if (i >= 0) list.splice(i, 1); else list.push(m.email);
             ed.cc = list.join(", "); S.edits[ek] = ed; paint();
+            var again = Array.prototype.filter.call(box.querySelectorAll(".team-chips .chip"), function (c) { return c.title === m.email; })[0]; if (again) again.focus();
           } }, String(m.name || m.email).split(" ")[0]);
       }));
       var confirm = h("div", { class: "send-confirm", hidden: true, role: "alert" });
       // Send lives in the panel's footer; it shows who the note goes to here, and waits for Send now.
       box._act = function () {
-        var tos = addrList(ed.to), ccs = addrList(ed.cc);
+        if (S.sending[ek]) return;  // one send per draft at a time, even from a panel reopened meanwhile
+        var tos = addrList(ed.to), ccs = addrList(ed.cc), bad = addrBad(ed.to).concat(addrBad(ed.cc));
         if (!tos.length) { to.focus(); toast("Add who it goes to."); return; }
         if (!String(ed.body || "").trim()) { body.focus(); return; }
         confirm.hidden = false; confirm.textContent = "";
         if (box.closest(".sheet") && box.closest(".sheet").querySelector(".watch-note")) confirm.appendChild(h("p", { class: "watch-note" }, "The summary looked off. Check the timeline and the draft before it goes."));
+        if (bad.length) confirm.appendChild(h("p", { class: "watch-note" }, "Left out, not an address: " + bad.slice(0, 4).join(", ") + "."));
         confirm.appendChild(h("p", null, ["Send to ", h("b", null, tos.join(", "))].concat(ccs.length ? [", cc ", h("b", null, ccs.join(", "))] : [], [" now? It goes from your Gmail."])));
         confirm.appendChild(h("div", { class: "row-actions" }, [
-          h("button", { class: "btn btn-primary btn-sm", type: "button", onclick: function () { doSend(tos, ccs, confirm); } }, "Send now"),
+          h("button", { class: "btn btn-primary btn-sm", type: "button", onclick: function () { if (!S.sending[ek]) doSend(tos, ccs, confirm); } }, "Send now"),
           h("button", { class: "btn btn-ghost btn-sm", type: "button", onclick: function () { confirm.hidden = true; } }, "Not yet")]));
-        confirm.scrollIntoView({ block: "center", behavior: "smooth" });
+        confirm.scrollIntoView({ block: "center", behavior: smooth() });
         confirm.querySelector(".btn-primary").focus({ preventScroll: true });
       };
       var href = gmailHref({ to: ed.to, cc: ed.cc, subject: ed.subject, body: ed.body });
@@ -2955,14 +3023,16 @@ button.chip-source svg { width: 12px; height: 12px; }
       box.appendChild(fld("Draft", body));
       if (spec.before) box.appendChild(h("p", { class: "draft-note" }, [h("b", null, "Before you send: "), spec.before]));
       box.appendChild(h("div", { class: "row-actions composer-acts" }, [
-        href ? h("a", { class: "btn btn-quiet btn-sm", href: safeUrl(href), target: "_blank", rel: "noopener noreferrer" }, [icon(ICON.ext, 16), "Open in Gmail"]) : null,
+        href ? h("a", { class: "btn btn-quiet btn-sm gmail-open", href: safeUrl(href), target: "_blank", rel: "noopener noreferrer",
+          // What is in the fields now, not what was first written.
+          onclick: function (e) { var u = safeUrl(gmailHref({ to: ed.to, cc: ed.cc, subject: ed.subject, body: ed.body })); if (u) e.currentTarget.href = u; } }, [icon(ICON.ext, 16), "Open in Gmail"]) : null,
         h("button", { class: "btn btn-quiet btn-sm", type: "button", onclick: function () { copyText(ed.body, "Draft copied"); } }, [icon(ICON.copy, 16), "Copy"]),
         S.sample ? h("button", { class: "btn btn-ghost btn-sm", type: "button", onclick: function () { ed = null; delete S.edits[ek]; write(); } }, "Rewrite") : null,
         spec.alreadySent ? h("button", { class: "btn btn-ghost btn-sm", type: "button", onclick: spec.alreadySent }, "I already sent it") : null]));
       box.appendChild(confirm);
       sync();
     };
-    var sync = function () { if (spec.onPrimary) spec.onPrimary(ed ? "Send" : S.composeBusy[ek] ? "Writing..." : (spec.compose || {}).label || "Write a draft", ed ? true : !!S.sample && !S.composeBusy[ek]); };
+    var sync = function () { if (spec.onPrimary && S.sending[ek]) return spec.onPrimary("Sending...", false); if (spec.onPrimary) spec.onPrimary(ed ? "Send" : S.composeBusy[ek] ? "Writing..." : (spec.compose || {}).label || "Write a draft", ed ? true : !!S.sample && !S.composeBusy[ek]); };
     box._sync = sync;
     var write = function () {
       if (!S.sample) return;
@@ -2981,22 +3051,32 @@ button.chip-source svg { width: 12px; height: 12px; }
       var fields = { to: tos, cc: ccs, subject: ed.subject, body: ed.body };
       var done = function (how) {
         delete S.edits[ek];
-        if (spec.onSent) spec.onSent(fields);
+        var mine = document.body.contains(box), told = spec.onSent ? spec.onSent(fields, how) : false;
         if (ed.base && ed.base !== ed.body && S.db && !S.readOnly) S.db.collection("ratings").add({ item_id: spec.key, kind: "draft_edit", group: "draft_edit", value: "edited",
           note: editSummary(ed.base, ed.body), ent: (spec.keys || [])[0] || null, before: ed.base.slice(0, 1500), after: ed.body.slice(0, 1500), at: nowIso(), title: String(ed.subject || "").slice(0, 90) }).catch(function () {});
-        toast(how);
+        if (!told) toast(how);
+        // The sent draft never stays in the box to go twice; only the panel that sent it closes.
+        ed = null; delete S.sending[ek];
+        // A panel reopened for this draft while it went shows it sent, never the draft again.
+        var other = S.boxes[ek];
+        if (!mine && other && other !== box && document.body.contains(other)) closeOverlay();
+        if (mine) closeOverlay();
       };
-      if (S.static) { confirm.hidden = true; done("Sample data: nothing was sent. In your Home this sends from your Gmail."); return; }
+      if (S.static) { keepFocus(confirm); confirm.hidden = true; done("Sample data: nothing was sent. In your Home this sends from your Gmail."); return; }
       if (!S.mcp) { confirm.textContent = ""; confirm.appendChild(h("p", null, "Home cannot reach your Gmail here. Use Open in Gmail, then tap Sent it.")); return; }
       confirm.textContent = ""; confirm.appendChild(h("p", { class: "prov" }, "Sending..."));
+      S.sending[ek] = true; if (spec.onPrimary) spec.onPrimary("Sending...", false);
       var input = { to: tos, subject: ed.subject, body: ed.body, htmlBody: htmlMail(ed.body) };
       if (ccs.length) input.cc = ccs;
       if (d && d.thread_id) input.replyThreadId = d.thread_id;
-      S.mcp.callTool("Gmail", "send_message", input).then(function () { confirm.hidden = true; done("Sent from your Gmail. Undo the mark in Activity if needed."); },
+      S.mcp.callTool("Gmail", "send_message", input).then(function () { keepFocus(confirm); confirm.hidden = true; done("Sent from your Gmail. Undo the mark in Activity if needed."); },
         function (e) {
+          delete S.sending[ek]; sync();
+          var why = e && /not_granted|denied/.test(String(e.code)) ? "Gmail is not allowed for this page. Allow it in the page's permissions, or use Open in Gmail." :
+            "Gmail did not send it: " + String((e && e.message) || "an error") + ". Nothing went out. Try again or use Open in Gmail.";
           confirm.textContent = "";
-          confirm.appendChild(h("p", null, e && /not_granted|denied/.test(String(e.code)) ? "Gmail is not allowed for this page. Allow it in the page's permissions, or use Open in Gmail." :
-            "Gmail did not send it: " + String((e && e.message) || "an error") + ". Nothing went out. Try again or use Open in Gmail."));
+          confirm.appendChild(h("p", null, why));
+          if (!document.body.contains(confirm)) toast(why + " Your draft is kept.");  // the panel was closed while it tried
         });
     };
     paint();
@@ -3012,6 +3092,7 @@ button.chip-source svg { width: 12px; height: 12px; }
     var footMain = null, cbox = null;
     if (spec.composer) {
       footMain = h("button", { class: "btn btn-primary", type: "button", onclick: function () { if (cbox && cbox._act) cbox._act(); } }, "Send");
+      spec.composer.keys = spec.composer.keys || spec.keys;
       spec.composer.onPrimary = function (label, on) { footMain.textContent = label + (footMain._held ? " anyway" : ""); footMain.disabled = !on; };
       cbox = composer(spec.composer);
     } else if (spec.footActs && spec.footActs.filter(Boolean).length) {
@@ -3022,8 +3103,10 @@ button.chip-source svg { width: 12px; height: 12px; }
     var body = [
       spec.status ? h("div", { class: "row-meta" }, spec.status) : null,
       h("div", { class: "kv" }, [h("h3", null, spec.recommend ? "TL;DR and recommendation" : "TL;DR"), panelBrief(spec, evs)]),
-      h("div", { class: "row-actions pn-actions" }, (spec.actions || []).filter(Boolean).concat([h("button", { class: "btn btn-quiet btn-sm", type: "button", onclick: function () {
-        addReminder("Follow up: " + spec.title, atClock(1, 9)); } }, [icon(ICON.bell, 16), "Remind me tomorrow"])])),
+      h("div", { class: "row-actions pn-actions" }, (spec.actions || []).filter(Boolean).concat([h("button", { class: "btn btn-quiet btn-sm", type: "button", onclick: function (e) {
+        var b = e.currentTarget, text = "Follow up: " + spec.title;
+        if (!remOpen().some(function (r) { return r.text === text; })) addReminder(text, atClock(1, 9));
+        b.disabled = true; b.textContent = "Reminder set"; } }, [icon(ICON.bell, 16), "Remind me tomorrow"])])),
       spec.composerLast ? null : draftKv
     ].concat(spec.blocks || [], [
       spec.composerLast ? draftKv : null,
@@ -3066,7 +3149,10 @@ button.chip-source svg { width: 12px; height: 12px; }
   }
   // jsPDF's built-in fonts carry Latin-1 only: the few other characters Home uses become their plain forms.
   function pdfText(t) {
-    return String(t || "").replace(/[‘’]/g, "'").replace(/[“”]/g, '"').replace(/[–—−]/g, "-").replace(/→/g, "->")
+    // Letters outside Latin-1 keep a readable form: Łukasz becomes Lukasz, never "ukasz".
+    var fold = String(t || "").replace(/[łŁøØđĐßæÆœŒ]/g, function (ch) { return { "ł": "l", "Ł": "L", "ø": "\u00f8", "Ø": "\u00d8", "đ": "d", "Đ": "D", "ß": "\u00df", "æ": "\u00e6", "Æ": "\u00c6", "œ": "oe", "Œ": "OE" }[ch]; });
+    try { fold = fold.replace(/[^\x00-\xff]/g, function (ch) { return ch.normalize("NFD").replace(/[\u0300-\u036f]/g, ""); }); } catch (e) {}
+    return fold.replace(/[‘’]/g, "'").replace(/[“”]/g, '"').replace(/[–—−]/g, "-").replace(/→/g, "->")
       .replace(/…/g, "...").replace(/₹/g, "Rs ").replace(/[↑↓]/g, "").replace(/[^\x09\x0a\x0d\x20-\x7e\xa0-\xff]/g, "").replace(/\s+/g, " ").trim();
   }
   // Blocks of the panel as the PDF reads them: headings, lines with their source links, the draft as written.
@@ -3074,7 +3160,12 @@ button.chip-source svg { width: 12px; height: 12px; }
     var out = [];
     var walk = function (el) {
       if (!el || el.nodeType !== 1 || el.hidden || el.getAttribute("aria-hidden") === "true") return;
-      if (el.matches(".sheet-foot, .sheet-h button, .composer-acts, .send-confirm, .judge, .team-line, form.inline-form, .tldr-retry")) return;
+      if (el.matches(".sheet-foot")) {
+        var fl = Array.prototype.filter.call(el.querySelectorAll("a[href]"), function (a) { return /^https?:/.test(a.href); }).map(function (a) { return { label: a.textContent.trim(), url: a.href }; });
+        if (fl.length) out.push({ t: "p", text: "Source", links: fl });
+        return;
+      }
+      if (el.matches(".sheet-h button, .composer-acts, .send-confirm, .judge, .team-line, form.inline-form, .tldr-retry")) return;
       if (el.matches(".sheet-h h2")) { out.push({ t: "title", text: el.textContent }); return; }
       if (el.matches(".sheet-sub")) { out.push({ t: "sub", text: el.textContent }); return; }
       if (el.matches("h3, h4")) { out.push({ t: "h", text: el.textContent }); return; }
@@ -3121,12 +3212,15 @@ button.chip-source svg { width: 12px; height: 12px; }
   }
   function pdfName(title) { return (dayOf(nowIso()) + " " + pdfText(title)).replace(/[\\/:*?"<>|]+/g, " ").replace(/\s+/g, " ").trim().slice(0, 120) + ".pdf"; }
   function panelPdf(sheet, title) {
+    if (sheet._pdfBusy) return;  // a double tap saves once
+    sheet._pdfBusy = true;
     var blocks = pdfBlocks(sheet);
     toast("Making the PDF...");
     loadPdf().then(function (JsPDF) {
       var doc = pdfDoc(JsPDF, blocks, title), buf = doc.output("arraybuffer");
       return saveFile(pdfName(title), buf);
-    }).catch(function () { toast("Could not make the PDF here. Check your connection and try again."); });
+    }).catch(function () { toast("Could not make the PDF here. Check your connection and try again."); })
+      .then(function () { setTimeout(function () { sheet._pdfBusy = false; }, 1500); });
   }
   function saveFile(name, data) {
     return (S.dl !== undefined ? Promise.resolve(S.dl) : window.claude && window.claude.use ? window.claude.use("downloads").then(function (d) { S.dl = d || null; return S.dl; }, function () { S.dl = null; return null; }) : Promise.resolve(null))
@@ -3239,7 +3333,7 @@ button.chip-source svg { width: 12px; height: 12px; }
       composer: writes && !noOne ? { key: it.id, draft: dr, heading: dr ? "Draft, ready to edit" : "Draft", tapDraft: tap, context: ctxLines, before: dr ? closedInDraft(dr) + (dr.context || "") : null,
         compose: { purpose: purpose, to: to || (it.entity || {}).email || "", to_name: toName || (it.entity || {}).name || "", label: it.kind === "waiting" ? "Write a reminder" : "Write a draft" },
         alreadySent: dr ? function () { closeOverlay(); markSent(dr, it); } : null,
-        onSent: function () { if (dr) markSent(dr, it); else if (it.kind === "waiting" || (cm && cm.side !== "us")) snooze(it, morning(3), "in three days, unless they reply"); closeOverlay(); } } : null,
+        onSent: function (f, how) { if (dr) { markSent(dr, it, how); return true; } if (it.kind === "waiting" || (cm && cm.side !== "us")) snooze(it, morning(3), "in three days, unless they reply"); else setItems(it, { done_at: nowIso(), sent: true }, how); return true; } } : null,
       item: it, source: it.source
     });
     return sheet;
@@ -3285,7 +3379,7 @@ button.chip-source svg { width: 12px; height: 12px; }
       keys: keys, extraEvents: localEvents([], [id]),
       composer: { key: "rdy:" + id, draft: Object.assign({ id: id }, d), heading: "Draft, ready to edit", before: closedInDraft(d) + (d.context || ""), context: d.body,
         alreadySent: function () { closeOverlay(); markSent(Object.assign({ id: id }, d), null); },
-        onSent: function () { markSent(Object.assign({ id: id }, d), null); closeOverlay(); } },
+        onSent: function (f, how) { markSent(Object.assign({ id: id }, d), null, how); return true; } },
       item: { id: "rdy:" + id, kind: "ready", group: "ready", title: d.subject }, source: { label: d.source_label || "Source", url: d.source_url } });
   }
 
@@ -3294,10 +3388,13 @@ button.chip-source svg { width: 12px; height: 12px; }
     var deals = ((S.snap.pipeline || {}).deals) || {}, d = deals[id]; if (!d) return;
     S.open = null;
     var x = dealFacts(id, d), it = { id: "deal_" + id, kind: "deal", group: "deal_move", title: d.company };
-    var input = h("input", { class: "field", name: "next", placeholder: "Next step, e.g. reference calls", "aria-label": "Next step for " + d.company, maxlength: "140" });
-    var date = h("input", { class: "field", type: "date", name: "due", "aria-label": "Due date" });
+    var nk = "next:" + id, kept = S.edits[nk] || {};
+    var input = h("input", { class: "field", name: "next", value: kept.t || "", placeholder: "Next step, e.g. reference calls", "aria-label": "Next step for " + d.company, maxlength: "140",
+      oninput: function () { S.edits[nk] = { t: input.value, d: date.value }; } });
+    var date = h("input", { class: "field", type: "date", name: "due", value: kept.d || "", "aria-label": "Due date", oninput: function () { S.edits[nk] = { t: input.value, d: date.value }; } });
     var form = h("form", { class: "inline-form", onsubmit: function (e) {
       e.preventDefault(); var t = input.value.trim(); if (!t) { input.focus(); return; }
+      delete S.edits[nk];
       if (sheetCrm()) { copyText((d.company || "Deal") + ", Next step: " + t + (date.value ? ", due " + fmtDate(date.value, false) : ""), "Copied. Paste it into your sheet."); return; }
       // What Home showed rides with the tap, so the check never overwrites a step someone changed since.
       var metOn = d.last_met && (!d.crm_last_contact || String(d.crm_last_contact).slice(0, 10) < String(d.last_met).slice(0, 10)) ? String(d.last_met).slice(0, 10) : null;
@@ -3318,7 +3415,8 @@ button.chip-source svg { width: 12px; height: 12px; }
           [icon(ICON.lock, 16), "Mark quiet"])],
       blocks: [h("div", { class: "kv" }, [h("h3", null, "Set the next step"), form]), team.length ? peopleBlock(team, d.company) : null, companyBlock(d.company_id, d.company, d.domain)],
       composer: founder && founder.email ? { key: "deal:" + id, heading: "Write to " + String(founder.name || "the founder").split(" ")[0], context: "Deal: " + d.company + ", " + d.stage + ". " + (x.detail || "") + " Next: " + x.next,
-        compose: { purpose: "move the deal forward: " + x.next, to: founder.email, to_name: founder.name, label: "Write to " + String(founder.name).split(" ")[0] } } : null });
+        compose: { purpose: "move the deal forward: " + x.next, to: founder.email, to_name: founder.name, label: "Write to " + String(founder.name).split(" ")[0] },
+        onSent: function (f, how) { setItems({ id: "sent_deal_" + id + "_" + Date.now().toString(36), title: "Wrote to " + (founder.name || d.company) }, { done_at: nowIso(), sent: true }, how); return true; } } : null });
   }
   function openPitch(r) {
     var drafts = ((S.snap.drafts || {}).items) || {}, did = null;
@@ -3342,7 +3440,7 @@ button.chip-source svg { width: 12px; height: 12px; }
       actions: [h("button", { class: "btn btn-quiet btn-sm", type: "button", onclick: function () { closeOverlay(); snooze(it, morning(1), "tomorrow 08:00"); } }, [icon(ICON.time, 16), "Tomorrow"])],
       composer: { key: "in:" + r.id, draft: d, heading: d ? "Reply, ready to edit" : "Reply", context: "Pitch from " + r.company + ". " + (r.facts || "") + ". ant.'s view: " + (decision || "none"),
         compose: { purpose: r.decision === "pass" ? "a kind, short pass" : r.decision === "call" ? "offer a call next week" : "ask for the deck and current traction", to: r.from || "", to_name: sender ? sender.name : "", label: "Write a reply" },
-        onSent: function () { if (d) markSent(d, it); closeOverlay(); } },
+        onSent: function (f, how) { if (d) markSent(d, it, how); else setItems(it, { done_at: nowIso(), sent: true }, how); return true; } },
       item: it, source: { label: "Email", url: r.source_url } });
   }
 
@@ -3421,7 +3519,8 @@ button.chip-source svg { width: 12px; height: 12px; }
       keys: [pid ? "p:" + pid : null, cid ? "c:" + cid : null].filter(Boolean), item: { id: "person_" + (pid || email), kind: "relationship", group: "relationship", title: name },
       blocks: [empathyBlock(person), companyBlock(cid, company, dirCompany(cid) ? dirCompany(cid).domain : null)], composerLast: true,
       composer: email ? { key: "p:" + (pid || email), heading: "Write to " + String(name).split(" ")[0], context: "Person: " + name + ", " + [title, company].filter(Boolean).join(", "),
-        compose: { purpose: "a warm, short note to keep in touch", to: email, to_name: name, label: "Write to " + String(name).split(" ")[0] } } : null,
+        compose: { purpose: "a warm, short note to keep in touch", to: email, to_name: name, label: "Write to " + String(name).split(" ")[0] },
+        onSent: function (f, how) { setItems({ id: "sent_p_" + String(pid || email).replace(/\W/g, "") + "_" + Date.now().toString(36), title: "Wrote to " + name }, { done_at: nowIso(), sent: true }, how); return true; } } : null,
       source: { label: "CRM", url: (row && row.source_url) || (dp && dp.url) } });
   }
 
@@ -3535,32 +3634,57 @@ button.chip-source svg { width: 12px; height: 12px; }
   // it names with their latest events (the engine matches them every check), notes a check found for it, and a short
   // brief Claude writes from your Home when it falls due. Due ones sit at the top of Today.
   function remList() { var it = S.reminders || {}; return Object.keys(it).map(function (k) { return Object.assign({ id: k }, it[k]); }).filter(function (r) { return r.text; }); }
-  function remOpen() { return remList().filter(function (r) { return !r.done_at; }).sort(function (a, b) { return String(a.due || "9").localeCompare(String(b.due || "9")); }); }
+  function remOpen() { return remList().filter(function (r) { return !r.done_at; }).sort(function (a, b) { return (Date.parse(a.due) || 9e15) - (Date.parse(b.due) || 9e15); }); }
   function remDue(r) { return r.due && Date.parse(r.due) <= Date.now() + 2 * 3600e3; }
   function remWrite(patch) {
     Object.keys(patch).forEach(function (k) { S.reminders[k] = Object.assign({}, S.reminders[k] || {}, patch[k]); });
     render();
+    if (S.sheetFn && S.sheetFn.rem) S.sheetFn();  // the bell sheet lists the new state too
     if (S.static || !S.db || S.readOnly) return Promise.resolve(true);
     var ref = S.db.doc("state/reminders");
     return ref.update({ items: patch }).catch(function () { return ref.set({ items: S.reminders }); }).then(function () { return true; }, function () { toast("Could not save the reminder."); return false; });
   }
   // A wall-clock time in the user's own time zone, some days from now.
-  function atClock(days, hh) {
-    var now = Date.now(), w = wall(now), off = Math.round((now - Date.UTC(w.y, w.m - 1, w.d, w.hh, w.mm)) / 60000) * 60000;
-    return new Date(Date.UTC(w.y, w.m - 1, w.d + days, hh, 0) + off).toISOString();
+  // The offset is worked out for the target moment itself, so a clock change in between (New York, London) is right.
+  function atClock(days, hh, mm) {
+    var now = Date.now(), w = wall(now), target = Date.UTC(w.y, w.m - 1, w.d + days, hh, mm || 0);
+    var offAt = function (t) { var x = wall(t); return x ? Math.round((t - Date.UTC(x.y, x.m - 1, x.d, x.hh, x.mm)) / 60000) * 60000 : 0; };
+    var t = target + offAt(now);
+    t = target + offAt(t); t = target + offAt(t);
+    return new Date(t).toISOString();
+  }
+  // A time already past moves on: to the same time tomorrow when the day was implied, else an hour from now.
+  function ahead(iso, rollDay) {
+    if (!iso || Date.parse(iso) > Date.now()) return iso;
+    if (rollDay) { var w = wall(Date.parse(iso)); if (w) return atClock(1, w.hh, w.mm); }
+    return new Date(Math.ceil((Date.now() + 3600e3) / 900e3) * 900e3).toISOString();
   }
   // "tomorrow", "monday", "at 5pm", "in 2 hours": the common ways people say when.
   function remParse(text) {
-    var t = String(text || "").toLowerCase(), days = null, hh = null, m;
+    var t = String(text || "").toLowerCase(), days = null, hh = null, mm = 0, m, firstAt = Infinity;
     if (/\btoday\b|\btonight\b/.test(t)) days = 0;
     if (/\btomorrow\b/.test(t)) days = 1;
     if (/\bnext week\b/.test(t)) days = (8 - wall().wd) % 7 || 7;
-    ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"].forEach(function (d, i) { if (new RegExp("\\b" + d + "\\b").test(t)) days = ((i - wall().wd + 7) % 7) || 7; });
-    if ((m = t.match(/\bat (\d{1,2})(?::(\d{2}))?\s*(am|pm)?\b/))) { hh = Number(m[1]) % 12 + (m[3] === "pm" || (!m[3] && Number(m[1]) < 8) ? 12 : 0); if (m[3] === "am" && Number(m[1]) === 12) hh = 0; }
+    // Two weekdays in one line: the first one named wins ("monday, not friday").
+    ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"].forEach(function (d, i) { var at = t.search(new RegExp("\\b" + d + "\\b")); if (at >= 0 && at < firstAt) { firstAt = at; days = ((i - wall().wd + 7) % 7) || 7; } });
+    // "at 7am.", "at 5, then", "at 17:30", "at 07:30"; never "at 30% off" or "at 2x".
+    if ((m = t.match(/\bat (\d{1,2})(?:[:.](\d{2}))?(?:\s*(am|pm|a\.m\.|p\.m\.)(?![a-z]))?(?![\d%]|\s*(?:x\b|%|percent|times))/))) {
+      var n = Number(m[1]), ap = m[3] ? m[3].charAt(0) : null, mins = m[2] ? Number(m[2]) : 0;
+      if (n <= 23 && mins <= 59 && !(ap && n > 12)) {
+        if (n > 12 || (!ap && (n === 0 || (m[1].length === 2 && m[1].charAt(0) === "0")))) hh = n;  // 24-hour clock: "at 17:30", "at 07:30", "at 00:30"
+        else if (ap === "p") hh = n % 12 + 12;
+        else if (ap === "a") hh = n % 12;
+        else hh = n === 12 ? 12 : n < 8 ? n + 12 : n;          // no am/pm: 12 is noon, 1 to 7 are afternoon
+        mm = mins;
+      }
+    }
     if ((m = t.match(/\bin (\d{1,2}) hours?\b/))) return new Date(Date.now() + Number(m[1]) * 3600e3).toISOString();
     if (/\btonight\b/.test(t) && hh === null) hh = 20;
     if (days === null && hh === null) return null;
-    return atClock(days === null ? (hh <= wall().hh ? 1 : 0) : days, hh === null ? 9 : hh);
+    var implied = days === null || (days === 0 && /\btonight\b|\btoday\b/.test(t));
+    if (days === null) days = (hh < wall().hh || (hh === wall().hh && mm <= wall().mm)) ? 1 : 0;
+    var iso = atClock(days, hh === null ? 9 : hh, mm);
+    return days === 0 && Date.parse(iso) <= Date.now() ? (implied && /\btonight\b/.test(t) ? ahead(iso, false) : ahead(iso, true)) : iso;
   }
   function addReminder(text, due) {
     text = String(text || "").trim(); if (!text) return;
@@ -3568,7 +3692,7 @@ button.chip-source svg { width: 12px; height: 12px; }
     patch[id] = { text: text.slice(0, 280), due: due || remParse(text) || null, at: nowIso() };
     remWrite(patch).then(function (ok) { if (ok) toast("Reminder added" + (patch[id].due ? " for " + whenLabel(patch[id].due) : "") + ". ant. gathers what bears on it."); });
   }
-  function whenLabel(iso) { if (!iso) return "No time"; var w = wall(Date.parse(iso)), today = wall(); var day = wallDay(w) === wallDay(today) ? "Today" : DAYS[w.wd] + " " + pad(w.d) + " " + MONTHS[w.m - 1]; return day + " " + pad(w.hh) + ":" + pad(w.mm); }
+  function whenLabel(iso) { if (!iso) return "No time"; var w = wall(Date.parse(iso)), today = wall(); if (!w || !today) return "No time"; var day = wallDay(w) === wallDay(today) ? "Today" : DAYS[w.wd] + " " + pad(w.d) + " " + MONTHS[w.m - 1]; return day + " " + pad(w.hh) + ":" + pad(w.mm); }
   function remForm(compact) {
     var box = h("input", { class: "field", name: "remind", maxlength: "280", placeholder: "Remind me to...", "aria-label": "Remind me to" });
     var pick = { due: null };
@@ -3577,9 +3701,10 @@ button.chip-source svg { width: 12px; height: 12px; }
     var paintHint = function () { var d = pick.due || remParse(box.value); hint.textContent = d ? "Due " + whenLabel(d) : "No time yet"; };
     box.addEventListener("input", paintHint);
     var chip = function (label, fn) { return h("button", { class: "chip chip-filter", type: "button", onclick: function (e) { pick.due = fn(); Array.prototype.forEach.call(e.currentTarget.parentNode.children, function (c) { c.setAttribute("aria-pressed", c === e.currentTarget ? "true" : "false"); }); paintHint(); } }, label); };
-    var form = h("form", { class: "rem-form", onsubmit: function (e) { e.preventDefault(); if (!box.value.trim()) { box.focus(); return; } addReminder(box.value, pick.due); box.value = ""; pick.due = null; paintHint(); } }, [
+    var form = h("form", { class: "rem-form", onsubmit: function (e) { e.preventDefault(); if (!box.value.trim()) { box.focus(); return; } addReminder(box.value, pick.due); box.value = ""; pick.due = null;
+      Array.prototype.forEach.call(form.querySelectorAll(".chip[aria-pressed]"), function (c) { c.setAttribute("aria-pressed", "false"); }); paintHint(); } }, [
       h("div", { class: "ask-form" }, [box, h("button", { class: "btn btn-primary", type: "submit" }, [icon(ICON.plus, 16), "Add"])]),
-      h("div", { class: "filters" }, [chip("Later today", function () { return atClock(0, Math.min(20, wall().hh + 3)); }), chip("Tomorrow 09:00", function () { return atClock(1, 9); }),
+      h("div", { class: "filters" }, [chip("Later today", function () { return ahead(atClock(0, Math.min(20, wall().hh + 3)), false); }), chip("Tomorrow 09:00", function () { return atClock(1, 9); }),
         chip("Monday 09:00", function () { return atClock(((8 - wall().wd) % 7) || 7, 9); }), chip("No time", function () { return null; }), hint]), eg]);
     paintHint();
     return form;
@@ -3606,22 +3731,25 @@ button.chip-source svg { width: 12px; height: 12px; }
       box.textContent = ""; got = (S.tldr || {})[key];
       if (got && got.text) { box.appendChild(answerView(got.text)); box.appendChild(h("p", { class: "prov" }, "Written by Claude from your Home's data, " + fmtDate(got.at, false) + ".")); return; }
       if (S.remBusy[key]) { box.appendChild(h("p", { class: "prov" }, "Gathering what you need...")); return; }
+      if (S.remErr[key]) box.appendChild(h("p", { class: "prov" }, askError(S.remErr[key])));
       if (S.sample) box.appendChild(h("button", { class: "btn btn-ghost btn-sm", type: "button", onclick: run }, "Brief me"));
     };
     var run = function () {
-      if (!S.sample || S.remBusy[key]) return; S.remBusy[key] = true; paint();
+      if (!S.sample || S.remBusy[key]) return; S.remBusy[key] = true; delete S.remErr[key]; paint();
       S.sample([{ role: "user", content: ASK_RULES + askContext() }, { role: "user", content: "My reminder: “" + r.text + "”. In two to four bullets: what I need to know or have in hand to do it now, and who it involves. Cite names and dates from the data. If the data holds nothing on it, say so in one line." }], { modelTier: "quick" })
         .then(function (res) { S.remBusy[key] = false; S.tldr[key] = { text: String((res && res.text) || "").slice(0, 1500), at: nowIso() }; saveTldr(); paint(); },
-          function () { S.remBusy[key] = false; paint(); });
+          function (e) { S.remBusy[key] = false; S.remErr[key] = e || { code: "unavailable" }; paint(); });
     };
     paint();
-    if (!got && S.sample && remDue(r) && !S.remBusy[key]) setTimeout(run, 0);
+    // Written by itself once per load; after a failure only "Brief me" tries again.
+    if (!got && S.sample && remDue(r) && !S.remBusy[key] && !S.remErr[key]) setTimeout(run, 0);
     return box;
   }
   function remRow(r) {
     var circle = doneCircle("Done", function () { var p = {}; p[r.id] = { done_at: nowIso() }; remWrite(p); toast("Reminder done.", function () { var u = {}; u[r.id] = { done_at: null }; remWrite(u); }); });
     var later = h("button", { class: "btn btn-quiet btn-sm", type: "button", onclick: function () { var p = {}; p[r.id] = { due: atClock(1, 9) }; remWrite(p); toast("Moved to tomorrow 09:00."); } }, [icon(ICON.time, 16), h("span", null, "Tomorrow")]);
-    var del = h("button", { class: "btn btn-ghost btn-sm", type: "button", onclick: function () { var p = {}; p[r.id] = { done_at: nowIso(), dropped: true }; remWrite(p); } }, h("span", null, "Drop"));
+    var del = h("button", { class: "btn btn-ghost btn-sm", type: "button", onclick: function () { var p = {}; p[r.id] = { done_at: nowIso(), dropped: true }; remWrite(p);
+      toast("Reminder dropped.", function () { var u = {}; u[r.id] = { done_at: null, dropped: null }; remWrite(u); }); } }, h("span", null, "Drop"));
     return h("div", { class: "row rem-row" + (remDue(r) ? " is-due" : "") }, [h("div", { class: "row-lead" }, circle),
       h("div", { class: "row-main" }, [h("span", { class: "row-title" }, r.text), h("div", { class: "row-meta" }, [h("span", { class: "status" + (r.due && Date.parse(r.due) < Date.now() ? " breach" : remDue(r) ? " hero" : "") }, r.due ? (Date.parse(r.due) < Date.now() ? "Was due " : "Due ") + whenLabel(r.due) : "No time")]),
         remContext(r), remDue(r) ? remBrief(r) : null]),
@@ -3648,14 +3776,31 @@ button.chip-source svg { width: 12px; height: 12px; }
   }
 
   // ---------------------------------------------------------------- sheets
-  var lastFocus = null;
+  var lastFocus = null; var lastFocusId = null, lastFocusSec = null, ovOpenedAt = 0;  // ovOpenedAt and toast stamps share uiSeq, a counter (clocks can tie)
   function closeOverlay() { document.getElementById("overlay-slot").textContent = ""; S.sheetFn = null; S.noteOpen = null; S.curPanel = null; var sh = document.querySelector(".ah-shell"); if (sh) sh.removeAttribute("inert");
-    if (lastFocus && lastFocus.focus && document.body.contains(lastFocus)) lastFocus.focus(); }
+    // Never back onto an older toast's Undo: Enter there would undo something else.
+    var stale = lastFocus && lastFocus.closest && lastFocus.closest(".toast") && (lastFocus.closest(".toast")._at || 0) < (ovOpenedAt || 0);
+    if (lastFocus && lastFocus.focus && document.body.contains(lastFocus) && !stale) lastFocus.focus();
+    else if (stale && document.activeElement && document.activeElement !== document.body) document.activeElement.blur();
+    // The opener is re-rendered away (Approve, Skip, Sent): focus its row again, else the next row in its section, else Undo.
+    var refocus = function () {
+      var cur = document.activeElement;
+      if (cur && cur !== document.body && document.body.contains(cur)) return;
+      var q = function (sel) { return document.querySelector(sel); }, id = String(lastFocusId || "").replace(/"/g, ""), el = id && q('.row-hit[data-id="' + id + '"], button[data-id="' + id + '"]');
+      if (!el && lastFocusSec) { var sec = q('section[aria-label="' + String(lastFocusSec).replace(/"/g, "") + '"]'); el = sec && sec.querySelector(".row-hit, button"); }
+      // A toast's Undo only when this sheet made it: an older toast's Undo is never one Enter away.
+      if (!el) { var tb = q(".toast"); if (tb && (tb._at || 0) > (ovOpenedAt || 0)) el = tb.querySelector("button"); }
+      if (!el) { el = q("main h1, main h2, .ah-main h1, .ah-main h2"); if (el) el.setAttribute("tabindex", "-1"); }
+      if (el && el.focus) el.focus();
+    };
+    setTimeout(refocus, 0); setTimeout(refocus, 150); }
   // A sheet from the bottom; with drawer set, a side panel on a laptop. A panel opened from another one has Back.
   function overlay(title, body, opts) {
     opts = opts || {};
     var slot = document.getElementById("overlay-slot"), wasOpen = !!slot.firstChild;
-    if (!wasOpen) lastFocus = document.activeElement;
+    if (!wasOpen) { lastFocus = document.activeElement; ovOpenedAt = ++uiSeq;
+      var hit = lastFocus && lastFocus.closest ? lastFocus.closest("[data-id]") : null, sec = lastFocus && lastFocus.closest ? lastFocus.closest("section[aria-label]") : null;
+      lastFocusId = hit ? hit.getAttribute("data-id") : null; lastFocusSec = sec ? sec.getAttribute("aria-label") : null; }
     var back = opts.back || null;
     slot.textContent = "";
     var head = h("div", { class: "sheet-h" }, [
@@ -3746,7 +3891,7 @@ button.chip-source svg { width: 12px; height: 12px; }
         (c.due ? " (due " + fmtDate(c.due, false) + ")" : "")]);
     });
     var lines = (nt.lines || []).map(function (l) {
-      return h("li", null, [h("time", null, l.t ? String(l.t).replace(/^00:/, "") : ""), h("span", null, [l.who ? h("b", null, l.who + ": ") : null, l.text])]);
+      return h("li", null, [h("time", null, l.t ? String(l.t).replace(/^00:/, "") : ""), " ", h("span", null, [l.who ? h("b", null, l.who + ": ") : null, l.text])]);
     });
     var url = safeUrl(nt.url);
     var body = [
@@ -3772,10 +3917,12 @@ button.chip-source svg { width: 12px; height: 12px; }
     if (card.kind === "partner") { openPartnerPack(card); return; }
     var me = String(cfg().user_name || "").toLowerCase();
     var qs = (card.questions && card.questions.length ? card.questions : card.question_seeds || []).slice(0, 3);
-    var body = [
-      card.watch ? h("p", { class: "watch" }, "Watch: " + card.watch) : null,
+    // Same anatomy as every panel: TL;DR first, the timeline after the facts.
+    var tl = [card.watch ? h("p", { class: "watch" }, "Watch: " + card.watch) : null,
       card.finding && card.finding !== card.watch ? h("p", { class: "finding" }, card.finding) : null,
-      card.context && card.context !== card.finding ? h("p", { class: "finding" }, card.context) : null,
+      card.context && card.context !== card.finding ? h("p", { class: "finding" }, card.context) : null].filter(Boolean);
+    var body = [
+      h("div", { class: "kv" }, [h("h3", null, "TL;DR")].concat(tl.length ? tl : [h("p", { class: "prov" }, "No summary yet. The facts below are what ant. knows.")])),
       kv(card.questions && card.questions.length ? "Ask" : "Worth raising", qs.map(function (q) { return h("li", null, q); }), true),
       kv("Open promises", (card.open_commitments || []).map(function (c) {
         var mine = c.side ? c.side === "us" : String(c.owed_by || "").toLowerCase() === me;
@@ -3809,7 +3956,7 @@ button.chip-source svg { width: 12px; height: 12px; }
         var keys = [];
         (card.attendees || []).forEach(function (a) { if (a.id) keys.push("p:" + a.id); var cid = companyIdFor(a.company); if (cid) keys.push("c:" + cid); });
         var evs = eventsFor(keys.filter(function (k, i, all) { return all.indexOf(k) === i; }));
-        return evs.length ? h("div", { class: "kv" }, [h("h3", null, "Timeline"), timelineView(evs.slice(0, 10))]) : null;
+        return h("div", { class: "kv" }, [h("h3", null, "Timeline"), timelineView(evs, 5)]);
       })(),
       h("p", { class: "prov" }, "ant. · calendar, email, notes and CRM")
     ].filter(Boolean);
@@ -4231,15 +4378,15 @@ button.chip-source svg { width: 12px; height: 12px; }
   // Most people pick how deep the answer goes; Custom shows the model and effort themselves.
   var ASK_STYLE = [["quick", "Quick", "haiku", "low"], ["balanced", "Balanced", "auto", "auto"], ["thorough", "Thorough", "opus", "high"], ["custom", "Custom", null, null]];
   function askStyle() { var v = S.askStyle; if (!v) { try { v = localStorage.getItem("ant.askStyle"); } catch (x) {} } return v || "balanced"; }
-  function askPick() {
-    var st = ASK_STYLE.filter(function (x) { return x[0] === askStyle(); })[0];
+  function askPick(style) {
+    var st = ASK_STYLE.filter(function (x) { return x[0] === (style || askStyle()); })[0];
     if (st && st[2]) { var mm0 = ASK_MODELS.filter(function (x) { return x[0] === st[2]; })[0]; return { key: mm0[0], label: st[1] + (mm0[2] ? " · " + mm0[1] : ""), model: mm0[2], tier: mm0[3], effort: st[3] === "auto" ? null : st[3] }; }
     var m = null, e = null; try { m = localStorage.getItem("ant.askModel"); e = localStorage.getItem("ant.askEffort"); } catch (x) {}
     var mm = ASK_MODELS.filter(function (x) { return x[0] === (S.askModel || m); })[0] || ASK_MODELS[0], ee = S.askEffort || e || "auto";
     return { key: mm[0], label: mm[1], model: mm[2], tier: mm[3], effort: ee === "auto" ? null : ee };
   }
   function askPickers() {
-    var pick = askPick();
+    var pick = askPick("custom");  // the custom lists show what Custom sends
     var sel = function (name, label, opts, now, fn) {
       var el = h("select", { class: "field tf", name: name, "aria-label": label }, opts.map(function (o) { var op = h("option", { value: o[0] }, o[1]); if (o[0] === now) op.selected = true; return op; }));
       el.addEventListener("change", function () { fn(el.value); });
@@ -4329,6 +4476,7 @@ button.chip-source svg { width: 12px; height: 12px; }
   }
   // Quick ask from any screen: the same search and the same conversation, in a sheet.
   // The floating button: Ask, or Remind me. Both work from any screen.
+  var remReopen = function () { openQuick("remind"); }; remReopen.rem = true;
   function openQuick(mode) {
     if (mode === "remind") {
       var open = remOpen();
@@ -4336,7 +4484,7 @@ button.chip-source svg { width: 12px; height: 12px; }
           h("button", { class: "chip", type: "button", "aria-pressed": "false", onclick: function () { openQuick("ask"); } }, "Ask"),
           h("button", { class: "chip", type: "button", "aria-pressed": "true" }, "Remind me")]),
         remForm(), open.length ? h("div", { class: "list" }, open.slice(0, 4).map(remRow)) : h("p", { class: "prov" }, "Nothing on your list yet."),
-        h("div", null, h("button", { class: "btn btn-ghost btn-sm", type: "button", onclick: function () { closeOverlay(); go("reminders"); } }, "All reminders"))]);
+        h("div", null, h("button", { class: "btn btn-ghost btn-sm", type: "button", onclick: function () { closeOverlay(); go("reminders"); } }, "All reminders"))], { reopen: remReopen });
       setTimeout(function () { var b = document.querySelector(".sheet input[name=remind]"); if (b) b.focus(); }, 0);
       return;
     }

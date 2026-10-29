@@ -3669,20 +3669,24 @@ def _notes_snap(bundle, store, home, ctx, now_iso) -> dict[str, Any] | None:
             continue
         lines, raw = commit_mod.transcript_lines(tr), tr.get("lines") or []
         summary = tr.get("summary") or tr.get("tldr") or tr.get("notes")
-        if isinstance(summary, list):
-            summary = "\n".join(f"- {s}" for s in summary if s)
+        if isinstance(summary, (list, dict)):
+            parts = [x for x in timeline._summary_text(summary).split("; ") if x]
+            summary = "\n".join(f"- {x}" for x in parts) if parts else None
         old[tid] = {
             "id": tid, "event_id": tr.get("event_id"), "title": clip(str(tr.get("title") or "Meeting"), 120), "date": tr.get("date"),
             "url": tr.get("url"), "source": _note_source(tr.get("url")),
             "attendees": [a.get("name") for a in tr.get("attendees") or [] if isinstance(a, dict) and a.get("name")][:12],
             "summary": clip(str(summary), 1500) if summary else (old.get(tid) or {}).get("summary"),
             "lines": [{"t": (raw[i] if i < len(raw) and isinstance(raw[i], dict) else {}).get("t"),
-                       "who": l["speaker"], "text": clip(str(l["text"]), 400)} for i, l in enumerate(lines[:160]) if str(l.get("text") or "").strip()],
+                       "who": clip(str(l["speaker"] or ""), 120), "text": clip(str(l["text"]), 400)} for i, l in enumerate(lines[:160]) if str(l.get("text") or "").strip()],
             "more": max(0, len(lines) - 160),
         }
     if not old:
         return None
+    old = {tid: n for tid, n in old.items() if isinstance(n, dict)}
     for tid, n in old.items():
+        n["id"] = n.get("id") or tid
+        n["lines"] = n.get("lines") if isinstance(n.get("lines"), list) else []
         n["promises"] = promises.get(tid, n.get("promises") or [])[:8]
     fresh = [n for n in old.values() if not (parse_dt(n.get("date")) and (ctx["now"] - parse_dt(n["date"])).days > NOTES_KEEP_DAYS)]
     fresh.sort(key=lambda n: str(n.get("date") or ""), reverse=True)
@@ -3693,7 +3697,7 @@ def _notes_snap(bundle, store, home, ctx, now_iso) -> dict[str, Any] | None:
             n = {**n, "lines": n["lines"][:40], "more": n.get("more", 0) + max(0, len(n["lines"]) - 40)}
             size = len(json.dumps(n, default=str))
             if used + size > NOTES_BUDGET:
-                break
+                continue  # this one does not fit; the older ones still might
         items[n["id"]] = n
         used += size
     return {"as_of": now_iso, "items": items}

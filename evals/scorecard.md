@@ -1,8 +1,8 @@
 # ant. for VCs: eval scorecard
 
-Run at 29 Oct 2026 12:00. Golden fund: Quillwater Ventures (fictional).
+Run at 29 Oct 2026 14:05. Golden fund: Quillwater Ventures (fictional).
 
-**234 of 235 checks pass.** 7 Claude-run scores skipped: no saved run.
+**235 of 235 checks pass.** 7 Claude-run scores skipped: no saved run.
 
 | Suite | Check | Result | Threshold | Pass |
 | --- | --- | --- | --- | --- |
@@ -43,7 +43,7 @@ Run at 29 Oct 2026 12:00. Golden fund: Quillwater Ventures (fictional).
 | homedb | snapshot sizes, batches and version pins | max 62 KiB, 17 docs | <= 256 KiB, pins kept | yes |
 | actions | Home taps flow back through the engine | 6/6 | all | yes |
 | safety | no send tools in skills | 0 violations | 0 | yes |
-| plugin | skills well-formed | 13/14 | all | NO |
+| plugin | skills well-formed | 14/14 | all | yes |
 | design | design lint (tokens, radii, spacing, type, mark) | 0 drift | 0 | yes |
 | replay | 5 days of runs keep Home whole (aditi) | 214/214 | all | yes |
 | replay | 5 days of runs keep Home whole (vikram) | 212/212 | all | yes |
@@ -179,7 +179,7 @@ Run at 29 Oct 2026 12:00. Golden fund: Quillwater Ventures (fictional).
 | round11 | a pitch answered on Thu 22 is never answered again, to Wed 11 Nov | 19 answered; again on [] | N; none | yes |
 | round11 | in a partner's Home a cash warning never tells her to check with a colleague on her own boards | warnings ['Runway under 9 months: decide whether to help hire before anyone starts looking', 'Burn up 43.3% in a month: decide whether to help hire before anyone starts looking'] | no 'check with' naming someone else, or 'your call' | yes |
 | round11 | the guard refuses order-like data names at either end and Artifact reads that save files | wrongly allowed []; wrongly refused []; file-saving reads allowed 0; plain read and list True | []; []; 0; True | yes |
-| scale | ten times the golden fund: fast, small, still names the deal | 0.3s, 239 KiB max | < 10s, < 240 KiB | yes |
+| scale | ten times the golden fund: fast, small, still names the deal | 0.7s, 239 KiB max | < 10s, < 240 KiB | yes |
 | round12 | a pulse that sends no deals keeps every deal's CRM stage label | changed [] | [] | yes |
 | round12 | on a Friday Today names Monday's meetings with their prep, Monday's card leads with what the room decides, and its questions outlast the day's pulses | tomorrow [('Monday', 'Monday partner meeting', True)]; finding Decide on Gravity Payouts by 31 Oct, and 10 more; Sable: Deadline 23 Oct passes before this meeting: decide by then w; questions at 08:29 3 | [('Monday', ..., True)]; not Sable first; 'passes before this meeting'; 3 | yes |
 | round12 | Sent it on a pitch reply closes the pitch: no 'book a call' row after it | back on []; answered ['i_0e2115836d'] | []; the pitch | yes |
@@ -248,7 +248,3 @@ Run at 29 Oct 2026 12:00. Golden fund: Quillwater Ventures (fictional).
 | llm | prep cards: who, three questions, source | skipped | - | skipped |
 | llm | KPIs read from founder updates | skipped | - | skipped |
 | llm | scheduled pulse applies only what was shown, safely | skipped | - | skipped |
-
-## Failure detail
-
-- plugin, skills well-formed: pulse: 3011 words

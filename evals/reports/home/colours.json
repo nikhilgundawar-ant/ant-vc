@@ -27,8 +27,8 @@
   {
    "theme": "light",
    "state": "aditi-prep",
-   "checked": 89,
-   "marks": 56,
+   "checked": 66,
+   "marks": 41,
    "min": 5.05,
    "fails": 0
   },
@@ -219,8 +219,8 @@
   {
    "theme": "dark",
    "state": "aditi-prep",
-   "checked": 89,
-   "marks": 56,
+   "checked": 66,
+   "marks": 41,
    "min": 4.98,
    "fails": 0
   },

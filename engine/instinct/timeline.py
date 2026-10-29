@@ -46,6 +46,37 @@ def _app(url: Any, default: str) -> str:
     return default
 
 
+def _link(url: Any) -> str | None:
+    """Only a plain web link is written: a line without one is never shown."""
+    u = str(url or "").strip()
+    return u if re.match(r"^https?://\S", u) else None
+
+
+def _money(v: Any) -> str | None:
+    return f"${v:,.0f}" if isinstance(v, (int, float)) and not isinstance(v, bool) else None
+
+
+def _summary_text(summ: Any) -> str:
+    """A notes app's summary as one readable line: a string, a list of strings or of {text}, or a dict of those."""
+    if isinstance(summ, dict):
+        summ = [v for v in summ.values()]
+    if isinstance(summ, list):
+        parts = []
+        for x in summ:
+            if isinstance(x, dict):
+                x = x.get("text") or x.get("summary") or ""
+            elif isinstance(x, list):
+                x = "; ".join(str(y) for y in x if isinstance(y, (str, int, float)))
+            if isinstance(x, (str, int, float)) and str(x).strip():
+                parts.append(str(x).strip())
+        return "; ".join(parts)
+    return str(summ) if isinstance(summ, (str, int, float)) else ""
+
+
+def _when(e: dict[str, Any]):
+    return parse_dt(e.get("at"))
+
+
 def shard_of(key: str) -> int:
     return int(hashlib.sha1(key.encode()).hexdigest(), 16) % SHARDS
 
@@ -59,9 +90,10 @@ def build(ctx: dict[str, Any], bundle: dict[str, Any], store: list[dict[str, Any
     out: dict[str, dict[str, dict[str, Any]]] = {}
 
     def add(key: str | None, ev: dict[str, Any]) -> None:
-        if not key or not ev.get("at") or not ev.get("url"):
+        link = _link(ev.get("url"))
+        if not key or not ev.get("at") or not link:
             return  # a line without its link is never shown
-        out.setdefault(key, {})[ev["id"]] = ev
+        out.setdefault(key, {})[ev["id"]] = {**ev, "url": link}
 
     def keys_for(pids: list[str]) -> list[str]:
         ks: list[str] = []
@@ -84,7 +116,8 @@ def build(ctx: dict[str, Any], bundle: dict[str, Any], store: list[dict[str, Any
     # Mail: who wrote last and what they said, in one line.
     for th in bundle.get("threads") or []:
         msgs = [m for m in th.get("messages") or [] if isinstance(m, dict)]
-        last = max(msgs, key=lambda m: str(m.get("date") or ""), default={})
+        dated = [(parse_dt(m.get("date"), tz), m) for m in msgs]
+        last = max((x for x in dated if x[0]), key=lambda x: x[0], default=(None, {}))[1] if any(x[0] for x in dated) else (msgs[-1] if msgs else {})
         when = parse_dt(last.get("date") or th.get("date"), tz)
         if not when:
             continue
@@ -129,10 +162,7 @@ def build(ctx: dict[str, Any], bundle: dict[str, Any], store: list[dict[str, Any
         tr = notes_by_event.get(m.get("id"))
         note_ev = None
         if tr and tr.get("url"):
-            summ = tr.get("summary")
-            if isinstance(summ, list):
-                summ = "; ".join(str(s) for s in summ if s)
-            first = " ".join(str(summ or "").replace("- ", "").split())
+            first = " ".join(_summary_text(tr.get("summary")).replace("- ", "").split())
             note_ev = {"id": f"notes:{tr.get('id')}", "at": st.isoformat(), "src": _app(tr.get("url"), "Notes"), "url": tr.get("url"), "kind": "notes",
                        "note_id": tr.get("id"), "text": clip("Notes: " + (first or (tr.get("title") or "meeting notes")), 220)}
         for k in dict.fromkeys(ks):
@@ -170,20 +200,25 @@ def build(ctx: dict[str, Any], bundle: dict[str, Any], store: list[dict[str, Any
                                   "text": clip(f"Passed{' by ' + str(p_.get('by')) if p_.get('by') else ''}: {p_.get('reason') or ''}", 220)})
 
     # Founder updates: the month's numbers, against plan.
-    for cid, months in (bundle.get("portfolio_kpis") or {}).items():
-        for k in months or []:
+    kpis = bundle.get("portfolio_kpis") if isinstance(bundle.get("portfolio_kpis"), dict) else {}
+    for cid, months in kpis.items():
+        months = months if isinstance(months, list) else [months] if isinstance(months, dict) else []
+        for k in months:
+            if not isinstance(k, dict):
+                continue
             when = parse_dt(str(k.get("month") or "") + "-28", tz) if k.get("month") else None
             if not when or not k.get("source_url"):
                 continue
             bits = []
-            if k.get("revenue_usd") is not None:
-                bits.append(f"revenue ${k['revenue_usd']:,.0f}" + (f" vs plan ${k['plan_revenue_usd']:,.0f}" if k.get("plan_revenue_usd") else ""))
-            if k.get("burn_usd") is not None:
-                bits.append(f"burn ${k['burn_usd']:,.0f}")
-            if k.get("cash_usd") is not None:
-                bits.append(f"cash ${k['cash_usd']:,.0f}")
-            for dep in k.get("departures") or []:
-                bits.append(f"{dep.get('name')} ({dep.get('role')}) leaving")
+            if _money(k.get("revenue_usd")):
+                bits.append(f"revenue {_money(k['revenue_usd'])}" + (f" vs plan {_money(k.get('plan_revenue_usd'))}" if _money(k.get("plan_revenue_usd")) else ""))
+            if _money(k.get("burn_usd")):
+                bits.append(f"burn {_money(k['burn_usd'])}")
+            if _money(k.get("cash_usd")):
+                bits.append(f"cash {_money(k['cash_usd'])}")
+            for dep in k.get("departures") if isinstance(k.get("departures"), list) else []:
+                if isinstance(dep, dict) and dep.get("name"):
+                    bits.append(f"{dep.get('name')}" + (f" ({dep.get('role')})" if dep.get("role") else "") + " leaving")
             add("c:" + str(cid), {"id": f"kpi:{cid}:{k.get('month')}", "at": when.isoformat(), "src": _app(k.get("source_url"), "Founder update"),
                                   "url": k.get("source_url"), "kind": "update", "text": clip(f"{k.get('month')} update: " + ", ".join(bits), 220)})
 
@@ -194,7 +229,7 @@ def build(ctx: dict[str, Any], bundle: dict[str, Any], store: list[dict[str, Any
             when = parse_dt(lp_.get(field), tz)
             if when and url:
                 add("lp:" + str(lp_.get("id")), {"id": f"lp:{lp_.get('id')}:{field}", "at": when.isoformat(), "src": _app(url, "LP list"), "url": url,
-                                                 "kind": "lp", "text": label + (f": ${lp_.get('called_usd'):,.0f} called" if field == "last_call_date" and lp_.get("called_usd") else "")})
+                                                 "kind": "lp", "text": label + (f": {_money(lp_.get('called_usd'))} called" if field == "last_call_date" and _money(lp_.get("called_usd")) else "")})
 
     # Pitches: when it came in and what ant. made of it.
     for r in inbound_rows or []:
@@ -211,37 +246,59 @@ def merge_snaps(new: dict[str, list[dict[str, Any]]], home: dict[str, Any], now,
     person with a timeline to their key, so a draft's recipient or a CRM contact finds its person."""
     merged: dict[str, dict[str, dict[str, Any]]] = {}
     for i in range(SHARDS):
-        for k, evs in ((((home.get("snap") or {}).get(f"timeline_{i}") or {}).get("items")) or {}).items():
-            for ev in evs or []:
-                if isinstance(ev, dict) and ev.get("id"):
-                    merged.setdefault(k, {})[ev["id"]] = ev
+        old_items = (((home.get("snap") or {}).get(f"timeline_{i}") or {}).get("items"))
+        if not isinstance(old_items, dict):
+            continue
+        for k, evs in old_items.items():
+            for ev in evs if isinstance(evs, list) else []:
+                # Old events meet the same rules as new ones: a readable date and a web link.
+                if isinstance(ev, dict) and ev.get("id") and _when(ev) and _link(ev.get("url")):
+                    merged.setdefault(str(k), {})[ev["id"]] = ev
     for k, evs in new.items():
         for ev in evs:
             merged.setdefault(k, {})[ev["id"]] = ev
     floor = now - timedelta(days=KEEP_DAYS)
     shards: list[dict[str, list[dict[str, Any]]]] = [{} for _ in range(SHARDS)]
     for k, evs in merged.items():
-        keep = [e for e in evs.values() if (parse_dt(e.get("at")) or now) >= floor]
-        keep.sort(key=lambda e: str(e.get("at") or ""), reverse=True)
+        keep = [e for e in evs.values() if _when(e) and _when(e) >= floor]
+        keep.sort(key=lambda e: _when(e), reverse=True)  # by real time, whatever the offset
         if keep:
             shards[shard_of(k)][k] = keep[:PER_ENTITY]
-    out = {}
-    for i, items in enumerate(shards):
-        cap = PER_ENTITY
-        while len(json.dumps(items, default=str)) > SHARD_BUDGET and cap > 3:
-            cap -= 2
-            items = {k: v[:cap] for k, v in items.items()}
-        if items or (home.get("snap") or {}).get(f"timeline_{i}"):
-            out[f"timeline_{i}"] = {"as_of": as_of, "items": items}
-    if ctx and out.get("timeline_0") is not None:
-        emails = dict(((((home.get("snap") or {}).get("timeline_0") or {}).get("emails")) or {}))
+    emails: dict[str, str] = {}
+    if ctx:
+        old_e = (((home.get("snap") or {}).get("timeline_0") or {}).get("emails"))
+        emails = dict(old_e) if isinstance(old_e, dict) else {}
         lookup = ctx.get("lookup") or {}
         for k in merged:
             if k.startswith("p:"):
                 for e in (lookup.get(k[2:]) or {}).get("emails") or []:
                     if e:
                         emails[norm_email(e)] = k
-        out["timeline_0"]["emails"] = dict(list(emails.items())[-1500:])
+    size = lambda d: len(json.dumps(d, default=str, ensure_ascii=False).encode("utf-8"))
+    out = {}
+    for i, items in enumerate(shards):
+        extra = {}
+        if i == 0 and ctx:
+            live = {k for sh in shards for k in sh}
+            extra = {"emails": dict([kv for kv in emails.items() if kv[1] in live][-1500:])}
+        cap = PER_ENTITY
+        while size({"items": items, **extra}) > SHARD_BUDGET and cap > 1:
+            cap -= 1
+            items = {k: v[:cap] for k, v in items.items()}
+        # Still too big: the entities whose latest event is oldest go first, never the newest LP, pitch or deal.
+        if size({"items": items, **extra}) > SHARD_BUDGET:
+            order = sorted(items, key=lambda k: _when(items[k][0]), reverse=True)
+            kept: dict[str, list[dict[str, Any]]] = {}
+            for k in order:
+                kept[k] = items[k]
+                if size({"items": kept, **extra}) > SHARD_BUDGET:
+                    del kept[k]
+                    break
+            items = kept
+            if extra:
+                extra["emails"] = {e: k for e, k in extra["emails"].items() if k in items or any(k in sh for j, sh in enumerate(shards) if j)}
+        if items or (home.get("snap") or {}).get(f"timeline_{i}"):
+            out[f"timeline_{i}"] = {"as_of": as_of, "items": items, **extra}
     return out
 
 
@@ -279,13 +336,13 @@ def reminders(home: dict[str, Any], ctx: dict[str, Any], snaps: dict[str, Any], 
         text = " " + " ".join(str(r["text"]).lower().split()) + " "
         hits, seen = [], set()
         for low, key, label in sorted(names, key=lambda x: -len(x[0])):
-            if len(low) >= 4 and key not in seen and (f" {low} " in text or f" {low}," in text or f" {low}." in text or f" {low}'" in text):
+            if len(low) >= 4 and key not in seen and re.search(r"(?<![\w])" + re.escape(low) + r"(?![\w])", text):
                 seen.add(key)
                 hits.append({"key": key, "label": label, "events": (timelines.get(key) or [])[:3]})
             if len(hits) >= 3:
                 break
-        notes = [n for n in (notes_in.get(rid) or []) if isinstance(n, dict) and n.get("text") and n.get("url")][:4] or \
+        notes = [n for n in (notes_in.get(rid) if isinstance(notes_in.get(rid), list) else []) if isinstance(n, dict) and n.get("text") and _link(n.get("url"))][:4] or \
             ((old.get(rid) or {}).get("notes") or [])
-        out[rid] = {"related": hits, "notes": [{"text": clip(str(n["text"]), 220), "url": n["url"], "src": n.get("src") or _app(n["url"], "Source")} for n in notes],
+        out[rid] = {"related": hits, "notes": [{"text": clip(str(n["text"]), 220), "url": _link(n.get("url")), "src": n.get("src") or _app(n.get("url"), "Source")} for n in notes if isinstance(n, dict) and _link(n.get("url"))],
                     "checked_at": as_of}
     return {"as_of": as_of, "items": out}

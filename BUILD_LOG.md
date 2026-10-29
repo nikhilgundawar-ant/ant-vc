@@ -50,6 +50,29 @@ All scores below are simulations: one Claude agent played every panel member or 
 
 Claude-run evals (round five, on 0.4.0 skills): inbound triage 25 of 25 decisions match, scheduled pulse 15 of 15 safety checks, Claude-written brief 9 of 10 top lines, setup and morning brief run end to end. Their findings (46 numbered issues) were fixed in rounds five and six. Their 13 scores are read from saved runs kept out of git, so the runner counts them only where those runs exist. The Friday pulse on 0.7.2 scored 7 of 10 as Meera and as Tara; their 23 findings are fixed in round ten. The scheduled runs on 0.7.3 scored 7 of 10 each (Tara's nudge morning, Tara's and Meera's Fridays); their 30 findings are fixed in round eleven, except one product idea kept for later (a note to the partner whose view several drafts wait on). On 0.7.4 the same three runs scored 8, 8 and 7; round twelve fixes their findings, that note included, except one kept as a known limit: a scheduled run still types its bundle by hand. On 0.7.5 they scored 8, 8 and 8.5; round thirteen fixes their findings. On 0.7.6 they scored 9, 9 and 8 (`evals/reports/claude-runs/r13-summary.md`); round fourteen fixes their medium findings.
 
+## Round twenty-two (0.11.1): a QA council stress-tests every piece (simulated)
+
+Five simulated QA specialists each wrote a stress file under `evals/stress/` and reported findings to the developers. The coordinator fixed every one, re-ran all suites, then sent the build back for a second round. Round 2 found 9 more issues; all are fixed.
+
+| Suite | Round 1 start | Now |
+| --- | --- | --- |
+| `engine_fuzz.py` (engine with hostile bundles) | 20/41 | 41/41 |
+| `panels_send.py` (panels, drafts, sending) | 50/66 | 79/79 |
+| `data_security.py` (hostile data, links, scale) | 52/61 | 75/75 |
+| `a11y_layout.py` (keyboard, contrast, touch, widths) | 58/77 | 79/79 |
+| `reminders_ask_pdf.py` (reminders, Ask, PDF, Settings) | 114/141 | 158/158 |
+
+What was fixed:
+- **Sending.** A second Send during a slow send, or after closing and reopening the panel, no longer emails twice: there is one lock per draft. A sent draft never stays in the box. A failure after the panel closed shows a toast. "Name <email>" and Outlook's "Last, First <email>" read right, and text that is not an address is named in the confirm. Open in Gmail carries the edits. Deal, person and pitch sends are recorded.
+- **Learning.** Right and Not right write one rating per tap, not two. Draft edits name their record.
+- **Engine.** KPI, LP and summary fields of the wrong type no longer crash. Timelines sort by the real instant. Shards stay under 220 KB measured in UTF-8. Only http(s) links are kept. Name matching uses word boundaries. The safety lint exempts only Home's Gmail manifest line.
+- **Reminders.** 24-hour times and minutes are read, 12 means noon, and "30% off" is not a time. Times are right across clock changes, and a time already past rolls on. A failed brief tries once. Drop has Undo, and the bell sheet refreshes.
+- **Ask and PDF.** Code blocks show. Escaped pipes and split numbered lists render right. Chart gaps are gaps, many bars lie flat, and a cut is named. PDFs keep accented names, include the source link and save once on a double tap.
+- **Access.** Focus never falls to the page body after Approve or Send, and never lands on an older toast's Undo. Touch targets are 44px on phones. Contrast is fixed for the TL;DR note and negative bars. The toast clears the floating buttons. Long pasted links wrap. Reduced motion stops smooth scrolls.
+- **Data.** Timelines sort across time zones. Date-only events keep their day and year. A bad reminder date no longer blanks the tab. A capped timeline says "latest 24 of N".
+
+Regression after the fixes: Home QA 849/849, engine runner 235/235 (7 Claude-run evals skipped, as before), design lint 0 violations, plugin validate passed, safety lint clean.
+
 ## Round twenty-one (0.11.0): a side panel for everything, sending from Home, reminders
 
 What the owner asked, and what shipped:

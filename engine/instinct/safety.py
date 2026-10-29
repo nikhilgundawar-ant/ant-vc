@@ -189,13 +189,15 @@ def lint_skills(root: str) -> list[dict[str, Any]]:
                 continue
             path = os.path.join(folder, f)
             check_text = open(path, encoding="utf-8").read()
+            manifest_spans = [(x.start(), x.end()) for x in re.finditer(r'\{"server": "Gmail", "tools": \["send_message"\]\}', check_text)]
             for tool in FORBIDDEN_TOOLS:
                 for m in re.finditer(re.escape(tool), check_text):
                     line = check_text[: m.start()].count("\n") + 1
                     context = check_text[max(0, m.start() - 80): m.end() + 80]
-                    if re.search(r'"server": "Gmail", "tools": \["' + re.escape(tool) + r'"\]', context):
-                        continue  # Home's capability manifest: the page, not Claude, after the user's two taps
-                    if re.search(r"\b(never|do not|don't|must not|no)\b[^.\n]{0,80}" + re.escape(tool), context, re.I) or \
+                    if tool == "send_message" and any(a <= m.start() < b for a, b in manifest_spans):
+                        continue  # inside Home's capability manifest: the page, not Claude, after the user's two taps
+                    if re.search(r"\b(never|do not|don't|must not|cannot|can't)\b[^.\n]{0,40}\b(call|calls|use|uses|run|runs|invoke|touch)\b[^.\n]{0,40}" + re.escape(tool), context, re.I) or \
+                       re.search(r"\bno\b[^.\n]{0,20}" + re.escape(tool) + r"\b[^.\n]{0,10}\b(call|calls|ever)\b", context, re.I) or \
                        re.search(re.escape(tool) + r"[^.\n]{0,40}\b(is forbidden|never)\b", context, re.I):
                         continue  # a prohibition, not an instruction
                     violations.append({"file": os.path.relpath(path, root), "line": line, "tool": tool})

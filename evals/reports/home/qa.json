@@ -1,9 +1,9 @@
 {
  "checks": 849,
- "failed": 1,
+ "failed": 0,
  "complete": true,
  "scenarios": "all",
- "page_sha256": "c91679a281a7",
+ "page_sha256": "a5c74abd2bfa",
  "rows": [
   {
    "scenario": "today-380",
@@ -1239,7 +1239,7 @@
    "scenario": "colour-light-aditi-prep",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "89 texts, 56 marks, min 5.05:1"
+   "detail": "66 texts, 41 marks, min 5.05:1"
   },
   {
    "scenario": "colour-light-aditi-partner-pack",
@@ -1383,7 +1383,7 @@
    "scenario": "colour-dark-aditi-prep",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "89 texts, 56 marks, min 4.98:1"
+   "detail": "66 texts, 41 marks, min 4.98:1"
   },
   {
    "scenario": "colour-dark-aditi-partner-pack",
@@ -3663,7 +3663,7 @@
    "scenario": "research-map",
    "check": "a research run's empathy map shows on the card: says, thinks, does, feels and the source",
    "ok": true,
-   "detail": "erma: Re: Atlas Settlement. Sharing the latest numbers as discussed.\n\nGmail\n10\n12 Oct \u00b7 14:00\nMeeting\n\nMeeting: Atlas Settlement: partner check-in\n\nCalendar\n\nant. \u00b7 calendar, email, notes and CRM\n\nPDF"
+   "detail": "\nNotes: Atlas Settlement: terms call\n\nGranola\n5\n20 Oct \u00b7 18:00\nPromise\n\nAditi Rao promised: Send the term sheet markup (due 2026-10-23)\n\nGranola\nShow all 15\n\nant. \u00b7 calendar, email, notes and CRM\n\nPDF"
   },
   {
    "scenario": "ask",
@@ -3759,7 +3759,7 @@
    "scenario": "research-auto",
    "check": "the prep card shows the map: says, thinks, does, feels and the source",
    "ok": true,
-   "detail": "latest numbers as discussed.\n\nGmail\n10\n12 Oct \u00b7 14:00\nMeeting\n\nMeeting: Atlas Settlement: partner check-in\n\nCalendar\n\nant. \u00b7 calendar, email, notes and CRM\n\nPDF"
+   "detail": "anola\n5\n20 Oct \u00b7 18:00\nPromise\n\nAditi Rao promised: Send the term sheet markup (due 2026-10-23)\n\nGranola\nShow all 15\n\nant. \u00b7 calendar, email, notes and CRM\n\nPDF"
   },
   {
    "scenario": "research-signin",
@@ -4766,7 +4766,7 @@
   {
    "scenario": "panel-decision",
    "check": "Send sits in the panel's footer, always in reach",
-   "ok": false,
+   "ok": true,
    "detail": ""
   },
   {
