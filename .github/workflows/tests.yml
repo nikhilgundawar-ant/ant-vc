@@ -28,15 +28,12 @@ jobs:
     name: ant. Home in a real browser
     runs-on: ubuntu-latest
     timeout-minutes: 40
+    # Playwright's own image: Python, Chromium and its system libraries, already matched.
+    container: mcr.microsoft.com/playwright/python:v1.56.0-noble
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
-      - name: Install Playwright and Chromium
-        run: |
-          pip install playwright==1.56.0
-          python3 -m playwright install --with-deps chromium
+      - name: Playwright for Python
+        run: pip install --break-system-packages playwright==1.56.0 || pip install playwright==1.56.0
       - name: Home QA
         run: python3 evals/home_qa.py | tee home.txt && ! grep -q '^FAIL' home.txt
       - name: Stress suites
