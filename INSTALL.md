@@ -45,6 +45,31 @@ flowchart TD
 
 > **Do this or the checks will wait for you:** open Scheduled tasks, pick "ant." and "ant. weekend", and switch on **Automatically approve**. A guard still blocks everything except reading your tools, updating Home, CRM changes you approved, holds on your own calendar and saving drafts.
 
+## What you'll be asked to allow
+
+Claude shows a prompt for each of these. Tap **Allow** or **Accept**.
+
+**Needed for ant. to work**
+
+| Prompt | When | If you skip it |
+| --- | --- | --- |
+| Accept the plugin | Step 2 | Nothing installs |
+| Sign in to Gmail and Google Calendar | Step 4 | Setup stops: ant. needs both |
+| Approve the two scheduled checks | Step 6 | No briefs and no hourly checks |
+| Automatically approve, in Scheduled tasks | Step 6 | Every hourly check waits for your tap |
+
+**Asked once, the first time you use a feature in ant. Home**
+
+| Prompt | What it turns on | If you say no |
+| --- | --- | --- |
+| Use Claude | TL;DRs in side panels, Ask, and drafts written for you | Those features hide; the rest works |
+| Send with Gmail | Sending an edited draft from Home, after Send, then Send now | Use Open in Gmail instead |
+| Use the app's browser | LinkedIn and web research on people you meet, desktop app only | No empathy maps |
+| Save to Google Drive | Empathy maps saved as PDFs in Drive | Maps stay in Home |
+| Save a file | PDF downloads of any panel, asked each time | No PDF |
+
+Meeting notes, CRM and Drive connectors are optional. Each one you skip only turns off what it feeds, such as post-meeting follow-ups without notes. You can change any of these later in the page's permissions in the Claude app.
+
 ### Using Claude Code instead
 
 ```

@@ -126,6 +126,13 @@ h2 { font-weight: 700; font-size: clamp(24px, 4vw, 32px); letter-spacing: -.02em
 .dot { width: 10px; height: 10px; border-radius: 999px; flex: none; }
 .dot.r { background: var(--mid); } .dot.w { background: var(--hero); } .dot.n { background: var(--breach); }
 
+/* prompts */
+.perm { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px; }
+.perm dl { margin: 0; display: grid; gap: 12px; }
+.perm dl div { display: grid; gap: 2px; padding-top: 12px; border-top: 1px solid var(--rule); }
+.perm dt { font-weight: 700; }
+.perm dd { margin: 0; color: var(--ink-2); font-size: 15px; }
+
 /* help */
 details { background: var(--surface); border-radius: 12px; box-shadow: var(--shadow); padding: 4px 20px; }
 summary { cursor: pointer; font-weight: 700; padding: 14px 0; list-style: none; display: flex; justify-content: space-between; gap: 12px; }
@@ -202,6 +209,30 @@ footer { color: var(--ink-3); font-size: 14px; }
         <p class="warn"><b>Do this or the checks will wait for you:</b> open Scheduled tasks, pick "ant." and "ant. weekend", and switch on <b>Automatically approve</b>. A guard still blocks anything except reading your tools, updating Home, CRM changes you approved, holds on your own calendar and saving drafts.</p>
       </div></li>
     </ol>
+  </section>
+
+  <section aria-labelledby="allow">
+    <span class="label">Prompts</span>
+    <h2 id="allow">What you'll be asked to allow</h2>
+    <p class="sub">Claude shows a prompt for each of these. Tap Allow or Accept.</p>
+    <div class="perm">
+      <div class="card"><span class="tag must">Needed for ant. to work</span>
+        <dl>
+          <div><dt>Accept the plugin</dt><dd>Step 2. Without it, nothing installs.</dd></div>
+          <div><dt>Sign in to Gmail and Calendar</dt><dd>Step 4. Setup stops without both.</dd></div>
+          <div><dt>Approve the two scheduled checks</dt><dd>Step 6. No briefs without them.</dd></div>
+          <div><dt>Automatically approve</dt><dd>Step 6, in Scheduled tasks. Without it, every hourly check waits for your tap.</dd></div>
+        </dl></div>
+      <div class="card"><span class="tag nice">Asked once, on first use</span>
+        <dl>
+          <div><dt>Use Claude</dt><dd>TL;DRs, Ask and drafts. Say no and those hide.</dd></div>
+          <div><dt>Send with Gmail</dt><dd>Send from Home. Say no and use Open in Gmail.</dd></div>
+          <div><dt>Use the app's browser</dt><dd>LinkedIn research, desktop app only. Say no and there are no empathy maps.</dd></div>
+          <div><dt>Save to Google Drive</dt><dd>Empathy maps as PDFs. Say no and they stay in Home.</dd></div>
+          <div><dt>Save a file</dt><dd>PDF of any panel, asked each time.</dd></div>
+        </dl></div>
+    </div>
+    <p class="note">Notes, CRM and Drive connectors are optional. Each one you skip only turns off what it feeds. You can change any of these later in the page's permissions in the Claude app.</p>
   </section>
 
   <section aria-labelledby="how">

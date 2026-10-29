@@ -15,7 +15,7 @@ Plugin root: `${CLAUDE_PLUGIN_ROOT}`. If that is not a real path, use the folder
 
 Send one short message before any tool call:
 
-"Setting up ant. I'll check your tools, build your private ant. Home and send your first brief in about 10 minutes. You'll connect your tools, confirm three things and approve two scheduled checks.
+"Setting up ant. I'll check your tools, build your private ant. Home and send your first brief in about 10 minutes. You'll connect your tools, confirm three things and approve two scheduled checks. Then switch on Automatically approve for those two checks, or each hourly check waits for your tap. Your ant. Home also asks once, the first time you use each feature, to use Claude, send with Gmail, use the app's browser, save to Drive and save PDFs; saying no only hides that feature.
 
 What it does with your data: it reads your mail, calendar, notes and CRM to prepare your day. It drafts and proposes; nothing is sent, changed or deleted without your tap. What it builds lives in a private page in your Claude account that only you can open. Anthill runs no server, so nothing goes to Anthill. Say 'turn off ant.' any time to stop it and wipe its data."
 
