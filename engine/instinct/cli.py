@@ -31,7 +31,7 @@ from . import __version__
 from . import brief as brief_mod
 from . import commitments as commit_mod
 from . import graph as graph_mod
-from . import homedb, levels, lp, network, pipeline, portfolio, prep, safety, schedules, stages, thesis, tuning
+from . import homedb, levels, lp, network, pipeline, portfolio, prep, safety, schedules, stages, thesis, timeline, tuning
 from .resolve import resolve_people
 from .util import clip, draft_gaps, dump, fit_line, fmt_short_date, fmt_time, join_sentences, load, money, norm_email, parse_date, parse_dt, plural, sid, tzinfo
 
@@ -3632,6 +3632,11 @@ def _snapshots(ctx, config, profile, the_brief, prep_by_meeting, store, signals,
     notes_doc = _notes_snap(bundle, store, home, ctx, now_iso)
     if notes_doc:
         snaps["notes"] = notes_doc
+    # Timelines for the side panels: every company, person and LP, each event with its link.
+    snaps.update(timeline.merge_snaps(timeline.build(ctx, bundle, store, home, inbound_rows), home, ctx["now"], now_iso, ctx))
+    rem = timeline.reminders(home, ctx, snaps, bundle, now_iso)
+    if rem:
+        snaps["reminders"] = rem
     return snaps
 
 

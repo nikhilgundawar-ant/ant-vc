@@ -3,40 +3,40 @@
   {
    "theme": "light",
    "state": "aditi-today",
-   "checked": 137,
-   "marks": 76,
+   "checked": 138,
+   "marks": 81,
    "min": 3.24,
    "fails": 0
   },
   {
    "theme": "light",
    "state": "aditi-today-desk",
-   "checked": 142,
-   "marks": 78,
+   "checked": 144,
+   "marks": 85,
    "min": 3.24,
    "fails": 0
   },
   {
    "theme": "light",
    "state": "aditi-row-open",
-   "checked": 137,
-   "marks": 76,
+   "checked": 138,
+   "marks": 81,
    "min": 3.24,
    "fails": 0
   },
   {
    "theme": "light",
    "state": "aditi-prep",
-   "checked": 37,
-   "marks": 22,
+   "checked": 89,
+   "marks": 56,
    "min": 5.05,
    "fails": 0
   },
   {
    "theme": "light",
    "state": "aditi-partner-pack",
-   "checked": 71,
-   "marks": 10,
+   "checked": 72,
+   "marks": 13,
    "min": 5.05,
    "fails": 0
   },
@@ -51,184 +51,184 @@
   {
    "theme": "light",
    "state": "aditi-toast",
-   "checked": 140,
-   "marks": 77,
+   "checked": 141,
+   "marks": 82,
    "min": 3.24,
    "fails": 0
   },
   {
    "theme": "light",
    "state": "aditi-pipeline",
-   "checked": 318,
-   "marks": 45,
+   "checked": 320,
+   "marks": 52,
    "min": 3.24,
    "fails": 0
   },
   {
    "theme": "light",
    "state": "aditi-deal-open",
-   "checked": 191,
-   "marks": 52,
+   "checked": 267,
+   "marks": 91,
    "min": 3.24,
    "fails": 0
   },
   {
    "theme": "light",
    "state": "aditi-people",
-   "checked": 117,
-   "marks": 40,
+   "checked": 143,
+   "marks": 45,
    "min": 5.05,
    "fails": 0
   },
   {
    "theme": "light",
    "state": "aditi-portfolio",
-   "checked": 144,
-   "marks": 50,
+   "checked": 146,
+   "marks": 57,
    "min": 5.05,
    "fails": 0
   },
   {
    "theme": "light",
    "state": "aditi-lps",
-   "checked": 115,
-   "marks": 45,
+   "checked": 116,
+   "marks": 50,
    "min": 6.12,
    "fails": 0
   },
   {
    "theme": "light",
    "state": "kabir-today",
-   "checked": 132,
-   "marks": 55,
+   "checked": 133,
+   "marks": 60,
    "min": 4.65,
    "fails": 0
   },
   {
    "theme": "light",
    "state": "meera-pipeline",
-   "checked": 86,
-   "marks": 37,
+   "checked": 87,
+   "marks": 42,
    "min": 3.24,
    "fails": 0
   },
   {
    "theme": "light",
    "state": "rohan-today",
-   "checked": 129,
-   "marks": 55,
+   "checked": 130,
+   "marks": 60,
    "min": 4.65,
    "fails": 0
   },
   {
    "theme": "light",
    "state": "rohan-pipeline",
-   "checked": 152,
-   "marks": 40,
+   "checked": 154,
+   "marks": 47,
    "min": 3.24,
    "fails": 0
   },
   {
    "theme": "light",
    "state": "tara-portfolio",
-   "checked": 127,
-   "marks": 42,
+   "checked": 128,
+   "marks": 47,
    "min": 5.05,
    "fails": 0
   },
   {
    "theme": "light",
    "state": "vikram-lps",
-   "checked": 111,
-   "marks": 42,
+   "checked": 112,
+   "marks": 47,
    "min": 6.12,
    "fails": 0
   },
   {
    "theme": "light",
    "state": "vikram-today",
-   "checked": 109,
-   "marks": 52,
+   "checked": 111,
+   "marks": 59,
    "min": 4.65,
    "fails": 0
   },
   {
    "theme": "light",
    "state": "banners",
-   "checked": 139,
-   "marks": 76,
+   "checked": 140,
+   "marks": 81,
    "min": 3.24,
    "fails": 0
   },
   {
    "theme": "light",
    "state": "friday",
-   "checked": 150,
-   "marks": 78,
+   "checked": 151,
+   "marks": 83,
    "min": 3.24,
    "fails": 0
   },
   {
    "theme": "light",
    "state": "empty",
-   "checked": 11,
-   "marks": 35,
+   "checked": 12,
+   "marks": 40,
    "min": 7.39,
    "fails": 0
   },
   {
    "theme": "light",
    "state": "hover",
-   "checked": 852,
-   "marks": 78,
+   "checked": 864,
+   "marks": 85,
    "min": 3.24,
    "fails": 0
   },
   {
    "theme": "light",
    "state": "focus",
-   "checked": 142,
-   "marks": 79,
+   "checked": 144,
+   "marks": 86,
    "min": 3.24,
    "fails": 0
   },
   {
    "theme": "dark",
    "state": "aditi-today",
-   "checked": 137,
-   "marks": 84,
+   "checked": 138,
+   "marks": 89,
    "min": 3.8,
    "fails": 0
   },
   {
    "theme": "dark",
    "state": "aditi-today-desk",
-   "checked": 142,
-   "marks": 86,
+   "checked": 144,
+   "marks": 93,
    "min": 3.8,
    "fails": 0
   },
   {
    "theme": "dark",
    "state": "aditi-row-open",
-   "checked": 137,
-   "marks": 84,
+   "checked": 138,
+   "marks": 89,
    "min": 3.8,
    "fails": 0
   },
   {
    "theme": "dark",
    "state": "aditi-prep",
-   "checked": 37,
-   "marks": 22,
+   "checked": 89,
+   "marks": 56,
    "min": 4.98,
    "fails": 0
   },
   {
    "theme": "dark",
    "state": "aditi-partner-pack",
-   "checked": 71,
-   "marks": 10,
+   "checked": 72,
+   "marks": 13,
    "min": 4.98,
    "fails": 0
   },
@@ -243,144 +243,144 @@
   {
    "theme": "dark",
    "state": "aditi-toast",
-   "checked": 140,
-   "marks": 85,
+   "checked": 141,
+   "marks": 90,
    "min": 3.8,
    "fails": 0
   },
   {
    "theme": "dark",
    "state": "aditi-pipeline",
-   "checked": 318,
-   "marks": 53,
+   "checked": 320,
+   "marks": 60,
    "min": 3.8,
    "fails": 0
   },
   {
    "theme": "dark",
    "state": "aditi-deal-open",
-   "checked": 191,
-   "marks": 60,
+   "checked": 267,
+   "marks": 99,
    "min": 3.8,
    "fails": 0
   },
   {
    "theme": "dark",
    "state": "aditi-people",
-   "checked": 117,
-   "marks": 48,
+   "checked": 143,
+   "marks": 53,
    "min": 6.04,
    "fails": 0
   },
   {
    "theme": "dark",
    "state": "aditi-portfolio",
-   "checked": 144,
-   "marks": 58,
+   "checked": 146,
+   "marks": 65,
    "min": 6.04,
    "fails": 0
   },
   {
    "theme": "dark",
    "state": "aditi-lps",
-   "checked": 115,
-   "marks": 53,
+   "checked": 116,
+   "marks": 58,
    "min": 6.48,
    "fails": 0
   },
   {
    "theme": "dark",
    "state": "kabir-today",
-   "checked": 132,
-   "marks": 63,
+   "checked": 133,
+   "marks": 68,
    "min": 6.38,
    "fails": 0
   },
   {
    "theme": "dark",
    "state": "meera-pipeline",
-   "checked": 86,
-   "marks": 45,
+   "checked": 87,
+   "marks": 50,
    "min": 3.8,
    "fails": 0
   },
   {
    "theme": "dark",
    "state": "rohan-today",
-   "checked": 129,
-   "marks": 63,
+   "checked": 130,
+   "marks": 68,
    "min": 6.04,
    "fails": 0
   },
   {
    "theme": "dark",
    "state": "rohan-pipeline",
-   "checked": 152,
-   "marks": 48,
+   "checked": 154,
+   "marks": 55,
    "min": 3.8,
    "fails": 0
   },
   {
    "theme": "dark",
    "state": "tara-portfolio",
-   "checked": 127,
-   "marks": 50,
+   "checked": 128,
+   "marks": 55,
    "min": 6.04,
    "fails": 0
   },
   {
    "theme": "dark",
    "state": "vikram-lps",
-   "checked": 111,
-   "marks": 50,
+   "checked": 112,
+   "marks": 55,
    "min": 6.48,
    "fails": 0
   },
   {
    "theme": "dark",
    "state": "vikram-today",
-   "checked": 109,
-   "marks": 60,
+   "checked": 111,
+   "marks": 67,
    "min": 6.38,
    "fails": 0
   },
   {
    "theme": "dark",
    "state": "banners",
-   "checked": 139,
-   "marks": 84,
+   "checked": 140,
+   "marks": 89,
    "min": 3.8,
    "fails": 0
   },
   {
    "theme": "dark",
    "state": "friday",
-   "checked": 150,
-   "marks": 86,
+   "checked": 151,
+   "marks": 91,
    "min": 3.8,
    "fails": 0
   },
   {
    "theme": "dark",
    "state": "empty",
-   "checked": 11,
-   "marks": 43,
+   "checked": 12,
+   "marks": 48,
    "min": 7.84,
    "fails": 0
   },
   {
    "theme": "dark",
    "state": "hover",
-   "checked": 852,
-   "marks": 86,
+   "checked": 864,
+   "marks": 93,
    "min": 3.8,
    "fails": 0
   },
   {
    "theme": "dark",
    "state": "focus",
-   "checked": 142,
-   "marks": 87,
+   "checked": 144,
+   "marks": 94,
    "min": 3.8,
    "fails": 0
   }

@@ -38,7 +38,8 @@ Every command reads a bundle: one JSON file holding what you gathered from the u
   "thesis": {"sectors": [], "sector_keywords": [], "stages": [], "check_min_usd": 0, "check_max_usd": 0, "geographies": [], "anti_patterns": []},
   "unavailable": {"crm": "revoked"},
   "threads": [{"id": "", "subject": "", "date": "", "url": "", "participants": [{"name": "", "email": ""}],
-               "messages": [{"from": {"name": "", "email": ""}, "date": "", "text": ""}], "labels": []}],
+               "messages": [{"from": {"name": "", "email": ""}, "date": "", "text": "",
+                             "attachments": [{"name": "Deck.pdf", "url": "<link that opens it: Drive, or the Gmail message>"}]}], "labels": []}],
   "events": [{"id": "", "title": "", "start": "", "end": "", "url": "", "attendees": [{"name": "", "email": ""}]}],
   "transcripts": [{"id": "", "event_id": "", "title": "", "date": "", "url": "", "attendees": [{"name": "", "email": ""}],
                    "lines": [{"t": "00:01:27", "speaker": "", "text": ""}], "summary": "<the notes app's own summary, when it gives one: Home shows it as the TL;DR>"}],
@@ -53,7 +54,8 @@ Every command reads a bundle: one JSON file holding what you gathered from the u
            "owner": "colleague@firm.vc", "reup_window_start": "", "reup_window_end": "", "contacts": [""], "last_touch": "", "source_url": ""}],
   "portfolio_kpis": {"<company id>": [{"month": "2026-09", "revenue_usd": 0, "plan_revenue_usd": 0, "burn_usd": 0, "cash_usd": 0, "churn_pct": 0,
                                        "departures": [{"name": "", "role": ""}], "source_url": ""}]},
-  "empathy_maps": {"Person Name": "https://drive.google.com/..."}
+  "empathy_maps": {"Person Name": "https://drive.google.com/..."},
+  "reminder_notes": {"<reminder id from state/reminders>": [{"text": "What bears on it, one line", "url": "<link>", "src": "Gmail|Calendar|..."}]}
 }
 ```
 

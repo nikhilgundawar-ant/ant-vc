@@ -1,9 +1,9 @@
 {
- "checks": 785,
+ "checks": 847,
  "failed": 0,
  "complete": true,
  "scenarios": "all",
- "page_sha256": "bc5954300a2e",
+ "page_sha256": "5435a1a733c0",
  "rows": [
   {
    "scenario": "today-380",
@@ -1221,31 +1221,31 @@
    "scenario": "colour-light-aditi-today",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "137 texts, 76 marks, min 3.24:1"
+   "detail": "138 texts, 81 marks, min 3.24:1"
   },
   {
    "scenario": "colour-light-aditi-today-desk",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "142 texts, 78 marks, min 3.24:1"
+   "detail": "144 texts, 85 marks, min 3.24:1"
   },
   {
    "scenario": "colour-light-aditi-row-open",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "137 texts, 76 marks, min 3.24:1"
+   "detail": "138 texts, 81 marks, min 3.24:1"
   },
   {
    "scenario": "colour-light-aditi-prep",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "37 texts, 22 marks, min 5.05:1"
+   "detail": "89 texts, 56 marks, min 5.05:1"
   },
   {
    "scenario": "colour-light-aditi-partner-pack",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "71 texts, 10 marks, min 5.05:1"
+   "detail": "72 texts, 13 marks, min 5.05:1"
   },
   {
    "scenario": "colour-light-aditi-help",
@@ -1257,139 +1257,139 @@
    "scenario": "colour-light-aditi-toast",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "140 texts, 77 marks, min 3.24:1"
+   "detail": "141 texts, 82 marks, min 3.24:1"
   },
   {
    "scenario": "colour-light-aditi-pipeline",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "318 texts, 45 marks, min 3.24:1"
+   "detail": "320 texts, 52 marks, min 3.24:1"
   },
   {
    "scenario": "colour-light-aditi-deal-open",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "191 texts, 52 marks, min 3.24:1"
+   "detail": "267 texts, 91 marks, min 3.24:1"
   },
   {
    "scenario": "colour-light-aditi-people",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "117 texts, 40 marks, min 5.05:1"
+   "detail": "143 texts, 45 marks, min 5.05:1"
   },
   {
    "scenario": "colour-light-aditi-portfolio",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "144 texts, 50 marks, min 5.05:1"
+   "detail": "146 texts, 57 marks, min 5.05:1"
   },
   {
    "scenario": "colour-light-aditi-lps",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "115 texts, 45 marks, min 6.12:1"
+   "detail": "116 texts, 50 marks, min 6.12:1"
   },
   {
    "scenario": "colour-light-kabir-today",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "132 texts, 55 marks, min 4.65:1"
+   "detail": "133 texts, 60 marks, min 4.65:1"
   },
   {
    "scenario": "colour-light-meera-pipeline",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "86 texts, 37 marks, min 3.24:1"
+   "detail": "87 texts, 42 marks, min 3.24:1"
   },
   {
    "scenario": "colour-light-rohan-today",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "129 texts, 55 marks, min 4.65:1"
+   "detail": "130 texts, 60 marks, min 4.65:1"
   },
   {
    "scenario": "colour-light-rohan-pipeline",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "152 texts, 40 marks, min 3.24:1"
+   "detail": "154 texts, 47 marks, min 3.24:1"
   },
   {
    "scenario": "colour-light-tara-portfolio",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "127 texts, 42 marks, min 5.05:1"
+   "detail": "128 texts, 47 marks, min 5.05:1"
   },
   {
    "scenario": "colour-light-vikram-lps",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "111 texts, 42 marks, min 6.12:1"
+   "detail": "112 texts, 47 marks, min 6.12:1"
   },
   {
    "scenario": "colour-light-vikram-today",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "109 texts, 52 marks, min 4.65:1"
+   "detail": "111 texts, 59 marks, min 4.65:1"
   },
   {
    "scenario": "colour-light-banners",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "139 texts, 76 marks, min 3.24:1"
+   "detail": "140 texts, 81 marks, min 3.24:1"
   },
   {
    "scenario": "colour-light-friday",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "150 texts, 78 marks, min 3.24:1"
+   "detail": "151 texts, 83 marks, min 3.24:1"
   },
   {
    "scenario": "colour-light-empty",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "11 texts, 35 marks, min 7.39:1"
+   "detail": "12 texts, 40 marks, min 7.39:1"
   },
   {
    "scenario": "colour-light-hover",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "852 texts, 78 marks, min 3.24:1"
+   "detail": "864 texts, 85 marks, min 3.24:1"
   },
   {
    "scenario": "colour-light-focus",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "142 texts, 79 marks, min 3.24:1"
+   "detail": "144 texts, 86 marks, min 3.24:1"
   },
   {
    "scenario": "colour-dark-aditi-today",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "137 texts, 84 marks, min 3.8:1"
+   "detail": "138 texts, 89 marks, min 3.8:1"
   },
   {
    "scenario": "colour-dark-aditi-today-desk",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "142 texts, 86 marks, min 3.8:1"
+   "detail": "144 texts, 93 marks, min 3.8:1"
   },
   {
    "scenario": "colour-dark-aditi-row-open",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "137 texts, 84 marks, min 3.8:1"
+   "detail": "138 texts, 89 marks, min 3.8:1"
   },
   {
    "scenario": "colour-dark-aditi-prep",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "37 texts, 22 marks, min 4.98:1"
+   "detail": "89 texts, 56 marks, min 4.98:1"
   },
   {
    "scenario": "colour-dark-aditi-partner-pack",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "71 texts, 10 marks, min 4.98:1"
+   "detail": "72 texts, 13 marks, min 4.98:1"
   },
   {
    "scenario": "colour-dark-aditi-help",
@@ -1401,109 +1401,109 @@
    "scenario": "colour-dark-aditi-toast",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "140 texts, 85 marks, min 3.8:1"
+   "detail": "141 texts, 90 marks, min 3.8:1"
   },
   {
    "scenario": "colour-dark-aditi-pipeline",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "318 texts, 53 marks, min 3.8:1"
+   "detail": "320 texts, 60 marks, min 3.8:1"
   },
   {
    "scenario": "colour-dark-aditi-deal-open",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "191 texts, 60 marks, min 3.8:1"
+   "detail": "267 texts, 99 marks, min 3.8:1"
   },
   {
    "scenario": "colour-dark-aditi-people",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "117 texts, 48 marks, min 6.04:1"
+   "detail": "143 texts, 53 marks, min 6.04:1"
   },
   {
    "scenario": "colour-dark-aditi-portfolio",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "144 texts, 58 marks, min 6.04:1"
+   "detail": "146 texts, 65 marks, min 6.04:1"
   },
   {
    "scenario": "colour-dark-aditi-lps",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "115 texts, 53 marks, min 6.48:1"
+   "detail": "116 texts, 58 marks, min 6.48:1"
   },
   {
    "scenario": "colour-dark-kabir-today",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "132 texts, 63 marks, min 6.38:1"
+   "detail": "133 texts, 68 marks, min 6.38:1"
   },
   {
    "scenario": "colour-dark-meera-pipeline",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "86 texts, 45 marks, min 3.8:1"
+   "detail": "87 texts, 50 marks, min 3.8:1"
   },
   {
    "scenario": "colour-dark-rohan-today",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "129 texts, 63 marks, min 6.04:1"
+   "detail": "130 texts, 68 marks, min 6.04:1"
   },
   {
    "scenario": "colour-dark-rohan-pipeline",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "152 texts, 48 marks, min 3.8:1"
+   "detail": "154 texts, 55 marks, min 3.8:1"
   },
   {
    "scenario": "colour-dark-tara-portfolio",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "127 texts, 50 marks, min 6.04:1"
+   "detail": "128 texts, 55 marks, min 6.04:1"
   },
   {
    "scenario": "colour-dark-vikram-lps",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "111 texts, 50 marks, min 6.48:1"
+   "detail": "112 texts, 55 marks, min 6.48:1"
   },
   {
    "scenario": "colour-dark-vikram-today",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "109 texts, 60 marks, min 6.38:1"
+   "detail": "111 texts, 67 marks, min 6.38:1"
   },
   {
    "scenario": "colour-dark-banners",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "139 texts, 84 marks, min 3.8:1"
+   "detail": "140 texts, 89 marks, min 3.8:1"
   },
   {
    "scenario": "colour-dark-friday",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "150 texts, 86 marks, min 3.8:1"
+   "detail": "151 texts, 91 marks, min 3.8:1"
   },
   {
    "scenario": "colour-dark-empty",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "11 texts, 43 marks, min 7.84:1"
+   "detail": "12 texts, 48 marks, min 7.84:1"
   },
   {
    "scenario": "colour-dark-hover",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "852 texts, 86 marks, min 3.8:1"
+   "detail": "864 texts, 93 marks, min 3.8:1"
   },
   {
    "scenario": "colour-dark-focus",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "142 texts, 87 marks, min 3.8:1"
+   "detail": "144 texts, 94 marks, min 3.8:1"
   },
   {
    "scenario": "meera-default",
@@ -3663,7 +3663,7 @@
    "scenario": "research-map",
    "check": "a research run's empathy map shows on the card: says, thinks, does, feels and the source",
    "ok": true,
-   "detail": "ts weekly on cross-border rails\nFeels: Pressed for time before the round\nAsk about the bank partner\n\nLinkedIn, read in your browser \u00b7 22 Oct Profile Doc in Drive\n\nant. \u00b7 calendar, email, notes and CRM"
+   "detail": "erma: Re: Atlas Settlement. Sharing the latest numbers as discussed.\n\nGmail\n10\n12 Oct \u00b7 14:00\nMeeting\n\nMeeting: Atlas Settlement: partner check-in\n\nCalendar\n\nant. \u00b7 calendar, email, notes and CRM\n\nPDF"
   },
   {
    "scenario": "ask",
@@ -3681,7 +3681,7 @@
    "scenario": "ask",
    "check": "Enter asks Claude with the Home's data and streams the answer",
    "ok": true,
-   "detail": "Atlas Settlement: term sheet markup is due 23 Oct.\n\nFrom your ant. Home data \u00b7 a"
+   "detail": "Atlas Settlement: term sheet markup is due 23 Oct.\n\nFrom your ant. Home data \u00b7 A"
   },
   {
    "scenario": "ask",
@@ -3751,15 +3751,15 @@
   },
   {
    "scenario": "research-auto",
-   "check": "each map is saved as a Google Doc in the research folder",
+   "check": "each map is saved as a two-page PDF in the research folder, named date, person, company",
    "ok": true,
-   "detail": ""
+   "detail": "['ant. research', '2026-10-22 Ishaan Verma Atlas Settlement.pdf', '2026-10-22 Ishaan Verma Gravity Payouts.pdf', '2026-10-23 Ishaan Verma Orbit Treasury.pdf', '2026-10-23 Ishaan Verma Orbit Treasury.pdf', '2026-10-23 Ishaan Verma Beacon Credit Rails.pdf']"
   },
   {
    "scenario": "research-auto",
    "check": "the prep card shows the map: says, thinks, does, feels and the source",
    "ok": true,
-   "detail": " goes live\nAsk about Bluepeak's terms\nConfirm the ESOP pool\n\nLinkedIn, read in your browser \u00b7 22 Oct Profile Doc in Drive\n\nant. \u00b7 calendar, email, notes and CRM"
+   "detail": "latest numbers as discussed.\n\nGmail\n10\n12 Oct \u00b7 14:00\nMeeting\n\nMeeting: Atlas Settlement: partner check-in\n\nCalendar\n\nant. \u00b7 calendar, email, notes and CRM\n\nPDF"
   },
   {
    "scenario": "research-signin",
@@ -4711,6 +4711,378 @@
   },
   {
    "scenario": "deals-table-phone",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "panel-decision",
+   "check": "a decision opens a side panel with a TL;DR and a recommendation",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "panel-decision",
+   "check": "TL;DR lines cite their sources by number",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "panel-decision",
+   "check": "the timeline is vertical, newest first, and every event links to its source",
+   "ok": true,
+   "detail": "15 of 15"
+  },
+  {
+   "scenario": "panel-decision",
+   "check": "timeline events run newest first",
+   "ok": true,
+   "detail": "['2026-10-22T07:00:00+05:30', '2026-10-21T16:00:00+05:30', '2026-10-20T21:30:00+05:30', '2026-10-18T00:00:00+05:30']"
+  },
+  {
+   "scenario": "panel-decision",
+   "check": "Was this right? keeps the user's own words for the next check",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "panel-decision",
+   "check": "the panel downloads as a PDF, with its source links",
+   "ok": true,
+   "detail": "[{\"filename\": \"2026-10-22 Gravity Payouts next step from the partner prep on 15 Oct.pdf\", \"size\": 16}]"
+  },
+  {
+   "scenario": "panel-decision",
+   "check": "a thread opens with its draft editable: To, Cc, Subject, Draft",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "panel-decision",
+   "check": "a tap on a colleague copies them in",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "panel-decision",
+   "check": "Send first shows who it goes to and waits",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "panel-decision",
+   "check": "Send now sends once from Gmail, as edited, in Verdana, with the colleague copied",
+   "ok": true,
+   "detail": "[{\"server\": \"Gmail\", \"tool\": \"send_message\", \"input\": {\"to\": [\"arjun@gravitypayouts.com\"], \"subject\": \"Intro: Arjun Khurana (Gravity Payouts) and Raj Malhotra (Fable Bank)\", \"body\": \"Hi both, connecti"
+  },
+  {
+   "scenario": "panel-decision",
+   "check": "the draft is marked sent, and the edit is kept as guidance",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "panel-decision",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "panel-decision",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "panel-decision",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "panel-decision",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "panel-decision",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "panel-waiting",
+   "check": "what someone owes you offers a reminder, written for you and editable",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "panel-pipeline",
+   "check": "a deal opens with TL;DR, the next-step form, its people, the company and market, and its timeline",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "panel-pipeline",
+   "check": "the deck and model shared show with their links",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "panel-pipeline",
+   "check": "a founder's panel: empathy map, career, track record, company, competitors, and Back",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "panel-pipeline",
+   "check": "the empathy map downloads as a two-page PDF named date, person, company",
+   "ok": true,
+   "detail": "[{\"filename\": \"2026-10-22 Ishaan Verma Atlas Settlement.pdf\", \"size\": 16}]"
+  },
+  {
+   "scenario": "panel-pipeline",
+   "check": "Back returns to the deal",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "panel-pipeline",
+   "check": "a pitch opens with how it fits the thesis, the founder, the company and a reply",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "panel-pipeline",
+   "check": "a person row opens its panel with a timeline",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "panel-pipeline",
+   "check": "a portfolio company row opens its panel with a timeline",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "panel-pipeline",
+   "check": "a portfolio company shows its latest numbers",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "panel-pipeline",
+   "check": "an LP row opens its panel with a timeline",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "panel-pipeline",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "panel-pipeline",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "panel-pipeline",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "panel-pipeline",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "panel-pipeline",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "panel-phone",
+   "check": "on a phone the panel rises from the bottom, full width",
+   "ok": true,
+   "detail": "[0, 0]"
+  },
+  {
+   "scenario": "panel-phone",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "panel-phone",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "panel-phone",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "panel-phone",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "panel-phone",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "ask-structured",
+   "check": "Ask offers a model and an effort",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "ask-structured",
+   "check": "the answer uses the chosen model and effort",
+   "ok": true,
+   "detail": "[{\"model\": \"claude-opus-5-5\", \"effort\": \"high\", \"modelTier\": \"complex\"}]"
+  },
+  {
+   "scenario": "ask-structured",
+   "check": "the answer reads as a lead line, a table and a chart",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "ask-structured",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "ask-structured",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "ask-structured",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "ask-structured",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "ask-structured",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "reminders",
+   "check": "the floating Ask button and the bell sit bottom right, above the tab bar",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "reminders",
+   "check": "a due reminder sits on Today with what bears on it",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "reminders",
+   "check": "Remind me saves the reminder with the time it names, in your time zone",
+   "ok": true,
+   "detail": "{\"text\": \"Chase Atlas legal contact tomorrow at 5pm\", \"due\": \"2026-10-23T11:30:00.000Z\", \"at\": \"2026-10-22T01:35:00.000Z\"}"
+  },
+  {
+   "scenario": "reminders",
+   "check": "the floating button opens Ask",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "reminders",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "reminders",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "1 primary"
+  },
+  {
+   "scenario": "reminders",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "reminders",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "reminders",
+   "check": "no script errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "reminders",
+   "check": "Reminders has its own place on the left, with what is due",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "settings-icons",
+   "check": "access levels show as icons, each named for screen readers and on hover",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "scenario": "settings-icons",
+   "check": "no horizontal scroll",
+   "ok": true,
+   "detail": "overflow 0px"
+  },
+  {
+   "scenario": "settings-icons",
+   "check": "at most one primary button",
+   "ok": true,
+   "detail": "0 primary"
+  },
+  {
+   "scenario": "settings-icons",
+   "check": "every control has a name",
+   "ok": true,
+   "detail": "0 unnamed"
+  },
+  {
+   "scenario": "settings-icons",
+   "check": "no text under 11.5px",
+   "ok": true,
+   "detail": "0 elements"
+  },
+  {
+   "scenario": "settings-icons",
    "check": "no script errors",
    "ok": true,
    "detail": ""

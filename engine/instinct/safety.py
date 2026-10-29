@@ -177,7 +177,9 @@ def check_memo(claims: Any, sources: dict[str, str]) -> dict[str, Any]:
 
 
 def lint_skills(root: str) -> list[dict[str, Any]]:
-    """Fail any skill text that tells Claude to call a send-, delete- or change-type tool. There are no exceptions."""
+    """Fail any skill text that tells Claude to call a send-, delete- or change-type tool. Claude itself has no exceptions.
+    The one thing skills may name is Home's own capability manifest (`"server": "Gmail", "tools": ["send_message"]`), which
+    lets the page send a draft only after the user taps Send and then Send now; Claude never calls the tool."""
     violations = []
     for folder, _, files in os.walk(root):
         if any(part in (".git", "evals", "__pycache__") for part in folder.split(os.sep)):
@@ -191,6 +193,8 @@ def lint_skills(root: str) -> list[dict[str, Any]]:
                 for m in re.finditer(re.escape(tool), check_text):
                     line = check_text[: m.start()].count("\n") + 1
                     context = check_text[max(0, m.start() - 80): m.end() + 80]
+                    if re.search(r'"server": "Gmail", "tools": \["' + re.escape(tool) + r'"\]', context):
+                        continue  # Home's capability manifest: the page, not Claude, after the user's two taps
                     if re.search(r"\b(never|do not|don't|must not|no)\b[^.\n]{0,80}" + re.escape(tool), context, re.I) or \
                        re.search(re.escape(tool) + r"[^.\n]{0,40}\b(is forbidden|never)\b", context, re.I):
                         continue  # a prohibition, not an instruction

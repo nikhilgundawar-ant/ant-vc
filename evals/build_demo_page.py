@@ -32,6 +32,11 @@ SAMPLE_STATE = {
                         "at": "2026-10-21T17:40:00+05:30"},
         "demo_snz_1": {"snoozed_until": "2026-10-22T08:00:00+05:30", "t": "Ledgerline: reference call notes", "g": "demo_snz_1", "at": "2026-10-21T16:05:00+05:30"},
     },
+    "reminders": {
+        "rdemo1": {"text": "Chase Atlas Settlement for legal counsel's contact", "due": "2026-10-22T11:00:00+05:30", "at": "2026-10-21T19:00:00+05:30"},
+        "rdemo2": {"text": "Call Vikram Rao about the Orbit Treasury runway plan before the board", "due": "2026-10-22T08:30:00+05:30", "at": "2026-10-21T19:05:00+05:30"},
+        "rdemo3": {"text": "Send the Q3 LP letter outline to Tara", "due": "2026-10-26T09:00:00+05:30", "at": "2026-10-21T19:10:00+05:30"},
+    },
     "actions": {
         "demo_ns_1": {"type": "next_step", "status": "approved", "at": "2026-10-22T06:50:00+05:30", "t": "Halo Reconcile: next step Diligence plan with the CFO",
                       "payload": {"deal_id": "demo_halo", "company": "Halo Reconcile", "text": "Diligence plan with the CFO", "current": "Partner meeting"}},
@@ -45,6 +50,7 @@ def build(out_dir: str) -> str:
     for key, label in PEOPLE:
         snaps = json.loads(json.dumps(demo.build(key, "https://claude.ai/artifact/demo"), default=str))
         snaps["config"]["demo"] = True
+        demo.sample_research(snaps)
         members[key] = {"label": label, "snaps": snaps, "state": SAMPLE_STATE}
     data = json.dumps({"order": [k for k, _ in PEOPLE], "members": members}, ensure_ascii=False, separators=(",", ":"))
     data = data.replace("</", "<\\/")  # never closes the script tag early

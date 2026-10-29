@@ -167,6 +167,7 @@ def decay(ctx: dict[str, Any], top: int = 50, days: int = 60) -> list[dict[str, 
             p = ctx["lookup"][pid]
             comp = ctx["companies"].get(p.get("company_id") or "", {})
             out.append({"person_id": pid, "name": p["name"], "company": comp.get("name"), "company_status": comp.get("status"),
+                        "company_id": p.get("company_id"), "email": (p.get("emails") or [None])[0], "title": p.get("title"),
                         "strength": now_strength.get(pid, 0),
                         "strength_was": s, "days_since": gap, "last_touch": last.date().isoformat(), "source_url": p.get("source_url")})
     out.sort(key=lambda r: -r["strength_was"])
@@ -188,6 +189,7 @@ def top_people(ctx: dict[str, Any], limit: int = 200) -> list[dict[str, Any]]:
         comp = ctx["companies"].get(p.get("company_id") or "", {})
         last = ctx["last_touch"].get(user["id"], {}).get(pid)
         out.append({"id": pid, "name": p["name"], "company": comp.get("name"), "title": p.get("title"), "strength": s,
+                    "company_id": p.get("company_id"), "company_status": comp.get("status"), "email": (p.get("emails") or [None])[0],
                     "last_touch": last.date().isoformat() if last else None,
                     "days_since": (ctx["now"] - last).days if last else None, "source_url": p.get("source_url")})
     return out

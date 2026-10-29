@@ -75,3 +75,12 @@ the notes app's summary when it gave one (`summary`), the promises from that mee
 across runs, so a check that reads no transcripts keeps what Home has. A TL;DR Home writes itself with Claude is kept in
 `state/tldr`, written once per note. Any source chip whose link is a note in `snap/notes` opens the side panel, with
 "Open in Granola" (or the notes app's name) one tap further.
+
+## Side panels (`snap/timeline_0` to `snap/timeline_3`, `snap/reminders`, `state/reminders`, `state/tldr`)
+
+- Every build writes each company, person and LP's timeline, newest first, 14 events, 180 days, merged across runs: `{"items": {"c:<company id>"|"p:<person id>"|"lp:<lp id>"|"in:<pitch id>": [{"id", "at", "src", "url", "kind", "text", "note_id"?}]}}`, split into four shards by key. `timeline_0` also carries `emails` (address to `p:` key). Every event carries the link that opens it; one without a link is never written.
+- Home's side panels read them: a TL;DR (and for a decision, a recommendation) Claude writes from the panel's facts and timeline, each line citing timeline numbers; the draft, editable; the timeline; details; a PDF of the panel.
+- `state/reminders` is the user's own list, written by Home: `{"items": {"<id>": {"text", "due", "at", "done_at"?, "dropped"?}}}`. The engine writes `snap/reminders`: for each open reminder, the companies, people and LPs it names with their latest three events, and the run's `reminder_notes`.
+- `state/tldr` holds what Home wrote with Claude (note TL;DRs, panel TL;DRs, reminder briefs), so each is written once per state of its record. Page only.
+- Ratings may carry `note` (what was off, in the user's words) and `kind: "draft_edit"` with `before` and `after`. The pulse reads both as guidance before it drafts.
+- `snap/research` may also hold `companies`: `{"<company id or domain>": {"what", "market", "signals", "competitors": [{"name", "why", "url"}], "sources": [], "read_at", "by"}}`, read in the Claude app's browser from the company's site and one web search, links only from those pages.

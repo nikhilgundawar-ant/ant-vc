@@ -818,6 +818,36 @@ def build(member: str = "aditi", home_url: str | None = None) -> dict[str, dict]
     return snaps
 
 
+def sample_research(snaps: dict) -> dict:
+    """What a researched Home holds for one founder: an empathy map from LinkedIn, the company and its market from the web,
+    and the deck and model shared by email. Added to the demo page and to the QA panel scenarios only (all fictional)."""
+    # Sample research for the founder's panel: an empathy map read on LinkedIn and a company read on the web (all fictional).
+    snaps["research"] = {"people": {"ishaan@atlassettle.com": {
+        "name": "Ishaan Verma", "headline": "Co-founder and CEO, Atlas Settlement. Ex-NSE clearing.", "says": "Brokers lose days to manual settlement; we make it same-day.",
+        "thinks": "Reads as a builder who wants a partner on regulation, not only capital.", "does": "Ships fast, speaks at broker forums, hires from clearing houses.",
+        "feels": "Reads as wary of a slow term sheet while Bluepeak is moving.", "company": "Series A, 40 people, 12 brokers live, same-day settlement for equity brokers.",
+        "points": ["Ask what Bluepeak's term sheet leaves open on board seats", "Offer the two exchange operators in your network", "Confirm legal counsel's contact for the markup"],
+        "career": [{"role": "Co-founder and CEO", "org": "Atlas Settlement", "years": "2023 to now"}, {"role": "Head of clearing products", "org": "NSE Clearing", "years": "2017 to 2023"},
+                   {"role": "Product manager", "org": "Zerodha", "years": "2014 to 2017"}],
+        "track_record": ["Built NSE's T+1 settlement tooling used by 200 brokers", "Grew Atlas from 2 to 12 broker clients in 18 months"],
+        "source_url": "https://www.linkedin.com/in/demo-ishaan-verma/", "read_at": "2026-10-21T19:30:00+05:30", "auto": True}},
+        "companies": {"c_atlas": {"what": "Same-day settlement and reconciliation for equity brokers in India.",
+                                  "market": "Every Indian broker must settle T+1; about 450 brokers still reconcile by hand.", "signals": "Series A raising; 12 brokers live.",
+                                  "competitors": [{"name": "Clearline", "why": "Leads with large brokers through exchange partnerships", "url": "https://example.com/clearline"},
+                                                  {"name": "SettleKit", "why": "Cheaper tool for small brokers", "url": "https://example.com/settlekit"}],
+                                  "sources": ["https://atlassettle.com"], "read_at": "2026-10-21T19:40:00+05:30", "by": "the Claude app's browser"}}}
+    from instinct import timeline as _tl
+    for key, ev in (("c:c_atlas", {"id": "file:demo:atlas-deck", "at": "2026-10-14T11:00:00+05:30", "src": "Drive", "url": "https://drive.google.com/file/d/demo-atlas-deck/view",
+                                   "kind": "doc", "doc": "deck", "text": "Deck shared: Atlas Settlement Series A deck.pdf"}),
+                    ("c:c_atlas", {"id": "file:demo:atlas-model", "at": "2026-10-14T11:00:00+05:30", "src": "Drive", "url": "https://drive.google.com/file/d/demo-atlas-model/view",
+                                   "kind": "doc", "doc": "model", "text": "Model shared: Atlas financial model FY27.xlsx"})):
+        shard = snaps.setdefault(f"timeline_{_tl.shard_of(key)}", {"as_of": snaps["brief"]["as_of"], "items": {}})
+        evs = shard["items"].setdefault(key, [])
+        evs.append(ev)
+        evs.sort(key=lambda e: str(e.get("at")), reverse=True)
+    return snaps
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--member", default="aditi")

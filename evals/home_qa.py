@@ -84,7 +84,7 @@ MOCK = r"""
   var sample = null, mcp = null;
   if (CFG.sample) {
     sample = function (input, opts) {
-      window.__samples.push(input);
+      window.__samples.push(input); window.__sampleOpts.push(opts ? { model: opts.model || null, effort: opts.effort || null, modelTier: opts.modelTier || null } : null);
       if (CFG.sample.fail) return Promise.reject({ code: CFG.sample.fail, message: "mock" });
       var t = CFG.sample.answer || "An answer.";
       return new Promise(function (res) { setTimeout(function () { if (opts && opts.onText) opts.onText({ text: t, delta: t }); res({ text: t, truncated: false, modelTierApplied: "default" }); }, 30); });
@@ -99,11 +99,18 @@ MOCK = r"""
       if (tool === "get_page_text") return Promise.resolve({ content: [], payload: pages[Math.min(n++, pages.length - 1)] || "" });
       if (tool === "find") return Promise.resolve({ content: [], payload: 'Found 2 match(es) for "' + (input.query || "") + '":\n- generic "' + (input.query || "") + '" [ref_3]\n- link "' + (input.query || "") + '" [ref_7] href="https://www.linkedin.com/in/' + String(input.query || "x").toLowerCase().replace(/[^a-z]/g, "") + '/"' });
       if (tool === "search_files") return Promise.resolve({ content: [], payload: { files: [] } });
+      if (tool === "send_message") return Promise.resolve({ content: [], payload: { id: "m1", threadId: "t1" } });
       if (tool === "create_file") { files += 1; return Promise.resolve({ content: [], payload: { id: "f" + files, webViewLink: "https://docs.google.com/document/d/f" + files + "/edit" } }); }
       return Promise.resolve({ content: [], payload: "ok" });
     } };
   }
-  window.claude = { use: function (name) { return Promise.resolve(name === "db" ? (CFG.noDb ? null : db) : name === "user" ? user : name === "sample" ? sample : name === "mcp" ? mcp : null); } };
+  window.__downloads = []; window.__pdf = { text: [], links: [], pages: 1 }; window.__sampleOpts = [];
+  var downloads = { save: function (req) { window.__downloads.push({ filename: req.filename, size: req.data && (req.data.byteLength || req.data.length || 0) }); return Promise.resolve({ status: "saved" }); } };
+  if (CFG.pdf !== false) window.jspdf = { jsPDF: function () {
+    return { internal: { pageSize: { getWidth: function () { return 595; }, getHeight: function () { return 842; } } }, setFont: function () {}, setFontSize: function () {}, setTextColor: function () {},
+      splitTextToSize: function (t) { return [t]; }, text: function (t) { window.__pdf.text.push(t); }, textWithLink: function (t, x, y, o) { window.__pdf.links.push(o.url); },
+      addPage: function () { window.__pdf.pages += 1; }, output: function () { return new ArrayBuffer(16); } }; } };
+  window.claude = { use: function (name) { return Promise.resolve(name === "db" ? (CFG.noDb ? null : db) : name === "user" ? user : name === "sample" ? sample : name === "mcp" ? mcp : name === "downloads" ? downloads : null); } };
 })();
 """
 
@@ -361,7 +368,7 @@ class QA:
             page.wait_for_timeout(80)
             dlg = page.locator("[role=dialog]")
             self.check(sc, "prep sheet opens", dlg.count() == 1)
-            self.check(sc, "three questions shown", dlg.locator("ol li").count() == 3)
+            self.check(sc, "three questions shown", dlg.locator("ol:not(.tl):not(.note-lines) li").count() == 3)
             self.check(sc, "open promises shown", dlg.get_by_text("Open promises").count() == 1)
             self.check(sc, "watch line names the other fund", dlg.locator(".watch").count() == 1 and "Bluepeak" in dlg.locator(".watch").inner_text())
             self.check(sc, "the meeting's draft is ready to send from the sheet", dlg.get_by_text("Ready to send").count() == 1 and
@@ -1897,8 +1904,10 @@ class QA:
         self.check(sc, "it only reads: navigate, page text and find; it never clicks or types, and it opens the profile by its own link",
                    set(t for t in tools if t not in ("search_files", "create_file")) <= {"navigate", "get_page_text", "find"} and not clicks
                    and any(c["tool"] == "navigate" and "/in/ishaanverma/" in c["input"]["url"] for c in calls), str(tools))
-        self.check(sc, "each map is saved as a Google Doc in the research folder", any(c["tool"] == "create_file" and c["input"].get("contentMimeType") == "text/html" for c in calls)
-                   and str(people.get("ishaan@atlassettle.com", {}).get("drive_url", "")).startswith("https://docs.google.com/"))
+        self.check(sc, "each map is saved as a two-page PDF in the research folder, named date, person, company",
+                   any(c["tool"] == "create_file" and c["input"].get("contentMimeType") == "application/pdf" and c["input"].get("base64Content") and
+                       re.match(r"^\d{4}-\d{2}-\d{2} Ishaan Verma Atlas Settlement\.pdf$", c["input"].get("title", "")) for c in calls)
+                   and bool(people.get("ishaan@atlassettle.com", {}).get("drive_url")), str([c["input"].get("title") for c in calls if c["tool"] == "create_file"]))
         page.locator("button.agenda-row").first.click()
         page.wait_for_timeout(80)
         txt = page.locator("[role=dialog]").inner_text() if page.locator("[role=dialog]").count() else ""
@@ -1986,12 +1995,12 @@ class QA:
         page.locator("#rail-tabs button[aria-label='Settings']").click()
         page.wait_for_timeout(80)
         txt = page.locator("#view").inner_text()
-        self.check(sc, "Settings lists each kind of tool with what is connected and what ant. may do", all(t in txt for t in ("Email: Gmail", "CRM: Affinity", "Read and update", "Team chat")))
+        self.check(sc, "Settings lists each kind of tool with what is connected and what ant. may do", all(t in txt for t in ("Email: Gmail", "CRM: Affinity", "Team chat")) and page.locator("#view button[aria-label='Read and update']").count() == 1)
         self.check(sc, "a missing tool offers Connect, which opens Claude's connector page", page.locator("#view a", has_text="Connect Slack").get_attribute("href") == "https://claude.ai/settings/connectors")
         page.locator("#view input[type=search]").fill("firef")
         page.wait_for_timeout(60)
         self.check(sc, "Add a tool finds Fireflies, read only by default", page.locator("#view .tool-row", has_text="Fireflies").count() == 1 and "reads it, nothing more" in page.locator("#view .tool-row", has_text="Fireflies").inner_text())
-        page.locator("#view .seg[aria-label='CRM: what ant. may do'] button", has_text="Read only").click()
+        page.locator("#view .seg[aria-label='CRM: what ant. may do'] button[aria-label='Read only']").click()
         page.wait_for_timeout(80)
         w = [x for x in page.evaluate("window.__writes") if x.get("path") == "state/settings"]
         self.check(sc, "setting the CRM to read only is saved for the checks", bool(w) and ((w[-1]["data"]["items"] or {}).get("access") or {}).get("crm") == "read")
@@ -2177,12 +2186,197 @@ class QA:
         self.common(page, sc)
         ctx.close()
 
+    def round21(self, browser) -> None:
+        """Round twenty-one: a side panel for every row (TL;DR with sources, recommendation, timeline, an editable draft sent
+        from Home after a confirm, Was this right?, PDF), the founder 360, Ask with model and effort and charts, reminders
+        with the floating button, and Settings as icons."""
+        tl = {"tldr": [{"text": "Atlas wants the markup by 23 Oct.", "cites": [1]}, {"text": "Bluepeak is moving on terms.", "cites": [2]}],
+              "recommendation": {"text": "Send the markup today and ask for counsel's contact.", "why": [{"text": "Their deadline is 5 Nov.", "cites": [1]}]},
+              "subject": "Quick reminder", "body": "Hi, a quick reminder on the cap table. Could you send it this week? Aditi"}
+        sc = "panel-decision"
+        ctx, page = self.open(browser, sc, DESK, open_all=False, inline=False, sample={"answer": "x", "json": tl}, mcp={"pages": ["ok"]})
+        page.locator("section[aria-label='Decisions'] .row-hit").first.click()
+        page.wait_for_timeout(250)
+        sheet = page.locator(".sheet.drawer")
+        self.check(sc, "a decision opens a side panel with a TL;DR and a recommendation", sheet.count() == 1 and sheet.locator(".pn-rec h4", has_text="Recommendation").count() == 1
+                   and sheet.locator(".pn-tldr li").count() >= 1)
+        self.check(sc, "TL;DR lines cite their sources by number", sheet.locator(".pn-tldr .cite").count() >= 1)
+        evs = sheet.locator(".tl .tl-ev")
+        linked = page.evaluate("Array.from(document.querySelectorAll('.sheet .tl .tl-ev')).filter(li => li.querySelector('a.chip-source[href], button.chip-source')).length")
+        self.check(sc, "the timeline is vertical, newest first, and every event links to its source", evs.count() >= 1 and linked == evs.count(), f"{linked} of {evs.count()}")
+        dates = page.evaluate("Array.from(document.querySelectorAll('.sheet .tl time')).map(t => t.getAttribute('datetime'))")
+        self.check(sc, "timeline events run newest first", dates == sorted(dates, reverse=True), str(dates[:4]))
+        page.locator(".sheet .judge button", has_text="Not useful").click()
+        page.locator(".sheet .judge input[name=why]").fill("Too generic, name the counsel")
+        page.locator(".sheet .judge button", has_text="Tell ant.").click()
+        page.wait_for_timeout(80)
+        notes = [w for w in page.evaluate("window.__writes") if w.get("collection") == "ratings" and (w.get("data") or {}).get("note")]
+        self.check(sc, "Was this right? keeps the user's own words for the next check", bool(notes) and "counsel" in notes[-1]["data"]["note"])
+        page.locator(".sheet-foot .pdf-btn").click()
+        page.wait_for_timeout(150)
+        dl = page.evaluate("window.__downloads")
+        self.check(sc, "the panel downloads as a PDF, with its source links", bool(dl) and dl[-1]["filename"].endswith(".pdf") and len(page.evaluate("window.__pdf.links")) >= 1, json.dumps(dl[-1:]))
+        self.shot(page, "panel-decision-1440")
+        page.keyboard.press("Escape")
+        page.wait_for_timeout(80)
+        # A thread: the draft, editable, the team a tap away, sent from Home after a confirm.
+        page.locator("section[aria-label='Threads'] .row-hit").first.click()
+        page.wait_for_timeout(200)
+        sheet = page.locator(".sheet.drawer")
+        self.check(sc, "a thread opens with its draft editable: To, Cc, Subject, Draft", all(sheet.locator(f".composer [name={n}]").count() == 1 for n in ("to", "cc", "subject", "body")))
+        team = sheet.locator(".team-chips button").first
+        mate = team.get_attribute("title")
+        team.click()
+        page.wait_for_timeout(60)
+        self.check(sc, "a tap on a colleague copies them in", mate in page.locator(".sheet .composer [name=cc]").input_value())
+        page.locator(".sheet .composer [name=body]").fill("Hi both, connecting you as promised. Aditi")
+        page.locator(".sheet .composer-acts button", has_text="Send").first.click()
+        page.wait_for_timeout(60)
+        conf = page.locator(".sheet .send-confirm")
+        self.check(sc, "Send first shows who it goes to and waits", conf.is_visible() and "Send to" in conf.inner_text() and not [m for m in page.evaluate("window.__mcp") if m["tool"] == "send_message"])
+        page.locator(".sheet .send-confirm button", has_text="Send now").click()
+        page.wait_for_timeout(200)
+        sent = [m for m in page.evaluate("window.__mcp") if m["tool"] == "send_message"]
+        self.check(sc, "Send now sends once from Gmail, as edited, in Verdana, with the colleague copied", len(sent) == 1 and sent[0]["server"] == "Gmail" and
+                   "connecting you" in sent[0]["input"]["body"] and "Verdana" in sent[0]["input"]["htmlBody"] and mate in (sent[0]["input"].get("cc") or []), json.dumps(sent)[:200])
+        items = [w for w in page.evaluate("window.__writes") if w.get("path") == "state/items"]
+        edits = [w for w in page.evaluate("window.__writes") if (w.get("data") or {}).get("kind") == "draft_edit"]
+        self.check(sc, "the draft is marked sent, and the edit is kept as guidance", bool(items) and any(v.get("sent") for v in (items[-1]["data"].get("items") or {}).values()) and bool(edits))
+        self.common(page, sc)
+        ctx.close()
+
+        sc = "panel-waiting"
+        ctx, page = self.open(browser, sc, DESK, member="kabir", open_all=False, inline=False, sample={"answer": "x", "json": tl})
+        sec = page.locator("section[aria-label='Waiting on others']")
+        if sec.locator(".fold-btn[aria-expanded='false']").count():
+            sec.locator(".fold-btn").first.click(); page.wait_for_timeout(60)
+        if sec.locator(".row-hit").count():
+            sec.locator(".row-hit").first.click()
+            page.wait_for_timeout(200)
+            btn = page.locator(".sheet .composer button", has_text="Write a reminder")
+            ok_btn = btn.count() == 1
+            if ok_btn:
+                btn.click(); page.wait_for_timeout(120)
+            self.check(sc, "what someone owes you offers a reminder, written for you and editable", ok_btn and "reminder" in page.locator(".sheet .composer [name=body]").input_value().lower())
+        else:
+            self.check(sc, "what someone owes you offers a reminder, written for you and editable", False, "no waiting row")
+        ctx.close()
+
+        sc = "panel-pipeline"
+        import demo as _demo
+        rsnap = _demo.sample_research(json.loads(json.dumps(self.snaps["aditi"], default=str)))
+        ctx, page = self.open(browser, sc, DESK, open_all=False, inline=False, sample={"answer": "x", "json": tl}, snap=rsnap)
+        page.locator("#rail-tabs button[aria-label='Pipeline']").click()
+        page.wait_for_timeout(100)
+        page.locator("table.deals tbody tr", has_text="Atlas Settlement").locator(".row-hit").click()
+        page.wait_for_timeout(200)
+        sheet = page.locator(".sheet.drawer")
+        self.check(sc, "a deal opens with TL;DR, the next-step form, its people, the company and market, and its timeline",
+                   sheet.locator(".field[name=next]").count() == 1 and sheet.locator(".people-list li").count() >= 1 and sheet.locator("h3", has_text="Company and market").count() == 1
+                   and sheet.locator(".tl").count() == 1)
+        self.check(sc, "the deck and model shared show with their links", sheet.locator("h4", has_text="Deck and model").count() == 1 and sheet.locator("a.chip-source[href*='drive.google.com']").count() >= 1)
+        sheet.locator(".people-list .link-btn").first.click()
+        page.wait_for_timeout(200)
+        sheet = page.locator(".sheet.drawer")
+        self.check(sc, "a founder's panel: empathy map, career, track record, company, competitors, and Back", sheet.locator(".emp dt").count() >= 3 and sheet.locator(".career li").count() >= 2
+                   and sheet.locator("h4", has_text="Track record").count() == 1 and sheet.locator(".comp-list li").count() >= 1 and sheet.locator(".sheet-h button", has_text="Back").count() == 1)
+        sheet.locator(".emp-block button", has_text="Empathy map PDF").click()
+        page.wait_for_timeout(150)
+        dl = page.evaluate("window.__downloads")
+        self.check(sc, "the empathy map downloads as a two-page PDF named date, person, company", bool(dl) and dl[-1]["filename"].startswith("2026-") and "Ishaan Verma" in dl[-1]["filename"]
+                   and "Atlas" in dl[-1]["filename"] and page.evaluate("window.__pdf.pages") >= 2, json.dumps(dl[-1:]))
+        self.shot(page, "panel-founder-1440")
+        page.locator(".sheet-h button", has_text="Back").click()
+        page.wait_for_timeout(120)
+        self.check(sc, "Back returns to the deal", page.locator(".sheet .field[name=next]").count() == 1)
+        page.keyboard.press("Escape")
+        pitches = page.locator("section[aria-label='Pitches'] .row-hit")
+        if pitches.count():
+            pitches.first.click(); page.wait_for_timeout(150)
+            self.check(sc, "a pitch opens with how it fits the thesis, the founder, the company and a reply", page.locator(".sheet h3", has_text="Against your thesis").count() == 1
+                       and page.locator(".sheet .composer").count() == 1)
+            page.keyboard.press("Escape")
+        for tab, label in (("People", "a person"), ("Portfolio", "a portfolio company"), ("LPs", "an LP")):
+            page.locator(f"#rail-tabs button[aria-label='{tab}']").click(); page.wait_for_timeout(100)
+            page.locator("#view tbody .cell-hit").first.click(); page.wait_for_timeout(150)
+            self.check(sc, f"{label} row opens its panel with a timeline", page.locator(".sheet.drawer .tl, .sheet.drawer .tl + p, .sheet.drawer h3:has-text('Timeline')").count() >= 1)
+            if tab == "Portfolio":
+                self.check(sc, "a portfolio company shows its latest numbers", page.locator(".sheet .kpi-tiles .fund-stat").count() == 4)
+            page.keyboard.press("Escape"); page.wait_for_timeout(60)
+        self.common(page, sc)
+        ctx.close()
+
+        sc = "panel-phone"
+        ctx, page = self.open(browser, sc, PHONE, open_all=False, inline=False, sample={"answer": "x", "json": tl})
+        page.locator("section[aria-label='Threads'] .row-hit").first.click()
+        page.wait_for_timeout(200)
+        b = page.evaluate("(() => { var s = document.querySelector('.sheet.drawer').getBoundingClientRect(); return [Math.round(s.bottom - innerHeight), Math.round(s.width - innerWidth)]; })()")
+        self.check(sc, "on a phone the panel rises from the bottom, full width", b == [0, 0], str(b))
+        self.shot(page, "panel-380")
+        self.common(page, sc)
+        ctx.close()
+
+        sc = "ask-structured"
+        md = "Two companies are short on runway.\n\n| Company | Runway |\n|---|---|\n| Orbit Treasury | 8.0 |\n| Kestrel Pay | 10.5 |\n\n```chart\n{\"type\": \"bar\", \"title\": \"Runway, months\", \"unit\": \"\", \"labels\": [\"Orbit\", \"Kestrel\"], \"values\": [8, 10.5]}\n```"
+        ctx, page = self.open(browser, sc, DESK, open_all=False, sample={"answer": md})
+        page.locator("#rail-tabs button[aria-label='Ask']").click(); page.wait_for_timeout(100)
+        self.check(sc, "Ask offers a model and an effort", page.locator(".ask-picks select[name=model] option").count() == 4 and page.locator(".ask-picks select[name=effort] option").count() == 4)
+        page.locator(".ask-picks select[name=model]").select_option("opus")
+        page.locator(".ask-picks select[name=effort]").select_option("high")
+        page.locator(".ask-form textarea").fill("Who is short on runway?")
+        page.keyboard.press("Enter")
+        page.wait_for_timeout(300)
+        opts = [o for o in page.evaluate("window.__sampleOpts") if o]
+        self.check(sc, "the answer uses the chosen model and effort", bool(opts) and opts[-1]["model"] == "claude-opus-5-5" and opts[-1]["effort"] == "high", json.dumps(opts[-1:]))
+        self.check(sc, "the answer reads as a lead line, a table and a chart", page.locator(".bubble.ant .answer-lead").count() >= 1 and page.locator(".bubble.ant table.answer-table tbody tr").count() == 2
+                   and page.locator(".bubble.ant svg.chart rect.ch-bar").count() == 2)
+        self.shot(page, "ask-structured-1440")
+        self.common(page, sc)
+        ctx.close()
+
+        sc = "reminders"
+        rem_state = {"items": {}, "actions": {}, "reminders": {"rq1": {"text": "Call Vikram Rao about Orbit Treasury runway", "due": "2026-10-22T07:30:00+05:30", "at": "2026-10-21T19:00:00+05:30"}}}
+        ctx, page = self.open(browser, sc, PHONE, open_all=False, state=rem_state, sample={"answer": "- Runway is 8 months; the board meets 23 Oct."})
+        self.check(sc, "the floating Ask button and the bell sit bottom right, above the tab bar", page.locator(".fab .fab-main").is_visible() and page.locator(".fab .fab-mini").is_visible() and
+                   page.evaluate("(() => { var f = document.querySelector('.fab').getBoundingClientRect(), t = document.querySelector('#bottom-tabs').getBoundingClientRect(); return f.bottom <= t.top && innerWidth - f.right <= 24; })()"))
+        self.check(sc, "a due reminder sits on Today with what bears on it", page.locator("section[aria-label='Your reminders'] .row", has_text="Call Vikram Rao").count() == 1)
+        page.locator(".fab .fab-mini").click(); page.wait_for_timeout(100)
+        page.locator(".sheet input[name=remind]").fill("Chase Atlas legal contact tomorrow at 5pm")
+        page.locator(".sheet .rem-form button[type=submit]").click()
+        page.wait_for_timeout(120)
+        w = [x for x in page.evaluate("window.__writes") if x.get("path") == "state/reminders"]
+        item = list(((w[-1]["data"] or {}).get("items") or {}).values())[-1] if w else {}
+        self.check(sc, "Remind me saves the reminder with the time it names, in your time zone", bool(item) and item.get("text", "").startswith("Chase Atlas") and
+                   str(item.get("due", "")).startswith("2026-10-23T11:30"), json.dumps(item))
+        page.keyboard.press("Escape"); page.wait_for_timeout(60)
+        page.locator(".fab .fab-main").click(); page.wait_for_timeout(100)
+        self.check(sc, "the floating button opens Ask", page.locator(".sheet[aria-label='Ask ant.'] .ask-form textarea").count() == 1)
+        page.keyboard.press("Escape")
+        self.shot(page, "reminders-380")
+        self.common(page, sc)
+        ctx.close()
+        ctx, page = self.open(browser, sc + "-desk", DESK, open_all=False, state=rem_state)
+        page.locator("#rail-tabs button[title='Your reminders']").click(); page.wait_for_timeout(100)
+        self.check(sc, "Reminders has its own place on the left, with what is due", page.locator("section[aria-label='Due now'] .row").count() == 1)
+        self.shot(page, "reminders-1440")
+        ctx.close()
+
+        sc = "settings-icons"
+        ctx, page = self.open(browser, sc, DESK, open_all=False)
+        page.locator("#rail-tabs button[aria-label='Settings']").click(); page.wait_for_timeout(100)
+        chips = page.locator("#view .seg[aria-label$='what ant. may do'] button")
+        txt = "".join(chips.all_inner_texts()).strip()
+        self.check(sc, "access levels show as icons, each named for screen readers and on hover", chips.count() >= 6 and txt == "" and
+                   all(chips.nth(i).get_attribute("aria-label") and chips.nth(i).get_attribute("title") for i in range(chips.count())))
+        self.common(page, sc)
+        ctx.close()
+
     def run(self, only: set[str] | None = None) -> int:
         from playwright.sync_api import sync_playwright
         with sync_playwright() as p:
             browser = p.chromium.launch()
             for name in ("today", "done_undo", "prep", "tabs", "pipeline_actions", "approvals", "keyboard", "theme", "colours", "states", "levels",
-                         "round6", "round7", "round8", "round9", "round10", "round11", "round12", "round13", "redesign", "round17", "round19", "round20"):
+                         "round6", "round7", "round8", "round9", "round10", "round11", "round12", "round13", "redesign", "round17", "round19", "round20", "round21"):
                 if only and name not in only:
                     continue
                 try:
