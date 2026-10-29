@@ -205,7 +205,8 @@ footer { color: var(--ink-3); font-size: 14px; }
       </div></li>
       <li><div class="step">
         <h3>Approve the two scheduled checks <small>1 min</small></h3>
-        <p>ant. creates two scheduled tasks: <b>ant.</b> runs every hour on weekdays, and <b>ant. weekend</b> runs three times a day on weekends. Your first brief and your ant. Home page arrive about ten minutes after you start.</p>
+        <p>ant. creates two scheduled tasks: <b>ant.</b> runs three times on weekdays, and <b>ant. weekend</b> twice a day on weekends. That is Light mode, 19 checks a week; ask Claude "check every hour" for more. Your first brief and your ant. Home page arrive about ten minutes after you start.</p>
+        <p>When Home opens, it shows <b>How ant. keeps you safe</b> first: the real risks, what ant. does about each, and your switches. It starts careful: CRM changes wait for your Approve, and LinkedIn research runs only when you tap.</p>
         <p class="warn"><b>Do this or the checks will wait for you:</b> open Scheduled tasks, pick "ant." and "ant. weekend", and switch on <b>Automatically approve</b>. A guard still blocks anything except reading your tools, updating Home, CRM changes you approved, holds on your own calendar and saving drafts.</p>
       </div></li>
     </ol>
@@ -237,12 +238,12 @@ footer { color: var(--ink-3); font-size: 14px; }
 
   <section aria-labelledby="how">
     <span class="label">How it works</span>
-    <h2 id="how">One loop, every hour</h2>
+    <h2 id="how">One loop, each check</h2>
     <p class="sub">Nothing runs on an Anthill server. Each check happens inside your own Claude account, and everything it builds lands on one private page only you can open.</p>
     <div class="loop-row" role="list" aria-label="How a check works, in order">
       <div class="node" role="listitem"><b>Your tools</b><p>Email, calendar, meeting notes, CRM. Read through connectors you approved.</p></div>
       <div class="arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
-      <div class="node" role="listitem"><b>Hourly check</b><p>Finds promises, stale deals, pitches, founder updates and LP calls. A guard blocks sending and anything not on its list.</p></div>
+      <div class="node" role="listitem"><b>Scheduled check</b><p>Finds promises, stale deals, pitches, founder updates and LP calls. A guard blocks sending and anything off its list. Drafts go only to people you already deal with.</p></div>
       <div class="arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
       <div class="node dark" role="listitem"><b>ant. Home</b><p>Your private page: Today, Pipeline, People, Portfolio, LPs, Reminders. Every line links to its source.</p></div>
       <div class="arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
@@ -264,11 +265,11 @@ footer { color: var(--ink-3); font-size: 14px; }
       </div>
       <div class="week" aria-label="The week">
         <div class="dayc"><b>Mon</b><span>08:00 digest</span></div>
-        <div class="dayc"><b>Tue</b><span>Hourly checks</span></div>
-        <div class="dayc"><b>Wed</b><span>Hourly checks</span></div>
+        <div class="dayc"><b>Tue</b><span>3 checks</span></div>
+        <div class="dayc"><b>Wed</b><span>3 checks</span></div>
         <div class="dayc"><b>Thu</b><span>16:00 pipeline review</span></div>
-        <div class="dayc"><b>Fri</b><span>Hourly checks</span></div>
-        <div class="dayc wk"><b>Sat</b><span>3 light checks</span></div>
+        <div class="dayc"><b>Fri</b><span>3 checks</span></div>
+        <div class="dayc wk"><b>Sat</b><span>2 checks</span></div>
         <div class="dayc wk"><b>Sun</b><span>18:00 week ahead and tuning</span></div>
       </div>
     </div>
@@ -278,7 +279,7 @@ footer { color: var(--ink-3); font-size: 14px; }
     <span class="label">Your data</span>
     <h2 id="trust">What ant. can and cannot do</h2>
     <div class="trust">
-      <div class="card"><h3><span class="dot r" aria-hidden="true"></span>Reads</h3><ul><li>Email, calendar and meeting notes</li><li>Your CRM</li><li>Public LinkedIn profiles of people you meet, in the desktop app</li></ul></div>
+      <div class="card"><h3><span class="dot r" aria-hidden="true"></span>Reads</h3><ul><li>Email, calendar and meeting notes</li><li>Your CRM</li><li>Public LinkedIn profiles, only when you tap Research</li></ul></div>
       <div class="card"><h3><span class="dot w" aria-hidden="true"></span>Writes, with Undo</h3><ul><li>Email drafts, never sent for you</li><li>CRM fields and notes you approved</li><li>Holds on your own calendar, nobody invited</li></ul></div>
       <div class="card"><h3><span class="dot n" aria-hidden="true"></span>Never</h3><ul><li>Sends an email without your two taps</li><li>Deletes anything</li><li>Sends your data to Anthill or anyone else</li></ul></div>
     </div>
@@ -292,7 +293,7 @@ footer { color: var(--ink-3); font-size: 14px; }
       <details><summary>The checks keep asking me to approve</summary><p>Open Scheduled tasks, pick "ant." and "ant. weekend", and switch on Automatically approve. If your organization does not allow it, the checks still run when you approve each one.</p></details>
       <details><summary>My drafts are not in Gmail</summary><p>Some Gmail connectors cannot save drafts. Then drafts wait in ant. Home, one tap from a filled-in Gmail message. Connect a Gmail tool that saves drafts later and it just works.</p></details>
       <details><summary>My CRM is a Google Sheet</summary><p>ant. reads the sheet and suggests changes. It cannot write to a sheet, so tap Copy on a change and paste it in.</p></details>
-      <details><summary>No empathy maps on my prep cards</summary><p>Research runs only when you open Home in the Claude desktop app, because it uses the app's browser to read public LinkedIn profiles.</p></details>
+      <details><summary>No empathy maps on my prep cards</summary><p>Research starts off. Tap Research on LinkedIn on a prep card in the Claude desktop app, or turn on "By itself" in Help.</p></details>
       <details><summary>Setup stopped halfway</summary><p>Type "continue ant. setup". It finds what is already done and picks up from there. It never makes a second Home.</p></details>
       <details><summary>I use Claude Code instead</summary><p>Run <code class="quote">/plugin marketplace add nikhilgundawar-ant/ant-vc</code> then <code class="quote">/plugin install ant-vc@anthill</code>, then say "set up ant.".</p></details>
     </div>
@@ -308,7 +309,7 @@ footer { color: var(--ink-3); font-size: 14px; }
     </div>
   </section>
 
-  <footer>Built by Anthill AI. ant. for VCs 0.11.1.</footer>
+  <footer>Built by Anthill AI, not Anthropic. ant. for VCs 0.12.0. <a href="https://github.com/nikhilgundawar-ant/ant-vc/blob/main/SECURITY.md" target="_blank" rel="noopener noreferrer">Security notes</a></footer>
 </div>
 
 <script>

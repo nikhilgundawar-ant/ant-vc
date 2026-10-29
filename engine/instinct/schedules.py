@@ -38,15 +38,27 @@ def run_minute(config: dict[str, Any]) -> tuple[int, int]:
     return (total // 60) % 24, total % 60
 
 
+def light(config: dict[str, Any]) -> bool:
+    """Light mode: three checks on a weekday and two at weekends. New setups start light; a config from before 0.12
+    has no `cadence` and keeps its hourly checks."""
+    return str(config.get("cadence") or "hourly").lower() == "light"
+
+
 def plan(config: dict[str, Any], spec_path: str | None = None) -> dict[str, Any]:
     """When the two tasks run, in the user's local time: the minute, the weekday hours and the weekend hours."""
     spec = _spec(spec_path)
     first_hour, minute = run_minute(config)
     brief_hh = int((config.get("brief_time") or "07:00").split(":")[0])
     shifted = first_hour != brief_hh  # the first run sits in the hour before the brief, so every run does
-    last_hour = max(first_hour, spec.get("last_hour", 20) - (1 if shifted else 0))
+    s = 1 if shifted else 0
+    if light(config):
+        lt = spec.get("light") or {}
+        day = sorted({first_hour} | {(h - s) % 24 for h in lt.get("weekday_hours", [12, 16]) if (h - s) % 24 > first_hour})
+        weekend = [(h - s) % 24 for h in lt.get("weekend_hours", [10, 18])]
+        return {"minute": minute, "weekday_hours": day, "weekend_hours": weekend, "cadence": "light"}
+    last_hour = max(first_hour, spec.get("last_hour", 20) - s)
     weekend = [(h - 1) % 24 if shifted else h for h in spec.get("weekend_hours", [10, 14, 18])]
-    return {"minute": minute, "weekday_hours": list(range(first_hour, last_hour + 1)), "weekend_hours": weekend}
+    return {"minute": minute, "weekday_hours": list(range(first_hour, last_hour + 1)), "weekend_hours": weekend, "cadence": "hourly"}
 
 
 def day_runs(config: dict[str, Any], now: datetime, spec_path: str | None = None) -> list[datetime]:
@@ -77,8 +89,9 @@ def build(config: dict[str, Any], profiles: dict[str, Any] | None = None, spec_p
     weekend = ",".join(str(h) for h in p["weekend_hours"])
     tasks = []
     for t in spec["tasks"]:
-        cron = (t["cron"].replace("{minute}", str(minute)).replace("{first_hour}", str(first_hour))
-                .replace("{last_hour}", str(last_hour)).replace("{weekend_hours}", weekend))
+        cron = t["cron"].replace("{minute}", str(minute)).replace("{weekend_hours}", weekend)
+        hours = ",".join(str(h) for h in p["weekday_hours"]) if p.get("cadence") == "light" else f"{first_hour}-{last_hour}"
+        cron = cron.replace("{first_hour}-{last_hour}", hours).replace("{first_hour}", str(first_hour)).replace("{last_hour}", str(last_hour))
         tasks.append({"key": t["key"], "name": t["name"], "cron_expression": f"CRON_TZ={tz} {cron}",
                       "notifications": {"push": bool(t.get("push"))}, "prompt": t["prompt"].replace("{home_url}", home_url)})
     return tasks
@@ -139,8 +152,12 @@ def due(config: dict[str, Any], home: dict[str, Any], now: datetime | None = Non
             continue
         hh, mm = _at(job["at"], config)
         at = now.replace(hour=hh, minute=mm, second=0, microsecond=0)
-        # Runs start 31 to 44 minutes before the hour they serve, so a job is due from an hour before its time.
-        if at - timedelta(minutes=60) <= now < at + timedelta(minutes=90):
+        # Runs start 31 to 44 minutes before the hour they serve, so a job is due from an hour before its time. In light
+        # mode fewer runs pass, so a job is due from two hours before (the 08:00 Monday digest rides on the brief's run).
+        lead = timedelta(minutes=125 if light(config) else 60)
+        # Light mode: a job whose time passed with no run near it rides on the next run that day (an early brief).
+        late = timedelta(hours=9 if light(config) else 0, minutes=90)
+        if at - lead <= now < at + late:
             jobs.append(key)
     weekend = weekend_prompt or now.weekday() >= 5
     modes = [spec["jobs"][j]["mode"] for j in jobs if spec["jobs"][j].get("mode")] + ["weekend" if weekend else "pulse"]

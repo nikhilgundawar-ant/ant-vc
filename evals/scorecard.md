@@ -1,6 +1,6 @@
 # ant. for VCs: eval scorecard
 
-Run at 29 Oct 2026 14:05. Golden fund: Quillwater Ventures (fictional).
+Run at 29 Oct 2026 23:18. Golden fund: Quillwater Ventures (fictional).
 
 **235 of 235 checks pass.** 7 Claude-run scores skipped: no saved run.
 
@@ -56,7 +56,7 @@ Run at 29 Oct 2026 14:05. Golden fund: Quillwater Ventures (fictional).
 | push | six meetings: one heads-up each, never one twice | 3 pushes, 6 meetings covered | 6 covered, no repeats, at most 4 others | yes |
 | tuning8 | eight Sundays: each rating counts once, never against its sign | 3/3 | all | yes |
 | fund2 | a second fund with other names and CRM labels | 4/4 | all | yes |
-| guard | scheduled runs: only reads, Home, approved changes, drafts and the engine | 718/718 | all | yes |
+| guard | scheduled runs: only reads, Home, approved changes, drafts and the engine | 766/766 | all | yes |
 | round2 | morning push names a different item each day | t_498a67cc66 / t_ee4d26d476 / t_133a6cb737 | three different | yes |
 | round2 | prep pushes first, the sync folds in; the review waits for a free run | prep:ev_atlas_today + ['prep:ev_partner_sync'], then None, None, None | prep with the sync folded in, then nothing while busy | yes |
 | round2 | owed emails are drafted and linked to their promise | 3 owed, linked True, batch True | all | yes |
@@ -179,7 +179,7 @@ Run at 29 Oct 2026 14:05. Golden fund: Quillwater Ventures (fictional).
 | round11 | a pitch answered on Thu 22 is never answered again, to Wed 11 Nov | 19 answered; again on [] | N; none | yes |
 | round11 | in a partner's Home a cash warning never tells her to check with a colleague on her own boards | warnings ['Runway under 9 months: decide whether to help hire before anyone starts looking', 'Burn up 43.3% in a month: decide whether to help hire before anyone starts looking'] | no 'check with' naming someone else, or 'your call' | yes |
 | round11 | the guard refuses order-like data names at either end and Artifact reads that save files | wrongly allowed []; wrongly refused []; file-saving reads allowed 0; plain read and list True | []; []; 0; True | yes |
-| scale | ten times the golden fund: fast, small, still names the deal | 0.7s, 239 KiB max | < 10s, < 240 KiB | yes |
+| scale | ten times the golden fund: fast, small, still names the deal | 0.3s, 239 KiB max | < 10s, < 240 KiB | yes |
 | round12 | a pulse that sends no deals keeps every deal's CRM stage label | changed [] | [] | yes |
 | round12 | on a Friday Today names Monday's meetings with their prep, Monday's card leads with what the room decides, and its questions outlast the day's pulses | tomorrow [('Monday', 'Monday partner meeting', True)]; finding Decide on Gravity Payouts by 31 Oct, and 10 more; Sable: Deadline 23 Oct passes before this meeting: decide by then w; questions at 08:29 3 | [('Monday', ..., True)]; not Sable first; 'passes before this meeting'; 3 | yes |
 | round12 | Sent it on a pitch reply closes the pitch: no 'book a call' row after it | back on []; answered ['i_0e2115836d'] | []; the pitch | yes |
@@ -237,7 +237,7 @@ Run at 29 Oct 2026 14:05. Golden fund: Quillwater Ventures (fictional).
 | round16 | a reversal applied once is never offered again | [] | [] | yes |
 | round16 | a Sheet CRM says to change it back by hand | [{"id": "rv_p1", "type": "revert", "why": "Your CRM is a Google Sheet, which ant. cannot write to. Copy the change from  | refused | yes |
 | round17 | automatic mode applies a proposed CRM change and an own-calendar hold untapped, marked auto | pending ['p1', 'p3'] | p1, p3 | yes |
-| round17 | a skipped change, a hand-copied one and an applied one stay put; an invite or an unknown field is still refused | refused ['p4', 'p7']; engine ['p2'] | p4, p7 refused; p2 skipped | yes |
+| round17 | a skipped change, a hand-copied one and an applied one stay put; an invite is still refused; a stage change, an unknown field and a change from an outside email wait for a tap | refused ['p4']; engine ['p2'] | p4 refused; p2 skipped; p7, p8, p9 wait | yes |
 | round17 | with automatic mode off or never set, nothing applies without a tap | [] [] | [] [] | yes |
 | round18 | a CRM and calendar set to read only in Settings take no change, tapped or automatic, and say why | pending []; refused ['ns', 'p1', 'p2'] | none; ns, p1, p2 | yes |
 | round18 | set back to update, they apply | ['ns', 'p1', 'p2'] | ns, p1, p2 | yes |

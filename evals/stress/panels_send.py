@@ -592,12 +592,65 @@ def round2(qa, b) -> None:
     ctx.close()
 
 
+# ---------------------------------------------------------------------------------------------- 0.12: the safety screen and auto labels
+def safety(qa, b) -> None:
+    st = lambda x: {"items": {}, "actions": {}, "reminders": {}, "settings": x}
+    sw = lambda page: [w for w in page.evaluate("window.__writes") if w.get("path") == "state/settings"]
+    for vp in (Q.DESK, Q.PHONE):
+        ctx, page = qa.open(b, "safety", vp, open_all=False, inline=False, safety=True, state=st({}))
+        page.wait_for_timeout(200)
+        shown = page.locator(".sheet").get_attribute("aria-label") == "How ant. keeps you safe" if page.locator(".sheet").count() else False
+        page.locator(".sheet-foot button", has_text="I understand").dblclick()
+        page.wait_for_timeout(200)
+        seen = [w for w in sw(page) if (w["data"]["items"] or {}).get("safety_seen") == "0.12"]
+        check(f"safety {vp['width']}px: first open shows the screen; a double tap on I understand saves seen once and opens nothing behind it",
+              shown and len(seen) == 1 and page.locator(".sheet").count() == 0, page.locator(".sheet").get_attribute("aria-label") if page.locator(".sheet").count() else "")
+        ctx.close()
+    ctx, page = qa.open(b, "safety-sw", Q.DESK, open_all=False, inline=False, safety=True, state=st({}))
+    page.wait_for_timeout(200)
+    page.locator(".sheet .seg[aria-label='CRM changes and calendar holds'] button", has_text="By itself").click()
+    page.locator(".sheet .seg[aria-label='Research on LinkedIn'] button", has_text="By itself").click()
+    page.wait_for_timeout(80)
+    last = (sw(page)[-1]["data"]["items"] if sw(page) else {})
+    check("safety: its switches write auto_apply and research_auto to state/settings", last.get("auto_apply") is True and last.get("research_auto") is True, json.dumps(last))
+    page.keyboard.press("Escape")
+    page.wait_for_timeout(60)
+    page.locator("#help-btn").click()
+    page.wait_for_timeout(100)
+    segs = page.locator(".sheet .seg").evaluate_all("ss => ss.slice(0, 2).map(s => Array.from(s.children).map(c => c.textContent + (c.getAttribute('aria-pressed') === 'true' ? '*' : '')).join('/'))")
+    check("Help: its switches show what the safety screen set", segs == ["Ask me first/By itself*", "When I tap/By itself*"] or segs == ["By itself*/Ask me first", "When I tap/By itself*"], json.dumps(segs))
+    check("Help and the safety screen list the CRM switch's choices in the same order", segs[:1] == ["Ask me first/By itself*"], json.dumps(segs[:1]))
+    ctx.close()
+    # A read-only viewer: a switch must not look changed when nothing was saved.
+    ctx, page = qa.open(b, "safety-ro", Q.DESK, open_all=False, inline=False, safety=True, owner=False, state=st({}))
+    page.wait_for_timeout(250)
+    seg = page.locator(".sheet .seg[aria-label='CRM changes and calendar holds'] button", has_text="By itself")
+    if seg.count():
+        seg.click()
+        page.wait_for_timeout(80)
+    pretends = seg.count() > 0 and seg.get_attribute("aria-pressed") == "true" and not sw(page)
+    check("read-only viewer: the safety switches do not show a change that was never saved", seg.count() == 0 or not pretends, "pressed, 0 writes, no message")
+    ctx.close()
+    # With CRM and calendar set to read only, nothing applies by itself, so Home must not say it will.
+    ctx, page = qa.open(b, "auto-ro", Q.DESK, open_all=False, inline=False,
+                        state=st({"auto_apply": True, "access": {"crm": "read", "calendar": "read"}}))
+    page.wait_for_timeout(200)
+    lab = " ".join(page.locator("section[aria-label='Decisions'] .status").all_inner_texts())
+    check("auto on, CRM set to read only: Decisions never says 'Applies by itself'", "Applies by itself" not in lab, lab[:120])
+    ctx.close()
+    ctx, page = qa.open(b, "auto-on", Q.DESK, open_all=False, inline=False, state=st({"auto_apply": True}))
+    page.wait_for_timeout(200)
+    lab = " ".join(page.locator("section[aria-label='Decisions'] .status").all_inner_texts())
+    check("auto on: the next step from meeting notes says 'Applies by itself'", "Applies by itself" in lab, lab[:120])
+    ctx.close()
+
+
 def main() -> int:
     t0 = time.time()
     qa = Q.QA(OUT)
     with sync_playwright() as p:
         b = p.chromium.launch()
-        for part in (composer, ratings, round2, static_and_source, navigation, sweep):
+        for part in (safety, composer, ratings, round2, static_and_source, navigation, sweep):
             try:
                 part(qa, b)
             except Exception as e:  # a crash in one part is a failed check, the rest still run

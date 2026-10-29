@@ -205,8 +205,10 @@ def _real(path, cwd):
 
 
 def _in_engine(real, cwd):
+    """The engine copy, and the run's recipient list: only the engine writes either, never a tool call."""
     rel = os.path.relpath(real, cwd)
-    return ENGINE_DIR in rel.split(os.sep)
+    # Compared in lower case: on a Mac, RECIPIENTS.json and Instinct-Engine are the same files.
+    return ENGINE_DIR in rel.lower().split(os.sep) or os.path.basename(real).lower() == "recipients.json"
 
 
 def work_root(cwd):
@@ -573,7 +575,7 @@ def verdict(tool, args, ctx=None):
     if DRAFT.match(name):
         if any(re.search(r"send", str(k), re.I) and v for k, v in args.items()):
             return "A draft is saved, never sent."
-        return None
+        return draft_recipients_verdict(args, ctx.get("cwd"), ctx.get("transcript"))
     if EVENT.search(name):
         return event_verdict(srv, args)
     if "notion" in srv:
@@ -587,6 +589,127 @@ def verdict(tool, args, ctx=None):
             return "Scheduled checks change only a CRM record's fields and notes."
         return None
     return REASON
+
+
+EMAIL = re.compile(r"^[A-Za-z0-9._%+'-]+@[A-Za-z0-9-]+(\.[A-Za-z0-9-]+)*\.[A-Za-z]{2,}$")
+# Where a draft's words live. Everything else in a draft call is read for addresses, at any depth.
+BODY_KEYS = re.compile(r"^(subject|body|text|html|html_?body|plain|plain_?text|content|snippet|signature|title|message_?body|"
+                       r"body_?html|body_?text|text_?body|preview)$", re.I)
+# Where a connector's result names people: message headers, invites, CRM people. Never a message's text.
+HEADER_KEYS = re.compile(r"^(from|to|cc|bcc|sender|reply_?to|recipients?|to_?recipients|cc_?recipients|bcc_?recipients|attendees?|"
+                         r"organizer|participants?|email|emails|email_?address(es)?|address|creator|owner|members?|contacts?)$", re.I)
+HEADER_LINE = re.compile(r"^\s*(from|to|cc|bcc|reply-to|attendees?|organizer)\s*:(.*)$", re.I | re.M)
+
+
+def _pieces(text):
+    """The address-like pieces of a string: 'Ann <a@b.co>, c@d.co' gives a@b.co and c@d.co; names are dropped."""
+    return [x for x in re.split(r"[\s,;<>()\[\]\"]+", str(text)) if "@" in x]
+
+
+def _raw_headers(raw):
+    import base64
+    try:
+        txt = base64.urlsafe_b64decode(str(raw) + "=" * (-len(str(raw)) % 4)).decode("utf-8", "replace")
+    except Exception:
+        return ["undecodable@raw.invalid"]
+    head = txt.split("\r\n\r\n")[0].split("\n\n")[0]
+    return [p for m in HEADER_LINE.finditer(head) for p in _pieces(m.group(2))]
+
+
+def _draft_addresses(v, out, key=""):
+    if key and BODY_KEYS.match(key):
+        return
+    if key.lower() == "raw" and isinstance(v, str):
+        out.extend(_raw_headers(v))
+        return
+    if isinstance(v, str):
+        out.extend(_pieces(v))
+    elif isinstance(v, dict):
+        for k, x in v.items():
+            _draft_addresses(x, out, str(k))
+    elif isinstance(v, list):
+        for x in v:
+            _draft_addresses(x, out, key)
+
+
+def _header_addresses(v, out, under=False):
+    """Addresses a connector really returned: only under header-like keys, at any depth, never from a message's text."""
+    if isinstance(v, dict):
+        for k, x in v.items():
+            if BODY_KEYS.match(str(k)):
+                continue
+            _header_addresses(x, out, under or bool(HEADER_KEYS.match(str(k))))
+    elif isinstance(v, list):
+        for x in v:
+            _header_addresses(x, out, under)
+    elif isinstance(v, str) and under:
+        out.update(p.lower() for p in _pieces(v) if EMAIL.match(p))
+
+
+def transcript_people(path):
+    """Every address a connector read returned in this run, from the transcript itself: tool results of `mcp__` tools
+    only (Gmail, Calendar, the CRM and the like), header fields only. The run cannot add to this by writing a file."""
+    names, out = {}, set()
+    if not path:
+        return out
+    with open(path, encoding="utf-8", errors="replace") as fh:
+        for i, line in enumerate(fh):
+            if i > 50000:
+                break
+            if '"tool_use"' not in line and '"tool_result"' not in line:
+                continue
+            try:
+                row = json.loads(line)
+            except ValueError:
+                continue
+            content = (row.get("message") or {}).get("content")
+            if not isinstance(content, list):
+                continue
+            for c in content:
+                if not isinstance(c, dict):
+                    continue
+                if c.get("type") == "tool_use":
+                    names[c.get("id")] = str(c.get("name") or "")
+                elif c.get("type") == "tool_result":
+                    tool = names.get(c.get("tool_use_id"), "")
+                    if not tool.startswith("mcp__") or NO_SERVERS.search(tool):
+                        continue
+                    body = c.get("content")
+                    texts = [body] if isinstance(body, str) else [b.get("text", "") for b in body or [] if isinstance(b, dict)]
+                    for t in texts:
+                        try:
+                            _header_addresses(json.loads(t), out)
+                        except (ValueError, TypeError):
+                            for m in HEADER_LINE.finditer(str(t)):
+                                out.update(p.lower() for p in _pieces(m.group(2)) if EMAIL.match(p))
+    return out
+
+
+def draft_recipients_verdict(args, cwd, transcript=None):
+    """Recipient lock: a scheduled run drafts only to people the user already deals with. An address passes only when
+    it is on the build's list (`run/recipients.json`, from header fields) AND a connector returned it in this run's own
+    transcript, in a header field. Every value in the call is read, at any depth, apart from its subject and body; an
+    address ant. cannot read plainly (non-ASCII, a look-alike letter) is refused."""
+    found = []
+    _draft_addresses(args or {}, found)
+    if not found:
+        return "A draft needs a recipient the user already knows."
+    odd = [a for a in found if not EMAIL.match(a)]
+    if odd:
+        return "A scheduled check saves no draft to an address it cannot read plainly: " + ", ".join(odd[:2]) + "."
+    found = {a.lower() for a in found}
+    path = os.path.join(work_root(cwd), "run", "recipients.json")
+    try:
+        with open(path, encoding="utf-8") as fh:
+            known = {str(x).lower() for x in json.load(fh) if isinstance(x, str)}
+    except Exception:
+        return "No recipient list for this run, so a scheduled check saves no draft. It waits in ant. Home."
+    seen = transcript_people(transcript) if transcript else set()
+    new = sorted(found - (known & seen))
+    if new:
+        return ("A scheduled check drafts only to people already in your threads, invites or CRM. Not saved: "
+                + ", ".join(new[:3]) + ". Write to them yourself from ant. Home if you mean to.")
+    return None
 
 
 def deny(why):
@@ -604,7 +727,7 @@ def main():
     if not text:
         return 0
     try:
-        ctx = {"cwd": event.get("cwd") or os.getcwd(), "homes": {_link_id(u) for u in HOME_LINK.findall(text)}}
+        ctx = {"cwd": event.get("cwd") or os.getcwd(), "homes": {_link_id(u) for u in HOME_LINK.findall(text)}, "transcript": path}
         why = verdict(str(event.get("tool_name") or ""), event.get("tool_input") or {}, ctx)
     except Exception:
         why = "The ant. guard could not check this call, so a scheduled check does not make it."

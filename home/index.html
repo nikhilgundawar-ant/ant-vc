@@ -717,6 +717,20 @@ table.deals { min-width: 760px; }
   padding: 12px 20px calc(12px + env(safe-area-inset-bottom, 0px)); background: var(--ah-modal); box-shadow: 0 -1px 0 var(--ah-row-rule); }
 .sheet-foot .btn { flex: 1 1 0; justify-content: center; height: 44px; }
 .tldr { padding: 12px 16px; border-radius: 12px; background: var(--ah-tint); }
+/* the safety screen */
+.sf-cols { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+@media (max-width: 559px) { .sf-cols { grid-template-columns: minmax(0, 1fr); } }
+.sf-col { padding: 12px; border-radius: 12px; background: var(--ah-tint); display: grid; gap: 4px; align-content: start; }
+.sf-col h3 { margin: 0; font-size: 13.5px; font-weight: 800; }
+.sf-col ul { margin: 0; padding-left: 16px; display: grid; gap: 2px; font-size: 13.5px; color: var(--ah-ink-2); }
+.sf-never { background: var(--ah-breach-tint); }
+.sf-never h3 { color: var(--ah-breach-ink); }
+.sf-risks { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+.sf-risk { display: grid; gap: 2px; padding-top: 12px; border-top: 1px solid var(--ah-row-rule); }
+.sf-risk:first-child { border-top: 0; padding-top: 0; }
+.sf-risk span { font-size: 13.5px; color: var(--ah-ink-2); }
+.sf-risk .sf-done { color: var(--ah-ink); }
+.sf-risk .sf-done::before { content: "What ant. does: "; font-weight: 800; color: var(--ah-hero); }
 .tldr .md { font-size: 14.5px; }
 .note-lines { display: grid; gap: 8px; margin: 0; padding: 0; list-style: none; }
 .note-lines li { display: grid; grid-template-columns: 52px minmax(0, 1fr); gap: 8px; font-size: 14px; line-height: 1.5; }
@@ -809,6 +823,7 @@ button.chip-source svg { width: 12px; height: 12px; }
     return s;
   }
   var ICON = {
+    lock: "M6 11h12v9H6z|M8 11V8a4 4 0 0 1 8 0v3",
     today: "M12 3v2|M12 19v2|M5.6 5.6l1.4 1.4|M17 17l1.4 1.4|M3 12h2|M19 12h2|M5.6 18.4L7 17|M17 7l1.4-1.4|M12 8a4 4 0 1 0 0 8a4 4 0 1 0 0-8",
     pipeline: "M4 5h16|M4 12h11|M4 19h6",
     people: "M16 20v-1.5a3.5 3.5 0 0 0-3.5-3.5h-5A3.5 3.5 0 0 0 4 18.5V20|M10 11a3.5 3.5 0 1 0 0-7a3.5 3.5 0 0 0 0 7|M20 20v-1.5a3.5 3.5 0 0 0-2.5-3.35|M15.5 4.15a3.5 3.5 0 0 1 0 6.7",
@@ -1017,7 +1032,7 @@ button.chip-source svg { width: 12px; height: 12px; }
     var demoNode = document.getElementById("instinct-demo");
     if (demoNode) {
       try { S.demo = JSON.parse(demoNode.textContent); } catch (e) { S.demo = null; }
-      if (S.demo && S.demo.order && S.demo.order.length) { S.static = true; loadDemo(S.demo.order[0]); return; }
+      if (S.demo && S.demo.order && S.demo.order.length) { S.static = true; loadDemo(S.demo.order[0]); setTimeout(maybeSafety, 400); return; }
     }
     if (!window.claude || typeof window.claude.use !== "function") { S.error = "no-runtime"; S.loaded = true; render(); return; }
     window.claude.use("user").then(function (u) {
@@ -1042,7 +1057,7 @@ button.chip-source svg { width: 12px; height: 12px; }
       }, function () { S.error = "db-error"; S.loaded = true; render(); });
       db.doc("state/items").onSnapshot(function (d) { S.items = (d.exists && d.data().items) || {}; render(); }, function () {});
       db.doc("state/actions").onSnapshot(function (d) { S.actions = (d.exists && d.data().items) || {}; render(); }, function () {});
-      db.doc("state/settings").onSnapshot(function (d) { S.settings = (d.exists && d.data().items) || {}; render(); }, function () {});
+      db.doc("state/settings").onSnapshot(function (d) { S.settings = (d.exists && d.data().items) || {}; S.settingsLoaded = true; render(); setTimeout(maybeSafety, 0); }, function () {});
       db.doc("state/reminders").onSnapshot(function (d) { S.reminders = (d.exists && d.data().items) || {}; render(); }, function () {});
       db.doc("state/tldr").onSnapshot(function (d) { S.tldr = Object.assign({}, S.tldr || {}, (d.exists && d.data().items) || {}); }, function () {});
       db.collection("ratings").orderBy("at", "desc").limit(60).onSnapshot(function (qs) {
@@ -2073,7 +2088,7 @@ button.chip-source svg { width: 12px; height: 12px; }
         return;
       }
       var act = S.actions[id], decided = act && (act.status === "approved");
-      var autoOn = (S.settings || {}).auto_apply === true && !sheetCrm();
+      var autoOn = (S.settings || {}).auto_apply === true && !sheetCrm() && autoSafe(p);
       var fields = changeLines(p);
       rows.push(foldRow(h("div", { class: "row" }, [glyph("medium"), h("div", { class: "row-main" }, [
         h("div", { class: "row-hit static" }, [h("span", { class: "row-title" }, ((p.record && p.record.name) ? p.record.name + ": " : "") + (p.title || "CRM update")),
@@ -3338,9 +3353,25 @@ button.chip-source svg { width: 12px; height: 12px; }
     });
     return sheet;
   }
+  // The engine's rule (cli._auto_safe): automatic mode applies only next step, due date, notes and last contact,
+  // and only from your own meeting notes. Stage, round, amount and anything from an outside email wait for your tap.
+  var AUTO_FIELDS = ["next_step", "next_step_due", "note", "notes", "last_contact"], NOTE_HOSTS = ["granola.ai", "fathom.video", "fireflies.ai", "otter.ai", "zoom.us", "notion.so", "notion.site"];
+  function autoSafe(p) {
+    var acc = ((S.settings || {}).access) || {};
+    if (!p) return false;
+    // Read-only in Settings: the engine refuses it, so Home never says it applies by itself.
+    if (p.type === "calendar_hold") return acc.calendar !== "read" && acc.calendar !== "off";
+    if (acc.crm === "read" || acc.crm === "off") return false;
+    var fs = p.fields;
+    if (!Array.isArray(fs) || !fs.length || fs.some(function (f) { return !f || typeof f !== "object" || AUTO_FIELDS.indexOf(f.field) < 0; }) || p.from_email) return false;
+    var u = String(p.source_url || ""), host = "";
+    if (/\\/.test(u) || !/^https:\/\//i.test(u)) return false;
+    try { var url = new URL(u); if (url.username || url.password) return false; host = url.hostname.toLowerCase(); } catch (e) { return false; }
+    return /notes/i.test(String(p.source_label || "")) && NOTE_HOSTS.some(function (x) { return host === x || host.slice(-(x.length + 1)) === "." + x; });
+  }
   function openProposal(id, p) {
     var name = (p.record && p.record.name) || "", cid = companyIdFor(name);
-    var autoOn = (S.settings || {}).auto_apply === true && !sheetCrm();
+    var autoOn = (S.settings || {}).auto_apply === true && !sheetCrm() && autoSafe(p);
     openPanel({ key: "rdy:" + id, title: (name ? name + ": " : "") + (p.title || "CRM update"), names: [name], sub: "Decision · CRM change",
       status: [h("span", { class: "status" + (p.status === "failed" ? " breach" : "") }, p.status === "failed" ? "Failed: " + (p.reason || "a run stopped") : p.status === "check" ? "Check: " + (p.reason || "") :
         p.status === "refused" ? "Not done: " + (p.reason || "") : autoOn ? "Applies by itself at the next check" : "Needs your OK")],
@@ -4032,6 +4063,77 @@ button.chip-source svg { width: 12px; height: 12px; }
     ].filter(Boolean), { drawer: true, reopen: function () { openPartnerPack(card); } });
   }
   function keysKv(items) { var k = kv("Keys", items); if (k) k.classList.add("keys-only"); return k; }
+  // ---------------------------------------------------------------- safety: shown once, before anything else, and from Help
+  // Every call-out a careful reviewer raises, with what ant. does about it and the switch for it. Plain facts only:
+  // the page never claims more than the code does.
+  var SAFETY_VERSION = "0.12";
+  var REPO = "https://github.com/nikhilgundawar-ant/ant-vc";
+  function safetySeen() {
+    if (S.static || S.readOnly) { try { return localStorage.getItem("ant.safetySeen") === SAFETY_VERSION; } catch (e) { return !!S.safetyShown; } }
+    return (S.settings || {}).safety_seen === SAFETY_VERSION;
+  }
+  function maybeSafety() {
+    if (window.__QA__ && !window.__QA__.safety) return;  // Home QA opens the safety screen only in its own checks
+    if (S.safetyShown || safetySeen() || (!S.static && !S.settingsLoaded)) return;
+    if (document.getElementById("overlay-slot").firstChild) return;  // never on top of a panel you opened
+    S.safetyShown = true; openSafety(true);
+  }
+  function openSafety(first) {
+    var risk = function (title, what, done) {
+      return h("li", { class: "sf-risk" }, [h("b", null, title), h("span", null, what), h("span", { class: "sf-done" }, done)]);
+    };
+    var col = function (title, cls, items) {
+      return h("div", { class: "sf-col " + cls }, [h("h3", null, title), h("ul", null, items.map(function (t) { return h("li", null, t); }))]);
+    };
+    var ok = function (e) {
+      // One tap closes it; a second tap lands on nothing (the button stays, disabled, for a moment).
+      var b = e && e.currentTarget; if (b) { if (b.disabled) return; b.disabled = true; }
+      var close = function () { setTimeout(closeOverlay, 120); };
+      if (S.static || S.readOnly) { try { localStorage.setItem("ant.safetySeen", SAFETY_VERSION); } catch (x) {} close(); return; }
+      S.settings = Object.assign({}, S.settings || {}, { safety_seen: SAFETY_VERSION, safety_seen_at: nowIso() });
+      if (S.db && !S.readOnly) S.db.doc("state/settings").set({ items: S.settings }).catch(function () {});
+      close();
+    };
+    var body = [
+      h("p", { class: "finding" }, "Read this once before ant. starts. It is the whole picture: what ant. touches, the real risks, and what it does about each."),
+      h("div", { class: "kv" }, [h("h3", null, "Who makes it"),
+        h("p", null, ["ant. is made by Anthill AI, not by Anthropic. It runs inside your own Claude account: there is no Anthill server, so nothing goes to Anthill. The code is open, and every release lists its test results and a checksum, so you can check the file matches the code. ",
+          h("a", { href: safeUrl(REPO), target: "_blank", rel: "noopener noreferrer" }, "Source on GitHub")])]),
+      h("div", { class: "sf-cols" }, [
+        col("Reads", "sf-read", ["Your email, calendar and meeting notes", "Your CRM", "LinkedIn, only when you tap Research"]),
+        col("Writes, with Undo", "sf-write", ["Email drafts, never sent for you", "CRM changes you approve", "Holds on your own calendar, nobody invited"]),
+        col("Never", "sf-never", ["Sends an email without Send, then Send now", "Deletes anything", "Shares your data with Anthill or anyone"])]),
+      h("div", { class: "kv" }, [h("h3", null, "The real risks, and what ant. does"), h("ul", { class: "sf-risks" }, [
+        risk("Strangers' email", "ant. reads mail from people you do not know, every check, with nobody watching. A crafted email could try to steer it.",
+          "Checks run behind a guard that blocks sending, deleting, the web and other apps. A draft can go only to people already in your threads, invites or CRM. An outside email never changes your CRM by itself."),
+        risk("Automatic CRM changes", "A change you did not look at could set off your CRM's own automations.",
+          "Off until you turn it on. When on, only next steps and notes from your own meeting notes apply by themselves. Stage, round and amount always wait for you."),
+        risk("The guard reads tool names", "A connector tool named like a read that secretly writes would get past it.",
+          "Gmail, Calendar, Drive, Granola, Slack and Notion pass only their exact known read tools. Any new tool on them is blocked. Each check first makes a call the guard must refuse, and stops if it is not refused."),
+        risk("When you chat with ant.", "The guard covers scheduled checks only.",
+          "In a chat, the Claude app asks you before each action, and you approve it yourself."),
+        risk("LinkedIn", "Reading LinkedIn by itself may break LinkedIn's user agreement.",
+          "Off. ant. researches a person only when you tap Research on LinkedIn. You can turn on automatic research below."),
+        risk("Data about founders and LPs", "ant. keeps notes on people from your email and their public profiles.",
+          "It stays in this private page in your Claude account. Check your fund's privacy duties. Say \u201cturn off ant.\u201d to stop the checks and wipe its data."),
+        risk("Cost and noise", "Each check is a Claude session that reads your tools.",
+          "Light mode: 3 checks on a weekday and 2 at weekends, 19 a week. Ask Claude \u201ccheck every hour\u201d if you want more.")])]),
+      S.static ? h("p", { class: "prov" }, "Sample data: these switches work in your own Home.") :
+      S.readOnly ? h("div", { class: "kv" }, [h("h3", null, "Switches"), h("p", { class: "prov" }, "CRM changes: " + ((S.settings || {}).auto_apply === true ? "by itself" : "ask first") +
+        ". LinkedIn research: " + (rsSetting() === "auto" ? "by itself" : "when tapped") + ". Only the owner of this Home can change these.")]) :
+      h("div", { class: "kv" }, [h("h3", null, "Your switches"),
+        segKv("CRM changes and calendar holds", [["ask", "Ask me first"], ["auto", "By itself"]], (S.settings || {}).auto_apply === true ? "auto" : "ask", function (v) {
+          S.settings = Object.assign({}, S.settings || {}, { auto_apply: v === "auto" });
+          if (S.db && !S.readOnly) S.db.doc("state/settings").set({ items: S.settings }).catch(function () { toast("Could not save that."); }); }),
+        segKv("Research on LinkedIn", [["off", "When I tap"], ["auto", "By itself"]], rsSetting(), function (v) {
+          S.settings = Object.assign({}, S.settings || {}, { research_auto: v === "auto" });
+          if (S.db && !S.readOnly) S.db.doc("state/settings").set({ items: S.settings }).catch(function () { toast("Could not save that."); }); })]),
+      h("p", { class: "prov" }, ["More detail: ", h("a", { href: safeUrl(REPO + "/blob/main/SECURITY.md"), target: "_blank", rel: "noopener noreferrer" }, "Security notes"), " and ",
+        h("a", { href: safeUrl(REPO + "/blob/main/TRUST.md"), target: "_blank", rel: "noopener noreferrer" }, "Privacy and trust"), ". Open this again any time from Help."])
+    ];
+    var go = h("button", { class: "btn btn-primary", type: "button", onclick: ok }, first ? "I understand, start" : "Done");
+    overlay("How ant. keeps you safe", body, { drawer: true, foot: [go], reopen: function () { openSafety(first); } });
+  }
   function segKv(title, opts, now, fn) {
     return h("div", { class: "kv" }, [h("h3", null, title), h("div", { class: "seg", role: "group", "aria-label": title }, opts.map(function (o) {
       return h("button", { class: "chip", type: "button", "aria-pressed": now === o[0] ? "true" : "false",
@@ -4044,15 +4146,19 @@ button.chip-source svg { width: 12px; height: 12px; }
   function openHelp() {
     var sc = S.snap.scorecard || {}, c = cfg();
     overlay("How ant. works", [
+      h("div", null, h("button", { class: "btn btn-quiet btn-sm", type: "button", onclick: function () { closeOverlay(); openSafety(false); } }, [icon(ICON.lock || ICON.gear, 16), "Safety and privacy"])),
       h("div", null, h("button", { class: "btn btn-secondary btn-sm", type: "button", onclick: function () { closeOverlay(); go("settings"); } }, [icon(ICON.gear, 16), "Settings and your tools"])),
       h("p", { class: "finding" }, "ant. reads, prepares, drafts and researches by itself. It never sends an email or deletes anything: you press Send. " +
-        ((S.settings || {}).auto_apply === true ? "CRM changes from your notes and holds on your own calendar apply by themselves." : "CRM changes and holds wait for your Approve.")),
+        ((S.settings || {}).auto_apply === true ? "Next steps and notes from your own meeting notes, and holds on your own calendar, apply by themselves. Stage, round and amount always wait for your Approve." : "CRM changes and holds wait for your Approve.")),
       S.static ? null : h("div", { class: "kv" }, [h("h3", null, "Runs by itself"), h("p", { class: "prov" }, "Emails never send by themselves: you press Send.")]),
-      S.static ? null : segKv("CRM changes and calendar holds", [["auto", "By itself"], ["ask", "Ask me first"]], (S.settings || {}).auto_apply === true ? "auto" : "ask", function (v) {
+      S.static || S.readOnly ? null : segKv("CRM changes and calendar holds", [["ask", "Ask me first"], ["auto", "By itself"]], (S.settings || {}).auto_apply === true ? "auto" : "ask", function (v) {
         S.settings = Object.assign({}, S.settings || {}, { auto_apply: v === "auto" });
         if (S.db && !S.readOnly) { var r = S.db.doc("state/settings"); r.set({ items: S.settings }).then(function () { toast(v === "auto" ? "CRM changes and holds on your calendar now apply at each check. Undo CRM changes from Activity; delete a hold in your calendar." : "ant. asks before each CRM change and hold."); }, function () { toast("Could not save that."); }); }
       }),
-      S.static ? null : segKv("Research before meetings", [["auto", "By itself"], ["off", "Off"]], rsSetting(), function (v) { remember("ant.research", v); }),
+      S.static || S.readOnly ? null : segKv("Research on LinkedIn", [["off", "When I tap"], ["auto", "By itself"]], rsSetting(), function (v) {
+        S.settings = Object.assign({}, S.settings || {}, { research_auto: v === "auto" });
+        if (S.db && !S.readOnly) S.db.doc("state/settings").set({ items: S.settings }).then(function () { toast(v === "auto" ? "Research runs by itself when you open Home in the desktop app. Reading LinkedIn by itself may break LinkedIn's user agreement." : "Research runs only when you tap Research on LinkedIn."); }, function () { toast("Could not save that."); });
+        if (v === "auto") maybeAutoResearch(); }),
       kv("Ask", [h("li", null, "Press / or the search icon on any screen to find a deal, person or LP, or to ask a question about your data.")]),
       kv("Taps", [h("li", null, "Tap a line to act on it: done, snooze, set a next step or draft a note."), h("li", null, "Rate any line Useful, Not useful or Wrong. ant. tunes itself every Sunday."),
         h("li", null, "What you approve applies at the next hourly check. Undo any tap from Activity, at the top of the page."),
@@ -4520,7 +4626,9 @@ button.chip-source svg { width: 12px; height: 12px; }
   // empathy map, keeps it in snap/research and saves a Google Doc to Drive. Reading only: it never clicks Connect,
   // Message, Follow or Like. One person at a time, at most five per opening, each person once a month.
   S.rs = { running: false, who: null, note: null, stop: false };
-  function rsSetting() { try { return localStorage.getItem("ant.research") === "off" ? "off" : "auto"; } catch (e) { return "auto"; } }
+  // Research on LinkedIn starts off: it runs when you tap "Research on LinkedIn", until you turn on "By itself" in Help.
+  // Reading LinkedIn by itself may break LinkedIn's user agreement, so it is your choice (state/settings research_auto).
+  function rsSetting() { return (S.settings || {}).research_auto === true ? "auto" : "off"; }
   function rsKey(a) { return String(a.email || a.name || "").toLowerCase(); }
   function rsCandidates(onlyCard) {
     var lib = ((S.snap.research || {}).people) || {}, tried = ((S.snap.research || {}).tried) || {}, dom = String(cfg().firm_domain || "").toLowerCase();
@@ -4777,11 +4885,14 @@ button.chip-source svg { width: 12px; height: 12px; }
     // What runs by itself, and how Home looks.
     var prefs = h("section", { class: "card", "aria-label": "Runs by itself", style: "display:grid;gap:12px" }, [h("h2", { class: "sec-h", style: "margin:0" }, [h("b", null, "Runs by itself")]),
       h("p", { class: "prov" }, "Emails never send by themselves: you press Send."),
-      S.static ? null : segKv("CRM changes and calendar holds", [["auto", "By itself"], ["ask", "Ask me first"]], (S.settings || {}).auto_apply === true ? "auto" : "ask", function (v) {
+      S.static || S.readOnly ? null : segKv("CRM changes and calendar holds", [["ask", "Ask me first"], ["auto", "By itself"]], (S.settings || {}).auto_apply === true ? "auto" : "ask", function (v) {
         S.settings = Object.assign({}, S.settings || {}, { auto_apply: v === "auto" });
         if (S.db && !S.readOnly) S.db.doc("state/settings").set({ items: S.settings }).then(function () { toast(v === "auto" ? "CRM changes and holds now apply at each check, with Undo in Activity." : "ant. asks before each CRM change and hold."); }, function () { toast("Could not save that."); });
       }),
-      S.static ? null : segKv("Research before meetings", [["auto", "By itself"], ["off", "Off"]], rsSetting(), function (v) { remember("ant.research", v); }),
+      S.static || S.readOnly ? null : segKv("Research on LinkedIn", [["off", "When I tap"], ["auto", "By itself"]], rsSetting(), function (v) {
+        S.settings = Object.assign({}, S.settings || {}, { research_auto: v === "auto" });
+        if (S.db && !S.readOnly) S.db.doc("state/settings").set({ items: S.settings }).then(function () { toast(v === "auto" ? "Research runs by itself when you open Home in the desktop app. Reading LinkedIn by itself may break LinkedIn's user agreement." : "Research runs only when you tap Research on LinkedIn."); }, function () { toast("Could not save that."); });
+        if (v === "auto") maybeAutoResearch(); }),
       segKv("Appearance", [["system", "Match my device"], ["light", "Light"], ["dark", "Dark"]], themeChoice(), setTheme),
       segKv("Text size", [["comfortable", "Comfortable"], ["compact", "Compact"]], density(), function (v) { setDensity(v); render(); })]);
     // What you taught ant.: your notes and the edits you made before sending. Every summary, recommendation and draft

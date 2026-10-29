@@ -671,6 +671,7 @@ class QA:
             ctx.close()
             calm = json.loads(json.dumps(self.snaps[m]))
             calm["brief"]["hero"] = {"kind": "calm", "item_id": None, "kicker": "All clear", "statement": "Nothing needs you", "finding": "ant. keeps watching."}
+            calm["brief"].pop("pushed_item", None)  # a calm day: no push named a row either
             ctx, page = self.open(browser, sc + "-calm", PHONE, member=m, snap=calm)
             sel = page.locator("#bottom-tabs button[aria-selected=true]").get_attribute("aria-label")
             self.check(sc + "-calm", f"a calm day opens on {tab}", sel == tab, sel or "")
@@ -1886,7 +1887,8 @@ class QA:
               "feels": "Probably pressed for time before the term sheet deadline.", "company": "Seed-stage settlement rails, two bank partners.",
               "points": ["Ask when the second bank goes live", "Ask about Bluepeak's terms", "Confirm the ESOP pool"]}
         ctx, page = self.open(browser, sc, {"width": 320, "height": 780}, sample={"answer": "ok", "json": mp},
-                              mcp={"pages": ["Search results People Ishaan Verma CEO Atlas Settlement", profile, "results", profile, "results", profile]})
+                              mcp={"pages": ["Search results People Ishaan Verma CEO Atlas Settlement", profile, "results", profile, "results", profile]},
+                              state={"items": {}, "actions": {}, "settings": {"research_auto": True}})  # automatic research is opt-in from 0.12
         page.wait_for_timeout(5)
         self.check(sc, "while research runs on a 320px phone, the page stays inside the screen",
                    page.evaluate("document.documentElement.scrollWidth - window.innerWidth") <= 0)
@@ -1914,7 +1916,8 @@ class QA:
         self.check(sc, "the prep card shows the map: says, thinks, does, feels and the source", all(t in txt for t in ("Says", "Thinks", "Does", "Feels", "LinkedIn, read in your browser")), txt[-160:])
         self.shot(page, "research-auto-380")
         ctx.close()
-        ctx, page = self.open(browser, "research-signin", PHONE, sample={"answer": "ok", "json": mp}, mcp={"pages": ["Sign in to LinkedIn. Join now"]})
+        ctx, page = self.open(browser, "research-signin", PHONE, sample={"answer": "ok", "json": mp}, mcp={"pages": ["Sign in to LinkedIn. Join now"]},
+                              state={"items": {}, "actions": {}, "settings": {"research_auto": True}})
         page.wait_for_timeout(500)
         banner = page.locator("#banner-slot").inner_text() + " " + page.locator("#view").inner_text()
         self.check("research-signin", "when LinkedIn wants a sign-in, Home says so once and stops", "Sign in to LinkedIn" in banner and

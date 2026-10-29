@@ -71,7 +71,7 @@ def cmd_setup(a: argparse.Namespace) -> int:
         "firm": (bundle.get("firm") or {}).get("name"), "firm_domain": ctx["firm_domain"], "tz": ctx["tz"],
         "fund": (bundle.get("firm") or {}).get("fund"), "fund_size_usd": (bundle.get("firm") or {}).get("fund_size_usd"),
         "firm_members": [{"name": m.get("name"), "email": m.get("email"), "title": m.get("title")} for m in ((bundle.get("firm") or {}).get("members") or [])],
-        "brief_time": a.brief_time or "07:00", "home_url": a.home_url, "today_items": profile["today_items"],
+        "brief_time": a.brief_time or "07:00", "cadence": "light", "home_url": a.home_url, "today_items": profile["today_items"],
         "brief_words": profile["brief_words"], "opens_on": profile["opens_on"], "weights": dict(profile["weights"]),
         "modules": dict(profile["modules"]), "pipeline_scope": profile["pipeline_scope"], "dwell_scale": 1.0,
         "delivery": {"home": True, "push": True}, "thesis": bundle.get("thesis"),
@@ -1289,7 +1289,7 @@ def build_all(bundle: dict[str, Any], config: dict[str, Any], home: dict[str, An
     # A board-eve line still to come this evening keeps its place in the day's four pushes.
     eve_later = _board_eve(ctx, boards, store, started.replace(hour=17, minute=0)) if started.hour < 17 else []
     push = _push(the_brief, home, started, mode, unavailable, old_unavail, quiet, prep_by_meeting, snaps, extras.get("packs"), eve,
-                 schedules.next_run(config, started), ctx, eve_later, schedules.day_runs(config, started))
+                 schedules.next_run(config, started), ctx, eve_later, schedules.day_runs(config, started), schedules.light(config))
     push["subjects"] = _named_subjects(push.get("line"), push.get("subjects") or [], ctx)
     if push.get("send") and brief_mod.show_pushed(the_brief, push.get("item")):
         shareable_now = json.loads(json.dumps(the_brief, default=str))
@@ -1461,7 +1461,7 @@ def _push(brief: dict[str, Any], home: dict[str, Any], now, mode: str, unavailab
           old_unavail: dict[str, Any], quiet: dict[str, set[str]], prep_by_meeting: dict[str, Any],
           snaps: dict[str, Any] | None = None, packs: list[dict[str, Any]] | None = None,
           eve: list[dict[str, Any]] | None = None, next_at=None, ctx: dict[str, Any] | None = None,
-          eve_later: list[dict[str, Any]] | None = None, day_runs: list[Any] | None = None) -> dict[str, Any]:
+          eve_later: list[dict[str, Any]] | None = None, day_runs: list[Any] | None = None, light: bool = False) -> dict[str, Any]:
     """What reaches the phone, one line per run.
     - Nothing lands inside a meeting or in the 15 minutes before one: a line that can wait goes at the next free run.
     - Every meeting with a prep card gets one heads-up, from the last free run that starts at least 45 minutes before
@@ -1591,6 +1591,10 @@ def _push(brief: dict[str, Any], home: dict[str, Any], now, mode: str, unavailab
         """A meeting's own heads-up run: the last free run 45 minutes to 8 hours ahead, else the first free run
         still 10 minutes ahead."""
         free = [t for t in slots if timedelta(minutes=45) <= start - t <= timedelta(hours=8) and not busy_at(t)]
+        # Light mode has few runs: the weekday brief run carries the morning line and today's meetings, so a heads-up
+        # never takes its place there. A meeting with no later free run gets no separate push; its prep is in the brief.
+        if light and slots and now.weekday() < 5:
+            free = [t for t in free if t != slots[0]]
         if free:
             return free[-1]
         soon = [t for t in slots if timedelta(minutes=10) <= start - t < timedelta(minutes=45) and not busy_at(t)]
@@ -3146,6 +3150,31 @@ OUTCOME = brief_mod.OUTCOME
 DIGEST_TITLE = {"review": "Weekly pipeline review", "preread": "Partner meeting pre-read", "week_ahead": "Your week ahead",
                 "digest": "Monday digest"}
 ALLOWED_CRM_FIELDS = {"stage", "next_step", "next_step_due", "note", "notes", "round", "amount", "last_contact"}
+# Automatic mode applies only these, and only from the user's own meeting notes. Stage, round and amount always wait
+# for a tap, and so does anything that came from an outside email: a crafted message cannot move a deal by itself.
+AUTO_CRM_FIELDS = {"next_step", "next_step_due", "note", "notes", "last_contact"}
+NOTES_SOURCE = ("notes.granola.ai", "granola.ai", "fathom.video", "fireflies.ai", "otter.ai", "zoom.us", "notion.so", "notion.site")
+
+
+def _auto_safe(prop: dict[str, Any]) -> bool:
+    """Whether automatic mode may apply this change without a tap: every field a low-risk one (a bare or odd entry
+    refuses), and the source a real meeting-notes page by its parsed host (no userinfo, no backslash tricks)."""
+    from urllib.parse import urlsplit
+    fields = prop.get("fields")
+    if not isinstance(fields, list) or not fields or any(not isinstance(f, dict) or f.get("field") not in AUTO_CRM_FIELDS for f in fields):
+        return False
+    url = str(prop.get("source_url") or "")
+    if "\\" in url or not re.match(r"^https://", url, re.I):
+        return False
+    try:
+        parts = urlsplit(url)
+        host = (parts.hostname or "").lower()
+    except ValueError:
+        return False
+    if "@" in parts.netloc or not host:
+        return False
+    from_notes = "notes" in str(prop.get("source_label") or "").lower() and any(host == h or host.endswith("." + h) for h in NOTES_SOURCE)
+    return from_notes and not prop.get("from_email")
 NO_PROPOSAL_TYPES = ("draft", "next_step")  # typed or tapped by the user in Home itself
 
 
@@ -3755,6 +3784,9 @@ def cmd_build(a: argparse.Namespace) -> int:
         fh.write(res["brief"]["shareable_text"] + "\n")
     run_file = dump(res["report"]["run_row"], os.path.join(a.out, "home", "run.json"))
     owed_file = dump(res["report"].get("owed") or [], os.path.join(a.out, "owed.json"))
+    # Who this run may draft to: the guard refuses a draft to any other address (see recipients.py).
+    from . import recipients as recipients_mod
+    dump(recipients_mod.allowed(bundle, inbound, config), os.path.join(a.out, "recipients.json"))
     _emit({"report": {k: v for k, v in res["report"].items() if k not in ("run_row", "owed")},
            "batch_file": os.path.join(os.path.abspath(a.out), "home", "batch.json"), "documents": plan["documents"],
            "skipped_unchanged": plan.get("skipped", []), "run_row_file": run_file,
@@ -3876,6 +3908,8 @@ def pending_actions(home: dict[str, Any], now=None) -> dict[str, Any]:
         for pid, prop in props.items():
             if pid in actions or not isinstance(prop, dict) or prop.get("status") != "proposed" or prop.get("by_hand"):
                 continue
+            if prop.get("type") == "crm_update" and not _auto_safe(prop):
+                continue  # stage, amount, round or anything a stranger's email set off waits for your tap
             if prop.get("type") in ("crm_update", "calendar_hold"):
                 actions = {**actions, pid: {"type": prop["type"], "status": "approved", "auto": True,
                                             "payload": {"fields": prop.get("fields"), "record": prop.get("record")}}}

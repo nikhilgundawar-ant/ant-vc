@@ -5,3 +5,4 @@ __pycache__/
 evals/runs/
 evals/reports/home/_home.html
 *.plugin
+*.plugin.sha256

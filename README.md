@@ -2,6 +2,8 @@
 
 A proactive chief of staff for your fund, inside the Claude app. Private to you.
 
+[![tests](https://github.com/nikhilgundawar-ant/ant-vc/actions/workflows/tests.yml/badge.svg)](https://github.com/nikhilgundawar-ant/ant-vc/actions/workflows/tests.yml) Made by Anthill AI, not Anthropic. Before you install, read [how ant. keeps you safe](SECURITY.md).
+
 **New here? Read the [install guide](INSTALL.md)**: six steps, about 10 minutes, with diagrams of how ant. works.
 
 1. In the Claude app, paste this repository's link and say "Install ant.". Tap Accept on the plugin card.
@@ -16,8 +18,8 @@ Your first brief arrives in about 10 minutes. Then: a morning brief, prep before
 ## What it does with your data
 
 - **Reads:** your email, calendar, meeting notes and CRM (a Google Sheet or Notion database works as a CRM; with a sheet, ant. suggests changes and you paste them in), through the connectors you approve.
-- **Writes:** email drafts (in your Gmail drafts when your Gmail connector can create them, otherwise in Home, one tap from a filled-in Gmail message), and CRM changes from your notes (automatically, with Undo, or after your Approve if you turn automatic mode off). Nothing is sent, shared or deleted without your tap.
-- **Guard:** the hourly checks run on an allowlist. They may read your tools, update the one ant. Home named in the check, change CRM fields and notes, put one-off holds on your own calendar with nobody invited, save new drafts and run ant.'s own engine on files in its work folder. Everything else is blocked, including sending, web requests, your devices, other files and writing to other apps, even if an email asks for it. The guard judges each connector tool by its name, not by what the tool does inside, so the real-account check runs every connector's tools through it first. The guard cannot see your approvals: the engine lists only the changes you approved, and the checks apply only those. A CRM field change can set off your CRM's own automations, such as an email or Slack alert you set up there. Each check first makes one call the guard must refuse; if that call goes through, the check stops before reading anything and Home says so.
+- **Writes:** email drafts (in your Gmail drafts when your Gmail connector can create them, otherwise in Home, one tap from a filled-in Gmail message), and CRM changes after your Approve (or, if you turn on automatic mode, next steps and notes from your own meeting notes, with Undo). Nothing is sent, shared or deleted without your tap.
+- **Guard:** the scheduled checks run on an allowlist. They may read your tools, update the one ant. Home named in the check, change CRM fields and notes, put one-off holds on your own calendar with nobody invited, save new drafts (only to people already in your threads, invites or CRM) and run ant.'s own engine on files in its work folder. Everything else is blocked, including sending, web requests, your devices, other files and writing to other apps, even if an email asks for it. The guard judges each connector tool by its name, not by what the tool does inside, so the real-account check runs every connector's tools through it first. The guard cannot see your approvals: the engine lists only the changes you approved, and the checks apply only those. A CRM field change can set off your CRM's own automations, such as an email or Slack alert you set up there. Each check first makes one call the guard must refuse; if that call goes through, the check stops before reading anything and Home says so.
 - **Keeps:** everything it builds lives in ant. Home, a private page in your Claude account that only you can open. Anthill runs no server, so nothing goes to Anthill.
 - **Stops:** say "turn off ant." to stop the checks and wipe its data.
 
@@ -31,9 +33,9 @@ How ant. Home reads:
 - **Ask** answers as a lead line, points, tables and charts, with Quick, Balanced, Thorough or your own model and effort.
 - **Every section folds.** Tap its title. A folded section still shows its count, how many lines are urgent and its top line. Focus folds everything but the top line and your schedule.
 - **Activity** (the clock at the top) lists every tap for 90 days, by day and kind, with Undo. A change still waiting is withdrawn. A CRM change already made is put back at the next check. A sent email cannot be unsent.
-- **Research runs by itself.** Each time you open Home in the Claude desktop app, it reads the public LinkedIn profiles of the people in today's and tomorrow's external meetings, in the app's browser, and adds an empathy map to each prep card and a Google Doc to Drive.
+- **Research on tap.** Tap Research on LinkedIn on a prep card or person and Home reads the public LinkedIn profiles of the people in today's and tomorrow's external meetings, in the app's browser, and adds an empathy map and a PDF in Drive. Automatic research is off unless you turn it on in Help, because LinkedIn's user agreement limits automated reading.
 - **Ask** (the search icon, or press /) works on every screen: matches in your data as you type, and answers to questions about your deals, people, portfolio and LPs.
-- **Automatic mode** (on from setup): CRM changes from your notes and holds on your own calendar apply at the next check, with Undo in Activity. Emails are never sent for you.
+- **Automatic mode** (off from setup): when you turn it on, next steps and notes from your own meeting notes, and holds on your own calendar, apply at the next check, with Undo in Activity. Stage, round, amount and anything from an outside email always wait for your Approve. Emails are never sent for you.
 - Home follows your device's light or dark setting until you pick one. Help sets the theme, Comfortable or Compact text, and keyboard shortcuts.
 
 ## Install

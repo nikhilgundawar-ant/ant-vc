@@ -24,6 +24,7 @@
     "week_ahead": {"days": [6], "at": "18:00", "mode": "week_ahead", "label": "Week ahead and pre-read"},
     "tuning": {"days": [6], "at": "18:00", "mode": null, "label": "Weekly tuning"}
   },
+  "light": {"weekday_hours": [12, 16], "weekend_hours": [10, 18], "note": "Light mode (new setups from 0.12): the brief run plus 12:00 and 16:00 on weekdays, 10:00 and 18:00 at weekends, each moved into the hour before like the hourly runs. Hourly is a setting."},
   "last_hour": 20,
   "weekend_hours": [10, 14, 18],
   "lock_minutes": 50,

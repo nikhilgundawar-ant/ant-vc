@@ -43,8 +43,8 @@
   {
    "theme": "light",
    "state": "aditi-help",
-   "checked": 39,
-   "marks": 9,
+   "checked": 40,
+   "marks": 11,
    "min": 5.05,
    "fails": 0
   },
@@ -147,8 +147,8 @@
   {
    "theme": "light",
    "state": "vikram-today",
-   "checked": 111,
-   "marks": 59,
+   "checked": 119,
+   "marks": 61,
    "min": 4.65,
    "fails": 0
   },
@@ -235,8 +235,8 @@
   {
    "theme": "dark",
    "state": "aditi-help",
-   "checked": 39,
-   "marks": 9,
+   "checked": 40,
+   "marks": 11,
    "min": 4.98,
    "fails": 0
   },
@@ -339,8 +339,8 @@
   {
    "theme": "dark",
    "state": "vikram-today",
-   "checked": 111,
-   "marks": 67,
+   "checked": 119,
+   "marks": 69,
    "min": 6.38,
    "fails": 0
   },

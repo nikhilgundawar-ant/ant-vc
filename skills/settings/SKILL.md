@@ -24,6 +24,7 @@ Write the changed config back to `snap/config` with its version pinned, then say
 
 | The user says | Change |
 | --- | --- |
+| "Check every hour" or "light mode" / "fewer checks" | Set `cadence` to `"hourly"` or `"light"` (light: the brief run plus two more on weekdays, two at weekends). Run `schedules --config config.json` and update both tasks' cron with the new entries. Say how many checks a week that is: light is 19, hourly about 76. |
 | Brief time (for example "brief at 6:30") | Set `brief_time`. Run `schedules --config config.json` and update both tasks' cron with the new entries: the hourly runs follow the brief time. |
 | Level (for example "I'm a principal now") | Set `level` and `level_label`. Load that profile's `today_items`, `brief_words`, `weights`, `modules`, `pipeline_scope` and `opens_on` from `ontology/profiles.json`. The two tasks stay; each run reads the new level and does what it has. |
 | Thesis | Take their words. Update `thesis` and set `confirmed: true`. |

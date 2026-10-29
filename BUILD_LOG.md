@@ -50,6 +50,35 @@ All scores below are simulations: one Claude agent played every panel member or 
 
 Claude-run evals (round five, on 0.4.0 skills): inbound triage 25 of 25 decisions match, scheduled pulse 15 of 15 safety checks, Claude-written brief 9 of 10 top lines, setup and morning brief run end to end. Their findings (46 numbered issues) were fixed in rounds five and six. Their 13 scores are read from saved runs kept out of git, so the runner counts them only where those runs exist. The Friday pulse on 0.7.2 scored 7 of 10 as Meera and as Tara; their 23 findings are fixed in round ten. The scheduled runs on 0.7.3 scored 7 of 10 each (Tara's nudge morning, Tara's and Meera's Fridays); their 30 findings are fixed in round eleven, except one product idea kept for later (a note to the partner whose view several drafts wait on). On 0.7.4 the same three runs scored 8, 8 and 7; round twelve fixes their findings, that note included, except one kept as a known limit: a scheduled run still types its bundle by hand. On 0.7.5 they scored 8, 8 and 8.5; round thirteen fixes their findings. On 0.7.6 they scored 9, 9 and 8 (`evals/reports/claude-runs/r13-summary.md`); round fourteen fixes their medium findings.
 
+## Round twenty-three (0.12.0): built to be trusted
+
+A new user's Claude reviewed the plugin before installing it and listed eight risks. Each was real. 0.12 answers each one in code and with proof that can be checked, and says plainly what is still open.
+
+| Risk raised | 0.12 answer | Proof |
+| --- | --- | --- |
+| Not Anthropic, one author, no audit | A safety screen and `SECURITY.md` say who makes it, with the threat model and what is still open. Tests run publicly on GitHub Actions. Each release carries a SHA-256 checksum. | `.github/workflows/tests.yml`, `package.sh` |
+| A crafted email could get a draft to an attacker | **Recipient lock:** a check drafts only to an address that is on the build's header-only list AND that a connector returned in a header in the run's own transcript. Every value in the call is read at any depth; look-alike letters and writes to the list (any letter case) are refused. | guard suite 766/766, `security_012.py` 44/44 |
+| A crafted email could poison a CRM field | Automatic mode applies only next step, due date, notes and last contact, and only from the user's own meeting notes. Stage, round, amount and anything from email wait for a tap. | round17, round18, `security_012.py` |
+| Automatic mode on by default | Off by default. | setup, `state/settings` |
+| The guard reads tool names | Unchanged for CRMs and data connectors, and said so plainly. Known connectors use exact read lists. | `SECURITY.md` |
+| No guard in chat | Explained: in chat the Claude app asks before each action. | `TRUST.md`, safety screen |
+| LinkedIn scraping | Off by default. Research runs only on a tap; automatic research is a switch that says why. | `security_012.py` |
+| Third-party data | Explained: where it lives, the user's duties, and how to wipe it. Automatic deletion is listed as open. | `SECURITY.md` |
+| Cost and noise | **Light mode** is the default: 19 checks a week, with hourly as a setting. The weekday brief run keeps the morning line, so a meeting heads-up never displaces it. | `security_012.py`, Home QA |
+
+A simulated QA red team then attacked the 0.12 changes and found 10 issues. All are fixed:
+- The run could add a stranger to the recipient list by writing a fake thread into its own `bundle.json`. The guard now also checks the transcript.
+- Look-alike letters and recipients nested deep in the call got past the lock.
+- A different letter case could overwrite the list on a Mac.
+- Look-alike notes URLs could pass as meeting notes, and so could a bare field entry.
+- Light mode lost the Monday digest for early briefs.
+- A double tap went through the safety screen to the row behind it.
+- Home said "Applies by itself" while the CRM was set to read only.
+- A read-only viewer saw switches that did nothing.
+- The switch order differed between Help and the safety screen.
+
+Regression: Home QA 849/849, engine runner 235/235 (7 Claude-run evals skipped), stress suites 41/41, 44/44, 79/79, 87/87, 101/101 and 158/158, design lint 0 violations, safety lint clean, plugin validate passed.
+
 ## Round twenty-two (0.11.1): a QA council stress-tests every piece (simulated)
 
 Five simulated QA specialists each wrote a stress file under `evals/stress/` and reported findings to the developers. The coordinator fixed every one, re-ran all suites, then sent the build back for a second round. Round 2 found 9 more issues; all are fixed.

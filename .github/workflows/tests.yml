@@ -1,0 +1,48 @@
+name: tests
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  engine:
+    name: Engine, guard and safety lint
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Engine checks and multi-run suites (guard included)
+        run: python3 evals/runner.py
+      - name: Engine fuzz
+        run: python3 evals/stress/engine_fuzz.py | tee fuzz.txt && ! grep -q '^FAIL' fuzz.txt
+      - name: Skills never tell Claude to send, delete or share
+        run: python3 -I -S engine/instinct.py lint --root skills && python3 -I -S engine/instinct.py lint --root shared
+      - name: Design lint
+        run: python3 evals/design_lint.py
+  home:
+    name: ant. Home in a real browser
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install Playwright and Chromium
+        run: |
+          pip install playwright==1.56.0
+          python3 -m playwright install --with-deps chromium
+      - name: Home QA
+        run: python3 evals/home_qa.py | tee home.txt && ! grep -q '^FAIL' home.txt
+      - name: Stress suites
+        run: |
+          set -o pipefail
+          for f in security_012 panels_send data_security a11y_layout reminders_ask_pdf; do
+            python3 evals/stress/$f.py | tee $f.txt
+            if grep -q '^FAIL' $f.txt; then echo "::error::$f has failing checks"; exit 1; fi
+          done

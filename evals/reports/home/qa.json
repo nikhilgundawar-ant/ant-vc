@@ -3,7 +3,7 @@
  "failed": 0,
  "complete": true,
  "scenarios": "all",
- "page_sha256": "a5c74abd2bfa",
+ "page_sha256": "1bda9c5d8acc",
  "rows": [
   {
    "scenario": "today-380",
@@ -1251,7 +1251,7 @@
    "scenario": "colour-light-aditi-help",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "39 texts, 9 marks, min 5.05:1"
+   "detail": "40 texts, 11 marks, min 5.05:1"
   },
   {
    "scenario": "colour-light-aditi-toast",
@@ -1329,7 +1329,7 @@
    "scenario": "colour-light-vikram-today",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "111 texts, 59 marks, min 4.65:1"
+   "detail": "119 texts, 61 marks, min 4.65:1"
   },
   {
    "scenario": "colour-light-banners",
@@ -1395,7 +1395,7 @@
    "scenario": "colour-dark-aditi-help",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "39 texts, 9 marks, min 4.98:1"
+   "detail": "40 texts, 11 marks, min 4.98:1"
   },
   {
    "scenario": "colour-dark-aditi-toast",
@@ -1473,7 +1473,7 @@
    "scenario": "colour-dark-vikram-today",
    "check": "every text and mark meets WCAG contrast",
    "ok": true,
-   "detail": "111 texts, 67 marks, min 6.38:1"
+   "detail": "119 texts, 69 marks, min 6.38:1"
   },
   {
    "scenario": "colour-dark-banners",
@@ -3537,7 +3537,7 @@
    "scenario": "hero-fold",
    "check": "vikram: the top line's main button is on the first phone screen, above the tab bar",
    "ok": true,
-   "detail": "bottom at 562px"
+   "detail": "bottom at -355px"
   },
   {
    "scenario": "hero-fold",
@@ -3861,7 +3861,7 @@
    "scenario": "hero-banner",
    "check": "vikram: with the research banner showing, the main button stays above the tab bar",
    "ok": true,
-   "detail": "bottom at 562px"
+   "detail": "bottom at -355px"
   },
   {
    "scenario": "hero-banner",
