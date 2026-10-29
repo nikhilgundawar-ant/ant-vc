@@ -30,6 +30,9 @@ jobs:
     timeout-minutes: 40
     # Playwright's own image: Python, Chromium and its system libraries, already matched.
     container: mcr.microsoft.com/playwright/python:v1.56.0-noble
+    defaults:
+      run:
+        shell: bash  # a container's default is sh, which has no pipefail
     steps:
       - uses: actions/checkout@v4
       - name: Playwright for Python
