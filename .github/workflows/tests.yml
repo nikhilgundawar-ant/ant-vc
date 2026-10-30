@@ -29,14 +29,14 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 40
     # Playwright's own image: Python, Chromium and its system libraries, already matched.
-    container: mcr.microsoft.com/playwright/python:v1.56.0-noble
+    container: mcr.microsoft.com/playwright/python:v1.56.0-noble@sha256:a7f6cf3ae520c9d670ad956572c13747ed5abdbba5123a01526f873ed1662528
     defaults:
       run:
         shell: bash  # a container's default is sh, which has no pipefail
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
-      - name: Playwright comes with the image
-        run: python3 -c "import playwright, importlib.metadata as m; print('playwright', m.version('playwright'))"
+      - name: Playwright for Python, pinned by hash
+        run: pip install --break-system-packages --require-hashes --no-deps -r evals/requirements-ci.txt || pip install --require-hashes --no-deps -r evals/requirements-ci.txt
       - name: Home QA
         run: python3 evals/home_qa.py | tee home.txt && ! grep -q '^FAIL' home.txt
       - name: Stress suites
@@ -46,12 +46,3 @@ jobs:
             python3 evals/stress/$f.py | tee $f.txt
             if grep -q '^FAIL' $f.txt; then echo "::error::$f has failing checks"; exit 1; fi
           done
-  image-digest:
-    name: Report the Playwright image digest (for pinning)
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
-    steps:
-      - name: Look up the digest
-        run: |
-          docker pull -q mcr.microsoft.com/playwright/python:v1.56.0-noble >/dev/null
-          echo "::notice title=playwright-digest::$(docker inspect --format '{{index .RepoDigests 0}}' mcr.microsoft.com/playwright/python:v1.56.0-noble)"
