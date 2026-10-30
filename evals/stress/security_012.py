@@ -6,6 +6,7 @@ default, and the safety screen ant. Home shows first. Each check passes when the
 from __future__ import annotations
 
 import json
+import re
 import os
 import subprocess
 import sys
@@ -143,6 +144,27 @@ def home_checks():
         page.wait_for_timeout(200)
         labels = page.evaluate("Array.from(document.querySelectorAll('section[aria-label=Decisions] .status')).map(s => s.textContent)")
         check("auto mode in Home: a notes-based next step says it applies by itself", any("Applies by itself" in x for x in labels), labels)
+        ctx.close()
+        # Page 2 of the empathy map: the founder's company and the space the investor is researching.
+        profile = "Ishaan Verma\nCEO at Atlas Settlement\nExperience\nAtlas Settlement, CEO, 2023 to now"
+        mp = {"match": True, "name": "Ishaan Verma", "headline": "CEO, Atlas Settlement", "says": "Settlement is the bottleneck.", "thinks": "Banks move slowly.",
+              "does": "Signs bank partners.", "feels": "Pressed for time.", "company": "Seed-stage settlement rails.", "points": ["Ask about the second bank"],
+              "what": "Settlement rails for cross-border payments.", "market": "Cross-border B2B payments, large and growing.", "signals": "Two bank partners live.",
+              "trends": "Banks are opening real-time rails to fintechs.", "fit": "Fits the payments infrastructure thesis.",
+              "questions": ["Who owns the bank relationship?", "What breaks at ten times the volume?"],
+              "competitors": [{"name": "Rival Rails", "why": "Leads in Europe", "url": ""}], "sources": []}
+        ctx, page = qa.open(b, "s6", Q.DESK, open_all=False, inline=False, sample={"answer": "ok", "json": mp},
+                            mcp={"pages": ["Search results People Ishaan Verma CEO Atlas Settlement", profile, "Atlas Settlement: rails for payments", "results Rival Rails"] * 2},
+                            state={"items": {}, "actions": {}, "settings": {"research_auto": True, "safety_seen": "0.12"}})
+        page.wait_for_timeout(2500)
+        calls = page.evaluate("window.__mcp")
+        navs = [c["input"].get("url", "") for c in calls if c["tool"] == "navigate"]
+        check("research: researching a founder also reads their company's site and one web search", any("atlassettle.com" in u for u in navs) and any("duckduckgo.com" in u for u in navs), navs[:6])
+        pdf = [c["input"] for c in calls if c["tool"] == "create_file"]
+        txt = page.evaluate("JSON.stringify((window.__pdf || {}).text || '')")
+        check("research: page 2 is the founder's space (what they do, the space, who leads it, fit with your thesis, questions)",
+              all(w.lower() in txt.lower() for w in ("the space", "What they do", "Who leads the space", "Fit with your thesis", "Questions to test the space")), txt[300:900])
+        check("research: the map PDF lands in Drive, named date, person, company", any(re.match(r"^\d{4}-\d{2}-\d{2} Ishaan Verma Atlas Settlement\.pdf$", x.get("title", "")) for x in pdf), [x.get("title") for x in pdf])
         ctx.close()
         b.close()
 

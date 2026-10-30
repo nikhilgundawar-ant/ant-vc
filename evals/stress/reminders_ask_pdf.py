@@ -641,11 +641,12 @@ def t_pdf_fail(qa, b) -> None:
     page.locator("section[aria-label='Decisions'] .row-hit").first.click(); page.wait_for_timeout(120)
     page.locator(".sheet-foot .pdf-btn").click(); page.wait_for_timeout(1500)
     t = page.locator("#toast-slot").inner_text().lower()
-    check("jsPDF cannot load: clear toast, no save", "could not make the pdf" in t and not page.evaluate("window.__downloads"), t[:120])
+    # 0.12.1: jsPDF ships inside the page, so there is no CDN that can fail: the PDF saves with no outside request.
+    check("jsPDF is built in: a PDF saves without loading anything from a CDN", bool(page.evaluate("window.__downloads")), t[:120])
     check("jsPDF cannot load: no page error", not [e for e in page._qa_errors if "pageerror" in e.lower() or "uncaught" in e.lower()], "; ".join(page._qa_errors[:3]))
     page.locator(".sheet-foot .pdf-btn").click(); page.wait_for_timeout(1500)
     t = page.locator("#toast-slot").inner_text().lower()
-    check("jsPDF cannot load: a second tap retries and says so again", "could not make the pdf" in t, t[:120])
+    check("jsPDF is built in: a second save works too", len(page.evaluate("window.__downloads") or []) >= 2, t[:120])
     ctx.close()
 
 
@@ -663,7 +664,9 @@ def t_empathy(qa, b) -> None:
     pdf = page.evaluate("window.__pdf"); d = page.evaluate("window.__downloads")
     text = "\n".join(pdf["text"])
     check("empathy map PDF: two pages", pdf["pages"] == 2, f"{pdf['pages']} pages")
-    p2 = text[text.find("THE FIRM OR COMPANY"):] if "THE FIRM OR COMPANY" in text else ""
+    # Page 2 opens with the firm or company, or (0.12.1) with the founder's company and its space when it was researched.
+    mark = next((m for m in ("THE FIRM OR COMPANY", "WHAT THEY DO") if m in text), None)
+    p2 = text[text.find(mark):] if mark else ""
     check("empathy map PDF: page 2 has the company, earlier calls and talking points", p2 and "FROM YOUR EARLIER CALLS AND MAIL" in p2 and "TALKING POINTS" in p2 and "1. " in p2, text[-300:])
     check("empathy map PDF: file named date, person, company", len(d) == 1 and d[0]["filename"].endswith(".pdf") and d[0]["filename"].startswith("2026-") and "Ishaan Verma" in d[0]["filename"] and "Atlas" in d[0]["filename"], json.dumps(d))
     check("empathy map PDF: LinkedIn link collected", any("linkedin" in l for l in pdf["links"]), str(pdf["links"]))

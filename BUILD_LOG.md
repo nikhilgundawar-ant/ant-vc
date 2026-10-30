@@ -50,6 +50,25 @@ All scores below are simulations: one Claude agent played every panel member or 
 
 Claude-run evals (round five, on 0.4.0 skills): inbound triage 25 of 25 decisions match, scheduled pulse 15 of 15 safety checks, Claude-written brief 9 of 10 top lines, setup and morning brief run end to end. Their findings (46 numbered issues) were fixed in rounds five and six. Their 13 scores are read from saved runs kept out of git, so the runner counts them only where those runs exist. The Friday pulse on 0.7.2 scored 7 of 10 as Meera and as Tara; their 23 findings are fixed in round ten. The scheduled runs on 0.7.3 scored 7 of 10 each (Tara's nudge morning, Tara's and Meera's Fridays); their 30 findings are fixed in round eleven, except one product idea kept for later (a note to the partner whose view several drafts wait on). On 0.7.4 the same three runs scored 8, 8 and 7; round twelve fixes their findings, that note included, except one kept as a known limit: a scheduled run still types its bundle by hand. On 0.7.5 they scored 8, 8 and 8.5; round thirteen fixes their findings. On 0.7.6 they scored 9, 9 and 8 (`evals/reports/claude-runs/r13-summary.md`); round fourteen fixes their medium findings.
 
+## Round twenty-four (0.12.1): your data stays yours, and GitHub vouches for the build
+
+- **Page 2 is the founder's space.** Researching a founder now also researches their company. It reads the company's own site and one web search, only on your tap, and keeps only links it found. Page 2 of the empathy map covers:
+  - what they do and the space: market and where it is heading;
+  - their signals and who leads the space;
+  - fit with your thesis and questions to test the space;
+  - then your earlier calls and talking points.
+- **Nothing leaves without you.**
+  - The fonts and jsPDF now ship inside ant. Home, so opening it asks no server for anything.
+  - `evals/stress/egress.py` proves it in a real browser: open, every tab, a panel and a PDF make zero outside requests.
+  - The same test proves the engine imports nothing that reaches a network, and that the repository holds no keys.
+  - The safety screen and `SECURITY.md` gain "Where your data goes".
+- **Free GitHub trust signals:**
+  - a release workflow where GitHub builds the plugin from the tag, attaches it with its checksum and signs a provenance attestation (`gh attestation verify`);
+  - CodeQL code scanning;
+  - OpenSSF Scorecard, with badges on the README.
+
+Regression: Home QA 849/849, engine 235/235, stress suites 12/12, 47/47, 101/101, 87/87, 79/79, 158/158 and 41/41, design lint 0 violations.
+
 ## Round twenty-three (0.12.0): built to be trusted
 
 A new user's Claude reviewed the plugin before installing it and listed eight risks. Each was real. 0.12 answers each one in code and with proof that can be checked, and says plainly what is still open.

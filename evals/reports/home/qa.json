@@ -3,7 +3,7 @@
  "failed": 0,
  "complete": true,
  "scenarios": "all",
- "page_sha256": "1bda9c5d8acc",
+ "page_sha256": "564e104082de",
  "rows": [
   {
    "scenario": "today-380",
@@ -3519,7 +3519,7 @@
    "scenario": "hero-fold",
    "check": "meera: the top line's main button is on the first phone screen, above the tab bar",
    "ok": true,
-   "detail": "bottom at 619px"
+   "detail": "bottom at 591px"
   },
   {
    "scenario": "hero-fold",
@@ -3537,7 +3537,7 @@
    "scenario": "hero-fold",
    "check": "vikram: the top line's main button is on the first phone screen, above the tab bar",
    "ok": true,
-   "detail": "bottom at -355px"
+   "detail": "bottom at -335px"
   },
   {
    "scenario": "hero-fold",
@@ -3825,7 +3825,7 @@
    "scenario": "hero-banner",
    "check": "meera: with the research banner showing, the main button stays above the tab bar",
    "ok": true,
-   "detail": "bottom at 619px"
+   "detail": "bottom at 591px"
   },
   {
    "scenario": "hero-banner",
@@ -3861,7 +3861,7 @@
    "scenario": "hero-banner",
    "check": "vikram: with the research banner showing, the main button stays above the tab bar",
    "ok": true,
-   "detail": "bottom at -355px"
+   "detail": "bottom at -335px"
   },
   {
    "scenario": "hero-banner",

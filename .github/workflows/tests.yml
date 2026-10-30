@@ -42,7 +42,7 @@ jobs:
       - name: Stress suites
         run: |
           set -o pipefail
-          for f in security_012 panels_send data_security a11y_layout reminders_ask_pdf; do
+          for f in egress security_012 panels_send data_security a11y_layout reminders_ask_pdf; do
             python3 evals/stress/$f.py | tee $f.txt
             if grep -q '^FAIL' $f.txt; then echo "::error::$f has failing checks"; exit 1; fi
           done

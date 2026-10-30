@@ -2,7 +2,7 @@
 
 A proactive chief of staff for your fund, inside the Claude app. Private to you.
 
-[![tests](https://github.com/nikhilgundawar-ant/ant-vc/actions/workflows/tests.yml/badge.svg)](https://github.com/nikhilgundawar-ant/ant-vc/actions/workflows/tests.yml) Made by Anthill AI, not Anthropic. Before you install, read [how ant. keeps you safe](SECURITY.md).
+[![tests](https://github.com/nikhilgundawar-ant/ant-vc/actions/workflows/tests.yml/badge.svg)](https://github.com/nikhilgundawar-ant/ant-vc/actions/workflows/tests.yml) [![CodeQL](https://github.com/nikhilgundawar-ant/ant-vc/actions/workflows/codeql.yml/badge.svg)](https://github.com/nikhilgundawar-ant/ant-vc/actions/workflows/codeql.yml) [![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/nikhilgundawar-ant/ant-vc/badge)](https://scorecard.dev/viewer/?uri=github.com/nikhilgundawar-ant/ant-vc) Made by Anthill AI, not Anthropic. Before you install, read [how ant. keeps you safe](SECURITY.md).
 
 **New here? Read the [install guide](INSTALL.md)**: six steps, about 10 minutes, with diagrams of how ant. works.
 

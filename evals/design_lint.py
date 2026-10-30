@@ -159,6 +159,8 @@ def px_values(val: str) -> list[float]:
 
 def lint(path: str) -> dict:
     html = open(path, encoding="utf-8").read()
+    # Vendored libraries (jsPDF, MIT) ride inside the page as text and are not Home's own code: they are not linted.
+    html = re.sub(r'<script type="text/plain" id="ah-[a-z]+">.*?</script>', "", html, flags=re.S)
     v: list[str] = []
     css, js, markup = split_parts(html)
     rules = css_rules(css)
@@ -193,7 +195,7 @@ def lint(path: str) -> dict:
             if extra:
                 v.append(f"type: {name} weights outside the system: {sorted(extra)}")
     for sel, body in rules:
-        if is_token_block(sel):
+        if is_token_block(sel) or sel.strip() == "@font-face":  # a face that ships inside the page declares its name
             continue
         for prop, val in decls(body):
             if prop == "font-family" and val not in ("var(--ah-display)", "var(--ah-body)", "inherit"):

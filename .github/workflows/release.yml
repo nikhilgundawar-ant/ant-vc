@@ -1,0 +1,48 @@
+name: release
+# When a release is published, GitHub itself builds ant-vc.plugin from the tagged code, attaches it, adds its
+# SHA-256 to the notes and signs a build provenance attestation. Anyone can check a download with:
+#   gh attestation verify ant-vc.plugin --repo nikhilgundawar-ant/ant-vc
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Release tag to build (for example v0.12.0)
+        required: true
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write      # attach the file to the release
+      id-token: write      # sign the provenance attestation
+      attestations: write
+    env:
+      TAG: ${{ github.event.release.tag_name || inputs.tag }}
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ env.TAG }}
+      - name: Build the plugin from this exact code
+        run: bash package.sh
+      - name: Attest where the file came from
+        uses: actions/attest-build-provenance@v1
+        with:
+          subject-path: ant-vc.plugin
+      - name: Attach the file and its checksum to the release
+        run: |
+          SUM=$(sha256sum ant-vc.plugin | cut -d' ' -f1)
+          gh release upload "$TAG" ant-vc.plugin ant-vc.plugin.sha256 --clobber --repo "$GITHUB_REPOSITORY"
+          gh release view "$TAG" --repo "$GITHUB_REPOSITORY" --json body -q .body > notes.md
+          grep -v "^\*\*SHA-256" notes.md | grep -v "^Check it with" > clean.md || true
+          {
+            cat clean.md
+            echo
+            echo "### Verify this download"
+            echo "- **SHA-256:** \`$SUM\` (check with \`shasum -a 256 ant-vc.plugin\`)"
+            echo "- **Built by GitHub from tag \`$TAG\`**, with a signed provenance attestation. Check it with \`gh attestation verify ant-vc.plugin --repo $GITHUB_REPOSITORY\`."
+          } > final.md
+          gh release edit "$TAG" --repo "$GITHUB_REPOSITORY" --notes-file final.md

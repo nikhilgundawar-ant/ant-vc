@@ -18,6 +18,20 @@ This page is for anyone, or any Claude, deciding whether to trust ant. with an i
 | Sends | Only from ant. Home, after the user taps **Send** and then **Send now** | `home/index.html`, `composer()`; never from a skill or a check |
 | Never | Deletes, shares, invites, posts, browses the web in a check, or writes to other apps | `hooks/guard.py`, `shared/safety.md` |
 
+## Where your data goes
+
+| Data | Goes to | When |
+| --- | --- | --- |
+| Your email, calendar, notes, CRM | Your Claude account, through the connectors you approved | Each check, and when you chat |
+| What ant. builds (brief, panels, research, taps) | ant. Home's private database, in your Claude account | Each check |
+| A person's name and company | LinkedIn, the company's own website, one DuckDuckGo search, in the Claude desktop app's browser | Only when you tap Research |
+| Drafts | Your own Gmail drafts, or Home | Each check (never sent) |
+| An email you send | Gmail, as you | Only after **Send**, then **Send now** |
+| PDFs | Your computer, or your own Google Drive | Only when you save one |
+| Anything | Anthill, or any server ant. runs | Never. There is none. |
+
+Opening ant. Home makes no request to any server. The fonts and the PDF library ship inside the page, and `evals/stress/egress.py` checks this in a real browser on every push. The engine uses no module that can reach a network or run another program, and the same test checks that too. Claude itself processes your data as with any use of Claude, under your Anthropic account's terms.
+
 ## Threats and what ant. does
 
 ### 1. A crafted email (prompt injection)
@@ -78,12 +92,26 @@ The guard is for checks nobody watches. In a chat, the Claude app asks the user 
 | Hostile text in mail, notes and pages renders as text; only http(s) links render | Data and security stress suite | `python3 evals/stress/data_security.py` |
 | The engine survives broken and hostile bundles | Engine fuzz suite | `python3 evals/stress/engine_fuzz.py` |
 | Home works by keyboard and on phones, in both themes | 849 Home checks, accessibility suite | `python3 evals/home_qa.py`, `python3 evals/stress/a11y_layout.py` |
+| Opening Home, every tab, a panel and a PDF make no outside request; the engine cannot reach a network; no keys in the repo | 12 checks | `python3 evals/stress/egress.py` |
 | The 0.12 changes: recipient lock, automatic mode's limits, Light mode, LinkedIn off, the safety screen | 44 checks, plus 26 red-team checks in `data_security.py` | `python3 evals/stress/security_012.py` |
 | Skills never tell Claude to send, delete or share | Safety lint over every skill | `python3 engine/instinct.py lint --root skills` |
 
 GitHub Actions runs the engine, guard and stress suites on every push: see the tests badge on the README.
 
+Three free, public checks run on GitHub:
+- **tests:** every suite above, on every push.
+- **CodeQL:** GitHub's own code scanning of the engine, the guard and Home. Findings show on the repository's Security tab.
+- **OpenSSF Scorecard:** an independent score of the repository's security practices. The badge is on the README.
+
 ### Check a release
+
+Since 0.12, GitHub builds each release's `ant-vc.plugin` from the tagged code itself and signs a provenance attestation, so the file provably comes from this code. To check it:
+
+```
+gh attestation verify ant-vc.plugin --repo nikhilgundawar-ant/ant-vc
+```
+
+Or compare checksums by hand:
 
 1. Download `ant-vc.plugin` from the release.
 2. Run `shasum -a 256 ant-vc.plugin` (or `sha256sum`). Compare it with the checksum in the release notes.
