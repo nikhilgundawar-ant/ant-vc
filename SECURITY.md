@@ -118,6 +118,10 @@ Since 0.12, GitHub builds each release's `ant-vc.plugin` from the tagged code it
 gh attestation verify ant-vc.plugin --repo nikhilgundawar-ant/ant-vc
 ```
 
+Or check it in a browser, with no tools:
+1. Open the repository's [Attestations](https://github.com/nikhilgundawar-ant/ant-vc/attestations) page and pick the release. It shows the file's SHA-256 and the exact commit, tag and workflow that built it.
+2. Search that SHA-256 on [search.sigstore.dev](https://search.sigstore.dev) (Attribute: Hash, with `sha256:` in front). The public Sigstore log shows the signing certificate. Its identity must be `https://github.com/nikhilgundawar-ant/ant-vc/.github/workflows/release.yml@refs/tags/<the tag>`.
+
 Or compare checksums by hand:
 
 1. Download `ant-vc.plugin` from the release.
