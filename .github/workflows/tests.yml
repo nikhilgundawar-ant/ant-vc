@@ -12,8 +12,8 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
         with:
           python-version: "3.12"
       - name: Engine checks and multi-run suites (guard included)
@@ -34,9 +34,9 @@ jobs:
       run:
         shell: bash  # a container's default is sh, which has no pipefail
     steps:
-      - uses: actions/checkout@v4
-      - name: Playwright for Python
-        run: pip install --break-system-packages playwright==1.56.0 || pip install playwright==1.56.0
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+      - name: Playwright comes with the image
+        run: python3 -c "import playwright, importlib.metadata as m; print('playwright', m.version('playwright'))"
       - name: Home QA
         run: python3 evals/home_qa.py | tee home.txt && ! grep -q '^FAIL' home.txt
       - name: Stress suites
@@ -46,3 +46,12 @@ jobs:
             python3 evals/stress/$f.py | tee $f.txt
             if grep -q '^FAIL' $f.txt; then echo "::error::$f has failing checks"; exit 1; fi
           done
+  image-digest:
+    name: Report the Playwright image digest (for pinning)
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Look up the digest
+        run: |
+          docker pull -q mcr.microsoft.com/playwright/python:v1.56.0-noble >/dev/null
+          echo "::notice title=playwright-digest::$(docker inspect --format '{{index .RepoDigests 0}}' mcr.microsoft.com/playwright/python:v1.56.0-noble)"

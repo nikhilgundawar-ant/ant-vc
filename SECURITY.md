@@ -98,6 +98,13 @@ The guard is for checks nobody watches. In a chat, the Claude app asks the user 
 
 GitHub Actions runs the engine, guard and stress suites on every push: see the tests badge on the README.
 
+How the repository itself is kept safe:
+- Every GitHub Action is pinned to a full commit SHA. Dependabot (`.github/dependabot.yml`) proposes updates.
+- Workflows get read-only tokens. Only the release job may write, and only to attach the file and sign its attestation.
+- Releases are built on GitHub from the tag, with a SHA-256 and a signed provenance attestation (`ant-vc.plugin.intoto.jsonl`) attached.
+- Secret scanning and push protection are on. Private vulnerability reporting is on.
+- `main` and the release tags cannot be deleted or rewritten. `CODEOWNERS` names the maintainer.
+
 Three free, public checks run on GitHub:
 - **tests:** every suite above, on every push.
 - **CodeQL:** GitHub's own code scanning of the engine, the guard and Home. Findings show on the repository's Security tab.

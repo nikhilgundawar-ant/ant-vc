@@ -23,19 +23,21 @@ jobs:
       TAG: ${{ github.event.release.tag_name || inputs.tag }}
       GH_TOKEN: ${{ github.token }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
         with:
           ref: ${{ env.TAG }}
       - name: Build the plugin from this exact code
         run: bash package.sh
       - name: Attest where the file came from
-        uses: actions/attest-build-provenance@v1
+        id: attest
+        uses: actions/attest-build-provenance@ef244123eb79f2f7a7e75d99086184180e6d0018 # v1.4.4
         with:
           subject-path: ant-vc.plugin
       - name: Attach the file and its checksum to the release
         run: |
           SUM=$(sha256sum ant-vc.plugin | cut -d' ' -f1)
-          gh release upload "$TAG" ant-vc.plugin ant-vc.plugin.sha256 --clobber --repo "$GITHUB_REPOSITORY"
+          cp "${{ steps.attest.outputs.bundle-path }}" ant-vc.plugin.intoto.jsonl
+          gh release upload "$TAG" ant-vc.plugin ant-vc.plugin.sha256 ant-vc.plugin.intoto.jsonl --clobber --repo "$GITHUB_REPOSITORY"
           gh release view "$TAG" --repo "$GITHUB_REPOSITORY" --json body -q .body > notes.md
           grep -v "^\*\*SHA-256" notes.md | grep -v "^Check it with" > clean.md || true
           {
