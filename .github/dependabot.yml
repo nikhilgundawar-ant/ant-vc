@@ -1,5 +1,5 @@
 # Keeps the pinned GitHub Actions current: Dependabot opens a pull request when a new version is out.
-# ant. itself has no third-party packages to update.
+# ant. itself has no third-party packages to update. The fuzz build's base image is pinned the same way.
 version: 2
 updates:
   - package-ecosystem: github-actions
@@ -9,3 +9,7 @@ updates:
     groups:
       actions:
         patterns: ["*"]
+  - package-ecosystem: docker
+    directory: /.clusterfuzzlite
+    schedule:
+      interval: weekly

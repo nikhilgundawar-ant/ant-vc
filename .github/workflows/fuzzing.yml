@@ -1,0 +1,27 @@
+name: fuzzing
+# ClusterFuzzLite with Atheris on the guard and the engine's text handling. Targets are in .clusterfuzzlite/.
+on:
+  pull_request:
+  schedule:
+    - cron: "41 4 * * 1"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  fuzz:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Build fuzzers
+        uses: google/clusterfuzzlite/actions/build_fuzzers@884713a6c30a92e5e8544c39945cd7cb630abcd1 # v1
+        with:
+          language: python
+          sanitizer: address
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Run fuzzers
+        uses: google/clusterfuzzlite/actions/run_fuzzers@884713a6c30a92e5e8544c39945cd7cb630abcd1 # v1
+        with:
+          sanitizer: address
+          fuzz-seconds: 300
+          mode: ${{ github.event_name == 'pull_request' && 'code-change' || 'batch' }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
