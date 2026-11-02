@@ -4,7 +4,7 @@ set -euo pipefail
 cd "$(dirname "$0")"
 OUT="${1:-ant-vc.plugin}"
 rm -f "$OUT"
-zip -qr "$OUT" . -x ".git/*" ".gitignore" "evals/*" "*/__pycache__/*" "*.pyc" ".DS_Store" "*.plugin" "*.plugin.sha256" "package.sh" ".github/*" \
+zip -qr "$OUT" . -x ".git/*" ".gitignore" "evals/*" "*/__pycache__/*" "*.pyc" ".DS_Store" "*.plugin" "*.plugin.sha256" "package.sh" ".github/*" ".clusterfuzzlite/*" \
   "BUILD_LOG.md" "CLAUDE.md" "docs/*" "instinct-work/*" "home-db/*" "run/*" "setup-out/*"
 SUM=$( (command -v sha256sum >/dev/null && sha256sum "$OUT" || shasum -a 256 "$OUT") | cut -d' ' -f1)
 echo "$SUM  $(basename "$OUT")" > "$OUT.sha256"

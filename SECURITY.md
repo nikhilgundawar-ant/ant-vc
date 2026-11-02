@@ -91,6 +91,7 @@ The guard is for checks nobody watches. In a chat, the Claude app asks the user 
 | Sending needs Send, then Send now, once; a slow or reopened send never goes twice | Panels and sending stress suite | `python3 evals/stress/panels_send.py` |
 | Hostile text in mail, notes and pages renders as text; only http(s) links render | Data and security stress suite | `python3 evals/stress/data_security.py` |
 | The engine survives broken and hostile bundles | Engine fuzz suite | `python3 evals/stress/engine_fuzz.py` |
+| The guard and the engine survive random text | ClusterFuzzLite with Atheris, on pull requests and weekly | `.clusterfuzzlite/`, `.github/workflows/fuzzing.yml` |
 | Home works by keyboard and on phones, in both themes | 849 Home checks, accessibility suite | `python3 evals/home_qa.py`, `python3 evals/stress/a11y_layout.py` |
 | Opening Home, every tab, a panel and a PDF make no outside request; the engine cannot reach a network; no keys in the repo | 12 checks | `python3 evals/stress/egress.py` |
 | The 0.12 changes: recipient lock, automatic mode's limits, Light mode, LinkedIn off, the safety screen | 44 checks, plus 26 red-team checks in `data_security.py` | `python3 evals/stress/security_012.py` |
